@@ -1,0 +1,3 @@
+#/bin/bash
+
+/Applications/Xamarin\ Studio.app/Contents/MacOS/XamarinStudio $@
