@@ -1,0 +1,25 @@
+#! /bin/sh
+
+cat /cygdrive/e/bat/compiler_paths &
+
+#.......................................
+# Borland/Inprise Installation
+
+PATH_DEST_CYGWIN_BCC='/cygdrive/e/lng/bcc55/'
+PATH_DEST_MSDOS_BCC='e:\lng\bcc55\'
+
+rm -fr $PATH_DEST_CYGWIN_BCC
+
+PATH_SRC_BCC='/cygdrive/e/sw/freecommandlinetools.exe'
+
+$PATH_SRC_BCC
+
+
+
+
+exit 0
+
+PATH_DEST_DJGPP='/cygdrive/e/lng/djgpp/'
+PATH_DEST_CYGWIN=/cygdrive/e/lng/cygwin/
+
+

@@ -1,0 +1,37 @@
+Windows Registry Editor Version 5.00 
+[HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Dfrg\BootOptimizeFunction] 
+"Enable"="N" 
+[HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\OptimalLayout] 
+"EnableAutoLayout"=dword:00000000 
+[HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\FileSystem] 
+"NtfsDisableLastAccessUpdate"=dword:00000001 
+[HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\Session Manager\Memory Management\PrefetchParameters] 
+"EnablePrefetcher"=dword:00000000 
+[HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\Session Manager] 
+BootExecute="" 
+[HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Enum\Root\LEGACY_EWF] 
+"NextInstance"=dword:00000001 
+[HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Enum\Root\LEGACY_EWF\0000] 
+"Service"="EWF" 
+"Legacy"=dword:00000001 
+"ConfigFlags"=dword:00000020 
+"Class"="LegacyDriver" 
+"ClassGUID"="{8ECC055D-047F-11D1-A537-0000F8753ED1}" 
+"DeviceDesc"="EWF" 
+"Capabilities"=dword:00000000 
+[HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Enum\Root\LEGACY_EWF\0000\Control] 
+"ActiveService"="EWF" 
+[HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\ewf] 
+"ErrorControl"=dword:00000001 
+"Group"="System Bus Extender" 
+"Start"=dword:00000000 
+"Type"=dword:00000001 
+[HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\Class\{71A27CDD-812A-11D0-BEC7-08002BE2092F}] 
+"UpperFilters"="Ewf" 
+[HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\ewf\Parameters\Protected\Volume0] 
+"Type"=dword:00000001 
+"ArcName"="multi(0)disk(0)rdisk(0)partition(1)" 
+
+//[HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\ewf\Parameters\Protected\Volume1]
+//"Type"=dword:00000001
+//"ArcName"="multi(0)disk(0)rdisk(1)partition(1)"

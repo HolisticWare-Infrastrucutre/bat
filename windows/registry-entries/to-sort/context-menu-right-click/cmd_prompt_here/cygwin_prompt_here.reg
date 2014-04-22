@@ -1,0 +1,18 @@
+REGEDIT4 
+
+[HKEY_CLASSES_ROOT\Directory\shell\CygwinHere]
+@="Cygwin &Prompt:"
+"EditFlags"=hex:01,00,00,00
+
+[HKEY_CLASSES_ROOT\Directory\shell\CygwinHere\command]
+;@="C:\\cygwin\\bin\\rxvt.exe -bg white -fg black -sr -sl 1000 -fn \"Fixedsys\" -ls -e /usr/bin/bash --login -c \"cd \\\"`cygpath -u '%1'`\\\"; exec bash\""
+@="c:\\cygwin\\bin\\bash.exe --login -c \"cd '%1' ; exec /bin/bash -rcfile ~/.bashrc\""
+;@="c:\\cygwin\cygwin.bat"
+
+[HKEY_CLASSES_ROOT\Drive\shell\CygwinHere]
+@="Cygwin &Prompt Here"
+
+[HKEY_CLASSES_ROOT\Drive\shell\CygwinHere\command]
+;@="C:\\cygwin\\bin\\rxvt.exe -bg white -fg black -sr -sl 1000 -fn \"Fixedsys\" -ls -e /usr/bin/bash --login -c \"cd \\\"`cygpath -u '%1'`\\\"; exec bash\""
+@="c:\\cygwin\\bin\\bash.exe --login -c \"cd '%1' ; exec /bin/bash -rcfile ~/.bashrc\""
+;@="c:\\cygwin\cygwin.bat"

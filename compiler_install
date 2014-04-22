@@ -1,0 +1,182 @@
+#! /bin/bash
+
+
+clear
+echo "This script will install following freeware compilers:"
+echo "     1. gcc: CYGWIN port v.3.0.1 + CYGWIN U*X like environment "
+echo "     2. bcc: Borland/Inprise compiler v.5.5.1"
+echo "     3. wcc: Watcom compiler v.11.x"
+echo "     4. scc: Symantec/Digital Mars compiler v.8.B07"
+echo "   ..................................................."
+echo "     TODO:"
+echo "     1. dcc: djgpp gcc port for DOS + win32 extender"
+echo "     2. mcc: mingw minimal "
+echo "=========================================================="
+
+# on which drive
+PATH_DRV="/cygdrive/e/"
+
+# sw engineering
+PATH_SWE=$PATH_DRV"swe/oo/"
+
+# srcs
+PATH_CCC=$PATH_SWE"04_implementation_realisation/01_languages/01_compiler"
+
+
+
+
+
+
+
+echo "Note:"
+echo "It is assumed that the sources are already localy downloaded." 
+echo "For example in : " $PATH_CCC
+
+
+
+echo "................................................................."
+echo "1. Cygwin Environment"
+echo "     This is U*X like environment for Windoze based OS-es"
+echo "     Cygwin offers very comfortable installation "
+echo "   + a huge number of utilities and fo course gcc"
+echo "   "
+echo "   installation is **interactive**"
+
+
+echo "install Cygwin ([y|yes]|[n|no])" 
+#read INSTALL_CYGWIN
+OPTIONS="Install Skip Quit"
+select opt in $OPTIONS; do
+   if [ "$opt" = "Install" ]; then
+      PATH_SRC=$PATH_CCC"/011_Gnu/03_ports/01_cygwin/"
+      ls -al $PATH_SRC
+      ./compiler_download_cygwin.bat
+      break
+   elif [ "$opt" = "Skip" ]; then
+      INSTALL_CYGWIN=0
+      break
+   elif [ "$opt" = "Quit" ]; then
+      exit
+   else
+      clear
+      echo bad option
+   fi
+done
+
+exit
+case $INSTALL_CYGWIN in
+    n|no|1 )  echo "Cygwin not installed!";
+		;;
+    y|yes|0)  echo "Cygwin installation!"; 
+		PATH_SRC_BDBG=$PATH_SRC"/011_Gnu/03_ports/01_cygwin/";
+		$PATH_SRC_BDBG"setup.exe";
+		;;
+    *)
+esac
+
+
+
+   
+
+
+exit 0
+
+
+
+
+
+#.................................................................
+# Borland/Inprise Installation
+
+PATH_DEST_CYGWIN_BCC="/cygdrive/e/lng/bcc/"
+PATH_DEST_MSDOS_BCC="e:\\lng\\bcc\\"
+PATH_SRC_BCC=$PATH_SRC"/021_Borland_inprise/freecommandlinetools.exe"
+
+rm -rf $PATH_DEST_CYGWIN_BCC
+
+
+# install
+$PATH_SRC_BCC
+
+
+PATH_SRC_BDBG=$PATH_SRC"/021_Borland_inprise/TurboDebugger.exe"
+$PATH_SRC_BDBG
+
+# the include und lib paths are also put in bcc batch file
+echo '-I"'$PATH_DEST_MSDOS_BCC'include\"' >  $PATH_DEST_CYGWIN_BCC/bcc32.cfg
+echo '-L"'$PATH_DEST_MSDOS_BCC'lib\"'     >> $PATH_DEST_CYGWIN_BCC/bcc32.cfg
+
+echo '-L"'$PATH_DEST_MSDOS_BCC'lib\"'   >  $PATH_DEST_CYGWIN_BCC/ilink32.cfg
+  
+
+#.................................................................
+# Symantec/Digital Mars Installation
+
+PATH_DEST_CYGWIN_SCC="/cygdrive/e/lng/scc/"
+PATH_DEST_MSDOS_SCC="e:\\lng\\scc\\"
+
+PATH_SRC_CYGWIN_SCC=$PATH_SRC"/022_symantec_digital_mars/"
+
+rm -fr $PATH_DEST_CYGWIN_SCC
+
+# install
+unzip -oL $PATH_SRC_CYGWIN_SCC/dm820c.zip -d $PATH_DEST_CYGWIN_SCC
+unzip -oL $PATH_SRC_CYGWIN_SCC/dmgc60a8.zip -d $PATH_DEST_CYGWIN_SCC
+unzip -oL $PATH_SRC_CYGWIN_SCC/dm815x.zip -d $PATH_DEST_CYGWIN_SCC
+unzip -oL $PATH_SRC_CYGWIN_SCC/dm812util.zip -d $PATH_DEST_CYGWIN_SCC
+unzip -oL $PATH_SRC_CYGWIN_SCC/dm812dos.zip -d $PATH_DEST_CYGWIN_SCC
+unzip -oL $PATH_SRC_CYGWIN_SCC/COFF2OMF.zip -d $PATH_DEST_CYGWIN_SCC/dm/bin/
+
+#cd TODO
+#tar xvzf $PATH_SRC_CYGWIN_SCC/MFC4.21.tar.gz
+#tar xvzf $PATH_SRC_CYGWIN_SCC/ATL2.02.tar.gz
+
+
+chmod 755 $PATH_DEST_CYGWIN_SCC/dm/bin/*
+
+
+
+#.................................................................
+# Watcom Installation
+
+PATH_SRC_CYGWIN_WCC=$PATH_SRC"/023_watcom/ftp.openwatcom.org/watcom/"
+
+PATH_DEST_CYGWIN_WCC="/cygdrive/e/lng/wcc/"
+PATH_DEST_MSDOS_WCC="e:\\lng\\wcc\\"
+
+$PATH_DEST_CYGWIN_WCC"/UNWISE.EXE"
+rm -fr $PATH_DEST_CYGWIN_WCC
+
+# install
+$PATH_SRC_CYGWIN_WCC"/watcom-c-11.0c-b1.exe"
+
+
+
+
+#.................................................................
+# DJGPP Installation
+
+PATH_DEST_DCC="/cygdrive/e/lng/dcc/"
+PATH_DEST_MSDOS_DCC="e:\\lng\\bcc\\"
+
+
+#.................................................................
+# CYGWIN Installation
+
+PATH_DEST_CCC="/cygdrive/e/lng/ccc/"
+
+exit 0
+
+
+
+
+
+
+
+
+
+
+
+
+
+

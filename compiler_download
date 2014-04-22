@@ -1,0 +1,52 @@
+#/bin/sh
+
+#SET http_proxy=http://proxy.hl.siemens.de:81
+#SET ftp_proxy=http://proxy.hl.siemens.de:81
+#SET gopher_proxy=http://proxy.hl.siemens.de:81
+
+http_proxy='http://proxy.hl.siemens.de:81'
+ftp_proxy='http://proxy.hl.siemens.de:81'
+gopher_proxy='http://proxy.hl.siemens.de:81'
+
+echo $http_proxy
+
+#e:\bin\wget --help
+#e:\bin\wget -r -k -N -c -np --proxy=on http://www.stefan-plate.de:81/video
+
+
+# Download of free compilers
+
+# Symantec
+URL_SCC='ftp://ftp.digitalmars.com/Digital_Mars_C++/Patch/dm820c.zip'
+URL_SCCDOS='ftp://ftp.digitalmars.com/Digital_Mars_C++/Patch/dm812dos.zip'
+URL_SCCEXT='ftp://ftp.digitalmars.com/Digital_Mars_C++/Patch/dm815x.zip'
+URL_SCCUTIL='ftp://ftp.digitalmars.com/Digital_Mars_C++/Patch/dm812util.zip'
+URL_SCCGC='ftp://ftp.digitalmars.com/Digital_Mars_C++/Patch/dmgc60a8.zip'
+
+/usr/bin/wget -r -k -N -c -np --proxy=on --passive-ftp $URL_SCC
+
+exit 0
+
+/usr/bin/wget -r -k -N -c -np --proxy=on $URL_SCCDOS
+/usr/bin/wget -r -k -N -c -np --proxy=on $URL_SCCEXT
+/usr/bin/wget -r -k -N -c -np --proxy=on $URL_SCCUTIL
+/usr/bin/wget -r -k -N -c -np --proxy=on $URL_SCCGC
+
+# DJGPP
+ftp://ftp.univie.ac.at/mirror/simtelnet/gnu/djgpp/v2/*.zip
+# CYGWIN
+
+# mingw
+
+
+# Borland/Inprise
+URL_BCC='ftp://ftpd.borland.com/download/bcppbuilder/freecommandLinetools.exe'
+URL_BDBG='ftp://ftpd.inprise.com/download/bcppbuilder/TurboDebugger.exe'
+
+#/usr/bin/wget -r -k -N -c -np --proxy=on $URL_BCC
+
+
+#..........................................
+#http_proxy=''
+#ftp_proxy=''
+#gopher_proxy=''

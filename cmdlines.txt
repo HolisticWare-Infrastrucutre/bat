@@ -1,0 +1,52 @@
+[Commands]
+"users.bat"
+"regedit /s diverse.reg"
+"regedit /s accessibility.reg"
+"regedit /s gui.reg"
+"services_off.bat"
+
+
+; For cmdlines.txt, it should be placed in the \$OEM$ 
+; folder, and does not need to be specified anywhere 
+; else to state its existence. Windows Setup automatically 
+; scans for a cmdlines.txt file. All batch files launched by 
+; cmdlines.txt should be put into the same folder. 
+
+; The file ALWAYS starts with the line: [COMMANDS]
+
+;Now comes the portion that is parsed to be executed. 
+;Each following line MUST be enclosed in quotation marks ( " ).
+
+; CMDLINES.TXT is a VERY limited commandline interface. 
+; This means that MOST traditional DOS commands are not available, 
+; however external commands (REGEDIT32.EXE , REG.EXE, etc. ) 
+; are available.
+
+; If the program to be executed is in the PATH variable 
+; (open a command prompt and type ECHO %PATH%) then you do not 
+; have to include the full path, the same is true if it is 
+; also in the current directory.
+
+; The current directory when CMDLINES.TXT is executed is $OEM$.
+
+; This means that if batch.cmd is in the $OEM$ directory, then 
+; you just have simply type batch.cmd. If however, batch.cmd was 
+; located in another directory, you will have to include the 
+; full path. To help facilitate this, read the comments below.
+
+; If the file/program you wish to execute is in a folder within 
+; $OEM$, and the path to the folder is $OEM$/Folder/batch.cmd , 
+; then type
+; "./Folder/batch.cmd"
+; the ./ is a reference to the current directory, so in execution 
+; the line will actually become %CDROM%/$OEM$/Folder/batch.cmd 
+; If the file/program is located in a folder in the root of the CD, 
+; say %CDROM%/Unattend/batch.cmd, then use 
+; "../Unattend/batch.cmd"
+; The ../ tells the interpreter to get the path to the parent 
+; directory of the current directory, so it will become
+; %CDROM%/Unattend/batch.cmd
+; If you have normal batch commands to execute 
+; (PAUSE, TITLE, START, etc.) then it'd be simpler to just create
+; the CMD file, and then have CMDLINES.TXT call it. Refer to the above 
+; on how to add an entry to CMDLINES.TXT.

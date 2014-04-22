@@ -1,0 +1,10 @@
+REGEDIT4
+
+[HKEY_CURRENT_USER\Software\Microsoft\Command Processor]
+CompletionChar=9
+PathCompletionChar9
+
+
+; alternative
+; 	cmd /f:on
+

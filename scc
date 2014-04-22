@@ -1,0 +1,12 @@
+#! /bin/sh
+
+PATH_OLD=$PATH
+PATH=$PATH:/cygdrive/e/lng/scc/dm/bin/:/cygdrive/e/lng/scc/dm/include/
+
+#------------------------------
+# acutual compiler call
+sc $*
+
+PATH=$PATH_OLD
+
+exit 0

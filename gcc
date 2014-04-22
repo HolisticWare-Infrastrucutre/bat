@@ -1,0 +1,13 @@
+#! /bin/sh
+
+PATH_OLD=$PATH
+PATH=$PATH:/cygdrive/e/ccc/gcc/cygwin/bin/
+
+echo $*
+which gcc
+
+/cygdrive/e/ccc/gcc/cygwin/bin/gcc $*
+
+PATH=$PATH_OLD
+
+exit 0

@@ -1,0 +1,26 @@
+#! /bin/sh
+
+PATH_OLD=$PATH
+
+BORLAND=/cygdrive/e/lng/bcc/
+PATH=$PATH:$BORLAND:$BORLAND/bin/
+
+#------------------------------
+# acutual compiler call
+# the include path and others must be passed this way
+# because of cygwin/dosbox PATH interpretations
+
+$BORLAND/bin/bcc32 \
+	-I"e:\lng\bcc\Include" \
+	-L"e:\lng\bcc\Lib" \
+	-A \
+	-5 \
+	-v \
+	-w \
+	-y \
+	$*
+
+
+PATH=$PATH_OLD
+
+exit 0

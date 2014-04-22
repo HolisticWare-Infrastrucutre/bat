@@ -1,0 +1,43 @@
+
+   ; read Default Printer Server and Sharename from Windows Registry
+   ; and map to LPT1 (Windows 2000 and Windows NT only; not tested on
+   ; Windows XP)
+
+   ; by Daniel Wolf
+   ; daniel.wolf@dawolf.com
+
+   $Printer = READVALUE("HKEY_CURRENT_USER\Software\Microsoft\Windows NT\CurrentVersion\Windows","Device");
+
+   $Index = 1
+
+   WHILE $Index < LEN($Printer)
+
+   $Testchar = SUBSTR($Printer, $Index, 1)
+   IF $Testchar = ','
+           $Cutat = $Index - 1
+           $Index = LEN($Printer)
+   ENDIF
+
+   $Index = $Index + 1
+
+   LOOP
+
+   $Printer = SUBSTR($Printer, 1, $Cutat)
+   $Checklocal = SUBSTR($Printer, 1, 2)
+
+   ? "Default Printer: $Printer"
+
+   ; only map if Default Printer is Network Printer
+   IF $Checklocal = "\\"
+           ? "Removing existing LPT1 mapping ..."
+           USE LPT1 /D
+           USE LPT1 $Printer
+                   IF @ERROR
+                           BEEP
+                           ? "Error @ERROR mapping $Printer to LPT1"
+                   ELSE
+                           ? "Done. $Printer mapped to LPT1"
+                   ENDIF
+   ELSE
+           ? "ABORT. Default Printer is not a network printer!"
+   ENDIF

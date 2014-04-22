@@ -1,0 +1,1 @@
+E:\bin\nhibernate\bin\NHibernate.Tool.hbm2net.exe %*

@@ -1,0 +1,25 @@
+#! /bin/sh
+
+PATH_OLD=$PATH
+WATCOM=/cygdrive/e/lng/wcc
+PATH=$PATH:$WATCOM/binw
+EDPATH=$WATCOM/eddat
+INCLUDE=$WATCOM/H
+HELP=$WATCOM/help
+
+#------------------------------
+# acutual compiler call
+# the include path and others must be passed this way
+# because of cygwin/dosbox PATH interpretations
+
+$WATCOM/binw/wcc \
+	-i"e:\lng\wcc\H" \
+	$*
+
+
+PATH=$PATH_OLD
+HELP=
+EDPATH=
+INCLUDE=
+
+exit 0

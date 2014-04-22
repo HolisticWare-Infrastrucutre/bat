@@ -1,0 +1,17 @@
+Windows Registry Editor Version 5.00
+
+; Change Wallpaper On Login Screen (For Non-Welcome Screen Users)
+[HKEY_USERS\.DEFAULT\Control Panel\Desktop]
+"Wallpaper"="C:\\WINDOWS\\Web\\Wallpaper\\riz_6.bmp"
+
+;------------------------------------------------------------------------------
+; set wallpaper
+; full path ot needed if Wallpaper is in %systemroot% or %systemroot%\system32 
+[HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Policies\System]
+"Wallpaper"="C:\\WINDOWS\\Web\\Wallpaper\\riz_6.bmp"
+"WallpaperStyle"=dword:2
+
+; Change Wallpaper On Login Screen (For Non-Welcome Screen Users)
+[HKEY_USERS\.DEFAULT\Control Panel\Desktop]
+"Wallpaper"="C:\\WINDOWS\\Web\\Wallpaper\\riz_6.bmp"
+

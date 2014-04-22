@@ -1,0 +1,7 @@
+Windows Registry Editor Version 5.00 
+
+[HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\Session Manager\Environment]
+DEVMGR_SHOW_DETAILS=reg_sz:"1"
+
+; Data Type: REG_SZ (String Value)
+;Value Data: (0 = default, 1 = show detailed info)

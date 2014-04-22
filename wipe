@@ -1,0 +1,24 @@
+# /bin/bash
+
+ROOTS=' \
+	d: \
+	e: \
+      '
+
+for root in $ROOTS
+  do
+    cd $root
+    echo "..............................................................."
+    pwd
+    find .  \
+	-path "./sw" -prune \
+	-o \
+	-name "*~" \
+	-o \
+	-name "*.bak" \
+    | xargs -i -t ls -al {}
+done
+
+exit 0
+
+

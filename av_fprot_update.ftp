@@ -1,0 +1,11 @@
+open ftp.f-prot.com
+anonymous
+anonymous
+cd pub
+bin
+
+get macrdef2.zip
+get fp-def.zip
+
+quit
+
