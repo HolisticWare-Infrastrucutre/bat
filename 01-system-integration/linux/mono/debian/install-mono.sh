@@ -11,7 +11,9 @@ sudo apt-get dist-upgrade
 
 sudo \
 	apt-get install \
-	bison make autoconf g++ gettext libmono2.0-cil 
+	bison make autoconf g++ gettext libmono2.0-cil \
+	unzip
+
 #	mono-gmcs make
 
 sudo apt-get install apt-file
