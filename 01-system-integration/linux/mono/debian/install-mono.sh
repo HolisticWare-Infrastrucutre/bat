@@ -1,26 +1,6 @@
 #!/bin/bash
 
-# -----------------------------------------------------------------------------------
-# Debian 
-#		7.5.0
-# -----------------------------------------------------------------------------------
 
-# -----------------------------------------------------------------------------------
-sudo apt-get update
-sudo apt-get dist-upgrade
-
-sudo \
-	apt-get install \
-	bison make autoconf g++ gettext libmono2.0-cil \
-	unzip
-
-#	mono-gmcs make
-
-sudo apt-get install apt-file
-apt-file update
-apt-file search LibXML.pm
-sudo apt-get install libxml-libxml-perl
-perl -MCPAN -e 'install XML::LibXML'
 # -----------------------------------------------------------------------------------
 cd /tmp
 
