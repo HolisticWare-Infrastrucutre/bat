@@ -23,4 +23,4 @@ explorer /n /e /root,^
 	"%USERPROFILE%\AppData\Local\Temp\Temporary ASP.NET Files\"
 
 	
-	@IF %ERRORLEVEL% NEQ 0 PAUSE
+@IF %ERRORLEVEL% NEQ 0 PAUSE
