@@ -8,3 +8,4 @@ vmkload_mod -l |grep drivername
 # ESX
 rpm -qa | grep drivername
 
+esxcfg-nics -l
