@@ -31,3 +31,16 @@ sudo \
         libgdi* libexif urw-fonts
 # -----------------------------------------------------------------------------------
  
+
+ 
+sudo iptables -A INPUT -p tcp -m tcp --dport 80 -j ACCEPT
+sudo iptables -A INPUT -p tcp -m tcp --dport 443 -j ACCEPT
+iptables -I INPUT 5 -i eth0 -p tcp --dport 80 -m state --state NEW,ESTABLISHED -j ACCEPT
+iptables -I INPUT 5 -i eth1 -p tcp --dport 80 -m state --state NEW,ESTABLISHED -j ACCEPT
+service iptables save
+sudo service iptables restart
+
+sudo iptables -L -n
+
+sudo iptables-save | sudo tee /etc/sysconfig/iptables
+sudo service iptables restart
