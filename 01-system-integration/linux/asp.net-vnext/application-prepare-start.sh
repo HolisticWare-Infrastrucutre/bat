@@ -20,7 +20,12 @@ cd ASP.net.vNext.davidfowl.HelloWolrdVNext/src/
 # cd HelloWorld/
 cd HelloMvc-from-Home-repo
 
-kpm restore ; kpm restore -s https://www.myget.org/F/aspnetvnext/
+kpm restore
+kpm restore -s https://www.myget.org/F/aspnetvnext/
+kpm restore -s https://go.microsoft.com
+kpm restore -s https://nugetgallery.blob.core.windows.net
+kpm restore -s https://nuget.org
+kpm restore -s https://www.myget.org/F/aspnetvnext/
 
 # on Windows or
 # SET KRE_TRACE=1 
