@@ -1,13 +1,7 @@
 #!/bin/bash
 
 
-# ASP.net vNext
-certmgr -ssl -m https://go.microsoft.com
-certmgr -ssl -m https://nugetgallery.blob.core.windows.net
-certmgr -ssl -m https://nuget.org
-
-mozroots --import --sync
-
+mono-install-common-certificates.sh
 
 curl https://raw.githubusercontent.com/graemechristie/Home/KvmShellImplementation/kvmsetup.sh | sh \
 	&& \

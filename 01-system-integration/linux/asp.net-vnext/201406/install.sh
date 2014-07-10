@@ -3,15 +3,8 @@
 # -----------------------------------------------------------------------------------
 # ASP.net vNext
 
-# -----------------------------------------------------------------------------------
-# certificates for nuget
 
-certmgr -ssl -m https://go.microsoft.com
-certmgr -ssl -m https://nugetgallery.blob.core.windows.net
-certmgr -ssl -m https://nuget.org
-mozroots --import --sync
-# -----------------------------------------------------------------------------------
-
+mono-install-common-certificates.sh
 
 
 
