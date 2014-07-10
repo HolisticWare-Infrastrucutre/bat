@@ -30,14 +30,18 @@ PREFIX_MONO=/usr/local
 #
 sudo make get-monolite-latest
 
-make EXTERNAL_MCS=${PWD}/mcs/class/lib/monolite/gmcs.exe
+sudo make EXTERNAL_MCS=${PWD}/mcs/class/lib/monolite/gmcs.exe
 
+PREFIX_MONO=/usr/local
 export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:$PREFIX_MONO/lib/
-echo "$PREFIX_MONO" >> /etc/ld.so.conf.d/mono_lib.conf
+sudo echo "$PREFIX_MONO/lib" >> /etc/ld.so.conf.d/mono_lib.conf
 cat /etc/ld.so.conf
+cat /etc/ld.so.conf.d/mono_lib.conf
 
 make check
 
 sudo make install
 mono -V
 # -----------------------------------------------------------------------------------
+
+ 

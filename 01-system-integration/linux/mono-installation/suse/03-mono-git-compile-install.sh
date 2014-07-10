@@ -8,13 +8,6 @@ systemctl status sshd.service
 systemctl start sshd.service
 
 
-# -----------------------------------------------------------------------------------
-# Perequisiteis
-sudo \
-	zypper in \
-	make autoconf automake libtool intltool gcc g++ gcc-c++ \
-	git
-# -----------------------------------------------------------------------------------
 
 
 # -----------------------------------------------------------------------------------

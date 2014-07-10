@@ -1,10 +1,39 @@
 #!/bin/bash
 	
 # -----------------------------------------------------------------------------------
-# CentOS 
-#		6.5
+# Ubuntu 
+#		14.04
 # -----------------------------------------------------------------------------------
 
+
+# -----------------------------------------------------------------------------------
+# network
+#
+# /etc/network/interfaces 
+
+#	auto eth0
+#	
+#	iface eth0 inet static
+#	
+#	address 192.168.10.5
+#	
+#	netmask 255.255.255.0
+#	
+#	network 192.168.10.0
+#	
+#	broadcast 192.168.10.255
+#	
+#	gateway 192.168.10.1
+
+# 	auto eth0 – enable at startup the eth0 interface
+# 	iface eth0 inet static- consider that iface eth0 comes from interface eth0, 
+# 	tells that the network configuration is IPv4 and static that your network interface 
+# 	has static ip adresses.
+# 	address – the network’s IP address
+# 	netmask – the network’s mask address
+# 	network – the network’s address
+# 	broadcast – the broadcast address
+# 	gateway – the gateway address
 # -----------------------------------------------------------------------------------
 # user new
 USER_SUDO=someuser
@@ -22,25 +51,6 @@ cat /etc/sudoers
 
 # -----------------------------------------------------------------------------------
 # prerequisites for building mono
-sudo \
-    yum -y install \
-        gcc gcc-c++ automake autoconf autogen libtool make \
-        bison gettext glib2 glibc-devel \
-        bzip2 wget java unzip git \
-        freetype fontconfig libpng libpng-devel libX11 libX11-devel glib2-devel \
-        libgdi* libexif urw-fonts
+
 # -----------------------------------------------------------------------------------
  
-
- 
-sudo iptables -A INPUT -p tcp -m tcp --dport 80 -j ACCEPT
-sudo iptables -A INPUT -p tcp -m tcp --dport 443 -j ACCEPT
-iptables -I INPUT 5 -i eth0 -p tcp --dport 80 -m state --state NEW,ESTABLISHED -j ACCEPT
-iptables -I INPUT 5 -i eth1 -p tcp --dport 80 -m state --state NEW,ESTABLISHED -j ACCEPT
-service iptables save
-sudo service iptables restart
-
-sudo iptables -L -n
-
-sudo iptables-save | sudo tee /etc/sysconfig/iptables
-sudo service iptables restart

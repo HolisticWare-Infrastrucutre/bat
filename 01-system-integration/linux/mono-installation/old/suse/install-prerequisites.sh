@@ -1,9 +1,11 @@
 #!/bin/bash
 
 # -----------------------------------------------------------------------------------
-# OpenSUSE 
-#		13.1
+# OpenSUSE 13.1
 # -----------------------------------------------------------------------------------
+
+systemctl status sshd.service
+systemctl start sshd.service
 
 # -----------------------------------------------------------------------------------
 # Network
@@ -12,11 +14,8 @@
 
 # -----------------------------------------------------------------------------------
 # SSH
-systemctl status sshd.service
-sudo systemctl start sshd.service
-
-sudo zypper install openssh-server
-sudo service sshd start
+zypper install openssh-server
+service sshd start
 # -----------------------------------------------------------------------------------
 
 # -----------------------------------------------------------------------------------
@@ -26,20 +25,6 @@ sudo service sshd start
 #	FW_SERVICES_EXT_TCP=""
 # to	
 # 	FW_SERVICES_EXT_TCP="ssh"
+# -----------------------------------------------------------------------------------
 
-sed 
-
-# to save readonly
-# 	:w ! sudo tee %
-# vi /etc/sysconfig/SuSEfirewall2
-grep FW_SERVICES_EXT_TCP /etc/sysconfig/SuSEfirewall2
 /sbin/SuSEfirewall2
-# -----------------------------------------------------------------------------------
-
-# -----------------------------------------------------------------------------------
-# Perequisiteis
-sudo \
-	zypper in \
-	make autoconf automake libtool intltool gcc g++ gcc-c++ \
-	git
-# -----------------------------------------------------------------------------------

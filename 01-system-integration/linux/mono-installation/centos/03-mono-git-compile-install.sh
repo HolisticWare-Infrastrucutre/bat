@@ -11,15 +11,6 @@
 # -----------------------------------------------------------------------------------
 
 
-# -----------------------------------------------------------------------------------
-sudo \
-	yum -y install \
-		gcc gcc-c++ automake autoconf autogen libtool make \
-		bison gettext glib2 glibc-devel \
-		bzip2 wget java unzip git \
-		freetype fontconfig libpng libpng-devel libX11 libX11-devel glib2-devel \
-		libgdi* libexif urw-fonts
-# -----------------------------------------------------------------------------------
 	
 	
 ../mono-git-compile-install-common.sh
