@@ -22,7 +22,7 @@ mozroots --import --machine --sync
 yes | certmgr -ssl -m https://go.microsoft.com
 yes | certmgr -ssl -m https://nugetgallery.blob.core.windows.net
 yes | certmgr -ssl -m https://nuget.org
-yes | certmgr -ssl https://www.myget.org/F/aspnetvnext/
+yes | certmgr -ssl -m https://www.myget.org/F/aspnetvnext/
 #..........................................................
 
 mozroots --import --sync
