@@ -52,5 +52,15 @@ cat /etc/sudoers
 # -----------------------------------------------------------------------------------
 # prerequisites for building mono
 
+#	Ubuntu 14.04 only (12.04 works fine)
+#	Error
+#	 	MCS     [build] System.Xml.dll
+#	 	System.Xml.XPath/Parser.jay(12,0): error CS1525: Unexpected symbol `using'
+
+# configure/make command might report error stating that Perl XML:Parser is not 
+# installed.
+# install XML::Parser
+ apt-get libexpat1-dev
 # -----------------------------------------------------------------------------------
  
+	
