@@ -6,14 +6,7 @@
 #			2014-06-25
 # -----------------------------------------------------------------------------------
 
-CERTMGR=/usr/local/bin/certmgr
-sudo $CERTMGR -ssl -m https://go.microsoft.com
-sudo $CERTMGR -ssl -m https://nugetgallery.blob.core.windows.net
-sudo $CERTMGR -ssl -m https://nuget.org
-sudo $CERTMGR -ssl -m https://www.myget.org/F/aspnetvnext/
-
-mozroots --import --sync
-
+../mono-installation/mono-install-common-certificates.sh
 
 curl https://raw.githubusercontent.com/aspnet/Home/master/kvminstall.sh | sh && source ~/.kre/kvm/kvm.sh && kvm upgrade
 
