@@ -13,7 +13,7 @@ curl https://raw.githubusercontent.com/aspnet/Home/master/kvminstall.sh | sh && 
 # unzip needed!!!
 curl https://raw.githubusercontent.com/aspnet/Home/master/kvminstall.sh | sh
 source ~/.kre/kvm/kvm.sh 
-kvm upgrade
+yes | kvm upgrade
 
 
 export KRE_TRACE=1
