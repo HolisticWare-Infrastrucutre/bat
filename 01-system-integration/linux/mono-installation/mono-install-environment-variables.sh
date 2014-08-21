@@ -1,7 +1,9 @@
 #!/bin/bash
 
-PREFIX_MONO=/usr/local
 
+# -----------------------------------------------------------------------------------
+# mono installation location prefix
+PREFIX_MONO=/usr/local
 # -----------------------------------------------------------------------------------
 # environment variables for running mono
 #

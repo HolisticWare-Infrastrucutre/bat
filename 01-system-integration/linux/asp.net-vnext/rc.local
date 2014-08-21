@@ -1,0 +1,59 @@
+
+
+
+# etc/rc.local
+
+# -----------------------------------------------------------------------------------
+# mono installation location prefix
+PREFIX_MONO=/usr/local
+# -----------------------------------------------------------------------------------
+# environment variables for running mono
+#
+export PATH=$PREFIX_MONO/bin:$PATH
+export LD_LIBRARY_PATH=$PREFIX_MONO/lib:$LD_LIBRARY_PATH
+export PKG_CONFIG_PATH=$PREFIX_MONO/lib/pkgconfig:$PKG_CONFIG_PATH 
+# -----------------------------------------------------------------------------------
+
+
+#..........................................................
+# machine store import
+# solves some problems -  TO test
+mozroots --import --machine --sync
+yes | certmgr -ssl -m https://go.microsoft.com
+yes | certmgr -ssl -m https://nugetgallery.blob.core.windows.net
+yes | certmgr -ssl -m https://nuget.org
+yes | certmgr -ssl -m https://www.myget.org/F/aspnetvnext/
+#..........................................................
+
+#..........................................................
+# user store import (default)
+# NOTE: machine store should be enough! This is only to be sure
+mozroots --import --sync
+yes | certmgr -ssl https://go.microsoft.com
+yes | certmgr -ssl https://nugetgallery.blob.core.windows.net
+yes | certmgr -ssl https://nuget.org
+yes | certmgr -ssl https://www.myget.org/F/aspnetvnext/
+#..........................................................
+
+#..........................................................
+cd /tmp
+cd Mono.ASP.net.vNext/submodulez/forks-moljac/
+cd ASP.net.vNext.davidfowl.HelloWolrdVNext/src/
+cd HelloMvc-from-Home-repo
+
+kpm restore
+kpm restore -s https://www.myget.org/F/aspnetvnext/
+kpm restore
+kpm restore -s https://www.myget.org/F/aspnetvnext/
+
+kpm restore -s https://nugetgallery.blob.core.windows.net
+kpm restore -s https://nuget.org
+kpm restore -s https://go.microsoft.com
+
+# on Windows or
+# SET KRE_TRACE=1 
+# on OSX/Linux
+export KRE_TRACE=1 
+/sbin/ifconfig ; 
+nohup k web2&
+
