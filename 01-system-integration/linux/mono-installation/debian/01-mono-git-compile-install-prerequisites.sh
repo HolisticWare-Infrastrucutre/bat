@@ -50,5 +50,19 @@ sudo apt-get install -f \
 	gcc g++ automake autoconf autogen libtool make \
 	bison gettext \
 	bzip2 wget curl unzip git 
-# -----------------------------------------------------------------------------------
 	
+# perl ./make-opcodes-def.pl ./cil-opcodes.xml opcode.def.tmp
+# Can't locate XML/Parser.pm in @INC (@INC contains: 
+#	/etc/perl /usr/local/lib/perl/5.14.2 /usr/local/share/perl/5.14.2 
+#	/usr/lib/perl5 /usr/share/perl5 /usr/lib/perl/5.14 /usr/share/perl/5.14 
+#	/usr/local/lib/site_perl .) at ./make-opcodes-def.pl line 16.
+# BEGIN failed--compilation aborted at ./make-opcodes-def.pl line 16.
+
+sudo apt-get install -f \
+	libexpat1 libexpat1-dev
+
+# just to be suer
+perl -MCPAN -e "install XML::Parser"
+# perl -MCPAN -e shell 
+# type" install XML::Parser
+# -----------------------------------------------------------------------------------

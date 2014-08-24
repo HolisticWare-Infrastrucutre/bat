@@ -2,6 +2,8 @@
 
 # -----------------------------------------------------------------------------------
 cd /tmp
+rm -rf mono
+rm -rf mono-git-cloned mono
 
 git clone git://github.com/mono/mono.git mono-git-cloned
 rm -rf mono
@@ -34,9 +36,13 @@ sudo make EXTERNAL_MCS=${PWD}/mcs/class/lib/monolite/gmcs.exe
 
 PREFIX_MONO=/usr/local
 export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:$PREFIX_MONO/lib/
+
+
 sudo echo "$PREFIX_MONO/lib" >> /etc/ld.so.conf.d/mono_lib.conf
 cat /etc/ld.so.conf
 cat /etc/ld.so.conf.d/mono_lib.conf
+
+
 
 make check
 
@@ -44,4 +50,6 @@ sudo make install
 mono -V
 # -----------------------------------------------------------------------------------
 
+ 
+ 
  

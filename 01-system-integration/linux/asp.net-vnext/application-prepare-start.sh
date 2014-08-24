@@ -12,20 +12,21 @@ export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:$PREFIX_MONO/lib/
 cd /tmp
 rm -fr Mono.ASP.net.vNext/
 git clone --recursive git://github.com/moljac/Mono.ASP.net.vNext.git
-cd Mono.ASP.net.vNext/
 git submodule status
+
+git clone https://github.com/moljac/ASP.net.vNext.davidfowl.HelloWorldVNext.git
+cd ASP.net.vNext.davidfowl.HelloWorldVNext/src/
+
+
 
 cd /tmp
 cd Mono.ASP.net.vNext/submodulez/forks-moljac/
 cd ASP.net.vNext.davidfowl.HelloWolrdVNext/src/
 
-ls -al
-less Nowin.vNext/NowinServerFactory.cs
-vi	 Nowin.vNext/NowinServerFactory.cs
 
-#cd hellowordweb/
-# cd HelloWorld/
-cd HelloMvc-from-Home-repo
+
+
+
 
 kpm restore
 if [[ $? > 0 ]]; then 
