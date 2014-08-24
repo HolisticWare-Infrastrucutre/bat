@@ -2,12 +2,16 @@
 
 :: HKEY_CLASSES_ROOT[].c1.x.html[]ShellNew.reg
 
-regedit HKEY_CLASSES_ROOT__.c1.x.htm__ShellNew.reg
+regedit HKEY_CLASSES_ROOT[].c1.x.htm[]ShellNew.reg
 	
-xcopy ^
-	composite-c1-cms-content-template.c1.x.html ^
+xcopy /y ^
+	composite-c1-cms-content-template.c1.x.htm ^
 	%SYSTEMROOT%\ShellNew\
 	
+xcopy /y ^
+	composite-c1-cms-content-template.c1.x.html ^
+	%SYSTEMROOT%\ShellNew\
+
 explorer ^
 	%SYSTEMROOT%\ShellNew\
 
