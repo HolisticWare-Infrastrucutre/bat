@@ -1,18 +1,21 @@
 #!/bin/bash
 
-yum -y install \
-	gcc gcc-c++ automake autoconf autogen libtool make \
-	bison gettext glib2 glibc-devel \
-	bzip2 wget java unzip git \
-	freetype fontconfig libpng libpng-devel libX11 libX11-devel glib2-devel \
-	libgdi* libexif urw-fonts
-	
+# -----------------------------------------------------------------------------------
+# OpenSUSE 13.1
+# -----------------------------------------------------------------------------------
+
+systemctl status sshd.service
+systemctl start sshd.service
+
+
+
+
+# -----------------------------------------------------------------------------------
 cd /tmp
-	
-git clone git://github.com/mono/mono.git
 
-cp -fr mono mono-git-cloned
-
+git clone git://github.com/mono/mono.git mono-git-cloned
+rm -rf mono
+cp -fr mono-git-cloned mono
 cd mono
 
 # if you don't have a working Mono installation, an obvious choice is to install 
@@ -33,75 +36,22 @@ make get-monolite-latest
 
 
 
-./autogen.sh --prefix=/usr/local
+PREFIX=/usr/local
+./autogen.sh --prefix=$PREFIX
 make get-monolite-latest
 
 make EXTERNAL_MCS=${PWD}/mcs/class/lib/monolite/gmcs.exe
+export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:$PREFIX/lib/
+make check
 
-make install	
-
-
-
-
-# ASP.net vNext
-certmgr -ssl -m https://go.microsoft.com
-certmgr -ssl -m https://nugetgallery.blob.core.windows.net
-certmgr -ssl -m https://nuget.org
-
-mozroots --import --sync
+sudo make install
+mono -V
+# -----------------------------------------------------------------------------------
 
 
-curl https://raw.githubusercontent.com/graemechristie/Home/KvmShellImplementation/kvmsetup.sh | sh \
-	&& \
-	source ~/.kre/kvm/kvm.sh \
-	&& \
-	kvm upgrade
 
 
-# getting started
-git clone https://github.com/aspnet/Home.git
-cd Home
-kvmsetup
-kvm install 0.1-alpha-build-0446 -p
 
-ls -al ~/.kre/kvm/kvm.sh
-
-
-mkdir 	/tmp/HelloKRuntime 
-cd 		/tmp/HelloKRuntime 
-
-
-touch project.json
-echo "
- {
-    \"dependencies\": 
-	{
-      \"System.Console\": \"4.0.0.0\"
-    },
-    \"configurations\": 
-	{
-      \"net45\": {},
-      \"k10\": {}
-    }
-  }
-" > project.json
-
-echo "
-using System;
-
-  public class Program
-  {
-      public static void Main()
-      {
-          Console.WriteLine(\"Hello K Runtime !\");
-      }
-  }
- " > Project.cs
- 
- kpm restore -s https://www.myget.org/F/aspnetvnext/
- 
- export KRE_TRACE=1 
- k run
  
  
  
