@@ -46,6 +46,12 @@ cat /etc/ld.so.conf.d/mono_lib.conf
 
 make check
 
+
+# Using "make install" with a user without privileges should give errors.
+#
+# However, using "root" as the user to install is actually not the recommended 
+# way to do things. The encouraged way is to configure and compile mono using 
+# normal user, and then use "sudo" for the installation
 sudo make install
 mono -V
 # -----------------------------------------------------------------------------------
