@@ -177,18 +177,34 @@ FakesAssemblies/
 #==============================================================================
 # HolisticWare
 
+# MacOSX
+**/*.DS_Store
 **/.DS_Store
-**/.svn
-docs/workspace/sharpen/**
-**/*.userprefs
-src/samples/Components/**
-**/Components/
-**/packages/
+
+**/.svn*
 **/.git*
+**/.git.*
 **/.git.*/*
 
-**/UpgradeLog.htm
-
+**/Components/
+**/packages/
 
 **/*.data.bat
 **/*.data.sh
+**/*.secure.data.md
+**/*.data.md
+**/*.secure.md
+
+# Xamarin Studio
+**/*.userprefs
+
+# Security (project id etc)
+#**/AndroidManifest.xml
+
+docs/workspace/sharpen/**
+
+src/samples/Components/**
+**/UpgradeLog.htm
+
+/docs/ubertesters.sdk.ios %
+
