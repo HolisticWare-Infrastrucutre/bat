@@ -52,6 +52,18 @@ cat /etc/sudoers
 # -----------------------------------------------------------------------------------
 # prerequisites for building mono
 
+sudo aptitude update && sudo aptitude full-upgrade
+
+sudo apt-get -update -f
+sudo apt-get upgrade -f
+sudo apt-get dist-upgrade -f
+
+sudo apt-get -y install -f \
+	gcc g++ automake autoconf autogen libtool make \
+	bison gettext \
+	bzip2 wget curl unzip git 
+
+	
 #	Ubuntu 14.04 only (12.04 works fine)
 #	Error
 #	 	MCS     [build] System.Xml.dll
@@ -60,7 +72,9 @@ cat /etc/sudoers
 # configure/make command might report error stating that Perl XML:Parser is not 
 # installed.
 # install XML::Parser
- apt-get libexpat1-dev
+ sudo apt-get \
+	install -f \
+	libexpat1-dev
 # -----------------------------------------------------------------------------------
  
 	
