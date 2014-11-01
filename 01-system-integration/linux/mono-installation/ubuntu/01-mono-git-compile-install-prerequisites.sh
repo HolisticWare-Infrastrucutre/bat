@@ -72,9 +72,13 @@ sudo apt-get -y install -f \
 # configure/make command might report error stating that Perl XML:Parser is not 
 # installed.
 # install XML::Parser
- sudo apt-get \
+sudo apt-get \
 	install -f \
 	libexpat1-dev
+	
+sudo apt-get \
+	autoremove
+	
 # -----------------------------------------------------------------------------------
  
 	
