@@ -5,6 +5,8 @@
 #		14.04
 # -----------------------------------------------------------------------------------
 
+# http://www.mono-project.com/docs/getting-started/install/linux/#debian-ubuntu-and-derivatives
+
 wget http://download.mono-project.com/repo/xamarin.gpg
 sudo apt-key add xamarin.gpg
 

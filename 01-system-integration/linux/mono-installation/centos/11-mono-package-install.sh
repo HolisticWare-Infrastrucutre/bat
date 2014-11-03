@@ -5,6 +5,8 @@
 #		6.5
 # -----------------------------------------------------------------------------------
 
+# http://www.mono-project.com/docs/getting-started/install/linux/#debian-ubuntu-and-derivatives
+
 rpm --import "https://pgp.mit.edu/pks/lookup?op=get&search=0x3FA7E0328081BFF6A14DA29AA6A19B38D3D831EF"
  
 yum-config-manager \
