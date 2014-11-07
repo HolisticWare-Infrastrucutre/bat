@@ -37,12 +37,25 @@ chmod 700 kvminstall.sh
 ./kvminstall.sh
 find / -name "kvminstall.sh"
 source ~/.kre/kvm/kvm.sh 
+
+#=================================================================================
+# reloading bashrc without logout/login
+source ~/.bashrc
+#		shorter version of the command:
+. ~/.bashrc
+exec bash
+#=================================================================================
+
+
 find / -name "kvm.sh" 	| xargs ls -al
 #find / -name "kvm.sh" 	| xargs less
 find / -name "kvm.sh" 	| xargs cat
 yes | kvm upgrade
 
 kvm list
+
+
+
 
 echo $PATH
 
