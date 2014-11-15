@@ -2,32 +2,36 @@
 
 # -----------------------------------------------------------------------------------
 # Ubuntu 
-#		14.04 server
+#		14.04
+# -----------------------------------------------------------------------------------
+
+# -----------------------------------------------------------------------------------
+# prerequisites for mono compilation from git (after clean install)
+./01-mono-git-compile-install-prerequisites.sh
 # -----------------------------------------------------------------------------------
 
 
-
-	
-cd /tmp
-	
-git clone git://github.com/mono/mono.git
-
-cp -fr mono mono-git-cloned
-
-
-cd mono
-./autogen.sh --prefix=/usr/local
-make get-monolite-latest
-
-make EXTERNAL_MCS=${PWD}/mcs/class/lib/monolite/gmcs.exe
-
-sudo make install	
+../mono-git-compile-install-common.sh
 
 
 
-
-
-
-
-
-
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 

@@ -25,3 +25,4 @@ yes | certmgr -ssl -m https://nugetgallery.blob.core.windows.net
 yes | certmgr -ssl -m https://nuget.org
 yes | certmgr -ssl -m https://www.myget.org/F/aspnetvnext/
 #..........................................................
+
