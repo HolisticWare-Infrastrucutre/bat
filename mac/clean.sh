@@ -1,5 +1,16 @@
 #!/bin/bash
 
+echo $1
+DIR=$1
+
+if [ -z "$DIR" ]
+then
+	echo "\$DIR is empty"
+else
+	echo "\$DIR is NOT empty"
+	cd $DIR
+fi
+
 df >> df-pre.txt
 
 find . -type d -name "Debug" -exec rm -rf {} \;
