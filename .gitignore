@@ -209,3 +209,10 @@ src/samples/Components/**
 
 /docs/ubertesters.sdk.ios %
 
+
+#------------------------------------------
+# iOS build files
+**DerivedData**
+**build**
+lib/**
+#------------------------------------------
