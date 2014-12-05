@@ -1,5 +1,6 @@
 #/bin/bash
 
+LIBRARY=libPHFComposeBarView
 
 rm -fr lib/
 mkdir lib/
@@ -11,8 +12,8 @@ xcodebuild \
 	-configuration Release \
 	clean build
 mv \
-	build/Release-iphonesimulator/libTSMiniWebBrowserLibrary.a \
-	lib/libTSMiniWebBrowserLibrary-i386.a
+	build/Release-iphonesimulator/$LIBRARY.a \
+	lib/$LIBRARY-i386.a
 
 
 # build the ARMv6 version of native library
@@ -21,15 +22,15 @@ mv \
 #	-arch armv6 \
 #	-configuration Release clean build
 
-# build the ARMv6 version of native library
+# build the ARMv7 version of native library
 xcodebuild \
 	-sdk iphoneos \
 	-arch armv7 \
 	-configuration Release \
 	clean build	
 mv \
-	build/Release-iphoneos/libTSMiniWebBrowserLibrary.a \
-	lib/libTSMiniWebBrowserLibrary-armv7.a
+	build/Release-iphoneos/$LIBRARY.a \
+	lib/$LIBRARY-armv7.a
 
 
 xcodebuild \
@@ -38,8 +39,8 @@ xcodebuild \
 	-configuration Release \
 	clean build	
 mv \
-	build/Release-iphoneos/libTSMiniWebBrowserLibrary.a \
-	lib/libTSMiniWebBrowserLibrary-armv7s.a
+	build/Release-iphoneos/$LIBRARY.a \
+	lib/$LIBRARY-armv7s.a
 
 
 xcodebuild \
@@ -48,20 +49,20 @@ xcodebuild \
 	-configuration Release \
 	clean build	
 mv \
-	build/Release-iphoneos/libTSMiniWebBrowserLibrary.a \
-	lib/libTSMiniWebBrowserLibrary-arm64.a
+	build/Release-iphoneos/$LIBRARY.a \
+	lib/$LIBRARY-arm64.a
 	
 ls -al ./lib/
 
 lipo \
 	-create \
-	-output lib/libTSMiniWebBrowserLibrary.a \
-	lib/libTSMiniWebBrowserLibrary-i386.a \
-	lib/libTSMiniWebBrowserLibrary-arm64.a \
-	lib/libTSMiniWebBrowserLibrary-armv7.a \
-	lib/libTSMiniWebBrowserLibrary-armv7s.a
+	-output lib/$LIBRARY.a \
+	lib/$LIBRARY-i386.a \
+	lib/$LIBRARY-arm64.a \
+	lib/$LIBRARY-armv7.a \
+	lib/$LIBRARY-armv7s.a
 
 
 lipo \
 	-info \
-	lib/libTSMiniWebBrowserLibrary.a 
+	lib/$LIBRARY.a
