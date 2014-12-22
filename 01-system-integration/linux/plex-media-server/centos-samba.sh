@@ -40,6 +40,7 @@ sudo touch /etc/samba/smb.conf
 
 
 
+sudo rm /etc/samba/smb.conf
 echo "
 #======================= Global Settings =====================================
 [global]
@@ -47,8 +48,8 @@ echo "
  security = share
  map to guest = bad user
 #============================ Share Definitions ==============================
-[MyShare]
- path = /samba/share
+[Videos]
+ path = /mnt/videos
  browsable =yes
  writable = yes
  guest ok = yes
@@ -59,3 +60,4 @@ echo "
  
 sudo service smb restart
 sudo service nmb restart
+
