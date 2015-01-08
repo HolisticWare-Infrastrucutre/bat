@@ -1,10 +1,14 @@
 #/!/bin/bash
 
+
+ORIGINAL_OWNER=siniypin
+ORIGINAL_REPOSITORY=pjsip4net
+
 # Configuring a remote for a fork
 
-UPSTREAM=https://github.com/ORIGINAL_OWNER/ORIGINAL_REPOSITORY.git
+UPSTREAM=https://github.com/$ORIGINAL_OWNER/$ORIGINAL_REPOSITORY.git
 
-# To sync changes you make in a fork with the original repository, 
+# To sync changes you make in a fork with the original repository,
 # user must configure a remote that points to the upstream repository in Git.
 
 # List the current configured remote repository for your fork.
@@ -22,7 +26,7 @@ git remote -v
 
 
 # Change the current working directory to your local project.
-# Fetch the branches and their respective commits from the upstream repository. 
+# Fetch the branches and their respective commits from the upstream repository.
 # Commits to master will be stored in a local branch, upstream/master.
 
 git fetch upstream
@@ -32,8 +36,8 @@ git fetch upstream
 git checkout master
 
 
-# Merge the changes from upstream/master into your local master branch. 
-# This brings user fork's master branch into sync with the upstream repository, 
+# Merge the changes from upstream/master into your local master branch.
+# This brings user fork's master branch into sync with the upstream repository,
 # without losing your local changes.
 #
 # If local branch didn't have any unique commits, Git will instead perform a "fast-forward":
