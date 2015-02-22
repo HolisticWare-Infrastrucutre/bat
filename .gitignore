@@ -189,6 +189,8 @@ FakesAssemblies/
 **/Components/
 **/packages/
 
+**/*.secure*
+
 **/*.data.*
 **/*.data.bat
 **/*.data.sh
