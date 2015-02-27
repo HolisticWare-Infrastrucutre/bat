@@ -1,5 +1,6 @@
 #!/bin/bash
 
+
 CERTMGR=/usr/bin/certmgr
 $CERTMGR -ssl -m https://nugetgallery.blob.core.windows.net
 $CERTMGR -ssl -m https://go.microsoft.com
