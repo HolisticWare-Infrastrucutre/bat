@@ -1,0 +1,5 @@
+Filesystem    512-blocks      Used Available Capacity  iused    ifree %iused  Mounted on
+/dev/disk0s2   975425848 715536800 259377048    74% 89506098 32422131   73%   /
+devfs                661       661         0   100%     1145        0  100%   /dev
+map -hosts             0         0         0   100%        0        0  100%   /net
+map auto_home          0         0         0   100%        0        0  100%   /home

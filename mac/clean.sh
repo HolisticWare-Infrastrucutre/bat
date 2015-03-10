@@ -13,40 +13,53 @@ fi
 
 df >> df-pre.txt
 
-find . \
+find \
+	~/ \
 		-type d -name "Debug" \
 		-not -path "*Dropbox*" \
 		-not -path "*Google Drive*" \
 		-exec rm -rf {} \;
-find . \
+find \
+	~/ \
 		-type d -name "Release" \
 		-not -path "*Dropbox*" \
 		-not -path "*Google Drive*" \
 		-exec rm -rf {} \;
 
 
-find . \
+find \
+	~/ \
 		-type f -name ".DS_Store" \
 		-not -path "*Dropbox*" \
 		-not -path "*Google Drive*" \
 		-exec rm -f {} \;
-find . \
+find \
+	~/ \
 		-type f -name "*.suo" \
 		-not -path "*Dropbox*" \
 		-not -path "*Google Drive*" \
 		-exec rm -f {} \;
-find . \
+find \
+	~/ \
 		-type f -name "*.sdf" \
 		-not -path "*Dropbox*" \
 		-not -path "*Google Drive*" \
 		-exec rm -f {} \;
-find . \
+find \
+	~/ \
 		-type f -name "*.csproj.user" 
 		-not -path "*Dropbox*" \
 		-not -path "*Google Drive*" \
 		-exec rm -f {} \;
-find . \
+find \
+	~/ \
 		-type f -name "*.cxproj.user" \
+		-not -path "*Dropbox*" \
+		-not -path "*Google Drive*" \
+		-exec rm -f {} \;
+find \
+	~/ \
+		-type f -name "*.ncrunchsolution" \
 		-not -path "*Dropbox*" \
 		-not -path "*Google Drive*" \
 		-exec rm -f {} \;
