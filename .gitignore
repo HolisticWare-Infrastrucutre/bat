@@ -190,12 +190,28 @@ FakesAssemblies/
 **/Components/
 **/packages/
 
-**/*.data.*
+#----------------------------------------------
+**/*.hidden.cs
+**/*.hidden.md
+**/*.hidden.sh
+**/*.hidden.bat
+**/*.secure*.cs
+**/*.secure*.md
+**/*.secure*.sh
+**/*.secure*.bat
+**/*.secret*.cs
+**/*.secret*.md
+**/*.secret*.sh
+**/*.secret*.bat
+
 **/*.data.bat
 **/*.data.sh
 **/*.secure.data.md
 **/*.data.md
-**/*.secure.md
+**/*.secured.md
+**/*.secured.md
+**/*.secure*
+**/*.data.*
 
 # Xamarin Studio
 **/*.userprefs
