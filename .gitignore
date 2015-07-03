@@ -176,6 +176,10 @@ FakesAssemblies/
 
 #==============================================================================
 # HolisticWare
+#	https://github.com/github/gitignore/blob/master/VisualStudio.gitignore
+#	http://stackoverflow.com/questions/2143956/gitignore-for-visual-studio-projects-and-solutions
+#	
+
 
 # MacOSX
 **/*.DS_Store
@@ -194,14 +198,17 @@ FakesAssemblies/
 **/*.hidden.md
 **/*.hidden.sh
 **/*.hidden.bat
+**/*.hidden.cmd
 **/*.secure*.cs
 **/*.secure*.md
 **/*.secure*.sh
 **/*.secure*.bat
+**/*.secure*.cmd
 **/*.secret*.cs
 **/*.secret*.md
 **/*.secret*.sh
 **/*.secret*.bat
+*/*.secret*.cmd
 
 **/*.data.bat
 **/*.data.sh
@@ -232,3 +239,4 @@ src/samples/Components/**
 **build**
 lib/**
 #------------------------------------------
+#==============================================================================
