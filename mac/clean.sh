@@ -15,57 +15,46 @@ df >> df-pre.txt
 
 find \
 	~/ \
-		-type d -name "Debug" \
-		-not -path "*Dropbox*" \
-		-not -path "*Google Drive*" \
-		-exec rm -rf {} \;
-find \
-	~/ \
-		-type d -name "Release" \
+		-type d \
+			\( \
+					-name "Debug" \
+					-o \
+					-name "Release" \
+					-o \
+					-name "packages" \
+			\) \
 		-not -path "*Dropbox*" \
 		-not -path "*Google Drive*" \
 		-exec rm -rf {} \;
 
+find \
+	~/ \
+		-type f \
+			\( \
+					-name ".DS_Store" \
+					-o \
+					-name "*.suo" \
+					-o \
+					-name "*.sdf" \
+					-o \
+					-name "*.csproj.user" \
+					-o \
+					-name "*.cxproj.user" \
+					-o \
+					-name "*.ncrunchsolution" \
+					-o \
+					-name "*.userprefs" \
+					-o \
+					-name "*.xam" \
+			\) \
+		-not -path "*Dropbox*" \
+		-not -path "*Google Drive*" \
+		-exec rm -rf {} \;
 
-find \
-	~/ \
-		-type f -name ".DS_Store" \
-		-not -path "*Dropbox*" \
-		-not -path "*Google Drive*" \
-		-exec rm -f {} \;
-find \
-	~/ \
-		-type f -name "*.suo" \
-		-not -path "*Dropbox*" \
-		-not -path "*Google Drive*" \
-		-exec rm -f {} \;
-find \
-	~/ \
-		-type f -name "*.sdf" \
-		-not -path "*Dropbox*" \
-		-not -path "*Google Drive*" \
-		-exec rm -f {} \;
-find \
-	~/ \
-		-type f -name "*.csproj.user" 
-		-not -path "*Dropbox*" \
-		-not -path "*Google Drive*" \
-		-exec rm -f {} \;
-find \
-	~/ \
-		-type f -name "*.cxproj.user" \
-		-not -path "*Dropbox*" \
-		-not -path "*Google Drive*" \
-		-exec rm -f {} \;
-find \
-	~/ \
-		-type f -name "*.ncrunchsolution" \
-		-not -path "*Dropbox*" \
-		-not -path "*Google Drive*" \
-		-exec rm -f {} \;
 
 rm -fr ~/Library/Application\ Support/iPhone\ Simulator/6.1/Applications/*
 rm -fr ~/Library/Application\ Support/iPhone\ Simulator/7.1/Applications/*
 rm -fr ~/Library/Application\ Support/iPhone\ Simulator/7.0.3/Applications/*
+rm -fr ~/Library/Application\ Support/iPhone\ Simulator/*
 
 df >> df-post.txt
