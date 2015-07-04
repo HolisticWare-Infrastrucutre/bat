@@ -184,6 +184,7 @@ FakesAssemblies/
 # MacOSX
 **/*.DS_Store
 **/.DS_Store
+**/._*
 
 **/.svn*
 **/.git*
