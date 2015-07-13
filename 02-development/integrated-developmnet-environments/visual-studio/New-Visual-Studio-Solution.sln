@@ -1,0 +1,7 @@
+Microsoft Visual Studio Solution File, Format Version 14.00
+# Visual Studio 2015
+Global
+  GlobalSection(SolutionProperties) = preSolution
+    HideSolutionNode = FALSE
+  EndGlobalSection
+EndGlobal
