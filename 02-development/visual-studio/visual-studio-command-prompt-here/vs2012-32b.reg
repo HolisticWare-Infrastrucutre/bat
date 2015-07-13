@@ -1,5 +1,0 @@
-Windows Registry Editor Version 5.00
-
-[HKEY_LOCAL_MACHINE\SOFTWARE\Classes\Folder\shell\Command Line VS2012]
-[HKEY_LOCAL_MACHINE\SOFTWARE\Classes\Folder\shell\Command Line VS2012\command]
-@="cmd.exe /k echo on & pushd \"%1\" & \"C:\\Program Files\\Microsoft Visual Studio 12.0\\VC\\vcvarsall.bat\" x86"

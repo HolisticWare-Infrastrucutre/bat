@@ -1,5 +1,0 @@
-Windows Registry Editor Version 5.00
-
-[HKEY_LOCAL_MACHINE\SOFTWARE\Classes\Folder\shell\Command Line VS2013]
-[HKEY_LOCAL_MACHINE\SOFTWARE\Classes\Folder\shell\Command Line VS2013\command]
-@="cmd.exe /k echo on & pushd \"%1\" & \"C:\\Program Files (x86)\\Microsoft Visual Studio 12.0\\VC\\vcvarsall.bat\" x64"
