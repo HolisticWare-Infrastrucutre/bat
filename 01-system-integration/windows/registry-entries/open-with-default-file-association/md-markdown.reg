@@ -1,0 +1,6 @@
+Windows Registry Editor Version 5.00
+[HKEY_CLASSES_ROOT\.md]
+@="Text_File_MarkDown"
+
+[HKEY_CLASSES_ROOT\Text_File_MarkDown\Shell\Open\Command]
+@="\"notepad++.exe" \"%1\""
