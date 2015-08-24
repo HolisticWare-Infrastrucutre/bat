@@ -29,8 +29,10 @@ APPS=^
 	windows-sdk-7.0 ^
 	stylecop ^
 	ncrunch2.vs2013 ^
-	xenulinksleuth
-	cropper
+	fiddler4 ^
+	wireshark ^
+	xenulinksleuth ^
+	cropper ^
 	paint.net ^
 	gimp ^
 	imagemagick ^
@@ -41,6 +43,7 @@ APPS=^
 	imageresizerapp ^
 	imageconverter ^
 	androidstudio ^
+	kaxaml ^
 	snoop ^
 	sniff ^
 	wpfinspector ^
