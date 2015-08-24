@@ -7,6 +7,9 @@ set APPS=^
 	tortoisehg ^
 	ccleaner ^
 	sysinternals ^
+	spybot ^
+	superantispyware ^
+	malwarebytes ^
 	fastcopy ^
 	windows-tweaker.install ^
 	daemontoolslite ^
@@ -16,10 +19,12 @@ set APPS=^
 	virtualclonedrive ^
 	putty ^
 	superputty ^
+	googlechrome ^
+	chromium ^
+	googlechrome.canary ^
+	firefox ^
 	
 	
-::	newrelic.netagent ^
-
 ::choco install %APPS%
 cinst -y -verbose ^
 	%APPS%
