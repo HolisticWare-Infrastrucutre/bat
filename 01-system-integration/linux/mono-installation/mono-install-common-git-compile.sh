@@ -5,7 +5,8 @@ cd /tmp
 rm -rf mono
 rm -rf mono-git-cloned mono
 
-git clone git://github.com/mono/mono.git mono-git-cloned
+git clone --recursive \
+      git://github.com/mono/mono.git mono-git-cloned
 rm -rf mono
 cp -fr mono-git-cloned mono
 cd mono

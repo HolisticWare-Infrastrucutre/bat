@@ -1,12 +1,11 @@
 @echo off
 
-APPS=^
+set APPS=^
 	notepadplusplus-install ^
 	notepadplusplus-withuninstall ^
 	atom ^
 	brackets ^
 	sublimetext3 ^
-
 	
 ::choco install %APPS%
 cinst -y -verbose ^
