@@ -57,4 +57,18 @@ rm -fr ~/Library/Application\ Support/iPhone\ Simulator/7.1/Applications/*
 rm -fr ~/Library/Application\ Support/iPhone\ Simulator/7.0.3/Applications/*
 rm -fr ~/Library/Application\ Support/iPhone\ Simulator/*
 
+rm -fr ~/Library/Developer/Xcode/Archives/*
+ls -al ~/Library/Developer/Xcode/Archives/
+
+rm -fr ~/Library/Developer/Xcode/iOS\ Device\ Logs/*
+ls -al ~/Library/Developer/Xcode/iOS\ Device\ Logs/
+
+rm -fr ~/Library/Developer/Xcode/iOS\ DeviceSupport/*
+ls -al ~/Library/Developer/Xcode/iOS\ DeviceSupport/
+
+
+rm -fr ~/Library/Developer/Shared/Documentation/DocSets/com.apple.*
+ls -al ~/Library/Developer/Shared/Documentation/DocSets/
+
+
 df >> df-post.txt
