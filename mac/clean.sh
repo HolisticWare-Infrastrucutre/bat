@@ -70,5 +70,16 @@ ls -al ~/Library/Developer/Xcode/iOS\ DeviceSupport/
 rm -fr ~/Library/Developer/Shared/Documentation/DocSets/com.apple.*
 ls -al ~/Library/Developer/Shared/Documentation/DocSets/
 
+#===============================================================================
+# bunch of tmp stuff like:
+#		kpm		old ASP.net v5 
+#	
+rm -fr ~/.local/share/kpm/
+rm -fr ~/.local/share/Mono\ development\ team/
+rm -fr ~/.local/share/MonoForAndroid/
+rm -fr ~/.local/share/NuGet/
+rm -fr ~/.local/share/Xamarin/
+rm -fr ~/.local/share/XamarinInsights/Xamarin\ Android\ Player/
+rm -fr ~/.local/share/XamarinInsights/XamarinStudio/
 
 df >> df-post.txt
