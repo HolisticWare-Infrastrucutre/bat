@@ -1,6 +1,8 @@
 @echo off
 
 set APPS=^
+	allbrowsers ^
+	google-chrome-x64 ^
 	googlechrome ^
 	chromium ^
 	googlechrome.canary ^
