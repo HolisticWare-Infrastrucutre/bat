@@ -1,6 +1,15 @@
 @echo off
 
 set APPS=^
+	chocolateygui \6
+	filezilla ^
+	powershell ^
+	dotnet3.5 ^
+	dotnet4.5 ^
+	dotnet4.5.1 ^
+	dotnet4.5.2 ^
+	jre8 ^
+	javaruntime ^
 	msysgit ^
 	tortoisegit ^
 	tortoisesvn ^
@@ -19,22 +28,34 @@ set APPS=^
 	virtualclonedrive ^
 	putty ^
 	superputty ^
-	googlechrome ^
-	chromium ^
-	googlechrome.canary ^
-	firefox ^
-	
-	
+	nuget.commandline ^
+	procexp ^
+	perfview ^
+	mysql.workbench ^
+	wget ^
+	curl ^
+	winscp ^
+	teamviewer ^
+	cygwin ^
+	youtube-dl ^
+	console2 ^
+	virtualbox ^
+	googledrive ^
+	dropbox ^
+
+
+
+
 ::choco install %APPS%
 cinst -y -verbose ^
 	%APPS%
 
 for %%a IN (%APPS%) DO (
 	echo %%a
-	
+
 	:: choco install %%a
 	cinst -y -verbose ^
 			%%a
 )
 
-@IF %ERRORLEVEL% NEQ 0 PAUSE	
+@IF %ERRORLEVEL% NEQ 0 PAUSE
