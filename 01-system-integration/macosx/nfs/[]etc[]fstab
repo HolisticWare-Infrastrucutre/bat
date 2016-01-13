@@ -1,0 +1,13 @@
+## Mount ISO Share
+# 192.168.1.1:/Users/vikas/Documents/ISOs /ISOs nfs defaults,_netdev 0 0
+
+## Elastix
+/Users/moljac/Downloads/Elastix-2.5.0-Stable-i386-bin-21oct2014.iso \
+    iso9660 loop,_netdev 0 0
+/Users/moljac/Downloads/Elastix-2.5.0-Stable-x86_64-bin-21oct2014.iso \
+    iso9660 loop,_netdev 0 0
+/Users/moljac/Downloads/Elastix-3.0.0-Stable-i386-bin-10nov2014.iso \
+    iso9660 loop,_netdev 0 0
+/Users/moljac/Downloads/Elastix-3.0.0-Stable-x86_64-bin-10nov2014.iso \
+    iso9660 loop,_netdev 0 0
+
