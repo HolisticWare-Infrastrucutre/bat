@@ -1,12 +1,9 @@
 @echo off
 
 set APPS=^
-	xamarin-studio ^
-	xamarin ^
-	xamarin-visualstudio ^
-	monodevelop ^
-	androidstudio ^
-
+	thunderbird ^
+	slack ^
+	skype ^
 
 
 ::choco install %APPS%

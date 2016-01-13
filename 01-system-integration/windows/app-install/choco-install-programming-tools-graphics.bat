@@ -1,12 +1,19 @@
 @echo off
 
 set APPS=^
-	xamarin-studio ^
-	xamarin ^
-	xamarin-visualstudio ^
-	monodevelop ^
-	androidstudio ^
-
+	cropper ^
+	paint.net ^
+	gimp ^
+	imagemagick ^
+	optipng ^
+	pngquant ^
+	pnggauntlet ^
+	pngout ^
+	imageresizerapp ^
+	imageconverter ^
+	inkscape -pre ^
+	newrelic.netagent ^
+	vlc ^
 
 
 ::choco install %APPS%

@@ -1,9 +1,7 @@
 @echo off
 
 set APPS=^
-	xamarin-studio ^
-	xamarin ^
-	xamarin-visualstudio ^
+	visualstudio2015community ^
 	visualstudiocommunity2013 ^
 	visualstudio2013-update1 ^
 	visualstudio2013-update2 ^
@@ -11,21 +9,21 @@ set APPS=^
 	vs2013remotetools ^
 	vs2013.vscommands ^
 	visualstudio2013-installerprojects -pre ^
+	vs2013.vscommands ^
 	visualstudicode ^
-	visualleakdetector ^
-	kaxaml ^
-	snoop ^
-	sniff ^
-	wpfinspector ^
 
 
 
-for %%a IN (%APPS%) DO (
-	echo %%a
+::choco install %APPS%
+cinst -y -verbose ^
+	%APPS%
 
-::	choco install ^
-)
-
-
+:: for %%a IN (%APPS%) DO (
+:: 	echo %%a
+::
+:: 	:: choco install %%a
+:: 	cinst -y -verbose ^
+:: 			%%a
+:: )
 
 @IF %ERRORLEVEL% NEQ 0 PAUSE

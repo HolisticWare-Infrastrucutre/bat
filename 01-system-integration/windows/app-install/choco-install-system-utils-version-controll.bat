@@ -1,15 +1,6 @@
 @echo off
 
 set APPS=^
-	chocolateygui \6
-	filezilla ^
-	powershell ^
-	dotnet3.5 ^
-	dotnet4.5 ^
-	dotnet4.5.1 ^
-	dotnet4.5.2 ^
-	jre8 ^
-	javaruntime ^
 	msysgit ^
 	tortoisegit ^
 	tortoisesvn ^
@@ -28,22 +19,10 @@ set APPS=^
 	virtualclonedrive ^
 	putty ^
 	superputty ^
-	nuget.commandline ^
-	procexp ^
-	perfview ^
-	mysql.workbench ^
-	wget ^
-	curl ^
-	winscp ^
-	teamviewer ^
-	cygwin ^
-	youtube-dl ^
-	console2 ^
-	virtualbox ^
-	googledrive ^
-	dropbox ^
-
-
+	googlechrome ^
+	chromium ^
+	googlechrome.canary ^
+	firefox ^
 
 
 ::choco install %APPS%

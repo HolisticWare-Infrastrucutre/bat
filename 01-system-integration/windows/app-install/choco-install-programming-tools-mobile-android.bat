@@ -1,13 +1,9 @@
 @echo off
 
 set APPS=^
-	xamarin-studio ^
-	xamarin ^
-	xamarin-visualstudio ^
-	monodevelop ^
 	androidstudio ^
-
-
+	eclipse ^
+	
 
 ::choco install %APPS%
 cinst -y -verbose ^
