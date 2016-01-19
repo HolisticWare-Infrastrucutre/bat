@@ -6,3 +6,5 @@ sudo rm -rf ~/Library/Preferences/XamarinStudio-*
 sudo rm -rf ~/Library/Logs/XamarinStudio-*
 sudo rm -rf ~/Library/XamarinStudio-*
 
+
+
