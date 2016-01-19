@@ -1,6 +1,5 @@
 #!/bin/bash
 
-#!/bin/bash
 # This is a simple script to uninstall Xamarin from your machine.
  
 # Uninstall Xamarin Studio
