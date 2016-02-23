@@ -22,6 +22,10 @@ find \
 					-name "Release" \
 					-o \
 					-name "packages" \
+					-o \
+					-name "DTAR_*_DTAR" \
+					-o \
+					-name ".vs" \
 			\) \
 		-not -path "*Dropbox*" \
 		-not -path "*Google Drive*" \
@@ -29,6 +33,49 @@ find \
 
 find \
 	~/ \
+		-type f \
+			\( \
+					-name ".DS_Store" \
+					-o \
+					-name "*.suo" \
+					-o \
+					-name "*.sdf" \
+					-o \
+					-name "*.csproj.user" \
+					-o \
+					-name "*.cxproj.user" \
+					-o \
+					-name "*.ncrunchsolution" \
+					-o \
+					-name "*.userprefs" \
+					-o \
+					-name "*.xam" \
+			\) \
+		-not -path "*Dropbox*" \
+		-not -path "*Google Drive*" \
+		-exec rm -rf {} \;
+
+
+find \
+	/Projects \
+		-type d \
+			\( \
+					-name "Debug" \
+					-o \
+					-name "Release" \
+					-o \
+					-name "packages" \
+					-o \
+					-name "DTAR_*_DTAR" \
+					-o \
+					-name ".vs" \
+			\) \
+		-not -path "*Dropbox*" \
+		-not -path "*Google Drive*" \
+		-exec rm -rf {} \;
+
+find \
+	/Projects \
 		-type f \
 			\( \
 					-name ".DS_Store" \

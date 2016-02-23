@@ -1,0 +1,6 @@
+set DEVMGR_SHOW_DETAILS=1
+
+set DEVMGR_SHOW_NONPRESENT_DEVICES=1
+
+start devmgmt.msc
+
