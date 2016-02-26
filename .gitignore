@@ -304,14 +304,23 @@ App_Data/*.ldf
 **/__MACOSX
 #----------------------------------------------
 
+#----------------------------------------------
+# source control
 **/.svn*
 **/.git.*
 **/.git.*/*
-
-**/Components/
-**/packages/
+#----------------------------------------------
 
 #----------------------------------------------
+# Xamarin Components and nuget packages
+**/Components/
+**/packages/
+src/samples/Components/**
+source/samples/Components/**
+#----------------------------------------------
+
+#----------------------------------------------
+# sensitive data
 **/*.hidden.cs
 **/*.hidden.md
 **/*.hidden.sh
@@ -336,23 +345,68 @@ App_Data/*.ldf
 **/*.secured.md
 **/*.secure*
 **/*.data.*
+#----------------------------------------------
 
+#----------------------------------------------
 # Xamarin Studio
 **/*.userprefs
+#----------------------------------------------
 
+#----------------------------------------------
+# Xamarin.Android
 # Security (project id etc)
 #**/AndroidManifest.xml
+#----------------------------------------------
 
+#----------------------------------------------
+# Xamarin.Android sharpen
 docs/workspace/sharpen/**
+#----------------------------------------------
 
-src/samples/Components/**
+#----------------------------------------------
+# Xamarin.Android Eclipse
+*.pydevproject
+.metadata
+.gradle
+bin/
+tmp/
+*.tmp
+*.bak
+*.swp
+*~.nib
+local.properties
+.settings/
+.loadpath
+
+# External tool builders
+.externalToolBuilders/
+
+# Locally stored "Eclipse launch configurations"
+*.launch
+
+# CDT-specific
+.cproject
+
+# PDT-specific
+.buildpath
+
+# sbteclipse plugin 
+.target
+
+# TeXlipse plugin
+.texlipse
+/Tools/Eclipse.Workspace/*.DS_Store
+#----------------------------------------------
+# Xamarin.Android sharpen
+
 **/UpgradeLog.htm
+#.....................................................
 
 /docs/ubertesters.sdk.ios %
 
 
 #------------------------------------------
-# iOS build files
+# Xamarin.iOS build files
 **DerivedData**
 **build**
 lib/**
