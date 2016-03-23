@@ -5,10 +5,18 @@ set APPS=^
 	slack ^
 	skype ^
 
-
+::===================================================================
 ::choco install %APPS%
-cinst -y -verbose ^
-	%APPS%
+set COMMAND=chinst --yes --force --verbose --debug
+
+:: chocolatey update packageName [-source ...] [-prerelease]
+::set COMMAND=cup  --yes --force --verbose --debug
+
+::choco uninstall %APPS%
+::set COMMAND=cuninst --yes --force --verbose --debug
+::===================================================================
+	
+%COMMAND% %APPS%
 
 :: for %%a IN (%APPS%) DO (
 :: 	echo %%a
