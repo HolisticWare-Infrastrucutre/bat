@@ -21,11 +21,14 @@ function install_prerequisites()
 	sudo $PACKAGE_MANAGER install -y \
 		dpkg-dev \
 		gcc \
-		gcc-c++-4.8.1 \
+		gcc-c++ \
 		make \
 		glibc-devel \
 		glibc-devel.i686 \
-	# gcc-c++ installs 5.3.1 which results in internal compiler error
+
+	# 2016-03-21 gcc-c++ installs 
+	# 	5.3.1 which results in internal compiler error
+	#	increase RAM (solved interal compiler error) on Parallels VM
 
 
 	git config --global user.name  \
