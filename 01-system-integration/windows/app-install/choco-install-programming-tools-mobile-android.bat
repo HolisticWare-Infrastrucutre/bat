@@ -2,12 +2,25 @@
 
 set APPS=^
 	androidstudio ^
-	eclipse ^
+	genymotion ^
+	apktool ^
 	
-
+	
+::	eclipse ^
+	
+	
+::===================================================================
 ::choco install %APPS%
-cinst -y -verbose ^
-	%APPS%
+set COMMAND=choco install --yes --force --verbose
+
+:: chocolatey update packageName [-source ...] [-prerelease]
+::set COMMAND=cup
+
+::choco uninstall %APPS%
+::set COMMAND="cuninst --yes --force --verbose"
+::===================================================================
+	
+%COMMAND% %APPS%
 
 :: for %%a IN (%APPS%) DO (
 :: 	echo %%a

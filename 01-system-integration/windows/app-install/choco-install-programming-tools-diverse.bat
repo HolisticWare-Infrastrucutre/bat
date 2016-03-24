@@ -2,17 +2,18 @@
 
 set APPS=^
 	sharpdevelop ^
-	windows-sdk-7.0 ^
-	windows-sdk-7.1 ^
-	windows-sdk-8.0 ^
-	windows-sdk-8.1 ^
-	windowsphone8sdk ^
+	monodevelop ^
+	
+	linqpad ^
+	linqpad4 ^
+	linqpad4.install ^
+	
 	nunit ^
 	stylecop ^
 	ncrunch2.vs2013 ^
 	xmlnotepad ^
 	tinycc ^
-	orwelldevcpp ^
+	orwelldevcpp ^
 	linqpad4 ^
 	cs-script ^
 	cshell ^
@@ -28,9 +29,16 @@ set APPS=^
 	owinhost
 
 
+::===================================================================
 ::choco install %APPS%
-cinst -y -verbose ^
-	%APPS%
+::set COMMAND=cinst
+
+:: chocolatey update packageName [-source ...] [-prerelease]
+set COMMAND=cup
+
+::choco uninstall %APPS%
+::set COMMAND=cuninst
+::===================================================================
 
 :: for %%a IN (%APPS%) DO (
 :: 	echo %%a

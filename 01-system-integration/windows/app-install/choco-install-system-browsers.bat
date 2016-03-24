@@ -9,16 +9,25 @@ set APPS=^
 	firefox ^
 
 
+::===================================================================
 ::choco install %APPS%
-cinst -y -verbose ^
-	%APPS%
+set COMMAND=chinst --yes --force --verbose --debug
 
-for %%a IN (%APPS%) DO (
-	echo %%a
+:: chocolatey update packageName [-source ...] [-prerelease]
+::set COMMAND=cup  --yes --force --verbose --debug
 
-	:: choco install %%a
-	cinst -y -verbose ^
-			%%a
-)
+::choco uninstall %APPS%
+::set COMMAND=cuninst --yes --force --verbose --debug
+::===================================================================
+	
+%COMMAND% %APPS%
+
+:: for %%a IN (%APPS%) DO (
+:: 	echo %%a
+:: 
+:: 	:: choco install %%a
+:: 	cinst -y -verbose ^
+:: 			%%a
+:: )
 
 @IF %ERRORLEVEL% NEQ 0 PAUSE

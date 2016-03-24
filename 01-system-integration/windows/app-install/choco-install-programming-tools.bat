@@ -20,12 +20,13 @@ set APPS=^
 
 
 
-for %%a IN (%APPS%) DO (
-	echo %%a
 
-::	choco install ^
-)
-
+::for %%a IN (%APPS%) DO (
+::	echo %%a
+::
+::::	choco install ^
+::)
+::
 
 
 @IF %ERRORLEVEL% NEQ 0 PAUSE
