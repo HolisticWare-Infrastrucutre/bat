@@ -38,45 +38,56 @@ function install_prerequisites()
 			ggettext_dev \
 			libgettextlib0_18_1 \
 			libgettextsrc0_18_1 \
-			
+			swig \
+			python\
 			gcc4core \
 			gcc4g++ \
 			gcc5core \
 			gcc5g++ \
-			
-			boost_gcc_dev \
+			tree \
 			
 	/usr/sbin/pkgchk -L \
-			git \
+			CSWwget \
+			CSWcurl \
+			CSWgit \
+			CSWgit_doc \
+			CSWgit_completion \
+			CSWgit_emacs \
+			CSWgit_gui \
+			CSWgit_subtree \
+			CSWcmake \
 			CSWlibicudata56 \
 			CSWlibicui18n56 \
+			CSWlibicuio56 \
+			CSWlibicule56 \
+			CSWlibiculx56 \
+			CSWlibicutest56 \
+			CSWlibicutu56 \
+			CSWlibicuuc56 \
+			CSWlibicu_dev \
+			CSWlibssl1_0_0 \
+			CSWlibssl3 \
+			CSWlibssl_dev \
+			CSWggettext \
+			CSWggettextdoc \
+			CSWggettexttrt \
+			CSWggettext_data \
+			CSWggettext_dev \
+			CSWlibgettextlib0_18_1 \
+			CSWlibgettextsrc0_18_1 \
+			CSWswig \
+			CSWpython\
+			CSWgcc4core \
+			CSWgcc4g++ \
+			CSWgcc5core \
+			CSWgcc5g++ \
+			CSWtree \
 		
 
-	wget -o \
-		http://download.savannah.gnu.org/releases/libunwind/libunwind-1.2-rc1.tar.gz
+	#wget -o \
+	#	http://download.savannah.gnu.org/releases/libunwind/libunwind-1.2-rc1.tar.gz		
+	#	https://sourceforge.net/projects/swig/files/swig/swig-3.0.8/swig-3.0.8.tar.gz/download
 		
-	sudo $PACKAGE_MANAGER install -y \
-		git
-
-	# Install required dependencies 
-	sudo $PACKAGE_MANAGER install -y \
-		tree
-
-	sudo $PACKAGE_MANAGER install -y \
-		build-essential \
-
-	# build-essential equivalent
-	sudo $PACKAGE_MANAGER install -y \
-		dpkg-dev \
-		gcc \
-		g++ \
-		make \
-		libc-dev \		
-		libc6-dev \
-		libc6 \
-		libc6-dev-sparc64 \
-		libc6.1-dev \
-
 	git config --global user.name  \
 		"moljac"
 	git config --global user.email \
