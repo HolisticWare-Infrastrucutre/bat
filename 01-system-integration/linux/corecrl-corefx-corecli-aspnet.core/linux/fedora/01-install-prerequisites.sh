@@ -23,8 +23,14 @@ function install_prerequisites()
 		gcc \
 		gcc-c++ \
 		make \
+		cmake \
 		glibc-devel \
 		glibc-devel.i686 \
+		swig \
+		python \
+		libedit \
+		
+		
 
 	# 2016-03-21 gcc-c++ installs 
 	# 	5.3.1 which results in internal compiler error
