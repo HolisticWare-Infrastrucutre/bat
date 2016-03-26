@@ -27,6 +27,9 @@ function install_prerequisites()
 		libc6 \
 		libc6-dev-sparc64 \
 		libc6.1-dev \
+		swig \
+		python \
+		libedit \
 
 	git config --global user.name  \
 		"moljac"
