@@ -1,20 +1,65 @@
 #/bin/bash
 
+SRC_ROOT=./llvm-source-root/
+OBJ_ROOT=./llvm-build-root/
+
 llvm_download_source_wget
+#llvm_download_source_git
+
 llvm_compile
 llvm_check
 llvm_install_global
+lldb_compile
+lldb_check
+
 
 # http://linuxdeveloper.blogspot.hr/2012/12/building-llvm-32-from-source.html
 
+function llvm_download_source_git()
+{
+	mkdir 	$SRC_ROOT
+	cd 		$SRC_ROOT
+
+	rm -fr $OBJ_ROOT 
+	rm -fr \
+		llvm*/ \
+		*.tar.gz \
+		*.tar.xz
+		
+	git clone --recursive \
+		http://llvm.org/git/llvm.git
+	
+	cd llvm/tools
+	git clone --recursive \
+		http://llvm.org/git/clang.git
+	cd ../..
+	
+	cd llvm/projects
+	git clone \
+		http://llvm.org/git/compiler-rt.git
+	git clone \
+		http://llvm.org/git/libcxx.git
+	git clone \
+		http://llvm.org/git/libcxxabi.git
+	git clone \
+		http://llvm.org/git/test-suite.git
+	# git clone \
+	#	http://llvm.org/git/openmp.git
+	
+	cd ../..
+}
+export -f llvm_download_source_git
+
 function llvm_download_source_wget()
 {
-	mkdir 	~/llvm-moljac
-	cd 		~/llvm-moljac
+	mkdir 	$SRC_ROOT
+	cd 		$SRC_ROOT
 
-	rm -fr build/ 
-	rm -fr llvm*/ 
-	rm -fr *.tar.gz *.tar.xz
+	rm -fr $OBJ_ROOT 
+	rm -fr \
+		llvm*/ \
+		*.tar.gz \
+		*.tar.xz
 
 	# From
 	# 	http://llvm.org/releases/download.html#3.2
@@ -31,14 +76,16 @@ function llvm_download_source_wget()
 	tar xvf ./cfe-3.8.0.src.tar.xz
 	tar xvf ./compiler-rt-3.8.0.src.tar.xz
 
-	mv ./llvm-3.8.0.src ./llvm-3.8.0
-	mv ./cfe-3.8.0.src ./clang
-	mv ./clang ./llvm-3.8.0/tools/
-	mv ./compiler-rt-3.8.0.src ./compiler-rt
-	mv ./compiler-rt ./llvm-3.8.0/projects/
+	mv ./llvm-3.8.0.src ./llvm/
 	
-	tree -d -L 1 ../llvm-3.8.0/tools/
-	tree -d -L 1 ../llvm-3.8.0/projects/
+	mv ./cfe-3.8.0.src ./clang
+	mv ./compiler-rt-3.8.0.src ./compiler-rt
+	
+	mv ./clang ./llvm/tools/	
+	mv ./compiler-rt ./llvm/projects/
+	
+	tree -d -L 1 ../llvm/tools/
+	tree -d -L 1 ../llvm/projects/
 	# 	|-- build (currently we are here)
 	#	|-- llvm-3.8.0
 	#	|   |-- projects
@@ -65,23 +112,23 @@ function llvm_download_source_wget()
 	tar xvf ./lldb-3.8.0.src.tar.xz
 	tar xvf ./clang-tools-extra-3.8.0.src.tar.xz
 	
-	mv ./libcxx-3.8.0.src.tar.xz ./libcxx/
-	mv ./libcxx/ ./llvm-3.8.0/projects/
-	mv ./libcxx-3.8.0.src.tar.xz ./libcxxabi/
-	mv ./libcxxabi/ ./llvm-3.8.0/projects/
+	# place source
+	mv ./libcxx-3.8.0.src.tar ./libcxx/
+	mv ./libcxx-3.8.0.src.tar ./libcxxabi/
+	mv ./clang-tools-extra-3.8.0.src.tar ./clang-tools-extra/
 	
-	mv ./clang-tools-extra-3.8.0.src.tar.xz ./clang-tools-extra/
-	mv ./clang-tools-extra/ ./llvm-3.8.0/tools/extra/
+	mv ./libcxx/ ./llvm/projects/
+	mv ./libcxxabi/ ./llvm/projects/	
+	mv ./clang-tools-extra/ ./llvm/tools/extra/
+		
+	# build as external project[s] - out of source location
+	mv ./lld-3.8.0.src.tar ./lld/
+	mv ./lldb-3.8.0.src.tar ./lldb/
+	mv ./libunwind-3.8.0.src.tar ./libunwind/
 	
-	mv ./libunwind-3.8.0.src.tar.xz ./libunwind/
-	mv ./lld-3.8.0.src.tar.xz ./lld/
-	mv ./lldb-3.8.0.src.tar.xz ./lldb/
-	
-	
-	tree -d -L 1 ../llvm-3.8.0/tools/
-	tree -d -L 1 ../llvm-3.8.0/projects/
-	
-	
+	tree -d -L 1 ../llvm/tools/
+	tree -d -L 1 ../llvm/projects/
+		
 	# source is in place - create build folder
 	mkdir ./build
 	cd ./build
@@ -90,27 +137,49 @@ function llvm_download_source_wget()
 	#	for CPU architecture, 
 	#	optimize builds, 
 	#	threads, etc. 
-	../llvm-3.8.0/configure --help
+	../llvm/configure --help
 	
 }
+export -f llvm_download_source_wget
 
 function llvm_compile()
 {
 	# Now we start the actual configuration and compilation of LLVM 
 	# inside the 'build' folder outside of the main source directory 
 	# so as to keep the main source tree clean
-	../llvm-3.8.0/configure --enable-shared
+	../llvm/configure --enable-shared
 
 	time make -j 3
 	
 	ls -al Release+Asserts/bin
 	ls -al Release+Asserts/lib	
 }
+export -f llvm_compile
 
 function llvm_check()
 {
 	make check-all
 }
+
+function lldb_compile()
+{
+	cmake \
+		-G "Unix Makefiles" \
+		../llvm/
+		
+	#cmake \
+	#	-DCMAKE_CXX_COMPILER=/path/to/clang++ \
+	#	-DCMAKE_C_COMPILER=/path/to/clang \
+		
+	make
+}
+export -f llvm_check
+
+function lldb_check()
+{
+	make check-all
+}
+export -f lldb_check
 
 function llvm_compile_libcpp()
 {
@@ -118,15 +187,29 @@ function llvm_compile_libcpp()
 	
 	svn co http://llvm.org/svn/llvm-project/libcxx/trunk libcxx
 	mkdir build_libcxx && cd build_libcxx
-	CC=clang CXX=clang++ cmake -G "Unix Makefiles" -DLIBCXX_CXX_ABI=libsupc++ -DLIBCXX_LIBSUPCXX_INCLUDE_PATHS="/usr/include/c++/4.6/;/usr/include/c++/4.6/x86_64-linux-gnu/" -DCMAKE_BUILD_TYPE=Release -DCMAKE_INSTALL_PREFIX=/usr $HOME/Clang/libcxx
+	CC=clang CXX=clang++ \
+		cmake \
+			-G "Unix Makefiles" \
+			-DLIBCXX_CXX_ABI=libsupc++ \
+			-DCMAKE_BUILD_TYPE=Release \
+			-DLIBCXX_LIBSUPCXX_INCLUDE_PATHS="/usr/include/c++/4.6/;/usr/include/c++/4.6/x86_64-linux-gnu/" \
+			-DCMAKE_INSTALL_PREFIX=/usr \
+			$HOME/Clang/libcxx
+			
+	cmake -G "Unix Makefiles" \
+		..\
+			
+			
 	make -j 8
 	sudo make install	
 }
+export -f llvm_compile_libcpp
 
 function llvm_install_global
 {
 	sudo make install
 }
+export -f llvm_install_global
 
 function llvm_install_local_user
 {
@@ -180,4 +263,4 @@ function llvm_install_local_user
 	./test
 	rm -f test.c ./test
 }
-
+export -f llvm_install_local_user
