@@ -3,15 +3,6 @@
 SRC_ROOT=./llvm-source-root/
 OBJ_ROOT=./llvm-build-root/
 
-llvm_download_source_wget
-#llvm_download_source_git
-
-llvm_compile
-llvm_check
-llvm_install_global
-lldb_compile
-lldb_check
-
 
 # http://linuxdeveloper.blogspot.hr/2012/12/building-llvm-32-from-source.html
 
@@ -264,3 +255,17 @@ function llvm_install_local_user
 	rm -f test.c ./test
 }
 export -f llvm_install_local_user
+
+
+
+llvm_download_source_wget
+#llvm_download_source_git
+
+llvm_compile
+llvm_check
+llvm_install_global
+lldb_compile
+lldb_check
+
+
+
