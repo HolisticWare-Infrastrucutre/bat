@@ -19,6 +19,7 @@ function install_prerequisites()
 			git_emacs \
 			git_gui \
 			git_subtree \
+			gmake \
 			cmake \
 			libicudata56 \
 			libicui18n56 \
@@ -57,6 +58,7 @@ function install_prerequisites()
 			CSWgit_emacs \
 			CSWgit_gui \
 			CSWgit_subtree \
+			CSWgmake \
 			CSWcmake \
 			CSWlibicudata56 \
 			CSWlibicui18n56 \
