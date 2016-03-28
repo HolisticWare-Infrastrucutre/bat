@@ -63,9 +63,13 @@ function llvm_download_source_wget()
 	wget http://llvm.org/releases/3.8.0/compiler-rt-3.8.0.src.tar.xz
 
 	# Extract the downloaded sources
-	tar xvf ./llvm-3.8.0.src.tar.xz
-	tar xvf ./cfe-3.8.0.src.tar.xz
-	tar xvf ./compiler-rt-3.8.0.src.tar.xz
+	unxz ./llvm-3.8.0.src.tar.xz
+	unxz ./cfe-3.8.0.src.tar.xz
+	unxz ./compiler-rt-3.8.0.src.tar.xz
+
+	tar xvf ./llvm-3.8.0.src.tar
+	tar xvf ./cfe-3.8.0.src.tar
+	tar xvf ./compiler-rt-3.8.0.src.tar
 
 	mv ./llvm-3.8.0.src ./llvm/
 	
@@ -96,12 +100,19 @@ function llvm_download_source_wget()
 	wget http://llvm.org/releases/3.8.0/clang-tools-extra-3.8.0.src.tar.xz
 	
 	# Extract the downloaded sources
-	tar xvf ./libcxx-3.8.0.src.tar.xz	
-	tar xvf ./libcxxabi-3.8.0.src.tar.xz
-	tar xvf ./libunwind-3.8.0.src.tar.xz
-	tar xvf ./lld-3.8.0.src.tar.xz
-	tar xvf ./lldb-3.8.0.src.tar.xz
-	tar xvf ./clang-tools-extra-3.8.0.src.tar.xz
+	unxz ./libcxx-3.8.0.src.tar.xz	
+	unxz ./libcxxabi-3.8.0.src.tar.xz
+	unxz ./libunwind-3.8.0.src.tar.xz
+	unxz ./lld-3.8.0.src.tar.xz
+	unxz ./lldb-3.8.0.src.tar.xz
+	unxz ./clang-tools-extra-3.8.0.src.tar.xz
+	
+	tar xvf ./libcxx-3.8.0.src.tar
+	tar xvf ./libcxxabi-3.8.0.src.tar
+	tar xvf ./libunwind-3.8.0.src.tar
+	tar xvf ./lld-3.8.0.src.tar
+	tar xvf ./lldb-3.8.0.src.tar
+	tar xvf ./clang-tools-extra-3.8.0.src.tar
 	
 	# place source
 	mv ./libcxx-3.8.0.src.tar ./libcxx/
