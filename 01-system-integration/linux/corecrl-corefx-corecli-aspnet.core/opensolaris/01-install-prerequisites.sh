@@ -10,6 +10,7 @@ function install_prerequisites()
 	
 	sudo $PACKAGE_MANAGER -U
 	sudo $PACKAGE_MANAGER -y -i \
+			xz \
 			wget \
 			curl \
 			git \
@@ -47,6 +48,7 @@ function install_prerequisites()
 			tree \
 			
 	/usr/sbin/pkgchk -L \
+			CSWxz \
 			CSWwget \
 			CSWcurl \
 			CSWgit \
