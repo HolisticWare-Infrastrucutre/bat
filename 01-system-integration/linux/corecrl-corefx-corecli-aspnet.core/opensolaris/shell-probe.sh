@@ -6,8 +6,8 @@
 	
 	sudo $PACKAGE_MANAGER -U
 	sudo $PACKAGE_MANAGER -y -i \
-			xz \
+			gmake \
 
 	/usr/sbin/pkgchk -L \
-			CSWxz \
+			CSWgmake \
 			
