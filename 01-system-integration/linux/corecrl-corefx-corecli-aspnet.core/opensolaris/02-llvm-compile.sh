@@ -3,20 +3,21 @@
 SRC_ROOT=./llvm-source-root/
 OBJ_ROOT=./llvm-build-root/
 
-
 # http://linuxdeveloper.blogspot.hr/2012/12/building-llvm-32-from-source.html
 
 function llvm_download_source_git()
 {
 	mkdir 	$SRC_ROOT
-	cd 		$SRC_ROOT
+	cd 	$SRC_ROOT
 
-	rm -fr $OBJ_ROOT 
 	rm -fr \
 		llvm*/ \
 		*.tar.gz \
 		*.tar.xz
 		
+	rm -fr	$OBJ_ROOT 
+	mkdir	$OBJ_ROOT 
+
 	git clone --recursive \
 		http://llvm.org/git/llvm.git
 	
@@ -24,7 +25,9 @@ function llvm_download_source_git()
 	git clone --recursive \
 		http://llvm.org/git/clang.git
 	cd ../..
-	
+	pwd
+	tree -d -L 1 ./llvm/tools/
+
 	cd llvm/projects
 	git clone \
 		http://llvm.org/git/compiler-rt.git
@@ -36,21 +39,27 @@ function llvm_download_source_git()
 		http://llvm.org/git/test-suite.git
 	# git clone \
 	#	http://llvm.org/git/openmp.git
-	
 	cd ../..
+	pwd
+	tree -d -L 1 ./llvm/projects/
+
+	cd	$OBJ_ROOT
+	pwd
 }
 export -f llvm_download_source_git
 
 function llvm_download_source_wget()
 {
 	mkdir 	$SRC_ROOT
-	cd 		$SRC_ROOT
+	cd 	$SRC_ROOT
 
-	rm -fr $OBJ_ROOT 
 	rm -fr \
 		llvm*/ \
 		*.tar.gz \
 		*.tar.xz
+		
+	rm -fr	$OBJ_ROOT 
+	mkdir	$OBJ_ROOT 
 
 	# From
 	# 	http://llvm.org/releases/download.html#3.2
@@ -63,13 +72,9 @@ function llvm_download_source_wget()
 	wget http://llvm.org/releases/3.8.0/compiler-rt-3.8.0.src.tar.xz
 
 	# Extract the downloaded sources
-	unxz ./llvm-3.8.0.src.tar.xz
-	unxz ./cfe-3.8.0.src.tar.xz
-	unxz ./compiler-rt-3.8.0.src.tar.xz
-
-	tar xvf ./llvm-3.8.0.src.tar
-	tar xvf ./cfe-3.8.0.src.tar
-	tar xvf ./compiler-rt-3.8.0.src.tar
+	tar xvf ./llvm-3.8.0.src.tar.xz
+	tar xvf ./cfe-3.8.0.src.tar.xz
+	tar xvf ./compiler-rt-3.8.0.src.tar.xz
 
 	mv ./llvm-3.8.0.src ./llvm/
 	
@@ -79,8 +84,8 @@ function llvm_download_source_wget()
 	mv ./clang ./llvm/tools/	
 	mv ./compiler-rt ./llvm/projects/
 	
-	tree -d -L 1 ../llvm/tools/
-	tree -d -L 1 ../llvm/projects/
+	tree -d -L 1 ./llvm/tools/
+	tree -d -L 1 ./llvm/projects/
 	# 	|-- build (currently we are here)
 	#	|-- llvm-3.8.0
 	#	|   |-- projects
@@ -100,19 +105,12 @@ function llvm_download_source_wget()
 	wget http://llvm.org/releases/3.8.0/clang-tools-extra-3.8.0.src.tar.xz
 	
 	# Extract the downloaded sources
-	unxz ./libcxx-3.8.0.src.tar.xz	
-	unxz ./libcxxabi-3.8.0.src.tar.xz
-	unxz ./libunwind-3.8.0.src.tar.xz
-	unxz ./lld-3.8.0.src.tar.xz
-	unxz ./lldb-3.8.0.src.tar.xz
-	unxz ./clang-tools-extra-3.8.0.src.tar.xz
-	
-	tar xvf ./libcxx-3.8.0.src.tar
-	tar xvf ./libcxxabi-3.8.0.src.tar
-	tar xvf ./libunwind-3.8.0.src.tar
-	tar xvf ./lld-3.8.0.src.tar
-	tar xvf ./lldb-3.8.0.src.tar
-	tar xvf ./clang-tools-extra-3.8.0.src.tar
+	tar xvf ./libcxx-3.8.0.src.tar.xz	
+	tar xvf ./libcxxabi-3.8.0.src.tar.xz
+	tar xvf ./libunwind-3.8.0.src.tar.xz
+	tar xvf ./lld-3.8.0.src.tar.xz
+	tar xvf ./lldb-3.8.0.src.tar.xz
+	tar xvf ./clang-tools-extra-3.8.0.src.tar.xz
 	
 	# place source
 	mv ./libcxx-3.8.0.src.tar ./libcxx/
@@ -128,19 +126,17 @@ function llvm_download_source_wget()
 	mv ./lldb-3.8.0.src.tar ./lldb/
 	mv ./libunwind-3.8.0.src.tar ./libunwind/
 	
-	tree -d -L 1 ../llvm/tools/
-	tree -d -L 1 ../llvm/projects/
+	tree -d -L 1 ./llvm/tools/
+	tree -d -L 1 ./llvm/projects/
 		
 	# source is in place - create build folder
-	mkdir ./build
-	cd ./build
+	cd	$OBJ_DIR
 
 	# Note : There are various configuration flags 
 	#	for CPU architecture, 
 	#	optimize builds, 
 	#	threads, etc. 
-	../llvm/configure --help
-	
+	../llvm/configure --help	
 }
 export -f llvm_download_source_wget
 
@@ -268,15 +264,12 @@ function llvm_install_local_user
 export -f llvm_install_local_user
 
 
-
-llvm_download_source_wget
-#llvm_download_source_git
+#llvm_download_source_wget
+llvm_download_source_git
 
 llvm_compile
 llvm_check
 llvm_install_global
 lldb_compile
 lldb_check
-
-
 
