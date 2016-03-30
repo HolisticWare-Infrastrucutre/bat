@@ -3,29 +3,21 @@
 SRC_ROOT=./llvm-source-root/
 OBJ_ROOT=./llvm-build-root/
 
-llvm_download_source_wget
-#llvm_download_source_git
-
-llvm_compile
-llvm_check
-llvm_install_global
-lldb_compile
-lldb_check
-
-
 # http://linuxdeveloper.blogspot.hr/2012/12/building-llvm-32-from-source.html
 
 function llvm_download_source_git()
 {
 	mkdir 	$SRC_ROOT
-	cd 		$SRC_ROOT
+	cd 	$SRC_ROOT
 
-	rm -fr $OBJ_ROOT 
 	rm -fr \
 		llvm*/ \
 		*.tar.gz \
 		*.tar.xz
 		
+	rm -fr	$OBJ_ROOT 
+	mkdir	$OBJ_ROOT 
+
 	git clone --recursive \
 		http://llvm.org/git/llvm.git
 	
@@ -33,7 +25,9 @@ function llvm_download_source_git()
 	git clone --recursive \
 		http://llvm.org/git/clang.git
 	cd ../..
-	
+	pwd
+	tree -d -L 1 ./llvm/tools/
+
 	cd llvm/projects
 	git clone \
 		http://llvm.org/git/compiler-rt.git
@@ -45,21 +39,27 @@ function llvm_download_source_git()
 		http://llvm.org/git/test-suite.git
 	# git clone \
 	#	http://llvm.org/git/openmp.git
-	
 	cd ../..
+	pwd
+	tree -d -L 1 ./llvm/projects/
+
+	cd	$OBJ_ROOT
+	pwd
 }
 export -f llvm_download_source_git
 
 function llvm_download_source_wget()
 {
 	mkdir 	$SRC_ROOT
-	cd 		$SRC_ROOT
+	cd 	$SRC_ROOT
 
-	rm -fr $OBJ_ROOT 
 	rm -fr \
 		llvm*/ \
 		*.tar.gz \
 		*.tar.xz
+		
+	rm -fr	$OBJ_ROOT 
+	mkdir	$OBJ_ROOT 
 
 	# From
 	# 	http://llvm.org/releases/download.html#3.2
@@ -84,8 +84,8 @@ function llvm_download_source_wget()
 	mv ./clang ./llvm/tools/	
 	mv ./compiler-rt ./llvm/projects/
 	
-	tree -d -L 1 ../llvm/tools/
-	tree -d -L 1 ../llvm/projects/
+	tree -d -L 1 ./llvm/tools/
+	tree -d -L 1 ./llvm/projects/
 	# 	|-- build (currently we are here)
 	#	|-- llvm-3.8.0
 	#	|   |-- projects
@@ -126,30 +126,69 @@ function llvm_download_source_wget()
 	mv ./lldb-3.8.0.src.tar ./lldb/
 	mv ./libunwind-3.8.0.src.tar ./libunwind/
 	
-	tree -d -L 1 ../llvm/tools/
-	tree -d -L 1 ../llvm/projects/
+	tree -d -L 1 ./llvm/tools/
+	tree -d -L 1 ./llvm/projects/
 		
 	# source is in place - create build folder
-	mkdir ./build
-	cd ./build
+	cd	$OBJ_DIR
 
 	# Note : There are various configuration flags 
 	#	for CPU architecture, 
 	#	optimize builds, 
 	#	threads, etc. 
-	../llvm/configure --help
-	
+	#../llvm/configure --help	
+	cmake ../llvm
 }
 export -f llvm_download_source_wget
 
 function llvm_compile()
 {
+	#------------------------------------------------------------------
 	# Now we start the actual configuration and compilation of LLVM 
 	# inside the 'build' folder outside of the main source directory 
 	# so as to keep the main source tree clean
-	../llvm/configure --enable-shared
+	
+	# The LLVM project no longer supports building with configure & make.
 
-	time make -j 3
+	# Please migrate to the CMake-based build system.
+	# For more information see: http://llvm.org/docs/CMake.html
+	
+	#../llvm/configure --enable-shared
+
+	# CMake will detect your development environment, perform a series 
+	# of tests, and generate the files required for building LLVM. 
+	# CMake will use default values for all build parameters. 
+	# See the Options and variables section for a list of build parameters 
+	# that you can modify.
+
+	# This can fail if CMake can’t detect your toolset, or if it thinks 
+	# that the environment is not sane enough. In this case, make sure 
+	# that the toolset that you intend to use is the only one reachable 
+	# from the shell, and that the shell itself is the correct one for your 
+	# development environment. CMake will refuse to build MinGW makefiles 
+	# if you have a POSIX shell reachable through the PATH environment 
+	# variable, for instance. You can force CMake to use a given build tool; 
+	# for instructions, see the Usage section, below.
+
+	cmake \
+		-DCMAKE_CXX_FLAGS="-std=c++11" \
+		-DLLVM_ENABLE_CXX11=ON \
+		-DCMAKE_BUILD_TYPE=RelWithDebInfo \
+		../llvm
+		
+
+	#time make -j 3
+	
+	# After CMake has finished running, proceed to use IDE project files, 
+	# or start the build from the build directory:
+
+	# The --build option tells cmake to invoke the underlying build tool 
+	# (make, ninja, xcodebuild, msbuild, etc.)
+
+	# The underlying build tool can be invoked directly, of course, but 
+	# the --build option is portable.
+	cmake --build .
+	#------------------------------------------------------------------
 	
 	ls -al Release+Asserts/bin
 	ls -al Release+Asserts/lib	
@@ -207,7 +246,11 @@ export -f llvm_compile_libcpp
 
 function llvm_install_global
 {
-	sudo make install
+	# sudo make install
+
+	cmake --build . --target install
+	
+	
 }
 export -f llvm_install_global
 
@@ -264,3 +307,14 @@ function llvm_install_local_user
 	rm -f test.c ./test
 }
 export -f llvm_install_local_user
+
+
+#llvm_download_source_wget
+llvm_download_source_git
+
+llvm_compile
+llvm_check
+llvm_install_global
+lldb_compile
+lldb_check
+
