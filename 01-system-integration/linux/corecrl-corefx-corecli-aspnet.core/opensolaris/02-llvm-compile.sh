@@ -142,12 +142,52 @@ export -f llvm_download_source_wget
 
 function llvm_compile()
 {
+	#------------------------------------------------------------------
 	# Now we start the actual configuration and compilation of LLVM 
 	# inside the 'build' folder outside of the main source directory 
 	# so as to keep the main source tree clean
-	../llvm/configure --enable-shared
+	
+	# The LLVM project no longer supports building with configure & make.
 
-	time make -j 3
+	# Please migrate to the CMake-based build system.
+	# For more information see: http://llvm.org/docs/CMake.html
+	
+	#../llvm/configure --enable-shared
+
+	# CMake will detect your development environment, perform a series 
+	# of tests, and generate the files required for building LLVM. 
+	# CMake will use default values for all build parameters. 
+	# See the Options and variables section for a list of build parameters 
+	# that you can modify.
+
+	# This can fail if CMake can’t detect your toolset, or if it thinks 
+	# that the environment is not sane enough. In this case, make sure 
+	# that the toolset that you intend to use is the only one reachable 
+	# from the shell, and that the shell itself is the correct one for your 
+	# development environment. CMake will refuse to build MinGW makefiles 
+	# if you have a POSIX shell reachable through the PATH environment 
+	# variable, for instance. You can force CMake to use a given build tool; 
+	# for instructions, see the Usage section, below.
+
+	cmake \
+		-DCMAKE_CXX_FLAGS="-std=c++11" \
+		-DLLVM_ENABLE_CXX11=ON \
+		-DCMAKE_BUILD_TYPE=RelWithDebInfo \
+		../llvm
+		
+
+	#time make -j 3
+	
+	# After CMake has finished running, proceed to use IDE project files, 
+	# or start the build from the build directory:
+
+	# The --build option tells cmake to invoke the underlying build tool 
+	# (make, ninja, xcodebuild, msbuild, etc.)
+
+	# The underlying build tool can be invoked directly, of course, but 
+	# the --build option is portable.
+	cmake --build .
+	#------------------------------------------------------------------
 	
 	ls -al Release+Asserts/bin
 	ls -al Release+Asserts/lib	
