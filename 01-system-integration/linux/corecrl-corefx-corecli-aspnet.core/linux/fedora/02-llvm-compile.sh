@@ -1,5 +1,7 @@
 #/bin/bash
 
+export 	VERSION=3.8.0
+
 # http://linuxdeveloper.blogspot.hr/2012/12/building-llvm-32-from-source.html
 
 SRC_ROOT=./llvm-source-root/
@@ -19,7 +21,7 @@ mkdir  $OBJ_ROOT
 
 
 #=============================================================================
-function llvm_configure()
+function llvm_configure_unix_makefiles()
 {
 	cd $OBJ_ROOT
 
@@ -30,14 +32,6 @@ function llvm_configure()
 	# build folder outside of the main source directory 
 	# so as to keep the main source tree clean
 	
-	# NOTE:
-	# The LLVM project no longer supports building with configure & make.
-
-	# Please migrate to the CMake-based build system.
-	# For more information see: http://llvm.org/docs/CMake.html
-	
-	#../llvm/configure --enable-shared
-
 	# CMake will detect development environment, perform a series 
 	# of tests, and generate the files required for building LLVM. 
 	# CMake will use default values for all build parameters. 
@@ -53,16 +47,62 @@ function llvm_configure()
 	# variable, for instance. You can force CMake to use a given build tool; 
 	# for instructions, see the Usage section, below.
 
+	# If Ninja build is not installed, use CMake to generate Unix Makefiles 
+	# that build LLVM and LLDB:
+
 	cmake \
+		-G "Unix Makefiles" \
+		../llvm
+
+}
+export -f llvm_configure_unix_makefiles
+
+
+function llvm_configure_ninja()
+{
+	cmake \
+		-G "UnixNinja" \
 		../llvm
 }
-export -f llvm_configure
+export -f llvm_configure_ninja
+
+function llvm_configure_autoconf()
+{
+	# NOTE:
+	# The LLVM project no longer supports building with configure & make.
+
+	# Please migrate to the CMake-based build system.
+	# For more information see: http://llvm.org/docs/CMake.html
+	
+	# To build with autoconf
+
+	# CMake is not installed , it is still possible to build LLVM and LLDB 
+	# using the autoconf build system. 
+	# Clang or GCC 4.8+, 
+	# run:
+	# generates unix makefiles
+	
+
+	# run configure with
+	# 	-enable-libcpp
+	# 	to build with libc++ instead of libstdc++ (the default)
+	#	--enable-optimized
+	#	to build a release version of LLDB
+	# 	--enable-shared
+
+	# building with a GCC that isn't the default gcc/g++, like gcc-4.9/g++-4.9
+
+	#../llvm/configure \
+	#	CC=gcc-4.9 \
+	#	CXX=g++-4.9 \
+
+	../llvm/configure \
+		--enable-shared
+}
+export -f llvm_configure_autoconf
 
 function llvm_build_unix_makefiles()
 {
-		
-	#time make -j 3
-	
 	# After CMake has finished running, proceed to use IDE project files, 
 	# or start the build from the build directory:
 
@@ -71,44 +111,52 @@ function llvm_build_unix_makefiles()
 
 	# The underlying build tool can be invoked directly, of course, but 
 	# the --build option is portable.
+
 	cmake \
 		--build \
-		.
+		./
 
+	# time \
+	#	make -j 3	
+	# make \
+	#	CC=gcc-4.9 \
+	#	CXX=g++-4.9
 	#------------------------------------------------------------------
 	
+	# running in a system that doesn't have a lot of RAM (less than 4GB), 
+	# disable debug symbols by specifying 
+	#	DEBUG_SYMBOLS=0 when running make. 
+	# enable this if build fails to link clang 
+	# (the linker will get a SIGKILL and exit with status 9).
+
+	# make DEBUG_SYMBOLS=0
+
+	# Note that once both LLVM and Clang have been configured and built 
+	# it is not necessary to perform a top-level make to rebuild changes 
+	# made only to LLDB. 
+	# run make from the build/tools/lldb subdirectory
+	# To run the LLDB test suite, run:
+
+	make -C tools/lldb/test
+
 	ls -al Release+Asserts/bin
 	ls -al Release+Asserts/lib
-
-	cd ../	
 }
 export -f llvm_build_unix_makefiles
+
 
 function llvm_build_ninja()
 {
 	# Using CMake + Ninja
 
-	# Ninja is the fastest way to build LLDB! In order to use ninja, 
-	# you need to have recent versions of CMake and ninja on your system. 
-	# To build using ninja:
+	# Ninja is the fastest way to build LLDB! 
+	# use recent versions of CMake and ninja 
 
-	cmake \
-		-G Ninja \
-		../llvm/
 	ninja lldb 
 	ninja check-lldb
 
 	#Using CMake + Unix Makefiles
 
-	# If you do not have Ninja, you can still use CMake to generate Unix 
-	# Makefiles that build LLDB:
-
-	cmake .. 
-	make 
-	# cmake \
-	#	-G "Unix Makefiles" \
-	#	../llvm/
-		
 	#cmake \
 	#	-DCMAKE_CXX_COMPILER=/path/to/clang++ \
 	#	-DCMAKE_C_COMPILER=/path/to/clang \
@@ -130,27 +178,36 @@ export -f llvm_check
 #=============================================================================
 function download_source_git_llvm()
 {
-	git clone --recursive \
-		http://llvm.org/git/llvm.git
+	if [ !-d "llvm" ] ;
+	then
+		git clone --recursive \
+			http://llvm.org/git/llvm.git
+	fi
 	
 	cd llvm/tools
-	git clone --recursive \
-		http://llvm.org/git/clang.git
-
+	if [ ! -d "clang" ] ;
+	  then
+		git clone --recursive \
+			http://llvm.org/git/clang.git
+	fi
 	cd ../..
 	pwd
 	tree -d -L 1 ./llvm/tools/
 
 	cd llvm/projects
-	git clone \
-		http://llvm.org/git/test-suite.git
-	git clone \
-		http://llvm.org/git/compiler-rt.git
+	if [ ! -d "compiler-rt" ] ;
+	  then
+		git clone \
+			http://llvm.org/git/compiler-rt.git
+	fi
+	if [ ! -d "test-suite" ] ;
+	  then
+		git clone \
+			http://llvm.org/git/test-suite.git
+	fi
 
 	cd ../..
 	pwd
-	tree -d -L 1 ./llvm/tools/
-	tree -d -L 1 ./llvm/projects/
 }
 export -f download_source_git_llvm
 
@@ -161,47 +218,82 @@ function download_source_wget_llvm()
 	# Download the latest version of
 	# 	LLVM sources 
 	#	including clang (C frontend) and 
-	#	compiler RT from 
-	wget http://llvm.org/releases/3.8.0/llvm-3.8.0.src.tar.xz
-	wget http://llvm.org/releases/3.8.0/cfe-3.8.0.src.tar.xz
-	wget http://llvm.org/releases/3.8.0/compiler-rt-3.8.0.src.tar.xz
+	#	compiler RT from
 
-	# Extract the downloaded sources
-	tar xvf ./llvm-3.8.0.src.tar.xz
-	tar xvf ./cfe-3.8.0.src.tar.xz
-	tar xvf ./compiler-rt-3.8.0.src.tar.xz
+	#................................................................
+	FILE=llvm-$VERSION.src.tar.xz
+	if [ ! -f "$FILE" ];
+	  then
+		wget http://llvm.org/releases/$VERSION/$FILE
+	fi
+	if [ ! -f "$FILE" ];
+	  then
+		tar xvf $FILE
+	fi
+	if [ ! -d "./llvm/" ];
+	  then
+		mv ./llvm-$VERSION.src ./llvm/	
+	fi
 
-	mv ./llvm-3.8.0.src ./llvm/	
-	mv ./cfe-3.8.0.src ./clang
-	mv ./compiler-rt-3.8.0.src ./compiler-rt
+	#................................................................
+	FILE=cfe-$VERSION.src.tar.xz
+	if [ ! -f "$FILE" ];
+	  then
+		wget http://llvm.org/releases/$VERSION/$FILE
+	fi
+	if [ ! -f "$FILE" ];
+	  then
+		tar xvf $FILE
+	fi
+	if [ ! -d "./cfe-$VRESION.src/" ];
+	  then
+		mv ./cfe-$VRESION.src/ ./clang
+	fi
+	if [ ! -d "./llvm/projects/" ];
+	  then
+		mv ./clang/ ./llvm/tools/	
+	fi
+ 
+	#................................................................
+	FILE=compiler-rt-$VERSION.src.tar.xz
+	if [ ! -f "$FILE" ];
+	  then
+		wget http://llvm.org/releases/$VERSION/$FILE
+	fi
+	if [ ! -f "$FILE" ];
+	  then
+		tar xvf $FILE
+	fi
+	if [ ! -d "./compiler-rt-$VERSION.src/" ];
+	  then
+		mv ./compiler-rt-$VERSION.src/ ./compiler-rt/
+	fi
+	if [ ! -d "./llvm/projects/" ];
+	  then
+		mv ./compiler-rt/ ./llvm/projects/
+	fi
 
-	mv ./clang ./llvm/tools/	
-	mv ./compiler-rt ./llvm/projects/
-	
-	tree -d -L 1 ./llvm/tools/
-	tree -d -L 1 ./llvm/projects/
-	# 	|-- build (currently we are here)
-	#	|-- llvm-3.8.0
-	#	|   |-- projects
-	#	|   |   |-- compiler-rt
-	#	|   |-- tools
-	#	|   |   |-- clang
-	#	|-- cfe-3.8.0.src.tar.gz
-	#	|-- compiler-rt-3.8.0.src.tar.gz
-	#	|-- llvm-3.8.0.src.tar.gz
-
+	#................................................................
+	FILE=test-suite-$VERSION.src.tar.xz
+	if [ ! -f "$FILE" ];
+	  then
+		wget http://llvm.org/releases/$VERSION/$FILE
+	fi
+	if [ ! -f "$FILE" ];
+	  then
+		tar xvf $FILE
+	fi
+	if [ ! -d "./test-suite-$VERSION.src/" ];
+	  then
+		mv ./test-suite-$VERSION.src/ ./test-suite/
+	fi
+	if [ ! -d "./llvm/projects/" ];
+	  then
+		mv ./test-suite/ ./llvm/projects/
+	fi
 }
 export -f download_source_wget_llvm
-
-#download_source_git_llvm
-download_source_wget_llvm
 #=============================================================================
-
-llvm_configure
-llvm_build
-llvm_check
-
-
 
 
 #=============================================================================
@@ -218,7 +310,6 @@ function download_source_git_libcxx()
 
 	cd ../..
 	pwd
-	tree -d -L 1 ./llvm/projects/
 }
 export -f download_source_git_libcxx
 
@@ -237,11 +328,6 @@ function download_source_wget_libcxx()
 	mv ./libcxxabi/ ./llvm/projects/	
 }
 export -f download_source_wget_libcxx
-
-
-#download_source_git_libcxx
-download_source_wget_libcxx
-
 #=============================================================================
 
 
@@ -256,7 +342,6 @@ function download_source_git_lldb()
 
 	cd ../..
 	pwd
-	tree -d -L 1 ./llvm/tools/
 }
 export -f download_source_git_lldb
 
@@ -269,8 +354,6 @@ function download_source_wget_lldb()
 }
 export -f download_source_wget_lldb
 #=============================================================================
-#download_source_git_lldb
-download_source_wget_lldb
 
 
 #=============================================================================
@@ -284,7 +367,6 @@ function download_source_git_lld()
 
 	cd ../..
 	pwd
-	tree -d -L 1 ./llvm/tools/
 }
 export -f download_source_git_lld
 
@@ -297,9 +379,6 @@ function download_source_wget_lld()
 }
 export -f download_source_wget_lld
 #=============================================================================
-#download_source_git_lld
-download_source_wget_lld
-
 
 #=============================================================================
 function download_source_git_libunwind()
@@ -311,7 +390,6 @@ function download_source_git_libunwind()
 
 	cd ../..
 	pwd
-	tree -d -L 1 ./llvm/projects/
 }
 export -f download_source_git_libunwind
 
@@ -324,8 +402,6 @@ function download_source_wget_libunwind()
 }
 export -f download_source_wget_libunwind
 #=============================================================================
-#download_source_git_libunwind
-download_source_wget_libunwind
 
 #=============================================================================
 function download_source_git_clang_tools_extra()
@@ -338,7 +414,6 @@ function download_source_git_clang_tools_extra()
 
 	cd ../../../../
 	pwd
-	tree -d -L 1 llvm/tools/clang/tools/
 }
 export -f download_source_git_clang_tools_extra
 
@@ -351,8 +426,10 @@ function download_source_wget_clang_tools_extra()
 }
 export -f download_source_wget_clang_tools_extra
 #=============================================================================
-#download_source_git_clang_tools_extra
-download_source_wget_clang_tools_extra
+
+
+
+
 
 
 function lldb_check()
@@ -449,5 +526,55 @@ function llvm_install_local_user
 }
 export -f llvm_install_local_user
 
+
+
+
+
+
+
+
+#download_source_git_llvm
+download_source_wget_llvm
+
+#download_source_git_lldb
+download_source_wget_lldb
+
+#download_source_git_lld
+download_source_wget_lld
+
+#download_source_git_clang_tools_extra
+#download_source_wget_clang_tools_extra
+
+#download_source_git_libcxx
+#download_source_wget_libcxx
+
+
+#download_source_git_libunwind
+#download_source_wget_libunwind
+
+
+tree -d -L 1 ./llvm/tools/
+tree -d -L 1 ./llvm/projects/
+# 	|-- build (currently we are here)
+#	|-- llvm-3.8.0
+#	|   |-- projects
+#	|   |   |-- compiler-rt
+#	|   |-- tools
+#	|   |   |-- clang
+#	|-- cfe-3.8.0.src.tar.gz
+#	|-- compiler-rt-3.8.0.src.tar.gz
+#	|-- llvm-3.8.0.src.tar.gz
+
+
+
+
+#llvm_configure_unix_makefiles
+#llvm_build_unix_makefiles
+
+
+#llvm_configure_ninja
+#llvm_build_ninja
+
+llvm_check
 
 
