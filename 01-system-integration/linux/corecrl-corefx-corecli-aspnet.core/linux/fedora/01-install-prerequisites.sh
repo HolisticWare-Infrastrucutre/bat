@@ -27,7 +27,10 @@ function install_prerequisites()
 		python \
 		libedit \
 		
-		
+	# fedora bug ninja is packaged and installed as	
+	# /usr/bin/ninja-build
+	sudo ln -s /usr/bin/ninja-build /usr/bin/ninja
+
 	# lldb
 	sudo $PACKAGE_MANAGER install -y \
 		libedit-devel \
