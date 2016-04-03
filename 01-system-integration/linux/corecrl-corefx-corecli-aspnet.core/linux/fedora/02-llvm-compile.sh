@@ -496,10 +496,25 @@ export -f download_source_git_clang_tools_extra
 
 function download_source_wget_clang_tools_extra()
 {
-	wget http://llvm.org/releases/3.8.0/clang-tools-extra-3.8.0.src.tar.xz
-	tar xvf ./clang-tools-extra-3.8.0.src.tar.xz
-	mv ./clang-tools-extra-3.8.0.src ./clang-tools-extra/
-	mv ./clang-tools-extra/ ./llvm/tools/extra/
+	#................................................................
+	FILE=clang-tools-extra-$VERSION.src.tar.xz
+	if [ ! -f "$FILE" ];
+	  then
+		wget http://llvm.org/releases/$VERSION/$FILE
+	fi
+	if [ ! -f "$FILE" ];
+	  then
+		tar xvf $FILE
+	fi
+	if [ ! -d "./clang-tools-extra-$VERSION.src/" ];
+	  then
+		mv ./clang-tools-extra-$VERSION.src/ ./extra/
+	fi
+	if [ ! -d "./llvm/tools/" ];
+	  then
+		mkdir ./llvm/tools/
+	fi
+	mv ./extra/ ./llvm/tools/
 }
 export -f download_source_wget_clang_tools_extra
 #=============================================================================
@@ -620,11 +635,10 @@ download_source_wget_lldb
 download_source_wget_lld
 
 #download_source_git_clang_tools_extra
-#download_source_wget_clang_tools_extra
+download_source_wget_clang_tools_extra
 
 #download_source_git_libcxx
-#download_source_wget_libcxx
-
+download_source_wget_libcxx
 
 #download_source_git_libunwind
 #download_source_wget_libunwind
