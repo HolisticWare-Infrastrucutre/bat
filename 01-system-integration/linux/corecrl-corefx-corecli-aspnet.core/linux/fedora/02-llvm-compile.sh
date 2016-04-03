@@ -379,10 +379,25 @@ export -f download_source_git_lldb
 
 function download_source_wget_lldb()
 {
-	wget http://llvm.org/releases/3.8.0/lldb-3.8.0.src.tar.xz
-	tar xvf ./lldb-3.8.0.src.tar.xz
-	mv ./lldb-3.8.0.src ./lldb/
-	mv ./lldb ./llvm/tools/	
+	#................................................................
+	FILE=lldb-$VERSION.src.tar.xz
+	if [ ! -f "$FILE" ];
+	  then
+		wget http://llvm.org/releases/$VERSION/$FILE
+	fi
+	if [ ! -f "$FILE" ];
+	  then
+		tar xvf $FILE
+	fi
+	if [ ! -d "./lldb-$VERSION.src/" ];
+	  then
+		mv ./lldb-$VERSION.src/ ./lldb/
+	fi
+	if [ ! -d "./llvm/tools/" ];
+	  then
+		mkdir ./llvm/tools/
+	fi
+	mv ./lldb/ ./llvm/tools/
 }
 export -f download_source_wget_lldb
 #=============================================================================
@@ -404,10 +419,25 @@ export -f download_source_git_lld
 
 function download_source_wget_lld()
 {
-	wget http://llvm.org/releases/3.8.0/lld-3.8.0.src.tar.xz
-	tar xvf ./lld-3.8.0.src.tar.xz
-	mv ./lld-3.8.0.src ./lld/
-	mv ./lldb ./llvm/tools/	
+	#................................................................
+	FILE=lld-$VERSION.src.tar.xz
+	if [ ! -f "$FILE" ];
+	  then
+		wget http://llvm.org/releases/$VERSION/$FILE
+	fi
+	if [ ! -f "$FILE" ];
+	  then
+		tar xvf $FILE
+	fi
+	if [ ! -d "./lld-$VERSION.src/" ];
+	  then
+		mv ./lld-$VERSION.src/ ./lld/
+	fi
+	if [ ! -d "./llvm/tools/" ];
+	  then
+		mkdir ./lld/tools/
+	fi
+	mv ./lld/ ./lld/tools/
 }
 export -f download_source_wget_lld
 #=============================================================================
@@ -427,10 +457,25 @@ export -f download_source_git_libunwind
 
 function download_source_wget_libunwind()
 {
-	wget http://llvm.org/releases/3.8.0/libunwind-3.8.0.src.tar.xz
-	tar xvf ./libunwind-3.8.0.src.tar.xz
-	mv ./libunwind-3.8.0.src ./libunwind/
-	mv ./libunwind ./llvm/projects/	
+	#................................................................
+	FILE=libunwind-$VERSION.src.tar.xz
+	if [ ! -f "$FILE" ];
+	  then
+		wget http://llvm.org/releases/$VERSION/$FILE
+	fi
+	if [ ! -f "$FILE" ];
+	  then
+		tar xvf $FILE
+	fi
+	if [ ! -d "./libunwind-$VERSION.src/" ];
+	  then
+		mv ./libunwind-$VERSION.src/ ./lld/
+	fi
+	if [ ! -d "./libunwind/projects/" ];
+	  then
+		mkdir ./libunwind/projects/
+	fi
+	mv ./libunwind/ ./libunwind/projects/
 }
 export -f download_source_wget_libunwind
 #=============================================================================
