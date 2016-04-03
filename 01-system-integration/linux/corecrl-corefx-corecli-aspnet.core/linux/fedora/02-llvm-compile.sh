@@ -249,10 +249,11 @@ function download_source_wget_llvm()
 	  then
 		mv ./cfe-$VRESION.src/ ./clang
 	fi
-	if [ ! -d "./llvm/projects/" ];
+	if [ ! -d "./llvm/tools/" ];
 	  then
-		mv ./clang/ ./llvm/tools/	
+		mkdir ./llvm/tools/
 	fi
+	mv ./clang/ ./llvm/tools/	
  
 	#................................................................
 	FILE=compiler-rt-$VERSION.src.tar.xz
@@ -270,8 +271,9 @@ function download_source_wget_llvm()
 	fi
 	if [ ! -d "./llvm/projects/" ];
 	  then
-		mv ./compiler-rt/ ./llvm/projects/
+		mkdir ./llvm/projects/
 	fi
+	mv ./compiler-rt/ ./llvm/projects/
 
 	#................................................................
 	FILE=test-suite-$VERSION.src.tar.xz
@@ -289,8 +291,9 @@ function download_source_wget_llvm()
 	fi
 	if [ ! -d "./llvm/projects/" ];
 	  then
-		mv ./test-suite/ ./llvm/projects/
+		mkdir ./llvm/projects/
 	fi
+	mv ./test-suite/ ./llvm/projects/
 }
 export -f download_source_wget_llvm
 #=============================================================================
@@ -315,17 +318,46 @@ export -f download_source_git_libcxx
 
 function download_source_wget_libcxx()
 {
-	wget http://llvm.org/releases/3.8.0/libcxx-3.8.0.src.tar.xz	
-	wget http://llvm.org/releases/3.8.0/libcxxabi-3.8.0.src.tar.xz
-
-	tar xvf ./libcxx-3.8.0.src.tar.xz	
-	tar xvf ./libcxxabi-3.8.0.src.tar.xz
-
-	mv ./libcxx-3.8.0.src ./libcxx/
-	mv ./libcxxabi-3.8.0.src ./libcxxabi/
-
+	#................................................................
+	FILE=libcxx-$VERSION.src.tar.xz
+	if [ ! -f "$FILE" ];
+	  then
+		wget http://llvm.org/releases/$VERSION/$FILE
+	fi
+	if [ ! -f "$FILE" ];
+	  then
+		tar xvf $FILE
+	fi
+	if [ ! -d "./libcxx-$VERSION.src/" ];
+	  then
+		mv ./libcxx-$VERSION.src/ ./libcxx/
+	fi
+	if [ ! -d "./llvm/projects/" ];
+	  then
+		mkdir ./llvm/projects/
+	fi
 	mv ./libcxx/ ./llvm/projects/
-	mv ./libcxxabi/ ./llvm/projects/	
+
+	#................................................................
+	FILE=libcxxabi-$VERSION.src.tar.xz
+	if [ ! -f "$FILE" ];
+	  then
+		wget http://llvm.org/releases/$VERSION/$FILE
+	fi
+	if [ ! -f "$FILE" ];
+	  then
+		tar xvf $FILE
+	fi
+	if [ ! -d "./libcxxabi-$VERSION.src/" ];
+	  then
+		mv ./libcxxabi-$VERSION.src/ ./libcxxabi/
+	fi
+	if [ ! -d "./llvm/projects/" ];
+	  then
+		mkdir ./llvm/projects/
+	fi
+	mv ./libcxxabi/ ./llvm/projects/
+
 }
 export -f download_source_wget_libcxx
 #=============================================================================
@@ -553,10 +585,10 @@ download_source_wget_lld
 #download_source_wget_libunwind
 
 
-tree -d -L 1 ./llvm/tools/
-tree -d -L 1 ./llvm/projects/
-# 	|-- build (currently we are here)
-#	|-- llvm-3.8.0
+tree -d -L 3 ./
+
+# 	|-- llvm-build-root
+#	|-- llvm
 #	|   |-- projects
 #	|   |   |-- compiler-rt
 #	|   |-- tools
@@ -567,6 +599,8 @@ tree -d -L 1 ./llvm/projects/
 
 
 
+tree -d -L 1 ./llvm/tools/
+tree -d -L 1 ./llvm/projects/
 
 #llvm_configure_unix_makefiles
 #llvm_build_unix_makefiles
