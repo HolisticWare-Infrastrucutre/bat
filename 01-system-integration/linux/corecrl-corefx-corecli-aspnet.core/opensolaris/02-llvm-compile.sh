@@ -170,6 +170,7 @@ function llvm_compile()
 	# for instructions, see the Usage section, below.
 
 	cmake \
+		-DCXX=="-std=c++11" \
 		-DCMAKE_CXX_FLAGS="-std=c++11" \
 		-DLLVM_ENABLE_CXX11=ON \
 		-DCMAKE_BUILD_TYPE=RelWithDebInfo \
