@@ -1,7 +1,7 @@
 @echo off
 
 set APPS=^
-	chocolateygui \6
+	chocolateygui ^
 	filezilla ^
 	powershell ^
 	dotnet3.5 ^
