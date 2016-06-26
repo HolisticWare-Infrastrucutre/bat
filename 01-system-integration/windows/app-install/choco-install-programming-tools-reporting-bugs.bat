@@ -1,20 +1,20 @@
 @echo off
 
 set APPS=^
-	greenshot ^
-	screenpresso ^
 	snagit ^
 	
+::	greenshot ^
+::	screenpresso ^
 
 ::===================================================================
 ::choco install %APPS%
-set COMMAND=cinst --yes --force --verbose --debug
+:: set COMMAND=cinst --yes --force --verbose --debug
 
 :: chocolatey update packageName [-source ...] [-prerelease]
 ::set COMMAND=cup  --yes --force --verbose --debug
 
 ::choco uninstall %APPS%
-::set COMMAND=cuninst --yes --force --verbose --debug
+set COMMAND=cuninst --yes --force --verbose --debug
 ::===================================================================
 	
 %COMMAND% %APPS%
