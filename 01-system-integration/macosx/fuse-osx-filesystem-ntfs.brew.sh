@@ -17,7 +17,6 @@ ls -al /usr/local/Cellar/ntfs-3g/2016.2.22/sbin/mount_ntfs
 ls -al /usr/local/Cellar/ntfs-3g
 
 # sudo rm /sbin/mount_ntfs
-ln -s /usr/local/Cellar/ntfs-3g/2016.2.22/sbin/mount_ntfs /sbin/mount_ntfs
 sudo ln -s /usr/local/Cellar/ntfs-3g/2016.2.22/sbin/mount_ntfs /sbin/mount_ntfs
 
 
