@@ -21,12 +21,8 @@ sudo apt-get install -y \
 sudo sh /media/cdrom/autorun.sh
 #-------------------------------------------------------------------------
 
-sudo apt-get install -y \
-    git \
 
 #    gnome-tweak-tool \
-
-gsettings set org.gnome.desktop.background show-desktop-icons true
 
 
 git clone --recursive \
