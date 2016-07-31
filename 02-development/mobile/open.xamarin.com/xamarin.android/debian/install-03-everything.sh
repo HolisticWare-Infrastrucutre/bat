@@ -26,6 +26,10 @@ function install_tools_core()
 function install_tools_productivity()
 {
     # gcc and make to compile VirtualBox guest additions
+    sudo apt-get update -y
+    sudo apt-cache search linux-headers-$(uname -r)
+    sudo apt-get install -y \
+            linux-headers-$(uname -r)
 
     sudo apt-get install -y \
             gcc \
