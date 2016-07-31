@@ -17,6 +17,10 @@ function install_tools_core()
     # edit /etc/sudoers        
     su
     nano /etc/sudoers
+
+    git config --global user.name "Miljenko Cvjeko moljac mel"
+    git config --global user.email mcvjetko@holisticware.net
+
 }
 
 function install_tools_productivity()
