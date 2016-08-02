@@ -67,7 +67,7 @@ function configure_os_productivity()
         org.gnome.desktop.screensaver lock-delay 9000
 }
 
-function install_clang()
+function install_tools_to_compile_xamarin_android_clang()
 {
     echo \
         "
@@ -92,7 +92,7 @@ function install_clang()
     clang-3.8 -v
 }
 
-function install_java()
+function install_tools_to_compile_xamarin_android_java()
 {
     echo \
         "
@@ -119,7 +119,7 @@ function install_java()
 }
 
 
-function install_mono_from_packages()
+function install_tools_to_compile_xamarin_android_mono_from_packages()
 {
     sudo apt-key adv \
         --keyserver hkp://keyserver.ubuntu.com:80 \
@@ -142,7 +142,7 @@ function install_mono_from_packages()
 }
 
 
-function install_tools_xamarin_android()
+function install_tools_to_compile_xamarin_android_diverse()
 {
     sudo aptitude install -y \
         libgdiplus \
@@ -172,6 +172,13 @@ function install_tools_xamarin_android()
 
 function compile_xamarin_android()
 {
+    # error: RPC failed; result=56, HTTP code
+    # fatal: The remote end hung up unexpectedly
+    # fatal: early EOF
+    # fatal: index-pack failed
+
+    git config --global http.postBuffer 524288000
+
     git clone https://github.com/xamarin/xamarin-android.git
     cd xamarin-android/
     git submodule init
@@ -186,11 +193,15 @@ function compile_xamarin_android()
 }
 
 
+install_tools_core
+install_tools_productivity
+configure_os_productivity
 
-    error: RPC failed; result=56, HTTP code
-    fatal: The remote end hung up unexpectedly
-    fatal: early EOF
-    fatal: index-pack failed
+install_tools_to_compile_xamarin_android_clang
+install_tools_to_compile_xamarin_android_java
+install_tools_to_compile_xamarin_android_mono_from_packages
+install_tools_to_compile_xamarin_android_diverse
 
-    git config --global http.postBuffer 524288000
+compile_xamarin_android
+
 
