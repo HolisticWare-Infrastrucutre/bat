@@ -1,0 +1,541 @@
+xbuild /p:Configuration=Debug 
+XBuild Engine Version 14.0
+Mono, Version 4.4.1.0
+Copyright (C) 2005-2013 Various Mono authors
+
+Build started 8/3/2016 8:45:54 AM.
+__________________________________________________
+/home/moljac/Desktop/xamarin-android/Xamarin.Android.sln:  warning : /home/moljac/Desktop/xamarin-android/build-tools/android-toolchain/android-toolchain.mdproj: android-toolchain.targets: Project file could not be imported, it was being imported by /home/moljac/Desktop/xamarin-android/build-tools/android-toolchain/android-toolchain.mdproj: ../../Configuration.props: Project file could not be imported, it was being imported by /home/moljac/Desktop/xamarin-android/build-tools/android-toolchain/android-toolchain.targets: /home/moljac/Desktop/xamarin-android/Configuration.props could not import "$(MSBuildThisFileDirectory)Configuration.OperatingSystem.props"
+/home/moljac/Desktop/xamarin-android/Xamarin.Android.sln:  warning : /home/moljac/Desktop/xamarin-android/build-tools/mono-runtimes/mono-runtimes.mdproj: mono-runtimes.targets: Project file could not be imported, it was being imported by /home/moljac/Desktop/xamarin-android/build-tools/mono-runtimes/mono-runtimes.mdproj: ../../Configuration.props: Project file could not be imported, it was being imported by /home/moljac/Desktop/xamarin-android/build-tools/mono-runtimes/mono-runtimes.targets: /home/moljac/Desktop/xamarin-android/Configuration.props could not import "$(MSBuildThisFileDirectory)Configuration.OperatingSystem.props"
+/home/moljac/Desktop/xamarin-android/Xamarin.Android.sln:  warning : /home/moljac/Desktop/xamarin-android/build-tools/libzip/libzip.mdproj: ../../Configuration.props: Project file could not be imported, it was being imported by /home/moljac/Desktop/xamarin-android/build-tools/libzip/libzip.mdproj: /home/moljac/Desktop/xamarin-android/Configuration.props could not import "$(MSBuildThisFileDirectory)Configuration.OperatingSystem.props"
+/home/moljac/Desktop/xamarin-android/external/Java.Interop/src/Xamarin.Android.NamingCustomAttributes/Xamarin.Android.NamingCustomAttributes.shproj:  warning : Could not find project file /usr/lib/mono/xbuild/Microsoft/VisualStudio/v/CodeSharing/Microsoft.CodeSharing.Common.Default.props, to import. Ignoring.
+/home/moljac/Desktop/xamarin-android/external/Java.Interop/src/Xamarin.Android.NamingCustomAttributes/Xamarin.Android.NamingCustomAttributes.shproj:  warning : Could not find project file /usr/lib/mono/xbuild/Microsoft/VisualStudio/v/CodeSharing/Microsoft.CodeSharing.Common.props, to import. Ignoring.
+/home/moljac/Desktop/xamarin-android/external/Java.Interop/src/Xamarin.Android.NamingCustomAttributes/Xamarin.Android.NamingCustomAttributes.shproj:  warning : Could not find project file /usr/lib/mono/xbuild/Microsoft/VisualStudio/v/CodeSharing/Microsoft.CodeSharing.CSharp.targets, to import. Ignoring.
+/home/moljac/Desktop/xamarin-android/external/Java.Interop/src/Java.Interop.Tools.TypeNameMappings/Java.Interop.Tools.TypeNameMappings.shproj:  warning : Could not find project file /usr/lib/mono/xbuild/Microsoft/VisualStudio/v/CodeSharing/Microsoft.CodeSharing.Common.Default.props, to import. Ignoring.
+/home/moljac/Desktop/xamarin-android/external/Java.Interop/src/Java.Interop.Tools.TypeNameMappings/Java.Interop.Tools.TypeNameMappings.shproj:  warning : Could not find project file /usr/lib/mono/xbuild/Microsoft/VisualStudio/v/CodeSharing/Microsoft.CodeSharing.Common.props, to import. Ignoring.
+/home/moljac/Desktop/xamarin-android/external/Java.Interop/src/Java.Interop.Tools.TypeNameMappings/Java.Interop.Tools.TypeNameMappings.shproj:  warning : Could not find project file /usr/lib/mono/xbuild/Microsoft/VisualStudio/v/CodeSharing/Microsoft.CodeSharing.CSharp.targets, to import. Ignoring.
+/home/moljac/Desktop/xamarin-android/Xamarin.Android.sln:  warning : /home/moljac/Desktop/xamarin-android/src/Mono.Android/Mono.Android.csproj: ../../Configuration.props: Project file could not be imported, it was being imported by /home/moljac/Desktop/xamarin-android/src/Mono.Android/Mono.Android.csproj: /home/moljac/Desktop/xamarin-android/Configuration.props could not import "$(MSBuildThisFileDirectory)Configuration.OperatingSystem.props"
+/home/moljac/Desktop/xamarin-android/Xamarin.Android.sln:  warning : /home/moljac/Desktop/xamarin-android/src/Mono.Android.Export/Mono.Android.Export.csproj: ../../Configuration.props: Project file could not be imported, it was being imported by /home/moljac/Desktop/xamarin-android/src/Mono.Android.Export/Mono.Android.Export.csproj: /home/moljac/Desktop/xamarin-android/Configuration.props could not import "$(MSBuildThisFileDirectory)Configuration.OperatingSystem.props"
+/home/moljac/Desktop/xamarin-android/Xamarin.Android.sln:  warning : /home/moljac/Desktop/xamarin-android/src/Xamarin.Android.Build.Tasks/Xamarin.Android.Build.Tasks.csproj: ../../Configuration.props: Project file could not be imported, it was being imported by /home/moljac/Desktop/xamarin-android/src/Xamarin.Android.Build.Tasks/Xamarin.Android.Build.Tasks.csproj: /home/moljac/Desktop/xamarin-android/Configuration.props could not import "$(MSBuildThisFileDirectory)Configuration.OperatingSystem.props"
+/home/moljac/Desktop/xamarin-android/Xamarin.Android.sln:  warning : /home/moljac/Desktop/xamarin-android/src/monodroid/monodroid.mdproj: ../../Configuration.props: Project file could not be imported, it was being imported by /home/moljac/Desktop/xamarin-android/src/monodroid/monodroid.mdproj: /home/moljac/Desktop/xamarin-android/Configuration.props could not import "$(MSBuildThisFileDirectory)Configuration.OperatingSystem.props"
+/home/moljac/Desktop/xamarin-android/Xamarin.Android.sln:  warning : /home/moljac/Desktop/xamarin-android/tools/api-xml-adjuster/api-xml-adjuster.csproj: ../../Configuration.props: Project file could not be imported, it was being imported by /home/moljac/Desktop/xamarin-android/tools/api-xml-adjuster/api-xml-adjuster.csproj: /home/moljac/Desktop/xamarin-android/Configuration.props could not import "$(MSBuildThisFileDirectory)Configuration.OperatingSystem.props"
+/home/moljac/Desktop/xamarin-android/Xamarin.Android.sln:  warning : /home/moljac/Desktop/xamarin-android/src/Xamarin.Android.NUnitLite/Xamarin.Android.NUnitLite.csproj: ../../Configuration.props: Project file could not be imported, it was being imported by /home/moljac/Desktop/xamarin-android/src/Xamarin.Android.NUnitLite/Xamarin.Android.NUnitLite.csproj: /home/moljac/Desktop/xamarin-android/Configuration.props could not import "$(MSBuildThisFileDirectory)Configuration.OperatingSystem.props"
+/home/moljac/Desktop/xamarin-android/Xamarin.Android.sln:  warning : /home/moljac/Desktop/xamarin-android/src/Xamarin.Android.Build.Tasks/Tests/Xamarin.ProjectTools/Xamarin.ProjectTools.csproj: ../../../../Configuration.props: Project file could not be imported, it was being imported by /home/moljac/Desktop/xamarin-android/src/Xamarin.Android.Build.Tasks/Tests/Xamarin.ProjectTools/Xamarin.ProjectTools.csproj: /home/moljac/Desktop/xamarin-android/Configuration.props could not import "$(MSBuildThisFileDirectory)Configuration.OperatingSystem.props"
+/home/moljac/Desktop/xamarin-android/Xamarin.Android.sln:  warning : /home/moljac/Desktop/xamarin-android/src/Xamarin.Android.Build.Tasks/Tests/Xamarin.Android.Build.Tests/Xamarin.Android.Build.Tests.csproj: ../../../../Configuration.props: Project file could not be imported, it was being imported by /home/moljac/Desktop/xamarin-android/src/Xamarin.Android.Build.Tasks/Tests/Xamarin.Android.Build.Tests/Xamarin.Android.Build.Tests.csproj: /home/moljac/Desktop/xamarin-android/Configuration.props could not import "$(MSBuildThisFileDirectory)Configuration.OperatingSystem.props"
+/home/moljac/Desktop/xamarin-android/Xamarin.Android.sln:  warning : /home/moljac/Desktop/xamarin-android/src/Mono.Android/Test/Mono.Android-Tests.csproj: ../../../Configuration.props: Project file could not be imported, it was being imported by /home/moljac/Desktop/xamarin-android/src/Mono.Android/Test/Mono.Android-Tests.csproj: /home/moljac/Desktop/xamarin-android/Configuration.props could not import "$(MSBuildThisFileDirectory)Configuration.OperatingSystem.props"
+/home/moljac/Desktop/xamarin-android/Xamarin.Android.sln:  warning : /home/moljac/Desktop/xamarin-android/build-tools/unix-distribution-setup/unix-distribution-setup.mdproj: ../../Configuration.props: Project file could not be imported, it was being imported by /home/moljac/Desktop/xamarin-android/build-tools/unix-distribution-setup/unix-distribution-setup.mdproj: /home/moljac/Desktop/xamarin-android/Configuration.props could not import "$(MSBuildThisFileDirectory)Configuration.OperatingSystem.props"
+/home/moljac/Desktop/xamarin-android/Xamarin.Android.sln:  warning : /home/moljac/Desktop/xamarin-android/src/Mono.Posix/Mono.Posix.csproj: ../../Configuration.props: Project file could not be imported, it was being imported by /home/moljac/Desktop/xamarin-android/src/Mono.Posix/Mono.Posix.csproj: /home/moljac/Desktop/xamarin-android/Configuration.props could not import "$(MSBuildThisFileDirectory)Configuration.OperatingSystem.props"
+/home/moljac/Desktop/xamarin-android/Xamarin.Android.sln:  warning : /home/moljac/Desktop/xamarin-android/src/Mono.Data.Sqlite/Mono.Data.Sqlite.csproj: ../../Configuration.props: Project file could not be imported, it was being imported by /home/moljac/Desktop/xamarin-android/src/Mono.Data.Sqlite/Mono.Data.Sqlite.csproj: /home/moljac/Desktop/xamarin-android/Configuration.props could not import "$(MSBuildThisFileDirectory)Configuration.OperatingSystem.props"
+/home/moljac/Desktop/xamarin-android/Xamarin.Android.sln:  warning : /home/moljac/Desktop/xamarin-android/src/sqlite-xamarin/sqlite-xamarin.mdproj: ../../Configuration.props: Project file could not be imported, it was being imported by /home/moljac/Desktop/xamarin-android/src/sqlite-xamarin/sqlite-xamarin.mdproj: /home/moljac/Desktop/xamarin-android/Configuration.props could not import "$(MSBuildThisFileDirectory)Configuration.OperatingSystem.props"
+/home/moljac/Desktop/xamarin-android/Xamarin.Android.sln:  warning : /home/moljac/Desktop/xamarin-android/src/OpenTK-1.0/OpenTK.csproj: ../../Configuration.props: Project file could not be imported, it was being imported by /home/moljac/Desktop/xamarin-android/src/OpenTK-1.0/OpenTK.csproj: /home/moljac/Desktop/xamarin-android/Configuration.props could not import "$(MSBuildThisFileDirectory)Configuration.OperatingSystem.props"
+/home/moljac/Desktop/xamarin-android/Xamarin.Android.sln:  warning : /home/moljac/Desktop/xamarin-android/src/System.Drawing.Primitives/System.Drawing.Primitives.csproj: ../../Configuration.props: Project file could not be imported, it was being imported by /home/moljac/Desktop/xamarin-android/src/System.Drawing.Primitives/System.Drawing.Primitives.csproj: /home/moljac/Desktop/xamarin-android/Configuration.props could not import "$(MSBuildThisFileDirectory)Configuration.OperatingSystem.props"
+Project "/home/moljac/Desktop/xamarin-android/Xamarin.Android.sln" (default target(s)):
+	Target ValidateSolutionConfiguration:
+		Building solution configuration "Debug|AnyCPU".
+	Target Build:
+/home/moljac/Desktop/xamarin-android/build-tools/android-toolchain/android-toolchain.mdproj: error : /home/moljac/Desktop/xamarin-android/build-tools/android-toolchain/android-toolchain.mdproj: android-toolchain.targets: Project file could not be imported, it was being imported by /home/moljac/Desktop/xamarin-android/build-tools/android-toolchain/android-toolchain.mdproj: ../../Configuration.props: Project file could not be imported, it was being imported by /home/moljac/Desktop/xamarin-android/build-tools/android-toolchain/android-toolchain.targets: /home/moljac/Desktop/xamarin-android/Configuration.props could not import "$(MSBuildThisFileDirectory)Configuration.OperatingSystem.props"
+		Project "/home/moljac/Desktop/xamarin-android/src/Xamarin.Android.Tools.BootstrapTasks/Xamarin.Android.Tools.BootstrapTasks.csproj" (default target(s)):
+			Target PrepareForBuild:
+				Configuration: Debug Platform: AnyCPU
+			Target GenerateSatelliteAssemblies:
+			No input files were specified for target GenerateSatelliteAssemblies, skipping.
+			Target GenerateTargetFrameworkMonikerAttribute:
+			Skipping target "GenerateTargetFrameworkMonikerAttribute" because its outputs are up-to-date.
+			Target CoreCompile:
+			Skipping target "CoreCompile" because its outputs are up-to-date.
+			Target _CopyDeployFilesToOutputDirectoryPreserveNewest:
+			Skipping target "_CopyDeployFilesToOutputDirectoryPreserveNewest" because its outputs are up-to-date.
+		Done building project "/home/moljac/Desktop/xamarin-android/src/Xamarin.Android.Tools.BootstrapTasks/Xamarin.Android.Tools.BootstrapTasks.csproj".
+/home/moljac/Desktop/xamarin-android/build-tools/mono-runtimes/mono-runtimes.mdproj: error : /home/moljac/Desktop/xamarin-android/build-tools/mono-runtimes/mono-runtimes.mdproj: mono-runtimes.targets: Project file could not be imported, it was being imported by /home/moljac/Desktop/xamarin-android/build-tools/mono-runtimes/mono-runtimes.mdproj: ../../Configuration.props: Project file could not be imported, it was being imported by /home/moljac/Desktop/xamarin-android/build-tools/mono-runtimes/mono-runtimes.targets: /home/moljac/Desktop/xamarin-android/Configuration.props could not import "$(MSBuildThisFileDirectory)Configuration.OperatingSystem.props"
+/home/moljac/Desktop/xamarin-android/build-tools/libzip/libzip.mdproj: error : /home/moljac/Desktop/xamarin-android/build-tools/libzip/libzip.mdproj: ../../Configuration.props: Project file could not be imported, it was being imported by /home/moljac/Desktop/xamarin-android/build-tools/libzip/libzip.mdproj: /home/moljac/Desktop/xamarin-android/Configuration.props could not import "$(MSBuildThisFileDirectory)Configuration.OperatingSystem.props"
+		Project "/home/moljac/Desktop/xamarin-android/build-tools/jnienv-gen/jnienv-gen.csproj" (default target(s)):
+			Target PrepareForBuild:
+				Configuration: Debug Platform: AnyCPU
+			Target GenerateSatelliteAssemblies:
+			No input files were specified for target GenerateSatelliteAssemblies, skipping.
+			Target GenerateTargetFrameworkMonikerAttribute:
+			Skipping target "GenerateTargetFrameworkMonikerAttribute" because its outputs are up-to-date.
+			Target CoreCompile:
+			Skipping target "CoreCompile" because its outputs are up-to-date.
+		Done building project "/home/moljac/Desktop/xamarin-android/build-tools/jnienv-gen/jnienv-gen.csproj".
+		Project "/home/moljac/Desktop/xamarin-android/build-tools/api-merge/api-merge.csproj" (default target(s)):
+			Target PrepareForBuild:
+				Configuration: Debug Platform: AnyCPU
+			Target GenerateSatelliteAssemblies:
+			No input files were specified for target GenerateSatelliteAssemblies, skipping.
+			Target GenerateTargetFrameworkMonikerAttribute:
+			Skipping target "GenerateTargetFrameworkMonikerAttribute" because its outputs are up-to-date.
+			Target CoreCompile:
+			Skipping target "CoreCompile" because its outputs are up-to-date.
+		Done building project "/home/moljac/Desktop/xamarin-android/build-tools/api-merge/api-merge.csproj".
+/home/moljac/Desktop/xamarin-android/src/Mono.Android/Mono.Android.csproj: error : /home/moljac/Desktop/xamarin-android/src/Mono.Android/Mono.Android.csproj: ../../Configuration.props: Project file could not be imported, it was being imported by /home/moljac/Desktop/xamarin-android/src/Mono.Android/Mono.Android.csproj: /home/moljac/Desktop/xamarin-android/Configuration.props could not import "$(MSBuildThisFileDirectory)Configuration.OperatingSystem.props"
+/home/moljac/Desktop/xamarin-android/src/Mono.Android.Export/Mono.Android.Export.csproj: error : /home/moljac/Desktop/xamarin-android/src/Mono.Android.Export/Mono.Android.Export.csproj: ../../Configuration.props: Project file could not be imported, it was being imported by /home/moljac/Desktop/xamarin-android/src/Mono.Android.Export/Mono.Android.Export.csproj: /home/moljac/Desktop/xamarin-android/Configuration.props could not import "$(MSBuildThisFileDirectory)Configuration.OperatingSystem.props"
+		Project "/home/moljac/Desktop/xamarin-android/src/Xamarin.Android.Tools.Aidl/Xamarin.Android.Tools.Aidl.csproj" (default target(s)):
+			Target PrepareForBuild:
+				Configuration: Debug Platform: AnyCPU
+			Target ResolveAssemblyReferences:
+/usr/lib/mono/4.5/Microsoft.Common.targets:  warning : Reference 'Mono.Cecil.Mdb' not resolved
+				For searchpath {CandidateAssemblyFiles}
+				Warning: {CandidateAssemblyFiles} not supported currently
+				For searchpath {HintPathFromItem}
+				Considered ../../packages/Mono.Cecil.0.9.6.1/lib/net40/Mono.Cecil.Mdb.dll, but it does not exist.
+				For searchpath {TargetFrameworkDirectory}
+				Considered target framework dir /usr/lib/mono/4.0-api, assembly named 'Mono.Cecil.Mdb' not found.
+				For searchpath {PkgConfig}
+				Considered Mono.Cecil.Mdb, but could not find in any pkg-config files.
+				For searchpath {GAC}
+				Considered Mono.Cecil.Mdb, but could not find in the GAC.
+				For searchpath {RawFileName}
+				Considered 'Mono.Cecil.Mdb' as a file, but the file does not exist
+				For searchpath ../../bin/Debug/lib/xbuild/Xamarin/Android/
+				Considered '/home/moljac/Desktop/xamarin-android/bin/Debug/lib/xbuild/Xamarin/Android/Mono.Cecil.Mdb' as a file, but the file does not exist
+				Considered '/home/moljac/Desktop/xamarin-android/bin/Debug/lib/xbuild/Xamarin/Android/Mono.Cecil.Mdb.exe' as a file, but the file does not exist
+				Considered '/home/moljac/Desktop/xamarin-android/bin/Debug/lib/xbuild/Xamarin/Android/Mono.Cecil.Mdb.dll' as a file, but the file does not exist
+/usr/lib/mono/4.5/Microsoft.Common.targets:  warning : Reference 'Mono.Cecil.Pdb' not resolved
+				For searchpath {CandidateAssemblyFiles}
+				Warning: {CandidateAssemblyFiles} not supported currently
+				For searchpath {HintPathFromItem}
+				Considered ../../packages/Mono.Cecil.0.9.6.1/lib/net40/Mono.Cecil.Pdb.dll, but it does not exist.
+				For searchpath {TargetFrameworkDirectory}
+				Considered target framework dir /usr/lib/mono/4.0-api, assembly named 'Mono.Cecil.Pdb' not found.
+				For searchpath {PkgConfig}
+				Considered Mono.Cecil.Pdb, but could not find in any pkg-config files.
+				For searchpath {GAC}
+				Considered Mono.Cecil.Pdb, but could not find in the GAC.
+				For searchpath {RawFileName}
+				Considered 'Mono.Cecil.Pdb' as a file, but the file does not exist
+				For searchpath ../../bin/Debug/lib/xbuild/Xamarin/Android/
+				Considered '/home/moljac/Desktop/xamarin-android/bin/Debug/lib/xbuild/Xamarin/Android/Mono.Cecil.Pdb' as a file, but the file does not exist
+				Considered '/home/moljac/Desktop/xamarin-android/bin/Debug/lib/xbuild/Xamarin/Android/Mono.Cecil.Pdb.exe' as a file, but the file does not exist
+				Considered '/home/moljac/Desktop/xamarin-android/bin/Debug/lib/xbuild/Xamarin/Android/Mono.Cecil.Pdb.dll' as a file, but the file does not exist
+/usr/lib/mono/4.5/Microsoft.Common.targets:  warning : Reference 'Mono.Cecil.Rocks' not resolved
+				For searchpath {CandidateAssemblyFiles}
+				Warning: {CandidateAssemblyFiles} not supported currently
+				For searchpath {HintPathFromItem}
+				Considered ../../packages/Mono.Cecil.0.9.6.1/lib/net40/Mono.Cecil.Rocks.dll, but it does not exist.
+				For searchpath {TargetFrameworkDirectory}
+				Considered target framework dir /usr/lib/mono/4.0-api, assembly named 'Mono.Cecil.Rocks' not found.
+				For searchpath {PkgConfig}
+				Considered Mono.Cecil.Rocks, but could not find in any pkg-config files.
+				For searchpath {GAC}
+				Considered Mono.Cecil.Rocks, but could not find in the GAC.
+				For searchpath {RawFileName}
+				Considered 'Mono.Cecil.Rocks' as a file, but the file does not exist
+				For searchpath ../../bin/Debug/lib/xbuild/Xamarin/Android/
+				Considered '/home/moljac/Desktop/xamarin-android/bin/Debug/lib/xbuild/Xamarin/Android/Mono.Cecil.Rocks' as a file, but the file does not exist
+				Considered '/home/moljac/Desktop/xamarin-android/bin/Debug/lib/xbuild/Xamarin/Android/Mono.Cecil.Rocks.exe' as a file, but the file does not exist
+				Considered '/home/moljac/Desktop/xamarin-android/bin/Debug/lib/xbuild/Xamarin/Android/Mono.Cecil.Rocks.dll' as a file, but the file does not exist
+/usr/lib/mono/4.5/Microsoft.Common.targets:  warning : Reference 'Irony' not resolved
+				For searchpath {CandidateAssemblyFiles}
+				Warning: {CandidateAssemblyFiles} not supported currently
+				For searchpath {HintPathFromItem}
+				Considered ../../packages/Irony.0.9.1/lib/net40/Irony.dll, but it does not exist.
+				For searchpath {TargetFrameworkDirectory}
+				Considered target framework dir /usr/lib/mono/4.0-api, assembly named 'Irony' not found.
+				For searchpath {PkgConfig}
+				Considered Irony, but could not find in any pkg-config files.
+				For searchpath {GAC}
+				Considered Irony, but could not find in the GAC.
+				For searchpath {RawFileName}
+				Considered 'Irony' as a file, but the file does not exist
+				For searchpath ../../bin/Debug/lib/xbuild/Xamarin/Android/
+				Considered '/home/moljac/Desktop/xamarin-android/bin/Debug/lib/xbuild/Xamarin/Android/Irony' as a file, but the file does not exist
+				Considered '/home/moljac/Desktop/xamarin-android/bin/Debug/lib/xbuild/Xamarin/Android/Irony.exe' as a file, but the file does not exist
+				Considered '/home/moljac/Desktop/xamarin-android/bin/Debug/lib/xbuild/Xamarin/Android/Irony.dll' as a file, but the file does not exist
+			Target GenerateSatelliteAssemblies:
+			No input files were specified for target GenerateSatelliteAssemblies, skipping.
+			Target GenerateTargetFrameworkMonikerAttribute:
+			Skipping target "GenerateTargetFrameworkMonikerAttribute" because its outputs are up-to-date.
+			Target CoreCompile:
+				Tool /usr/lib/mono/4.5/mcs.exe execution started with arguments: /noconfig /debug:full /debug+ /optimize- /out:obj/Debug/Xamarin.Android.Tools.Aidl.dll AidlAst.cs AidlCompiler.cs AidlParser.cs BindingDatabase.cs CSharpCodeGenerator.cs ConverterOptions.cs /target:library /define:DEBUG /nostdlib /reference:/usr/lib/mono/4.0-api/System.dll /reference:/usr/lib/mono/gac/Mono.Cecil/0.9.5.0__0738eb9f132ed756/Mono.Cecil.dll /reference:/usr/lib/mono/4.0-api/System.Core.dll /reference:/usr/lib/mono/4.0-api/mscorlib.dll /warn:4
+AidlAst.cs(3,7): error CS0246: The type or namespace name `Irony' could not be found. Are you missing an assembly reference?
+AidlCompiler.cs(6,7): error CS0246: The type or namespace name `Irony' could not be found. Are you missing an assembly reference?
+AidlParser.cs(3,7): error CS0246: The type or namespace name `Irony' could not be found. Are you missing an assembly reference?
+AidlParser.cs(4,7): error CS0246: The type or namespace name `Irony' could not be found. Are you missing an assembly reference?
+AidlParser.cs(9,37): error CS0246: The type or namespace name `Grammar' could not be found. Are you missing an assembly reference?
+AidlCompiler.cs(20,30): error CS0246: The type or namespace name `Irony' could not be found. Are you missing an assembly reference?
+AidlParser.cs(11,3): error CS0246: The type or namespace name `NonTerminal' could not be found. Are you missing an assembly reference?
+AidlParser.cs(18,3): error CS0246: The type or namespace name `KeyTerm' could not be found. Are you missing an assembly reference?
+AidlParser.cs(27,3): error CS0246: The type or namespace name `AstNodeCreator' could not be found. Are you missing an assembly reference?
+AidlParser.cs(35,27): error CS0246: The type or namespace name `AstContext' could not be found. Are you missing an assembly reference?
+AidlParser.cs(35,43): error CS0246: The type or namespace name `ParseTreeNode' could not be found. Are you missing an assembly reference?
+AidlParser.cs(42,25): error CS0246: The type or namespace name `AstContext' could not be found. Are you missing an assembly reference?
+AidlParser.cs(42,41): error CS0246: The type or namespace name `ParseTreeNode' could not be found. Are you missing an assembly reference?
+AidlParser.cs(50,19): error CS0246: The type or namespace name `AstContext' could not be found. Are you missing an assembly reference?
+AidlParser.cs(50,35): error CS0246: The type or namespace name `ParseTreeNode' could not be found. Are you missing an assembly reference?
+			Task "Csc" execution -- FAILED
+			Done building target "CoreCompile" in project "/home/moljac/Desktop/xamarin-android/src/Xamarin.Android.Tools.Aidl/Xamarin.Android.Tools.Aidl.csproj".-- FAILED
+		Done building project "/home/moljac/Desktop/xamarin-android/src/Xamarin.Android.Tools.Aidl/Xamarin.Android.Tools.Aidl.csproj".-- FAILED
+/home/moljac/Desktop/xamarin-android/src/Xamarin.Android.Build.Tasks/Xamarin.Android.Build.Tasks.csproj: error : /home/moljac/Desktop/xamarin-android/src/Xamarin.Android.Build.Tasks/Xamarin.Android.Build.Tasks.csproj: ../../Configuration.props: Project file could not be imported, it was being imported by /home/moljac/Desktop/xamarin-android/src/Xamarin.Android.Build.Tasks/Xamarin.Android.Build.Tasks.csproj: /home/moljac/Desktop/xamarin-android/Configuration.props could not import "$(MSBuildThisFileDirectory)Configuration.OperatingSystem.props"
+		Project "/home/moljac/Desktop/xamarin-android/src/Xamarin.Android.Build.Utilities/Xamarin.Android.Build.Utilities.csproj" (default target(s)):
+			Target PrepareForBuild:
+				Configuration: Debug Platform: AnyCPU
+			Target GenerateSatelliteAssemblies:
+			No input files were specified for target GenerateSatelliteAssemblies, skipping.
+			Target GenerateTargetFrameworkMonikerAttribute:
+			Skipping target "GenerateTargetFrameworkMonikerAttribute" because its outputs are up-to-date.
+			Target CoreCompile:
+			Skipping target "CoreCompile" because its outputs are up-to-date.
+		Done building project "/home/moljac/Desktop/xamarin-android/src/Xamarin.Android.Build.Utilities/Xamarin.Android.Build.Utilities.csproj".
+		Project "/home/moljac/Desktop/xamarin-android/external/Java.Interop/src/Xamarin.Android.Tools.Bytecode/Xamarin.Android.Tools.Bytecode.csproj" (default target(s)):
+			Target PrepareForBuild:
+				Configuration: Debug Platform: AnyCPU
+			Target GenerateSatelliteAssemblies:
+			No input files were specified for target GenerateSatelliteAssemblies, skipping.
+			Target GenerateTargetFrameworkMonikerAttribute:
+			Skipping target "GenerateTargetFrameworkMonikerAttribute" because its outputs are up-to-date.
+			Target CoreCompile:
+			Skipping target "CoreCompile" because its outputs are up-to-date.
+		Done building project "/home/moljac/Desktop/xamarin-android/external/Java.Interop/src/Xamarin.Android.Tools.Bytecode/Xamarin.Android.Tools.Bytecode.csproj".
+		Project "/home/moljac/Desktop/xamarin-android/external/Java.Interop/src/Xamarin.Android.Tools.ApiXmlAdjuster/Xamarin.Android.Tools.ApiXmlAdjuster.csproj" (default target(s)):
+			Target PrepareForBuild:
+				Configuration: Debug Platform: AnyCPU
+			Target GenerateSatelliteAssemblies:
+			No input files were specified for target GenerateSatelliteAssemblies, skipping.
+			Target GenerateTargetFrameworkMonikerAttribute:
+			Skipping target "GenerateTargetFrameworkMonikerAttribute" because its outputs are up-to-date.
+			Target CoreCompile:
+			Skipping target "CoreCompile" because its outputs are up-to-date.
+		Done building project "/home/moljac/Desktop/xamarin-android/external/Java.Interop/src/Xamarin.Android.Tools.ApiXmlAdjuster/Xamarin.Android.Tools.ApiXmlAdjuster.csproj".
+		Project "/home/moljac/Desktop/xamarin-android/external/Java.Interop/src/Xamarin.Android.Tools.AnnotationSupport/Xamarin.Android.Tools.AnnotationSupport.csproj" (default target(s)):
+			Target PrepareForBuild:
+				Configuration: Debug Platform: AnyCPU
+			Target GenerateSatelliteAssemblies:
+			No input files were specified for target GenerateSatelliteAssemblies, skipping.
+			Target GenerateTargetFrameworkMonikerAttribute:
+			Skipping target "GenerateTargetFrameworkMonikerAttribute" because its outputs are up-to-date.
+			Target CoreCompile:
+			Skipping target "CoreCompile" because its outputs are up-to-date.
+		Done building project "/home/moljac/Desktop/xamarin-android/external/Java.Interop/src/Xamarin.Android.Tools.AnnotationSupport/Xamarin.Android.Tools.AnnotationSupport.csproj".
+		Project "/home/moljac/Desktop/xamarin-android/external/Java.Interop/src/Java.Interop.Tools.Diagnostics/Java.Interop.Tools.Diagnostics.csproj" (default target(s)):
+			Target PrepareForBuild:
+				Configuration: Debug Platform: AnyCPU
+			Target ResolveAssemblyReferences:
+/usr/lib/mono/4.5/Microsoft.Common.targets:  warning : Reference 'Mono.Cecil.Pdb' not resolved
+				For searchpath {CandidateAssemblyFiles}
+				Warning: {CandidateAssemblyFiles} not supported currently
+				For searchpath {HintPathFromItem}
+				Considered ../../packages/Mono.Cecil.0.9.6.1/lib/net45/Mono.Cecil.Pdb.dll, but it does not exist.
+				For searchpath {TargetFrameworkDirectory}
+				Considered target framework dir /usr/lib/mono/4.5-api, assembly named 'Mono.Cecil.Pdb' not found.
+				Considered target framework dir /usr/lib/mono/4.5-api/Facades/, assembly named 'Mono.Cecil.Pdb' not found.
+				For searchpath {PkgConfig}
+				Considered Mono.Cecil.Pdb, but could not find in any pkg-config files.
+				For searchpath {GAC}
+				Considered Mono.Cecil.Pdb, but could not find in the GAC.
+				For searchpath {RawFileName}
+				Considered 'Mono.Cecil.Pdb' as a file, but the file does not exist
+				For searchpath ../../bin/Debug/
+				Considered '/home/moljac/Desktop/xamarin-android/external/Java.Interop/bin/Debug/Mono.Cecil.Pdb' as a file, but the file does not exist
+				Considered '/home/moljac/Desktop/xamarin-android/external/Java.Interop/bin/Debug/Mono.Cecil.Pdb.exe' as a file, but the file does not exist
+				Considered '/home/moljac/Desktop/xamarin-android/external/Java.Interop/bin/Debug/Mono.Cecil.Pdb.dll' as a file, but the file does not exist
+/usr/lib/mono/4.5/Microsoft.Common.targets:  warning : Reference 'Mono.Cecil.Rocks' not resolved
+				For searchpath {CandidateAssemblyFiles}
+				Warning: {CandidateAssemblyFiles} not supported currently
+				For searchpath {HintPathFromItem}
+				Considered ../../packages/Mono.Cecil.0.9.6.1/lib/net45/Mono.Cecil.Rocks.dll, but it does not exist.
+				For searchpath {TargetFrameworkDirectory}
+				Considered target framework dir /usr/lib/mono/4.5-api, assembly named 'Mono.Cecil.Rocks' not found.
+				Considered target framework dir /usr/lib/mono/4.5-api/Facades/, assembly named 'Mono.Cecil.Rocks' not found.
+				For searchpath {PkgConfig}
+				Considered Mono.Cecil.Rocks, but could not find in any pkg-config files.
+				For searchpath {GAC}
+				Considered Mono.Cecil.Rocks, but could not find in the GAC.
+				For searchpath {RawFileName}
+				Considered 'Mono.Cecil.Rocks' as a file, but the file does not exist
+				For searchpath ../../bin/Debug/
+				Considered '/home/moljac/Desktop/xamarin-android/external/Java.Interop/bin/Debug/Mono.Cecil.Rocks' as a file, but the file does not exist
+				Considered '/home/moljac/Desktop/xamarin-android/external/Java.Interop/bin/Debug/Mono.Cecil.Rocks.exe' as a file, but the file does not exist
+				Considered '/home/moljac/Desktop/xamarin-android/external/Java.Interop/bin/Debug/Mono.Cecil.Rocks.dll' as a file, but the file does not exist
+			Target GenerateSatelliteAssemblies:
+			No input files were specified for target GenerateSatelliteAssemblies, skipping.
+			Target GenerateTargetFrameworkMonikerAttribute:
+			Skipping target "GenerateTargetFrameworkMonikerAttribute" because its outputs are up-to-date.
+			Target CoreCompile:
+			Skipping target "CoreCompile" because its outputs are up-to-date.
+		Done building project "/home/moljac/Desktop/xamarin-android/external/Java.Interop/src/Java.Interop.Tools.Diagnostics/Java.Interop.Tools.Diagnostics.csproj".
+/home/moljac/Desktop/xamarin-android/src/monodroid/monodroid.mdproj: error : /home/moljac/Desktop/xamarin-android/src/monodroid/monodroid.mdproj: ../../Configuration.props: Project file could not be imported, it was being imported by /home/moljac/Desktop/xamarin-android/src/monodroid/monodroid.mdproj: /home/moljac/Desktop/xamarin-android/Configuration.props could not import "$(MSBuildThisFileDirectory)Configuration.OperatingSystem.props"
+/home/moljac/Desktop/xamarin-android/tools/api-xml-adjuster/api-xml-adjuster.csproj: error : /home/moljac/Desktop/xamarin-android/tools/api-xml-adjuster/api-xml-adjuster.csproj: ../../Configuration.props: Project file could not be imported, it was being imported by /home/moljac/Desktop/xamarin-android/tools/api-xml-adjuster/api-xml-adjuster.csproj: /home/moljac/Desktop/xamarin-android/Configuration.props could not import "$(MSBuildThisFileDirectory)Configuration.OperatingSystem.props"
+/home/moljac/Desktop/xamarin-android/src/Xamarin.Android.NUnitLite/Xamarin.Android.NUnitLite.csproj: error : /home/moljac/Desktop/xamarin-android/src/Xamarin.Android.NUnitLite/Xamarin.Android.NUnitLite.csproj: ../../Configuration.props: Project file could not be imported, it was being imported by /home/moljac/Desktop/xamarin-android/src/Xamarin.Android.NUnitLite/Xamarin.Android.NUnitLite.csproj: /home/moljac/Desktop/xamarin-android/Configuration.props could not import "$(MSBuildThisFileDirectory)Configuration.OperatingSystem.props"
+/home/moljac/Desktop/xamarin-android/src/Xamarin.Android.Build.Tasks/Tests/Xamarin.ProjectTools/Xamarin.ProjectTools.csproj: error : /home/moljac/Desktop/xamarin-android/src/Xamarin.Android.Build.Tasks/Tests/Xamarin.ProjectTools/Xamarin.ProjectTools.csproj: ../../../../Configuration.props: Project file could not be imported, it was being imported by /home/moljac/Desktop/xamarin-android/src/Xamarin.Android.Build.Tasks/Tests/Xamarin.ProjectTools/Xamarin.ProjectTools.csproj: /home/moljac/Desktop/xamarin-android/Configuration.props could not import "$(MSBuildThisFileDirectory)Configuration.OperatingSystem.props"
+/home/moljac/Desktop/xamarin-android/src/Xamarin.Android.Build.Tasks/Tests/Xamarin.Android.Build.Tests/Xamarin.Android.Build.Tests.csproj: error : /home/moljac/Desktop/xamarin-android/src/Xamarin.Android.Build.Tasks/Tests/Xamarin.Android.Build.Tests/Xamarin.Android.Build.Tests.csproj: ../../../../Configuration.props: Project file could not be imported, it was being imported by /home/moljac/Desktop/xamarin-android/src/Xamarin.Android.Build.Tasks/Tests/Xamarin.Android.Build.Tests/Xamarin.Android.Build.Tests.csproj: /home/moljac/Desktop/xamarin-android/Configuration.props could not import "$(MSBuildThisFileDirectory)Configuration.OperatingSystem.props"
+/home/moljac/Desktop/xamarin-android/src/Mono.Android/Test/Mono.Android-Tests.csproj: error : /home/moljac/Desktop/xamarin-android/src/Mono.Android/Test/Mono.Android-Tests.csproj: ../../../Configuration.props: Project file could not be imported, it was being imported by /home/moljac/Desktop/xamarin-android/src/Mono.Android/Test/Mono.Android-Tests.csproj: /home/moljac/Desktop/xamarin-android/Configuration.props could not import "$(MSBuildThisFileDirectory)Configuration.OperatingSystem.props"
+		Project "/home/moljac/Desktop/xamarin-android/src/System.EnterpriseServices/System.EnterpriseServices.csproj" (default target(s)):
+			Target PrepareForBuild:
+				Configuration: Debug Platform: AnyCPU
+			Target GenerateSatelliteAssemblies:
+			No input files were specified for target GenerateSatelliteAssemblies, skipping.
+			Target GenerateTargetFrameworkMonikerAttribute:
+			Skipping target "GenerateTargetFrameworkMonikerAttribute" because its outputs are up-to-date.
+			Target CoreCompile:
+			Skipping target "CoreCompile" because its outputs are up-to-date.
+		Done building project "/home/moljac/Desktop/xamarin-android/src/System.EnterpriseServices/System.EnterpriseServices.csproj".
+/home/moljac/Desktop/xamarin-android/build-tools/unix-distribution-setup/unix-distribution-setup.mdproj: error : /home/moljac/Desktop/xamarin-android/build-tools/unix-distribution-setup/unix-distribution-setup.mdproj: ../../Configuration.props: Project file could not be imported, it was being imported by /home/moljac/Desktop/xamarin-android/build-tools/unix-distribution-setup/unix-distribution-setup.mdproj: /home/moljac/Desktop/xamarin-android/Configuration.props could not import "$(MSBuildThisFileDirectory)Configuration.OperatingSystem.props"
+/home/moljac/Desktop/xamarin-android/src/Mono.Posix/Mono.Posix.csproj: error : /home/moljac/Desktop/xamarin-android/src/Mono.Posix/Mono.Posix.csproj: ../../Configuration.props: Project file could not be imported, it was being imported by /home/moljac/Desktop/xamarin-android/src/Mono.Posix/Mono.Posix.csproj: /home/moljac/Desktop/xamarin-android/Configuration.props could not import "$(MSBuildThisFileDirectory)Configuration.OperatingSystem.props"
+		Project "/home/moljac/Desktop/xamarin-android/external/Java.Interop/tools/logcat-parse/logcat-parse.csproj" (default target(s)):
+			Target PrepareForBuild:
+				Configuration: Debug Platform: AnyCPU
+			Target ResolveAssemblyReferences:
+/usr/lib/mono/4.5/Microsoft.Common.targets:  warning : Reference 'Mono.Terminal' not resolved
+				For searchpath {CandidateAssemblyFiles}
+				Warning: {CandidateAssemblyFiles} not supported currently
+				For searchpath {HintPathFromItem}
+				Considered ../../packages/Mono.Terminal.4.2.2.0/lib/net4/Mono.Terminal.dll, but it does not exist.
+				For searchpath {TargetFrameworkDirectory}
+				Considered target framework dir /usr/lib/mono/4.5-api, assembly named 'Mono.Terminal' not found.
+				Considered target framework dir /usr/lib/mono/4.5-api/Facades/, assembly named 'Mono.Terminal' not found.
+				For searchpath {PkgConfig}
+				Considered Mono.Terminal, but could not find in any pkg-config files.
+				For searchpath {GAC}
+				Considered Mono.Terminal, but could not find in the GAC.
+				For searchpath {RawFileName}
+				Considered 'Mono.Terminal' as a file, but the file does not exist
+				For searchpath /home/moljac/Desktop/xamarin-android/external/Java.Interop/bin/Debug/
+				Considered '/home/moljac/Desktop/xamarin-android/external/Java.Interop/bin/Debug/Mono.Terminal' as a file, but the file does not exist
+				Considered '/home/moljac/Desktop/xamarin-android/external/Java.Interop/bin/Debug/Mono.Terminal.exe' as a file, but the file does not exist
+				Considered '/home/moljac/Desktop/xamarin-android/external/Java.Interop/bin/Debug/Mono.Terminal.dll' as a file, but the file does not exist
+			Target GenerateSatelliteAssemblies:
+			No input files were specified for target GenerateSatelliteAssemblies, skipping.
+			Target GenerateTargetFrameworkMonikerAttribute:
+			Skipping target "GenerateTargetFrameworkMonikerAttribute" because its outputs are up-to-date.
+			Target CoreCompile:
+				Tool /usr/lib/mono/4.5/mcs.exe execution started with arguments: /noconfig /debug:full /debug+ /optimize- /out:obj/Debug/logcat-parse.exe Program.cs Properties/AssemblyInfo.cs Grefs.cs PeerInfo.cs GrefParseOptions.cs Mono.Options-PCL.cs repl.cs /target:exe /unsafe+ /define:"DEBUG;TRACE" /main:Xamarin.Android.Tools.LogcatParse.Program /nostdlib /reference:/usr/lib/mono/4.5-api/System.dll /reference:/usr/lib/mono/4.5-api/Mono.CSharp.dll /reference:/usr/lib/mono/4.5-api/System.Core.dll /reference:/usr/lib/mono/4.5-api/mscorlib.dll /warn:4
+repl.cs(43,24): error CS0234: The type or namespace name `Terminal' does not exist in the namespace `Mono'. Are you missing an assembly reference?
+repl.cs(69,8): error CS0234: The type or namespace name `Terminal' does not exist in the namespace `Mono'. Are you missing an assembly reference?
+			Task "Csc" execution -- FAILED
+			Done building target "CoreCompile" in project "/home/moljac/Desktop/xamarin-android/external/Java.Interop/tools/logcat-parse/logcat-parse.csproj".-- FAILED
+		Done building project "/home/moljac/Desktop/xamarin-android/external/Java.Interop/tools/logcat-parse/logcat-parse.csproj".-- FAILED
+/home/moljac/Desktop/xamarin-android/src/Mono.Data.Sqlite/Mono.Data.Sqlite.csproj: error : /home/moljac/Desktop/xamarin-android/src/Mono.Data.Sqlite/Mono.Data.Sqlite.csproj: ../../Configuration.props: Project file could not be imported, it was being imported by /home/moljac/Desktop/xamarin-android/src/Mono.Data.Sqlite/Mono.Data.Sqlite.csproj: /home/moljac/Desktop/xamarin-android/Configuration.props could not import "$(MSBuildThisFileDirectory)Configuration.OperatingSystem.props"
+/home/moljac/Desktop/xamarin-android/src/sqlite-xamarin/sqlite-xamarin.mdproj: error : /home/moljac/Desktop/xamarin-android/src/sqlite-xamarin/sqlite-xamarin.mdproj: ../../Configuration.props: Project file could not be imported, it was being imported by /home/moljac/Desktop/xamarin-android/src/sqlite-xamarin/sqlite-xamarin.mdproj: /home/moljac/Desktop/xamarin-android/Configuration.props could not import "$(MSBuildThisFileDirectory)Configuration.OperatingSystem.props"
+/home/moljac/Desktop/xamarin-android/src/OpenTK-1.0/OpenTK.csproj: error : /home/moljac/Desktop/xamarin-android/src/OpenTK-1.0/OpenTK.csproj: ../../Configuration.props: Project file could not be imported, it was being imported by /home/moljac/Desktop/xamarin-android/src/OpenTK-1.0/OpenTK.csproj: /home/moljac/Desktop/xamarin-android/Configuration.props could not import "$(MSBuildThisFileDirectory)Configuration.OperatingSystem.props"
+		Project "/home/moljac/Desktop/xamarin-android/external/LibZipSharp/libZipSharp.csproj" (default target(s)):
+			Target PrepareForBuild:
+				Configuration: Debug Platform: AnyCPU
+			Target ResolveAssemblyReferences:
+/usr/lib/mono/xbuild/12.0/bin/Microsoft.Common.targets:  warning : Reference 'nunit.engine' not resolved
+				For searchpath {CandidateAssemblyFiles}
+				Warning: {CandidateAssemblyFiles} not supported currently
+				For searchpath {HintPathFromItem}
+				Considered packages/NUnit.Engine.3.2.0/lib/nunit.engine.dll, but it does not exist.
+				For searchpath {TargetFrameworkDirectory}
+				Considered target framework dir /usr/lib/mono/4.5-api, assembly named 'nunit.engine' not found.
+				Considered target framework dir /usr/lib/mono/4.5-api/Facades/, assembly named 'nunit.engine' not found.
+				For searchpath {PkgConfig}
+				Considered nunit.engine, but could not find in any pkg-config files.
+				For searchpath {GAC}
+				Considered nunit.engine, but could not find in the GAC.
+				For searchpath {RawFileName}
+				Considered 'nunit.engine' as a file, but the file does not exist
+				For searchpath bin/Unix/Debug/
+				Considered '/home/moljac/Desktop/xamarin-android/external/LibZipSharp/bin/Unix/Debug/nunit.engine' as a file, but the file does not exist
+				Considered '/home/moljac/Desktop/xamarin-android/external/LibZipSharp/bin/Unix/Debug/nunit.engine.exe' as a file, but the file does not exist
+				Considered '/home/moljac/Desktop/xamarin-android/external/LibZipSharp/bin/Unix/Debug/nunit.engine.dll' as a file, but the file does not exist
+/usr/lib/mono/xbuild/12.0/bin/Microsoft.Common.targets:  warning : Reference 'nunit.engine.api' not resolved
+				For searchpath {CandidateAssemblyFiles}
+				Warning: {CandidateAssemblyFiles} not supported currently
+				For searchpath {HintPathFromItem}
+				Considered packages/NUnit.Engine.3.2.0/lib/nunit.engine.api.dll, but it does not exist.
+				For searchpath {TargetFrameworkDirectory}
+				Considered target framework dir /usr/lib/mono/4.5-api, assembly named 'nunit.engine.api' not found.
+				Considered target framework dir /usr/lib/mono/4.5-api/Facades/, assembly named 'nunit.engine.api' not found.
+				For searchpath {PkgConfig}
+				Considered nunit.engine.api, but could not find in any pkg-config files.
+				For searchpath {GAC}
+				Considered nunit.engine.api, but could not find in the GAC.
+				For searchpath {RawFileName}
+				Considered 'nunit.engine.api' as a file, but the file does not exist
+				For searchpath bin/Unix/Debug/
+				Considered '/home/moljac/Desktop/xamarin-android/external/LibZipSharp/bin/Unix/Debug/nunit.engine.api' as a file, but the file does not exist
+				Considered '/home/moljac/Desktop/xamarin-android/external/LibZipSharp/bin/Unix/Debug/nunit.engine.api.exe' as a file, but the file does not exist
+				Considered '/home/moljac/Desktop/xamarin-android/external/LibZipSharp/bin/Unix/Debug/nunit.engine.api.dll' as a file, but the file does not exist
+/usr/lib/mono/xbuild/12.0/bin/Microsoft.Common.targets:  warning : Reference 'nunit-agent' not resolved
+				For searchpath {CandidateAssemblyFiles}
+				Warning: {CandidateAssemblyFiles} not supported currently
+				For searchpath {HintPathFromItem}
+				Considered packages/NUnit.Engine.3.2.0/lib/nunit-agent.exe, but it does not exist.
+				For searchpath {TargetFrameworkDirectory}
+				Considered target framework dir /usr/lib/mono/4.5-api, assembly named 'nunit-agent' not found.
+				Considered target framework dir /usr/lib/mono/4.5-api/Facades/, assembly named 'nunit-agent' not found.
+				For searchpath {PkgConfig}
+				Considered nunit-agent, but could not find in any pkg-config files.
+				For searchpath {GAC}
+				Considered nunit-agent, but could not find in the GAC.
+				For searchpath {RawFileName}
+				Considered 'nunit-agent' as a file, but the file does not exist
+				For searchpath bin/Unix/Debug/
+				Considered '/home/moljac/Desktop/xamarin-android/external/LibZipSharp/bin/Unix/Debug/nunit-agent' as a file, but the file does not exist
+				Considered '/home/moljac/Desktop/xamarin-android/external/LibZipSharp/bin/Unix/Debug/nunit-agent.exe' as a file, but the file does not exist
+				Considered '/home/moljac/Desktop/xamarin-android/external/LibZipSharp/bin/Unix/Debug/nunit-agent.dll' as a file, but the file does not exist
+/usr/lib/mono/xbuild/12.0/bin/Microsoft.Common.targets:  warning : Reference 'nunit-agent-x86' not resolved
+				For searchpath {CandidateAssemblyFiles}
+				Warning: {CandidateAssemblyFiles} not supported currently
+				For searchpath {HintPathFromItem}
+				Considered packages/NUnit.Engine.3.2.0/lib/nunit-agent-x86.exe, but it does not exist.
+				For searchpath {TargetFrameworkDirectory}
+				Considered target framework dir /usr/lib/mono/4.5-api, assembly named 'nunit-agent-x86' not found.
+				Considered target framework dir /usr/lib/mono/4.5-api/Facades/, assembly named 'nunit-agent-x86' not found.
+				For searchpath {PkgConfig}
+				Considered nunit-agent-x86, but could not find in any pkg-config files.
+				For searchpath {GAC}
+				Considered nunit-agent-x86, but could not find in the GAC.
+				For searchpath {RawFileName}
+				Considered 'nunit-agent-x86' as a file, but the file does not exist
+				For searchpath bin/Unix/Debug/
+				Considered '/home/moljac/Desktop/xamarin-android/external/LibZipSharp/bin/Unix/Debug/nunit-agent-x86' as a file, but the file does not exist
+				Considered '/home/moljac/Desktop/xamarin-android/external/LibZipSharp/bin/Unix/Debug/nunit-agent-x86.exe' as a file, but the file does not exist
+				Considered '/home/moljac/Desktop/xamarin-android/external/LibZipSharp/bin/Unix/Debug/nunit-agent-x86.dll' as a file, but the file does not exist
+/usr/lib/mono/xbuild/12.0/bin/Microsoft.Common.targets:  warning : Reference 'nunit.framework' not resolved
+				For searchpath {CandidateAssemblyFiles}
+				Warning: {CandidateAssemblyFiles} not supported currently
+				For searchpath {HintPathFromItem}
+				Considered packages/NUnit.3.2.0/lib/net45/nunit.framework.dll, but it does not exist.
+				For searchpath {TargetFrameworkDirectory}
+				Considered target framework dir /usr/lib/mono/4.5-api, assembly named 'nunit.framework' not found.
+				Considered target framework dir /usr/lib/mono/4.5-api/Facades/, assembly named 'nunit.framework' not found.
+				For searchpath {PkgConfig}
+				Considered nunit.framework, but could not find in any pkg-config files.
+				For searchpath {GAC}
+				Considered nunit.framework, but could not find in the GAC.
+				For searchpath {RawFileName}
+				Considered 'nunit.framework' as a file, but the file does not exist
+				For searchpath bin/Unix/Debug/
+				Considered '/home/moljac/Desktop/xamarin-android/external/LibZipSharp/bin/Unix/Debug/nunit.framework' as a file, but the file does not exist
+				Considered '/home/moljac/Desktop/xamarin-android/external/LibZipSharp/bin/Unix/Debug/nunit.framework.exe' as a file, but the file does not exist
+				Considered '/home/moljac/Desktop/xamarin-android/external/LibZipSharp/bin/Unix/Debug/nunit.framework.dll' as a file, but the file does not exist
+			Target GenerateSatelliteAssemblies:
+			No input files were specified for target GenerateSatelliteAssemblies, skipping.
+			Target GenerateTargetFrameworkMonikerAttribute:
+			Skipping target "GenerateTargetFrameworkMonikerAttribute" because its outputs are up-to-date.
+			Target CoreCompile:
+			Skipping target "CoreCompile" because its outputs are up-to-date.
+			Target _CopyDeployFilesToOutputDirectoryPreserveNewest:
+			Skipping target "_CopyDeployFilesToOutputDirectoryPreserveNewest" because its outputs are up-to-date.
+		Done building project "/home/moljac/Desktop/xamarin-android/external/LibZipSharp/libZipSharp.csproj".
+/home/moljac/Desktop/xamarin-android/src/System.Drawing.Primitives/System.Drawing.Primitives.csproj: error : /home/moljac/Desktop/xamarin-android/src/System.Drawing.Primitives/System.Drawing.Primitives.csproj: ../../Configuration.props: Project file could not be imported, it was being imported by /home/moljac/Desktop/xamarin-android/src/System.Drawing.Primitives/System.Drawing.Primitives.csproj: /home/moljac/Desktop/xamarin-android/Configuration.props could not import "$(MSBuildThisFileDirectory)Configuration.OperatingSystem.props"
+	Task "MSBuild" execution -- FAILED
+	Done building target "Build" in project "/home/moljac/Desktop/xamarin-android/Xamarin.Android.sln".-- FAILED
+Done building project "/home/moljac/Desktop/xamarin-android/Xamarin.Android.sln".-- FAILED
+
+Build FAILED.
+
+Warnings:
+
+/home/moljac/Desktop/xamarin-android/Xamarin.Android.sln:  warning : /home/moljac/Desktop/xamarin-android/build-tools/android-toolchain/android-toolchain.mdproj: android-toolchain.targets: Project file could not be imported, it was being imported by /home/moljac/Desktop/xamarin-android/build-tools/android-toolchain/android-toolchain.mdproj: ../../Configuration.props: Project file could not be imported, it was being imported by /home/moljac/Desktop/xamarin-android/build-tools/android-toolchain/android-toolchain.targets: /home/moljac/Desktop/xamarin-android/Configuration.props could not import "$(MSBuildThisFileDirectory)Configuration.OperatingSystem.props"
+/home/moljac/Desktop/xamarin-android/Xamarin.Android.sln:  warning : /home/moljac/Desktop/xamarin-android/build-tools/mono-runtimes/mono-runtimes.mdproj: mono-runtimes.targets: Project file could not be imported, it was being imported by /home/moljac/Desktop/xamarin-android/build-tools/mono-runtimes/mono-runtimes.mdproj: ../../Configuration.props: Project file could not be imported, it was being imported by /home/moljac/Desktop/xamarin-android/build-tools/mono-runtimes/mono-runtimes.targets: /home/moljac/Desktop/xamarin-android/Configuration.props could not import "$(MSBuildThisFileDirectory)Configuration.OperatingSystem.props"
+/home/moljac/Desktop/xamarin-android/Xamarin.Android.sln:  warning : /home/moljac/Desktop/xamarin-android/build-tools/libzip/libzip.mdproj: ../../Configuration.props: Project file could not be imported, it was being imported by /home/moljac/Desktop/xamarin-android/build-tools/libzip/libzip.mdproj: /home/moljac/Desktop/xamarin-android/Configuration.props could not import "$(MSBuildThisFileDirectory)Configuration.OperatingSystem.props"
+/home/moljac/Desktop/xamarin-android/external/Java.Interop/src/Xamarin.Android.NamingCustomAttributes/Xamarin.Android.NamingCustomAttributes.shproj:  warning : Could not find project file /usr/lib/mono/xbuild/Microsoft/VisualStudio/v/CodeSharing/Microsoft.CodeSharing.Common.Default.props, to import. Ignoring.
+/home/moljac/Desktop/xamarin-android/external/Java.Interop/src/Xamarin.Android.NamingCustomAttributes/Xamarin.Android.NamingCustomAttributes.shproj:  warning : Could not find project file /usr/lib/mono/xbuild/Microsoft/VisualStudio/v/CodeSharing/Microsoft.CodeSharing.Common.props, to import. Ignoring.
+/home/moljac/Desktop/xamarin-android/external/Java.Interop/src/Xamarin.Android.NamingCustomAttributes/Xamarin.Android.NamingCustomAttributes.shproj:  warning : Could not find project file /usr/lib/mono/xbuild/Microsoft/VisualStudio/v/CodeSharing/Microsoft.CodeSharing.CSharp.targets, to import. Ignoring.
+/home/moljac/Desktop/xamarin-android/external/Java.Interop/src/Java.Interop.Tools.TypeNameMappings/Java.Interop.Tools.TypeNameMappings.shproj:  warning : Could not find project file /usr/lib/mono/xbuild/Microsoft/VisualStudio/v/CodeSharing/Microsoft.CodeSharing.Common.Default.props, to import. Ignoring.
+/home/moljac/Desktop/xamarin-android/external/Java.Interop/src/Java.Interop.Tools.TypeNameMappings/Java.Interop.Tools.TypeNameMappings.shproj:  warning : Could not find project file /usr/lib/mono/xbuild/Microsoft/VisualStudio/v/CodeSharing/Microsoft.CodeSharing.Common.props, to import. Ignoring.
+/home/moljac/Desktop/xamarin-android/external/Java.Interop/src/Java.Interop.Tools.TypeNameMappings/Java.Interop.Tools.TypeNameMappings.shproj:  warning : Could not find project file /usr/lib/mono/xbuild/Microsoft/VisualStudio/v/CodeSharing/Microsoft.CodeSharing.CSharp.targets, to import. Ignoring.
+/home/moljac/Desktop/xamarin-android/Xamarin.Android.sln:  warning : /home/moljac/Desktop/xamarin-android/src/Mono.Android/Mono.Android.csproj: ../../Configuration.props: Project file could not be imported, it was being imported by /home/moljac/Desktop/xamarin-android/src/Mono.Android/Mono.Android.csproj: /home/moljac/Desktop/xamarin-android/Configuration.props could not import "$(MSBuildThisFileDirectory)Configuration.OperatingSystem.props"
+/home/moljac/Desktop/xamarin-android/Xamarin.Android.sln:  warning : /home/moljac/Desktop/xamarin-android/src/Mono.Android.Export/Mono.Android.Export.csproj: ../../Configuration.props: Project file could not be imported, it was being imported by /home/moljac/Desktop/xamarin-android/src/Mono.Android.Export/Mono.Android.Export.csproj: /home/moljac/Desktop/xamarin-android/Configuration.props could not import "$(MSBuildThisFileDirectory)Configuration.OperatingSystem.props"
+/home/moljac/Desktop/xamarin-android/Xamarin.Android.sln:  warning : /home/moljac/Desktop/xamarin-android/src/Xamarin.Android.Build.Tasks/Xamarin.Android.Build.Tasks.csproj: ../../Configuration.props: Project file could not be imported, it was being imported by /home/moljac/Desktop/xamarin-android/src/Xamarin.Android.Build.Tasks/Xamarin.Android.Build.Tasks.csproj: /home/moljac/Desktop/xamarin-android/Configuration.props could not import "$(MSBuildThisFileDirectory)Configuration.OperatingSystem.props"
+/home/moljac/Desktop/xamarin-android/Xamarin.Android.sln:  warning : /home/moljac/Desktop/xamarin-android/src/monodroid/monodroid.mdproj: ../../Configuration.props: Project file could not be imported, it was being imported by /home/moljac/Desktop/xamarin-android/src/monodroid/monodroid.mdproj: /home/moljac/Desktop/xamarin-android/Configuration.props could not import "$(MSBuildThisFileDirectory)Configuration.OperatingSystem.props"
+/home/moljac/Desktop/xamarin-android/Xamarin.Android.sln:  warning : /home/moljac/Desktop/xamarin-android/tools/api-xml-adjuster/api-xml-adjuster.csproj: ../../Configuration.props: Project file could not be imported, it was being imported by /home/moljac/Desktop/xamarin-android/tools/api-xml-adjuster/api-xml-adjuster.csproj: /home/moljac/Desktop/xamarin-android/Configuration.props could not import "$(MSBuildThisFileDirectory)Configuration.OperatingSystem.props"
+/home/moljac/Desktop/xamarin-android/Xamarin.Android.sln:  warning : /home/moljac/Desktop/xamarin-android/src/Xamarin.Android.NUnitLite/Xamarin.Android.NUnitLite.csproj: ../../Configuration.props: Project file could not be imported, it was being imported by /home/moljac/Desktop/xamarin-android/src/Xamarin.Android.NUnitLite/Xamarin.Android.NUnitLite.csproj: /home/moljac/Desktop/xamarin-android/Configuration.props could not import "$(MSBuildThisFileDirectory)Configuration.OperatingSystem.props"
+/home/moljac/Desktop/xamarin-android/Xamarin.Android.sln:  warning : /home/moljac/Desktop/xamarin-android/src/Xamarin.Android.Build.Tasks/Tests/Xamarin.ProjectTools/Xamarin.ProjectTools.csproj: ../../../../Configuration.props: Project file could not be imported, it was being imported by /home/moljac/Desktop/xamarin-android/src/Xamarin.Android.Build.Tasks/Tests/Xamarin.ProjectTools/Xamarin.ProjectTools.csproj: /home/moljac/Desktop/xamarin-android/Configuration.props could not import "$(MSBuildThisFileDirectory)Configuration.OperatingSystem.props"
+/home/moljac/Desktop/xamarin-android/Xamarin.Android.sln:  warning : /home/moljac/Desktop/xamarin-android/src/Xamarin.Android.Build.Tasks/Tests/Xamarin.Android.Build.Tests/Xamarin.Android.Build.Tests.csproj: ../../../../Configuration.props: Project file could not be imported, it was being imported by /home/moljac/Desktop/xamarin-android/src/Xamarin.Android.Build.Tasks/Tests/Xamarin.Android.Build.Tests/Xamarin.Android.Build.Tests.csproj: /home/moljac/Desktop/xamarin-android/Configuration.props could not import "$(MSBuildThisFileDirectory)Configuration.OperatingSystem.props"
+/home/moljac/Desktop/xamarin-android/Xamarin.Android.sln:  warning : /home/moljac/Desktop/xamarin-android/src/Mono.Android/Test/Mono.Android-Tests.csproj: ../../../Configuration.props: Project file could not be imported, it was being imported by /home/moljac/Desktop/xamarin-android/src/Mono.Android/Test/Mono.Android-Tests.csproj: /home/moljac/Desktop/xamarin-android/Configuration.props could not import "$(MSBuildThisFileDirectory)Configuration.OperatingSystem.props"
+/home/moljac/Desktop/xamarin-android/Xamarin.Android.sln:  warning : /home/moljac/Desktop/xamarin-android/build-tools/unix-distribution-setup/unix-distribution-setup.mdproj: ../../Configuration.props: Project file could not be imported, it was being imported by /home/moljac/Desktop/xamarin-android/build-tools/unix-distribution-setup/unix-distribution-setup.mdproj: /home/moljac/Desktop/xamarin-android/Configuration.props could not import "$(MSBuildThisFileDirectory)Configuration.OperatingSystem.props"
+/home/moljac/Desktop/xamarin-android/Xamarin.Android.sln:  warning : /home/moljac/Desktop/xamarin-android/src/Mono.Posix/Mono.Posix.csproj: ../../Configuration.props: Project file could not be imported, it was being imported by /home/moljac/Desktop/xamarin-android/src/Mono.Posix/Mono.Posix.csproj: /home/moljac/Desktop/xamarin-android/Configuration.props could not import "$(MSBuildThisFileDirectory)Configuration.OperatingSystem.props"
+/home/moljac/Desktop/xamarin-android/Xamarin.Android.sln:  warning : /home/moljac/Desktop/xamarin-android/src/Mono.Data.Sqlite/Mono.Data.Sqlite.csproj: ../../Configuration.props: Project file could not be imported, it was being imported by /home/moljac/Desktop/xamarin-android/src/Mono.Data.Sqlite/Mono.Data.Sqlite.csproj: /home/moljac/Desktop/xamarin-android/Configuration.props could not import "$(MSBuildThisFileDirectory)Configuration.OperatingSystem.props"
+/home/moljac/Desktop/xamarin-android/Xamarin.Android.sln:  warning : /home/moljac/Desktop/xamarin-android/src/sqlite-xamarin/sqlite-xamarin.mdproj: ../../Configuration.props: Project file could not be imported, it was being imported by /home/moljac/Desktop/xamarin-android/src/sqlite-xamarin/sqlite-xamarin.mdproj: /home/moljac/Desktop/xamarin-android/Configuration.props could not import "$(MSBuildThisFileDirectory)Configuration.OperatingSystem.props"
+/home/moljac/Desktop/xamarin-android/Xamarin.Android.sln:  warning : /home/moljac/Desktop/xamarin-android/src/OpenTK-1.0/OpenTK.csproj: ../../Configuration.props: Project file could not be imported, it was being imported by /home/moljac/Desktop/xamarin-android/src/OpenTK-1.0/OpenTK.csproj: /home/moljac/Desktop/xamarin-android/Configuration.props could not import "$(MSBuildThisFileDirectory)Configuration.OperatingSystem.props"
+/home/moljac/Desktop/xamarin-android/Xamarin.Android.sln:  warning : /home/moljac/Desktop/xamarin-android/src/System.Drawing.Primitives/System.Drawing.Primitives.csproj: ../../Configuration.props: Project file could not be imported, it was being imported by /home/moljac/Desktop/xamarin-android/src/System.Drawing.Primitives/System.Drawing.Primitives.csproj: /home/moljac/Desktop/xamarin-android/Configuration.props could not import "$(MSBuildThisFileDirectory)Configuration.OperatingSystem.props"
+
+/home/moljac/Desktop/xamarin-android/Xamarin.Android.sln (default targets) ->
+(Build target) ->
+/home/moljac/Desktop/xamarin-android/src/Xamarin.Android.Tools.Aidl/Xamarin.Android.Tools.Aidl.csproj (default targets) ->
+/usr/lib/mono/4.5/Microsoft.Common.targets (ResolveAssemblyReferences target) ->
+
+	/usr/lib/mono/4.5/Microsoft.Common.targets:  warning : Reference 'Mono.Cecil.Mdb' not resolved
+	/usr/lib/mono/4.5/Microsoft.Common.targets:  warning : Reference 'Mono.Cecil.Pdb' not resolved
+	/usr/lib/mono/4.5/Microsoft.Common.targets:  warning : Reference 'Mono.Cecil.Rocks' not resolved
+	/usr/lib/mono/4.5/Microsoft.Common.targets:  warning : Reference 'Irony' not resolved
+
+/home/moljac/Desktop/xamarin-android/Xamarin.Android.sln (default targets) ->
+(Build target) ->
+/home/moljac/Desktop/xamarin-android/external/Java.Interop/src/Java.Interop.Tools.Diagnostics/Java.Interop.Tools.Diagnostics.csproj (default targets) ->
+/usr/lib/mono/4.5/Microsoft.Common.targets (ResolveAssemblyReferences target) ->
+
+	/usr/lib/mono/4.5/Microsoft.Common.targets:  warning : Reference 'Mono.Cecil.Pdb' not resolved
+	/usr/lib/mono/4.5/Microsoft.Common.targets:  warning : Reference 'Mono.Cecil.Rocks' not resolved
+
+/home/moljac/Desktop/xamarin-android/Xamarin.Android.sln (default targets) ->
+(Build target) ->
+/home/moljac/Desktop/xamarin-android/external/Java.Interop/tools/logcat-parse/logcat-parse.csproj (default targets) ->
+/usr/lib/mono/4.5/Microsoft.Common.targets (ResolveAssemblyReferences target) ->
+
+	/usr/lib/mono/4.5/Microsoft.Common.targets:  warning : Reference 'Mono.Terminal' not resolved
+
+/home/moljac/Desktop/xamarin-android/Xamarin.Android.sln (default targets) ->
+(Build target) ->
+/home/moljac/Desktop/xamarin-android/external/LibZipSharp/libZipSharp.csproj (default targets) ->
+/usr/lib/mono/xbuild/12.0/bin/Microsoft.Common.targets (ResolveAssemblyReferences target) ->
+
+	/usr/lib/mono/xbuild/12.0/bin/Microsoft.Common.targets:  warning : Reference 'nunit.engine' not resolved
+	/usr/lib/mono/xbuild/12.0/bin/Microsoft.Common.targets:  warning : Reference 'nunit.engine.api' not resolved
+	/usr/lib/mono/xbuild/12.0/bin/Microsoft.Common.targets:  warning : Reference 'nunit-agent' not resolved
+	/usr/lib/mono/xbuild/12.0/bin/Microsoft.Common.targets:  warning : Reference 'nunit-agent-x86' not resolved
+	/usr/lib/mono/xbuild/12.0/bin/Microsoft.Common.targets:  warning : Reference 'nunit.framework' not resolved
+
+Errors:
+
+/home/moljac/Desktop/xamarin-android/Xamarin.Android.sln (default targets) ->
+(Build target) ->
+
+	/home/moljac/Desktop/xamarin-android/build-tools/android-toolchain/android-toolchain.mdproj: error : /home/moljac/Desktop/xamarin-android/build-tools/android-toolchain/android-toolchain.mdproj: android-toolchain.targets: Project file could not be imported, it was being imported by /home/moljac/Desktop/xamarin-android/build-tools/android-toolchain/android-toolchain.mdproj: ../../Configuration.props: Project file could not be imported, it was being imported by /home/moljac/Desktop/xamarin-android/build-tools/android-toolchain/android-toolchain.targets: /home/moljac/Desktop/xamarin-android/Configuration.props could not import "$(MSBuildThisFileDirectory)Configuration.OperatingSystem.props"
+	/home/moljac/Desktop/xamarin-android/build-tools/mono-runtimes/mono-runtimes.mdproj: error : /home/moljac/Desktop/xamarin-android/build-tools/mono-runtimes/mono-runtimes.mdproj: mono-runtimes.targets: Project file could not be imported, it was being imported by /home/moljac/Desktop/xamarin-android/build-tools/mono-runtimes/mono-runtimes.mdproj: ../../Configuration.props: Project file could not be imported, it was being imported by /home/moljac/Desktop/xamarin-android/build-tools/mono-runtimes/mono-runtimes.targets: /home/moljac/Desktop/xamarin-android/Configuration.props could not import "$(MSBuildThisFileDirectory)Configuration.OperatingSystem.props"
+	/home/moljac/Desktop/xamarin-android/build-tools/libzip/libzip.mdproj: error : /home/moljac/Desktop/xamarin-android/build-tools/libzip/libzip.mdproj: ../../Configuration.props: Project file could not be imported, it was being imported by /home/moljac/Desktop/xamarin-android/build-tools/libzip/libzip.mdproj: /home/moljac/Desktop/xamarin-android/Configuration.props could not import "$(MSBuildThisFileDirectory)Configuration.OperatingSystem.props"
+	/home/moljac/Desktop/xamarin-android/src/Mono.Android/Mono.Android.csproj: error : /home/moljac/Desktop/xamarin-android/src/Mono.Android/Mono.Android.csproj: ../../Configuration.props: Project file could not be imported, it was being imported by /home/moljac/Desktop/xamarin-android/src/Mono.Android/Mono.Android.csproj: /home/moljac/Desktop/xamarin-android/Configuration.props could not import "$(MSBuildThisFileDirectory)Configuration.OperatingSystem.props"
+	/home/moljac/Desktop/xamarin-android/src/Mono.Android.Export/Mono.Android.Export.csproj: error : /home/moljac/Desktop/xamarin-android/src/Mono.Android.Export/Mono.Android.Export.csproj: ../../Configuration.props: Project file could not be imported, it was being imported by /home/moljac/Desktop/xamarin-android/src/Mono.Android.Export/Mono.Android.Export.csproj: /home/moljac/Desktop/xamarin-android/Configuration.props could not import "$(MSBuildThisFileDirectory)Configuration.OperatingSystem.props"
+	/home/moljac/Desktop/xamarin-android/src/Xamarin.Android.Build.Tasks/Xamarin.Android.Build.Tasks.csproj: error : /home/moljac/Desktop/xamarin-android/src/Xamarin.Android.Build.Tasks/Xamarin.Android.Build.Tasks.csproj: ../../Configuration.props: Project file could not be imported, it was being imported by /home/moljac/Desktop/xamarin-android/src/Xamarin.Android.Build.Tasks/Xamarin.Android.Build.Tasks.csproj: /home/moljac/Desktop/xamarin-android/Configuration.props could not import "$(MSBuildThisFileDirectory)Configuration.OperatingSystem.props"
+	/home/moljac/Desktop/xamarin-android/src/monodroid/monodroid.mdproj: error : /home/moljac/Desktop/xamarin-android/src/monodroid/monodroid.mdproj: ../../Configuration.props: Project file could not be imported, it was being imported by /home/moljac/Desktop/xamarin-android/src/monodroid/monodroid.mdproj: /home/moljac/Desktop/xamarin-android/Configuration.props could not import "$(MSBuildThisFileDirectory)Configuration.OperatingSystem.props"
+	/home/moljac/Desktop/xamarin-android/tools/api-xml-adjuster/api-xml-adjuster.csproj: error : /home/moljac/Desktop/xamarin-android/tools/api-xml-adjuster/api-xml-adjuster.csproj: ../../Configuration.props: Project file could not be imported, it was being imported by /home/moljac/Desktop/xamarin-android/tools/api-xml-adjuster/api-xml-adjuster.csproj: /home/moljac/Desktop/xamarin-android/Configuration.props could not import "$(MSBuildThisFileDirectory)Configuration.OperatingSystem.props"
+	/home/moljac/Desktop/xamarin-android/src/Xamarin.Android.NUnitLite/Xamarin.Android.NUnitLite.csproj: error : /home/moljac/Desktop/xamarin-android/src/Xamarin.Android.NUnitLite/Xamarin.Android.NUnitLite.csproj: ../../Configuration.props: Project file could not be imported, it was being imported by /home/moljac/Desktop/xamarin-android/src/Xamarin.Android.NUnitLite/Xamarin.Android.NUnitLite.csproj: /home/moljac/Desktop/xamarin-android/Configuration.props could not import "$(MSBuildThisFileDirectory)Configuration.OperatingSystem.props"
+	/home/moljac/Desktop/xamarin-android/src/Xamarin.Android.Build.Tasks/Tests/Xamarin.ProjectTools/Xamarin.ProjectTools.csproj: error : /home/moljac/Desktop/xamarin-android/src/Xamarin.Android.Build.Tasks/Tests/Xamarin.ProjectTools/Xamarin.ProjectTools.csproj: ../../../../Configuration.props: Project file could not be imported, it was being imported by /home/moljac/Desktop/xamarin-android/src/Xamarin.Android.Build.Tasks/Tests/Xamarin.ProjectTools/Xamarin.ProjectTools.csproj: /home/moljac/Desktop/xamarin-android/Configuration.props could not import "$(MSBuildThisFileDirectory)Configuration.OperatingSystem.props"
+	/home/moljac/Desktop/xamarin-android/src/Xamarin.Android.Build.Tasks/Tests/Xamarin.Android.Build.Tests/Xamarin.Android.Build.Tests.csproj: error : /home/moljac/Desktop/xamarin-android/src/Xamarin.Android.Build.Tasks/Tests/Xamarin.Android.Build.Tests/Xamarin.Android.Build.Tests.csproj: ../../../../Configuration.props: Project file could not be imported, it was being imported by /home/moljac/Desktop/xamarin-android/src/Xamarin.Android.Build.Tasks/Tests/Xamarin.Android.Build.Tests/Xamarin.Android.Build.Tests.csproj: /home/moljac/Desktop/xamarin-android/Configuration.props could not import "$(MSBuildThisFileDirectory)Configuration.OperatingSystem.props"
+	/home/moljac/Desktop/xamarin-android/src/Mono.Android/Test/Mono.Android-Tests.csproj: error : /home/moljac/Desktop/xamarin-android/src/Mono.Android/Test/Mono.Android-Tests.csproj: ../../../Configuration.props: Project file could not be imported, it was being imported by /home/moljac/Desktop/xamarin-android/src/Mono.Android/Test/Mono.Android-Tests.csproj: /home/moljac/Desktop/xamarin-android/Configuration.props could not import "$(MSBuildThisFileDirectory)Configuration.OperatingSystem.props"
+	/home/moljac/Desktop/xamarin-android/build-tools/unix-distribution-setup/unix-distribution-setup.mdproj: error : /home/moljac/Desktop/xamarin-android/build-tools/unix-distribution-setup/unix-distribution-setup.mdproj: ../../Configuration.props: Project file could not be imported, it was being imported by /home/moljac/Desktop/xamarin-android/build-tools/unix-distribution-setup/unix-distribution-setup.mdproj: /home/moljac/Desktop/xamarin-android/Configuration.props could not import "$(MSBuildThisFileDirectory)Configuration.OperatingSystem.props"
+	/home/moljac/Desktop/xamarin-android/src/Mono.Posix/Mono.Posix.csproj: error : /home/moljac/Desktop/xamarin-android/src/Mono.Posix/Mono.Posix.csproj: ../../Configuration.props: Project file could not be imported, it was being imported by /home/moljac/Desktop/xamarin-android/src/Mono.Posix/Mono.Posix.csproj: /home/moljac/Desktop/xamarin-android/Configuration.props could not import "$(MSBuildThisFileDirectory)Configuration.OperatingSystem.props"
+	/home/moljac/Desktop/xamarin-android/src/Mono.Data.Sqlite/Mono.Data.Sqlite.csproj: error : /home/moljac/Desktop/xamarin-android/src/Mono.Data.Sqlite/Mono.Data.Sqlite.csproj: ../../Configuration.props: Project file could not be imported, it was being imported by /home/moljac/Desktop/xamarin-android/src/Mono.Data.Sqlite/Mono.Data.Sqlite.csproj: /home/moljac/Desktop/xamarin-android/Configuration.props could not import "$(MSBuildThisFileDirectory)Configuration.OperatingSystem.props"
+	/home/moljac/Desktop/xamarin-android/src/sqlite-xamarin/sqlite-xamarin.mdproj: error : /home/moljac/Desktop/xamarin-android/src/sqlite-xamarin/sqlite-xamarin.mdproj: ../../Configuration.props: Project file could not be imported, it was being imported by /home/moljac/Desktop/xamarin-android/src/sqlite-xamarin/sqlite-xamarin.mdproj: /home/moljac/Desktop/xamarin-android/Configuration.props could not import "$(MSBuildThisFileDirectory)Configuration.OperatingSystem.props"
+	/home/moljac/Desktop/xamarin-android/src/OpenTK-1.0/OpenTK.csproj: error : /home/moljac/Desktop/xamarin-android/src/OpenTK-1.0/OpenTK.csproj: ../../Configuration.props: Project file could not be imported, it was being imported by /home/moljac/Desktop/xamarin-android/src/OpenTK-1.0/OpenTK.csproj: /home/moljac/Desktop/xamarin-android/Configuration.props could not import "$(MSBuildThisFileDirectory)Configuration.OperatingSystem.props"
+	/home/moljac/Desktop/xamarin-android/src/System.Drawing.Primitives/System.Drawing.Primitives.csproj: error : /home/moljac/Desktop/xamarin-android/src/System.Drawing.Primitives/System.Drawing.Primitives.csproj: ../../Configuration.props: Project file could not be imported, it was being imported by /home/moljac/Desktop/xamarin-android/src/System.Drawing.Primitives/System.Drawing.Primitives.csproj: /home/moljac/Desktop/xamarin-android/Configuration.props could not import "$(MSBuildThisFileDirectory)Configuration.OperatingSystem.props"
+
+/home/moljac/Desktop/xamarin-android/Xamarin.Android.sln (default targets) ->
+(Build target) ->
+/home/moljac/Desktop/xamarin-android/src/Xamarin.Android.Tools.Aidl/Xamarin.Android.Tools.Aidl.csproj (default targets) ->
+/usr/lib/mono/4.5/Microsoft.CSharp.targets (CoreCompile target) ->
+
+	AidlAst.cs(3,7): error CS0246: The type or namespace name `Irony' could not be found. Are you missing an assembly reference?
+	AidlCompiler.cs(6,7): error CS0246: The type or namespace name `Irony' could not be found. Are you missing an assembly reference?
+	AidlParser.cs(3,7): error CS0246: The type or namespace name `Irony' could not be found. Are you missing an assembly reference?
+	AidlParser.cs(4,7): error CS0246: The type or namespace name `Irony' could not be found. Are you missing an assembly reference?
+	AidlParser.cs(9,37): error CS0246: The type or namespace name `Grammar' could not be found. Are you missing an assembly reference?
+	AidlCompiler.cs(20,30): error CS0246: The type or namespace name `Irony' could not be found. Are you missing an assembly reference?
+	AidlParser.cs(11,3): error CS0246: The type or namespace name `NonTerminal' could not be found. Are you missing an assembly reference?
+	AidlParser.cs(18,3): error CS0246: The type or namespace name `KeyTerm' could not be found. Are you missing an assembly reference?
+	AidlParser.cs(27,3): error CS0246: The type or namespace name `AstNodeCreator' could not be found. Are you missing an assembly reference?
+	AidlParser.cs(35,27): error CS0246: The type or namespace name `AstContext' could not be found. Are you missing an assembly reference?
+	AidlParser.cs(35,43): error CS0246: The type or namespace name `ParseTreeNode' could not be found. Are you missing an assembly reference?
+	AidlParser.cs(42,25): error CS0246: The type or namespace name `AstContext' could not be found. Are you missing an assembly reference?
+	AidlParser.cs(42,41): error CS0246: The type or namespace name `ParseTreeNode' could not be found. Are you missing an assembly reference?
+	AidlParser.cs(50,19): error CS0246: The type or namespace name `AstContext' could not be found. Are you missing an assembly reference?
+	AidlParser.cs(50,35): error CS0246: The type or namespace name `ParseTreeNode' could not be found. Are you missing an assembly reference?
+
+/home/moljac/Desktop/xamarin-android/Xamarin.Android.sln (default targets) ->
+(Build target) ->
+/home/moljac/Desktop/xamarin-android/external/Java.Interop/tools/logcat-parse/logcat-parse.csproj (default targets) ->
+/usr/lib/mono/4.5/Microsoft.CSharp.targets (CoreCompile target) ->
+
+	repl.cs(43,24): error CS0234: The type or namespace name `Terminal' does not exist in the namespace `Mono'. Are you missing an assembly reference?
+	repl.cs(69,8): error CS0234: The type or namespace name `Terminal' does not exist in the namespace `Mono'. Are you missing an assembly reference?
+
+	 36 Warning(s)
+	 35 Error(s)
+
+Time Elapsed 00:00:01.5600930
+Makefile:23: recipe for target 'all' failed
