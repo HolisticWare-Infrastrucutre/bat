@@ -1,7 +1,8 @@
 Windows Registry Editor Version 5.00
 
-[HKEY_CLASSES_ROOT\.sln\ShellNew] 
-"FileName"="Visual-Studio-Solution.2015.sln"
+[HKEY_CLASSES_ROOT\.sln\ShellNew]
+"FileName"="c:\\Windows\\ShellNew\\Visual-Studio-Solution.2015.sln"
+"NullFile"=""
 
 ; double extnsions - no go
 ;[HKEY_CLASSES_ROOT\.2015.sln\ShellNew] 
