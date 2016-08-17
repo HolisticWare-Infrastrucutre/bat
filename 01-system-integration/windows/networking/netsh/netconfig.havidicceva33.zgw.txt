@@ -1,0 +1,45 @@
+
+
+# ---------------------------------- 
+# Interface IP Configuration         
+# ---------------------------------- 
+pushd interface ip
+
+
+# Interface IP Configuration for "VMware Network Adapter VMnet8"
+
+set address name="VMware Network Adapter VMnet8" source=static addr=192.168.255.1 mask=255.255.255.0
+set dns name="VMware Network Adapter VMnet8" source=static addr=none register=PRIMARY
+set wins name="VMware Network Adapter VMnet8" source=static addr=none
+
+# Interface IP Configuration for "VMware Network Adapter VMnet1"
+
+set address name="VMware Network Adapter VMnet1" source=static addr=192.168.254.1 mask=255.255.255.0
+set dns name="VMware Network Adapter VMnet1" source=static addr=none register=PRIMARY
+set wins name="VMware Network Adapter VMnet1" source=static addr=none
+
+# Interface IP Configuration for "Local Area Connection"
+
+set address name="Local Area Connection" source=static addr=10.5.145.29 mask=255.0.0.0
+set address name="Local Area Connection" gateway=10.5.145.1 gwmetric=0
+set dns name="Local Area Connection" source=static addr=10.5.131.33 register=PRIMARY
+add dns name="Local Area Connection" addr=10.5.167.3 index=2
+set wins name="Local Area Connection" source=static addr=none
+
+# Interface IP Configuration for "Wireless Network Connection"
+
+set address name="Wireless Network Connection" source=dhcp 
+set dns name="Wireless Network Connection" source=dhcp register=PRIMARY
+set wins name="Wireless Network Connection" source=dhcp
+
+# Interface IP Configuration for "Bluetooth Network"
+
+set address name="Bluetooth Network" source=dhcp 
+set dns name="Bluetooth Network" source=dhcp register=PRIMARY
+set wins name="Bluetooth Network" source=dhcp
+
+
+popd
+# End of interface IP configuration
+
+
