@@ -36,7 +36,7 @@
 # 	gateway – the gateway address
 # -----------------------------------------------------------------------------------
 # user new
-USER_SUDO=someuser
+export USER_SUDO=someuser
 useradd $USER_SUDO 
 passwd $USER_SUDO
 # -----------------------------------------------------------------------------------

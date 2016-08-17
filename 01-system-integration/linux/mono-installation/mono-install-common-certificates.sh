@@ -9,20 +9,25 @@
 
 #..........................................................
 # user store import (default)
-mozroots --import --sync
+sudo mozroots --import --sync
 yes | certmgr -ssl https://go.microsoft.com
 yes | certmgr -ssl https://nugetgallery.blob.core.windows.net
 yes | certmgr -ssl https://nuget.org
 yes | certmgr -ssl https://www.myget.org/F/aspnetvnext/
 #..........................................................
+mozroots --import --sync
 
 #..........................................................
 # machine store import
 # solves some problems -  TO test
-mozroots --import --machine --sync
+sudo mozroots --import --machine --sync
 yes | certmgr -ssl -m https://go.microsoft.com
 yes | certmgr -ssl -m https://nugetgallery.blob.core.windows.net
 yes | certmgr -ssl -m https://nuget.org
 yes | certmgr -ssl -m https://www.myget.org/F/aspnetvnext/
 #..........................................................
+mozroots --import --sync
 
+
+ls -al ~/.config/.mono/certs
+ls -al ~/.config/.mono/certs/Trust/
