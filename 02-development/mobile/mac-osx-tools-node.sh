@@ -6,3 +6,6 @@ then
 fi
 
 brew install node
+
+node -v
+
