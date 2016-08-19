@@ -7,4 +7,6 @@ then
 fi
 
 
+brew
+brew list
 	
