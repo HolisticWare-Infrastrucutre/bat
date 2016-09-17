@@ -312,6 +312,12 @@ App_Data/*.ldf
 #----------------------------------------------
 
 #----------------------------------------------
+# Cake Build system
+tools/
+**/tools/
+#----------------------------------------------
+
+#----------------------------------------------
 # Xamarin Components and nuget packages
 **/Components/
 **/packages/
@@ -355,7 +361,8 @@ source/samples/Components/**
 #----------------------------------------------
 # Xamarin.Android
 # Security (project id etc)
-**/AndroidManifest.xml
+# **/AndroidManifest.xml
+
 **/Resource.designer.cs
 #----------------------------------------------
 
