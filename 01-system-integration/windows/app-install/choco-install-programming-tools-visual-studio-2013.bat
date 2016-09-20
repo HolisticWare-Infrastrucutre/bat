@@ -11,7 +11,6 @@ set APPS=^
 	vs2013.vscommands ^
 
 
-
 ::===================================================================
 ::choco install %APPS%
 set COMMAND=choco install --yes --force --verbose

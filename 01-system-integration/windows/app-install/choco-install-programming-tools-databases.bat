@@ -5,8 +5,13 @@ set APPS=^
 	mssqlserver2012express ^
 	mysql ^
 	mysql.workbench ^
+	mysql.utilities ^
 	sqlite ^
+	sqlite.shell ^
+	sqlite.analyzer ^
 	postgress ^
+	monogodb ^
+	
 	
 ::===================================================================
 ::choco install %APPS%

@@ -4,11 +4,16 @@ set APPS=^
 	xamarin-studio ^
 	xamarin ^
 	xamarin-visualstudio ^
-
+	xamarin-component ^
+	
 
 ::===================================================================
+:: Chocolatey package that is using http to download will require 
+:: parameter "--allow-empty-checksums" or "--ignore-checksums"
 ::choco install %APPS%
-set COMMAND=choco install --yes --force --verbose
+:: --allow-empty-checksums
+::
+set COMMAND=choco install --yes --force --verbose 
 
 :: chocolatey update packageName [-source ...] [-prerelease]
 ::set COMMAND=cup

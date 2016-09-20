@@ -2,9 +2,9 @@
 
 set APPS=^
 	javaruntime ^
+	jre8 ^
 	jdk8 ^
-	androidstudio ^
-
+	
 
 
 ::	jdk7 ^

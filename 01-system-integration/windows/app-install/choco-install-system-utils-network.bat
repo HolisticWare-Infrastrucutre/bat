@@ -1,6 +1,11 @@
 @echo off
 
 set APPS=^
+	wget ^
+	curl ^
+	winscp ^
+	putty ^
+	superputty ^
 	wireshark ^
 	fiddler4 ^
 	fiddler ^

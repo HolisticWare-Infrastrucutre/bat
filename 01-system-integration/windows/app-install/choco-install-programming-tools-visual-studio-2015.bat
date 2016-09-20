@@ -13,7 +13,7 @@ set APPS=^
 ::set COMMAND=cup
 
 ::choco uninstall %APPS%
-set COMMAND=cuninst --yes --force --verbose
+set COMMAND=cinst --yes --force --verbose
 ::===================================================================
 	
 %COMMAND% %APPS%

@@ -2,18 +2,11 @@
 
 set APPS=^
 	sharpdevelop ^
-	monodevelop ^
-	
-	linqpad ^
-	linqpad4 ^
-	linqpad4.install ^
-	
-	nunit ^
 	stylecop ^
 	ncrunch2.vs2013 ^
 	xmlnotepad ^
 	tinycc ^
-	orwelldevcpp ^
+	orwelldevcpp ^
 	linqpad4 ^
 	cs-script ^
 	cshell ^
@@ -22,23 +15,14 @@ set APPS=^
 	nunit ^
 	swig ^
 	bugshooting ^
-	sqlserver2014express ^
-	mssqlserver2012express ^
-	sqlserver2014express ^
 	microsoft-build-tools ^
-	owinhost
+	owinhost ^
 
-
-::===================================================================
+	
+	
 ::choco install %APPS%
-::set COMMAND=cinst
-
-:: chocolatey update packageName [-source ...] [-prerelease]
-set COMMAND=cup
-
-::choco uninstall %APPS%
-::set COMMAND=cuninst
-::===================================================================
+cinst -y -verbose ^
+	%APPS%
 
 :: for %%a IN (%APPS%) DO (
 :: 	echo %%a
@@ -49,3 +33,4 @@ set COMMAND=cup
 :: )
 
 @IF %ERRORLEVEL% NEQ 0 PAUSE
+	

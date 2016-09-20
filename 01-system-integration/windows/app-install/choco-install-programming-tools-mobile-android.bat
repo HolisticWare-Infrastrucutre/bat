@@ -1,10 +1,13 @@
 @echo off
 
 set APPS=^
+	android-sdk ^
 	androidstudio ^
+	gradle ^
+	maven ^
 	genymotion ^
 	apktool ^
-	
+	airdroid ^
 	
 ::	eclipse ^
 	

@@ -2,6 +2,7 @@
 
 set APPS=^
 	chocolateygui ^
+	nuget.commandline ^
 	filezilla ^
 	powershell ^
 	dotnet3.5 ^
@@ -10,10 +11,6 @@ set APPS=^
 	dotnet4.5.2 ^
 	jre8 ^
 	javaruntime ^
-	msysgit ^
-	tortoisegit ^
-	tortoisesvn ^
-	tortoisehg ^
 	ccleaner ^
 	sysinternals ^
 	spybot ^
@@ -26,19 +23,12 @@ set APPS=^
 	magicdisc ^
 	isorecorder ^
 	virtualclonedrive ^
-	putty ^
-	superputty ^
-	nuget.commandline ^
 	procexp ^
 	perfview ^
 	mysql.workbench ^
-	wget ^
-	curl ^
-	winscp ^
 	teamviewer ^
 	cygwin ^
 	youtube-dl ^
-	console2 ^
 	virtualbox ^
 	googledrive ^
 	dropbox ^
