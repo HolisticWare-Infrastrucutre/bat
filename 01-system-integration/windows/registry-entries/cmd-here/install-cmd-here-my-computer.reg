@@ -1,9 +1,0 @@
-Windows Registry Editor Version 5.00
-
-; Add to My Computer
-
-[HKEY_CLASSES_ROOT\CLSID\{20D04FE0-3AEA-1069-A2D8-08002B30309D}\shell\cmd-here-my-computer]
-@="cmd here (Administrator)"
-
-[HKEY_CLASSES_ROOT\CLSID\{20D04FE0-3AEA-1069-A2D8-08002B30309D}\shell\cmd-here-my-computer\command]
-@="cmd.exe"
