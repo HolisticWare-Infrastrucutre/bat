@@ -1,0 +1,13 @@
+REGEDIT4
+
+[HKEY_CLASSES_ROOT\Directory\shell\cmd]
+@="Open Command Window Here"
+
+[HKEY_CLASSES_ROOT\Directory\shell\cmd\command]
+@="cmd.exe /k \"cd %L\""
+
+[HKEY_CLASSES_ROOT\Drive\shell\cmd]
+@="Open Command Window Here"
+
+[HKEY_CLASSES_ROOT\Drive\shell\cmd\command]
+@="cmd.exe /k \"cd %L\""

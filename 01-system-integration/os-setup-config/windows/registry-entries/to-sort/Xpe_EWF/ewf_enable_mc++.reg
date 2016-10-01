@@ -1,0 +1,22 @@
+Windows Registry Editor Version 5.00 
+
+[HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\ewf]
+"ErrorControl"=dword:00000001
+"Group"="System Bus Extender"
+"Start"=dword:00000000
+"Type"=dword:00000001
+
+[HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\Class\{71A27CDD-812A-11D0-BEC7-08002BE2092F}]
+"UpperFilters"="Ewf"
+
+ [HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\ewf\Parameters]
+
+[HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\ewf\Parameters\Protected]
+
+[HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\ewf\Parameters\Protected\Volume0]
+"VolumeID"="{1EA414D1-6760-4625-8CBE-4F9F85A48E15}"
+"Type"=dword:00000001
+"ArcName"="multi(0)disk(0)rdisk(0)partition(1)" 
+
+
+

@@ -1,0 +1,4 @@
+Windows Registry Editor Version 5.00
+
+[HKLM\SYSTEM\CurrentControlSet\Services\Tcpip\Parameters\Interfaces]
+MTU="1400"

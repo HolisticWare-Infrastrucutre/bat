@@ -1,0 +1,10 @@
+Windows Registry Editor Version 5.00
+
+[HKEY_CLASSES_ROOT\Unknown\shell]
+@="notepad"
+
+[HKEY_CLASSES_ROOT\Unknown\shell\notepad]
+@="Open with Notepad"
+
+[HKEY_CLASSES_ROOT\Unknown\shell\notepad\command]
+@="%ProgramFiles(x86)^%\\Notepad++\\notepad++.exe %1"
