@@ -1,7 +1,0 @@
-Windows Registry Editor Version 5.00 
-
-[HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\Session Manager\Environment]
-DEVMGR_SHOW_NONPRESENT_DEVICES=reg_sz"1"
-
-;Data Type: REG_SZ (String Value)
-;Value Data: (1 = show all hidden devices)

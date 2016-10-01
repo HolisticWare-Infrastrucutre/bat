@@ -1,6 +1,0 @@
-Windows Registry Editor Version 5.00 
-
-[HKEY_CLASSES_ROOT\Directory\shell\Visual Studio .NET 2005 Command Prompt] 
-
-[HKEY_CLASSES_ROOT\Directory\shell\Visual Studio .NET 2005 Command Prompt\command] 
-@="cmd.exe %1 /K \"C:\\Program Files\\Microsoft Visual Studio 8\\Common7\\Tools\\vsvars32.bat\"" 
