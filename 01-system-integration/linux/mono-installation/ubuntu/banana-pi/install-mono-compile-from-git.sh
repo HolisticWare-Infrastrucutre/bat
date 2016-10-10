@@ -64,3 +64,24 @@ sudo aptitude install -y \
         gettext \
 
 
+
+function install_prerequisites_dotnetcore()
+{
+    sudo apt-get install -y \
+        cmake \
+        llvm \
+        clang \
+        libunwind8 \
+        libunwind8-dev \
+        lldb-3.6 \
+        lldb-3.6-dev \
+        gettext \
+        libicu-dev \
+        liblttng-ust-dev \
+        libcurl4-openssl-dev \
+        libssl-dev \
+        uuid-dev \
+
+ }       
+
+
