@@ -18,7 +18,7 @@ set APPS=^
 ::for %%a IN (%APPS%) DO (
 ::	echo %%a
 ::
-::::	choco install ^
+::::	choco install -y -verbose --allowEmptyChecksums ^
 ::)
 ::
 

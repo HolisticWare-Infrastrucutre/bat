@@ -6,26 +6,15 @@ set APPS=^
 	jdk8 ^
 	
 
-
-::	jdk7 ^
-::	javaruntime-platformspecific ^
-
-
-	
-::	javaruntime ^
-::	jdk8 ^
-	
-
-
 ::===================================================================
 ::choco install %APPS%
-set COMMAND=choco install --yes --force --verbose
+set COMMAND=choco install --yes --force --verbose --debug --allowEmptyChecksums
 
 :: chocolatey update packageName [-source ...] [-prerelease]
-::set COMMAND=cup
+::set COMMAND=cup --yes --force --verbose --debug --allowEmptyChecksums
 
 ::choco uninstall %APPS%
-::set COMMAND="cuninst --yes --force --verbose"
+::set COMMAND=cuninst --yes --force --verbose --debug
 ::===================================================================
 	
 %COMMAND% %APPS%

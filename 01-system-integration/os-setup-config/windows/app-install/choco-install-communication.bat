@@ -7,10 +7,10 @@ set APPS=^
 
 ::===================================================================
 ::choco install %APPS%
-set COMMAND=chinst --yes --force --verbose --debug
+set COMMAND=choco install --yes --force --verbose --debug --allowEmptyChecksums
 
 :: chocolatey update packageName [-source ...] [-prerelease]
-::set COMMAND=cup  --yes --force --verbose --debug
+::set COMMAND=cup --yes --force --verbose --debug --allowEmptyChecksums
 
 ::choco uninstall %APPS%
 ::set COMMAND=cuninst --yes --force --verbose --debug
