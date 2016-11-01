@@ -6,7 +6,7 @@ set APPS=^
 
 
 ::choco install %APPS%
-cinst -y -verbose ^
+cinst  -y -verbose --allowEmptyChecksums ^
 	%APPS%
 
 :: for %%a IN (%APPS%) DO (

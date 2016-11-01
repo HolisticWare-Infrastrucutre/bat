@@ -15,10 +15,10 @@ set APPS=^
 	
 ::===================================================================
 ::choco install %APPS%
-::set COMMAND=cinst
+::set COMMAND=cinst -y -verbose --allowEmptyChecksums
 
 :: chocolatey update packageName [-source ...] [-prerelease]
-set COMMAND=cup
+set COMMAND=cup -y -verbose --allowEmptyChecksums
 
 ::choco uninstall %APPS%
 ::set COMMAND=cuninst
