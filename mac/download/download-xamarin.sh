@@ -13,6 +13,10 @@ URLS=\
     http://redth.info/assets/Xamarin.Studio.Launcher.v5.zip \
     http://download.mono-project.com/sources/monodevelop/monodevelop-6.0.0.4761.tar.bz2 \
     https://github.com/mono/monodevelop/archive/master.zip \
+    https://dl.google.com/dl/android/studio/install/2.2.2.0/android-studio-ide-145.3360264-mac.dmg \
+    https://dl.google.com/android/android-sdk_r24.4.1-macosx.zip \
+    https://dl.google.com/android/repository/android-ndk-r13b-darwin-x86_64.zip \
+    http://download.virtualbox.org/virtualbox/5.1.10/VirtualBox-5.1.10-112026-OSX.dmg \
 "    
     
     
