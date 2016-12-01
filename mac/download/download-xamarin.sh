@@ -8,6 +8,14 @@ URLS=\
     https://www.visualstudio.com/thank-downloading-visual-studio-mac/?sku=vsmac \
     https://dl.google.com/android/android-sdk_r24.4.1-macosx.zip \
     https://dl.google.com/android/repository/android-ndk-r13b-darwin-x86_64.zip \
+    https://store.xamarin.com/account/my/subscription/installer?os=mac \
+    http://dl.xamarin.com/MonoTouch/Mac/xamarin.ios-10.2.0.4.pkg \
+    https://store.xamarin.com/account/my/subscription/installer?os=mac \
+    http://download.xamarin.com/MonoforAndroid/Mac/xamarin.android-7.0.1-2.pkg \
+    https://store.xamarin.com/account/my/subscription/installer?os=mac \
+    http://download.xamarin.com/XamarinforMac/Mac/xamarin.mac-2.10.0.103.pkg \
+    https://store.xamarin.com/account/my/subscription/installer?os=mac \
+    https://dl.xamarin.com/MonoDevelop/Mac/XamarinStudio-6.1.1.17.dmg \
     https://github.com/mono/monodevelop/archive/master.zip \
     https://download.xamarin.com/objective-sharpie/ObjectiveSharpie.pkg \
     https://download.xamarin.com/inspector/XamarinInteractive.pkg \
