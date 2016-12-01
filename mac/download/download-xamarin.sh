@@ -24,6 +24,8 @@ URLS=\
     http://redth.info/assets/Xamarin.Studio.Launcher.v5.zip \
     http://download.mono-project.com/sources/monodevelop/monodevelop-6.0.0.4761.tar.bz2 \
     http://download.virtualbox.org/virtualbox/5.1.10/VirtualBox-5.1.10-112026-OSX.dmg \
+    https://slack.com/ssb/download-osx \
+    https://update.gitter.im/osx/latest \
 "    
 #
 #     https://dl.xamarin.com/xamarin-simulator/Xamarin.Simulator.Installer.exe \
