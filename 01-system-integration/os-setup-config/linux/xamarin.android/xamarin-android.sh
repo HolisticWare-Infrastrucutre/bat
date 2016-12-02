@@ -18,6 +18,11 @@ wget http://download.mono-project.com/test/XamarinStudio-6.1.0.5441.flatpak
 # Install it to your user account:
 flatpak install --user --bundle XamarinStudio-6.1.0.5441.flatpak
 
+
+wget https://dl.google.com/android/android-sdk_r24.4.1-linux.tgz 
+wget https://dl.google.com/android/repository/android-ndk-r12b-linux-x86_64.zip
+wget http://www.oracle.com/technetwork/java/javase/downloads/jdk8-downloads-2133151.html
+
 # Run Xamarin Studio 
 #   from your distribution's app launcher menu 
 # or on the command line
