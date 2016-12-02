@@ -10,7 +10,7 @@ wget https://sdk.gnome.org/keys/gnome-sdk.gpg
 flatpak remote-add --gpg-import=gnome-sdk.gpg gnome https://sdk.gnome.org/repo/
 
 # Install the base OS image:
-flatpak install gnome org.freedesktop.Platform 1.4 5. 
+flatpak install gnome org.freedesktop.Platform 1.4
 
 # Download the latest Xamarin Studio installer bundle, currently at 
 wget http://download.mono-project.com/test/XamarinStudio-6.1.0.5441.flatpak
