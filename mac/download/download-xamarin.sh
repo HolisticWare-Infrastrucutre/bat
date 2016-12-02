@@ -26,6 +26,7 @@ URLS=\
     http://download.virtualbox.org/virtualbox/5.1.10/VirtualBox-5.1.10-112026-OSX.dmg \
     https://slack.com/ssb/download-osx \
     https://update.gitter.im/osx/latest \
+    http://usa.maintain.se/Cocktail10SE.dmg \
 "    
 #
 #     https://dl.xamarin.com/xamarin-simulator/Xamarin.Simulator.Installer.exe \
