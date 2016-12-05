@@ -47,4 +47,28 @@ do
     curl -v -L -C - -O $URL
 
 done
+
+/usr/bin/ruby \
+	-e \
+	"$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
+	
+URL=https://github.com/macports/macports-base/releases/download/v2.3.5/MacPorts-2.3.5-10.12-Sierra.pkg
+curl -v -L -C - -O $URL
+
+
+git --version
+# https://sourceforge.net/projects/git-osx-installer/files/
+# URL="http://downloads.sourceforge.net/project/git-osx-installer/git-2.10.1-intel-universal-mavericks.dmg?r=https%3A%2F%2Fsourceforge.net%2Fprojects%2Fgit-osx-installer%2Ffiles%2F&ts=1480886198&use_mirror=netassist"
+#curl -v -L -C - -O $URL
+
+brew install git
+git --version
+
+sudo port selfupdate
+port search git
+port variants git
+sudo port install git +bash_completion+credential_osxkeychain+doc
+ 
+git config --global user.name "Miljenko Cvjetko moljac"
+git config --global user.email "mcvjetko@holisticware.net"
     
