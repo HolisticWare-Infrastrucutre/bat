@@ -1,6 +1,8 @@
 #!/bin/bash
 
-android list sdk --all
+android list sdk --all 
+android list sdk --all --extended
+./android list sdk --all --extended | grep "or "
 
 PACKAGES=\
 "\
