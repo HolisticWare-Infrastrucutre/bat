@@ -72,3 +72,8 @@ sudo port install git +bash_completion+credential_osxkeychain+doc
 git config --global user.name "Miljenko Cvjetko moljac"
 git config --global user.email "mcvjetko@holisticware.net"
     
+
+open \
+	https://chrome.google.com/webstore/detail/advanced-rest-client/hgmloofddffdnphfgcellkdfbfbjeloo/related
+open \
+	
