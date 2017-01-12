@@ -1,28 +1,15 @@
 #!/bin/bash
 
-android list sdk --all 
-android list sdk --all --extended
-./android list sdk --all --extended | grep "or "
+export PATH=~/Library/Developer/Xamarin/android-sdk-macosx/tools/bin/:$PATH
+export ANDROID=~/Library/Developer/Xamarin/android-sdk-macosx/tools/android
+export SDKMANAGER=~/Library/Developer/Xamarin/android-sdk-macosx/tools/bin/sdkmanager
 
-PACKAGES=\
-"\
-    tools \
-    platform-tools \
-    build-tools-25.0.1 \
-    build-tools-25.0.0 \
-    build-tools-25.0.0 \
-    build-tools-24.0.3 \
-    build-tools-24.0.2 \
-    build-tools-24.0.1 \
-    build-tools-24.0.0 \
-    build-tools-23.0.3 \
-    build-tools-23.0.2 \
-    build-tools-23.0.1 \
-    build-tools-23.0.0 \
-"
+. ./android-sdk-update-config.sh
 
+$ANDROID --clear-cache
+$SDKMANAGER --list
 
-PACKAGES_LIST=
+$SDKMANAGER --list >> list.sdkmanager.txt
 
 for PACKAGE in $PACKAGES;
 do
@@ -34,9 +21,9 @@ done
 
 echo $PACKAGES_LIST
 
-PACAKES_LIST=
+PACAKGES_LIST=
 
-ANDROID=tools/android
+
 ( sleep 5 && while [ 1 ]; do sleep 1; echo y; done ) \
     | \
     $ANDROID update sdk \
