@@ -42,6 +42,8 @@ URLS=\
 # License Agreement needed
 #    https://dl.google.com/dl/android/studio/install/2.2.2.0/android-studio-ide-145.3360264-mac.dmg \
 
+cd /Users/$(whoami)/Downloads
+
 for URL in $URLS; 
 do
     echo item: $URL
