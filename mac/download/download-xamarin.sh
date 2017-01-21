@@ -4,6 +4,7 @@
 
 URLS=\
 "\
+    https://download.mono-project.com/archive/4.6.2/macos-10-universal/MonoFramework-MDK-4.6.2.16.macos10.xamarin.universal.pkg
     https://go.microsoft.com/fwlink/?LinkID=620882 \
     https://www.visualstudio.com/thank-downloading-visual-studio-mac/?sku=vsmac \
     https://dl.google.com/android/android-sdk_r24.4.1-macosx.zip \
