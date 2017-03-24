@@ -152,6 +152,12 @@ publish/
 #!**/packages/repositories.config
 #NuGet
 packages/
+# nuget v3 with project.json 
+# Oren Novotny 
+# http://www.bartlannoeye.com/blog/creating-nuget-packages-for-your-windows-10-uwp-libraries
+*.nuget.props
+*.nuget.targets
+*.lock.json
 
 # Microsoft Azure Build Output
 csx/
@@ -323,6 +329,8 @@ tools/
 **/packages/
 src/samples/Components/**
 source/samples/Components/**
+source/Components/**
+samples/Components/**
 #----------------------------------------------
 
 #----------------------------------------------
@@ -356,6 +364,7 @@ source/samples/Components/**
 #----------------------------------------------
 # Xamarin Studio
 **/*.userprefs
+**/*.csproj.bak
 #----------------------------------------------
 
 #----------------------------------------------
@@ -363,7 +372,15 @@ source/samples/Components/**
 # Security (project id etc)
 # **/AndroidManifest.xml
 
-**/Resource.designer.cs
+# ignore Xamarin.Android Resource.Designer.cs files
+**/Resource[s].[Dd]esigner.cs
+**/Resource[s].[Dd]esigner.cs
+**/Resources/Resource.[Dd]esigner.cs
+**/Resource.Designer.cs
+**/[Rr]esource.[Dd]esigner.cs
+#**/*.Droid/**/[Rr]esource.[Dd]esigner.cs
+#**/*.Android/**/[Rr]esource.[Dd]esigner.cs
+#**/Android/**/[Rr]esource.[Dd]esigner.cs
 #----------------------------------------------
 
 #----------------------------------------------
@@ -413,8 +430,16 @@ local.properties
 /docs/ubertesters.sdk.ios %
 
 
+
 #------------------------------------------
 # Xamarin.iOS build files
+**DerivedData**
+**build**
+lib/**
+#------------------------------------------
+
+#------------------------------------------
+# iOS build files
 **DerivedData**
 **build**
 lib/**
@@ -430,6 +455,21 @@ lib/**
 **/.idea/
 #------------------------------------------
 
+#------------------------------------------
+# Cake Build
+tools/**
+#------------------------------------------
+
+#------------------------------------------
+# Xamarin CI project structure
+output/**
+#------------------------------------------
+
+
+#------------------------------------------
+# Universal Windows Platform
+**/project.lock.json
+#------------------------------------------
 
 #==============================================================================
 df-post.txt
