@@ -4,8 +4,7 @@
 
 URLS=\
 "\
-    https://go.microsoft.com/fwlink/?LinkID=620882 \
-    https://www.visualstudio.com/thank-downloading-visual-studio-mac/?sku=vsmac \
+    https://download.mono-project.com/archive/4.6.2/macos-10-universal/MonoFramework-MDK-4.6.2.16.macos10.xamarin.universal.pkg
     https://dl.google.com/android/android-sdk_r24.4.1-macosx.zip \
     https://dl.google.com/android/repository/android-ndk-r13b-darwin-x86_64.zip \
     https://store.xamarin.com/account/my/subscription/installer?os=mac \
@@ -24,8 +23,6 @@ URLS=\
     http://redth.info/assets/Xamarin.Studio.Launcher.v5.zip \
     http://download.mono-project.com/sources/monodevelop/monodevelop-6.0.0.4761.tar.bz2 \
     http://download.virtualbox.org/virtualbox/5.1.10/VirtualBox-5.1.10-112026-OSX.dmg \
-    https://slack.com/ssb/download-osx \
-    https://update.gitter.im/osx/latest \
     http://usa.maintain.se/Cocktail10SE.dmg \
 "    
 #
@@ -41,20 +38,14 @@ URLS=\
 # License Agreement needed
 #    https://dl.google.com/dl/android/studio/install/2.2.2.0/android-studio-ide-145.3360264-mac.dmg \
 
+cd /Users/$(whoami)/Downloads
+
 for URL in $URLS; 
 do
     echo item: $URL
     curl -v -L -C - -O $URL
 
 done
-
-/usr/bin/ruby \
-	-e \
-	"$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
-	
-URL=https://github.com/macports/macports-base/releases/download/v2.3.5/MacPorts-2.3.5-10.12-Sierra.pkg
-curl -v -L -C - -O $URL
-
 
 git --version
 # https://sourceforge.net/projects/git-osx-installer/files/
