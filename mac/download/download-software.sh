@@ -15,6 +15,7 @@ URLS=\
     https://www.xquartz.org/ \
     https://inkscape.org/en/download/mac-os/ \
 	http://launchpad.net/unetbootin/trunk/625/+download/unetbootin-mac-625.dmg \
+	http://support.logitech.com/en_us/product/unifying \
 "    
 
 open $URLS
