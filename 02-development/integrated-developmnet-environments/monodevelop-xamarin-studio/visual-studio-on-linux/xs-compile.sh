@@ -1,5 +1,6 @@
 #!/bin/bash -e
 
+
 #
 # BTLS (TLS 1.2) support is not enabled by default in the current Mono (as of Oct 12 2016)
 #
@@ -175,15 +176,8 @@ apply_patches "$XS_PATCHES_DIR"
 XS_PATCHES_APPLIED="yes"
 
 echo Using nuget: `which nuget`
-export NUGET="mono $HOME/nuget.exe"
-
-packageid="Microsoft.Build.Mono.Debug"
-version="14.1.0.0-prerelease" # update as needed
-
-
-export MSBUILD="mono $packageid.$version/lib/MSBuild.exe"
-alias msbuld=$MSBUILD
-
+wget https://dist.nuget.org/win-x86-commandline/v3.5.0/nuget.exe
+export NUGET="mono ./nuget.exe"
 
 for f in `find -name '*.sln' -type f`; do
 	echo "Restoring nugets for: $f"
