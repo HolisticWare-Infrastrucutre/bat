@@ -4,3 +4,4 @@ set DEVMGR_SHOW_NONPRESENT_DEVICES=1
 
 start devmgmt.msc
 
+@IF %ERRORLEVEL% NEQ 0 PAUSE	
