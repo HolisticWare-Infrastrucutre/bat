@@ -8,11 +8,25 @@ choco install -y `
     android-sdk `
     androidstudio `
 
+
 android list sdk --all --extended 
 android update sdk --no-ui
 
 
-    visualstudio2015community `
+#choco install -y `
+#    visualstudio2015community `
+#    visualstudio2017community `
+    
+    
+choco install -y `
+    visualstudio2017professional `
+    
+choco install -y `
+    visualstudio2015professional `    
+
+
+
+choco install -y `
     visualstudiocode `
 
 choco install -y `
