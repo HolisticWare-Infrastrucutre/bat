@@ -2,15 +2,20 @@
 
 brew list
 
+brew update
+
+#----------------------------------------------------------------------
+# 
+brew install \
+        ntfs-3g \
+
+
 brew install \
         tree \
         openssl \
         tmux \
         watchman \
-
-
-brew install \
-        ntfs-3g \
+        ffmpeg \
 
 #----------------------------------------------------------------------
 # 
@@ -40,6 +45,12 @@ brew install \
 brew install \
         node		
 
+
+#----------------------------------------------------------------------
+# 
+brew install \
+        octave \
+        R \
 
 
 
