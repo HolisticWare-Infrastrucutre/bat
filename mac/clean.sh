@@ -26,9 +26,14 @@ find \
 					-name "DTAR_*_DTAR" \
 					-o \
 					-name ".vs" \
+					-o \
+					-name "__pycache__" \
 			\) \
 		-not -path "*Dropbox*" \
 		-not -path "*Google Drive*" \
+		-not -path "*.templateengine*" \
+		-not -path "*.config/WakaTime/*" \
+		-not -path "*.vscode/extensions/*" \
 		-exec rm -rf {} \;
 
 find \
@@ -50,6 +55,8 @@ find \
 					-name "*.userprefs" \
 					-o \
 					-name "*.xam" \
+					-o \
+					-name "UpgradeLog*.htm" \
 			\) \
 		-not -path "*Dropbox*" \
 		-not -path "*Google Drive*" \
@@ -98,7 +105,13 @@ find \
 		-not -path "*Google Drive*" \
 		-exec rm -rf {} \;
 
-
+#---------------------------------------------------------------------------
+# http://lastexitcode.com/projects/NuGet/FileLocations/
+rm -fr ~/.nuget/packages/*
+rm -fr ~/.local/share/NuGet/v3-cache/*
+rm -fr ~/.local/share/NuGet/*cache/*
+#---------------------------------------------------------------------------
+		
 rm -fr ~/Library/Application\ Support/iPhone\ Simulator/6.1/Applications/*
 rm -fr ~/Library/Application\ Support/iPhone\ Simulator/7.1/Applications/*
 rm -fr ~/Library/Application\ Support/iPhone\ Simulator/7.0.3/Applications/*
