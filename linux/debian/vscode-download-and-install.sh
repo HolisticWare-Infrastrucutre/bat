@@ -8,6 +8,7 @@ function vscode_download_and_install()
 
     sudo dpkg -i vscode.deb
     sudo apt-get install -y -f # Install dependencies
+    rm -fr vscode.deb
 }
 
 vscode_download_and_install
