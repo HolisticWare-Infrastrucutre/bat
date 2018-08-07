@@ -10,8 +10,14 @@ function install_tools()
     # Without it, following error will occur: 
     #       **Error**: You must have 'libtool' installed to compile Mono.
     sudo apt-get install -y \
+        nuget \
+        fsharp \
         libtool-bin \
+        gtk-sharp2 \
+        libssh2-1-dev \
 
 }
 
 install_tools
+
+
