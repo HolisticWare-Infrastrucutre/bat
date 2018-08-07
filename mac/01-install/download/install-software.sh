@@ -8,6 +8,10 @@ chmod +x build.sh
 sudo ./build.sh.
 cd ..
 
+
+curl -v -L -C - -O $URL
+
+
 # https://wiki.octave.org/Octave_for_macOS
 brew doctor
 brew outdated
@@ -57,3 +61,8 @@ pip install matplotlib
 #    --with-cairo \
 #    --with-tex
 
+  pip3 install --upgrade pip
+  pip3 install jupyter
+  
+  pip2 install --upgrade pip
+  pip2 install jupyter
