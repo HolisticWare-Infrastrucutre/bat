@@ -28,6 +28,18 @@ find \
 					-name ".vs" \
 					-o \
 					-name "__pycache__" \
+					-o \
+					-path "*/Library/Caches/Xamarin/AndroidDesigner" \
+					-o \
+					-path "*/Library/Caches/Xamarin/SystemDeviceDefinitions" \
+					-o \
+					-path "*/Library/Caches/Xamarin/VisualStudio" \
+					-o \
+					-path "*/Library/Caches/Xamarin/Xamarin.Android" \
+					-o \
+					-path "*/Library/Caches/Xamarin/XamarinBuildDownload" \
+					-o \
+					-path "*/Library/Caches/com.microsoft.visual-studio" \
 			\) \
 		-not -path "*Dropbox*" \
 		-not -path "*Google Drive*" \
