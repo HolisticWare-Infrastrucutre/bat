@@ -25,3 +25,47 @@ URLS=\
 "    
 
 open $URLS
+
+brew install protobuf
+# for error messages, run 
+brew doctor
+# follow any recommended fixes, and try again. 
+# If it still fails, try instead:
+brew upgrade protobuf
+
+URL=https://github.com/google/protobuf/archive/master.zip
+echo downloading: $URL
+curl \
+    -v -L -C - \
+    -o protobuf.zip \
+    -O $URL
+unzip protobuf.zip 
+cd protobuf-master/
+./autogen.sh && ./configure && make
+make check
+sudo make install
+which protoc
+protoc --version
+cd ..
+
+#PROTOC_ZIP=protoc-3.3.0-osx-x86_64.zip
+#curl -OL https://github.com/google/protobuf/releases/download/v3.3.0/$PROTOC_ZIP
+#sudo unzip -o $PROTOC_ZIP -d /usr/local bin/protoc
+#rm -f $PROTOC_ZIP
+
+
+URL=https://github.com/faniereynders/dotnet-sdk-helpers/archive/master.zip
+echo downloading: $URL
+curl \
+    -v -L -C - \
+    -o dotnet-sdk.zip \
+    -O $URL
+unzip dotnet-sdk.zip 
+cd ./dotnet-sdk-helpers-master/
+chmod +x ./dotnet-sdk
+./dotnet-sdk list
+cp -f ./dotnet-sdk ~/bin/
+rm -f /usr/local/bin/dotnet-sdk 
+ln -s /Users/moljac/bin/dotnet-sdk /usr/local/bin/
+dotnet sdk
+dotnet sdk list

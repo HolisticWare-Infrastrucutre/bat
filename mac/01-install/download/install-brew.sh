@@ -1,8 +1,25 @@
 #!/bin/bash
 
 brew list
+brew outdated
 
 brew update
+
+# Download and update ALL software packages installed:
+
+brew upgrade
+
+# To see which files would be removed as no longer needed:
+
+brew cleanup -n
+
+# No response if there is nothing to clearn.
+
+# To really remove all files no longer needed:
+
+brew cleanup
+
+
 
 #----------------------------------------------------------------------
 # 
@@ -55,3 +72,10 @@ brew install \
 
 
 
+# to remove all the packages installed but keep Homebrew around one 
+# could also do something like:
+
+# brew list -1 | xargs brew rm
+
+
+# https://blog.shvetsov.com/2014/11/homebrew-cheat-sheet-and-workflow.html
