@@ -8,8 +8,12 @@ chmod +x build.sh
 sudo ./build.sh.
 cd ..
 
-
+# https://github.com/icsharpcode/AvaloniaILSpy/
+export URL=https://ci.appveyor.com/api/projects/icsharpcode/avaloniailspy/artifacts/artifacts%2Fzips%2FILSpy-osx.10.12-x64-Release.zip?branch=master
 curl -v -L -C - -O $URL
+
+
+
 
 
 # https://wiki.octave.org/Octave_for_macOS

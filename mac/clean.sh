@@ -142,6 +142,14 @@ ls -al ~/Library/Developer/Xcode/iOS\ DeviceSupport/
 rm -fr ~/Library/Developer/Shared/Documentation/DocSets/com.apple.*
 ls -al ~/Library/Developer/Shared/Documentation/DocSets/
 
+# http://blog.neverthesamecolor.net/how-to-recover-disk-space-from-xcode/
+#~/Library/Developer/Xcode/DerivedData
+#~/Library/Developer/Xcode/Archives
+#~/Library/Developer/Xcode/iOS DeviceSupport
+#~/Library/Developer/CoreSimulator
+#~/Library/Caches/com.apple.dt.Xcode
+#~/Library/Application Support/MobileSync/Backup
+
 #===============================================================================
 # bunch of tmp stuff like:
 #		kpm		old ASP.net v5 
