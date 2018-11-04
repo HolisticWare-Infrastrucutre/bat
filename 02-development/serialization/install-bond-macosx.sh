@@ -16,8 +16,15 @@ brew install \
     cmake \
     ghc \
     cabal-install \
+
+
+brew install \
     boost \
-    boost-python \
+
+#    boost-python \
+brew install \
+    --build-from-source \
+    boost-python
 
 brew install go
 
@@ -27,16 +34,13 @@ go get golang.org/x/tools/cmd/godoc
 
 go get github.com/golang/lint/golint
 
+code --install-extension ms-vscode.Go
 
 
-brew install \
-    --build-from-source \
-    boost-python
-
-export PYTHON_LIBRARY=/usr/local/Cellar/python/2.7.9/Frameworks/Python.framework/Versions/2.7/lib/libpython2.7.dylib
+export PYTHON_LIBRARY=/usr/local/Cellar/python/3.7.0/Frameworks/Python.framework/Versions/3.7/lib/libpython3.7.dylib 
 
 cmake .. \
--DPYTHON_LIBRARY=/usr/local/Cellar/python/2.7.9/Frameworks/Python.framework/Versions/2.7/lib/libpython2.7.dylib
+    -DPYTHON_LIBRARY=/usr/local/Cellar/python/3.7.0/Frameworks/Python.framework/Versions/3.7/lib/libpython3.7.dylib 
 
 sudo xcode-select --reset
 xcode-select --install
@@ -48,13 +52,15 @@ sudo xcodebuild -license
 cabal update
 cabal install happy
 
-
+rm -fr bond/
 git clone --recursive https://github.com/Microsoft/bond.git
 cd bond
 mkdir build
 cd build
 cmake ..
 make
+
+
 cmake -G Xcode ..
 
 make --jobs 8 check
