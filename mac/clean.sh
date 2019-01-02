@@ -27,6 +27,10 @@ find \
 					-o \
 					-name ".vs" \
 					-o \
+					-name ".mfractor" \
+					-o \
+					-name ".idea" \
+					-o \
 					-name "__pycache__" \
 					-o \
 					-path "*/Library/Caches/Xamarin/AndroidDesigner" \
@@ -52,6 +56,8 @@ find \
 	~/ \
 		-type f \
 			\( \
+					-name "._*" \
+					-o \
 					-name ".DS_Store" \
 					-o \
 					-name "*.suo" \
@@ -88,6 +94,24 @@ find \
 					-name "DTAR_*_DTAR" \
 					-o \
 					-name ".vs" \
+					-o \
+					-name ".mfractor" \
+					-o \
+					-name ".idea" \
+					-o \
+					-name "__pycache__" \
+					-o \
+					-path "*/Library/Caches/Xamarin/AndroidDesigner" \
+					-o \
+					-path "*/Library/Caches/Xamarin/SystemDeviceDefinitions" \
+					-o \
+					-path "*/Library/Caches/Xamarin/VisualStudio" \
+					-o \
+					-path "*/Library/Caches/Xamarin/Xamarin.Android" \
+					-o \
+					-path "*/Library/Caches/Xamarin/XamarinBuildDownload" \
+					-o \
+					-path "*/Library/Caches/com.microsoft.visual-studio" \
 			\) \
 		-not -path "*Dropbox*" \
 		-not -path "*Google Drive*" \
@@ -97,6 +121,8 @@ find \
 	/Projects \
 		-type f \
 			\( \
+					-name "._*" \
+					-o \
 					-name ".DS_Store" \
 					-o \
 					-name "*.suo" \
@@ -112,6 +138,8 @@ find \
 					-name "*.userprefs" \
 					-o \
 					-name "*.xam" \
+					-o \
+					-name "UpgradeLog*.htm" \
 			\) \
 		-not -path "*Dropbox*" \
 		-not -path "*Google Drive*" \
