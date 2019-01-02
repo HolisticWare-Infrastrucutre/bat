@@ -19,8 +19,6 @@ brew cleanup -n
 
 brew cleanup
 
-
-
 #----------------------------------------------------------------------
 # 
 brew install \
@@ -79,3 +77,6 @@ brew install \
 
 
 # https://blog.shvetsov.com/2014/11/homebrew-cheat-sheet-and-workflow.html
+
+brew cask install \
+        db-browser-for-sqlite
