@@ -69,3 +69,16 @@ rm -f /usr/local/bin/dotnet-sdk
 ln -s /Users/moljac/bin/dotnet-sdk /usr/local/bin/
 dotnet sdk
 dotnet sdk list
+
+
+# https://www.xquartz.org/
+curl \
+    -v -L -C - \
+    -o dotnet-sdk.zip \
+    -O \
+        https://dl.bintray.com/xquartz/downloads/XQuartz-2.7.11.dmg
+curl \
+    -v -L -C - \
+    -o dotnet-sdk.zip \
+    -O \
+        https://inkscape.org/en/gallery/item/3896/Inkscape-0.91-1-x11-10.7-x86_64.dmg
