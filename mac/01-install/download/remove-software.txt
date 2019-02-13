@@ -1,0 +1,51 @@
+rm -Rf /Applications/Android\ Studio.app
+rm -Rf ~/Library/Preferences/AndroidStudio*
+rm ~/Library/Preferences/com.google.android.studio.plist
+rm -Rf ~/Library/Application\ Support/AndroidStudio*
+rm -Rf ~/Library/Logs/AndroidStudio*
+rm -Rf ~/Library/Caches/AndroidStudio*
+if you would like to delete all projects:
+
+# to remove gradle related files (caches & wrapper)
+rm -Rf ~/AndroidStudioProjects
+
+# use the below command to delete all Android Virtual Devices(AVDs) and *.keystore. 
+# note: this folder is used by others Android IDE as well, so if you still using other 
+# IDE you may not want to delete this folder)
+rm -Rf ~/.gradle
+
+rm -Rf ~/.android
+to delete Android SDK tools
+
+rm -Rf ~/Library/Android*
+
+
+~/Library/Android (by removing this folder you will also uninstall Android SDK)
+~/Library/Preferences/AndroidStudio
+~/Library/Preferences/com.google.android
+~/Library/Preferences/com.android
+~/Library/Application/Support/AndroidStudio
+~/Library/Logs/AndroidStudio
+
+du -s ~/Library/Caches/AndroidStudio*/ | sort -n
+
+
+du -s /Library/Caches/* | sort -n
+
+
+# PC: 
+# C:\Users\%USERPROFILE%\.nuget
+#Mac: 
+rm -fr ~/.nuget/packages 
+rm -fr ~/.local/share/NuGet
+
+
+PC: C:\Users\%USERPROFILE%\AppData\Local\XamarinBuildDownloadCache
+PC: C:\Users\%USERPROFILE%\AppData\Local\Xamarin
+Mac: 
+~/.local/share/Visual Studio\ for\ Mac_evidencehere/ 
+
+
+PC: `C:\Users\%USERPROFILE%\AppData\Local\MonoDevelop-4.0\Cache\TempDownload`
+Mac: `~/Library/Caches/XamarinStudio-6.0/TempDownload`
+Mac: `~/Library/Caches/VisualStudio/7.0/TempDownload`

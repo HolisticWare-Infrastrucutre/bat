@@ -1,0 +1,6 @@
+#!binbash
+
+git submodule foreach --recursive git clean -xdff
+git submodule foreach --recursive git reset --hard HEAD
+git submodule sync
+git submodule update --recursive --init --force
