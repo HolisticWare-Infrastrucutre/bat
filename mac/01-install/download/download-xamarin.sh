@@ -24,6 +24,8 @@ URLS=\
     http://download.mono-project.com/sources/monodevelop/monodevelop-6.0.0.4761.tar.bz2 \
     http://download.virtualbox.org/virtualbox/5.1.10/VirtualBox-5.1.10-112026-OSX.dmg \
     http://usa.maintain.se/Cocktail10SE.dmg \
+    https://dl.xamarin.com/OpenJDK/mac/microsoft-dist-openjdk-1.8.0.9.zip \
+    
 "    
 #
 #     https://dl.xamarin.com/xamarin-simulator/Xamarin.Simulator.Installer.exe \
