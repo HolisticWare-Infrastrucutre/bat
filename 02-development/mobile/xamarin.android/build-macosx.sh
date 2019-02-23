@@ -1,10 +1,10 @@
 #!/bin/bash
 
-GIT_REPO=https://github.com/moljac/xamarin-android.git
-DIR=xamarin-android/
+export GIT_REPO=https://github.com/moljac/xamarin-android.git
+export DIR=xamarin-android/
 
 
-git clone --recursive $REPO $DIR
+git clone --recursive $GIT_REPO 
 cd $DIR
 
 #-------------------------------------------------------------------------------------------------------
