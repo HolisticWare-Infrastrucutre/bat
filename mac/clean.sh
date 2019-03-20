@@ -3,6 +3,8 @@
 echo $1
 DIR=$1
 
+sh ./clean-xamarin-mono-dotnet.sh
+
 if [ -z "$DIR" ]
 then
 	echo "\$DIR is empty"
@@ -33,17 +35,39 @@ find \
 					-o \
 					-name "__pycache__" \
 					-o \
-					-path "*/Library/Caches/Xamarin/AndroidDesigner" \
+					-path "~/Library/Caches/Xamarin/AndroidDesigner" \
 					-o \
-					-path "*/Library/Caches/Xamarin/SystemDeviceDefinitions" \
+					-path "~/Library/Caches/Xamarin/SystemDeviceDefinitions" \
 					-o \
-					-path "*/Library/Caches/Xamarin/VisualStudio" \
+					-path "~/Library/Caches/Xamarin/VisualStudio" \
 					-o \
-					-path "*/Library/Caches/Xamarin/Xamarin.Android" \
+					-path "~/Library/Caches/Xamarin/Xamarin.Android" \
 					-o \
-					-path "*/Library/Caches/Xamarin/XamarinBuildDownload" \
+					-path "~/Library/Caches/Xamarin/XamarinBuildDownload" \
 					-o \
-					-path "*/Library/Caches/com.microsoft.visual-studio" \
+					-path "~/Library/Caches/com.microsoft.visual-studio" \
+					-o \
+					-path "~/Library/Caches/Xamarin/mtbs/" \
+					-o \
+					-path "~/Library/Caches/Xamarin/XMA/" \
+					-o \
+					-path "~/Library/Caches/Xamarin.Android/" \
+					-o \
+					-path "~/Library/Caches/XamarinBuildDownload/" \
+					-o \
+					-path "~/.nuget/packages/" \
+					-o \
+					-path "~/Library/Caches/VisualStudio/" \
+					-o \
+					-path "~/Library/Caches/Rider2018*/" \
+					-o \
+					-path "~/Library/Caches/AndroidStudio*/" \
+					-o \
+					-path "com.microsoft.visual-studio-preview/" \
+					-o \
+					-path "com.operasoftware.Opera/" \
+					-o \
+					-path "com.microsoft.VSCode/" \
 			\) \
 		-not -path "*Dropbox*" \
 		-not -path "*Google Drive*" \
@@ -151,7 +175,7 @@ rm -fr ~/.nuget/packages/*
 rm -fr ~/.local/share/NuGet/v3-cache/*
 rm -fr ~/.local/share/NuGet/*cache/*
 #---------------------------------------------------------------------------
-		
+
 rm -fr ~/Library/Application\ Support/iPhone\ Simulator/6.1/Applications/*
 rm -fr ~/Library/Application\ Support/iPhone\ Simulator/7.1/Applications/*
 rm -fr ~/Library/Application\ Support/iPhone\ Simulator/7.0.3/Applications/*
@@ -180,8 +204,8 @@ ls -al ~/Library/Developer/Shared/Documentation/DocSets/
 
 #===============================================================================
 # bunch of tmp stuff like:
-#		kpm		old ASP.net v5 
-#	
+#		kpm		old ASP.net v5
+#
 rm -fr ~/.local/share/kpm/
 rm -fr ~/.local/share/Mono\ development\ team/
 rm -fr ~/.local/share/MonoForAndroid/
