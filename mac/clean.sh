@@ -31,6 +31,8 @@ find \
 					-o \
 					-name ".mfractor" \
 					-o \
+					-name ".droidres" \
+					-o \
 					-name ".idea" \
 					-o \
 					-name "__pycache__" \
@@ -99,6 +101,10 @@ find \
 					-name "*.xam" \
 					-o \
 					-name "UpgradeLog*.htm" \
+					-o \
+					-name ".mfractor" \
+					-o \
+					-name ".droidres" \
 			\) \
 		-not -path "*Dropbox*" \
 		-not -path "*Google Drive*" \
@@ -120,6 +126,8 @@ find \
 					-name ".vs" \
 					-o \
 					-name ".mfractor" \
+					-o \
+					-name ".droidres" \
 					-o \
 					-name ".idea" \
 					-o \
