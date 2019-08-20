@@ -222,4 +222,10 @@ rm -fr ~/.local/share/Xamarin/
 rm -fr ~/.local/share/XamarinInsights/Xamarin\ Android\ Player/
 rm -fr ~/.local/share/XamarinInsights/XamarinStudio/
 
+
+
+rm -fr ~/.Bytecode-Viewer/
+# rm -fr ~/octave/
+rm -fr ~/android-archives/
+
 df >> df-post.txt

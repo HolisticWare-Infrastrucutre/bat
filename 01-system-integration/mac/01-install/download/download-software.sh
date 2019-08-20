@@ -17,12 +17,24 @@ URLS=\
 	http://launchpad.net/unetbootin/trunk/625/+download/unetbootin-mac-625.dmg \
 	http://support.logitech.com/en_us/product/unifying \
     http://sourceforge.net/projects/octave/files/Octave%20MacOSX%20Binary/2013-12-30%20binary%20installer%20of%20Octave%203.8.0%20for%20OSX%2010.9.1%20%28beta%29/ \
+    https://git-fork.com/
+    https://www.git-tower.com/mac
+    https://www.git-tower.com/windows
 
     jadx
     jadx-gui
     jd-gui
     luyten    
 "    
+
+URLS=\
+"\
+    https://git-fork.com/update/files/Fork.dmg \
+    https://git-fork.com/update/win/ForkInstaller.exe \
+    https://www.git-tower.com/download/mac \
+    https://www.git-tower.com/download/windows \
+"
+
 
 open $URLS
 
@@ -54,6 +66,7 @@ cd ..
 #rm -f $PROTOC_ZIP
 
 
+
 URL=https://github.com/faniereynders/dotnet-sdk-helpers/archive/master.zip
 echo downloading: $URL
 curl \
@@ -74,11 +87,11 @@ dotnet sdk list
 # https://www.xquartz.org/
 curl \
     -v -L -C - \
-    -o dotnet-sdk.zip \
+    -o XQuartz.dmg \
     -O \
         https://dl.bintray.com/xquartz/downloads/XQuartz-2.7.11.dmg
 curl \
     -v -L -C - \
-    -o dotnet-sdk.zip \
+    -o Inkscape.dmg \
     -O \
         https://inkscape.org/en/gallery/item/3896/Inkscape-0.91-1-x11-10.7-x86_64.dmg
