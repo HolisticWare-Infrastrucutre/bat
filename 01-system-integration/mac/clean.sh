@@ -70,12 +70,17 @@ find \
 					-path "com.operasoftware.Opera/" \
 					-o \
 					-path "com.microsoft.VSCode/" \
+					-o \
+					-path ".vscode/" \
+					-o \
+					-path "scriptcs_packages/" \
 			\) \
 		-not -path "*Dropbox*" \
 		-not -path "*Google Drive*" \
 		-not -path "*.templateengine*" \
 		-not -path "*.config/WakaTime/*" \
 		-not -path "*.vscode/extensions/*" \
+		-not -path "*/*XamarinComponents/*/.idea/*" \
 		-exec rm -rf {} \;
 
 find \
@@ -105,6 +110,10 @@ find \
 					-name ".mfractor" \
 					-o \
 					-name ".droidres" \
+					-o \
+					-name "mono_crash.*.json" \
+					-o \
+					-name "omnisharp.json" \
 			\) \
 		-not -path "*Dropbox*" \
 		-not -path "*Google Drive*" \

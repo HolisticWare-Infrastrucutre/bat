@@ -20,11 +20,7 @@ URLS=\
     https://git-fork.com/
     https://www.git-tower.com/mac
     https://www.git-tower.com/windows
-
-    jadx
-    jadx-gui
-    jd-gui
-    luyten    
+    https://central.github.com/deployments/desktop/desktop/latest/darwin
 "    
 
 URLS=\
@@ -60,6 +56,17 @@ which protoc
 protoc --version
 cd ..
 
+
+#----------------------------------------------------------------------------------------------
+curl \
+    --output powershell-6.2.3-osx-x64.pkg \
+    https://github.com/PowerShell/PowerShell/releases/download/v6.2.3/powershell-6.2.3-osx-x64.pkg
+
+sudo installer \
+    -pkg powershell-6.2.3-osx-x64.pkg \
+    -target /
+#----------------------------------------------------------------------------------------------
+
 #PROTOC_ZIP=protoc-3.3.0-osx-x86_64.zip
 #curl -OL https://github.com/google/protobuf/releases/download/v3.3.0/$PROTOC_ZIP
 #sudo unzip -o $PROTOC_ZIP -d /usr/local bin/protoc
@@ -84,6 +91,7 @@ dotnet sdk
 dotnet sdk list
 
 
+#----------------------------------------------------------------------------------------------
 # https://www.xquartz.org/
 curl \
     -v -L -C - \
@@ -95,3 +103,6 @@ curl \
     -o Inkscape.dmg \
     -O \
         https://inkscape.org/en/gallery/item/3896/Inkscape-0.91-1-x11-10.7-x86_64.dmg
+#----------------------------------------------------------------------------------------------
+
+
