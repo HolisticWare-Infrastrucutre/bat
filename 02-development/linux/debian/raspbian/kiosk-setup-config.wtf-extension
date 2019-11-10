@@ -1,0 +1,16 @@
+
+@lxpanel --profile LXDE-pi
+@pcmanfm --desktop --profile LXDE-pi
+@xscreensaver -no-splash
+
+@lxpanel –profile LXDE-pi
+@pcmanfm –desktop –profile LXDE-pi
+#@xscreensaver -no-splash
+
+@point-rpi
+
+@xset s noblank
+@xset s off
+@xset -dpms
+
+@~/iot/raspbian/launch-asp-net-core-app-and-chromium-kiosk.sh
