@@ -5,5 +5,5 @@ chmod +x ./dotnet-install.sh
 ./dotnet-install.sh -Channel LTS
 export PATH="$PATH:$HOME/.dotnet"
 
-echo 'export PATH=\"$PATH:$HOME/.dotnet\"' >> ~/.bashrc
-echo 'export PATH=\"$PATH:$HOME/.dotnet\"' >> ~/.profile
+echo 'export PATH="$PATH:$HOME/.dotnet"' >> ~/.bashrc
+echo 'export PATH="$PATH:$HOME/.dotnet"' >> ~/.profile
