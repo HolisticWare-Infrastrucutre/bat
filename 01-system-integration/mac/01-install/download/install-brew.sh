@@ -1,5 +1,7 @@
 #!/bin/bash
 
+# https://github.com/Homebrew/homebrew-cask/blob/master/USAGE.md
+
 brew list
 brew outdated
 
@@ -64,6 +66,7 @@ brew install \
 #----------------------------------------------------------------------------------------------
 # 
 brew install \
+        adoptopenjdk \
         gradle \
         ant	\
 
@@ -76,13 +79,30 @@ brew install \
         node		
 #----------------------------------------------------------------------------------------------
 
+brew cask install \
+        visual-studio-code \
+        android-studio \
+
 
 #----------------------------------------------------------------------
 # 
 brew install \
         octave \
         R \
+        
+        
+brew cask install \
+        firefox \
+        opera \
+        microsoft-edge-beta \
+        chromium \
+        
 #----------------------------------------------------------------------------------------------
+
+# if you receive this Error: Cask 'dotnet-sdk' conflicts with 'dotnet'.
+# then you have to uninstall dotnet first:
+brew cask uninstall dotnet
+brew cask install dotnet-sdk
 
 
 
