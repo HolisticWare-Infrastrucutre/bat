@@ -27,8 +27,8 @@ new string[] gitignores = new string[]
 
 foreach(string gi in gitignores)
 {
-    Information(new String('=', 120));
-    Information(String.Concat(Enumerable.Repeat("--", 60)));
+    Information($"#{new String('=', 120)}");
+    Information($"#{String.Concat(Enumerable.Repeat("--", 60))}");
 
     Information($"# .gitignore: {gi}");
     string response_body = HttpGet(gi);
