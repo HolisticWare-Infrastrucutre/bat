@@ -1,5 +1,14 @@
 #!/bin/bash
 
+osascript -e 'tell app "System Events" to display dialog "Install XCode"'
+#osascript -e 'tell app "Finder" to display dialog "Install Xcode"'
+open -a "App Store"
+
+open https://visualstudio.microsoft.com/
+
+cd ~
+git clone https://github.com/moljac/bat.git
+
 # https://github.com/Homebrew/homebrew-cask/blob/master/USAGE.md
 
 /usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
@@ -320,6 +329,16 @@ brew cask $ACTION_VERB \
 # ./dotnet-install.sh -c Current # 3.0
 # ./dotnet-install.sh -c LTS # 2.1
 # ./dotnet-install.sh -c 2.2 
+
+if [ -d "$HOME/.dotnet" ] ; then
+    export PATH="$PATH:$HOME/.dotnet" 
+fi
+
+if [ -d "$HOME/.dotnet/tools" ] ; then
+    export PATH="$PATH:$HOME/.dotnet/tools" 
+fi
+
+
 
 # https://github.com/isen-ng/homebrew-dotnet-sdk-versions
 
