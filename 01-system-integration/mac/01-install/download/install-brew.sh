@@ -34,7 +34,17 @@ brew cleanup
 
 # Action/Verb
 # install / uninstall / reinstall
-export $ACTION_VERB=install
+export ACTION_VERB=install
+
+defaults write com.apple.finder AppleShowAllFiles YES
+defaults write com.apple.finder _FXShowPosixPathInTitle -bool false
+killall Finder
+
+#----------------------------------------------------------------------------------------------
+# fingerprint in terminal
+sudo nano /etc/pam.d/sudo
+# add this at the begining
+# auth       sufficient     pam_tid.so
 
 #----------------------------------------------------------------------------------------------
 # tools
@@ -72,6 +82,8 @@ brew $ACTION_VERB \
 
 echo \
 "
+#!/bin/zsh
+
 source /usr/local/share/antigen/antigen.zsh
 antigen bundle lukechilds/zsh-nvm
 antigen apply
@@ -81,17 +93,27 @@ antigen apply
 nvm install --lts
 nvm use --lts
 
+# 2 hrs
+caffeinate -t 7200 &
+
+brew cask $ACTION_VERB \
+    caffeine \
+    
+
 #----------------------------------------------------------------------------------------------
 #
+brew $ACTION_VERB \
+    git-lfs \
+
+# Update global git config
+sudo git lfs install
+
+# Update system git config
+sudo git lfs install --system
+
 brew cask $ACTION_VERB \
     github \
     gitup \
-
-# Update global git config
-git lfs install
-
-# Update system git config
-git lfs install --system
 
 
 #----------------------------------------------------------------------------------------------
@@ -117,7 +139,7 @@ brew link --force openssl
 #
 brew cask $ACTION_VERB \
     visual-studio-code \
-
+    homebrew/cask-versions/visual-studio-code-insiders \
 
 #----------------------------------------------------------------------------------------------
 # tools NTFS disks
@@ -279,10 +301,12 @@ ls -al ~/Library/Android/sdk/
 
 #----------------------------------------------------------------------------------------------
 # tools development
+brew $ACTION_VERB \
+    node \
+
 brew cask $ACTION_VERB \
     docker \
     docker-toolbox \
-    node \
 
 
 #----------------------------------------------------------------------------------------------
@@ -321,6 +345,7 @@ brew cask $ACTION_VERB \
 brew cask $ACTION_VERB \
     thunderbird \
 
+#----------------------------------------------------------------------------------------------
 # https://docs.microsoft.com/en-us/dotnet/core/tools/dotnet-install-script
 # https://dot.net/v1/dotnet-install.sh
 # https://dot.net/v1/dotnet-install.ps1
@@ -470,16 +495,6 @@ pip3 install matplotlib
 
   pip3 install --upgrade pip
   pip3 install jupyter
-#----------------------------------------------------------------------------------------------
-
-
-
-
-
-# fingerprint in terminal
-sudo nano /etc/pam.d/sudo
-# add this at the begining
-# auth sufficient pam_tid.so
 
 
 
@@ -492,6 +507,83 @@ brew $ACTION_VERB \
 
 brew cask $ACTION_VERB \
     owasp-zap \
+
+#----------------------------------------------------------------------------------------------
+# markdown bash execute
+function mbe() 
+{
+  if [ -f "$1" ]; then
+    cat $1 | # print the file
+    sed -n '/```bash/,/```/p' | # get the bash code blocks
+    sed 's/```bash//g' | #  remove the ```bash
+    sed 's/```//g' | # remove the trailing ```
+    sed '/^$/d' | # remove empty lines
+    /usr/bin/env sh ; # execute the command
+  else
+    echo "${1} is not valid" ;
+  fi
+}
+
+
+echo \
+"
+# markdown bash execute
+function mbe() 
+{
+  if [ -f \"$1\" ]; then
+    cat $1 | # print the file
+    sed -n '/\`\`\`bash/,/\`\`\`/p' | # get the bash code blocks
+    sed 's/\`\`\`bash//g' | #  remove the \`\`\`bash
+    sed 's/\`\`\`//g' | # remove the trailing \`\`\`
+    sed '/^$/d' | # remove empty lines
+    /usr/bin/env sh ; # execute the command
+  else
+    echo \"${1} is not valid\" ;
+  fi
+}
+" >> ~/.bash_profile
+
+echo \
+"
+# markdown bash execute
+function mbe() 
+{
+  if [ -f \"$1\" ]; then
+    cat $1 | # print the file
+    sed -n '/\`\`\`bash/,/\`\`\`/p' | # get the bash code blocks
+    sed 's/\`\`\`bash//g' | #  remove the \`\`\`bash
+    sed 's/\`\`\`//g' | # remove the trailing \`\`\`
+    sed '/^$/d' | # remove empty lines
+    /usr/bin/env sh ; # execute the command
+  else
+    echo \"${1} is not valid\" ;
+  fi
+}
+" >> ~/.bashrc
+
+echo \
+"
+# markdown bash execute
+function mbe() 
+{
+  if [ -f \"$1\" ]; then
+    cat $1 | # print the file
+    sed -n '/\`\`\`bash/,/\`\`\`/p' | # get the bash code blocks
+    sed 's/\`\`\`bash//g' | #  remove the \`\`\`bash
+    sed 's/\`\`\`//g' | # remove the trailing \`\`\`
+    sed '/^$/d' | # remove empty lines
+    /usr/bin/env sh ; # execute the command
+  else
+    echo \"${1} is not valid\" ;
+  fi
+}
+" >> ~/.zshrc
+
+
+#----------------------------------------------------------------------------------------------
+
+# zsh compinit: insecure directories, run compaudit for list.
+for f in $(compaudit);do sudo chown $(whoami):admin $f;done;
 
 #----------------------------------------------------------------------------------------------
 
