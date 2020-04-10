@@ -346,6 +346,31 @@ brew cask $ACTION_VERB \
     thunderbird \
 
 #----------------------------------------------------------------------------------------------
+cd ~/Downloads/
+curl -O \
+    https://download.visualstudio.microsoft.com/download/pr/3ce4af4f-f5d5-406c-a065-2ecc9bcc5fd2/353affd22a0727b476998312738ac35f/dotnet-sdk-5.0.100-preview.2.20176.6-osx-x64.pkg
+curl -O \
+    https://download.visualstudio.microsoft.com/download/pr/f262d833-69d3-4aa1-bac1-b32075bebed3/474be39cca68cd46d3dc2cc03188f217/dotnet-sdk-5.0.100-preview.1.20155.7-osx-x64.pkg
+curl -O \
+    https://download.visualstudio.microsoft.com/download/pr/905598d0-17a3-4b42-bf13-c5a69d7aac87/853aff73920dcb013c09a74f05da7f6a/dotnet-sdk-3.1.201-osx-x64.pkg
+curl -O \
+    https://download.visualstudio.microsoft.com/download/pr/1f42da0e-a749-4338-ac39-5160a1f31ab0/74f8b6c934b0dc3024f336460c89e8ad/dotnet-sdk-2.1.805-osx-x64.pkg
+
+
+
+curl -O \
+    https://download.visualstudio.microsoft.com/download/pr/e486a3b0-7689-4429-8c6b-8388df41c14c/3ccd26660a01b4af7b24d77d0f4128b1/dotnet-runtime-5.0.0-preview.2.20160.6-osx-x64.pkg
+curl -O \
+    https://download.visualstudio.microsoft.com/download/pr/777eb5e6-abe3-4bc0-a19e-22709b26193a/f8ae123ccae445af01d8747616bb6893/dotnet-runtime-5.0.0-preview.1.20120.5-osx-x64.pkg
+curl -O \
+    https://download.visualstudio.microsoft.com/download/pr/482ac70d-c70d-4ec7-86d7-6842d20ca428/f7abefda6b8f210e77a3d25bf0433352/dotnet-runtime-3.1.3-osx-x64.pkg
+curl -O \
+    https://download.visualstudio.microsoft.com/download/pr/9d3edcf8-2da1-42eb-a30f-54d629c8f13f/2e967304f8f3543c7329fd53d292d076/dotnet-runtime-2.1.17-osx-x64.pkg
+
+
+for f in *.pkg ; 
+    do sudo installer -verbose -pkg "$f" -target /
+done
 # https://docs.microsoft.com/en-us/dotnet/core/tools/dotnet-install-script
 # https://dot.net/v1/dotnet-install.sh
 # https://dot.net/v1/dotnet-install.ps1
