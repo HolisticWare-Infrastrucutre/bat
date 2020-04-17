@@ -4,6 +4,8 @@ osascript -e 'tell app "System Events" to display dialog "Install XCode"'
 #osascript -e 'tell app "Finder" to display dialog "Install Xcode"'
 open -a "App Store"
 
+sudo xcodebuild -license
+
 open https://visualstudio.microsoft.com/
 
 cd ~
@@ -303,11 +305,12 @@ ls -al ~/Library/Android/sdk/
 # tools development
 brew $ACTION_VERB \
     node \
+    mkcert \
 
 brew cask $ACTION_VERB \
     docker \
     docker-toolbox \
-
+    dropbox \
 
 #----------------------------------------------------------------------------------------------
 # browsers
@@ -343,10 +346,15 @@ brew cask $ACTION_VERB \
     google-hangouts \
 
 brew cask $ACTION_VERB \
+    microsoft-office \
     thunderbird \
 
 #----------------------------------------------------------------------------------------------
 cd ~/Downloads/
+
+curl -O \
+    https://visualstudio.microsoft.com/thank-you-downloading-visual-studio-mac/?sku=communitymac&rel=16
+	
 curl -O \
     https://download.visualstudio.microsoft.com/download/pr/3ce4af4f-f5d5-406c-a065-2ecc9bcc5fd2/353affd22a0727b476998312738ac35f/dotnet-sdk-5.0.100-preview.2.20176.6-osx-x64.pkg
 curl -O \
@@ -430,13 +438,6 @@ dotnet --list-sdks
 brew cask $ACTION_VERB \
     visual-studio \
 
-brew install \
-    mkcert \
-
-brew cask install \
-    docker \
-    dropbox \
-    visual-studio-code \
 
 #----------------------------------------------------------------------
 #
