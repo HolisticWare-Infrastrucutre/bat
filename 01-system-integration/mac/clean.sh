@@ -121,7 +121,7 @@ find \
 
 
 find \
-	/Projects \
+	/Users/Shared//Projects/ \
 		-type d \
 			\( \
 					-name "Debug" \
@@ -159,7 +159,7 @@ find \
 		-exec rm -rf {} \;
 
 find \
-	/Projects \
+	/Users/Shared//Projects/ \
 		-type f \
 			\( \
 					-name "._*" \
