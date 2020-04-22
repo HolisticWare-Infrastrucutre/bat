@@ -1,7 +1,7 @@
 #!/bin/bash
 
 export DIR_ROOT="/Users/Shared/Projects"
-[ ! -d $DIR_ROOT ] && mkdir $DIR
+[ ! -d $DIR_ROOT ] && mkdir $DIR_ROOT
 
 # Windows Subsystem For Linux path
 export DIR_ROOT="/Users/Shared/Projects"

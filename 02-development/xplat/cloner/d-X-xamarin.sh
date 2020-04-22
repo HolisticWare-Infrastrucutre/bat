@@ -15,7 +15,7 @@ export BRANCH="master"
 export DIR=""
 
 
-export URL="https:/github.com/xamarin/AndroidX.git"
+export URL="https://github.com/xamarin/AndroidX.git"
 export BRANCH="master"
 export DIR="AX-m"
 [ ! -d $DIR ] \
@@ -26,7 +26,7 @@ export DIR="AX-m"
         $URL \
         $DIR
 
-export URL="https:/github.com/xamarin/AndroidX.git"
+export URL="https://github.com/xamarin/AndroidX.git"
 export BRANCH="master_based_updates_202001"
 export DIR="AX-u202001"
 [ ! -d $DIR ] \
@@ -38,7 +38,7 @@ export DIR="AX-u202001"
         $DIR
 
 
-export URL="https:/github.com/moljac/monodroid-samples.git"
+export URL="https://github.com/moljac/monodroid-samples.git"
 export BRANCH="master_based_androidx"
 export DIR="monodroid-samples-ax"
 [ ! -d $DIR ] \
@@ -50,7 +50,7 @@ export DIR="monodroid-samples-ax"
         $DIR
 
 
-export URL="https:/github.com/xamarin/GooglePlayServicesComponents.git"
+export URL="https://github.com/xamarin/GooglePlayServicesComponents.git"
 export BRANCH="master"
 export DIR="GPS-FB-m"
 [ ! -d $DIR ] \
@@ -61,7 +61,7 @@ export DIR="GPS-FB-m"
         $URL \
         $DIR
 
-export URL="https:/github.com/xamarin/GooglePlayServicesComponents.git"
+export URL="https://github.com/xamarin/GooglePlayServicesComponents.git"
 export BRANCH="master_based_androidx"
 export DIR="GPS-FB-m"
 [ ! -d $DIR ] \
@@ -72,7 +72,7 @@ export DIR="GPS-FB-m"
         $URL \
         $DIR
     
-export URL="https:/github.com/xamarin/AndroidSupportComponents.git"
+export URL="https://github.com/xamarin/AndroidSupportComponents.git"
 export BRANCH="master"
 export DIR="AS-m"
 [ ! -d $DIR ] \
@@ -83,7 +83,7 @@ export DIR="AS-m"
         $URL \
         $DIR
 
-export URL="https:/github.com/xamarin/XamarinAndroidXMigration.git"
+export URL="https://github.com/xamarin/XamarinAndroidXMigration.git"
 export BRANCH="master"
 export DIR="XamarinAndroidXMigration"
 [ ! -d $DIR ] \
@@ -94,7 +94,7 @@ export DIR="XamarinAndroidXMigration"
         $URL \
         $DIR
 
-export URL="https:/github.com/xamarin/java.interop.git"
+export URL="https://github.com/xamarin/java.interop.git"
 export BRANCH="master"
 export DIR="java-interop"
 [ ! -d $DIR ] \
@@ -105,9 +105,9 @@ export DIR="java-interop"
         $URL \
         $DIR
 
-export URL="https://github.com/xamarin/XamarinEssentials.git"
+export URL="https://github.com/xamarin/Essentials.git"
 export BRANCH="master"
-export DIR="XamarinEssentials-m"
+export DIR="Essentials-m"
 [ ! -d $DIR ] \
     && \
     git clone \
