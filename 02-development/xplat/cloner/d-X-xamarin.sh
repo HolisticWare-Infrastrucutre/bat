@@ -37,7 +37,6 @@ export DIR="AX-u202001"
         $URL \
         $DIR
 
-
 export URL="https://github.com/moljac/monodroid-samples.git"
 export BRANCH="master_based_androidx"
 export DIR="monodroid-samples-ax"
