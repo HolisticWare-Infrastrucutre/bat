@@ -101,3 +101,8 @@ export DIR="JarInfoSpitter"
         --recursive \
         $URL \
         $DIR
+
+
+
+
+cd $DIR_ROOT

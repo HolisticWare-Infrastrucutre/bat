@@ -155,3 +155,6 @@ export DIR="XamarinUniversity-m"
 # ./X//gitlab[]xamarin-components/bond/.git/modules/thirdparty/rapidjson/modules/thirdparty/gtest/config:10:	url = https://chromium.googlesource.com/external/googletest.git
 # ./X//Xamarin.EasyHttp/EasyHttp/.git/config:10:	url = https://github.com/hhariri/EasyHttp.git
 
+
+
+cd $DIR_ROOT
