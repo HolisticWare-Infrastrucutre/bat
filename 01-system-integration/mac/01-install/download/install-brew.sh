@@ -76,6 +76,31 @@ brew $ACTION_VERB \
     swig \
     p7zip \
 
+# Xamarin.Android xamarin-android repo
+#   user want git from brew anyway, the apple-provided one is a fossil
+brew $ACTION_VERB \
+    git \
+    make \
+    cmake \
+    libtool \
+    p7zip \
+    gdk-pixbuf \
+    gettext \
+    coreutils \
+    findutils \
+    gnu-tar \
+    gnu-sed \
+    gawk \
+    gnutls \
+    gnu-indent \
+    gnu-getopt \
+    intltool \
+    ninja \
+    scons \
+    wget \
+    xz \
+    mingw-w64 \
+
 
 # plugins for zsh (nvm)
 brew $ACTION_VERB \
