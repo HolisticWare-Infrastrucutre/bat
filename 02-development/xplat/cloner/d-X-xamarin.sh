@@ -26,8 +26,8 @@ export DIR="AX-m"
         $DIR
 
 export URL="https://github.com/xamarin/AndroidX.git"
-export BRANCH="master_based_updates_202001"
-export DIR="AX-u202001"
+export BRANCH="master_based_20200328_media2_player_exoplayer_camera2"
+export DIR="AX-media2_ExoPlayer"
 [ ! -d $DIR ] \
     && \
     git clone \
@@ -61,7 +61,7 @@ export DIR="GPS-FB-m"
 
 export URL="https://github.com/xamarin/GooglePlayServicesComponents.git"
 export BRANCH="master_based_androidx"
-export DIR="GPS-FB-m"
+export DIR="GPS-FB-ax"
 [ ! -d $DIR ] \
     && \
     git clone \
@@ -155,6 +155,14 @@ export DIR="XamarinUniversity-m"
 # ./X//gitlab[]xamarin-components/bond/.git/modules/thirdparty/rapidjson/modules/thirdparty/gtest/config:10:	url = https://chromium.googlesource.com/external/googletest.git
 # ./X//Xamarin.EasyHttp/EasyHttp/.git/config:10:	url = https://github.com/hhariri/EasyHttp.git
 
+dotnet tool uninstall -g cake.tool
+dotnet tool uninstall -g xamarin.androidbinderator.tool 
+dotnet tool uninstall -g xamarin.androidx.migration.tool 
+
+
+dotnet tool install -g cake.tool
+dotnet tool install -g xamarin.androidbinderator.tool 
+dotnet tool install -g xamarin.androidx.migration.tool 
 
 
 cd $DIR_ROOT
