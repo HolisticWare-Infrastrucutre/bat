@@ -2,6 +2,9 @@
 
 #Install the build dependencies.
 
+brew tap \
+    xamarin/xamarin-android-windeps
+    
 [ -d ./xamarin-android/ ] && rm -fr ./xamarin-android/
 
 #Clone the xamarin-android repo:
