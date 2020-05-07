@@ -78,6 +78,8 @@ brew $ACTION_VERB \
 
 # Xamarin.Android xamarin-android repo
 #   user want git from brew anyway, the apple-provided one is a fossil
+brew tap \
+    xamarin/xamarin-android-windeps
 brew $ACTION_VERB \
     git \
     make \
@@ -100,7 +102,7 @@ brew $ACTION_VERB \
     wget \
     xz \
     mingw-w64 \
-
+    mingw-zlib \
 
 # plugins for zsh (nvm)
 brew $ACTION_VERB \
