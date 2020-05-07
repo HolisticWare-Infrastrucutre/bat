@@ -38,26 +38,32 @@ export DIR="./bin/"
         $URL \
         $DIR
 
+
 export DIR="./bin//dotnet/"
-mkdir $DIR
-cd $DIR
+[ ! -d $DIR ] && mkdir $DIR 
+[ -d $DIR ] && cd $DIR
 
 # https://devblogs.microsoft.com/dotnet/announcing-the-net-core-uninstall-tool-1-0/
 # https://github.com/dotnet/cli-lab/releases
 # https://dev.to/marcusturewicz/remove-old-net-versions-with-the-new-uninstall-tool-1kmb
 
-curl -O \
-    https://github.com/dotnet/cli-lab/releases/download/1.1.122401/dotnet-core-uninstall-1.1.122401.msi \
-    --output dotnet-core-uninstall.msi 
-curl -O \
-    https://github.com/dotnet/cli-lab/releases/download/1.1.122401/dotnet-core-uninstall.tar.gz \
-    --ouput dotnet-core-uninstall.tar.gz
+curl \
+    -o dotnet-core-uninstall.msi \
+    -L \
+    -v https://github.com/dotnet/cli-lab/releases/download/1.1.122401/dotnet-core-uninstall-1.1.122401.msi
+
+curl \
+    -o dotnet-core-uninstall.tar.gz \
+    -L \
+    -v https://github.com/dotnet/cli-lab/releases/download/1.1.122401/dotnet-core-uninstall.tar.gz
+
+ls -al
 
 mkdir -p ./dotnet-core-uninstall
 tar -zxf dotnet-core-uninstall.tar.gz -C ./dotnet-core-uninstall
 cd ./dotnet-core-uninstall
 ./dotnet-core-uninstall -h
-
+cd ../
 
 
 cd $DIR_ROOT
