@@ -157,12 +157,19 @@ brew cask upgrade \
 #----------------------------------------------------------------------------------------------
 brew cask $ACTION_VERB \
     openssl \
+
+
+brew link --force \
+    openssl
+
+
+brew cask $ACTION_VERB \
     parallels \
     virtualbox \
     cheatsheet \
     onyx \
 
-brew link --force openssl
+
 
 #----------------------------------------------------------------------------------------------
 #
@@ -327,6 +334,11 @@ brew cask $ACTION_VERB \
 
 ls -al ~/Library/Android/sdk/
 
+
+#----------------------------------------------------------------------------------------------
+# tools development
+brew $ACTION_VERB \
+    cocoapods \
 
 #----------------------------------------------------------------------------------------------
 # tools development
