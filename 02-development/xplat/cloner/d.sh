@@ -9,6 +9,65 @@ export DIR="$DIR_ROOT/d/"
 [ ! -d $DIR ] && mkdir $DIR 
 [ -d $DIR ] && cd $DIR
 
+export DIR="$DIR_ROOT/d/X/"
+[ ! -d $DIR ] && mkdir $DIR 
+[ -d $DIR ] && cd $DIR
+
+export DIR="$DIR_ROOT/d/X.tmp/"
+[ ! -d $DIR ] && mkdir $DIR 
+[ -d $DIR ] && cd $DIR
+
+export DIR="$DIR_ROOT/d/HW/"
+[ ! -d $DIR ] && mkdir $DIR 
+[ -d $DIR ] && cd $DIR
+
+export DIR="$DIR_ROOT/d/hw-core/"
+[ ! -d $DIR ] && mkdir $DIR 
+[ -d $DIR ] && cd $DIR
+
+export DIR="$DIR_ROOT/d/hw-tools/"
+[ ! -d $DIR ] && mkdir $DIR 
+[ -d $DIR ] && cd $DIR
+
+export DIR="$DIR_ROOT/d/hw-bindings/"
+[ ! -d $DIR ] && mkdir $DIR 
+[ -d $DIR ] && cd $DIR
+
+export DIR="$DIR_ROOT/d/hw-edu/"
+[ ! -d $DIR ] && mkdir $DIR 
+[ -d $DIR ] && cd $DIR
+
+export DIR="$DIR_ROOT/d/hw-talks/"
+[ ! -d $DIR ] && mkdir $DIR 
+[ -d $DIR ] && cd $DIR
+
+export DIR="$DIR_ROOT/d/Samples/"
+[ ! -d $DIR ] && mkdir $DIR 
+[ -d $DIR ] && cd $DIR
+
+export DIR="$DIR_ROOT/d/system-installed/"
+[ ! -d $DIR ] && mkdir $DIR 
+[ -d $DIR ] && cd $DIR
+
+export DIR="$DIR_ROOT/d/tmp/"
+[ ! -d $DIR ] && mkdir $DIR 
+[ -d $DIR ] && cd $DIR
+
+export DIR="$DIR_ROOT/d/Ph4ct3x/"
+[ ! -d $DIR ] && mkdir $DIR 
+[ -d $DIR ] && cd $DIR
+
+export DIR="$DIR_ROOT/d/Ph4ct3x/gh/"
+[ ! -d $DIR ] && mkdir $DIR 
+[ -d $DIR ] && cd $DIR
+
+export DIR="$DIR_ROOT/d/Ph4ct3x/gl/"
+[ ! -d $DIR ] && mkdir $DIR 
+[ -d $DIR ] && cd $DIR
+
+export DIR="$DIR_ROOT/d/Ph4ct3x/bt/"
+[ ! -d $DIR ] && mkdir $DIR 
+[ -d $DIR ] && cd $DIR
 
 export BRANCH="master"
 export URL=""
