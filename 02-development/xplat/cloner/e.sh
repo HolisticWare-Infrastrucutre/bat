@@ -21,8 +21,8 @@ export DIR=""
 
 
 export BRANCH="master"
-export URL="https://github.com/moljac/HolisticWare.WebSite.Notes.git"
-export DIR="./HolisticWare.WebSite.Notes/"
+export URL="https://gitlab.com/moljac-sport/judo.git"
+export DIR="./judo/"
 [ ! -d $DIR ] \
     && \
     git clone \
@@ -33,8 +33,8 @@ export DIR="./HolisticWare.WebSite.Notes/"
 
 
 export BRANCH="master"
-export URL="https://github.com/moljac/bin.macosx.git"
-export DIR="./bin/"
+export URL="https://gitlab.com/moljac-microsoft/microsoft.git"
+export DIR="./microsoft/"
 [ ! -d $DIR ] \
     && \
     git clone \
@@ -43,13 +43,5 @@ export DIR="./bin/"
         $URL \
         $DIR
 
-
-export DIR="./bin//dotnet/"
-[ ! -d $DIR ] && mkdir $DIR 
-[ -d $DIR ] && cd $DIR
-
-# https://devblogs.microsoft.com/dotnet/announcing-the-net-core-uninstall-tool-1-0/
-# https://github.com/dotnet/cli-lab/releases
-# https://dev.to/marcusturewicz/remove-old-net-versions-with-the-new-uninstall-tool-1kmb
 
 cd $DIR_ROOT
