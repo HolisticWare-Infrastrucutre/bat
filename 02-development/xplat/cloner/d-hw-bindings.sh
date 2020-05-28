@@ -29,6 +29,9 @@ export DIR="./00-HWC.Ideas/"
         $DIR
 
 
+# https://moljac@gitlab.com/holisticware-bindings/Garmin.ConnectIQ.git
+# https://gitlab.com/holisticware-bindings/Xtras-Binaries-Minimal-Garmin.ConnectIQ.git
+# https://gitlab.com/holisticware-bindings/Xtras-Binaries-Xtensive-Garmin.ConnectIQ.git
 
 
 
