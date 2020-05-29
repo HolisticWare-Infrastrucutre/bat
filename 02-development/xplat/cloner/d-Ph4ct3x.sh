@@ -7,16 +7,42 @@ export DIR_ROOT="/Users/Shared/Projects"
 
 export DIR="$DIR_ROOT/d/Ph4ct3X"
 [ ! -d $DIR ] && echo "Folder $DIR does not exists. Exiting ..." && exit 
-
 [ -d $DIR ] && cd $DIR
+
+mkdir gh
+mkdir gh/bt
+mkdir gh/hrm
+mkdir gl
 
 export URL=""
 export BRANCH="master"
 export DIR=""
 
 export BRANCH="master"
-export URL="https://gitlab.com/moljac-sport/judo.git"
-export DIR="./judo/"
+export URL="https://github.com/moljac/Ph4ct3x.git"
+export DIR="./gh/Ph4ct3x/"
+[ ! -d $DIR ] \
+    && \
+    git clone \
+        --branch master \
+        --recursive \
+        $URL \
+        $DIR
+
+export BRANCH="master"
+export URL="https://github.com/inthehand/32feet.git"
+export DIR="./gh/bt/32feet/"
+[ ! -d $DIR ] \
+    && \
+    git clone \
+        --branch master \
+        --recursive \
+        $URL \
+        $DIR
+
+export BRANCH="master"
+export URL="https://github.com/moljac/Monkey.BluetoothLE.git"
+export DIR="./gh/bt/Monkey.BluetoothLE/"
 [ ! -d $DIR ] \
     && \
     git clone \
@@ -27,30 +53,6 @@ export DIR="./judo/"
 
 
 
-https://gitlab.com/holisticware-bindings/UsbThermalPrinterSDK.OOCP.git
-https://gitlab.com/holisticware-bindings/OCPP.PrinterThermal.USB.git
-https://gitlab.com/holisticware-bindings/OCPP.PrinterThermal.Bluetooth.git
-
-https://gitlab.com/holisticware-bindings-commercial/PixoMeter.git
-https://gitlab.com/holisticware-bindings-commercial/Xtras-Binaries-Minimal-PixoMeter.git
-https://gitlab.com/holisticware-bindings-commercial/Xtras-Binaries-Xtensive-PixoMeter.git
-https://gitlab.com/pixolus-demo-adlair/pixolus.git
-https://moljac@bitbucket.org/pixolus_mobendo/pixometer_sdk_xamarin.git
-
-https://gitlab.com/Commercial.Trilix.CashDesk/Commercial.Trilix.CashDesk.git
-https://gitlab.com/Private.Commercial.Trilix.CashDesk/Commercial.Trilix.CashDesk.git
-https://gitlab.com/Commercial.Trilix.CashDesk/Commercial.Trilix.CashDesk.git
-https://gitlab.com/Commercial.Trilix.CashDesk/Commercial.Trilix.CashDesk.Artwork.git
-
-https://moljac@bitbucket.org/drazenzg/ep_app.git
-https://moljac@bitbucket.org/luko_gjenero/uavsidekick.git
-https://github.com/jamesmontemagno/PagerSlidingTabStrip-for-Xamarin.Android.git
-
-
-
-https://github.com/moljac/Ph4ct3x.git
-https://github.com/inthehand/32feet.git
-https://github.com/moljac/Monkey.BluetoothLE.git
 https://gitlab.com/kivusic/Timer.git
 https://github.com/AndyCW/MovesenseDotNet.git
 https://github.com/shinyorg/shinysamples.git
