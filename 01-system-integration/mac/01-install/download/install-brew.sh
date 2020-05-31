@@ -143,7 +143,9 @@ sudo git lfs install --system
 brew cask $ACTION_VERB \
     github \
     gitup \
-
+    diffmerge \
+    p4v \
+    
 
 #----------------------------------------------------------------------------------------------
 brew cask $ACTION_VERB \
