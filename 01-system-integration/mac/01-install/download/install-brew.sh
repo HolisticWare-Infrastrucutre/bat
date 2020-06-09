@@ -28,7 +28,7 @@ brew upgrade
 
 brew cleanup -n
 
-# No response if there is nothing to clearn.
+# No response if there is nothing to clear.
 
 # To really remove all files no longer needed:
 
@@ -145,7 +145,7 @@ brew cask $ACTION_VERB \
     gitup \
     diffmerge \
     p4v \
-    
+
 
 #----------------------------------------------------------------------------------------------
 brew cask $ACTION_VERB \
