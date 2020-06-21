@@ -51,10 +51,30 @@ export DIR="./gh/bt/Monkey.BluetoothLE/"
         $URL \
         $DIR
 
+export BRANCH="master"
+export URL="https://gitlab.com/kivusic/Timer.git"
+export DIR="./gl/Timer/"
+[ ! -d $DIR ] \
+    && \
+    git clone \
+        --branch master \
+        --recursive \
+        $URL \
+        $DIR
+
+export BRANCH="master"
+export URL="https://github.com/AndyCW/MovesenseDotNet.git"
+export DIR="./gh/hrm/MovesenseDotNet/"
+[ ! -d $DIR ] \
+    && \
+    git clone \
+        --branch master \
+        --recursive \
+        $URL \
+        $DIR
 
 
-https://gitlab.com/kivusic/Timer.git
-https://github.com/AndyCW/MovesenseDotNet.git
+
 https://github.com/shinyorg/shinysamples.git
 https://gitlab.com/holisticware-applications/HolisticWare.Ph4ct3x.git
 https://github.com/HolisticWare/HolisticWare.Core.Math.Intervals.git
