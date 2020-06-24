@@ -2,6 +2,29 @@
 
 # https://github.com/herrbischoff/awesome-macos-command-line#memory-management
 
+brew cask install \
+    mysides \
+
+
+mkdir /Users/Shared/Projects
+mysides add \
+    Projects \
+    file:///Users/Shared/Projects
+
+mysides add \
+    "Macintosh HD" \
+    "file:///Volumes/Macintosh HD/"
+
+
+brew cask install \
+    iterm2 \
+
+
+# https://eclecticlight.co/2019/08/15/global-defaults-in-macos-mojave/
+
+defaults domains | tr ',' '\n'
+
+
 # possible to use the shortcut:
 #   CMD + SHIFT + .
 
@@ -65,8 +88,6 @@ xcrun simctl delete unavailable
 
 
 
-defaults domains | tr ',' '\n'
-
 
 # https://blog.jiayu.co/2018/12/quickly-configuring-hot-corners-on-macos/
 
@@ -123,21 +144,9 @@ defaults write com.apple.dock wvous-br-modifier -int 0
 
 killall Dock
 
+#!/bin/bash
 
-brew cask install \
-    mysides \
-
-
-mkdir /Users/Shared/Projects
-mysides add \
-    Projects \
-    file:///Users/Shared/Projects
-
-mysides add \
-    "Macintosh HD" \
-    "file:///Volumes/Macintosh HD/"
-
-
-brew cask install \
-    iterm2 \
+defaults write \
+      com.apple.finder \
+      AppleShowAllFiles YES
 
