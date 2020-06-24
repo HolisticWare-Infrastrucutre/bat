@@ -1,18 +1,70 @@
 #!/bin/bash
 
-cd /Users/Shared/Projects
+cd /Users/Shared/Projects/d
 
 mkdir ./X
 
+export BRANCH="master"
 git clone --recursive \
-    https:/github.com/xamarin/AndroidX.git \
-    ./X/AndroidX-master/
+    --branch $BRANCH \
+    https://github.com/xamarin/AndroidX.git \
+    ./AX-m/
+
 
 export BRANCH="master_based_updates_202001"
 git clone --recursive \
-    https:/github.com/xamarin/AndroidX.git \
-    ./X/AndroidX-$BRANCH/
-cd ./X/AndroidX-$BRANCH/ && git checkout && cd -
+    --branch $BRANCH \
+    https://github.com/xamarin/AndroidX.git \
+    ./AX-u202001/
+
+export BRANCH="master_based_updates_202001"
+git clone --recursive \
+    --branch $BRANCH \
+    https://github.com/xamarin/AndroidX.git \
+    ./AX-u202006/
+
+export BRANCH="master_based_fix_Material_TabLayout"
+git clone --recursive \
+    --branch $BRANCH \
+    https://github.com/xamarin/AndroidX.git \
+    ./AX-Material-TabLayout/
+
+
+
+
+
+
+export BRANCH="master"
+git clone --recursive \
+    --branch $BRANCH \
+    https://github.com/xamarin/GooglePlayServicesComponents.git \
+    ./GPS-FB-m/
+
+export BRANCH="master_based_androidx"
+git clone --recursive \
+    --branch $BRANCH \
+    https://github.com/xamarin/GooglePlayServicesComponents.git \
+    ./GPS-FB-ax/
+
+export BRANCH="master_based_androidx_based_updates_202002"
+git clone --recursive \
+    --branch $BRANCH \
+    https://github.com/xamarin/GooglePlayServicesComponents.git \
+    ./GPS-FB-ax-u202002/
+
+export BRANCH="master_based_androidx_based_updates_202005"
+git clone --recursive \
+    --branch $BRANCH \
+    https://github.com/xamarin/GooglePlayServicesComponents.git \
+    ./GPS-FB-ax-u202005/
+
+
+
+
+
+
+
+
 
 git clone --recursive \
     https:/github.com/xamarin/XamarinAndroidXMigration.git \
