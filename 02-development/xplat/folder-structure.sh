@@ -4,7 +4,7 @@ export DIR_ROOT="/Users/Shared/Projects"
 [ ! -d $DIR_ROOT ] && mkdir $DIR_ROOT
 
 export DIRECTORIES=\
-"
+'
 ./d
 ./d/hw-tools
 ./d/Ph4ct3x
@@ -33,9 +33,23 @@ export DIRECTORIES=\
 ./e/personal
 ./e/hw-talks
 ./e/Commercial
-"
+'
 
-for DIRECTORY in $DIRECTORIES;
+
+while IFS= read -r D
 do
-    [ -d "$DIRECTORY" ] && mkdir $DIR_ROOT/$DIRECTORY
-done
+    echo "custom folder: " $D
+    echo "                 $DIR_ROOT/$D"
+
+    [ ! -d "$DIR_ROOT/$D" ] && mkdir "$DIR_ROOT/$D"
+done \
+<<< "$DIRECTORIES"
+
+
+
+
+
+
+
+
+
