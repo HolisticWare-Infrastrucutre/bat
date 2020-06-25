@@ -58,6 +58,11 @@ git clone --recursive \
     https://github.com/xamarin/GooglePlayServicesComponents.git \
     ./GPS-FB-ax-u202005/
 
+export BRANCH="master_based_androidx_based_updates_202006"
+git clone --recursive \
+    --branch $BRANCH \
+    https://github.com/xamarin/GooglePlayServicesComponents.git \
+    ./GPS-FB-ax-u202006/
 
 
 
