@@ -1,6 +1,12 @@
 #!/bin/bash
 
 # https://github.com/herrbischoff/awesome-macos-command-line#memory-management
+# https://github.com/DannyNemer/dotfiles/blob/master/macos.sh
+# https://www.snip2code.com/Snippet/1138321/Bootstrap-Mac-OS-X-Configuration
+
+# https://github.com/search?utf8=%E2%9C%93&q=dotfiles
+# https://github.com/ryanb/dotfiles
+# https://github.com/holman/dotfiles
 
 brew cask install \
     mysides \
@@ -84,8 +90,14 @@ xcode-select --install
 xcrun simctl delete unavailable
 
 
+defaults write com.apple.menuextra.battery ShowPercent -string "YES"
+killall SystemUIServer
 
+# https://www.tech-otaku.com/mac/setting-the-date-and-time-format-for-the-macos-menu-bar-clock-using-terminal/
 
+defaults write com.apple.menuextra.clock DateFormat -string "EEE d MMM HH:mm" && killall SystemUIServer
+defaults write com.apple.menuextra.clock FlashDateSeparators -bool true && killall SystemUIServer
+ 
 
 
 
