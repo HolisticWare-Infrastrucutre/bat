@@ -25,8 +25,12 @@ mysides add \
 brew cask install \
     iterm2 \
 
-
+# https://pawelgrzybek.com/change-macos-user-preferences-via-command-line/
 # https://eclecticlight.co/2019/08/15/global-defaults-in-macos-mojave/
+# https://github.com/pawelgrzybek/dotfiles/blob/master/setup-macos.sh
+# https://github.com/mathiasbynens/dotfiles/blob/master/.macos
+# https://eclecticlight.co/2019/08/15/global-defaults-in-macos-mojave/
+# https://marketmix.com/de/mac-osx-umfassende-liste-der-terminal-defaults-commands/
 
 defaults domains | tr ',' '\n'
 
@@ -34,24 +38,58 @@ defaults domains | tr ',' '\n'
 # possible to use the shortcut:
 #   CMD + SHIFT + .
 
-defaults write com.apple.finder AppleShowAllFiles YES
-defaults write com.apple.finder _FXShowPosixPathInTitle -bool true
-killall Finder
+defaults write  com.apple.finder AppleShowAllFiles YES
+
+# too long paths when multiple tabs are opened
+defaults write  com.apple.finder _FXShowPosixPathInTitle -bool false
 
 # Finder
 
 #   PathBar
-defaults write com.apple.finder ShowPathbar -bool true
+defaults write  com.apple.finder ShowPathbar -bool true
 
 #   Status Bar
-defaults write com.apple.finder ShowStatusBar -bool true
+defaults write  com.apple.finder ShowStatusBar -bool true
+
+#   Set Current Folder as Default Search Scope
+defaults write  com.apple.finder FXDefaultSearchScope -string "SCcf"
+
+defaults read   com.apple.finder NewWindowTargetPath
+defaults write  com.apple.finder NewWindowTargetPath -string "file:///Users/Shared/Projects/"
+
+# Set Desktop as Default:
+# defaults write com.apple.finder NewWindowTarget -string "PfDe"
+# Set Documents as Default:
+# defaults write com.apple.finder NewWindowTarget -string "PfDo"
+
+# hard drives:
+defaults write com.apple.finder ShowHardDrivesOnDesktop -bool true
+
+# external hard drives:
+defaults write com.apple.finder ShowExternalHardDrivesOnDesktop -bool true
+
+# removable media:
+defaults write com.apple.finder ShowRemovableMediaOnDesktop -bool true
+
+# mounted servers
+defaults write com.apple.finder ShowMountedServersOnDesktop -bool true
+
+defaults write NSGlobalDomain AppleShowAllExtensions -bool true
+defaults write NSGlobalDomain NSAppSleepDisabled -bool YES
+
+# Enable the additional information (reboot needed)
+sudo defaults write /Library/Preferences/com.apple.loginwindow AdminHostInfo HostName
+# Disable the additional information (defaults) with:
+# sudo defaults delete /Library/Preferences/com.apple.loginwindow AdminHostInfo
+
+defaults write -g PMPrintingExpandedStateForPrint -bool TRUE
+defaults write com.apple.finder QuitMenuItem -bool TRUE 
+
+killall Finder
 
 #   Save to Disk by Default
 #       Sets default save target to be a local disk, not iCloud.
 defaults write -g NSDocumentSaveNewDocumentsToCloud -bool false
-
-#   Set Current Folder as Default Search Scope
-defaults write com.apple.finder FXDefaultSearchScope -string "SCcf"
 
 
 #   Disable Creation of Metadata Files on Network Volumes
@@ -162,3 +200,6 @@ defaults write \
       com.apple.finder \
       AppleShowAllFiles YES
 
+defaults write com.apple.dock mru-spaces -bool false
+defaults write com.apple.dock mru-spaces -boolean NO
+killall Dock
