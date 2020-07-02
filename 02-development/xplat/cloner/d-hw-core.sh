@@ -188,8 +188,19 @@ export DIR="./gh/264-HWC.Math.Set/"
 
 
 export BRANCH="master"
-export URL="https://github.com/moljac/HolisticWare.Core.Math.GraphTheory.git"
-export DIR="./gh/265-HWC.Math.GraphTheory/"
+export URL="https://github.com/holisticware/HolisticWare.Core.Math.Discrete.GraphTheory.git"
+export DIR="./gh/265-HWCMD.GraphTheory/"
+[ ! -d $DIR ] \
+    && \
+    git clone \
+        --branch master \
+        --recursive \
+        $URL \
+        $DIR
+
+export BRANCH="master"
+export URL="https://github.com/holisticware/HolisticWare.Core.Math.Discrete.SetTheory.git"
+export DIR="./gh/265-HWCMD.SetTheory/"
 [ ! -d $DIR ] \
     && \
     git clone \
@@ -199,8 +210,13 @@ export DIR="./gh/265-HWC.Math.GraphTheory/"
         $DIR
 
 
+
+
+
+
+
 export BRANCH="master"
-export URL="https://gitlab.com/private-holisticware/holisticware-core/holisticware.core.data.expertsystems.git"
+export URL="https://gitlab.com/private-holisticware/holisticware-core/HolisticWare.Core.Math.ExpertSystems.git"
 export DIR="./gl/HWC.Data.ExpertSystems/"
 [ ! -d $DIR ] \
     && \
@@ -213,7 +229,7 @@ export DIR="./gl/HWC.Data.ExpertSystems/"
 
 export BRANCH="master"
 export URL="https://gitlab.com/holisticware-core/HolisticWare.Core.Graphics.Charting.git"
-export DIR="./hw-core/gl/HWCG.Charting/"
+export DIR="./gl/HWCG.Charting/"
 [ ! -d $DIR ] \
     && \
     git clone \

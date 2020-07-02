@@ -17,7 +17,7 @@ git clone --recursive \
     https://github.com/xamarin/AndroidX.git \
     ./AX-u202001/
 
-export BRANCH="master_based_updates_202001"
+export BRANCH="master_based_updates_202006"
 git clone --recursive \
     --branch $BRANCH \
     https://github.com/xamarin/AndroidX.git \
