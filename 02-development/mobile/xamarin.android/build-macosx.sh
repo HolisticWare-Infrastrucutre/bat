@@ -1,17 +1,16 @@
 #!/bin/bash
 
-#Install the build dependencies.
+# Install the build dependencies.
 
-brew tap \
-    xamarin/xamarin-android-windeps
+brew tap xamarin/xamarin-android-windeps
     
 [ -d ./xamarin-android/ ] && rm -fr ./xamarin-android/
 
-#Clone the xamarin-android repo:
+# Clone the xamarin-android repo:
 
 git clone https://github.com/xamarin/xamarin-android.git
 
-#Navigate to the xamarin-android directory
+# Navigate to the xamarin-android directory
 
 cd xamarin-android/
 
@@ -20,13 +19,13 @@ cd xamarin-android/
 # make PREPARE_AUTOPROVISION=1 prepare
 #   to update mono (2020-05-06 internal preview channel was on 6.10 and builds needed 6.12)
 #   it's a separate step because xaprepare can crash if it updates the mono that's running it
-make PREPARE_AUTOPROVISION=1 prepare-update-mono
+# make PREPARE_AUTOPROVISION=1 prepare-update-mono
 
 # (Optional) Configure the build.
 
 # (For Microsoft team members only) (Optional) Prepare external proprietary git dependencies
 
-make prepare-external-git-dependencies
+# make prepare-external-git-dependencies
 
 # This will clone or update a monodroid checkout in external and ensure that subsequent prepare 
 # and make invocations will build proprietary components.
@@ -37,8 +36,8 @@ make prepare-external-git-dependencies
 
 # -or-
 
-make prepare MSBUILD=msbuild
-
+# make prepare MSBUILD=msbuild
+make prepare
 # -or-
 
 make XA_INVERTED_COMMERCIAL_BUILD=true jenkins
