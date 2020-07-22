@@ -9,11 +9,17 @@ export DIR="$DIR_ROOT/e/"
 [ ! -d $DIR ] && mkdir $DIR 
 [ -d $DIR ] && cd $DIR
 
-export DIR="$DIR_ROOT/e/personal/"
+export DIR="$DIR_ROOT/e/personal-private/"
 [ ! -d $DIR ] && mkdir $DIR 
-[ -d $DIR ] && cd $DIR
 
+export DIR="$DIR_ROOT/e/edu/"
+[ ! -d $DIR ] && mkdir $DIR 
 
+export DIR="$DIR_ROOT/e/commercial/"
+[ ! -d $DIR ] && mkdir $DIR 
+
+export DIR="$DIR_ROOT/e/hw-talks/"
+[ ! -d $DIR ] && mkdir $DIR 
 
 export BRANCH="master"
 export URL=""
