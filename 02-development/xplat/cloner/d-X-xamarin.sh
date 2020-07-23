@@ -1,132 +1,168 @@
 #!/bin/bash
 
-cd /Users/Shared/Projects
+export DIR_ROOT="/Users/Shared/Projects"
 
-mkdir ./X
 
-cd 
-git clone \
-    --recursive \
-    --branch master \
-    https:/github.com/xamarin/AndroidX.git \
-    AndroidX-master/ \
 
+
+export DIR="$DIR_ROOT/d/X"
+[ ! -d $DIR ] && mkdir $DIR 
+[ -d $DIR ] && cd $DIR
+
+export URL=""
 export BRANCH="master"
-git clone \
-    --recursive \
-    --branch $BRANCH \
-    https:/github.com/xamarin/AndroidX.git \
-    AX[]m/ \
+export DIR=""
 
-export BRANCH="master_based_updates_202001"
-git clone \
-    --recursive \
-    --branch $BRANCH \
-    https:/github.com/xamarin/AndroidX.git \
-    ./AX[]$BRANCH/
-cd ./AX[]$BRANCH/ && git checkout && cd -
 
-git clone \
-    --recursive \
-    --branch $BRANCH \
-    ./monodroid-samples[]ax/ \
-    https:/github.com/moljac/monodroid-samples.git
-
+export URL="https://github.com/xamarin/AndroidX.git"
 export BRANCH="master"
-git clone \
-    --recursive \
-    --branch $BRANCH \
-    ./GPS-FB[]]m/ \
-    https:/github.com/xamarin/GooglePlayServicesComponents.git
+export DIR="AX-m"
+[ ! -d $DIR ] \
+    && \
+    git clone \
+        --recursive \
+        --branch $BRANCH \
+        $URL \
+        $DIR
 
+export URL="https://github.com/xamarin/AndroidX.git"
+export BRANCH="master_based_20200328_media2_player_exoplayer_camera2"
+export DIR="AX-media2_ExoPlayer"
+[ ! -d $DIR ] \
+    && \
+    git clone \
+        --recursive \
+        --branch $BRANCH \
+        $URL \
+        $DIR
+
+export URL="https://github.com/moljac/monodroid-samples.git"
 export BRANCH="master_based_androidx"
-git clone \
-    --recursive \
-    --branch $BRANCH \
-    https:/github.com/xamarin/GooglePlayServicesComponents.git \
-    ./GPS-FB[]]ax/ \
+export DIR="monodroid-samples-ax"
+[ ! -d $DIR ] \
+    && \
+    git clone \
+        --recursive \
+        --branch $BRANCH \
+        $URL \
+        $DIR
 
+
+export URL="https://github.com/xamarin/GooglePlayServicesComponents.git"
 export BRANCH="master"
-git clone \
-    --recursive \
-    --branch $BRANCH \
-    https:/github.com/xamarin/AndroidSupportComponents.git \
-    ./AS[]m]/
+export DIR="GPS-FB-m"
+[ ! -d $DIR ] \
+    && \
+    git clone \
+        --recursive \
+        --branch $BRANCH \
+        $URL \
+        $DIR
 
-git clone \
-    --recursive \
-    https:/github.com/xamarin/XamarinAndroidXMigration.git \
-    ./XamarinAndroidXMigration/
+export URL="https://github.com/xamarin/GooglePlayServicesComponents.git"
+export BRANCH="master_based_androidx"
+export DIR="GPS-FB-ax"
+[ ! -d $DIR ] \
+    && \
+    git clone \
+        --recursive \
+        --branch $BRANCH \
+        $URL \
+        $DIR
+    
+export URL="https://github.com/xamarin/AndroidSupportComponents.git"
+export BRANCH="master"
+export DIR="AS-m"
+[ ! -d $DIR ] \
+    && \
+    git clone \
+        --recursive \
+        --branch $BRANCH \
+        $URL \
+        $DIR
 
-git clone \
-    --recursive \
-    https:/github.com/xamarin/java.interop \
-    ./java.interop
+export URL="https://github.com/xamarin/XamarinAndroidXMigration.git"
+export BRANCH="master"
+export DIR="XamarinAndroidXMigration"
+[ ! -d $DIR ] \
+    && \
+    git clone \
+        --recursive \
+        --branch $BRANCH \
+        $URL \
+        $DIR
+
+export URL="https://github.com/xamarin/java.interop.git"
+export BRANCH="master"
+export DIR="java-interop"
+[ ! -d $DIR ] \
+    && \
+    git clone \
+        --recursive \
+        --branch $BRANCH \
+        $URL \
+        $DIR
+
+export URL="https://github.com/xamarin/Essentials.git"
+export BRANCH="master"
+export DIR="Essentials-m"
+[ ! -d $DIR ] \
+    && \
+    git clone \
+        --branch master \
+        --recursive \
+        $URL \
+        $DIR
+
+export URL="https://github.com/xamarin/net5-samples.git"
+export BRANCH="master"
+export DIR="net5-samples"
+[ ! -d $DIR ] \
+    && \
+    git clone \
+        --branch master \
+        --recursive \
+        $URL \
+        $DIR
+
+export URL="https://github.com/xamarin/Xamarin-Bindings.git"
+export BRANCH="master"
+export DIR="Customer-Xamarin-Bindings-m"
+[ ! -d $DIR ] \
+    && \
+    git clone \
+        --branch master \
+        --recursive \
+        $URL \
+        $DIR
+
+export URL="https://github.com/xamarin/XamarinUniversity.git"
+export BRANCH="master"
+export DIR="XamarinUniversity-m"
+[ ! -d $DIR ] \
+    && \
+    git clone \
+        --branch master \
+        --recursive \
+        $URL \
+        $DIR
 
 
+# ./X//gitlab[]xamarin-components/bond/.git/config:9:	url = https://github.com/Microsoft/bond.git
+# ./X//gitlab[]xamarin-components/bond/.git/config:15:	url = https://github.com/miloyip/rapidjson.git
+# ./X//gitlab[]xamarin-components/bond/.git/modules/thirdparty/rapidjson/config:10:	url = https://github.com/miloyip/rapidjson.git
+# ./X//gitlab[]xamarin-components/bond/.git/modules/thirdparty/rapidjson/config:16:	url = https://chromium.googlesource.com/external/googletest.git
+# ./X//gitlab[]xamarin-components/bond/.git/modules/thirdparty/rapidjson/modules/thirdparty/gtest/config:10:	url = https://chromium.googlesource.com/external/googletest.git
+# ./X//Xamarin.EasyHttp/EasyHttp/.git/config:10:	url = https://github.com/hhariri/EasyHttp.git
 
-./X//AndroidX/.git/config:11:	url = https://github.com/xamarin/AndroidX.git
-./X//GPS-FB-15.0.1-binderate-FB/.git/config:11:	url = https://github.com/xamarin/GooglePlayServicesComponents.git
-./X//Xamarin.Mobile/Xamarin.Mobile@moljac.20150924/.git/config:10:	url = https://github.com/moljac/Xamarin.Mobile.git
-./X//Xamarin.Mobile/Xamarin.Mobile/.git/config:10:	url = https://github.com/moljac/Xamarin.Mobile.git
-./X//Xamarin.Mobile/Xamarin.Mobile.201410/.git/config:10:	url = https://github.com/moljac/Xamarin.Mobile.git
-./X//Xamarin.Mobile/Xamarin.Mobile.201410/.git/config:17:	url = https://github.com/xamarin/Xamarin.Mobile.git
-./X//XamarinAndroidXMigration/.git/config:11:	url = https://github.com/xamarin/XamarinAndroidXMigration.git
-./X//XamarinAndroidXMigration/.git/config:17:	url = https://github.com/xamarin/java.interop
-./X//XamarinAndroidXMigration/.git/modules/externals/Java.Interop/config:10:	url = https://github.com/xamarin/java.interop
-./X//XamarinAndroidXMigration/.git/modules/externals/Java.Interop/config:17:	url = https://github.com/mono/cecil.git
-./X//XamarinAndroidXMigration/.git/modules/externals/Java.Interop/config:20:	url = https://github.com/xamarin/xamarin-android-tools.git
-./X//XamarinAndroidXMigration/.git/modules/externals/Java.Interop/config:23:	url = https://github.com/jonpryor/mono.linq.expressions.git
-./X//XamarinAndroidXMigration/.git/modules/externals/Java.Interop/modules/lib/mono.linq.expressions/config:10:	url = https://github.com/jonpryor/mono.linq.expressions.git
-./X//XamarinAndroidXMigration/.git/modules/externals/Java.Interop/modules/external/xamarin-android-tools/config:10:	url = https://github.com/xamarin/xamarin-android-tools.git
-./X//XamarinAndroidXMigration/.git/modules/externals/Java.Interop/modules/external/cecil/config:10:	url = https://github.com/mono/cecil.git
-./X//GoogleApisForiOSComponents/.git/config:9:	url = https://github.com/xamarin/GoogleApisForiOSComponents.git
-./X//monodroid-samples/.git/config:11:	url = https://github.com/moljac/monodroid-samples.git
-./X//gitlab-support/Daimler.Richard.Hopkins/.git/config:9:	url = https://gitlab.com/xamarin-support/Daimler.Richard.Hopkins.git
-./X//gitlab-support/Daimler.Richard.Hopkins/.git/config:16:	url = https://gitlab.com/xamarin-support/Xtras-Binaries-Xtensive-Daimler.Richard.Hopkins.git
-./X//gitlab-support/Daimler.Richard.Hopkins/.git/config:18:	url = https://gitlab.com/xamarin-support/Xtras-Binaries-Minimal-Daimler.Richard.Hopkins.git
-./X//gitlab-support/Daimler.Richard.Hopkins/.git/modules/external/binaries-minimal/config:10:	url = https://gitlab.com/xamarin-support/Xtras-Binaries-Minimal-Daimler.Richard.Hopkins.git
-./X//gitlab-support/Daimler.Richard.Hopkins/.git/modules/external/binaries-xtensive/config:10:	url = https://gitlab.com/xamarin-support/Xtras-Binaries-Xtensive-Daimler.Richard.Hopkins.git
-./X//gitlab-support/Xamarin.SAP.Invaris/.git/config:9:	url = https://gitlab.com/xamarin-support/Xamarin.SAP.Invaris.git
-./X//gitlab-support/Xamarin.SAP.Invaris/.git/config:15:	url = https://github.com/xamarin/xamarin-sap-component.git
-./X//gitlab-support/Xamarin.SAP.Invaris/.git/modules/submodulez/Xamarin.SAP/config:11:	url = https://github.com/xamarin/xamarin-sap-component.git
-./X//gitlab-support/DeskCase-243078-SalesforceLogin/.git/config:10:	url = https://gitlab.com/xamarin-support/DeskCase-243078-SalesforceLogin.git
-./X//moljac[]xamarin-sap-component/.git/config:10:	url = https://github.com/moljac/xamarin-sap-component.git
-./X//Xamarin-Bindings/.git/config:10:	url = https://github.com/xamarin/Xamarin-Bindings.git
-./X//msgpack-cli/.git/config:10:	url = https://github.com/moljac/msgpack-cli.git
-./X//SalesforceSDK/.git/config:9:	url = https://github.com/xamarin/SalesforceSDK.git
-./X//SalesforceSDK/.git/config:15:	url = https://github.com/xamarin/Xamarin.Auth.git
-./X//SalesforceSDK/.git/modules/external/Xamarin.Auth/config:10:	url = https://github.com/xamarin/Xamarin.Auth.git
-./X//gitlab[]xamarin-components/bond/.git/config:9:	url = https://github.com/Microsoft/bond.git
-./X//gitlab[]xamarin-components/bond/.git/config:15:	url = https://github.com/miloyip/rapidjson.git
-./X//gitlab[]xamarin-components/bond/.git/modules/thirdparty/rapidjson/config:10:	url = https://github.com/miloyip/rapidjson.git
-./X//gitlab[]xamarin-components/bond/.git/modules/thirdparty/rapidjson/config:16:	url = https://chromium.googlesource.com/external/googletest.git
-./X//gitlab[]xamarin-components/bond/.git/modules/thirdparty/rapidjson/modules/thirdparty/gtest/config:10:	url = https://chromium.googlesource.com/external/googletest.git
-./X//gitlab[]xamarin-components/xamarin-sap-component/.git/config:10:	url = https://gitlab.com/xamarin-components/xamarin-sap-component.git
-./X//Xamarin.Auth.Server.ASP.net.Core/.git/config:9:	url = https://github.com/moljac/Xamarin.Auth.Server.ASP.net.Core.git
-./X//Xamarin.Auth.Server.ASP.net.Core/.git/config:15:	url = https://github.com/xamarin/Xamarin.Auth.git
-./X//Xamarin.Auth.Server.ASP.net.Core/.git/config:17:	url = https://github.com/moljac/Xamarin.Auth.Samples.NugetReferences.git
-./X//Xamarin.Auth.Server.ASP.net.Core/.git/modules/external/Xamarin.Auth/config:10:	url = https://github.com/xamarin/Xamarin.Auth.git
-./X//Xamarin.Auth.Server.ASP.net.Core/.git/modules/external/Xamarin.Auth.Samples.NugetReferences/config:10:	url = https://github.com/moljac/Xamarin.Auth.Samples.NugetReferences.git
-./X//GPS-FB-master/.git/config:11:	url = https://github.com/xamarin/GooglePlayServicesComponents.git
-./X//Xamarin.EasyHttp/EasyHttp/.git/config:10:	url = https://github.com/hhariri/EasyHttp.git
-./X//Private.SalesforceSDK/old/sharpforce/.git/config:10:	url = https://github.com/moljac/sharpforce.git
-./X//Private.SalesforceSDK/old/SalesforceSDK-Xamarin.Auth-removal/.git/config:10:	url = https://github.com/xamarin/SalesforceSDK.git
-./X//Private.SalesforceSDK/old/SalesforceSDK-to-be removed/.git/config:10:	url = https://github.com/moljac/SalesforceSDK.git
-./X//Private.SalesforceSDK/old/SalesforceSDK-to-be removed/.git/config:17:	url = https://github.com/xamarin/SalesforceSDK.git
-./X//Private.SalesforceSDK/.git/config:10:	url = https://gitlab.com/xamarin-components/Private.SalesforceSDK.git
-./X//AndroidSupportComponents-28.0.0/.git/config:11:	url = https://github.com/xamarin/AndroidSupportComponents.git
-./X//XamarinUniversity/.git/config:9:	url = git@github.com:xamarin/XamarinUniversity.git
-./X//Caboodle/.git/config:11:	url = https://github.com/xamarin/Caboodle.git
-./X//gl.XamarinAndroidxMigration/.git/config:11:	url = https://gitlab.com/xamarin-tools/xamarinandroidxmigration.git
-./X//gl.XamarinAndroidxMigration/.git/config:17:	url = https://github.com/xamarin/java.interop
-./X//gl.XamarinAndroidxMigration/.git/modules/externals/Java.Interop/config:10:	url = https://github.com/xamarin/java.interop
-./X//gl.XamarinAndroidxMigration/.git/modules/externals/Java.Interop/config:17:	url = https://github.com/mono/cecil.git
-./X//gl.XamarinAndroidxMigration/.git/modules/externals/Java.Interop/config:20:	url = https://github.com/xamarin/xamarin-android-tools.git
-./X//gl.XamarinAndroidxMigration/.git/modules/externals/Java.Interop/config:23:	url = https://github.com/jonpryor/mono.linq.expressions.git
-./X//gl.XamarinAndroidxMigration/.git/modules/externals/Java.Interop/modules/lib/mono.linq.expressions/config:10:	url = https://github.com/jonpryor/mono.linq.expressions.git
-./X//gl.XamarinAndroidxMigration/.git/modules/externals/Java.Interop/modules/external/xamarin-android-tools/config:10:	url = https://github.com/xamarin/xamarin-android-tools.git
-./X//gl.XamarinAndroidxMigration/.git/modules/externals/Java.Interop/modules/external/cecil/config:10:	url = https://github.com/mono/cecil.git
-./X//AndroidSupportComponents-master/.git/config:11:	url = https://github.com/xamarin/AndroidSupportComponents.git
-./X//GPS-FB-androidx/.git/config:11:	url = https://github.com/xamarin/GooglePlayServicesComponents.git
+dotnet tool uninstall -g cake.tool
+dotnet tool uninstall -g xamarin.androidbinderator.tool 
+dotnet tool uninstall -g xamarin.androidx.migration.tool 
 
+
+dotnet tool install -g cake.tool
+dotnet tool install -g xamarin.androidbinderator.tool 
+dotnet tool install -g xamarin.androidx.migration.tool 
+
+
+cd $DIR_ROOT

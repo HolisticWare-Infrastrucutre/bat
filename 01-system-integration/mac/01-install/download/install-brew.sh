@@ -28,7 +28,7 @@ brew upgrade
 
 brew cleanup -n
 
-# No response if there is nothing to clearn.
+# No response if there is nothing to clear.
 
 # To really remove all files no longer needed:
 
@@ -76,6 +76,33 @@ brew $ACTION_VERB \
     swig \
     p7zip \
 
+# Xamarin.Android xamarin-android repo
+#   user want git from brew anyway, the apple-provided one is a fossil
+brew tap \
+    xamarin/xamarin-android-windeps
+brew $ACTION_VERB \
+    git \
+    make \
+    cmake \
+    libtool \
+    p7zip \
+    gdk-pixbuf \
+    gettext \
+    coreutils \
+    findutils \
+    gnu-tar \
+    gnu-sed \
+    gawk \
+    gnutls \
+    gnu-indent \
+    gnu-getopt \
+    intltool \
+    ninja \
+    scons \
+    wget \
+    xz \
+    mingw-w64 \
+    mingw-zlib \
 
 # plugins for zsh (nvm)
 brew $ACTION_VERB \
@@ -116,6 +143,8 @@ sudo git lfs install --system
 brew cask $ACTION_VERB \
     github \
     gitup \
+    diffmerge \
+    p4v \
 
 
 #----------------------------------------------------------------------------------------------
@@ -130,12 +159,19 @@ brew cask upgrade \
 #----------------------------------------------------------------------------------------------
 brew cask $ACTION_VERB \
     openssl \
+
+
+brew link --force \
+    openssl
+
+
+brew cask $ACTION_VERB \
     parallels \
     virtualbox \
     cheatsheet \
     onyx \
 
-brew link --force openssl
+
 
 #----------------------------------------------------------------------------------------------
 #
@@ -300,6 +336,11 @@ brew cask $ACTION_VERB \
 
 ls -al ~/Library/Android/sdk/
 
+
+#----------------------------------------------------------------------------------------------
+# tools development
+brew $ACTION_VERB \
+    cocoapods \
 
 #----------------------------------------------------------------------------------------------
 # tools development
