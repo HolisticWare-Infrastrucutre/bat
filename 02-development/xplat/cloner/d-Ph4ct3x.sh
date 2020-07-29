@@ -5,7 +5,7 @@ export DIR_ROOT="/Users/Shared/Projects"
 
 
 
-export DIR="$DIR_ROOT/d/Ph4ct3X"
+export DIR="$DIR_ROOT/d/Ph4ct3x"
 [ ! -d $DIR ] && echo "Folder $DIR does not exists. Exiting ..." && exit 
 [ -d $DIR ] && cd $DIR
 
