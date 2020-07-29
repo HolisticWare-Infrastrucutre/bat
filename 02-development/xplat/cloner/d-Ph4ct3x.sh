@@ -73,17 +73,49 @@ export DIR="./gh/hrm/MovesenseDotNet/"
         $URL \
         $DIR
 
+export BRANCH="master"
+export URL="https://gitlab.com/holisticware-applications/HolisticWare.Ph4ct3x.git"
+export DIR="./gl/Ph4ct3x/"
+[ ! -d $DIR ] \
+    && \
+    git clone \
+        --branch master \
+        --recursive \
+        $URL \
+        $DIR
+
+
+export BRANCH="master"
+export URL="https://gitlab.com/holisticware-applications/HolisticWare.Ph4ct3x.Docs.git"
+export DIR="./gl/Ph4ct3x.Docs/"
+[ ! -d $DIR ] \
+    && \
+    git clone \
+        --branch master \
+        --recursive \
+        $URL \
+        $DIR
+
+export BRANCH="master"
+export URL="https://gitlab.com/holisticware-applications/holisticware.ph4ct3x.data.private.git"
+export DIR="./gl/Ph4ct3x.Docs/"
+[ ! -d $DIR ] \
+    && \
+    git clone \
+        --branch master \
+        --recursive \
+        $URL \
+        $DIR
+
 
 
 https://github.com/shinyorg/shinysamples.git
-https://gitlab.com/holisticware-applications/HolisticWare.Ph4ct3x.git
 https://github.com/HolisticWare/HolisticWare.Core.Math.Intervals.git
 https://github.com/HolisticWare/HolisticWare.Core.Math.Numerics.git
 https://github.com/HolisticWare/HolisticWare.Core.Math.Polynomials.git
 https://github.com/HolisticWare/HolisticWare.Core.Math.Statistics.Descriptive.Sequential.git
 https://github.com/HolisticWare/HolisticWare.Core.Text.git
 https://github.com/moljac/HolisticWare.Core.Math.Samples.git
-https://gitlab.com/holisticware-applications/HolisticWare.Ph4ct3x.Docs.git
 https://github.com/xamarin/Essentials.git
 https://gitlab.com/holisticware-applications/holisticware.ph4ct3x.heartratemonitors.git
 https://gitlab.com/holisticware-bindings/Garmin.ConnectIQ.git
@@ -97,7 +129,5 @@ https://github.com/moljac/HolisticWare.Core.Math.Statistics.git
 https://gitlab.com/holisticware-applications/HolisticWare.Ph4ct3x.git
 https://github.com/moljac/HolisticWare.Core.Math.Statistics.git
 https://github.com/moljac/HolisticWare.Core.Math.Intervals.git
-https://gitlab.com/holisticware-applications/HolisticWare.Ph4ct3x.Docs.git
 https://github.com/moljac/HolisticWare.Core.Math.Samples.git
 https://github.com/moljac/HolisticWare.Core.Math.Statistics.Descriptive.Sequential.git
-https://gitlab.com/holisticware-applications/HolisticWare.Ph4ct3x.Docs.git
