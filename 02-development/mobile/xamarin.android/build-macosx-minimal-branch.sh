@@ -1,6 +1,7 @@
 #!/bin/bash
 
 
+rm -fr xamarin-android-sdk-style-projects-02/
 export ANDROID_SDK_ROOT=$HOME/Library/Developer/Xamarin/android-sdk-macosx
 export AndroidSdkDirectory=
 git clone \
@@ -9,10 +10,10 @@ git clone \
     xamarin-android-sdk-style-projects-02
 
 cd xamarin-android-sdk-style-projects-02/
-make prepare
-make all
+make prepare && make
 
 
+rm -fr xamarin-android-sdk-style-projects-03/
 export ANDROID_SDK_ROOT=$HOME/Library/Developer/Xamarin/android-sdk-macosx
 export AndroidSdkDirectory=
 git clone \
@@ -21,5 +22,4 @@ git clone \
     xamarin-android-sdk-style-projects-03
 
 cd xamarin-android-sdk-style-projects-03/
-make prepare
-make all
+make prepare && make
