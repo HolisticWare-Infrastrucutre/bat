@@ -30,17 +30,23 @@ cd xamarin-android/
 # This will clone or update a monodroid checkout in external and ensure that subsequent prepare 
 # and make invocations will build proprietary components.
 
-# Prepare the project:
-
-#make prepare
+# Prepare the project:s
+make prepare
 
 # -or-
 
 # make prepare MSBUILD=msbuild
-make prepare
+
+
+
+# Build the project:
+make
+
 # -or-
 
-make XA_INVERTED_COMMERCIAL_BUILD=true jenkins
+# make MSBUILD=msbuild
+
+# make XA_INVERTED_COMMERCIAL_BUILD=true jenkins
 
 # This will ensure that the 
 #       *   build dependencies are installed, 
@@ -48,11 +54,6 @@ make XA_INVERTED_COMMERCIAL_BUILD=true jenkins
 #       *   download NuGet dependencies, and 
 #       *   other "preparatory" and pre-build tasks that need to be performed.
 
-# Build the project:
-
-# make
-# -or-
-# make MSBUILD=msbuild
 
 # The default make all target builds a subset of everything, in the interests of build speed: 
 # it builds only one $(TargetFrameworkVersion), and only supports the armeabi-v7a and x86 ABIs 
@@ -63,10 +64,9 @@ make XA_INVERTED_COMMERCIAL_BUILD=true jenkins
 #   *   all ABIs, 
 #   *   Windows cross-compilers, etc. 
 # -- then use the make jenkins target:
+# make jenkins
 
-#make jenkins
 # -or-
-
 make jenkins MSBUILD=msbuild
 
 # Creating installers
