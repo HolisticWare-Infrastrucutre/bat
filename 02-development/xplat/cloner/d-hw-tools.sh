@@ -102,6 +102,18 @@ export DIR="JarInfoSpitter"
         $URL \
         $DIR
 
+export BRANCH="master"
+export URL="https://github.com/HolisticWare-Xamarin-Tools/HolisticWare.Xamarin.Tools.Bindings.XamarinAndroid.FassBinderMeister.git"
+export DIR="FassBinderMeister"
+[ ! -d $DIR ] \
+    && \
+    git clone \
+        --branch master \
+        --recursive \
+        $URL \
+        $DIR
+
+
 
 
 
