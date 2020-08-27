@@ -1,17 +1,16 @@
 #!/bin/bash
 
-#Install the build dependencies.
+# Install the build dependencies.
 
-brew tap \
-    xamarin/xamarin-android-windeps
+brew tap xamarin/xamarin-android-windeps
     
 [ -d ./xamarin-android/ ] && rm -fr ./xamarin-android/
 
-#Clone the xamarin-android repo:
+# Clone the xamarin-android repo:
 
 git clone https://github.com/xamarin/xamarin-android.git
 
-#Navigate to the xamarin-android directory
+# Navigate to the xamarin-android directory
 
 cd xamarin-android/
 
@@ -20,28 +19,34 @@ cd xamarin-android/
 # make PREPARE_AUTOPROVISION=1 prepare
 #   to update mono (2020-05-06 internal preview channel was on 6.10 and builds needed 6.12)
 #   it's a separate step because xaprepare can crash if it updates the mono that's running it
-make PREPARE_AUTOPROVISION=1 prepare-update-mono
+# make PREPARE_AUTOPROVISION=1 prepare-update-mono
 
 # (Optional) Configure the build.
 
 # (For Microsoft team members only) (Optional) Prepare external proprietary git dependencies
 
-make prepare-external-git-dependencies
+# make prepare-external-git-dependencies
 
 # This will clone or update a monodroid checkout in external and ensure that subsequent prepare 
 # and make invocations will build proprietary components.
 
-# Prepare the project:
-
-#make prepare
-
-# -or-
-
-make prepare MSBUILD=msbuild
+# Prepare the project:s
+make prepare
 
 # -or-
 
-make XA_INVERTED_COMMERCIAL_BUILD=true jenkins
+# make prepare MSBUILD=msbuild
+
+
+
+# Build the project:
+make
+
+# -or-
+
+# make MSBUILD=msbuild
+
+# make XA_INVERTED_COMMERCIAL_BUILD=true jenkins
 
 # This will ensure that the 
 #       *   build dependencies are installed, 
@@ -49,11 +54,6 @@ make XA_INVERTED_COMMERCIAL_BUILD=true jenkins
 #       *   download NuGet dependencies, and 
 #       *   other "preparatory" and pre-build tasks that need to be performed.
 
-# Build the project:
-
-# make
-# -or-
-# make MSBUILD=msbuild
 
 # The default make all target builds a subset of everything, in the interests of build speed: 
 # it builds only one $(TargetFrameworkVersion), and only supports the armeabi-v7a and x86 ABIs 
@@ -64,10 +64,9 @@ make XA_INVERTED_COMMERCIAL_BUILD=true jenkins
 #   *   all ABIs, 
 #   *   Windows cross-compilers, etc. 
 # -- then use the make jenkins target:
+# make jenkins
 
-#make jenkins
 # -or-
-
 make jenkins MSBUILD=msbuild
 
 # Creating installers

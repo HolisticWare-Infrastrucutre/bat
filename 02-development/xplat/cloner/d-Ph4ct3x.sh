@@ -30,8 +30,35 @@ export DIR="./gh/Ph4ct3x/"
         $DIR
 
 export BRANCH="master"
-export URL="https://github.com/inthehand/32feet.git"
-export DIR="./gh/bt/32feet/"
+export URL="https://github.com/moljac/Ph4ct3x.Data.Public.git"
+export DIR="./gh/Ph4ct3x.Data.Public/"
+[ ! -d $DIR ] \
+    && \
+    git clone \
+        --branch master \
+        --recursive \
+        $URL \
+        $DIR
+
+
+
+
+
+export BRANCH="master"
+export URL="https://gitlab.com/holisticware-applications/HolisticWare.Ph4ct3x.git"
+export DIR="./gl/Ph4ct3x/"
+[ ! -d $DIR ] \
+    && \
+    git clone \
+        --branch master \
+        --recursive \
+        $URL \
+        $DIR
+
+
+export BRANCH="master"
+export URL="https://gitlab.com/holisticware-applications/HolisticWare.Ph4ct3x.Docs.git"
+export DIR="./gl/Ph4ct3x.Docs/"
 [ ! -d $DIR ] \
     && \
     git clone \
@@ -41,30 +68,8 @@ export DIR="./gh/bt/32feet/"
         $DIR
 
 export BRANCH="master"
-export URL="https://github.com/moljac/Monkey.BluetoothLE.git"
-export DIR="./gh/bt/Monkey.BluetoothLE/"
-[ ! -d $DIR ] \
-    && \
-    git clone \
-        --branch master \
-        --recursive \
-        $URL \
-        $DIR
-
-export BRANCH="master"
-export URL="https://gitlab.com/kivusic/Timer.git"
-export DIR="./gl/Timer/"
-[ ! -d $DIR ] \
-    && \
-    git clone \
-        --branch master \
-        --recursive \
-        $URL \
-        $DIR
-
-export BRANCH="master"
-export URL="https://github.com/AndyCW/MovesenseDotNet.git"
-export DIR="./gh/hrm/MovesenseDotNet/"
+export URL="https://gitlab.com/holisticware-applications/holisticware.ph4ct3x.data.private.git"
+export DIR="./gl/Ph4ct3x.Data.Private/"
 [ ! -d $DIR ] \
     && \
     git clone \
@@ -273,12 +278,4 @@ export DIR="./gl/bindings/Jawbone.UP/"
         --recursive \
         $URL \
         $DIR
-
-
-
-
-
-
-
-
 
