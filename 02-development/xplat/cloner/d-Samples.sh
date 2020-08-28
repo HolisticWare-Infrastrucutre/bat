@@ -37,3 +37,38 @@ export DIR="Samples.GPS-FB"
         --branch $BRANCH \
         $URL \
         $DIR
+
+export URL="https://github.com/moljac/Samples.MachineLearning.git"
+export BRANCH="master"
+export DIR="Samples.ML"
+[ ! -d $DIR ] \
+    && \
+    git clone \
+        --recursive \
+        --branch $BRANCH \
+        $URL \
+        $DIR
+
+export URL="https://github.com/moljac/Samples.Cake.git"
+export BRANCH="master"
+export DIR="Samples.Cake"
+[ ! -d $DIR ] \
+    && \
+    git clone \
+        --recursive \
+        --branch $BRANCH \
+        $URL \
+        $DIR
+
+export URL="https://github.com/moljac/Samples.Xamarin.Forms.git"
+export BRANCH="master"
+export DIR="Samples.Xamarin.Forms"
+[ ! -d $DIR ] \
+    && \
+    git clone \
+        --recursive \
+        --branch $BRANCH \
+        $URL \
+        $DIR
+
+
