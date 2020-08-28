@@ -71,4 +71,14 @@ export DIR="Samples.Xamarin.Forms"
         $URL \
         $DIR
 
+export URL="https://github.com/moljac/Samples.CSharp.git"
+export BRANCH="master"
+export DIR="Samples.CSharp"
+[ ! -d $DIR ] \
+    && \
+    git clone \
+        --recursive \
+        --branch $BRANCH \
+        $URL \
+        $DIR
 
