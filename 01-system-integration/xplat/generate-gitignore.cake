@@ -1,5 +1,9 @@
 #addin nuget:?package=Cake.Http
 
+/*
+dotnet cake ./generate-gitignore.cake > ./generated/.gitignore 
+*/
+
 using System;
 using System.Linq;
 new string[] gitignores = new string[]
@@ -17,18 +21,20 @@ new string[] gitignores = new string[]
     "https://raw.githubusercontent.com/github/gitignore/master/Objective-C.gitignore",
     "https://raw.githubusercontent.com/github/gitignore/master/Swift.gitignore",
     "https://raw.githubusercontent.com/github/gitignore/master/Unity.gitignore",
-    "https://raw.githubusercontent.com/github/gitignore/master/Global/MATLAB.gitignore",
-    "https://raw.githubusercontent.com/github/gitignore/master/R.gitignore",
     "https://raw.githubusercontent.com/github/gitignore/master/C%2B%2B.gitignore",
     "https://raw.githubusercontent.com/github/gitignore/master/C.gitignore",
     "https://raw.githubusercontent.com/github/gitignore/master/CMake.gitignore",
     "https://raw.githubusercontent.com/github/gitignore/master/Autotools.gitignore",
+    "https://raw.githubusercontent.com/github/gitignore/master/Julia.gitignore",
+    "https://raw.githubusercontent.com/github/gitignore/master/Python.gitignore",
+    "https://raw.githubusercontent.com/github/gitignore/master/Global/MATLAB.gitignore",
+    "https://raw.githubusercontent.com/github/gitignore/master/R.gitignore",
 };
 
 foreach(string gi in gitignores)
 {
-    Information($"#{new String('=', 120)}");
-    Information($"#{String.Concat(Enumerable.Repeat("--", 60))}");
+    Information($"# {new String('=', 120)}");
+    Information($"# {String.Concat(Enumerable.Repeat("--", 60))}");
 
     Information($"# .gitignore: {gi}");
     string response_body = HttpGet(gi);
