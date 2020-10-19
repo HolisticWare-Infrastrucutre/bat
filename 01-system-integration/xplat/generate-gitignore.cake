@@ -1,6 +1,8 @@
 #addin nuget:?package=Cake.Http
 
 /*
+https://github.com/github/gitignore/
+
 dotnet cake ./generate-gitignore.cake > ./generated/.gitignore 
 */
 
