@@ -155,14 +155,4 @@ export DIR="XamarinUniversity-m"
 # ./X//gitlab[]xamarin-components/bond/.git/modules/thirdparty/rapidjson/modules/thirdparty/gtest/config:10:	url = https://chromium.googlesource.com/external/googletest.git
 # ./X//Xamarin.EasyHttp/EasyHttp/.git/config:10:	url = https://github.com/hhariri/EasyHttp.git
 
-dotnet tool uninstall -g cake.tool
-dotnet tool uninstall -g xamarin.androidbinderator.tool 
-dotnet tool uninstall -g xamarin.androidx.migration.tool 
-
-
-dotnet tool install -g cake.tool
-dotnet tool install -g xamarin.androidbinderator.tool 
-dotnet tool install -g xamarin.androidx.migration.tool 
-
-
 cd $DIR_ROOT
