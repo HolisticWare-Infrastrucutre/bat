@@ -593,12 +593,16 @@ pip3 install matplotlib
 #    --with-cairo \
 #    --with-tex
 
-  pip3 install --upgrade pip
-  pip3 install jupyter
+pip3 install --upgrade pip
+pip3 install jupyter
 
-  pip3 install --upgrade pip
-  pip3 install jupyter
+pip install jupyterlab
+pip install notebook
+pip install voila
 
+jupyter-lab &
+jupyter notebook &
+voila &
 
 
 #----------------------------------------------------------------------------------------------
