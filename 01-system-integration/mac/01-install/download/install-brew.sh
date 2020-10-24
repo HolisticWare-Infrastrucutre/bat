@@ -40,6 +40,8 @@ export ACTION_VERB=install
 
 defaults write com.apple.finder AppleShowAllFiles YES
 defaults write com.apple.finder _FXShowPosixPathInTitle -bool false
+# defaults write com.apple.finder _FXShowPosixPathInTitle -bool YES && killall Finder
+# defaults write com.apple.finder _FXShowPosixPathInTitle -bool NO && killall Finder
 killall Finder
 
 #----------------------------------------------------------------------------------------------
@@ -47,6 +49,25 @@ killall Finder
 sudo nano /etc/pam.d/sudo
 # add this at the begining
 # auth       sufficient     pam_tid.so
+
+#----------------------------------------------------------------------------------------------
+# sudo softwareupdate --list for example will present the list of apps that are set to update. 
+#
+#sudo softwareupdate --install {app-name}
+
+sudo softwareupdate --install amphetamine
+#----------------------------------------------------------------------------------------------
+
+#----------------------------------------------------------------------------------------------
+# https://github.com/mas-cli/mas
+brew install -y \
+    mas
+
+mas list
+mas search XCode --price
+mas upgrade
+#----------------------------------------------------------------------------------------------
+
 
 #----------------------------------------------------------------------------------------------
 # tools
@@ -393,10 +414,17 @@ brew cask $ACTION_VERB \
     android-messages \
     google-hangouts \
     discord \
+    telegram \
+    signal \
+
     
 brew cask $ACTION_VERB \
     microsoft-office \
     thunderbird \
+
+brew cask $ACTION_VERB \
+    dash \
+
 
 #----------------------------------------------------------------------------------------------
 cd ~/Downloads/
@@ -518,6 +546,10 @@ brew tap homebrew/science # adds another source for applications.
 brew $ACTION_VERB \
     octave \
     R \
+    python \
+    python3 \
+    julia \
+
 
 brew cask $ACTION_VERB \
     r \
@@ -532,8 +564,8 @@ source ~/.zshrc
 
 #----------------------------------------------------------------------------------------------
 brew $ACTION_VERB \
-            python \
-            python3 \
+    python \
+    python3 \
 
 python --version
 python3 --version
