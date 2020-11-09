@@ -113,7 +113,16 @@ export DIR="FassBinderMeister"
         $URL \
         $DIR
 
-
+export BRANCH="master"
+export URL="https://github.com/HolisticWare-Xamarin-Tools/HolisticWare.Xamarin.Tools.Bindings.XamarinAndroid.AndroidX.Migraineator.git"
+export DIR="AndroidX.Migraineator"
+[ ! -d $DIR ] \
+    && \
+    git clone \
+        --branch master \
+        --recursive \
+        $URL \
+        $DIR
 
 
 
