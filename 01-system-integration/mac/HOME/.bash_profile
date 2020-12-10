@@ -1,49 +1,101 @@
-export LC_ALL=en_US.UTF-8
-export LANG=en_US.UTF-8
-export PATH=/usr/local/bin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin
 
-# Sys.setlocale(category="LC_ALL", locale = "en_US.UTF-8")
+PS1='\w\$ '
 
-export PATH=/Library/Frameworks/Mono.framework/Commands/:$PATH
-export PATH=/usr/local/share/dotnet/:~/.dotnet/tools:$PATH
+#----------------------------------------------------------------------------------------------------------------------
+export JAVA_HOME_ZULU=/Library/Java/JavaVirtualMachines/zulu-8.jdk/Contents/Home
+export JAVA_HOME_CORRETO=/Library/Java/JavaVirtualMachines/amazon-corretto-8.jdk/Contents/Home
+export JAVA_HOME_ADOPTOPENJDK=/Library/Java/JavaVirtualMachines/adoptopenjdk-8.jdk/Contents/Home
+export JAVA_HOME_ANDROID_STUDIO=/Applications/Android\ Studio.app/Contents/jre/jdk/Contents/Home
+export JAVA_HOME_MICROSOFT=$HOME/Library/Developer/Xamarin/jdk/microsoft_dist_openjdk_1.8.0.25
 
-#-----------------------------------------------------------------------------------------------
-export JAVA_HOME=/Projects/system-installed/macosx/jdk/microsoft_dist_openjdk_8.0.25/
-# export JAVA_HOME=$HOME/Library/Developer/Xamarin/jdk/microsoft_dist_openjdk_1.8.0.9
-# export JAVA_HOME=$(/usr/libexec/java_home)
-# export JAVA_HOME=/Library/Java/JavaVirtualMachines/jdk1.8.0_131.jdk/Contents/Home
-# Android.Studio embedded JDK
-# /Applications/Android Studio.app/Contents/jre/jdk/Contents/Home
-#-----------------------------------------------------------------------------------------------
+export JAVA_HOME=$JAVA_HOME_MICROSOFT
+#----------------------------------------------------------------------------------------------------------------------
 
-#-----------------------------------------------------------------------------------------------
-export ANDROID_HOME=/Projects/system-installed/macosx/sdk/
-export ANDROID_NDK_HOME=$ANDROID_HOME/ndk-bundle
-# export ANDROID_HOME=$HOME/Library/Android/sdk
-# export ANDROID_NDK_HOME=$HOME/Library/Android/sdk/ndk-bundle
-#...............................................................
-# Folders (shared) used by several Windows VMs (Parallels and VM-Ware)
-# ANDROID_HOME=/Projects/system-installed/windows/sdk/
-# export ANDROID_NDK_HOME=$ANDROID_HOME/ndk-bundle
-#-----------------------------------------------------------------------------------------------
+#----------------------------------------------------------------------------------------------------------------------
+# installed with Visual Studio (Xamarin)
+export ANDROID_HOME_XAMARIN=$HOME/Library/Developer/Xamarin/android-sdk-macosx
+export ANDROID_NDK_HOME_XAMARIN=/usr/local/bin
 
-#-----------------------------------------------------------------------------------------------
-export GITLAB_API_KEY=KKKKKKKKKKKKKKKEEEEEEEEEEEEEEEYYYYYYYYYYYYYYY
-export GITLAB_API_PRIVATE_TOKEN=$GITLAB_API_KEY
-export GITLAB_API_ENDPOINT=https://gitlab.com/api/v3
-#-----------------------------------------------------------------------------------------------
+# installed with Android Studio
+export ANDROID_HOME_ANDROID_STUDIO=$HOME/Library/Android/sdk
+# installed with brew
+export ANDROID_HOME_BREW=/usr/local/share/android-sdk
 
-#-----------------------------------------------------------------------------------------------
-# Go development - needed for Serialization Microsoft Bond
-export GOPATH="${HOME}/.go"
-export GOROOT="$(brew --prefix golang)/libexec"
-export PATH="$PATH:${GOPATH}/bin:${GOROOT}/bin"
-test -d "${GOPATH}" || mkdir "${GOPATH}"
-#-----------------------------------------------------------------------------------------------
+export ANDROID_HOME=$ANDROID_HOME_XAMARIN
+export ANDROID_SDK_ROOT=$ANDROID_HOME
+
+export AndroidSdkDirectory=$ANDROID_HOME
+#----------------------------------------------------------------------------------------------------------------------
+export ANDROID_NDK_HOME=$ANDROID_NDK_HOME_XAMARIN
+#----------------------------------------------------------------------------------------------------------------------
+echo "JAVA_HOME           = " $JAVA_HOME
+echo "ANDROID_SDK_ROOT    = " $ANDROID_SDK_ROOT
+echo "ANDROID_HOME        = " $ANDROID_HOME
+echo "ANDROID_NDK_HOME    = " $ANDROID_NDK_HOME
 
 
+function disk_usage_android()
+{
+  [ -d $ANDROID_HOME_XAMARIN ]        && echo "ANDROID_HOME_XAMARIN"        && du -sh $ANDROID_HOME_XAMARIN
+  [ -d $ANDROID_HOME_ANDROID_STUDIO ] && echo "ANDROID_HOME_ANDROID_STUDIO" && du -sh $ANDROID_HOME_ANDROID_STUDIO
+  [ -d $ANDROID_HOME_BREW ]           && echo "ANDROID_HOME_BREW"           && du -sh $ANDROID_HOME_BREW
+}
+#----------------------------------------------------------------------------------------------------------------------
 
 
-#-----------------------------------------------------------------------------------------------
-#-----------------------------------------------------------------------------------------------
-export MD_FEATURES_ENABLED=IdeBuildOutputView
+
+#----------------------------------------------------------------------------------------------------------------------
+alias ll='ls -al'
+#----------------------------------------------------------------------------------------------------------------------
+
+#----------------------------------------------------------------------------------------------------------------------
+export PATH="$PATH:/usr/local/share/dotnet"
+
+function dotnet_updates()
+{
+  dotnet tool uninstall 	-g Cake.Tool
+  dotnet tool install 	  -g Cake.Tool	
+  dotnet tool uninstall 	-g Xamarin.AndroidBinderator.Tool
+  dotnet tool install 	  -g Xamarin.AndroidBinderator.Tool	
+  dotnet tool uninstall   -g Xamarin.AndroidX.Migration.Tool
+  dotnet tool install     -g Xamarin.AndroidX.Migration.Tool
+}
+# dotnet_updates
+#----------------------------------------------------------------------------------------------------------------------
+echo "\
+shell functions (bash/zsh) available: \
+    mbe               - 
+    dotnet_updates    - 
+"
+
+#----------------------------------------------------------------------------------------------------------------------
+# https://scriptingosx.com/2019/07/moving-to-zsh-part-4-aliases-and-functions/
+
+
+# markdown bash execute
+function mbe() 
+{
+  if [ -f "" ]; then
+    cat  | # print the file
+    sed -n '/```bash/,/```/p' | # get the bash code blocks
+    sed 's/```bash//g' | #  remove the ```bash
+    sed 's/```//g' | # remove the trailing ```
+    sed '/^$/d' | # remove empty lines
+    /usr/bin/env sh ; # execute the command
+  else
+    echo " is not valid" ;
+  fi
+}
+
+
+if type brew &>/dev/null; then
+  HOMEBREW_PREFIX=/usr/local
+  if [[ -r /etc/profile.d/bash_completion.sh ]]; then
+    source /etc/profile.d/bash_completion.sh
+  else
+    for COMPLETION in /etc/bash_completion.d/*; do
+      [[ -r  ]] && source 
+    done
+  fi
+fi
+#----------------------------------------------------------------------------------------------------------------------
