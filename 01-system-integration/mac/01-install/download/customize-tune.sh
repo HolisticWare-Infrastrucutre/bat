@@ -203,3 +203,8 @@ defaults write \
 defaults write com.apple.dock mru-spaces -bool false
 defaults write com.apple.dock mru-spaces -boolean NO
 killall Dock
+
+
+# turn off the creation of .DS_Store files
+
+defaults write com.apple.desktopservices DSDontWriteNetworkStores true
