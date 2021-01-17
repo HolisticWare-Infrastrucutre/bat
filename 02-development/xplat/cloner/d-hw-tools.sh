@@ -125,5 +125,16 @@ export DIR="AndroidX.Migraineator"
         $DIR
 
 
+export BRANCH="master"
+export URL="https://github.com/HolisticWare-Xamarin-Tools/HolisticWare.Xamarin.Tools.Bindings.XamarinAndroid.SampleProjectKreator.git"
+export DIR="SampleProjectKreator"
+[ ! -d $DIR ] \
+    && \
+    git clone \
+        --branch master \
+        --recursive \
+        $URL \
+        $DIR
+
 
 cd $DIR_ROOT
