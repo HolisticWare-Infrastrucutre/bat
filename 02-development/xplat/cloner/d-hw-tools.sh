@@ -136,5 +136,16 @@ export DIR="SampleProjectKreator"
         $URL \
         $DIR
 
+export BRANCH="master"
+export URL="https://github.com/moljac/Xamarin.Android.Samples.git"
+export DIR="Xamarin.Android.Samples"
+[ ! -d $DIR ] \
+    && \
+    git clone \
+        --branch master \
+        --recursive \
+        $URL \
+        $DIR
+
 
 cd $DIR_ROOT
