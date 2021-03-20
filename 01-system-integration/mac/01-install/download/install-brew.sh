@@ -381,6 +381,22 @@ brew cask $ACTION_VERB \
     docker-toolbox \
     dropbox \
 
+
+brew cask install \
+    virtualbox \
+    docker-machine \
+    docker \
+
+pip3 install docker-compose
+open -a Docker
+docker-compose
+
+docker --version
+docker-compose --version
+docker-machine --version
+
+docker ps
+
 #----------------------------------------------------------------------------------------------
 # browsers
 brew tap homebrew/cask-versions
