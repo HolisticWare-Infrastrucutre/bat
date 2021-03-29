@@ -41,6 +41,18 @@ export DIR="./personal-private/moljac/"
         $DIR
 
 export BRANCH="master"
+export URL="https://gitlab.com/moljac-private/deda.git"
+export DIR="./personal-private/deda/"
+[ ! -d $DIR ] \
+    && \
+    git clone \
+        --branch master \
+        --recursive \
+        $URL \
+        $DIR
+
+
+export BRANCH="master"
 export URL="https://gitlab.com/holisticware-private/notes.git"
 export DIR="./personal-private/holisticware/"
 [ ! -d $DIR ] \
