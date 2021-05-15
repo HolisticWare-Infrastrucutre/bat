@@ -238,3 +238,7 @@ rm -fr ~/.Bytecode-Viewer/
 rm -fr ~/android-archives/
 
 df >> df-post.txt
+
+
+nuget update -self
+dotnet nuget locals all --clear
