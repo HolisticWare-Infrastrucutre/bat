@@ -146,7 +146,7 @@ nvm use --lts
 # 2 hrs
 caffeinate -t 7200 &
 
-brew cask $ACTION_VERB \
+brew $ACTION_VERB --cask \
     caffeine \
     menumeters \
 
@@ -161,7 +161,7 @@ sudo git lfs install
 # Update system git config
 sudo git lfs install --system
 
-brew cask $ACTION_VERB \
+brew $ACTION_VERB --cask \
     github \
     gitup \
     diffmerge \
@@ -169,7 +169,7 @@ brew cask $ACTION_VERB \
 
 
 #----------------------------------------------------------------------------------------------
-brew cask $ACTION_VERB \
+brew $ACTION_VERB --cask \
     powershell \
 
 brew update
@@ -178,7 +178,7 @@ brew cask upgrade \
     powershell \
 
 #----------------------------------------------------------------------------------------------
-brew cask $ACTION_VERB \
+brew $ACTION_VERB --cask \
     openssl \
 
 
@@ -186,29 +186,29 @@ brew link --force \
     openssl
 
 
-brew cask $ACTION_VERB \
+brew $ACTION_VERB --cask \
     parallels \
     virtualbox \
     cheatsheet \
     onyx \
-
+    diffmerge \
 
 
 #----------------------------------------------------------------------------------------------
 #
-brew cask $ACTION_VERB \
+brew $ACTION_VERB --cask \
     visual-studio-code \
     homebrew/cask-versions/visual-studio-code-insiders \
 
 #----------------------------------------------------------------------------------------------
-brew cask $ACTION_VERB \
+brew $ACTION_VERB --cask \
     balenaetcher \
     unetbootin \
 
 
 #----------------------------------------------------------------------------------------------
 # tools NTFS disks
-brew cask $ACTION_VERB \
+brew $ACTION_VERB --cask \
     osxfuse \
     balenaetcher \
 
@@ -284,26 +284,26 @@ brew $ACTION_VERB \
 # https://bintray.com/jetbrains/intellij-jbr/jbrsdk8-osx-x64/1644.3#files
 
 brew tap adoptopenjdk/openjdk
-brew cask $ACTION_VERB \
+brew $ACTION_VERB --cask \
     adoptopenjdk8
 
 # https://github.com/Homebrew/homebrew-cask-versions/tree/master/Casks
 brew tap homebrew/cask-versions
 
 # https://docs.brew.sh/Taps#formula-with-duplicate-names
-brew cask $ACTION_VERB \
+brew $ACTION_VERB --cask \
     java \
 
 
-brew cask $ACTION_VERB \
+brew $ACTION_VERB --cask \
     homebrew/cask-versions/zulu8 \
     adoptopenjdk/openjdk/adoptopenjdk8 \
     homebrew/cask-versions/corretto8 \
 
-brew cask $ACTION_VERB \
+brew $ACTION_VERB --cask \
     oracle-jdk \
 
-brew cask $ACTION_VERB \
+brew $ACTION_VERB --cask \
     jad \
 
 /usr/libexec/java_home -V
@@ -353,7 +353,7 @@ ls -al /Library/Java/JavaVirtualMachines/
 # rwxr-xr-x  3 root  wheel   96 Apr  7 16:26 jdk-14.jdk
 # rwxr-xr-x  3 root  wheel   96 Apr  7 16:11 zulu-8.jdk
 
-brew cask $ACTION_VERB \
+brew $ACTION_VERB --cask \
     android-sdk \
     android-platform-tools \
     android-ndk \
@@ -376,7 +376,7 @@ brew $ACTION_VERB \
     node \
     mkcert \
 
-brew cask $ACTION_VERB \
+brew $ACTION_VERB --cask \
     docker \
     docker-toolbox \
     dropbox \
@@ -444,7 +444,7 @@ brew install --cask \
 #----------------------------------------------------------------------------------------------
 # communications
 # IM
-brew cask $ACTION_VERB \
+brew $ACTION_VERB --cask \
     slack \
     microsoft-teams \
     gitter \
@@ -455,11 +455,11 @@ brew cask $ACTION_VERB \
     signal \
 
     
-brew cask $ACTION_VERB \
+brew $ACTION_VERB --cask \
     microsoft-office \
     thunderbird \
 
-brew cask $ACTION_VERB \
+brew $ACTION_VERB --cask \
     dash \
 
 
@@ -590,20 +590,20 @@ brew cask uninstall \
     dotnet \
 
 brew tap isen-ng/dotnet-sdk-versions
-brew cask $ACTION_VERB \
+brew $ACTION_VERB --cask \
 
 
-brew cask install \
-    dotnet-sdk-3.1.200 \
-    dotnet-sdk-3.1.100 \
-    dotnet-sdk-3.0.100 \
-    dotnet-sdk-2.2.400 \
-    dotnet-sdk-2.2.300 \
-    dotnet-sdk-2.2.200 \
-    dotnet-sdk-2.2.100 \
-    dotnet-sdk-2.1.800 \
-    dotnet-sdk-2.1.500 \
-    dotnet-sdk-2.1.400 \
+# brew $ACTION_VERB --cask \
+#     dotnet-sdk-3.1.200 \
+#     dotnet-sdk-3.1.100 \
+#     dotnet-sdk-3.0.100 \
+#     dotnet-sdk-2.2.400 \
+#     dotnet-sdk-2.2.300 \
+#     dotnet-sdk-2.2.200 \
+#     dotnet-sdk-2.2.100 \
+#     dotnet-sdk-2.1.800 \
+#     dotnet-sdk-2.1.500 \
+#     dotnet-sdk-2.1.400 \
 
 brew untap isen-ng/dotnet-sdk-versions
 
@@ -620,7 +620,7 @@ echo \
 
 dotnet --list-sdks
 
-brew cask $ACTION_VERB \
+brew $ACTION_VERB --cask \
     visual-studio \
 
 
@@ -650,7 +650,7 @@ brew cask $ACTION_VERB \
 #----------------------------------------------------------------------------------------------
 # https://blog.shvetsov.com/2014/11/homebrew-cheat-sheet-and-workflow.html
 
-brew cask $ACTION_VERB \
+brew $ACTION_VERB --cask \
         db-browser-for-sqlite
 
 #----------------------------------------------------------------------------------------------
@@ -663,7 +663,7 @@ brew $ACTION_VERB \
     julia \
 
 
-brew cask $ACTION_VERB \
+brew $ACTION_VERB --cask \
     r \
     rstudio \
 
@@ -724,7 +724,7 @@ voila &
 brew $ACTION_VERB \
     aircrack-ng \
 
-brew cask $ACTION_VERB \
+brew $ACTION_VERB --cask \
     owasp-zap \
 
 #----------------------------------------------------------------------------------------------
