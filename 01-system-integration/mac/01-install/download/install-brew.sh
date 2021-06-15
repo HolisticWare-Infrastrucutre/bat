@@ -193,7 +193,9 @@ brew $ACTION_VERB --cask \
     onyx \
     diffmerge \
 
-
+brew install caskformula/caskformula/inkscape
+brew install --cask \
+    inkscape
 #----------------------------------------------------------------------------------------------
 #
 brew $ACTION_VERB --cask \
@@ -377,15 +379,18 @@ brew $ACTION_VERB \
     mkcert \
 
 brew $ACTION_VERB --cask \
-    docker \
-    docker-toolbox \
     dropbox \
 
 
-brew cask install \
+brew $ACTION_VERB --cask \
     virtualbox \
-    docker-machine \
-    docker \
+
+# 
+#    docker \
+#    docker-machine \
+#    docker-toolbox \
+
+boots https://desktop.docker.com/mac/stable/amd64/Docker.dmg
 
 pip3 install docker-compose
 open -a Docker
@@ -464,8 +469,11 @@ brew $ACTION_VERB --cask \
 
 
 #----------------------------------------------------------------------------------------------
+# act - github actions 
 brew install \
-    gitlab-runner
+    gitlab-runner \ 
+    act \
+
 brew \
     services start \
     gitlab-runner
@@ -477,18 +485,9 @@ cd ~/Downloads/
 
 
 
-```
-dotnet tool uninstall -g \
-    Boots
-dotnet tool   install -g \
-    Boots \
-
-```
 # export COMMAND="wget"
 # export COMMAND="curl -OL"
 export COMMAND="boots"
-
-
 
 
 dotnet --list-runtimes
@@ -585,9 +584,9 @@ fi
 
 # https://github.com/isen-ng/homebrew-dotnet-sdk-versions
 
-brew cask uninstall \
-    dotnet-sdk \
-    dotnet \
+# brew cask uninstall \
+#     dotnet-sdk \
+#     dotnet \
 
 brew tap isen-ng/dotnet-sdk-versions
 brew $ACTION_VERB --cask \
@@ -627,7 +626,8 @@ brew $ACTION_VERB --cask \
 #----------------------------------------------------------------------
 #
 
-
+dotnet tool uninstall -g Boots
+dotnet tool   install -g Boots
 
 
 #----------------------------------------------------------------------------------------------
