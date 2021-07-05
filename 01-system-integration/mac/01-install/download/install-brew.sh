@@ -156,17 +156,17 @@ brew $ACTION_VERB \
     git-lfs \
 
 # Update global git config
-sudo git lfs install
+sudo git lfs $ACTION_VERB
 
 # Update system git config
-sudo git lfs install --system
+sudo git lfs $ACTION_VERB --system
 
 brew $ACTION_VERB --cask \
     github \
     gitup \
     diffmerge \
     p4v \
-
+    menumeters \
 
 #----------------------------------------------------------------------------------------------
 brew $ACTION_VERB --cask \
