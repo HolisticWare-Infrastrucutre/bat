@@ -629,6 +629,12 @@ brew $ACTION_VERB --cask \
 dotnet tool uninstall -g Boots
 dotnet tool   install -g Boots
 
+dotnet tool uninstall -g Cake.Tool
+dotnet tool   install -g Cake.Tool
+
+
+
+
 
 #----------------------------------------------------------------------------------------------
 
