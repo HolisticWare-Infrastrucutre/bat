@@ -17,7 +17,7 @@ export DIR=""
 
 export URL="https://github.com/Samples-Playgrounds/Samples.AndroidX.git"
 export BRANCH="master"
-export DIR="Samples.AX"
+export DIR="AX"
 [ ! -d $DIR ] \
     && \
     git clone \
@@ -29,7 +29,7 @@ export DIR="Samples.AX"
 
 export URL="https://github.com/Samples-Playgrounds/Samples.GooglePlayServices-Firebase.git"
 export BRANCH="master"
-export DIR="Samples.GPS-FB"
+export DIR="GPS-FB-MLKit"
 [ ! -d $DIR ] \
     && \
     git clone \
@@ -40,7 +40,7 @@ export DIR="Samples.GPS-FB"
 
 export URL="https://github.com/Samples-Playgrounds/Samples.MachineLearning.git"
 export BRANCH="master"
-export DIR="Samples.ML"
+export DIR="MachineLearning"
 [ ! -d $DIR ] \
     && \
     git clone \
@@ -51,7 +51,7 @@ export DIR="Samples.ML"
 
 export URL="https://github.com/Samples-Playgrounds/Samples.Cake.git"
 export BRANCH="master"
-export DIR="Samples.Cake"
+export DIR="Cake"
 [ ! -d $DIR ] \
     && \
     git clone \
@@ -62,7 +62,7 @@ export DIR="Samples.Cake"
 
 export URL="https://github.com/Samples-Playgrounds/Samples.Xamarin.Forms.git"
 export BRANCH="master"
-export DIR="Samples.Xamarin.Forms"
+export DIR="Xamarin.Forms"
 [ ! -d $DIR ] \
     && \
     git clone \
@@ -73,7 +73,7 @@ export DIR="Samples.Xamarin.Forms"
 
 export URL="https://github.com/Samples-Playgrounds/Samples.CSharp.git"
 export BRANCH="master"
-export DIR="Samples.CSharp"
+export DIR="CSharp"
 [ ! -d $DIR ] \
     && \
     git clone \
@@ -84,7 +84,7 @@ export DIR="Samples.CSharp"
 
 export URL="https://github.com/Samples-Playgrounds/Samples.R.git"
 export BRANCH="main"
-export DIR="Samples.R"
+export DIR="R"
 [ ! -d $DIR ] \
     && \
     git clone \
@@ -95,7 +95,7 @@ export DIR="Samples.R"
 
 export URL="https://github.com/Samples-Playgrounds/Samples.Julia.git"
 export BRANCH="main"
-export DIR="Samples.Julia"
+export DIR="Julia"
 [ ! -d $DIR ] \
     && \
     git clone \
@@ -106,7 +106,7 @@ export DIR="Samples.Julia"
 
 export URL="https://github.com/Samples-Playgrounds/Samples.MatlabOctave.git"
 export BRANCH="main"
-export DIR="Samples.MatlabOctave"
+export DIR="MatlabOctave"
 [ ! -d $DIR ] \
     && \
     git clone \
@@ -117,7 +117,18 @@ export DIR="Samples.MatlabOctave"
 
 export URL="https://github.com/Samples-Playgrounds/Samples.Python.git"
 export BRANCH="main"
-export DIR="Samples.Python"
+export DIR="Python"
+[ ! -d $DIR ] \
+    && \
+    git clone \
+        --recursive \
+        --branch $BRANCH \
+        $URL \
+        $DIR
+
+export URL="https://github.com/Samples-Playgrounds/Samples.FormalLanguages.Parsers.git"
+export BRANCH="main"
+export DIR="FormalLanguages.Parsers"
 [ ! -d $DIR ] \
     && \
     git clone \
