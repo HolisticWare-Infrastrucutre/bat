@@ -124,6 +124,13 @@ brew $ACTION_VERB \
     xz \
     mingw-w64 \
     mingw-zlib \
+    
+
+brew $ACTION_VERB \
+    keepassc \
+    keepassx \
+
+    
 
 # plugins for zsh (nvm)
 brew $ACTION_VERB \
