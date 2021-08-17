@@ -502,6 +502,16 @@ dotnet --list-sdks
 
 
 $COMMAND \
+    https://download.visualstudio.microsoft.com/download/pr/9e02abfd-b421-4c43-8541-482f037ed19c/f61bd4f35c444710016db8b5a7206a97/dotnet-sdk-6.0.100-preview.7.21379.14-osx-x64.pkg
+$COMMAND \
+    https://download.visualstudio.microsoft.com/download/pr/f3f28827-7599-4d5e-a218-348e3988e27f/cbc1fe0c1d29f48f9b75591e95823d42/dotnet-runtime-6.0.0-preview.7.21377.19-osx-x64.pkg
+
+
+$COMMAND \
+    https://download.visualstudio.microsoft.com/download/pr/543144ce-10ad-4396-a464-28c440f8fe22/29bd5273237ed3a408aef1f8aacd239b/dotnet-sdk-5.0.400-osx-x64.pkg
+$COMMAND \
+    https://download.visualstudio.microsoft.com/download/pr/a847df19-d530-41c8-b766-cb60ee8af9a4/7edd7c2eae38d25d0d7c90350eefea64/dotnet-runtime-5.0.9-osx-x64.pkg
+$COMMAND \
     https://download.visualstudio.microsoft.com/download/pr/60a8becd-ff61-4e17-8329-4d85f9d1e3b9/06ef79dad25a85905afbb3965f613bad/dotnet-runtime-5.0.3-osx-x64.pkg
 $COMMAND \
     https://download.visualstudio.microsoft.com/download/pr/a06c387d-2811-4fba-8b5f-86cb9f0bdeba/f41d1c63c5b6bcee9293484e845bc518/dotnet-sdk-5.0.200-osx-x64.pkg
@@ -513,6 +523,8 @@ $COMMAND \
     https://download.visualstudio.microsoft.com/download/pr/0e2acfdc-5dad-48a8-935d-6095a0ae2217/3ffa41859dbb1ca40a7e1ff704651178/dotnet-runtime-5.0.5-osx-x64.pkg
 $COMMAND \
     https://download.visualstudio.microsoft.com/download/pr/749775e4-7b6f-4367-bb7a-9cb63a818dae/c2614b34e234fa03dc65320a8a954570/dotnet-sdk-5.0.202-osx-x64.pkg
+
+
 
 
 $COMMAND \
