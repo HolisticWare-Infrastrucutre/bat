@@ -572,6 +572,8 @@ $COMMAND \
 for f in *.pkg ; 
     do sudo installer -verbose -pkg "$f" -target /
 done
+
+
 # https://docs.microsoft.com/en-us/dotnet/core/tools/dotnet-install-script
 # https://dot.net/v1/dotnet-install.sh
 # https://dot.net/v1/dotnet-install.ps1
@@ -630,6 +632,15 @@ dotnet --list-sdks
 
 brew $ACTION_VERB --cask \
     visual-studio \
+
+
+
+sudo dotnet workload install microsoft-android-sdk-full
+sudo dotnet workload install microsoft-ios-sdk-full
+sudo dotnet workload install microsoft-maccatalyst-sdk-full
+sudo dotnet workload install microsoft-macos-sdk-full
+sudo dotnet workload install microsoft-tvos-sdk-full
+sudo dotnet workload install maui
 
 
 #----------------------------------------------------------------------
