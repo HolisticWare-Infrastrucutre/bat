@@ -31,3 +31,5 @@ sudo dotnet workload install \
     maui-maccatalyst \
     maui-mobile \
     maui-windows \
+
+
