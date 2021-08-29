@@ -51,7 +51,10 @@ alias ll='ls -al'
 #----------------------------------------------------------------------------------------------------------------------
 
 #----------------------------------------------------------------------------------------------------------------------
-export PATH="$PATH:/usr/local/share/dotnet"
+# https://docs.microsoft.com/en-US/dotnet/core/install/macos#dependencies
+export PATH=$PATH:$HOME/dotnet
+export DOTNET_ROOT=$HOME/dotnet:/usr/local/share/dotnet
+export PATH=$PATH:/usr/local/share/dotnet
 #----------------------------------------------------------------------------------------------------------------------
 
 
@@ -82,7 +85,20 @@ autoload -U ~/bat/01-system-integration/mac/zsh/functions/mbe
 
 
 #----------------------------------------------------------------------------------------------------------------------
-export PATH="$PATH:/usr/local/share/dotnet"
+# markdown bash execute
+function mbe() 
+{
+  if [ -f "" ]; then
+    cat  | # print the file
+    sed -n '/```bash/,/```/p' | # get the bash code blocks
+    sed 's/```bash//g' | #  remove the ```bash
+    sed 's/```//g' | # remove the trailing ```
+    sed '/^$/d' | # remove empty lines
+    /usr/bin/env sh ; # execute the command
+  else
+    echo " is not valid" ;
+  fi
+}
 
 if type brew &>/dev/null; then
   HOMEBREW_PREFIX=/usr/local

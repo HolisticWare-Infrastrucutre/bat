@@ -49,7 +49,10 @@ alias ll='ls -al'
 #----------------------------------------------------------------------------------------------------------------------
 
 #----------------------------------------------------------------------------------------------------------------------
-export PATH="$PATH:/usr/local/share/dotnet"
+# https://docs.microsoft.com/en-US/dotnet/core/install/macos#dependencies
+export PATH=$PATH:$HOME/dotnet
+export DOTNET_ROOT=$HOME/dotnet:/usr/local/share/dotnet
+export PATH=$PATH:/usr/local/share/dotnet
 
 function dotnet_tools_update()
 {
