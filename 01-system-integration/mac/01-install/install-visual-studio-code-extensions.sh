@@ -59,5 +59,8 @@ do
     fi
 
     echo VS Code extension:     $EXT
-    code --install-extension $EXT
+    code            --uninstall-extension   $EXT
+    code-insiders   --uninstall-extension   $EXT
+    code            --install-extension     $EXT
+    code-insiders   --install-extension     $EXT
 done
