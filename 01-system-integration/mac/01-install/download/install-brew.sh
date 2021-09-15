@@ -502,6 +502,8 @@ dotnet --list-sdks
 
 export PKGS="
 # 6
+    https://download.visualstudio.microsoft.com/download/pr/cade10b2-d8f7-443a-89f0-33339849fe7b/14ef830b7edb0234234b1b8203ceea81/dotnet-sdk-6.0.100-rc.1.21458.32-osx-x64.pkg
+    https://download.visualstudio.microsoft.com/download/pr/8bcf6158-61fc-4e4c-bfda-8f3723b3590d/9e21a5527ca29d20ca3868e4423c7d99/dotnet-runtime-6.0.0-rc.1.21451.13-osx-x64.pkg
     https://download.visualstudio.microsoft.com/download/pr/9e02abfd-b421-4c43-8541-482f037ed19c/f61bd4f35c444710016db8b5a7206a97/dotnet-sdk-6.0.100-preview.7.21379.14-osx-x64.pkg
     https://download.visualstudio.microsoft.com/download/pr/f3f28827-7599-4d5e-a218-348e3988e27f/cbc1fe0c1d29f48f9b75591e95823d42/dotnet-runtime-6.0.0-preview.7.21377.19-osx-x64.pkg
     https://download.visualstudio.microsoft.com/download/pr/62a705de-f063-4dc1-912b-6727ab3295cd/a3845e7371b03fa813384d0e16ebaa20/dotnet-runtime-6.0.0-preview.1.21102.12-osx-x64.pkg
@@ -633,28 +635,7 @@ dotnet --list-sdks
 brew $ACTION_VERB --cask \
     visual-studio \
 
-
-
-sudo dotnet workload install microsoft-android-sdk-full
-sudo dotnet workload install microsoft-ios-sdk-full
-sudo dotnet workload install microsoft-maccatalyst-sdk-full
-sudo dotnet workload install microsoft-macos-sdk-full
-sudo dotnet workload install microsoft-tvos-sdk-full
-sudo dotnet workload install maui
-
-
-#----------------------------------------------------------------------
-#
-
-dotnet tool uninstall -g Boots
-dotnet tool   install -g Boots
-
-dotnet tool uninstall -g Cake.Tool
-dotnet tool   install -g Cake.Tool
-
-
-
-
+    
 
 #----------------------------------------------------------------------------------------------
 
@@ -688,6 +669,12 @@ brew $ACTION_VERB \
     python3 \
     julia \
 
+
+brew install --cask \
+    homebrew/cask-versions/adoptopenjdk8 \
+    scilab \
+
+boots https://www.utc.fr/~mottelet/scilab/download/branch-6.1/scilab-branch-6.1-x86_64.dmg
 
 brew $ACTION_VERB --cask \
     r \
