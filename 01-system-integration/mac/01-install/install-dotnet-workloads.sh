@@ -33,3 +33,9 @@ sudo dotnet workload install \
     maui-windows \
 
 
+sudo dotnet workload install microsoft-android-sdk-full
+sudo dotnet workload install microsoft-ios-sdk-full
+sudo dotnet workload install microsoft-maccatalyst-sdk-full
+sudo dotnet workload install microsoft-macos-sdk-full
+sudo dotnet workload install microsoft-tvos-sdk-full
+sudo dotnet workload install maui
