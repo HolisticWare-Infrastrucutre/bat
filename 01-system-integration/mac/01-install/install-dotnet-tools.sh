@@ -60,12 +60,8 @@ do
 
     echo Tool: $TOOL
     dotnet tool uninstall   --global  $TOOL
-    dotnet tool install     --global  $TOOL --version "*-*"
+    dotnet tool install     --global  $TOOL     --version "*-*"
 done
 
 
 dotnet tool list --global
-
-
-maui-check --non-interactive --fix
-
