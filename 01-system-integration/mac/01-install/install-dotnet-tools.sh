@@ -45,6 +45,8 @@ dotnet-cleanup
 dotnet-serve
 dotnet-depends
 dotnet-obfuscar
+nukeeper
+
 "
 
 IFS=$'\n'
