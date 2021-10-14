@@ -36,13 +36,61 @@ export DIR="DotNetNew.XamarinProjectsStructureTemplate"
         $URL \
         $DIR
 
+export BRANCH="main"
+export URL="https://github.com/HolisticWare-Xamarin-Tools/HolisticWare.DotNetNew.XamarinAndroidMavenBindingsProjectsStructureTemplate"
+export DIR="DotNetNew.XamarinAndroidMavenBindingsProjectsStructureTemplate"
+[ ! -d $DIR ] \
+    && \
+    git clone \
+        --branch $BRANCH \
+        --recursive \
+        $URL \
+        $DIR
+
+export BRANCH="main"
+export URL="https://github.com/HolisticWare-Xamarin-Tools/HolisticWare.DotNetNew.CakeScriptDebugTemplate.git"
+export DIR="DotNetNew.CakeScriptDebugTemplate"
+[ ! -d $DIR ] \
+    && \
+    git clone \
+        --branch $BRANCH \
+        --recursive \
+        $URL \
+        $DIR
+
+export BRANCH="main"
+export URL="https://github.com/HolisticWare-Xamarin-Tools/HolisticWare.DotNetNew.ApplicationArchitectureStructureTemplate.git"
+export DIR="DotNetNew.ApplicationArchitectureStructureTemplate"
+[ ! -d $DIR ] \
+    && \
+    git clone \
+        --branch $BRANCH \
+        --recursive \
+        $URL \
+        $DIR
+
+
+export BRANCH="main"
+export URL="https://github.com/HolisticWare-Xamarin-Tools/HolisticWare.DotNetNew.MarkDownTopicTemplate.git"
+export DIR="DotNetNew.MarkDownTopicTemplate"
+[ ! -d $DIR ] \
+    && \
+    git clone \
+        --branch $BRANCH \
+        --recursive \
+        $URL \
+        $DIR
+
+
+
+
 export BRANCH="master"
 export URL="https://github.com/moljac/HolisticWare.Xamarin.Tools.Bindings.XamarinAndroid.Intellisense.git"
 export DIR="Intellisense"
 [ ! -d $DIR ] \
     && \
     git clone \
-        --branch master \
+        --branch $BRANCH \
         --recursive \
         $URL \
         $DIR
@@ -53,7 +101,7 @@ export DIR="Decompilers"
 [ ! -d $DIR ] \
     && \
     git clone \
-        --branch master \
+        --branch $BRANCH \
         --recursive \
         $URL \
         $DIR
@@ -64,7 +112,7 @@ export DIR="JunkyAdictAnalyzer"
 [ ! -d $DIR ] \
     && \
     git clone \
-        --branch master \
+        --branch $BRANCH \
         --recursive \
         $URL \
         $DIR
@@ -75,7 +123,7 @@ export DIR="MetadataXmlSpitter"
 [ ! -d $DIR ] \
     && \
     git clone \
-        --branch master \
+        --branch $BRANCH \
         --recursive \
         $URL \
         $DIR
@@ -86,7 +134,7 @@ export DIR="MSBuildBinLogger"
 [ ! -d $DIR ] \
     && \
     git clone \
-        --branch master \
+        --branch $BRANCH \
         --recursive \
         $URL \
         $DIR
@@ -97,7 +145,7 @@ export DIR="JarInfoSpitter"
 [ ! -d $DIR ] \
     && \
     git clone \
-        --branch master \
+        --branch $BRANCH \
         --recursive \
         $URL \
         $DIR
@@ -108,7 +156,7 @@ export DIR="FassBinderMeister"
 [ ! -d $DIR ] \
     && \
     git clone \
-        --branch master \
+        --branch $BRANCH \
         --recursive \
         $URL \
         $DIR
@@ -119,7 +167,7 @@ export DIR="AndroidX.Migraineator"
 [ ! -d $DIR ] \
     && \
     git clone \
-        --branch master \
+        --branch $BRANCH \
         --recursive \
         $URL \
         $DIR
@@ -131,7 +179,7 @@ export DIR="SampleProjectKreator"
 [ ! -d $DIR ] \
     && \
     git clone \
-        --branch master \
+        --branch $BRANCH \
         --recursive \
         $URL \
         $DIR
@@ -142,7 +190,7 @@ export DIR="Xamarin.Android.Samples"
 [ ! -d $DIR ] \
     && \
     git clone \
-        --branch master \
+        --branch $BRANCH \
         --recursive \
         $URL \
         $DIR
