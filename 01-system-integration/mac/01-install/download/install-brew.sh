@@ -95,7 +95,17 @@ brew $ACTION_VERB \
     pkg-config \
     pcre \
     swig \
+
+brew install \
+    zip \
+    unzip \
+    fuse-zip \
     p7zip \
+    rar \
+    archiver \
+
+brew install --cask \
+    the-unarchiver \
 
 # Xamarin.Android xamarin-android repo
 #   user want git from brew anyway, the apple-provided one is a fossil
@@ -106,7 +116,6 @@ brew $ACTION_VERB \
     make \
     cmake \
     libtool \
-    p7zip \
     gdk-pixbuf \
     gettext \
     coreutils \
