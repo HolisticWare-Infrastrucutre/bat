@@ -8,22 +8,27 @@ dotnet workload search tvos
 dotnet workload search maui
 
 
-sudo dotnet workload install \
+
+ sudo \
+    dotnet workload install \
     android \
     android-aot \
 
-sudo dotnet workload install \
-    ios \
+ sudo \
+    dotnet workload install \
+    ios
 
-sudo dotnet workload install \
+sudo \
+    dotnet workload install \
     macos \
     maccatalyst \
 
-
-sudo dotnet workload install \
+sudo \
+    dotnet workload install \
     tvos \
 
-sudo dotnet workload install \
+sudo \
+    dotnet workload install \
     maui \
     maui-android \
     maui-desktop \
