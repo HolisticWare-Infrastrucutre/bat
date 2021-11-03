@@ -2,6 +2,7 @@
 
 # https://mkyong.com/java/how-to-install-java-on-mac-osx/
 
+/usr/libexec/java_home -V
 java -version 
 javac -version
 
@@ -62,7 +63,14 @@ java -version
 # https://docs.microsoft.com/en-us/java/openjdk/download
 # https://github.com/microsoft/openjdk/discussions
 
-# https://aka.ms/download-jdk/microsoft-jdk-11.0.13.8.1-macOS-x64.pkg
+boots \
+    https://aka.ms/download-jdk/microsoft-jdk-11.0.13.8.1-macOS-x64.pkg
+boots \
+    https://aka.ms/download-jdk/microsoft-jdk-16.0.2.7.1-macOS-x64.pkg
+boots \
+    https://aka.ms/download-jdk/microsoft-jdk-17.0.1.12.1-macOS-x64.pkg 
+
+
 
 export JAVA_8_HOME=$(/usr/libexec/java_home -v1.8)
 export JAVA_11_HOME=$(/usr/libexec/java_home -v11)
@@ -70,10 +78,14 @@ export JAVA_11_HOME=$(/usr/libexec/java_home -v11)
 alias java8='export JAVA_HOME=$JAVA_8_HOME'
 alias java11='export JAVA_HOME=$JAVA_11_HOME'
 
-      unset JAVA_HOME;
-      export JAVA_HOME=$(/usr/libexec/java_home -v"11");
-      java -version
- 
+unset JAVA_HOME;
+export JAVA_HOME=$(/usr/libexec/java_home -v"11");
+java -version
+
+/usr/libexec/java_home -V
+java -version 
+javac -version
+
 # ~/.zshrc
 
 jdk() 
