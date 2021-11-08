@@ -511,20 +511,24 @@ dotnet --list-sdks
 
 export PKGS="
 # 6
-    https://download.visualstudio.microsoft.com/download/pr/3336b6fe-1f40-4c66-a1ef-81cabd3df46c/dd56dc201e5c0a95b86f41c1cf36df17/dotnet-sdk-6.0.100-rc.2.21505.57-osx-arm64.pkg
-    https://download.visualstudio.microsoft.com/download/pr/c5dd0b51-0059-442b-9456-b03cb7ee277d/6d78d81224db93247ff6ae0bdb929712/dotnet-sdk-6.0.100-rc.2.21505.57-osx-x64.pkg
-    https://download.visualstudio.microsoft.com/download/pr/2ac2aeec-4262-41e1-9544-8fc21579952c/8bfe416a0ce0b43b354481cacaa57f35/dotnet-runtime-6.0.0-rc.2.21480.5-osx-arm64.pkg
-    https://download.visualstudio.microsoft.com/download/pr/39fb50be-17b9-45b2-9f3e-eb03e31b8219/3f67fc8d06a1d163ac817cd116fd4719/dotnet-runtime-6.0.0-rc.2.21480.5-osx-x64.pkg
-    https://download.visualstudio.microsoft.com/download/pr/cade10b2-d8f7-443a-89f0-33339849fe7b/14ef830b7edb0234234b1b8203ceea81/dotnet-sdk-6.0.100-rc.1.21458.32-osx-x64.pkg
-    https://download.visualstudio.microsoft.com/download/pr/8bcf6158-61fc-4e4c-bfda-8f3723b3590d/9e21a5527ca29d20ca3868e4423c7d99/dotnet-runtime-6.0.0-rc.1.21451.13-osx-x64.pkg
-    https://download.visualstudio.microsoft.com/download/pr/9e02abfd-b421-4c43-8541-482f037ed19c/f61bd4f35c444710016db8b5a7206a97/dotnet-sdk-6.0.100-preview.7.21379.14-osx-x64.pkg
-    https://download.visualstudio.microsoft.com/download/pr/f3f28827-7599-4d5e-a218-348e3988e27f/cbc1fe0c1d29f48f9b75591e95823d42/dotnet-runtime-6.0.0-preview.7.21377.19-osx-x64.pkg
-    https://download.visualstudio.microsoft.com/download/pr/62a705de-f063-4dc1-912b-6727ab3295cd/a3845e7371b03fa813384d0e16ebaa20/dotnet-runtime-6.0.0-preview.1.21102.12-osx-x64.pkg
-    https://download.visualstudio.microsoft.com/download/pr/f7224456-9898-45b6-8acc-b110900653cd/817c4e3b1ee787985fdf85032eb2752d/dotnet-sdk-6.0.100-preview.1.21103.13-osx-x64.pkg
-    https://download.visualstudio.microsoft.com/download/pr/51cb50a7-c2e6-49f9-a172-e1dd0dd0f40f/d3cd57a2fc52ff8e85d8f52ba27f2e2f/dotnet-runtime-6.0.0-preview.2.21154.6-osx-x64.pkg
-    https://download.visualstudio.microsoft.com/download/pr/5e10dc75-294e-49f4-972e-218ae86191a3/e46d3533c30c8a864252a334820263a9/dotnet-sdk-6.0.100-preview.2.21155.3-osx-x64.pkg
-    https://download.visualstudio.microsoft.com/download/pr/6b0ffd8c-781a-426d-ae29-48f602d2dc64/c129b2832dbb09ea92f11cc7d91bd714/dotnet-runtime-6.0.0-preview.3.21201.4-osx-x64.tar.gz
-    https://download.visualstudio.microsoft.com/download/pr/fc5fdd1f-fb4c-4b88-a507-158204030320/98497ef248883404ff5b0604dda944fb/dotnet-sdk-6.0.100-preview.3.21202.5-osx-x64.pkg
+    https://download.visualstudio.microsoft.com/download/pr/14a45451-4cc9-48e1-af69-0aff75891d09/ff6e83986a2a9a535015fb3104a90a1b/dotnet-sdk-6.0.100-osx-x64.pkg
+    https://download.visualstudio.microsoft.com/download/pr/ed60d37e-7842-4fc2-8250-2bd66073d79e/725d486e04d27e45d2b41c687dc35f49/dotnet-sdk-6.0.100-osx-arm64.pkg
+    https://download.visualstudio.microsoft.com/download/pr/03e62824-4061-45dc-8777-93e82205148d/81489074c065675bd713a9cbeb995bef/dotnet-runtime-6.0.0-osx-x64.pkg
+
+#   https://download.visualstudio.microsoft.com/download/pr/3336b6fe-1f40-4c66-a1ef-81cabd3df46c/dd56dc201e5c0a95b86f41c1cf36df17/dotnet-sdk-6.0.100-rc.2.21505.57-osx-arm64.pkg
+#   https://download.visualstudio.microsoft.com/download/pr/c5dd0b51-0059-442b-9456-b03cb7ee277d/6d78d81224db93247ff6ae0bdb929712/dotnet-sdk-6.0.100-rc.2.21505.57-osx-x64.pkg
+#   https://download.visualstudio.microsoft.com/download/pr/2ac2aeec-4262-41e1-9544-8fc21579952c/8bfe416a0ce0b43b354481cacaa57f35/dotnet-runtime-6.0.0-rc.2.21480.5-osx-arm64.pkg
+#   https://download.visualstudio.microsoft.com/download/pr/39fb50be-17b9-45b2-9f3e-eb03e31b8219/3f67fc8d06a1d163ac817cd116fd4719/dotnet-runtime-6.0.0-rc.2.21480.5-osx-x64.pkg
+#   https://download.visualstudio.microsoft.com/download/pr/cade10b2-d8f7-443a-89f0-33339849fe7b/14ef830b7edb0234234b1b8203ceea81/dotnet-sdk-6.0.100-rc.1.21458.32-osx-x64.pkg
+#   https://download.visualstudio.microsoft.com/download/pr/8bcf6158-61fc-4e4c-bfda-8f3723b3590d/9e21a5527ca29d20ca3868e4423c7d99/dotnet-runtime-6.0.0-rc.1.21451.13-osx-x64.pkg
+#   https://download.visualstudio.microsoft.com/download/pr/9e02abfd-b421-4c43-8541-482f037ed19c/f61bd4f35c444710016db8b5a7206a97/dotnet-sdk-6.0.100-preview.7.21379.14-osx-x64.pkg
+#   https://download.visualstudio.microsoft.com/download/pr/f3f28827-7599-4d5e-a218-348e3988e27f/cbc1fe0c1d29f48f9b75591e95823d42/dotnet-runtime-6.0.0-preview.7.21377.19-osx-x64.pkg
+#   https://download.visualstudio.microsoft.com/download/pr/62a705de-f063-4dc1-912b-6727ab3295cd/a3845e7371b03fa813384d0e16ebaa20/dotnet-runtime-6.0.0-preview.1.21102.12-osx-x64.pkg
+#   https://download.visualstudio.microsoft.com/download/pr/f7224456-9898-45b6-8acc-b110900653cd/817c4e3b1ee787985fdf85032eb2752d/dotnet-sdk-6.0.100-preview.1.21103.13-osx-x64.pkg
+#   https://download.visualstudio.microsoft.com/download/pr/51cb50a7-c2e6-49f9-a172-e1dd0dd0f40f/d3cd57a2fc52ff8e85d8f52ba27f2e2f/dotnet-runtime-6.0.0-preview.2.21154.6-osx-x64.pkg
+#   https://download.visualstudio.microsoft.com/download/pr/5e10dc75-294e-49f4-972e-218ae86191a3/e46d3533c30c8a864252a334820263a9/dotnet-sdk-6.0.100-preview.2.21155.3-osx-x64.pkg
+#   https://download.visualstudio.microsoft.com/download/pr/6b0ffd8c-781a-426d-ae29-48f602d2dc64/c129b2832dbb09ea92f11cc7d91bd714/dotnet-runtime-6.0.0-preview.3.21201.4-osx-x64.tar.gz
+#   https://download.visualstudio.microsoft.com/download/pr/fc5fdd1f-fb4c-4b88-a507-158204030320/98497ef248883404ff5b0604dda944fb/dotnet-sdk-6.0.100-preview.3.21202.5-osx-x64.pkg
 # 5
     https://download.visualstudio.microsoft.com/download/pr/88bc1553-e90f-4a4f-9574-65d9a5065cd2/1d5646e1abb8b4d4a61ba0b0be976047/dotnet-sdk-5.0.402-osx-x64.pkg
     https://download.visualstudio.microsoft.com/download/pr/8d55e3f5-8dd7-455f-9598-7128496e8509/8e2a0342882d0602cd8780d872ba4b80/dotnet-sdk-5.0.208-osx-x64.pkg
