@@ -203,3 +203,20 @@ defaults write \
 defaults write com.apple.dock mru-spaces -bool false
 defaults write com.apple.dock mru-spaces -boolean NO
 killall Dock
+
+
+# turn off the creation of .DS_Store files
+
+defaults write com.apple.desktopservices DSDontWriteNetworkStores true
+
+
+# boost the Magic Mouse's tracking speed beyond what the system preference allows?
+#
+# Apparently this is a common complaint. The way around it is to change the scaling factor. 
+# The first command prints out the current scaling factor which was 3 for me, the second sets 
+# the scaling to whatever value you want. You need to restart your Mac after changing this setting.
+
+ 
+# output was 3 for me
+defaults read -g com.apple.mouse.scaling 
+defaults write -g com.apple.mouse.scaling 10

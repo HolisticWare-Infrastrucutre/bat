@@ -1,0 +1,6 @@
+function launch_applications()
+{
+    open -a "Github Desktop.app"
+}
+
+launch_applications

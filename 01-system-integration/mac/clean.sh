@@ -188,9 +188,9 @@ find \
 
 #---------------------------------------------------------------------------
 # http://lastexitcode.com/projects/NuGet/FileLocations/
-rm -fr ~/.nuget/packages/*
-rm -fr ~/.local/share/NuGet/v3-cache/*
-rm -fr ~/.local/share/NuGet/*cache/*
+rm -fr $HOME/.nuget/packages/
+rm -fr $HOME/.local/share/NuGet/
+
 #---------------------------------------------------------------------------
 
 rm -fr ~/Library/Application\ Support/iPhone\ Simulator/6.1/Applications/*
@@ -238,3 +238,7 @@ rm -fr ~/.Bytecode-Viewer/
 rm -fr ~/android-archives/
 
 df >> df-post.txt
+
+
+nuget update -self
+dotnet nuget locals all --clear

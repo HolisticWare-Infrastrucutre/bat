@@ -1,0 +1,12 @@
+
+function clean_mac()
+{
+  echo "source ../../clean.sh"
+  source ../../clean.sh
+}
+
+echo "Cleaning mac - start"
+
+clean_mac
+
+echo "Cleaning mac - stop"

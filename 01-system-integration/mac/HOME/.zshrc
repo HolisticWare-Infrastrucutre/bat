@@ -1,5 +1,7 @@
-
-PS1='\w\$ '
+setopt PROMPT_SUBST
+# PROMPT='%{$(pwd|grep --color=always /)%${#PWD}G%} %(!.%F{red}.%F{cyan})%n%f@%F{yellow}%m%f%(!.%F{red}.)%#%f '
+# PROMPT='$fg[cyan]%m:$fg[yellow] %T %B%30<..<%~%b %(!.#.>) '
+PROMPT='%F{yellow}%3~%f %# '
 
 #----------------------------------------------------------------------------------------------------------------------
 export JAVA_HOME_ZULU=/Library/Java/JavaVirtualMachines/zulu-8.jdk/Contents/Home
@@ -53,28 +55,36 @@ alias ll='ls -al'
 export PATH=$PATH:$HOME/dotnet
 export DOTNET_ROOT=$HOME/dotnet:/usr/local/share/dotnet
 export PATH=$PATH:/usr/local/share/dotnet
-
-function dotnet_tools_update()
-{
-  dotnet tool uninstall 	-g Cake.Tool
-  dotnet tool install 	  -g Cake.Tool	
-  dotnet tool uninstall 	-g Xamarin.AndroidBinderator.Tool
-  dotnet tool install 	  -g Xamarin.AndroidBinderator.Tool	
-  dotnet tool uninstall   -g Xamarin.AndroidX.Migration.Tool
-  dotnet tool install     -g Xamarin.AndroidX.Migration.Tool
-}
 #----------------------------------------------------------------------------------------------------------------------
-echo "\
-shell functions (bash/zsh) available: \
-    mbe               - 
-    dotnet_updates    - 
-"
+
+
 
 
 #----------------------------------------------------------------------------------------------------------------------
 # https://scriptingosx.com/2019/07/moving-to-zsh-part-4-aliases-and-functions/
 
+echo \
+"
+shell functions (bash/zsh) available:
+    dotnet_updates          - update dotnet global tools
+    launch_applications     - launch applications commonly used
+    markdown_bash_execute   - execute bash code from markdown scripts (notebook/workbook styles)
+    mbe                     - 
+    disk_usage_android      - report disk usage by android installations
+"
+#----------------------------------------------------------------------------------------------------------------------
+fpath=(~/bat/01-system-integration/mac/zsh/functions $fpath);
 
+autoload -U ~/bat/01-system-integration/mac/zsh/functions/dotnet_tools_update
+autoload -U ~/bat/01-system-integration/mac/zsh/functions/launch_applications
+autoload -U ~/bat/01-system-integration/mac/zsh/functions/disk_usage_android
+autoload -U ~/bat/01-system-integration/mac/zsh/functions/markdown_bash_execute
+autoload -U ~/bat/01-system-integration/mac/zsh/functions/mbe
+#----------------------------------------------------------------------------------------------------------------------
+
+
+
+#----------------------------------------------------------------------------------------------------------------------
 # markdown bash execute
 function mbe() 
 {
@@ -89,7 +99,6 @@ function mbe()
     echo " is not valid" ;
   fi
 }
-
 
 if type brew &>/dev/null; then
   HOMEBREW_PREFIX=/usr/local

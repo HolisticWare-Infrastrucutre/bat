@@ -1,0 +1,20 @@
+
+echo "$@"
+
+function markdown_bash_execute()
+{
+  echo "$@"
+
+  if [ -f "" ]; then
+    cat  | # print the file
+    sed -n '/```bash/,/```/p' | # get the bash code blocks
+    sed 's/```bash//g' | #  remove the ```bash
+    sed 's/```//g' | # remove the trailing ```
+    sed '/^$/d' | # remove empty lines
+    /usr/bin/env sh ; # execute the command
+  else
+    echo " is not valid" ;
+  fi
+}
+
+markdown_bash_execute "$@"

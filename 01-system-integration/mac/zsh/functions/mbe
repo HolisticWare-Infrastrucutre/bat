@@ -1,0 +1,6 @@
+function mbe()
+{
+    source ./markdown_bash_execute "$@"
+}
+
+mbe "$@"

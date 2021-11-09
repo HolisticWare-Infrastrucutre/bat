@@ -1,0 +1,26 @@
+
+
+function dotnet_tools_update()
+{
+  dotnet tool uninstall 	  -g boots
+  dotnet tool install 	    -g boots	
+
+  dotnet tool uninstall 	  -g Cake.Tool
+  dotnet tool install 	    -g Cake.Tool	
+
+  dotnet tool uninstall 	  -g Redth.Net.Maui.Check
+  dotnet tool install 	    -g Redth.Net.Maui.Check	
+
+  maui-check \
+    --fix
+  
+  dotnet tool uninstall 	  -g Xamarin.AndroidBinderator.Tool
+  dotnet tool install 	    -g Xamarin.AndroidBinderator.Tool	
+
+  dotnet tool uninstall     -g Xamarin.AndroidX.Migration.Tool
+  dotnet tool install       -g Xamarin.AndroidX.Migration.Tool
+
+
+}
+
+dotnet_tools_update

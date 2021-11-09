@@ -15,6 +15,9 @@ export DIR="$DIR_ROOT/e/personal-private/"
 export DIR="$DIR_ROOT/e/edu/"
 [ ! -d $DIR ] && mkdir $DIR 
 
+export DIR="$DIR_ROOT/e/katodix/"
+[ ! -d $DIR ] && mkdir $DIR 
+
 export DIR="$DIR_ROOT/e/commercial/"
 [ ! -d $DIR ] && mkdir $DIR 
 
@@ -36,6 +39,18 @@ export DIR="./personal-private/moljac/"
         --recursive \
         $URL \
         $DIR
+
+export BRANCH="master"
+export URL="https://gitlab.com/moljac-private/deda.git"
+export DIR="./personal-private/deda/"
+[ ! -d $DIR ] \
+    && \
+    git clone \
+        --branch master \
+        --recursive \
+        $URL \
+        $DIR
+
 
 export BRANCH="master"
 export URL="https://gitlab.com/holisticware-private/notes.git"
@@ -70,6 +85,20 @@ export DIR="./personal-private/microsoft/"
         --recursive \
         $URL \
         $DIR
+
+export BRANCH="master"
+export URL="https://github.com/katodix/ProjectStore.git"
+export DIR="./katodix/ProjectStore/"
+[ ! -d $DIR ] \
+    && \
+    git clone \
+        --branch master \
+        --recursive \
+        $URL \
+        $DIR
+
+
+
 
 export BRANCH="master"
 export URL="https://gitlab.com/holisticware-education/tvz-cpp.git"
