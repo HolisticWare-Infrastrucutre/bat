@@ -16,7 +16,7 @@ fi
 df >> df-pre.txt
 
 find \
-	~/ \
+	$HOME/ \
 		-type d \
 			\( \
 					-name "Debug" \
@@ -37,33 +37,33 @@ find \
 					-o \
 					-name "__pycache__" \
 					-o \
-					-path "~/Library/Caches/Xamarin/AndroidDesigner" \
+					-path "$HOME/Library/Caches/Xamarin/AndroidDesigner" \
 					-o \
-					-path "~/Library/Caches/Xamarin/SystemDeviceDefinitions" \
+					-path "$HOME/Library/Caches/Xamarin/SystemDeviceDefinitions" \
 					-o \
-					-path "~/Library/Caches/Xamarin/VisualStudio" \
+					-path "$HOME/Library/Caches/Xamarin/VisualStudio" \
 					-o \
-					-path "~/Library/Caches/Xamarin/Xamarin.Android" \
+					-path "$HOME/Library/Caches/Xamarin/Xamarin.Android" \
 					-o \
-					-path "~/Library/Caches/Xamarin/XamarinBuildDownload" \
+					-path "$HOME/Library/Caches/Xamarin/XamarinBuildDownload" \
 					-o \
-					-path "~/Library/Caches/com.microsoft.visual-studio" \
+					-path "$HOME/Library/Caches/com.microsoft.visual-studio" \
 					-o \
-					-path "~/Library/Caches/Xamarin/mtbs/" \
+					-path "$HOME/Library/Caches/Xamarin/mtbs/" \
 					-o \
-					-path "~/Library/Caches/Xamarin/XMA/" \
+					-path "$HOME/Library/Caches/Xamarin/XMA/" \
 					-o \
-					-path "~/Library/Caches/Xamarin.Android/" \
+					-path "$HOME/Library/Caches/Xamarin.Android/" \
 					-o \
-					-path "~/Library/Caches/XamarinBuildDownload/" \
+					-path "$HOME/Library/Caches/XamarinBuildDownload/" \
 					-o \
-					-path "~/.nuget/packages/" \
+					-path "$HOME/.nuget/packages/" \
 					-o \
-					-path "~/Library/Caches/VisualStudio/" \
+					-path "$HOME/Library/Caches/VisualStudio/" \
 					-o \
-					-path "~/Library/Caches/Rider2018*/" \
+					-path "$HOME/Library/Caches/Rider2018*/" \
 					-o \
-					-path "~/Library/Caches/AndroidStudio*/" \
+					-path "$HOME/Library/Caches/AndroidStudio*/" \
 					-o \
 					-path "com.microsoft.visual-studio-preview/" \
 					-o \
@@ -84,7 +84,7 @@ find \
 		-exec rm -rf {} \;
 
 find \
-	~/ \
+	$HOME/ \
 		-type f \
 			\( \
 					-name "._*" \
@@ -193,49 +193,49 @@ rm -fr $HOME/.local/share/NuGet/
 
 #---------------------------------------------------------------------------
 
-rm -fr ~/Library/Application\ Support/iPhone\ Simulator/6.1/Applications/*
-rm -fr ~/Library/Application\ Support/iPhone\ Simulator/7.1/Applications/*
-rm -fr ~/Library/Application\ Support/iPhone\ Simulator/7.0.3/Applications/*
-rm -fr ~/Library/Application\ Support/iPhone\ Simulator/*
+rm -fr $HOME/Library/Application\ Support/iPhone\ Simulator/6.1/Applications/*
+rm -fr $HOME/Library/Application\ Support/iPhone\ Simulator/7.1/Applications/*
+rm -fr $HOME/Library/Application\ Support/iPhone\ Simulator/7.0.3/Applications/*
+rm -fr $HOME/Library/Application\ Support/iPhone\ Simulator/*
 
-rm -fr ~/Library/Developer/Xcode/Archives/*
-ls -al ~/Library/Developer/Xcode/Archives/
+rm -fr $HOME/Library/Developer/Xcode/Archives/*
+ls -al $HOME/Library/Developer/Xcode/Archives/
 
-rm -fr ~/Library/Developer/Xcode/iOS\ Device\ Logs/*
-ls -al ~/Library/Developer/Xcode/iOS\ Device\ Logs/
+rm -fr $HOME/Library/Developer/Xcode/iOS\ Device\ Logs/*
+ls -al $HOME/Library/Developer/Xcode/iOS\ Device\ Logs/
 
-rm -fr ~/Library/Developer/Xcode/iOS\ DeviceSupport/*
-ls -al ~/Library/Developer/Xcode/iOS\ DeviceSupport/
+rm -fr $HOME/Library/Developer/Xcode/iOS\ DeviceSupport/*
+ls -al $HOME/Library/Developer/Xcode/iOS\ DeviceSupport/
 
 
-rm -fr ~/Library/Developer/Shared/Documentation/DocSets/com.apple.*
-ls -al ~/Library/Developer/Shared/Documentation/DocSets/
+rm -fr $HOME/Library/Developer/Shared/Documentation/DocSets/com.apple.*
+ls -al $HOME/Library/Developer/Shared/Documentation/DocSets/
 
 # http://blog.neverthesamecolor.net/how-to-recover-disk-space-from-xcode/
-#~/Library/Developer/Xcode/DerivedData
-#~/Library/Developer/Xcode/Archives
-#~/Library/Developer/Xcode/iOS DeviceSupport
-#~/Library/Developer/CoreSimulator
-#~/Library/Caches/com.apple.dt.Xcode
-#~/Library/Application Support/MobileSync/Backup
+# $HOME/Library/Developer/Xcode/DerivedData
+# $HOME/Library/Developer/Xcode/Archives
+# $HOME/Library/Developer/Xcode/iOS DeviceSupport
+# $HOME/Library/Developer/CoreSimulator
+# $HOME/Library/Caches/com.apple.dt.Xcode
+# $HOME/Library/Application Support/MobileSync/Backup
 
 #===============================================================================
 # bunch of tmp stuff like:
 #		kpm		old ASP.net v5
 #
-rm -fr ~/.local/share/kpm/
-rm -fr ~/.local/share/Mono\ development\ team/
-rm -fr ~/.local/share/MonoForAndroid/
-rm -fr ~/.local/share/NuGet/
-rm -fr ~/.local/share/Xamarin/
-rm -fr ~/.local/share/XamarinInsights/Xamarin\ Android\ Player/
-rm -fr ~/.local/share/XamarinInsights/XamarinStudio/
+rm -fr $HOME/.local/share/kpm/
+rm -fr $HOME/.local/share/Mono\ development\ team/
+rm -fr $HOME/.local/share/MonoForAndroid/
+rm -fr $HOME/.local/share/NuGet/
+rm -fr $HOME/.local/share/Xamarin/
+rm -fr $HOME/.local/share/XamarinInsights/Xamarin\ Android\ Player/
+rm -fr $HOME/.local/share/XamarinInsights/XamarinStudio/
 
 
 
-rm -fr ~/.Bytecode-Viewer/
-# rm -fr ~/octave/
-rm -fr ~/android-archives/
+rm -fr $HOME/.Bytecode-Viewer/
+# rm -fr $HOME/octave/
+rm -fr $HOME/android-archives/
 
 df >> df-post.txt
 
