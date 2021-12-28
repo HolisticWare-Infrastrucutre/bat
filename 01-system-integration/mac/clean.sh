@@ -241,4 +241,6 @@ df >> df-post.txt
 
 
 nuget update -self
+
+# dotnet nuget locals all -c
 dotnet nuget locals all --clear
