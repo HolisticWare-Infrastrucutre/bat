@@ -1,10 +1,13 @@
 #!bin/bash
 
+export PREFIX="$HOME/bat/03-productivity/mac/"
+
 source \
-    finder-open-window-with-tabs-00-main.sh
+    $PREFIX/finder-open-window-with-tabs-00-main.sh
 source \
-    finder-open-window-with-tabs-01-holisticware.sh
+    $PREFIX/./finder-open-window-with-tabs-09-private.sh
+
 source \
-    finder-open-window-with-tabs-01-holisticware-ph4ct3x.sh
+    $PREFIX/finder-open-window-with-tabs-01-holisticware.sh
 source \
-    ./finder-open-window-with-tabs-09-private.sh
+    $PREFIX/finder-open-window-with-tabs-01-holisticware-ph4ct3x.sh
