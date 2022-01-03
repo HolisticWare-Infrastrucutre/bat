@@ -20,7 +20,8 @@ export DIR="AX-m"
 [ ! -d $DIR ] \
     && \
     git clone \
-        --recursive \
+        --recurse-submodules \
+        -j8 \
         --branch $BRANCH \
         $URL \
         $DIR
@@ -31,7 +32,8 @@ export DIR="AX-media2_ExoPlayer"
 [ ! -d $DIR ] \
     && \
     git clone \
-        --recursive \
+        --recurse-submodules \
+        -j8 \
         --branch $BRANCH \
         $URL \
         $DIR
@@ -42,7 +44,8 @@ export DIR="monodroid-samples-ax"
 [ ! -d $DIR ] \
     && \
     git clone \
-        --recursive \
+        --recurse-submodules \
+        -j8 \
         --branch $BRANCH \
         $URL \
         $DIR
@@ -54,7 +57,8 @@ export DIR="GPS-FB-m"
 [ ! -d $DIR ] \
     && \
     git clone \
-        --recursive \
+        --recurse-submodules \
+        -j8 \
         --branch $BRANCH \
         $URL \
         $DIR
@@ -65,7 +69,8 @@ export DIR="GPS-FB-ax"
 [ ! -d $DIR ] \
     && \
     git clone \
-        --recursive \
+        --recurse-submodules \
+        -j8 \
         --branch $BRANCH \
         $URL \
         $DIR
@@ -76,7 +81,8 @@ export DIR="AS-m"
 [ ! -d $DIR ] \
     && \
     git clone \
-        --recursive \
+        --recurse-submodules \
+        -j8 \
         --branch $BRANCH \
         $URL \
         $DIR
@@ -87,7 +93,8 @@ export DIR="XamarinAndroidXMigration"
 [ ! -d $DIR ] \
     && \
     git clone \
-        --recursive \
+        --recurse-submodules \
+        -j8 \
         --branch $BRANCH \
         $URL \
         $DIR
@@ -98,7 +105,8 @@ export DIR="java-interop"
 [ ! -d $DIR ] \
     && \
     git clone \
-        --recursive \
+        --recurse-submodules \
+        -j8 \
         --branch $BRANCH \
         $URL \
         $DIR
@@ -109,8 +117,9 @@ export DIR="Essentials-m"
 [ ! -d $DIR ] \
     && \
     git clone \
-        --branch master \
-        --recursive \
+        --recurse-submodules \
+        -j8 \
+        --branch $BRANCH \
         $URL \
         $DIR
 
@@ -120,8 +129,9 @@ export DIR="net5-samples"
 [ ! -d $DIR ] \
     && \
     git clone \
-        --branch master \
-        --recursive \
+        --recurse-submodules \
+        -j8 \
+        --branch $BRANCH \
         $URL \
         $DIR
 
@@ -131,8 +141,9 @@ export DIR="Customer-Xamarin-Bindings-m"
 [ ! -d $DIR ] \
     && \
     git clone \
-        --branch master \
-        --recursive \
+        --recurse-submodules \
+        -j8 \
+        --branch $BRANCH \
         $URL \
         $DIR
 
@@ -142,8 +153,9 @@ export DIR="XamarinUniversity-m"
 [ ! -d $DIR ] \
     && \
     git clone \
-        --branch master \
-        --recursive \
+        --recurse-submodules \
+        -j8 \
+        --branch $BRANCH \
         $URL \
         $DIR
 

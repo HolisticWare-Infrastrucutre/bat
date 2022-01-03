@@ -23,8 +23,9 @@ export DIR="./gl/tvz-cpp/"
 [ ! -d $DIR ] \
     && \
     git clone \
-        --branch master \
-        --recursive \
+        --recurse-submodules \
+        -j8 \
+        --branch $BRANCH \
         $URL \
         $DIR
 

@@ -80,8 +80,9 @@ export DIR="./HolisticWare.WebSite.Notes/"
 [ ! -d $DIR ] \
     && \
     git clone \
-        --branch master \
-        --recursive \
+        --recurse-submodules \
+        -j8 \
+        --branch $BRANCH \
         $URL \
         $DIR
 
@@ -92,8 +93,9 @@ export DIR="./bin/"
 [ ! -d $DIR ] \
     && \
     git clone \
-        --branch master \
-        --recursive \
+        --recurse-submodules \
+        -j8 \
+        --branch $BRANCH \
         $URL \
         $DIR
 

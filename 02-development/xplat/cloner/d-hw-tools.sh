@@ -20,8 +20,9 @@ export DIR="0-ideas"
 [ ! -d $DIR ] \
     && \
     git clone \
-        --branch master \
-        --recursive \
+        --recurse-submodules \
+        -j8 \
+        --branch $BRANCH \
         $URL \
         $DIR
 
@@ -31,8 +32,9 @@ export DIR="DotNetNew.XamarinProjectsStructureTemplate"
 [ ! -d $DIR ] \
     && \
     git clone \
-        --branch master \
-        --recursive \
+        --recurse-submodules \
+        -j8 \
+        --branch $BRANCH \
         $URL \
         $DIR
 
@@ -42,8 +44,9 @@ export DIR="DotNetNew.XamarinAndroidMavenBindingsProjectsStructureTemplate"
 [ ! -d $DIR ] \
     && \
     git clone \
+        --recurse-submodules \
+        -j8 \
         --branch $BRANCH \
-        --recursive \
         $URL \
         $DIR
 
@@ -53,8 +56,9 @@ export DIR="DotNetNew.CakeScriptDebugTemplate"
 [ ! -d $DIR ] \
     && \
     git clone \
+        --recurse-submodules \
+        -j8 \
         --branch $BRANCH \
-        --recursive \
         $URL \
         $DIR
 
@@ -64,8 +68,9 @@ export DIR="DotNetNew.ApplicationArchitectureStructureTemplate"
 [ ! -d $DIR ] \
     && \
     git clone \
+        --recurse-submodules \
+        -j8 \
         --branch $BRANCH \
-        --recursive \
         $URL \
         $DIR
 
@@ -76,8 +81,9 @@ export DIR="DotNetNew.MarkDownTopicTemplate"
 [ ! -d $DIR ] \
     && \
     git clone \
+        --recurse-submodules \
+        -j8 \
         --branch $BRANCH \
-        --recursive \
         $URL \
         $DIR
 

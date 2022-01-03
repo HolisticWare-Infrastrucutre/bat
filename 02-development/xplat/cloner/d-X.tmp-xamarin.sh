@@ -20,7 +20,8 @@ export DIR="xamarin-android-m"
 [ ! -d $DIR ] \
     && \
     git clone \
-        --recursive \
+        --recurse-submodules \
+        -j8 \
         --branch $BRANCH \
         $URL \
         $DIR

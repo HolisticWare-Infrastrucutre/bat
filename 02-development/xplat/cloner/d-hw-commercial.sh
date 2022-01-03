@@ -23,8 +23,9 @@ export DIR="./gl/UsbThermalPrinterSDK.OOCP/"
 [ ! -d $DIR ] \
     && \
     git clone \
-        --branch master \
-        --recursive \
+        --recurse-submodules \
+        -j8 \
+        --branch $BRANCH \
         $URL \
         $DIR
 
@@ -34,8 +35,9 @@ export DIR="./gl/OCPP.PrinterThermal.USB/"
 [ ! -d $DIR ] \
     && \
     git clone \
-        --branch master \
-        --recursive \
+        --recurse-submodules \
+        -j8 \
+        --branch $BRANCH \
         $URL \
         $DIR
 
@@ -45,8 +47,9 @@ export DIR="./gl/OCPP.PrinterThermal.Bluetooth/"
 [ ! -d $DIR ] \
     && \
     git clone \
-        --branch master \
-        --recursive \
+        --recurse-submodules \
+        -j8 \
+        --branch $BRANCH \
         $URL \
         $DIR
 
