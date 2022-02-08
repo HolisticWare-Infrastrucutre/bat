@@ -21,7 +21,8 @@ export DIR="AX"
 [ ! -d $DIR ] \
     && \
     git clone \
-        --recursive \
+        --recurse-submodules \
+        -j8 \
         --branch $BRANCH \
         $URL \
         $DIR
@@ -33,7 +34,8 @@ export DIR="GPS-FB-MLKit"
 [ ! -d $DIR ] \
     && \
     git clone \
-        --recursive \
+        --recurse-submodules \
+        -j8 \
         --branch $BRANCH \
         $URL \
         $DIR
@@ -44,7 +46,8 @@ export DIR="MachineLearning"
 [ ! -d $DIR ] \
     && \
     git clone \
-        --recursive \
+        --recurse-submodules \
+        -j8 \
         --branch $BRANCH \
         $URL \
         $DIR
@@ -55,7 +58,8 @@ export DIR="Cake"
 [ ! -d $DIR ] \
     && \
     git clone \
-        --recursive \
+        --recurse-submodules \
+        -j8 \
         --branch $BRANCH \
         $URL \
         $DIR
@@ -66,7 +70,8 @@ export DIR="Xamarin.Forms"
 [ ! -d $DIR ] \
     && \
     git clone \
-        --recursive \
+        --recurse-submodules \
+        -j8 \
         --branch $BRANCH \
         $URL \
         $DIR
@@ -77,7 +82,8 @@ export DIR="CSharp"
 [ ! -d $DIR ] \
     && \
     git clone \
-        --recursive \
+        --recurse-submodules \
+        -j8 \
         --branch $BRANCH \
         $URL \
         $DIR
@@ -88,7 +94,8 @@ export DIR="R"
 [ ! -d $DIR ] \
     && \
     git clone \
-        --recursive \
+        --recurse-submodules \
+        -j8 \
         --branch $BRANCH \
         $URL \
         $DIR
@@ -99,7 +106,8 @@ export DIR="Julia"
 [ ! -d $DIR ] \
     && \
     git clone \
-        --recursive \
+        --recurse-submodules \
+        -j8 \
         --branch $BRANCH \
         $URL \
         $DIR
@@ -110,7 +118,8 @@ export DIR="MatlabOctave"
 [ ! -d $DIR ] \
     && \
     git clone \
-        --recursive \
+        --recurse-submodules \
+        -j8 \
         --branch $BRANCH \
         $URL \
         $DIR
@@ -121,7 +130,8 @@ export DIR="Python"
 [ ! -d $DIR ] \
     && \
     git clone \
-        --recursive \
+        --recurse-submodules \
+        -j8 \
         --branch $BRANCH \
         $URL \
         $DIR
@@ -132,7 +142,8 @@ export DIR="FormalLanguages.Parsers"
 [ ! -d $DIR ] \
     && \
     git clone \
-        --recursive \
+        --recurse-submodules \
+        -j8 \
         --branch $BRANCH \
         $URL \
         $DIR
