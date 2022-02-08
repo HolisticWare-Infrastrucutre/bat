@@ -46,6 +46,7 @@ dotnet-serve
 dotnet-depends
 dotnet-obfuscar
 nukeeper
+dotnet-releaser
 
 "
 
