@@ -842,3 +842,18 @@ for f in $(compaudit);do sudo chown $(whoami):admin $f;done;
 
 #----------------------------------------------------------------------------------------------
 
+#----------------------------------------------------------------------------------------------
+# go/golang
+brew update&& 
+brew install \
+    golang \
+    go
+
+mkdir -p $HOME/go/{bin,src,pkg}
+
+
+
+export GOPATH=$HOME/go
+export GOROOT="$(brew --prefix golang)/libexec"
+export PATH="$PATH:${GOPATH}/bin:${GOROOT}/bin"
+#----------------------------------------------------------------------------------------------
