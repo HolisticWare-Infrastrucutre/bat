@@ -16,7 +16,7 @@ export WORKLOADZ=\
 "
 android
 # android-aot
-ios     
+ios
 # mac
 macos
 maccatalyst
