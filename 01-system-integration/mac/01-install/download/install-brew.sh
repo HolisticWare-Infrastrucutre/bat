@@ -23,6 +23,7 @@ brew update
 # Download and update ALL software packages installed:
 
 brew upgrade
+brew upgrade --cask
 
 # To see which files would be removed as no longer needed:
 
@@ -165,6 +166,11 @@ caffeinate -t 7200 &
 brew $ACTION_VERB --cask \
     caffeine \
     menumeters \
+
+
+brew tap fwartner/tap
+brew install \
+    fwartner/tap/mac-cleanup
 
 #----------------------------------------------------------------------------------------------
 #
