@@ -34,6 +34,7 @@ brew cleanup -n
 # To really remove all files no longer needed:
 
 brew cleanup
+brew doctor
 
 # Action/Verb
 # install / uninstall / reinstall
@@ -664,6 +665,8 @@ dotnet --list-sdks
 brew $ACTION_VERB --cask \
     visual-studio \
 
+brew $ACTION_VERB \
+    nuget \
     
 
 #----------------------------------------------------------------------------------------------
@@ -850,7 +853,8 @@ for f in $(compaudit);do sudo chown $(whoami):admin $f;done;
 
 #----------------------------------------------------------------------------------------------
 # go/golang
-brew update&& 
+brew update \
+&& \
 brew install \
     golang \
     go
@@ -863,3 +867,8 @@ export GOPATH=$HOME/go
 export GOROOT="$(brew --prefix golang)/libexec"
 export PATH="$PATH:${GOPATH}/bin:${GOROOT}/bin"
 #----------------------------------------------------------------------------------------------
+
+
+
+brew cleanup
+brew doctor
