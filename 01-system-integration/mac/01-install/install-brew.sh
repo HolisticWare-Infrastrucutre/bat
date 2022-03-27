@@ -6,6 +6,7 @@ export TOOLS=\
 "
 openssl
 powershell
+nuget
 "
 
 xcode-select --install

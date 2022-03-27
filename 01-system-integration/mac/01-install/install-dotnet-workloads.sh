@@ -8,15 +8,15 @@ dotnet tool list --global
 
 # export ACTION=search
 # export ACTION=uninstall
-export ACTION=install
-# export ACTION=update
+# export ACTION=install
+export ACTION=update
 
 
 export WORKLOADZ=\
 "
 android
 # android-aot
-ios     
+ios
 # mac
 macos
 maccatalyst

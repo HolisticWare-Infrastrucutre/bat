@@ -23,6 +23,7 @@ brew update
 # Download and update ALL software packages installed:
 
 brew upgrade
+brew upgrade --cask
 
 # To see which files would be removed as no longer needed:
 
@@ -33,6 +34,7 @@ brew cleanup -n
 # To really remove all files no longer needed:
 
 brew cleanup
+brew doctor
 
 # Action/Verb
 # install / uninstall / reinstall
@@ -165,6 +167,11 @@ caffeinate -t 7200 &
 brew $ACTION_VERB --cask \
     caffeine \
     menumeters \
+
+
+brew tap fwartner/tap
+brew install \
+    fwartner/tap/mac-cleanup
 
 #----------------------------------------------------------------------------------------------
 #
@@ -658,6 +665,8 @@ dotnet --list-sdks
 brew $ACTION_VERB --cask \
     visual-studio \
 
+brew $ACTION_VERB \
+    nuget \
     
 
 #----------------------------------------------------------------------------------------------
@@ -844,7 +853,8 @@ for f in $(compaudit);do sudo chown $(whoami):admin $f;done;
 
 #----------------------------------------------------------------------------------------------
 # go/golang
-brew update&& 
+brew update \
+&& \
 brew install \
     golang \
     go
@@ -857,3 +867,8 @@ export GOPATH=$HOME/go
 export GOROOT="$(brew --prefix golang)/libexec"
 export PATH="$PATH:${GOPATH}/bin:${GOROOT}/bin"
 #----------------------------------------------------------------------------------------------
+
+
+
+brew cleanup
+brew doctor
