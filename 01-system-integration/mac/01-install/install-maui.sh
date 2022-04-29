@@ -3,6 +3,10 @@
 # 1. Ensure the pwsh or powershell command is in PATH
 # 2. Ensure the script uses Unix-style line endings (\n, not \r\n)
 
+dotnet nuget locals all --clear
+
+dotnet tool list --global
+
 sudo \
     dotnet workload \
         install \
@@ -13,13 +17,13 @@ sudo \
     dotnet workload \
         install \
             maui \
-            --from-rollback-file https://aka.ms/dotnet/maui/rc.1.json \
+            --from-rollback-file https://aka.ms/dotnet/maui/rc.2.json \
             --source https://aka.ms/dotnet6/nuget/index.json \
             --source https://api.nuget.org/v3/index.json
 
 
 
-https://github.com/dotnet/maui/blob/main/.github/DEVELOPMENT.md
+# https://github.com/dotnet/maui/blob/main/.github/DEVELOPMENT.md
 
 
 emulator -list-avds

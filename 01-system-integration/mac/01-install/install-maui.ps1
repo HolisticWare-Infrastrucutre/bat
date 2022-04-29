@@ -3,6 +3,10 @@
 # 1. Ensure the pwsh or powershell command is in PATH
 # 2. Ensure the script uses Unix-style line endings (\n, not \r\n)
 
+dotnet nuget locals all --clear
+
+dotnet tool list --global
+
 
 # install local tools required to build (cake, pwsh, etc..)
 dotnet tool restore
