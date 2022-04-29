@@ -28,9 +28,21 @@ export DIR="AX"
         $DIR
 
 
-export URL="https://github.com/Samples-Playgrounds/Samples.GooglePlayServices-Firebase.git"
+export URL="https://github.com/Samples-Playgrounds/Samples.GooglePlayServices-Firebase-MLKit.git"
 export BRANCH="master"
 export DIR="GPS-FB-MLKit"
+[ ! -d $DIR ] \
+    && \
+    git clone \
+        --recurse-submodules \
+        -j8 \
+        --branch $BRANCH \
+        $URL \
+        $DIR
+
+export URL="https://github.com/moljac/Samples.GooglePlayServices-Firebase"
+export BRANCH="master"
+export DIR="GPS-FB-MLKit-blocked"
 [ ! -d $DIR ] \
     && \
     git clone \
@@ -55,6 +67,18 @@ export DIR="MachineLearning"
 export URL="https://github.com/Samples-Playgrounds/Samples.Cake.git"
 export BRANCH="master"
 export DIR="Cake"
+[ ! -d $DIR ] \
+    && \
+    git clone \
+        --recurse-submodules \
+        -j8 \
+        --branch $BRANCH \
+        $URL \
+        $DIR
+
+export URL="https://github.com/Samples-Playgrounds/Samples.MAUI.git"
+export BRANCH="main"
+export DIR="MAUI"
 [ ! -d $DIR ] \
     && \
     git clone \
