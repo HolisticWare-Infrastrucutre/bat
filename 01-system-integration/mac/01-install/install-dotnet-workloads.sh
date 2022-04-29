@@ -4,6 +4,9 @@
 
 # https://aka.ms/dotnet/6.0.2xx/daily/dotnet-sdk-osx-x64.pkg
 
+
+dotnet nuget locals all --clear
+
 dotnet tool list --global
 
 # export ACTION=search
