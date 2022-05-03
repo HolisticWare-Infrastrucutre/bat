@@ -7,6 +7,12 @@ dotnet nuget locals all --clear
 
 dotnet tool list --global
 
+# https://github.com/dotnet/sdk/issues
+dotnet \
+    workload \
+        restore
+        --verbosity
+
 sudo \
     dotnet workload \
         install \
