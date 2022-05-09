@@ -52,12 +52,13 @@ do
 
     echo Tool: $WORKLOAD
     sudo \
-        dotnet workload \
-            $ACTION \
-            $WORKLOAD \
-            --from-rollback-file https://aka.ms/dotnet/maui/main.json \
-            --source https://aka.ms/dotnet6/nuget/index.json \
-            --source https://api.nuget.org/v3/index.json
+        dotnet \
+            workload \
+                $ACTION \
+                $WORKLOAD \
+                --from-rollback-file https://aka.ms/dotnet/maui/main.json \
+                --source https://aka.ms/dotnet6/nuget/index.json \
+                --source https://api.nuget.org/v3/index.json
 
 #    sudo \
 #        dotnet workload install \
