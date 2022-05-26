@@ -4,12 +4,15 @@
 
 # https://aka.ms/dotnet/6.0.2xx/daily/dotnet-sdk-osx-x64.pkg
 
+
+dotnet nuget locals all --clear
+
 dotnet tool list --global
 
 # export ACTION=search
 # export ACTION=uninstall
-# export ACTION=install
-export ACTION=update
+ export ACTION=install
+#export ACTION=update
 
 
 export WORKLOADZ=\
@@ -49,12 +52,13 @@ do
 
     echo Tool: $WORKLOAD
     sudo \
-        dotnet workload \
-            $ACTION \
-            $WORKLOAD \
-            --from-rollback-file https://aka.ms/dotnet/maui/main.json \
-            --source https://aka.ms/dotnet6/nuget/index.json \
-            --source https://api.nuget.org/v3/index.json
+        dotnet \
+            workload \
+                $ACTION \
+                $WORKLOAD \
+                --from-rollback-file https://aka.ms/dotnet/maui/main.json \
+                --source https://aka.ms/dotnet6/nuget/index.json \
+                --source https://api.nuget.org/v3/index.json
 
 #    sudo \
 #        dotnet workload install \

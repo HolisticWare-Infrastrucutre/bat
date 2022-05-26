@@ -1,5 +1,9 @@
 #!/bin/zsh
 
+dotnet nuget locals all --clear
+
+dotnet tool list --global
+
 dotnet workload search android
 dotnet workload search ios     
 dotnet workload search macos

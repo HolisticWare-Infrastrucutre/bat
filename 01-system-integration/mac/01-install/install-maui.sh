@@ -7,6 +7,54 @@ dotnet nuget locals all --clear
 
 dotnet tool list --global
 
+# https://github.com/dotnet/sdk/issues
+dotnet \
+    workload \
+        restore
+        --verbosity
+
+sudo \
+    dotnet workload \
+        install \
+            maui \
+            --source https://api.nuget.org/v3/index.json
+
+sudo \
+    dotnet workload \
+        install \
+            maui \
+            --from-rollback-file https://aka.ms/dotnet/maui/rc.2.json \
+            --source https://aka.ms/dotnet6/nuget/index.json \
+            --source https://api.nuget.org/v3/index.json
+
+
+
+# https://github.com/dotnet/maui/blob/main/.github/DEVELOPMENT.md
+
+
+emulator -list-avds
+emulator -avd pixel_2_r_11_0_-_api_30
+open XCode
+
+#export APP=AppMAUI-$(date +%FT%T)
+export APP=AppMAUI-$(date +%FT%H_%M_%S)
+
+dotnet new maui -n $APP
+cd $APP
+dotnet build \
+    -t:Run \
+    -f net6.0-maccatalyst \
+    &
+dotnet build \
+    -t:Run \
+    -f net6.0-ios \
+    &
+dotnet build \
+    -t:Run \
+    -f net6.0-android \
+    &
+
+
 
 # install local tools required to build (cake, pwsh, etc..)
 dotnet tool restore
