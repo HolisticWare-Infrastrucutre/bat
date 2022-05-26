@@ -14,6 +14,12 @@ $data =
         url='https://visualstudio.microsoft.com/thank-you-downloading-visual-studio/?sku=Enterprise&channel=Release&version=VS2022&source=VSLandingPage&cid=2030&passive=false';
         file='VisualStudioForWindowsInstaller.Enterprise.exe'
     },
+    https://visualstudio.microsoft.com/vs/preview/
+    https://visualstudio.microsoft.com/thank-you-downloading-visual-studio/?sku=community&ch=pre&rel=17
+    https://visualstudio.microsoft.com/thank-you-downloading-visual-studio/?sku=enterprise&ch=pre&rel=17
+    https://visualstudio.microsoft.com/thank-you-downloading-visual-studio/?sku=Community&channel=Release&version=VS2022&source=VSLandingPage&passive=false&cid=2030#
+    https://visualstudio.microsoft.com/thank-you-downloading-visual-studio/?sku=BuildTools&ch=pre&rel=17
+    https://aka.ms/vs/17/release/vs_BuildTools.exe
     #==================================================================================================================================
 
     #==================================================================================================================================
