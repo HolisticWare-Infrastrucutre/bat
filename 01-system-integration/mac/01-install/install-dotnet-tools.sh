@@ -3,6 +3,7 @@
 
 export TOOLZ=\
 "
+dotnet-suggest
 boots
 cake.tool
 # Xamarin.Android
