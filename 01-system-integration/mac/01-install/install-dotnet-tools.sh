@@ -33,6 +33,8 @@ dotnet-trace
 dotnet-counters
 dotnet-dump
 dotnet-gcdump
+dotnet-validate
+ilspycmd
 Microsoft.dotnet-interactive
 dotnet-retire
 microsoft.tye 
@@ -62,10 +64,11 @@ do
         continue
     fi
 
-    echo Tool: $TOOL
+    echo "Tool: $TOOL"
+    echo "      uninstalling"
     dotnet tool uninstall   --global  $TOOL
+    echo "      installing"
     dotnet tool install     --global  $TOOL     --version "*-*"
 done
-
 
 dotnet tool list --global
