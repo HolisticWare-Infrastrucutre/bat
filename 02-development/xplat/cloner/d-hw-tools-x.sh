@@ -10,7 +10,7 @@ export DIR_ROOT="/Users/Shared/Projects"
 cd $DIR_ROOT
 mkdir 
 
-export DIR="$DIR_ROOT/d/hw-tools"
+export DIR="$DIR_ROOT/d/hw-tools-x"
 [ ! -d $DIR ] && mkdir $DIR 
 [ -d $DIR ] && cd $DIR
 
