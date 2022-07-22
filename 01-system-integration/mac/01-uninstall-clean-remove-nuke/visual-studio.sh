@@ -12,8 +12,10 @@ rm -fr "$HOME/Library/Caches/Microsoft/"
 rm -fr "$HOME/Library/Caches/VisualStudio/"
 rm -fr "$HOME/Library/Caches/VisualStudioInstaller/"
 rm -fr "$HOME/Library/Caches/XamarinBuildDownload/"
-rm -fr "$HOME/Library/Caches/com.xamarin.fontconfig/"
 rm -fr "$HOME/Library/Caches/com.xamarin.visualstudioformacinstaller/"
+
+sudo rm -fr "$HOME/Library/Caches/com.xamarin.fontconfig/"
+
 
 rm -fr "$HOME/Library/Preferences/VisualStudio/"
 rm -rf "$HOME/Library/Preferences/Visual Studio/"
