@@ -4,8 +4,7 @@
 
 sudo rm -rf /usr/local/share/dotnet/
 sudo rm -fr /etc/paths.d/dotnet  
-
-rm -fr "$HOME/.dotnet/"
+sudo rm -fr "$HOME/.dotnet/"
 
 rm -fr "$HOME/Library/Caches/dotnet-script/"
 
