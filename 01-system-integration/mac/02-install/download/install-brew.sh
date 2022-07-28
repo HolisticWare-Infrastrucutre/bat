@@ -218,7 +218,8 @@ brew $ACTION_VERB --cask \
 
 brew install caskformula/caskformula/inkscape
 brew install --cask \
-    inkscape
+    inkscape \
+    vlc \
 #----------------------------------------------------------------------------------------------
 #
 brew $ACTION_VERB --cask \
