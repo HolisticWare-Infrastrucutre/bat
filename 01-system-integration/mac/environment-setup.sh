@@ -7,11 +7,20 @@ killall Finder \
 /System/Library/CoreServices/Finder.app\
 '
 
+defaults write com.apple.finder AppleShowAllFiles YES; \
+killall Finder \
+/System/Library/CoreServices/Finder.app\
+
+
 alias files_hide='\
 defaults write com.apple.finder AppleShowAllFiles NO; \
 killall Finder \
 /System/Library/CoreServices/Finder.app\
 '
+
+defaults write com.apple.finder AppleShowAllFiles NO; \
+killall Finder \
+/System/Library/CoreServices/Finder.app\
 
 defaults write com.apple.finder AppleShowAllFiles YES
 
@@ -41,3 +50,5 @@ brew install \
     ntfs-3g     \
     pcre        \
     swig        \
+    vlc         \
+
