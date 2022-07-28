@@ -7,6 +7,7 @@ export TOOLS=\
 openssl
 powershell
 nuget
+vlc
 "
 
 xcode-select --install
