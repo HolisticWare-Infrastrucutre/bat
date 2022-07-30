@@ -1,7 +1,7 @@
 #!/bin/bash
 
-osascript -e 'tell app "System Events" to display dialog "Install XCode"'
-#osascript -e 'tell app "Finder" to display dialog "Install Xcode"'
+osascript -e 'tell app "System Events" to display dialog "$ACTION_VERB XCode"'
+#osascript -e 'tell app "Finder" to display dialog "$ACTION_VERB Xcode"'
 open -a "App Store"
 
 sudo xcodebuild -license
@@ -13,14 +13,14 @@ git clone https://github.com/moljac/bat.git
 
 # https://github.com/Homebrew/homebrew-cask/blob/master/USAGE.md
 
-/usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
+/usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/$ACTION_VERB/master/$ACTION_VERB)"
 
 brew list
 brew outdated
 
 brew update
 
-# Download and update ALL software packages installed:
+# Download and update ALL software packages $ACTION_VERBed:
 
 brew upgrade
 brew upgrade --cask
@@ -37,13 +37,15 @@ brew cleanup
 brew doctor
 
 # Action/Verb
-# install / uninstall / reinstall
-export ACTION_VERB=install
+# $ACTION_VERB / un$ACTION_VERB / re$ACTION_VERB
+export ACTION_VERB=$ACTION_VERB
 
 defaults write com.apple.finder AppleShowAllFiles YES
 defaults write com.apple.finder _FXShowPosixPathInTitle -bool false
 # defaults write com.apple.finder _FXShowPosixPathInTitle -bool YES && killall Finder
 # defaults write com.apple.finder _FXShowPosixPathInTitle -bool NO && killall Finder
+defaults write com.apple.finder NewWindowTargetPath \
+        -string "file://localhost/Users//Shared/Projects/"
 killall Finder
 
 #----------------------------------------------------------------------------------------------
@@ -55,14 +57,14 @@ sudo nano /etc/pam.d/sudo
 #----------------------------------------------------------------------------------------------
 # sudo softwareupdate --list for example will present the list of apps that are set to update. 
 #
-#sudo softwareupdate --install {app-name}
+#sudo softwareupdate --$ACTION_VERB {app-name}
 
-sudo softwareupdate --install amphetamine
+sudo softwareupdate --$ACTION_VERB amphetamine
 #----------------------------------------------------------------------------------------------
 
 #----------------------------------------------------------------------------------------------
 # https://github.com/mas-cli/mas
-brew install -y \
+brew $ACTION_VERB -y \
     mas
 
 mas list
@@ -98,7 +100,7 @@ brew $ACTION_VERB \
     pcre \
     swig \
 
-brew install \
+brew $ACTION_VERB \
     zip \
     unzip \
     fuse-zip \
@@ -106,13 +108,14 @@ brew install \
     rar \
     archiver \
 
-brew install --cask \
+brew $ACTION_VERB --cask \
     the-unarchiver \
 
 # Xamarin.Android xamarin-android repo
 #   user want git from brew anyway, the apple-provided one is a fossil
 brew tap \
     xamarin/xamarin-android-windeps
+
 brew $ACTION_VERB \
     git \
     make \
@@ -145,8 +148,11 @@ brew $ACTION_VERB \
 
 # plugins for zsh (nvm)
 brew $ACTION_VERB \
-    antigen \
+    duti \
 
+
+brew $ACTION_VERB \
+    antigen \
 
 echo \
 "
@@ -158,7 +164,7 @@ antigen apply
 " \
 >> $HOME/.zshrc
 
-nvm install --lts
+nvm $ACTION_VERB --lts
 nvm use --lts
 
 # 2 hrs
@@ -170,7 +176,7 @@ brew $ACTION_VERB --cask \
 
 
 brew tap fwartner/tap
-brew install \
+brew $ACTION_VERB \
     fwartner/tap/mac-cleanup
 
 #----------------------------------------------------------------------------------------------
@@ -216,8 +222,9 @@ brew $ACTION_VERB --cask \
     onyx \
     diffmerge \
 
-brew install caskformula/caskformula/inkscape
-brew install --cask \
+brew $ACTION_VERB \
+    caskformula/caskformula/inkscape
+brew $ACTION_VERB --cask \
     inkscape \
     vlc \
 #----------------------------------------------------------------------------------------------
@@ -297,7 +304,7 @@ brew $ACTION_VERB \
     flatbuffers \
 
 
-# https://stackoverflow.com/questions/52524112/how-do-i-install-java-on-mac-osx-allowing-version-switching
+# https://stackoverflow.com/questions/52524112/how-do-i-$ACTION_VERB-java-on-mac-osx-allowing-version-switching
 
 # https://github.com/Homebrew/homebrew-cask/blob/master/Casks/adoptopenjdk.rb
 # https://github.com/AdoptOpenJDK/homebrew-openjdk/tree/master/Casks
@@ -416,7 +423,7 @@ brew $ACTION_VERB --cask \
 
 boots https://desktop.docker.com/mac/stable/amd64/Docker.dmg
 
-pip3 install docker-compose
+pip3 $ACTION_VERB docker-compose
 open -a Docker
 docker-compose
 
@@ -459,16 +466,16 @@ brew untap homebrew/cask-versions
 brew upgrade
 brew update
 
-brew install --cask \
+brew $ACTION_VERB --cask \
     microsoft-edge \
+    microsoft-edge-dev \
+    microsoft-edge-beta \
     google-chrome \
+    google-chrome-canary \
     firefox \
     firefox-developer-edition \
 
 
-#     microsoft-edge-dev \
-#    microsoft-edge-beta \
-#    google-chrome-canary \
 
 #----------------------------------------------------------------------------------------------
 # communications
@@ -494,7 +501,7 @@ brew $ACTION_VERB --cask \
 
 #----------------------------------------------------------------------------------------------
 # act - github actions 
-brew install \
+brew $ACTION_VERB \
     gitlab-runner \ 
     act \
 
@@ -603,18 +610,18 @@ $COMMAND \
 
 
 for f in *.pkg ; 
-    do sudo installer -verbose -pkg "$f" -target /
+    do sudo $ACTION_VERBer -verbose -pkg "$f" -target /
 done
 
 
-# https://docs.microsoft.com/en-us/dotnet/core/tools/dotnet-install-script
-# https://dot.net/v1/dotnet-install.sh
-# https://dot.net/v1/dotnet-install.ps1
+# https://docs.microsoft.com/en-us/dotnet/core/tools/dotnet-$ACTION_VERB-script
+# https://dot.net/v1/dotnet-$ACTION_VERB.sh
+# https://dot.net/v1/dotnet-$ACTION_VERB.ps1
 
-# chmod u+x dotnet-install.sh
-# ./dotnet-install.sh -c Current # 3.0
-# ./dotnet-install.sh -c LTS # 2.1
-# ./dotnet-install.sh -c 2.2 
+# chmod u+x dotnet-$ACTION_VERB.sh
+# ./dotnet-$ACTION_VERB.sh -c Current # 3.0
+# ./dotnet-$ACTION_VERB.sh -c LTS # 2.1
+# ./dotnet-$ACTION_VERB.sh -c 2.2 
 
 if [ -d "$HOME/.dotnet" ] ; then
     export PATH="$PATH:$HOME/.dotnet" 
@@ -628,7 +635,7 @@ fi
 
 # https://github.com/isen-ng/homebrew-dotnet-sdk-versions
 
-# brew cask uninstall \
+# brew cask un$ACTION_VERB \
 #     dotnet-sdk \
 #     dotnet \
 
@@ -673,15 +680,15 @@ brew $ACTION_VERB \
 #----------------------------------------------------------------------------------------------
 
 # if you receive this Error: Cask 'dotnet-sdk' conflicts with 'dotnet'.
-# then you have to uninstall dotnet first:
-# brew cask uninstall \
+# then you have to un$ACTION_VERB dotnet first:
+# brew cask un$ACTION_VERB \
 #     dotnet
-# brew cask install \
+# brew cask $ACTION_VERB \
 #     dotnet-sdk
 
 
 
-# to remove all the packages installed but keep Homebrew around one
+# to remove all the packages $ACTION_VERBed but keep Homebrew around one
 # could also do something like:
 
 # brew list -1 | xargs brew rm
@@ -703,7 +710,7 @@ brew $ACTION_VERB \
     julia \
 
 
-brew install --cask \
+brew $ACTION_VERB --cask \
     homebrew/cask-versions/adoptopenjdk8 \
     scilab \
 
@@ -730,33 +737,33 @@ python3 --version
 which pip
 which pip3
 
-sudo pip3 install --upgrade pip
+sudo pip3 $ACTION_VERB --upgrade pip
 
 
 # python packages: Scientific computing:
-pip3 install numpy
-pip3 install scipy
-pip3 install sympy
+pip3 $ACTION_VERB numpy
+pip3 $ACTION_VERB scipy
+pip3 $ACTION_VERB sympy
 python -c 'import numpy ; numpy.test();'
 python -c 'import scipy ; scipy.test();'
 
 # python packages: Data management:
-pip3 install pandas
+pip3 $ACTION_VERB pandas
 
 
 # python packages: plotting
-pip3 install matplotlib
+pip3 $ACTION_VERB matplotlib
 #brew $ACTION_VERB \
 #    homebrew/python/matplotlib \
 #    --with-cairo \
 #    --with-tex
 
-pip3 install --upgrade pip
-pip3 install jupyter
+pip3 $ACTION_VERB --upgrade pip
+pip3 $ACTION_VERB jupyter
 
-pip install jupyterlab
-pip install notebook
-pip install voila
+pip $ACTION_VERB jupyterlab
+pip $ACTION_VERB notebook
+pip $ACTION_VERB voila
 
 jupyter-lab &
 jupyter notebook &
@@ -856,7 +863,7 @@ for f in $(compaudit);do sudo chown $(whoami):admin $f;done;
 # go/golang
 brew update \
 && \
-brew install \
+brew $ACTION_VERB \
     golang \
     go
 
