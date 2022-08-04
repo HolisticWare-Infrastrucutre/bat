@@ -1,5 +1,13 @@
 #!/bin/bash
 
+
+sudo gem install activesupport -v 4.2.6
+sudo gem install cocoapods
+pod
+
+/usr/bin/ruby -e \
+    "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
+
 osascript -e 'tell app "System Events" to display dialog "$ACTION_VERB XCode"'
 #osascript -e 'tell app "Finder" to display dialog "$ACTION_VERB Xcode"'
 open -a "App Store"
@@ -87,19 +95,6 @@ brew $ACTION_VERB \
     ffmpeg \
     the-unarchiver \
 
-# tools for development
-brew $ACTION_VERB \
-    tree \
-    automake \
-    autoconf \
-    dos2unix \
-    gettext	\
-    libevent \
-    libtool \
-    pkg-config \
-    pcre \
-    swig \
-
 brew $ACTION_VERB \
     zip \
     unzip \
@@ -110,6 +105,24 @@ brew $ACTION_VERB \
 
 brew $ACTION_VERB --cask \
     the-unarchiver \
+
+# tools for development
+brew $ACTION_VERB \
+    tree        \
+    automake    \
+    autoconf    \
+    dos2unix    \
+    gettext	    \
+    libevent    \
+    libtool     \
+    gradle      \
+    node        \
+    openssl     \
+    pkg-config  \
+    watchman    \
+    gettext     \
+    pcre        \
+    swig        \
 
 # Xamarin.Android xamarin-android repo
 #   user want git from brew anyway, the apple-provided one is a fossil
@@ -139,6 +152,21 @@ brew $ACTION_VERB \
     mingw-w64 \
     mingw-zlib \
     
+brew $ACTION_VERB \
+    git-lfs \
+
+# Update global git config
+sudo git lfs $ACTION_VERB
+
+# Update system git config
+sudo git lfs $ACTION_VERB --system
+
+brew $ACTION_VERB --cask \
+    github \
+    gitup \
+    diffmerge \
+    p4v \
+    menumeters \
 
 brew $ACTION_VERB \
     keepassc \
@@ -180,24 +208,6 @@ brew $ACTION_VERB \
     fwartner/tap/mac-cleanup
 
 #----------------------------------------------------------------------------------------------
-#
-brew $ACTION_VERB \
-    git-lfs \
-
-# Update global git config
-sudo git lfs $ACTION_VERB
-
-# Update system git config
-sudo git lfs $ACTION_VERB --system
-
-brew $ACTION_VERB --cask \
-    github \
-    gitup \
-    diffmerge \
-    p4v \
-    menumeters \
-
-#----------------------------------------------------------------------------------------------
 brew $ACTION_VERB --cask \
     powershell \
 
@@ -227,6 +237,8 @@ brew $ACTION_VERB \
 brew $ACTION_VERB --cask \
     inkscape \
     vlc \
+
+
 #----------------------------------------------------------------------------------------------
 #
 brew $ACTION_VERB --cask \
