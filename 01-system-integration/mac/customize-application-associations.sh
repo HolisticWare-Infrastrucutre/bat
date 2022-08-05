@@ -1,5 +1,6 @@
 #!/bin/bash
 
+# https://github.com/mvhenderson/setup/blob/master/osx.sh
 
 alias files_show='\
 defaults write com.apple.finder AppleShowAllFiles YES; \
