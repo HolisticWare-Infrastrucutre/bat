@@ -1,5 +1,20 @@
 #!/bin/bash
 
+# https://macos-defaults.com/
+defaults write com.apple.screencapture "location" -string "~/Downloads" && killall SystemUIServer
+
+
+# https://macos-defaults.com/finder/AppleShowAllExtensions.html
+defaults write NSGlobalDomain "AppleShowAllExtensions" -bool "true" && killall Finder
+
+# https://macos-defaults.com/finder/AppleShowAllFiles.html#set-to-true
+defaults write com.apple.Finder "AppleShowAllFiles" -bool "true" && killall Finder
+
+# https://macos-defaults.com/menubar/DateFormat.html#set-to-quot-eee-d-mmm-hh-mm-ss-quot
+defaults write com.apple.menuextra.clock IsAnalog -bool false
+defaults write com.apple.menuextra.clock "DateFormat" -string "\"EEE MM-dd HH:mm:ss\""  \
+    && \
+    killall SystemUIServer
 # https://github.com/herrbischoff/awesome-macos-command-line#memory-management
 # https://github.com/DannyNemer/dotfiles/blob/master/macos.sh
 # https://www.snip2code.com/Snippet/1138321/Bootstrap-Mac-OS-X-Configuration
