@@ -27,9 +27,9 @@ do
 
     echo "Template: $TEMPLATE"
     echo "      uninstalling"
-    dotnet new --uninstall  $TEMPLATE
+    dotnet new uninstall  $TEMPLATE
     echo "      installing"
-    dotnet new --install    $TEMPLATE
+    dotnet new install    $TEMPLATE
 done
 
 dotnet new --list
