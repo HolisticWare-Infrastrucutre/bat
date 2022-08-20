@@ -56,6 +56,37 @@ defaults write com.apple.finder NewWindowTargetPath \
         -string "file://localhost/Users//Shared/Projects/"
 killall Finder
 
+
+
+
+#----------------------------------------------------------------------------------------------
+# https://docs.microsoft.com/en-us/powershell/scripting/install/installing-powershell-core-on-macos?view=powershell-6
+
+export TOOLS=\
+"
+openssl
+powershell
+nuget
+vlc
+"
+
+xcode-select --install
+
+IFS=$'\n'
+# ZSH does not split words by default (like other shells):
+setopt sh_word_split
+
+for TOOL in $TOOLS;
+do
+    echo tool = $VC_EXTENSION
+    brew install --cask \
+        $TOOL
+    brew update
+    brew upgrade --cask \
+        $TOOL
+done
+#----------------------------------------------------------------------------------------------
+
 #----------------------------------------------------------------------------------------------
 # fingerprint in terminal
 sudo nano /etc/pam.d/sudo
@@ -129,8 +160,27 @@ brew $ACTION_VERB \
 brew tap \
     xamarin/xamarin-android-windeps
 
+# git shipped with MacOSx is crappy
 brew $ACTION_VERB \
     git \
+
+git config --global \
+    user.name "moljac"
+
+#Confirm that you have set the Git username correctly:
+git config --global \
+    user.name
+
+## Install GCM using Homebrew:
+
+brew tap \
+    microsoft/git
+
+brew $ACTION_VERB --cask \
+    git-credential-manager-core
+
+
+brew $ACTION_VERB \
     make \
     cmake \
     libtool \
