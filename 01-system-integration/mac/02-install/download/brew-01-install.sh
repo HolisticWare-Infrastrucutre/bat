@@ -1,48 +1,6 @@
 #!/bin/bash
 
-
-sudo gem install activesupport -v 4.2.6
-sudo gem install cocoapods
-pod
-
-/usr/bin/ruby -e \
-    "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
-
-osascript -e 'tell app "System Events" to display dialog "$ACTION_VERB XCode"'
-#osascript -e 'tell app "Finder" to display dialog "$ACTION_VERB Xcode"'
-open -a "App Store"
-
-sudo xcodebuild -license
-
-open https://visualstudio.microsoft.com/
-
-cd ~
-git clone https://github.com/moljac/bat.git
-
-# https://github.com/Homebrew/homebrew-cask/blob/master/USAGE.md
-
-/usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/$ACTION_VERB/master/$ACTION_VERB)"
-
-brew list
-brew outdated
-
-brew update
-
-# Download and update ALL software packages $ACTION_VERBed:
-
-brew upgrade
-brew upgrade --cask
-
-# To see which files would be removed as no longer needed:
-
-brew cleanup -n
-
-# No response if there is nothing to clear.
-
-# To really remove all files no longer needed:
-
-brew cleanup
-brew doctor
+source ./brew-00-prepare.sh
 
 # Action/Verb
 # $ACTION_VERB / un$ACTION_VERB / re$ACTION_VERB
@@ -217,6 +175,8 @@ brew $ACTION_VERB --cask \
     diffmerge \
     p4v \
     menumeters \
+    onyx \
+    
 
 brew $ACTION_VERB \
     keepassc \
@@ -576,7 +536,8 @@ brew \
 cd ~/Downloads/
 
 
-
+brew $ACTION_VERB \
+    mono-libgdiplus
 
 # export COMMAND="wget"
 # export COMMAND="curl -OL"
@@ -585,6 +546,9 @@ export COMMAND="boots"
 
 dotnet --list-runtimes
 dotnet --list-sdks
+
+boots \
+    https://www.eid.hr/sites/default/files/akdeid-3.10-20200316.pkg
 
 export PKGS="
 # 6
