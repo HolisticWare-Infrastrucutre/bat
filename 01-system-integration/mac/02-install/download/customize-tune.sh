@@ -155,6 +155,7 @@ defaults write com.apple.menuextra.clock FlashDateSeparators -bool true && killa
 
 
 # https://blog.jiayu.co/2018/12/quickly-configuring-hot-corners-on-macos/
+# https://apple.stackexchange.com/questions/300696/toggle-hot-corners-with-a-script
 
 defaults read com.apple.dock | grep wvous 
 
@@ -194,18 +195,18 @@ defaults read com.apple.dock | grep wvous
 # 13: Lock Screen
 
 
-# Top right screen corner → Mission Control
-defaults write com.apple.dock wvous-tr-corner -int 2
-defaults write com.apple.dock wvous-tr-modifier -int 0
-# Top right screen corner → Show application windows
-defaults write com.apple.dock wvous-tl-corner -int 3
-defaults write com.apple.dock wvous-tl-modifier -int 0
 # Bottom left screen corner → Launchpad
-defaults write com.apple.dock wvous-bl-corner -int 13
+defaults write com.apple.dock wvous-bl-corner -int 11
 defaults write com.apple.dock wvous-bl-modifier -int 0
 # Bottom right screen corner → Notification Center
 defaults write com.apple.dock wvous-br-corner -int 12
 defaults write com.apple.dock wvous-br-modifier -int 0
+# Top right screen corner → Show application windows
+defaults write com.apple.dock wvous-tl-corner -int 3
+defaults write com.apple.dock wvous-tl-modifier -int 0
+# Top right screen corner → Mission Control
+defaults write com.apple.dock wvous-tr-corner -int 2
+defaults write com.apple.dock wvous-tr-modifier -int 0
 
 killall Dock
 
