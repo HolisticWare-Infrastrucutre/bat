@@ -196,7 +196,7 @@ defaults read com.apple.dock | grep wvous
 
 
 # Bottom left screen corner → Launchpad
-defaults write com.apple.dock wvous-bl-corner -int 11
+defaults write com.apple.dock wvous-bl-corner -int 4
 defaults write com.apple.dock wvous-bl-modifier -int 0
 # Bottom right screen corner → Notification Center
 defaults write com.apple.dock wvous-br-corner -int 12
