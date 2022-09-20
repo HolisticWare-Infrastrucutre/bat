@@ -210,7 +210,20 @@ defaults write com.apple.dock wvous-tr-modifier -int 0
 
 killall Dock
 
-#!/bin/bash
+# make the shell script quit immediately in case of error. 
+#   -e means "Exit immediately if a command exits with a non-zero status".
+#   -u means "Treat unset variables as an error when substituting". 
+# The script will still work without it, but many people consider it a best practice to include it 
+# at the top of every shell script, since it makes it more likely you will catch bugs.
+set -eu
+
+# Turn off hot-corners
+for corner in tl tr br bl;
+  do
+    defaults write com.apple.dock "wvous-$corner-corner" -int 0
+  done
+killall Dock
+
 
 defaults write \
       com.apple.finder \
