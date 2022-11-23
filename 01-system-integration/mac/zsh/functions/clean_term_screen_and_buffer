@@ -1,0 +1,9 @@
+
+
+
+
+/usr/bin/osascript -e \
+    'tell application "System Events" to tell process "Terminal" to keystroke "k" using command down'
+# 'if application "Terminal" is frontmost then tell application "System Events" to keystroke "k" using command down'
+clear && printf '\e[3J'
+
