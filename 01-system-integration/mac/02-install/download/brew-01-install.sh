@@ -159,7 +159,8 @@ brew $ACTION_VERB \
     xz \
     mingw-w64 \
     mingw-zlib \
-    
+    quicktype \
+
 brew $ACTION_VERB \
     git-lfs \
 
@@ -176,6 +177,7 @@ brew $ACTION_VERB --cask \
     p4v \
     menumeters \
     onyx \
+    
     
 
 brew $ACTION_VERB \
@@ -484,6 +486,16 @@ brew $ACTION_VERB --cask \
 
 brew untap homebrew/cask-versions
 
+brew $ACTION_VERB --cask \
+    postman \
+    postman-agent \
+    protonvpn \
+
+brew $ACTION_VERB \
+    bond \
+    protobuf \
+    avro-tools \
+    
 
 brew upgrade
 brew update
