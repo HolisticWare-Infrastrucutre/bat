@@ -54,6 +54,70 @@ alias ll='ls -al'
 ## aliases cannot have arguments, using functions instead
 setopt complete_aliases
 
+# zsh parameter completion for the dotnet CLI
+
+finder_open_windows_and_tabs()
+{ 
+};
+
+dotnet_workloads_reinstall()
+{ 
+  source $HOME/bat/01-system-integration/mac/02-install/dotnet-workloads.sh
+};
+
+dotnet_tools_reinstall()
+{ 
+  source $HOME/bat/01-system-integration/mac/02-install/install-dotnet-tools.sh
+};
+
+# https://docs.microsoft.com/en-us/dotnet/core/tools/enable-tab-autocomplete
+dotnet_zsh_complete()
+{
+  local completions=("$(dotnet complete "$words")")
+
+  reply=( "${(ps:\n:)completions}" )
+}
+
+dotnet_clean()
+{
+  rm -fr .dotnet/
+  rm -fr .nuget/
+  rm -fr .mono/
+  rm -fr .npm/
+  rm -fr .omnisharp/
+
+  rm -fr .quicktype-vscode/
+  rm -fr .vs-kubernetes/
+  rm -fr .vscode-insiders/
+  rm -fr .vscode*
+}
+
+diverse_clean()
+{
+  rm -fr .cache/
+  rm -fr .cocoapods/
+  rm -fr .docker/
+  rm -fr .gitlab-runner/
+  rm -fr .gradle/
+  rm -fr .julia/
+  rm -fr .jupyter/
+  rm -fr .kube/
+
+  rm -fr .octave*
+}
+
+brew_update_upgrade()
+{
+  brew update
+  brew upgrade
+
+}
+
+
+
+
+compctl -K _dotnet_zsh_complete dotnet
+
 decompile_jar_jar()
 { 
     echo "$*"
@@ -94,20 +158,54 @@ decompile_jar_luyten()
     java -jar $HOME/bin/Luyten/luyten.jar $1
 };
 
-finder_open_windows_and_tabs()
-{ 
-  source $HOME/bat/01-system-integration/mac/01-install/install-dotnet-tools.sh
+#----------------------------------------------------------------------------------------------------------------------
+
+jdk()
+{
+      version=$1
+      unset JAVA_HOME;
+      export JAVA_HOME=$(/usr/libexec/java_home -v"$version");
+      java -version
 };
 
-dotnet_workloads_reinstall()
-{ 
-  source $HOME/bat/01-system-integration/mac/01-install/dotnet-workloads.sh
+
+#----------------------------------------------------------------------------------------------------------------------
+# Open Firefox moljac/holisticware
+
+# if firefox is opened this will open additonal tabs
+browse_moljac()
+{
+  source $HOME/bat.private/firefox-moljac.sh 
 };
 
-dotnet_tools_reinstall()
-{ 
-  source $HOME/bat/01-system-integration/mac/01-install/install-dotnet-tools.sh
+rider()
+{
+  /Applications/Rider.app/Contents/MacOS/rider $1
 };
+
+# source $HOME/bat/03-productivity/mac/clear-screen-and-term-buffer.sh
+clean_term_screen_and_buffer()
+{
+  source $HOME/bat/01-system-integration/mac/zsh/functions/clean_term_screen_and_buffer
+};
+
+brew_clean_update()
+{
+    clean_term_screen_and_buffer
+
+    # some stuff (python) needs xcode commandline tools
+    xcode-select --install
+
+    brew cleanup
+    brew autoremove
+
+    brew update
+    brew upgrade
+
+    brew cleanup
+    brew autoremove    
+};
+
 #----------------------------------------------------------------------------------------------------------------------
 
 #----------------------------------------------------------------------------------------------------------------------
@@ -117,49 +215,40 @@ export PATH="$PATH:/usr/local/share/dotnet"
 
 
 
-  #----------------------------------------------------------------------------------------------------------------------
-  # https://scriptingosx.com/2019/07/moving-to-zsh-part-4-aliases-and-functions/
+#----------------------------------------------------------------------------------------------------------------------
+# https://scriptingosx.com/2019/07/moving-to-zsh-part-4-aliases-and-functions/
 
-  echo \
-  "
-  shell functions (bash/zsh) available:
-      dotnet_updates          - update dotnet global tools
-      launch_applications     - launch applications commonly used
-      markdown_bash_execute   - execute bash code from markdown scripts (notebook/workbook styles)
-      mbe                     - 
-      disk_usage_android      - report disk usage by android installations
-  "
-  #----------------------------------------------------------------------------------------------------------------------
-  fpath=(~/bat/01-system-integration/mac/zsh/functions $fpath);
+echo \
+"
+shell functions (bash/zsh) available:
+    dotnet_updates          - update dotnet global tools
+    launch_applications     - launch applications commonly used
+    markdown_bash_execute   - execute bash code from markdown scripts (notebook/workbook styles)
+    mbe                     - 
+    disk_usage_android      - report disk usage by android installations
+"
+#----------------------------------------------------------------------------------------------------------------------
+fpath=(~/bat/01-system-integration/mac/zsh/functions $fpath);
 
-  autoload -U ~/bat/01-system-integration/mac/zsh/functions/dotnet_tools_update
-  autoload -U ~/bat/01-system-integration/mac/zsh/functions/launch_applications
-  autoload -U ~/bat/01-system-integration/mac/zsh/functions/disk_usage_android
-  autoload -U ~/bat/01-system-integration/mac/zsh/functions/markdown_bash_execute
-  autoload -U ~/bat/01-system-integration/mac/zsh/functions/mbe
-  #----------------------------------------------------------------------------------------------------------------------
+autoload -U ~/bat/01-system-integration/mac/zsh/functions/dotnet_tools_update
+autoload -U ~/bat/01-system-integration/mac/zsh/functions/launch_applications
+autoload -U ~/bat/01-system-integration/mac/zsh/functions/disk_usage_android
+autoload -U ~/bat/01-system-integration/mac/zsh/functions/markdown_bash_execute
+autoload -U ~/bat/01-system-integration/mac/zsh/functions/mbe
+#----------------------------------------------------------------------------------------------------------------------
 
 
 
-  #----------------------------------------------------------------------------------------------------------------------
-  export PATH="$PATH:/usr/local/share/dotnet"
+#----------------------------------------------------------------------------------------------------------------------
+export PATH="$PATH:/usr/local/share/dotnet"
 
-  if type brew &>/dev/null; then
-    HOMEBREW_PREFIX=/usr/local
-    if [[ -r /etc/profile.d/bash_completion.sh ]]; then
-      source /etc/profile.d/bash_completion.sh
-    else
-      for COMPLETION in /etc/bash_completion.d/*; do
-        [[ -r  ]] && source 
-      done
-    fi
+if type brew &>/dev/null; then
+  HOMEBREW_PREFIX=/usr/local
+  if [[ -r /etc/profile.d/bash_completion.sh ]]; then
+    source /etc/profile.d/bash_completion.sh
+  else
+    for COMPLETION in /etc/bash_completion.d/*; do
+      [[ -r  ]] && source 
+    done
   fi
-  #----------------------------------------------------------------------------------------------------------------------
-
-  function jdk()
-  {
-        version=$1
-        unset JAVA_HOME;
-        export JAVA_HOME=$(/usr/libexec/java_home -v"$version");
-        java -version
-  }
+fi
