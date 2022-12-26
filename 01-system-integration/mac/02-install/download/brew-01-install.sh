@@ -244,6 +244,13 @@ brew $ACTION_VERB --cask \
     onyx \
     diffmerge \
 
+# mind mapping and knowledge
+brew $ACTION_VERB --cask \
+    xmind \
+    freeplane \
+    freemind \
+    simplemind \
+
 brew $ACTION_VERB \
     caskformula/caskformula/inkscape
 brew $ACTION_VERB --cask \
