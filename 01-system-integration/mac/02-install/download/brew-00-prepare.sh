@@ -23,23 +23,4 @@ cd ~
 git clone https://github.com/moljac/bat.git
 
 
-brew list
-brew outdated
-
-brew update
-
-# Download and update ALL software packages $ACTION_VERBed:
-
-brew upgrade
-brew upgrade --cask
-
-# To see which files would be removed as no longer needed:
-
-brew cleanup -n
-
-# No response if there is nothing to clear.
-
-# To really remove all files no longer needed:
-
-brew cleanup
-brew doctor
+source ./brew-01-upgrade.sh
