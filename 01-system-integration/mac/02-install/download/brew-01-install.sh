@@ -738,6 +738,12 @@ brew $ACTION_VERB \
 
 # brew list -1 | xargs brew rm
 
+#----------------------------------------------------------------------------------------------
+
+# unoplatform
+brew $ACTION_VERB \
+    gtk+3 \
+    gnome-icon-theme \
 
 #----------------------------------------------------------------------------------------------
 # https://blog.shvetsov.com/2014/11/homebrew-cheat-sheet-and-workflow.html
