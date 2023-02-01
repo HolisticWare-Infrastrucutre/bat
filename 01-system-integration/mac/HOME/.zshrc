@@ -196,20 +196,13 @@ brew_clean_update()
     # some stuff (python) needs xcode commandline tools
     xcode-select --install
 
-    brew cleanup
-    brew autoremove
-
-    brew update
-    brew upgrade
-
-    brew cleanup
-    brew autoremove    
+    source $HOME/bat/01-system-integration/mac/02-install/download/brew-01-upgrade.sh
 };
 
 #----------------------------------------------------------------------------------------------------------------------
 
 #----------------------------------------------------------------------------------------------------------------------
-export PATH="$PATH:/usr/local/share/dotnet"
+export PATH="/usr/local/sbin/:/usr/local/share/dotnet/:$PATH"
 #----------------------------------------------------------------------------------------------------------------------
 
 
