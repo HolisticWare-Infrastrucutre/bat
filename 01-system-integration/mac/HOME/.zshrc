@@ -50,6 +50,10 @@ function disk_usage_android()
 #----------------------------------------------------------------------------------------------------------------------
 alias ll='ls -al'
 
+
+alias edge="open -a Microsoft\ Edge $1"
+# alias edge="/Applications/Microsoft\ Edge.app/Contents/MacOS/Microsoft\ Edge"
+
 #----------------------------------------------------------------------------------------------------------------------
 ## aliases cannot have arguments, using functions instead
 setopt complete_aliases
@@ -193,16 +197,40 @@ brew_clean_update()
 {
     clean_term_screen_and_buffer
 
-    # some stuff (python) needs xcode commandline tools
-    xcode-select --install
+    brew cleanup
+    brew autoremove
 
-    source $HOME/bat/01-system-integration/mac/02-install/download/brew-01-upgrade.sh
+    brew update
+    brew upgrade
+
+    brew cleanup
+    brew autoremove    
+};
+
+restore_firefox_moljac()
+{
+  source $HOME/bat.private/firefox-moljac.sh
+};
+
+restore_edge_moljac_microsoft()
+{
+  source $HOME/bat.private/edge-moljac-microsoft.sh
+};
+
+restore_edge_beta_moljac_microsoft()
+{
+  source $HOME/bat.private/edge-beta-moljac-holisticware.sh
+};
+
+restore_edge_dev_moljac_microsoft()
+{
+  source $HOME/bat.private/edge-dev-moljac-holisticware.sh
 };
 
 #----------------------------------------------------------------------------------------------------------------------
 
 #----------------------------------------------------------------------------------------------------------------------
-export PATH="/usr/local/sbin/:/usr/local/share/dotnet/:$PATH"
+export PATH="$PATH:/usr/local/share/dotnet"
 #----------------------------------------------------------------------------------------------------------------------
 
 
