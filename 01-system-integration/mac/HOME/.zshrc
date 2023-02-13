@@ -207,26 +207,56 @@ brew_clean_update()
     brew autoremove    
 };
 
-restore_firefox_moljac()
+browser_firefox_moljac()
 {
   source $HOME/bat.private/firefox-moljac.sh
 };
 
-restore_edge_moljac_microsoft()
+browser_edge_moljac_microsoft()
 {
   source $HOME/bat.private/edge-moljac-microsoft.sh
 };
 
-restore_edge_beta_moljac_microsoft()
+browser_edge_beta_moljac_microsoft()
 {
   source $HOME/bat.private/edge-beta-moljac-holisticware.sh
 };
 
-restore_edge_dev_moljac_microsoft()
+browser_edge_dev_moljac_microsoft()
 {
   source $HOME/bat.private/edge-dev-moljac-holisticware.sh
 };
 
+open_finder_code_moljac_microsoft()
+{
+  source $HOME/bat.private/finder-code-moljac-microsoft.sh
+};
+
+work_on_docs()
+{
+  source $HOME/bat/03-productivity/mac/finder-code-notes-docs.sh
+  source $HOME/bat.private/finder-code-term-moljac-microsoft.sh  
+};
+
+work_on_maui()
+{
+  source $HOME/bat.private/finder-code-term-maui.sh
+};
+
+work_on_ax_gps_fb_mlkit()
+{
+  source $HOME/bat.private/finder-code-term-xamarin-ax-gps-fb-mlkit.sh
+};
+
+work_on_ph4ct3x()
+{
+  source $HOME/bat.private/finder-code-term-ph4ct3x..sh
+};
+
+work_on_moljac_microsoft()
+{
+  source $HOME/bat.private/finder-code-term-moljac-microsoft.sh
+};
 #----------------------------------------------------------------------------------------------------------------------
 
 #----------------------------------------------------------------------------------------------------------------------
