@@ -20,7 +20,11 @@ sudo \
             maui-mobile \
             maui-windows \
             tvos \
-            wasm-tools
+            wasm-tools \
+                --from-rollback-file https://aka.ms/dotnet/maui/main.json \
+                --source https://aka.ms/dotnet6/nuget/index.json \
+                --source https://aka.ms/dotnet/maui/main.json \
+                --source https://api.nuget.org/v3/index.json
 
 sudo \
     dotnet workload \
@@ -36,5 +40,9 @@ sudo \
             maui-mobile \
             maui-windows \
             tvos \
-            wasm-tools
+            wasm-tools \
+                --from-rollback-file https://aka.ms/dotnet/maui/main.json \
+                --source https://aka.ms/dotnet6/nuget/index.json \
+                --source https://aka.ms/dotnet/maui/main.json \
+                --source https://api.nuget.org/v3/index.json
 
