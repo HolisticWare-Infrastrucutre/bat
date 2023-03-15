@@ -4,7 +4,7 @@ source ./brew-00-prepare.sh
 
 # Action/Verb
 # $ACTION_VERB / un$ACTION_VERB / re$ACTION_VERB
-export ACTION_VERB=$ACTION_VERB
+export ACTION_VERB=install
 
 defaults write com.apple.finder AppleShowAllFiles YES
 defaults write com.apple.finder _FXShowPosixPathInTitle -bool false
@@ -467,6 +467,7 @@ docker ps
 #----------------------------------------------------------------------------------------------
 # browsers
 brew tap homebrew/cask-versions
+
 brew $ACTION_VERB --cask \
     google-chrome \
     google-chrome-canary \
@@ -475,7 +476,6 @@ brew $ACTION_VERB --cask \
     microsoft-edge \
     microsoft-edge-beta \
     firefox \
-    firefox-beta \
     firefox-developer-edition \
     firefox-nightly \
     opera \
@@ -483,13 +483,19 @@ brew $ACTION_VERB --cask \
     opera-developer \
     chromium \
     tor-browser \
-    tor-browser-alpha \
     opera \
     opera-neon \
     browserosaurus \
     charles \
     chromedriver \
     opera-mobile-emulator \
+
+#   conflicts
+#   firefox-beta \
+#     tor-browser-alpha \
+
+brew $ACTION_VERB \
+    tor
 
 brew untap homebrew/cask-versions
 
