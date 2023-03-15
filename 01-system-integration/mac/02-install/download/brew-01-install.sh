@@ -3,7 +3,7 @@
 source ./brew-00-prepare.sh
 
 # Action/Verb
-# $ACTION_VERB / un$ACTION_VERB / re$ACTION_VERB
+# install / uninstall / reinstall
 export ACTION_VERB=install
 
 defaults write com.apple.finder AppleShowAllFiles YES
@@ -91,9 +91,18 @@ brew $ACTION_VERB \
     p7zip \
     rar \
     archiver \
+    snzip \
+    lrzip \
+    archiver \
+    sevenzip \
+
+
 
 brew $ACTION_VERB --cask \
     the-unarchiver \
+    winzip \
+    betterzip \
+
 
 # tools for development
 brew $ACTION_VERB \
@@ -555,6 +564,21 @@ brew $ACTION_VERB \
 brew \
     services start \
     gitlab-runner
+
+#----------------------------------------------------------------------------------------------
+
+brew $ACTION_VERB \
+    djvulibre \
+    djview4 \
+
+brew $ACTION_VERB --cask \
+    foxit-pdf-editor \
+    kindle \
+    kindle-previewer \
+    epubquicklook \
+
+
+
 #----------------------------------------------------------------------------------------------
 
 #----------------------------------------------------------------------------------------------
