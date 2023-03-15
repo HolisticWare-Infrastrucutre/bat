@@ -64,9 +64,14 @@ finder_open_windows_and_tabs()
 { 
 };
 
-dotnet_workloads_reinstall()
+nuget_nuke()
 { 
-  source $HOME/bat/01-system-integration/mac/02-install/dotnet-workloads.sh
+  source $HOME/bat/01-system-integration/mac/nuget/clean.sh
+};
+
+dotnet_workloads_install()
+{ 
+  source $HOME/bat/01-system-integration/mac/dotnet/workload/install.sh
 };
 
 dotnet_tools_reinstall()
@@ -80,15 +85,18 @@ dotnet_zsh_complete()
   local completions=("$(dotnet complete "$words")")
 
   reply=( "${(ps:\n:)completions}" )
+
+  compctl -K _dotnet_zsh_complete dotnet
 }
 
 dotnet_clean()
 {
   rm -fr .dotnet/
-  rm -fr .nuget/
+  source $HOME/bat/01-system-integration/mac/nuget/clean.sh
+
   rm -fr .mono/
-  rm -fr .npm/
   rm -fr .omnisharp/
+  rm -fr .npm/
 
   rm -fr .quicktype-vscode/
   rm -fr .vs-kubernetes/
@@ -117,10 +125,6 @@ brew_update_upgrade()
 
 }
 
-
-
-
-compctl -K _dotnet_zsh_complete dotnet
 
 decompile_jar_jar()
 { 
@@ -179,7 +183,7 @@ jdk()
 # if firefox is opened this will open additonal tabs
 browse_moljac()
 {
-  source $HOME/bat.private/firefox-moljac.sh 
+  source $HOME/bat.private/mac/firefox-moljac.sh 
 };
 
 rider()
@@ -204,38 +208,40 @@ brew_clean_update()
     brew upgrade
 
     brew cleanup
-    brew autoremove    
+    brew autoremove
+
+    source $HOME/bat/01-system-integration/mac/02-install/download/brew-01-upgrade.sh
 };
 
-browser_firefox_moljac()
+open_browser_firefox_moljac()
 {
-  source $HOME/bat.private/firefox-moljac.sh
+  source $HOME/bat.private/mac/firefox-moljac.sh
 };
 
-browser_edge_moljac_microsoft()
+open_browser_edge_moljac_microsoft()
 {
-  source $HOME/bat.private/edge-moljac-microsoft.sh
+  source $HOME/bat.private/mac/edge-moljac-microsoft.sh
 };
 
-browser_edge_beta_moljac_microsoft()
+open_browser_edge_beta_moljac_microsoft()
 {
-  source $HOME/bat.private/edge-beta-moljac-holisticware.sh
+  source $HOME/bat.private/mac/edge-beta-moljac-holisticware.sh
 };
 
-browser_edge_dev_moljac_microsoft()
+open_browser_edge_dev_moljac_microsoft()
 {
-  source $HOME/bat.private/edge-dev-moljac-holisticware.sh
+  source $HOME/bat.private/mac/edge-dev-moljac-holisticware.sh
 };
 
 open_finder_code_moljac_microsoft()
 {
-  source $HOME/bat.private/finder-code-moljac-microsoft.sh
+  source $HOME/bat.private/mac/finder-code-moljac-microsoft.sh
 };
 
 work_on_docs()
 {
   source $HOME/bat/03-productivity/mac/finder-code-notes-docs.sh
-  source $HOME/bat.private/finder-code-term-moljac-microsoft.sh  
+  source $HOME/bat.private/mac/finder-code-term-moljac-microsoft.sh  
 };
 
 work_on_maui()
@@ -250,13 +256,60 @@ work_on_ax_gps_fb_mlkit()
 
 work_on_ph4ct3x()
 {
-  source $HOME/bat.private/finder-code-term-ph4ct3x..sh
+  source $HOME/bat.private/finder-code-term-ph4ct3x.sh
 };
 
 work_on_moljac_microsoft()
 {
   source $HOME/bat.private/finder-code-term-moljac-microsoft.sh
 };
+
+work_on_moljac_holisticware()
+{
+  source $HOME/bat.private/finder-code-term-moljac-microsoft.sh
+  source $HOME/bat.private/mchwn/firefox-moljac.sh
+  source $HOME/bat.private/mchwc/firefox-moljac.sh
+};
+
+work_on_moljac()
+{
+    work_on_moljac_microsoft
+    work_on_moljac_holisticware
+};
+
+dev_android_emulator_list()
+{
+  # start Android emulator to gain some time
+  $HOME/Library/Android/sdk/emulator/emulator \
+    -list-avds
+};
+
+dev_android_emulator_launch()
+{
+  if [ $# -lt 1 ]
+  then
+    echo "Usage: dev_android_emulator_launch[1] <emulator_name>"
+
+    echo "Emulators Available:"
+    $HOME/Library/Android/sdk/emulator/emulator \
+      -list-avds
+
+    #$HOME/Library/Developer/Xamarin/android-sdk-macosx/emulator/emulator 
+    $HOME/Library/Android/sdk/emulator/emulator \
+      -avd "Pixel_XL_API_30" \
+      &
+    return
+  fi
+
+  echo "First argument: $1"
+
+  #$HOME/Library/Developer/Xamarin/android-sdk-macosx/emulator/emulator 
+  $HOME/Library/Android/sdk/emulator/emulator \
+    -avd "Pixel_XL_API_30" \
+    &
+};
+
+
 #----------------------------------------------------------------------------------------------------------------------
 
 #----------------------------------------------------------------------------------------------------------------------
@@ -281,11 +334,11 @@ shell functions (bash/zsh) available:
 #----------------------------------------------------------------------------------------------------------------------
 fpath=(~/bat/01-system-integration/mac/zsh/functions $fpath);
 
-autoload -U ~/bat/01-system-integration/mac/zsh/functions/dotnet_tools_update
-autoload -U ~/bat/01-system-integration/mac/zsh/functions/launch_applications
-autoload -U ~/bat/01-system-integration/mac/zsh/functions/disk_usage_android
-autoload -U ~/bat/01-system-integration/mac/zsh/functions/markdown_bash_execute
-autoload -U ~/bat/01-system-integration/mac/zsh/functions/mbe
+autoload -U $HOME/bat/01-system-integration/mac/zsh/functions/dotnet_tools_update
+autoload -U $HOME/bat/01-system-integration/mac/zsh/functions/launch_applications
+autoload -U $HOME/bat/01-system-integration/mac/zsh/functions/disk_usage_android
+autoload -U $HOME/bat/01-system-integration/mac/zsh/functions/markdown_bash_execute
+autoload -U $HOME/bat/01-system-integration/mac/zsh/functions/mbe
 #----------------------------------------------------------------------------------------------------------------------
 
 
