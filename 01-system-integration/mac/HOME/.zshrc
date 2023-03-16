@@ -51,7 +51,15 @@ function disk_usage_android()
 alias ll='ls -al'
 
 
+alias vs="open -aVisual\ Studio\ \(Preview\)"
+alias vsc="code -n"
+alias rider="open -a Rider"
+
 alias edge="open -a Microsoft\ Edge $1"
+alias edge_beta="open -a Microsoft\ Edge\ Beta $1"
+
+alias rstudio="open -a RStudio"
+
 # alias edge="/Applications/Microsoft\ Edge.app/Contents/MacOS/Microsoft\ Edge"
 
 #----------------------------------------------------------------------------------------------------------------------
@@ -69,10 +77,20 @@ nuget_nuke()
   source $HOME/bat/01-system-integration/mac/nuget/clean.sh
 };
 
+dotnet_info_dump()
+{ 
+  dotnet --info
+  dotnet --list-runtimes
+  dotnet --list-sdks
+  
+};
+
+
 dotnet_workloads_install()
 { 
   source $HOME/bat/01-system-integration/mac/dotnet/workload/install.sh
 };
+
 
 dotnet_tools_reinstall()
 { 
