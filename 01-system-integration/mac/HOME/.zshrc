@@ -85,7 +85,6 @@ dotnet_info_dump()
   
 };
 
-
 dotnet_workloads_install()
 { 
   source $HOME/bat/01-system-integration/mac/dotnet/workload/install.sh
@@ -95,6 +94,20 @@ dotnet_workloads_install()
 dotnet_tools_reinstall()
 { 
   source $HOME/bat/01-system-integration/mac/02-install/install-dotnet-tools.sh
+};
+
+dotnet_tool_cake_install_2_3_0()
+{ 
+  dotnet tool \
+    uninstall \
+      --global \
+        Cake.Tool
+
+  dotnet tool \
+    install \
+      --global \
+        Cake.Tool \
+          --version 2.3.0
 };
 
 # https://docs.microsoft.com/en-us/dotnet/core/tools/enable-tab-autocomplete
@@ -327,6 +340,113 @@ dev_android_emulator_launch()
     &
 };
 
+dev_dotnet_maui_new_lib ()
+{
+  TIMESTAMP=$( date "+%Y%m%d%H%M%S" )
+  echo    $TIMESTAMP
+
+  dotnet \
+      new \
+          mauilib \
+              --output ./LibraryMAUI.$TIMESTAMP
+
+
+}
+
+dev_dotnet_maui_new_app ()
+{
+  TIMESTAMP=$( date "+%Y%m%d%H%M%S" )
+  echo    $TIMESTAMP
+
+  dotnet \
+      new \
+          maui \
+              --output ./AppMAUI.$TIMESTAMP
+}
+
+dev_dotnet_maui_new_app_hybrid_blazor ()
+{
+  TIMESTAMP=$( date "+%Y%m%d%H%M%S" )
+  echo    $TIMESTAMP
+
+  dotnet \
+      new \
+          maui-blazor \
+              --output ./AppMAUI.HybridBlazor.$TIMESTAMP  
+}
+
+dev_dotnet_maui_build_lib ()
+{
+  for d in LibraryMAUI.*/ ; 
+  do
+      echo "$d"
+        dotnet \
+          build \
+            $d
+  done
+}
+
+dev_dotnet_maui_build_app ()
+{
+  for d in AppMAUI.*/ ; 
+  do
+      echo "$d"
+        dotnet \
+          build \
+            $d
+  done
+}
+
+dev_dotnet_maui_build_app_hybrid_blazor ()
+{
+  for d in AppMAUI.HybridBlazor.*/ ; 
+  do
+      echo "$d"
+        dotnet \
+          build \
+            $d
+  done
+}
+
+dev_dotnet_maui_run_app_android ()
+{
+  for d in AppMAUI.*/ ; 
+  do
+      echo "$d"
+        dotnet \
+          build \
+            $d \
+            -t:Run \
+            -f:net7.0-android
+
+  done
+}
+
+dev_dotnet_maui_run_app_ios ()
+{
+  for d in AppMAUI.*/ ; 
+  do
+      echo "$d"
+        dotnet \
+          build \
+            $d \
+            -t:Run \
+              -f:net7.0-ios \
+              -p:_DeviceName=:v2:udid=insert_UDID_here
+
+  done
+}
+
+dev_dotnet_maui_build_app_hybrid_blazor ()
+{
+  for d in AppMAUI.HybridBlazor.*/ ; 
+  do
+      echo "$d"
+        dotnet \
+          build \
+            $d
+  done
+}
 
 #----------------------------------------------------------------------------------------------------------------------
 
