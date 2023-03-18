@@ -340,6 +340,30 @@ dev_android_emulator_launch()
     &
 };
 
+dev_ios_emulator_list()
+{
+  xcrun simctl list
+};
+
+export IOS_DEVICE_ID="73FC4795-80E6-4ED9-9BB5-716206BDAFCD"
+
+dev_ios_emulator_launch()
+{
+
+  open -a Simulator \
+    --args \
+      -CurrentDeviceUDID $IOS_DEVICE_ID
+
+#  /Applications/Xcode.app/Contents/Developer/Applications/Simulator.app/Contents/MacOS/Simulator \
+#    -CurrentDeviceUDID \
+#      $DEVICE_ID
+
+# create device using xcrun simctl.
+# Boot the simulator with that device
+# xcrun simctl install <YOUR-DEVICE-ID> <PATH-TO-APPLICATION-BUNDLE>
+# xcrun simctl launch <YOUR-DEVICE-ID> <BUNDLE-ID-OF-APP-BUNDLE>      
+};
+
 dev_dotnet_maui_new_lib ()
 {
   TIMESTAMP=$( date "+%Y%m%d%H%M%S" )
@@ -432,7 +456,7 @@ dev_dotnet_maui_run_app_ios ()
             $d \
             -t:Run \
               -f:net7.0-ios \
-              -p:_DeviceName=:v2:udid=insert_UDID_here
+              -p:_DeviceName=:v2:udid=$IOS_DEVICE_ID
 
   done
 }
