@@ -53,7 +53,8 @@ alias ll='ls -al'
 
 alias vs="open -aVisual\ Studio\ \(Preview\)"
 alias vsc="code -n"
-alias rider="open -a Rider"
+# implemented as function
+# alias rider="open -a Rider"
 
 alias edge="open -a Microsoft\ Edge $1"
 alias edge_beta="open -a Microsoft\ Edge\ Beta $1"
@@ -219,7 +220,11 @@ browse_moljac()
 
 rider()
 {
-  /Applications/Rider.app/Contents/MacOS/rider $1
+  open -a \
+    Rider \
+      --args \
+        $1
+  # /Applications/Rider.app/Contents/MacOS/rider
 };
 
 # source $HOME/bat/03-productivity/mac/clear-screen-and-term-buffer.sh
@@ -349,10 +354,10 @@ export IOS_DEVICE_ID="73FC4795-80E6-4ED9-9BB5-716206BDAFCD"
 
 dev_ios_emulator_launch()
 {
-
-  open -a Simulator \
-    --args \
-      -CurrentDeviceUDID $IOS_DEVICE_ID
+  open -a \
+    Simulator \
+      --args \
+        -CurrentDeviceUDID $IOS_DEVICE_ID
 
 #  /Applications/Xcode.app/Contents/Developer/Applications/Simulator.app/Contents/MacOS/Simulator \
 #    -CurrentDeviceUDID \
@@ -399,49 +404,77 @@ dev_dotnet_maui_new_app_hybrid_blazor ()
               --output ./AppMAUI.HybridBlazor.$TIMESTAMP  
 }
 
+dev_dotnet_maui_new_all ()
+{
+  dev_dotnet_maui_new_lib
+  dev_dotnet_maui_new_app
+  dev_dotnet_maui_new_app_hybrid_blazor
+};
+
 dev_dotnet_maui_build_lib ()
 {
-  for d in LibraryMAUI.*/ ; 
+  csproj=( $(find . -name "LibraryMAUI.*.csproj") )
+  
+  for csp in ${csproj[@]} ; 
   do
-      echo "$d"
-        dotnet \
-          build \
-            $d
+    echo "$csp"
+
+    dotnet \
+      build \
+        $csp
   done
 }
 
 dev_dotnet_maui_build_app ()
 {
-  for d in AppMAUI.*/ ; 
+  csproj=( $(find . -name "AppMAUI.*.csproj") )
+  
+  for csp in ${csproj[@]} ; 
   do
-      echo "$d"
-        dotnet \
-          build \
-            $d
+    echo "$csp"
+
+    dotnet \
+      build \
+        $csp
   done
 }
 
 dev_dotnet_maui_build_app_hybrid_blazor ()
 {
-  for d in AppMAUI.HybridBlazor.*/ ; 
+  csproj=( $(find . -name "AppMAUI.HybridBlazor.*.csproj") )
+  
+  for csp in ${csproj[@]} ; 
   do
-      echo "$d"
-        dotnet \
-          build \
-            $d
+    echo "$csp"
+
+    dotnet \
+      build \
+        $csp
   done
 }
 
+dev_dotnet_maui_build_all ()
+{
+  dev_dotnet_maui_build_lib
+  dev_dotnet_maui_build_app
+  dev_dotnet_maui_build_app_hybrid_blazor
+};
+
 dev_dotnet_maui_run_app_android ()
 {
+  echo $1
+  echo $2
+  echo $3
+
   for d in AppMAUI.*/ ; 
   do
-      echo "$d"
-        dotnet \
-          build \
-            $d \
-            -t:Run \
-            -f:net7.0-android
+    echo "$d"
+
+    dotnet \
+      build \
+        $d \
+        -t:Run \
+        -f:net7.0-android
 
   done
 }
@@ -450,14 +483,14 @@ dev_dotnet_maui_run_app_ios ()
 {
   for d in AppMAUI.*/ ; 
   do
-      echo "$d"
-        dotnet \
-          build \
-            $d \
-            -t:Run \
-              -f:net7.0-ios \
-              -p:_DeviceName=:v2:udid=$IOS_DEVICE_ID
+    echo "$d"
 
+    dotnet \
+      build \
+        $d \
+        -t:Run \
+          -f:net7.0-ios \
+          -p:_DeviceName=:v2:udid=$IOS_DEVICE_ID
   done
 }
 
