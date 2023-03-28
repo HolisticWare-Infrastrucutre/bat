@@ -267,6 +267,11 @@ brew $ACTION_VERB --cask \
     vlc \
 
 
+# pdf2ascii
+brew $ACTION_VERB \
+    ghostscript \
+
+
 #----------------------------------------------------------------------------------------------
 #
 brew $ACTION_VERB --cask \
