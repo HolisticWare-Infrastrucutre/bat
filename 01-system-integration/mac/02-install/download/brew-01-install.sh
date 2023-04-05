@@ -553,6 +553,13 @@ brew $ACTION_VERB --cask \
 
     
 brew $ACTION_VERB --cask \
+    master-pdf-editor \
+    foxit-pdf-editor \
+    pdf-expert \
+    pdfpen \
+    sejda-pdf \
+
+brew $ACTION_VERB --cask \
     microsoft-office \
     thunderbird \
 
@@ -795,6 +802,8 @@ brew $ACTION_VERB \
     python3 \
     julia \
 
+brew $ACTION_VERB --cask \
+    R \
 
 brew $ACTION_VERB --cask \
     homebrew/cask-versions/adoptopenjdk8 \
