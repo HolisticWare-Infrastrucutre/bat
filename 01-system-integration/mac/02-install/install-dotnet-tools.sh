@@ -3,6 +3,7 @@
 
 export TOOLZ=\
 "
+dotnet-suggest
 boots
 cake.tool
 # Xamarin.Android
@@ -32,6 +33,8 @@ dotnet-trace
 dotnet-counters
 dotnet-dump
 dotnet-gcdump
+dotnet-validate
+ilspycmd
 Microsoft.dotnet-interactive
 dotnet-retire
 microsoft.tye 
@@ -61,10 +64,18 @@ do
         continue
     fi
 
-    echo Tool: $TOOL
-    dotnet tool uninstall   --global  $TOOL
-    dotnet tool install     --global  $TOOL     --version "*-*"
-done
+    echo "Tool: $TOOL"
+    echo "      uninstalling"
+    dotnet tool uninstall   --global \
+            $TOOL \
+            --version "*-*" \
+            --verbosity diagnostic
 
+    echo "      installing"
+    dotnet tool install     --global \
+            $TOOL \
+            --version "*-*" \
+            --verbosity diagnostic
+done
 
 dotnet tool list --global

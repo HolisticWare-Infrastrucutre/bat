@@ -24,7 +24,7 @@ export ANDROID_HOME_ANDROID_STUDIO=$HOME/Library/Android/sdk
 # installed with brew
 export ANDROID_HOME_BREW=/usr/local/share/android-sdk
 
-export ANDROID_HOME=$ANDROID_HOME_ANDROID_STUDIO
+export ANDROID_HOME=$ANDROID_HOME_XAMARIN
 export ANDROID_SDK_ROOT=$ANDROID_HOME
 
 export AndroidSdkDirectory=$ANDROID_HOME
@@ -50,77 +50,9 @@ function disk_usage_android()
 #----------------------------------------------------------------------------------------------------------------------
 alias ll='ls -al'
 
-
-alias edge="open -a Microsoft\ Edge $1"
-# alias edge="/Applications/Microsoft\ Edge.app/Contents/MacOS/Microsoft\ Edge"
-
 #----------------------------------------------------------------------------------------------------------------------
 ## aliases cannot have arguments, using functions instead
 setopt complete_aliases
-
-# zsh parameter completion for the dotnet CLI
-
-finder_open_windows_and_tabs()
-{ 
-};
-
-dotnet_workloads_reinstall()
-{ 
-  source $HOME/bat/01-system-integration/mac/02-install/dotnet-workloads.sh
-};
-
-dotnet_tools_reinstall()
-{ 
-  source $HOME/bat/01-system-integration/mac/02-install/install-dotnet-tools.sh
-};
-
-# https://docs.microsoft.com/en-us/dotnet/core/tools/enable-tab-autocomplete
-dotnet_zsh_complete()
-{
-  local completions=("$(dotnet complete "$words")")
-
-  reply=( "${(ps:\n:)completions}" )
-}
-
-dotnet_clean()
-{
-  rm -fr .dotnet/
-  rm -fr .nuget/
-  rm -fr .mono/
-  rm -fr .npm/
-  rm -fr .omnisharp/
-
-  rm -fr .quicktype-vscode/
-  rm -fr .vs-kubernetes/
-  rm -fr .vscode-insiders/
-  rm -fr .vscode*
-}
-
-diverse_clean()
-{
-  rm -fr .cache/
-  rm -fr .cocoapods/
-  rm -fr .docker/
-  rm -fr .gitlab-runner/
-  rm -fr .gradle/
-  rm -fr .julia/
-  rm -fr .jupyter/
-  rm -fr .kube/
-
-  rm -fr .octave*
-}
-
-brew_update_upgrade()
-{
-  brew update
-  brew upgrade
-
-}
-
-
-
-
-compctl -K _dotnet_zsh_complete dotnet
 
 decompile_jar_jar()
 { 
@@ -160,102 +92,6 @@ decompile_jar_luyten()
     echo "Drag & Drop jar to decompile..."
     echo "Luyten has no commandline support [yet]"
     java -jar $HOME/bin/Luyten/luyten.jar $1
-};
-
-#----------------------------------------------------------------------------------------------------------------------
-
-jdk()
-{
-      version=$1
-      unset JAVA_HOME;
-      export JAVA_HOME=$(/usr/libexec/java_home -v"$version");
-      java -version
-};
-
-
-#----------------------------------------------------------------------------------------------------------------------
-# Open Firefox moljac/holisticware
-
-# if firefox is opened this will open additonal tabs
-browse_moljac()
-{
-  source $HOME/bat.private/firefox-moljac.sh 
-};
-
-rider()
-{
-  /Applications/Rider.app/Contents/MacOS/rider $1
-};
-
-# source $HOME/bat/03-productivity/mac/clear-screen-and-term-buffer.sh
-clean_term_screen_and_buffer()
-{
-  source $HOME/bat/01-system-integration/mac/zsh/functions/clean_term_screen_and_buffer
-};
-
-brew_clean_update()
-{
-    clean_term_screen_and_buffer
-
-    brew cleanup
-    brew autoremove
-
-    brew update
-    brew upgrade
-
-    brew cleanup
-    brew autoremove    
-};
-
-browser_firefox_moljac()
-{
-  source $HOME/bat.private/firefox-moljac.sh
-};
-
-browser_edge_moljac_microsoft()
-{
-  source $HOME/bat.private/edge-moljac-microsoft.sh
-};
-
-browser_edge_beta_moljac_microsoft()
-{
-  source $HOME/bat.private/edge-beta-moljac-holisticware.sh
-};
-
-browser_edge_dev_moljac_microsoft()
-{
-  source $HOME/bat.private/edge-dev-moljac-holisticware.sh
-};
-
-open_finder_code_moljac_microsoft()
-{
-  source $HOME/bat.private/finder-code-moljac-microsoft.sh
-};
-
-work_on_docs()
-{
-  source $HOME/bat/03-productivity/mac/finder-code-notes-docs.sh
-  source $HOME/bat.private/finder-code-term-moljac-microsoft.sh  
-};
-
-work_on_maui()
-{
-  source $HOME/bat.private/finder-code-term-maui.sh
-};
-
-work_on_ax_gps_fb_mlkit()
-{
-  source $HOME/bat.private/finder-code-term-xamarin-ax-gps-fb-mlkit.sh
-};
-
-work_on_ph4ct3x()
-{
-  source $HOME/bat.private/finder-code-term-ph4ct3x..sh
-};
-
-work_on_moljac_microsoft()
-{
-  source $HOME/bat.private/finder-code-term-moljac-microsoft.sh
 };
 #----------------------------------------------------------------------------------------------------------------------
 
@@ -303,3 +139,12 @@ if type brew &>/dev/null; then
     done
   fi
 fi
+#----------------------------------------------------------------------------------------------------------------------
+
+function jdk()
+{
+      version=$1
+      unset JAVA_HOME;
+      export JAVA_HOME=$(/usr/libexec/java_home -v"$version");
+      java -version
+}

@@ -1,5 +1,20 @@
 #!/bin/bash
 
+# https://macos-defaults.com/
+defaults write com.apple.screencapture "location" -string "~/Downloads" && killall SystemUIServer
+
+
+# https://macos-defaults.com/finder/AppleShowAllExtensions.html
+defaults write NSGlobalDomain "AppleShowAllExtensions" -bool "true" && killall Finder
+
+# https://macos-defaults.com/finder/AppleShowAllFiles.html#set-to-true
+defaults write com.apple.Finder "AppleShowAllFiles" -bool "true" && killall Finder
+
+# https://macos-defaults.com/menubar/DateFormat.html#set-to-quot-eee-d-mmm-hh-mm-ss-quot
+defaults write com.apple.menuextra.clock IsAnalog -bool false
+defaults write com.apple.menuextra.clock "DateFormat" -string "\"EEE MM-dd HH:mm:ss\""  \
+    && \
+    killall SystemUIServer
 # https://github.com/herrbischoff/awesome-macos-command-line#memory-management
 # https://github.com/DannyNemer/dotfiles/blob/master/macos.sh
 # https://www.snip2code.com/Snippet/1138321/Bootstrap-Mac-OS-X-Configuration
@@ -140,6 +155,7 @@ defaults write com.apple.menuextra.clock FlashDateSeparators -bool true && killa
 
 
 # https://blog.jiayu.co/2018/12/quickly-configuring-hot-corners-on-macos/
+# https://apple.stackexchange.com/questions/300696/toggle-hot-corners-with-a-script
 
 defaults read com.apple.dock | grep wvous 
 
@@ -179,22 +195,35 @@ defaults read com.apple.dock | grep wvous
 # 13: Lock Screen
 
 
-# Top right screen corner → Mission Control
-defaults write com.apple.dock wvous-tr-corner -int 2
-defaults write com.apple.dock wvous-tr-modifier -int 0
-# Top right screen corner → Show application windows
-defaults write com.apple.dock wvous-tl-corner -int 3
-defaults write com.apple.dock wvous-tl-modifier -int 0
 # Bottom left screen corner → Launchpad
-defaults write com.apple.dock wvous-bl-corner -int 13
+defaults write com.apple.dock wvous-bl-corner -int 4
 defaults write com.apple.dock wvous-bl-modifier -int 0
 # Bottom right screen corner → Notification Center
 defaults write com.apple.dock wvous-br-corner -int 12
 defaults write com.apple.dock wvous-br-modifier -int 0
+# Top right screen corner → Show application windows
+defaults write com.apple.dock wvous-tl-corner -int 3
+defaults write com.apple.dock wvous-tl-modifier -int 0
+# Top right screen corner → Mission Control
+defaults write com.apple.dock wvous-tr-corner -int 2
+defaults write com.apple.dock wvous-tr-modifier -int 0
 
 killall Dock
 
-#!/bin/bash
+# make the shell script quit immediately in case of error. 
+#   -e means "Exit immediately if a command exits with a non-zero status".
+#   -u means "Treat unset variables as an error when substituting". 
+# The script will still work without it, but many people consider it a best practice to include it 
+# at the top of every shell script, since it makes it more likely you will catch bugs.
+set -eu
+
+# Turn off hot-corners
+for corner in tl tr br bl;
+  do
+    defaults write com.apple.dock "wvous-$corner-corner" -int 0
+  done
+killall Dock
+
 
 defaults write \
       com.apple.finder \

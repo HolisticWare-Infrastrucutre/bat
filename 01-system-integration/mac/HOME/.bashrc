@@ -1,12 +1,15 @@
-
-PS1='\w\$ '
+setopt PROMPT_SUBST
+# PROMPT='%{$(pwd|grep --color=always /)%${#PWD}G%} %(!.%F{red}.%F{cyan})%n%f@%F{yellow}%m%f%(!.%F{red}.)%#%f '
+# PROMPT='$fg[cyan]%m:$fg[yellow] %T %B%30<..<%~%b %(!.#.>) '
+PROMPT='%F{yellow}%3~%f %# '
 
 #----------------------------------------------------------------------------------------------------------------------
 export JAVA_HOME_ZULU=/Library/Java/JavaVirtualMachines/zulu-8.jdk/Contents/Home
 export JAVA_HOME_CORRETO=/Library/Java/JavaVirtualMachines/amazon-corretto-8.jdk/Contents/Home
 export JAVA_HOME_ADOPTOPENJDK=/Library/Java/JavaVirtualMachines/adoptopenjdk-8.jdk/Contents/Home
 export JAVA_HOME_ANDROID_STUDIO=/Applications/Android\ Studio.app/Contents/jre/jdk/Contents/Home
-export JAVA_HOME_MICROSOFT=$HOME/Library/Developer/Xamarin/jdk/microsoft_dist_openjdk_1.8.0.25
+# export JAVA_HOME_MICROSOFT=$HOME/Library/Developer/Xamarin/jdk/microsoft_dist_openjdk_1.8.0.25
+export JAVA_HOME_MICROSOFT=/Library/Java/JavaVirtualMachines/microsoft-11.jdk/Contents/Home
 
 export JAVA_HOME=$JAVA_HOME_MICROSOFT
 #----------------------------------------------------------------------------------------------------------------------
@@ -21,7 +24,7 @@ export ANDROID_HOME_ANDROID_STUDIO=$HOME/Library/Android/sdk
 # installed with brew
 export ANDROID_HOME_BREW=/usr/local/share/android-sdk
 
-export ANDROID_HOME=$ANDROID_HOME_XAMARIN
+export ANDROID_HOME=$ANDROID_HOME_ANDROID_STUDIO
 export ANDROID_SDK_ROOT=$ANDROID_HOME
 
 export AndroidSdkDirectory=$ANDROID_HOME
@@ -46,50 +49,249 @@ function disk_usage_android()
 
 #----------------------------------------------------------------------------------------------------------------------
 alias ll='ls -al'
-#----------------------------------------------------------------------------------------------------------------------
+
+
+alias edge="open -a Microsoft\ Edge $1"
+# alias edge="/Applications/Microsoft\ Edge.app/Contents/MacOS/Microsoft\ Edge"
 
 #----------------------------------------------------------------------------------------------------------------------
-# https://docs.microsoft.com/en-US/dotnet/core/install/macos#dependencies
-export PATH=$PATH:$HOME/dotnet
-export DOTNET_ROOT=$HOME/dotnet:/usr/local/share/dotnet
-export PATH=$PATH:/usr/local/share/dotnet
+## aliases cannot have arguments, using functions instead
+setopt complete_aliases
 
-function dotnet_tools_update()
+# zsh parameter completion for the dotnet CLI
+
+finder_open_windows_and_tabs()
+{ 
+};
+
+dotnet_workloads_reinstall()
+{ 
+  source $HOME/bat/01-system-integration/mac/02-install/dotnet-workloads.sh
+};
+
+dotnet_tools_reinstall()
+{ 
+  source $HOME/bat/01-system-integration/mac/02-install/install-dotnet-tools.sh
+};
+
+# https://docs.microsoft.com/en-us/dotnet/core/tools/enable-tab-autocomplete
+dotnet_zsh_complete()
 {
-  dotnet tool uninstall 	-g Cake.Tool
-  dotnet tool install 	  -g Cake.Tool	
-  dotnet tool uninstall 	-g Xamarin.AndroidBinderator.Tool
-  dotnet tool install 	  -g Xamarin.AndroidBinderator.Tool	
-  dotnet tool uninstall   -g Xamarin.AndroidX.Migration.Tool
-  dotnet tool install     -g Xamarin.AndroidX.Migration.Tool
+  local completions=("$(dotnet complete "$words")")
+
+  reply=( "${(ps:\n:)completions}" )
 }
+
+dotnet_clean()
+{
+  rm -fr .dotnet/
+  rm -fr .nuget/
+  rm -fr .mono/
+  rm -fr .npm/
+  rm -fr .omnisharp/
+
+  rm -fr .quicktype-vscode/
+  rm -fr .vs-kubernetes/
+  rm -fr .vscode-insiders/
+  rm -fr .vscode*
+}
+
+diverse_clean()
+{
+  rm -fr .cache/
+  rm -fr .cocoapods/
+  rm -fr .docker/
+  rm -fr .gitlab-runner/
+  rm -fr .gradle/
+  rm -fr .julia/
+  rm -fr .jupyter/
+  rm -fr .kube/
+
+  rm -fr .octave*
+}
+
+brew_update_upgrade()
+{
+  brew update
+  brew upgrade
+
+}
+
+
+
+
+compctl -K _dotnet_zsh_complete dotnet
+
+decompile_jar_jar()
+{ 
+    echo "$*"
+    echo "using jar to decompile" $1
+    echo "jar tf $1"
+    jar tf $1
+};
+
+decompile_jar_unzip()
+{ 
+    echo "$*"
+    echo "using unzip to decompile" $1
+    echo "unzip -l $1"
+    unzip -l $1
+};
+
+decompile_jar_jadx()
+{ 
+    echo "$*"
+    echo "using jadx to decompile" $1
+    echo "-------------------------------------------------------------------------------"
+    $HOME/bin/jd-gui/bin/jadx --help
+    export TIMESTAMP=$(date +%Y-%m-%dT%H-%M-%S)
+    echo "-------------------------------------------------------------------------------"
+    echo "$HOME/bin/jd-gui/bin/jadx $1"
+    $HOME/bin/jd-gui/bin/jadx \
+      --output-dir hw-jadx-$TIMESTAMP \
+      $1 
+};
+
+decompile_jar_luyten()
+{ 
+    echo "$*"
+    echo "launching luyten to decompile" $1.
+    echo "java -jar $HOME/bin/Luyten/luyten.jar"
+    echo "Drag & Drop jar to decompile..."
+    echo "Luyten has no commandline support [yet]"
+    java -jar $HOME/bin/Luyten/luyten.jar $1
+};
+
 #----------------------------------------------------------------------------------------------------------------------
-echo "\
-shell functions (bash/zsh) available: \
-    mbe               - 
-    dotnet_updates    - 
-"
+
+jdk()
+{
+      version=$1
+      unset JAVA_HOME;
+      export JAVA_HOME=$(/usr/libexec/java_home -v"$version");
+      java -version
+};
+
+
+#----------------------------------------------------------------------------------------------------------------------
+# Open Firefox moljac/holisticware
+
+# if firefox is opened this will open additonal tabs
+browse_moljac()
+{
+  source $HOME/bat.private/firefox-moljac.sh 
+};
+
+rider()
+{
+  /Applications/Rider.app/Contents/MacOS/rider $1
+};
+
+# source $HOME/bat/03-productivity/mac/clear-screen-and-term-buffer.sh
+clean_term_screen_and_buffer()
+{
+  source $HOME/bat/01-system-integration/mac/zsh/functions/clean_term_screen_and_buffer
+};
+
+brew_clean_update()
+{
+    clean_term_screen_and_buffer
+
+    brew cleanup
+    brew autoremove
+
+    brew update
+    brew upgrade
+
+    brew cleanup
+    brew autoremove    
+};
+
+browser_firefox_moljac()
+{
+  source $HOME/bat.private/firefox-moljac.sh
+};
+
+browser_edge_moljac_microsoft()
+{
+  source $HOME/bat.private/edge-moljac-microsoft.sh
+};
+
+browser_edge_beta_moljac_microsoft()
+{
+  source $HOME/bat.private/edge-beta-moljac-holisticware.sh
+};
+
+browser_edge_dev_moljac_microsoft()
+{
+  source $HOME/bat.private/edge-dev-moljac-holisticware.sh
+};
+
+open_finder_code_moljac_microsoft()
+{
+  source $HOME/bat.private/finder-code-moljac-microsoft.sh
+};
+
+work_on_docs()
+{
+  source $HOME/bat/03-productivity/mac/finder-code-notes-docs.sh
+  source $HOME/bat.private/finder-code-term-moljac-microsoft.sh  
+};
+
+work_on_maui()
+{
+  source $HOME/bat.private/finder-code-term-maui.sh
+};
+
+work_on_ax_gps_fb_mlkit()
+{
+  source $HOME/bat.private/finder-code-term-xamarin-ax-gps-fb-mlkit.sh
+};
+
+work_on_ph4ct3x()
+{
+  source $HOME/bat.private/finder-code-term-ph4ct3x..sh
+};
+
+work_on_moljac_microsoft()
+{
+  source $HOME/bat.private/finder-code-term-moljac-microsoft.sh
+};
+#----------------------------------------------------------------------------------------------------------------------
+
+#----------------------------------------------------------------------------------------------------------------------
+export PATH="$PATH:/usr/local/share/dotnet"
+#----------------------------------------------------------------------------------------------------------------------
+
+
 
 
 #----------------------------------------------------------------------------------------------------------------------
 # https://scriptingosx.com/2019/07/moving-to-zsh-part-4-aliases-and-functions/
 
+echo \
+"
+shell functions (bash/zsh) available:
+    dotnet_updates          - update dotnet global tools
+    launch_applications     - launch applications commonly used
+    markdown_bash_execute   - execute bash code from markdown scripts (notebook/workbook styles)
+    mbe                     - 
+    disk_usage_android      - report disk usage by android installations
+"
+#----------------------------------------------------------------------------------------------------------------------
+fpath=(~/bat/01-system-integration/mac/zsh/functions $fpath);
 
-# markdown bash execute
-function mbe() 
-{
-  if [ -f "" ]; then
-    cat  | # print the file
-    sed -n '/```bash/,/```/p' | # get the bash code blocks
-    sed 's/```bash//g' | #  remove the ```bash
-    sed 's/```//g' | # remove the trailing ```
-    sed '/^$/d' | # remove empty lines
-    /usr/bin/env sh ; # execute the command
-  else
-    echo " is not valid" ;
-  fi
-}
+autoload -U ~/bat/01-system-integration/mac/zsh/functions/dotnet_tools_update
+autoload -U ~/bat/01-system-integration/mac/zsh/functions/launch_applications
+autoload -U ~/bat/01-system-integration/mac/zsh/functions/disk_usage_android
+autoload -U ~/bat/01-system-integration/mac/zsh/functions/markdown_bash_execute
+autoload -U ~/bat/01-system-integration/mac/zsh/functions/mbe
+#----------------------------------------------------------------------------------------------------------------------
 
+
+
+#----------------------------------------------------------------------------------------------------------------------
+export PATH="$PATH:/usr/local/share/dotnet"
 
 if type brew &>/dev/null; then
   HOMEBREW_PREFIX=/usr/local
@@ -101,4 +303,3 @@ if type brew &>/dev/null; then
     done
   fi
 fi
-#----------------------------------------------------------------------------------------------------------------------

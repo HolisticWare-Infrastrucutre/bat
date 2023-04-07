@@ -1,5 +1,35 @@
 #!/bin/bash
 
+# https://github.com/mvhenderson/setup/blob/master/osx.sh
+
+alias files_show='\
+defaults write com.apple.finder AppleShowAllFiles YES; \
+killall Finder \
+/System/Library/CoreServices/Finder.app\
+'
+
+defaults write com.apple.finder AppleShowAllFiles YES; \
+killall Finder \
+/System/Library/CoreServices/Finder.app\
+
+
+alias files_hide='\
+defaults write com.apple.finder AppleShowAllFiles NO; \
+killall Finder \
+/System/Library/CoreServices/Finder.app\
+'
+
+defaults write com.apple.finder AppleShowAllFiles NO; \
+killall Finder \
+/System/Library/CoreServices/Finder.app\
+
+defaults write com.apple.finder AppleShowAllFiles YES
+
+killall Finder
+/System/Library/CoreServices/Finder.app
+
+
+
 function usage()
 {
     echo "Mac OSX customization script - file associations for apps:"

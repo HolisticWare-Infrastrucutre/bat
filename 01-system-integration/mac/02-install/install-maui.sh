@@ -3,7 +3,7 @@
 # 1. Ensure the pwsh or powershell command is in PATH
 # 2. Ensure the script uses Unix-style line endings (\n, not \r\n)
 
-dotnet nuget locals all --clear
+source $HOME/bat/01-system-integration/mac/01-uninstall-clean-remove-nuke/nuget.sh
 
 dotnet tool list --global
 

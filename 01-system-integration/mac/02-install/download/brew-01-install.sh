@@ -1,40 +1,6 @@
 #!/bin/bash
 
-osascript -e 'tell app "System Events" to display dialog "Install XCode"'
-#osascript -e 'tell app "Finder" to display dialog "Install Xcode"'
-open -a "App Store"
-
-sudo xcodebuild -license
-
-open https://visualstudio.microsoft.com/
-
-cd ~
-git clone https://github.com/moljac/bat.git
-
-# https://github.com/Homebrew/homebrew-cask/blob/master/USAGE.md
-
-/usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
-
-brew list
-brew outdated
-
-brew update
-
-# Download and update ALL software packages installed:
-
-brew upgrade
-brew upgrade --cask
-
-# To see which files would be removed as no longer needed:
-
-brew cleanup -n
-
-# No response if there is nothing to clear.
-
-# To really remove all files no longer needed:
-
-brew cleanup
-brew doctor
+source ./brew-00-prepare.sh
 
 # Action/Verb
 # install / uninstall / reinstall
@@ -44,7 +10,40 @@ defaults write com.apple.finder AppleShowAllFiles YES
 defaults write com.apple.finder _FXShowPosixPathInTitle -bool false
 # defaults write com.apple.finder _FXShowPosixPathInTitle -bool YES && killall Finder
 # defaults write com.apple.finder _FXShowPosixPathInTitle -bool NO && killall Finder
+defaults write com.apple.finder NewWindowTargetPath \
+        -string "file://localhost/Users//Shared/Projects/"
 killall Finder
+
+
+
+
+#----------------------------------------------------------------------------------------------
+# https://docs.microsoft.com/en-us/powershell/scripting/install/installing-powershell-core-on-macos?view=powershell-6
+
+export TOOLS=\
+"
+openssl
+powershell
+nuget
+vlc
+"
+
+xcode-select --install
+
+IFS=$'\n'
+# ZSH does not split words by default (like other shells):
+setopt sh_word_split
+
+for TOOL in $TOOLS;
+do
+    echo tool = $VC_EXTENSION
+    brew install --cask \
+        $TOOL
+    brew update
+    brew upgrade --cask \
+        $TOOL
+done
+#----------------------------------------------------------------------------------------------
 
 #----------------------------------------------------------------------------------------------
 # fingerprint in terminal
@@ -55,14 +54,14 @@ sudo nano /etc/pam.d/sudo
 #----------------------------------------------------------------------------------------------
 # sudo softwareupdate --list for example will present the list of apps that are set to update. 
 #
-#sudo softwareupdate --install {app-name}
+#sudo softwareupdate --$ACTION_VERB {app-name}
 
-sudo softwareupdate --install amphetamine
+sudo softwareupdate --$ACTION_VERB amphetamine
 #----------------------------------------------------------------------------------------------
 
 #----------------------------------------------------------------------------------------------
 # https://github.com/mas-cli/mas
-brew install -y \
+brew $ACTION_VERB -y \
     mas
 
 mas list
@@ -85,36 +84,70 @@ brew $ACTION_VERB \
     ffmpeg \
     the-unarchiver \
 
-# tools for development
 brew $ACTION_VERB \
-    tree \
-    automake \
-    autoconf \
-    dos2unix \
-    gettext	\
-    libevent \
-    libtool \
-    pkg-config \
-    pcre \
-    swig \
-
-brew install \
     zip \
     unzip \
     fuse-zip \
     p7zip \
     rar \
     archiver \
+    snzip \
+    lrzip \
+    archiver \
+    sevenzip \
 
-brew install --cask \
+
+
+brew $ACTION_VERB --cask \
     the-unarchiver \
+    winzip \
+    betterzip \
+
+
+# tools for development
+brew $ACTION_VERB \
+    tree        \
+    automake    \
+    autoconf    \
+    dos2unix    \
+    gettext	    \
+    libevent    \
+    libtool     \
+    gradle      \
+    node        \
+    openssl     \
+    pkg-config  \
+    watchman    \
+    gettext     \
+    pcre        \
+    swig        \
 
 # Xamarin.Android xamarin-android repo
 #   user want git from brew anyway, the apple-provided one is a fossil
 brew tap \
     xamarin/xamarin-android-windeps
+
+# git shipped with MacOSx is crappy
 brew $ACTION_VERB \
     git \
+
+git config --global \
+    user.name "moljac"
+
+#Confirm that you have set the Git username correctly:
+git config --global \
+    user.name
+
+## Install GCM using Homebrew:
+
+brew tap \
+    microsoft/git
+
+brew $ACTION_VERB --cask \
+    git-credential-manager-core
+
+
+brew $ACTION_VERB \
     make \
     cmake \
     libtool \
@@ -135,46 +168,8 @@ brew $ACTION_VERB \
     xz \
     mingw-w64 \
     mingw-zlib \
-    
+    quicktype \
 
-brew $ACTION_VERB \
-    keepassc \
-    keepassx \
-
-    
-
-# plugins for zsh (nvm)
-brew $ACTION_VERB \
-    antigen \
-
-
-echo \
-"
-#!/bin/zsh
-
-source /usr/local/share/antigen/antigen.zsh
-antigen bundle lukechilds/zsh-nvm
-antigen apply
-" \
->> $HOME/.zshrc
-
-nvm install --lts
-nvm use --lts
-
-# 2 hrs
-caffeinate -t 7200 &
-
-brew $ACTION_VERB --cask \
-    caffeine \
-    menumeters \
-
-
-brew tap fwartner/tap
-brew install \
-    fwartner/tap/mac-cleanup
-
-#----------------------------------------------------------------------------------------------
-#
 brew $ACTION_VERB \
     git-lfs \
 
@@ -190,6 +185,48 @@ brew $ACTION_VERB --cask \
     diffmerge \
     p4v \
     menumeters \
+    onyx \
+    
+    
+
+brew $ACTION_VERB \
+    keepassc \
+    keepassx \
+
+    
+
+# plugins for zsh (nvm)
+brew $ACTION_VERB \
+    duti \
+
+
+brew $ACTION_VERB \
+    antigen \
+
+echo \
+"
+#!/bin/zsh
+
+source /usr/local/share/antigen/antigen.zsh
+antigen bundle lukechilds/zsh-nvm
+antigen apply
+" \
+>> $HOME/.zshrc
+
+nvm $ACTION_VERB --lts
+nvm use --lts
+
+# 2 hrs
+caffeinate -t 7200 &
+
+brew $ACTION_VERB --cask \
+    caffeine \
+    menumeters \
+
+
+brew tap fwartner/tap
+brew $ACTION_VERB \
+    fwartner/tap/mac-cleanup
 
 #----------------------------------------------------------------------------------------------
 brew $ACTION_VERB --cask \
@@ -216,9 +253,25 @@ brew $ACTION_VERB --cask \
     onyx \
     diffmerge \
 
-brew install caskformula/caskformula/inkscape
-brew install --cask \
-    inkscape
+# mind mapping and knowledge
+brew $ACTION_VERB --cask \
+    xmind \
+    freeplane \
+    freemind \
+    simplemind \
+
+brew $ACTION_VERB \
+    caskformula/caskformula/inkscape
+brew $ACTION_VERB --cask \
+    inkscape \
+    vlc \
+
+
+# pdf2ascii
+brew $ACTION_VERB \
+    ghostscript \
+
+
 #----------------------------------------------------------------------------------------------
 #
 brew $ACTION_VERB --cask \
@@ -296,7 +349,7 @@ brew $ACTION_VERB \
     flatbuffers \
 
 
-# https://stackoverflow.com/questions/52524112/how-do-i-install-java-on-mac-osx-allowing-version-switching
+# https://stackoverflow.com/questions/52524112/how-do-i-$ACTION_VERB-java-on-mac-osx-allowing-version-switching
 
 # https://github.com/Homebrew/homebrew-cask/blob/master/Casks/adoptopenjdk.rb
 # https://github.com/AdoptOpenJDK/homebrew-openjdk/tree/master/Casks
@@ -415,7 +468,7 @@ brew $ACTION_VERB --cask \
 
 boots https://desktop.docker.com/mac/stable/amd64/Docker.dmg
 
-pip3 install docker-compose
+pip3 $ACTION_VERB docker-compose
 open -a Docker
 docker-compose
 
@@ -428,6 +481,7 @@ docker ps
 #----------------------------------------------------------------------------------------------
 # browsers
 brew tap homebrew/cask-versions
+
 brew $ACTION_VERB --cask \
     google-chrome \
     google-chrome-canary \
@@ -436,7 +490,6 @@ brew $ACTION_VERB --cask \
     microsoft-edge \
     microsoft-edge-beta \
     firefox \
-    firefox-beta \
     firefox-developer-edition \
     firefox-nightly \
     opera \
@@ -444,7 +497,6 @@ brew $ACTION_VERB --cask \
     opera-developer \
     chromium \
     tor-browser \
-    tor-browser-alpha \
     opera \
     opera-neon \
     browserosaurus \
@@ -452,22 +504,39 @@ brew $ACTION_VERB --cask \
     chromedriver \
     opera-mobile-emulator \
 
+#   conflicts
+#   firefox-beta \
+#     tor-browser-alpha \
+
+brew $ACTION_VERB \
+    tor
+
 brew untap homebrew/cask-versions
 
+brew $ACTION_VERB --cask \
+    postman \
+    postman-agent \
+    protonvpn \
+
+brew $ACTION_VERB \
+    bond \
+    protobuf \
+    avro-tools \
+    
 
 brew upgrade
 brew update
 
-brew install --cask \
+brew $ACTION_VERB --cask \
     microsoft-edge \
+    microsoft-edge-dev \
+    microsoft-edge-beta \
     google-chrome \
+    google-chrome-canary \
     firefox \
     firefox-developer-edition \
 
 
-#     microsoft-edge-dev \
-#    microsoft-edge-beta \
-#    google-chrome-canary \
 
 #----------------------------------------------------------------------------------------------
 # communications
@@ -484,6 +553,13 @@ brew $ACTION_VERB --cask \
 
     
 brew $ACTION_VERB --cask \
+    master-pdf-editor \
+    foxit-pdf-editor \
+    pdf-expert \
+    pdfpen \
+    sejda-pdf \
+
+brew $ACTION_VERB --cask \
     microsoft-office \
     thunderbird \
 
@@ -493,20 +569,36 @@ brew $ACTION_VERB --cask \
 
 #----------------------------------------------------------------------------------------------
 # act - github actions 
-brew install \
+brew $ACTION_VERB \
     gitlab-runner \ 
     act \
 
 brew \
     services start \
     gitlab-runner
+
+#----------------------------------------------------------------------------------------------
+
+brew $ACTION_VERB \
+    djvulibre \
+    djview4 \
+
+brew $ACTION_VERB --cask \
+    foxit-pdf-editor \
+    kindle \
+    kindle-previewer \
+    epubquicklook \
+
+
+
 #----------------------------------------------------------------------------------------------
 
 #----------------------------------------------------------------------------------------------
 cd ~/Downloads/
 
 
-
+brew $ACTION_VERB \
+    mono-libgdiplus
 
 # export COMMAND="wget"
 # export COMMAND="curl -OL"
@@ -515,6 +607,9 @@ export COMMAND="boots"
 
 dotnet --list-runtimes
 dotnet --list-sdks
+
+boots \
+    https://www.eid.hr/sites/default/files/akdeid-3.10-20200316.pkg
 
 export PKGS="
 # 6
@@ -602,18 +697,18 @@ $COMMAND \
 
 
 for f in *.pkg ; 
-    do sudo installer -verbose -pkg "$f" -target /
+    do sudo $ACTION_VERBer -verbose -pkg "$f" -target /
 done
 
 
-# https://docs.microsoft.com/en-us/dotnet/core/tools/dotnet-install-script
-# https://dot.net/v1/dotnet-install.sh
-# https://dot.net/v1/dotnet-install.ps1
+# https://docs.microsoft.com/en-us/dotnet/core/tools/dotnet-$ACTION_VERB-script
+# https://dot.net/v1/dotnet-$ACTION_VERB.sh
+# https://dot.net/v1/dotnet-$ACTION_VERB.ps1
 
-# chmod u+x dotnet-install.sh
-# ./dotnet-install.sh -c Current # 3.0
-# ./dotnet-install.sh -c LTS # 2.1
-# ./dotnet-install.sh -c 2.2 
+# chmod u+x dotnet-$ACTION_VERB.sh
+# ./dotnet-$ACTION_VERB.sh -c Current # 3.0
+# ./dotnet-$ACTION_VERB.sh -c LTS # 2.1
+# ./dotnet-$ACTION_VERB.sh -c 2.2 
 
 if [ -d "$HOME/.dotnet" ] ; then
     export PATH="$PATH:$HOME/.dotnet" 
@@ -627,7 +722,7 @@ fi
 
 # https://github.com/isen-ng/homebrew-dotnet-sdk-versions
 
-# brew cask uninstall \
+# brew cask un$ACTION_VERB \
 #     dotnet-sdk \
 #     dotnet \
 
@@ -672,19 +767,25 @@ brew $ACTION_VERB \
 #----------------------------------------------------------------------------------------------
 
 # if you receive this Error: Cask 'dotnet-sdk' conflicts with 'dotnet'.
-# then you have to uninstall dotnet first:
-# brew cask uninstall \
+# then you have to un$ACTION_VERB dotnet first:
+# brew cask un$ACTION_VERB \
 #     dotnet
-# brew cask install \
+# brew cask $ACTION_VERB \
 #     dotnet-sdk
 
 
 
-# to remove all the packages installed but keep Homebrew around one
+# to remove all the packages $ACTION_VERBed but keep Homebrew around one
 # could also do something like:
 
 # brew list -1 | xargs brew rm
 
+#----------------------------------------------------------------------------------------------
+
+# unoplatform
+brew $ACTION_VERB \
+    gtk+3 \
+    gnome-icon-theme \
 
 #----------------------------------------------------------------------------------------------
 # https://blog.shvetsov.com/2014/11/homebrew-cheat-sheet-and-workflow.html
@@ -701,8 +802,10 @@ brew $ACTION_VERB \
     python3 \
     julia \
 
+brew $ACTION_VERB --cask \
+    R \
 
-brew install --cask \
+brew $ACTION_VERB --cask \
     homebrew/cask-versions/adoptopenjdk8 \
     scilab \
 
@@ -729,33 +832,33 @@ python3 --version
 which pip
 which pip3
 
-sudo pip3 install --upgrade pip
+sudo pip3 $ACTION_VERB --upgrade pip
 
 
 # python packages: Scientific computing:
-pip3 install numpy
-pip3 install scipy
-pip3 install sympy
+pip3 $ACTION_VERB numpy
+pip3 $ACTION_VERB scipy
+pip3 $ACTION_VERB sympy
 python -c 'import numpy ; numpy.test();'
 python -c 'import scipy ; scipy.test();'
 
 # python packages: Data management:
-pip3 install pandas
+pip3 $ACTION_VERB pandas
 
 
 # python packages: plotting
-pip3 install matplotlib
+pip3 $ACTION_VERB matplotlib
 #brew $ACTION_VERB \
 #    homebrew/python/matplotlib \
 #    --with-cairo \
 #    --with-tex
 
-pip3 install --upgrade pip
-pip3 install jupyter
+pip3 $ACTION_VERB --upgrade pip
+pip3 $ACTION_VERB jupyter
 
-pip install jupyterlab
-pip install notebook
-pip install voila
+pip $ACTION_VERB jupyterlab
+pip $ACTION_VERB notebook
+pip $ACTION_VERB voila
 
 jupyter-lab &
 jupyter notebook &
@@ -855,7 +958,7 @@ for f in $(compaudit);do sudo chown $(whoami):admin $f;done;
 # go/golang
 brew update \
 && \
-brew install \
+brew $ACTION_VERB \
     golang \
     go
 
