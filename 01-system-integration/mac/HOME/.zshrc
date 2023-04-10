@@ -69,74 +69,12 @@ setopt complete_aliases
 
 # zsh parameter completion for the dotnet CLI
 
-finder_open_windows_and_tabs()
-{ 
-};
-
-nuget_nuke()
-{ 
-  source $HOME/bat/01-system-integration/mac/nuget/clean.sh
-};
-
-dotnet_info_dump()
-{ 
-  dotnet --info
-  dotnet --list-runtimes
-  dotnet --list-sdks
-  
-};
-
-dotnet_workloads_install()
-{ 
-  source $HOME/bat/01-system-integration/mac/dotnet/workload/install.sh
-};
-
-
-dotnet_tools_reinstall()
-{ 
-  source $HOME/bat/01-system-integration/mac/02-install/install-dotnet-tools.sh
-};
-
-dotnet_tool_cake_install_2_3_0()
-{ 
-  dotnet tool \
-    uninstall \
-      --global \
-        Cake.Tool
-
-  dotnet tool \
-    install \
-      --global \
-        Cake.Tool \
-          --version 2.3.0
-};
-
-# https://docs.microsoft.com/en-us/dotnet/core/tools/enable-tab-autocomplete
-dotnet_zsh_complete()
+sys_finder_open_windows_and_tabs()
 {
-  local completions=("$(dotnet complete "$words")")
+  source $HOME/bat/03-productivity/mac/finder-open-window-with-tabs.sh
+};
 
-  reply=( "${(ps:\n:)completions}" )
-
-  compctl -K _dotnet_zsh_complete dotnet
-}
-
-dotnet_clean()
-{
-  rm -fr .dotnet/
-  source $HOME/bat/01-system-integration/mac/nuget/clean.sh
-
-  rm -fr .mono/
-  rm -fr .omnisharp/
-  rm -fr .npm/
-
-  rm -fr .quicktype-vscode/
-  rm -fr .vs-kubernetes/
-  rm -fr .vscode-insiders/
-  rm -fr .vscode*
-}
-
-diverse_clean()
+sys_diverse_clean()
 {
   rm -fr .cache/
   rm -fr .cocoapods/
@@ -150,54 +88,94 @@ diverse_clean()
   rm -fr .octave*
 }
 
-brew_update_upgrade()
+sys_brew_update_upgrade()
 {
   brew update
   brew upgrade
-
 }
 
 
-decompile_jar_jar()
+dev_nuget_nuke()
 { 
-    echo "$*"
-    echo "using jar to decompile" $1
-    echo "jar tf $1"
-    jar tf $1
+  source $HOME/bat/01-system-integration/mac/nuget/clean.sh
 };
 
-decompile_jar_unzip()
+dev_dotnet_info_dump()
 { 
-    echo "$*"
-    echo "using unzip to decompile" $1
-    echo "unzip -l $1"
-    unzip -l $1
+  dotnet --info
+  dotnet --list-runtimes
+  dotnet --list-sdks  
 };
 
-decompile_jar_jadx()
+dev_dotnet_workloads_install()
 { 
-    echo "$*"
-    echo "using jadx to decompile" $1
-    echo "-------------------------------------------------------------------------------"
-    $HOME/bin/jd-gui/bin/jadx --help
-    export TIMESTAMP=$(date +%Y-%m-%dT%H-%M-%S)
-    echo "-------------------------------------------------------------------------------"
-    echo "$HOME/bin/jd-gui/bin/jadx $1"
-    $HOME/bin/jd-gui/bin/jadx \
-      --output-dir hw-jadx-$TIMESTAMP \
-      $1 
+  source $HOME/bat/01-system-integration/mac/dotnet/workload/install.sh
 };
 
-decompile_jar_luyten()
+
+dev_dotnet_tools_reinstall()
 { 
-    echo "$*"
-    echo "launching luyten to decompile" $1.
-    echo "java -jar $HOME/bin/Luyten/luyten.jar"
-    echo "Drag & Drop jar to decompile..."
-    echo "Luyten has no commandline support [yet]"
-    java -jar $HOME/bin/Luyten/luyten.jar $1
+  source $HOME/bat/01-system-integration/mac/02-install/install-dotnet-tools.sh
 };
 
+dev_dotnet_tool_cake_install_2_3_0()
+{ 
+  dotnet tool \
+    uninstall \
+      --global \
+        Cake.Tool
+
+  dotnet tool \
+    install \
+      --global \
+        Cake.Tool \
+          --version 2.3.0
+};
+
+dev_dotnet_autocomplete ()
+{
+  # https://learn.microsoft.com/en-us/dotnet/core/tools/enable-tab-autocomplete#bash
+  # https://learn.microsoft.com/en-us/dotnet/core/tools/enable-tab-autocomplete#zsh
+
+  local completions=("$(dotnet complete "$words")")
+
+  # If the completion list is empty, just continue with filename selection
+  if [ -z "$completions" ]
+  then
+    _arguments '*::arguments: _normal'
+    return
+  fi
+
+  # This is not a variable assignment, don't remove spaces!
+  _values = "${(ps:\n:)completions}"  
+}
+
+compdef dev_dotnet_autocomplete dotnet
+
+# https://docs.microsoft.com/en-us/dotnet/core/tools/enable-tab-autocomplete
+# dotnet_zsh_complete()
+# {
+#   local completions=("$(dotnet complete "$words")")
+# 
+#   reply=( "${(ps:\n:)completions}" )
+# 
+#   compctl -K dotnet_zsh_complete dotnet
+# }
+
+dev_dotnet_clean()
+{
+  rm -fr .dotnet/
+  source $HOME/bat/01-system-integration/mac/nuget/clean.sh
+
+  rm -fr .mono/
+  rm -fr .omnisharp/
+  rm -fr .npm/
+
+  rm -fr .quicktype-vscode/
+  rm -fr .vs-kubernetes/
+  rm -fr .vscode-insiders/
+  rm -fr .vscode*
+}
 #----------------------------------------------------------------------------------------------------------------------
 
 jdk()
@@ -344,6 +322,47 @@ dev_android_emulator_launch()
     -avd "Pixel_XL_API_30" \
     &
 };
+
+dev_android_decompile_jar_jar()
+{ 
+    echo "$*"
+    echo "using jar to decompile" $1
+    echo "jar tf $1"
+    jar tf $1
+};
+
+dev_android_decompile_jar_unzip()
+{ 
+    echo "$*"
+    echo "using unzip to decompile" $1
+    echo "unzip -l $1"
+    unzip -l $1
+};
+
+dev_android_decompile_jar_jadx()
+{ 
+    echo "$*"
+    echo "using jadx to decompile" $1
+    echo "-------------------------------------------------------------------------------"
+    $HOME/bin/jd-gui/bin/jadx --help
+    export TIMESTAMP=$(date +%Y-%m-%dT%H-%M-%S)
+    echo "-------------------------------------------------------------------------------"
+    echo "$HOME/bin/jd-gui/bin/jadx $1"
+    $HOME/bin/jd-gui/bin/jadx \
+      --output-dir hw-jadx-$TIMESTAMP \
+      $1 
+};
+
+dev_android_decompile_jar_luyten()
+{ 
+    echo "$*"
+    echo "launching luyten to decompile" $1.
+    echo "java -jar $HOME/bin/Luyten/luyten.jar"
+    echo "Drag & Drop jar to decompile..."
+    echo "Luyten has no commandline support [yet]"
+    java -jar $HOME/bin/Luyten/luyten.jar $1
+};
+
 
 dev_ios_emulator_list()
 {
