@@ -36,4 +36,8 @@ dotnet nuget locals temp -c
 # dotnet nuget locals all -c
 dotnet nuget locals all --clear
 
-# rm -fr $HOME/.nuget
+
+echo "=========================================================================================="
+echo "If errors are present try running:"
+echo "sudo rm -fr $HOME/.nuget"
+echo "sudo rm -fr $HOME/.local/share/NuGet/"
