@@ -363,6 +363,20 @@ dev_android_decompile_jar_luyten()
     java -jar $HOME/bin/Luyten/luyten.jar $1
 };
 
+dev_xcode_install_commandline_tools()
+{
+  sudo rm -rf /Library/Developer/CommandLineTools
+  sudo xcode-select --install
+  sleep 1
+  osascript \
+    -e 'tell application "System Events"' \
+      -e 'tell process "Install Command Line Developer Tools"' \
+        -e 'keystroke return' \
+        -e 'click button "Agree" of window "License Agreement"' \
+      -e 'end tell' \
+    -e 'end tell'
+};
+
 
 dev_ios_emulator_list()
 {
