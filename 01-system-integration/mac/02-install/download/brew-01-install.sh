@@ -245,13 +245,16 @@ brew $ACTION_VERB --cask \
 brew link --force \
     openssl
 
-
 brew $ACTION_VERB --cask \
     parallels \
     virtualbox \
     cheatsheet \
     onyx \
     diffmerge \
+
+brew $ACTION_VERB --cask \
+    microsoft-remote-desktop
+
 
 # mind mapping and knowledge
 brew $ACTION_VERB --cask \
@@ -504,6 +507,15 @@ brew $ACTION_VERB --cask \
     chromedriver \
     opera-mobile-emulator \
 
+brew $ACTION_VERB --cask \
+    microsoft-edge \
+    microsoft-edge-dev \
+    microsoft-edge-beta \
+    google-chrome \
+    google-chrome-canary \
+    firefox \
+    firefox-developer-edition \
+
 #   conflicts
 #   firefox-beta \
 #     tor-browser-alpha \
@@ -526,17 +538,6 @@ brew $ACTION_VERB \
 
 brew upgrade
 brew update
-
-brew $ACTION_VERB --cask \
-    microsoft-edge \
-    microsoft-edge-dev \
-    microsoft-edge-beta \
-    google-chrome \
-    google-chrome-canary \
-    firefox \
-    firefox-developer-edition \
-
-
 
 #----------------------------------------------------------------------------------------------
 # communications
