@@ -291,6 +291,11 @@ work_on_moljac()
     work_on_moljac_holisticware
 };
 
+dev_android_apk_analysis()
+{
+  java -jar $HOME/bin/classy-shark/ClassyShark.jar
+}
+
 dev_android_emulator_list()
 {
   # start Android emulator to gain some time
@@ -306,12 +311,15 @@ dev_android_emulator_launch()
 
     echo "Emulators Available:"
     $HOME/Library/Android/sdk/emulator/emulator \
-      -list-avds
-
-    #$HOME/Library/Developer/Xamarin/android-sdk-macosx/emulator/emulator 
+      -list-avds  
+    echo
+    echo
+    echo \
+    "
     $HOME/Library/Android/sdk/emulator/emulator \
-      -avd "Pixel_XL_API_30" \
-      &
+      -list-avds  
+    "
+    
     return
   fi
 
@@ -319,7 +327,7 @@ dev_android_emulator_launch()
 
   #$HOME/Library/Developer/Xamarin/android-sdk-macosx/emulator/emulator 
   $HOME/Library/Android/sdk/emulator/emulator \
-    -avd "Pixel_XL_API_30" \
+    -avd "$1" \
     &
 };
 
@@ -401,6 +409,11 @@ dev_ios_emulator_launch()
 # xcrun simctl install <YOUR-DEVICE-ID> <PATH-TO-APPLICATION-BUNDLE>
 # xcrun simctl launch <YOUR-DEVICE-ID> <BUNDLE-ID-OF-APP-BUNDLE>      
 };
+
+dev_dotnet_msbuildlog ()
+{
+  dotnet $HOME/msbuildlog/bin/StructuredLogViewer.Avalonia.dll
+}
 
 dev_dotnet_maui_new_lib ()
 {
