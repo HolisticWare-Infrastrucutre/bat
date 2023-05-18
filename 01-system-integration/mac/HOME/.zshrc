@@ -385,6 +385,10 @@ dev_xcode_install_commandline_tools()
     -e 'end tell'
 };
 
+zshrc_reload()
+{
+  source $HOME/.zshrc 
+};
 
 dev_ios_emulator_list()
 {
@@ -412,7 +416,7 @@ dev_ios_emulator_launch()
 
 dev_dotnet_msbuildlog ()
 {
-  dotnet $HOME/msbuildlog/bin/StructuredLogViewer.Avalonia.dll
+  dotnet $HOME/bin/msbuildlog/bin/StructuredLogViewer.Avalonia.dll
 }
 
 dev_dotnet_maui_new_lib ()
