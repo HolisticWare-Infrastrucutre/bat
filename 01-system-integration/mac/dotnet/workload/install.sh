@@ -10,6 +10,26 @@ export WORKLOADZ=\
 sudo \
     dotnet \
         workload \
+            uninstall \
+                android \
+                ios \
+                maccatalyst \
+                tvos \
+                macos \
+                maui \
+                maui \
+                maui-android \
+                maui-ios \
+                maui-maccatalyst \
+                maui-mobile \
+                maui-windows \
+                tvos \
+                wasm-tools \
+
+
+sudo \
+    dotnet \
+        workload \
             install \
                 android \
                 ios \
