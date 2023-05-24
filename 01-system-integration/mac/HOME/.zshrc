@@ -100,11 +100,51 @@ dev_nuget_nuke()
   source $HOME/bat/01-system-integration/mac/nuget/clean.sh
 };
 
+dev_info_dump()
+{
+  dev_dotnet_info_dump 
+  dev_android_info_dump
+  dev_ios_info_dump
+}
+
 dev_dotnet_info_dump()
 { 
+  echo "=============================================================================================================="
+  echo "Microsoft .NET"
+  echo "dotnet --info"
   dotnet --info
+  echo "dotnet --list-runtimes"
   dotnet --list-runtimes
+  echo "dotnet --list-sdks"  
   dotnet --list-sdks  
+  echo "--------------------------------------------------------------------------------------------------------------"
+  echo "dotnet workload list"
+  dotnet workload list
+  echo "--------------------------------------------------------------------------------------------------------------"
+  echo "dotnet tool list --global"
+  dotnet tool list --global
+  echo "--------------------------------------------------------------------------------------------------------------"
+  echo "dotnet new --list"
+  dotnet new --list
+}
+
+dev_android_info_dump()
+{ 
+  echo "=============================================================================================================="
+  echo "Google Android"
+  echo "JAVA_HOME"
+  echo $JAVA_HOME
+  echo "ANDROID_SDK_ROOT"
+  echo $ANDROID_SDK_ROOT
+  echo "ANDROID_HOME"
+  echo $ANDROID_HOME
+};
+
+dev_ios_info_dump()
+{ 
+  echo "=============================================================================================================="
+  echo "Apple"
+  /usr/bin/xcodebuild -version
 };
 
 dev_dotnet_workloads_install()
