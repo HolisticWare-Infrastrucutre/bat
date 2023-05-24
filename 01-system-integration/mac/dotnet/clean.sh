@@ -3,6 +3,7 @@
 sudo rm -fr /usr/local/share/dotnet 
 sudo rm -fr $HOME/.dotnet/
 
+
 open \
     -na "Google Chrome" \
         --args  \
