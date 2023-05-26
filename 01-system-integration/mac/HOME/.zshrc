@@ -107,6 +107,26 @@ dev_info_dump()
   dev_ios_info_dump
 }
 
+dev_dotnet_android_bindings_binderator_update_config()
+{ 
+  # dotnet script update-config.csx -- ./config.json <update|bump|published|sort>
+  echo \
+  "
+  dotnet script ./build/scripts/update-config.csx -- ./config.json update
+  "
+  dotnet script ./build/scripts/update-config.csx -- ./config.json update
+}  
+
+dev_dotnet_android_bindings_binderator_bump_config()
+{ 
+  # dotnet script update-config.csx -- ./config.json <update|bump|published|sort>
+  echo \
+  "
+  dotnet script ./build/scripts/update-config.csx -- ./config.json bump
+  "
+  dotnet script ./build/scripts/update-config.csx -- ./config.json bump
+}  
+
 dev_dotnet_info_dump()
 { 
   echo "=============================================================================================================="
@@ -138,13 +158,23 @@ dev_android_info_dump()
   echo $ANDROID_SDK_ROOT
   echo "ANDROID_HOME"
   echo $ANDROID_HOME
+  echo "/Applications/Android Studio Preview.app/Contents/MacOS/studio" -version
+  "/Applications/Android Studio Preview.app/Contents/MacOS/studio" -version
+
 };
 
 dev_ios_info_dump()
 { 
   echo "=============================================================================================================="
   echo "Apple"
+
+  echo "--------------------------------------------------------------------------------------------------------------"
+  echo "/usr/bin/xcodebuild -version"
   /usr/bin/xcodebuild -version
+
+  echo "--------------------------------------------------------------------------------------------------------------"
+  echo "softwareupdate --history"
+  softwareupdate --history
 };
 
 dev_dotnet_workloads_install()
@@ -347,7 +377,7 @@ dev_android_emulator_launch()
 {
   if [ $# -lt 1 ]
   then
-    echo "Usage: dev_android_emulator_launch[1] <emulator_name>"
+    echo "Usage: dev_android_emulator_launch <emulator_name>"
 
     echo "Emulators Available:"
     $HOME/Library/Android/sdk/emulator/emulator \
