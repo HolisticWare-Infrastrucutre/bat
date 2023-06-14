@@ -66,13 +66,13 @@ do
 
     echo "Tool: $TOOL"
     echo "      uninstalling"
-    dotnet tool uninstall   --global \
-            $TOOL \
-            --version "*-*" \
-            --verbosity diagnostic
+    dotnet tool uninstall   \
+        --global \
+            $TOOL
 
     echo "      installing"
-    dotnet tool install     --global \
+    dotnet tool install     \
+        --global \
             $TOOL \
             --version "*-*" \
             --verbosity diagnostic
