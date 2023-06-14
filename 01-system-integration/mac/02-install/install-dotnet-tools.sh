@@ -1,5 +1,8 @@
 #!/bin/zsh
 
+# https://learn.microsoft.com/en-us/dotnet/core/tools/global-tools
+# https://nuget.org/packages?packagetype=dotnettool
+# https://techstacks.io/posts/6970/a-list-of-tools-to-extend-the-net-core-command-line-dotnet
 
 export TOOLZ=\
 "
