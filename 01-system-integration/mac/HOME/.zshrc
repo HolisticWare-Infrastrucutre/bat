@@ -169,16 +169,26 @@ dev_ios_info_dump()
   echo "Apple"
 
   echo "--------------------------------------------------------------------------------------------------------------"
-  echo "/usr/bin/xcodebuild -version"
+  echo \
+  "
+  /usr/bin/xcodebuild -version
+  "
   /usr/bin/xcodebuild -version
 
   echo "--------------------------------------------------------------------------------------------------------------"
-  echo "softwareupdate --history"
+  echo \
+  "
+  softwareupdate --history
+  "
   softwareupdate --history
 };
 
 dev_dotnet_workloads_install()
 { 
+  echo \
+  "
+  source $HOME/bat/01-system-integration/mac/dotnet/workload/install.sh
+  "
   source $HOME/bat/01-system-integration/mac/dotnet/workload/install.sh
 };
 
@@ -335,16 +345,28 @@ work_on_maui()
 
 work_on_ax_gps_fb_mlkit()
 {
+  echo \
+  "
+  source $HOME/bat.private/finder-code-term-xamarin-ax-gps-fb-mlkit.sh
+  "
   source $HOME/bat.private/finder-code-term-xamarin-ax-gps-fb-mlkit.sh
 };
 
 work_on_ph4ct3x()
 {
+  echo \
+  "
+  source $HOME/bat.private/finder-code-term-ph4ct3x.sh
+  "
   source $HOME/bat.private/finder-code-term-ph4ct3x.sh
 };
 
 work_on_moljac_microsoft()
 {
+  echo \
+  "
+  source $HOME/bat.private/finder-code-term-moljac-microsoft.sh
+  "
   source $HOME/bat.private/finder-code-term-moljac-microsoft.sh
 };
 
@@ -363,6 +385,10 @@ work_on_moljac()
 
 dev_android_apk_analysis()
 {
+  echo \
+  "
+  java -jar $HOME/bin/classy-shark/ClassyShark.jar
+  "
   java -jar $HOME/bin/classy-shark/ClassyShark.jar
 }
 
@@ -395,11 +421,66 @@ dev_android_emulator_launch()
 
   echo "First argument: $1"
 
+  echo \
+  "
+  $HOME/Library/Android/sdk/emulator/emulator \
+    -avd "$1" \
+    &
+  "
   #$HOME/Library/Developer/Xamarin/android-sdk-macosx/emulator/emulator 
   $HOME/Library/Android/sdk/emulator/emulator \
     -avd "$1" \
     &
 };
+
+dev_android_adb_setup()
+{
+  echo \
+  "
+  adb logcat -G 64M 
+  adb logcat -c
+  adb shell \
+    setprop debug.mono.log default,debugger,assembly,mono_log_level=debug,mono_log_mask=all
+  "
+
+  adb logcat -G 64M 
+  adb logcat -c
+  adb shell \
+    setprop debug.mono.log default,debugger,assembly,mono_log_level=debug,mono_log_mask=all
+};
+
+dev_android_adb_logcat_collect()
+{
+  export TIMESTAMP=$(date +%Y-%m-%dT%H-%M-%S)
+
+  echo \
+  "
+  adb logcat -d > log_$TIMESTAMP.txt
+  adb bugreport
+  "
+  
+  adb logcat -d > log_$TIMESTAMP.txt
+};
+
+dev_android_adb_bugreport()
+{
+  echo \
+  "
+  adb bugreport
+  adb shell ls /bugreports/
+  adb pull /bugreports/
+  "
+  
+  adb bugreport
+}
+
+dev_android_emulator_list()
+{
+  $HOME/Library/Android/sdk/emulator/emulator \
+    -list-avds
+};
+
+
 
 dev_android_decompile_jar_jar()
 { 
