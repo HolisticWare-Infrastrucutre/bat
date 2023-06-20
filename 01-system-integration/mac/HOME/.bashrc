@@ -435,6 +435,7 @@ dev_android_emulator_launch()
 
 dev_android_adb_setup()
 {
+  echo "--------------------------------------------------------------------------------------------------------------"
   echo \
   "
   adb logcat -G 64M 
@@ -453,6 +454,7 @@ dev_android_adb_logcat_collect()
 {
   export TIMESTAMP=$(date +%Y-%m-%dT%H-%M-%S)
 
+  echo "--------------------------------------------------------------------------------------------------------------"
   echo \
   "
   adb logcat -d > log_$TIMESTAMP.txt
@@ -464,6 +466,7 @@ dev_android_adb_logcat_collect()
 
 dev_android_adb_bugreport()
 {
+  echo "--------------------------------------------------------------------------------------------------------------"
   echo \
   "
   adb bugreport
@@ -484,6 +487,7 @@ dev_android_emulator_list()
 
 dev_android_decompile_jar_jar()
 { 
+  echo "--------------------------------------------------------------------------------------------------------------"
     echo "$*"
     echo "using jar to decompile" $1
     echo "jar tf $1"
@@ -492,6 +496,7 @@ dev_android_decompile_jar_jar()
 
 dev_android_decompile_jar_unzip()
 { 
+  echo "--------------------------------------------------------------------------------------------------------------"
     echo "$*"
     echo "using unzip to decompile" $1
     echo "unzip -l $1"
@@ -500,6 +505,7 @@ dev_android_decompile_jar_unzip()
 
 dev_android_decompile_jar_jadx()
 { 
+    echo "--------------------------------------------------------------------------------------------------------------"
     echo "$*"
     echo "using jadx to decompile" $1
     echo "-------------------------------------------------------------------------------"
@@ -514,6 +520,7 @@ dev_android_decompile_jar_jadx()
 
 dev_android_decompile_jar_luyten()
 { 
+    echo "--------------------------------------------------------------------------------------------------------------"
     echo "$*"
     echo "launching luyten to decompile" $1.
     echo "java -jar $HOME/bin/Luyten/luyten.jar"
@@ -524,6 +531,7 @@ dev_android_decompile_jar_luyten()
 
 dev_xcode_install_commandline_tools()
 {
+  echo "--------------------------------------------------------------------------------------------------------------"
   sudo rm -rf /Library/Developer/CommandLineTools
   sudo xcode-select --install
   sleep 1
@@ -585,6 +593,7 @@ dev_dotnet_maui_new_lib ()
 
 dev_dotnet_maui_new_app ()
 {
+  echo "--------------------------------------------------------------------------------------------------------------"
   TIMESTAMP=$( date "+%Y%m%d%H%M%S" )
   echo    $TIMESTAMP
 
@@ -596,6 +605,7 @@ dev_dotnet_maui_new_app ()
 
 dev_dotnet_maui_new_app_hybrid_blazor ()
 {
+  echo "--------------------------------------------------------------------------------------------------------------"
   TIMESTAMP=$( date "+%Y%m%d%H%M%S" )
   echo    $TIMESTAMP
 
@@ -614,6 +624,7 @@ dev_dotnet_maui_new_all ()
 
 dev_dotnet_maui_build_lib ()
 {
+  echo "--------------------------------------------------------------------------------------------------------------"
   csproj=( $(find . -name "LibraryMAUI.*.csproj") )
   
   for csp in ${csproj[@]} ; 
@@ -628,6 +639,7 @@ dev_dotnet_maui_build_lib ()
 
 dev_dotnet_maui_build_app ()
 {
+  echo "--------------------------------------------------------------------------------------------------------------"
   csproj=( $(find . -name "AppMAUI.*.csproj") )
   
   for csp in ${csproj[@]} ; 
@@ -635,13 +647,15 @@ dev_dotnet_maui_build_app ()
     echo "$csp"
 
     dotnet \
-      build \
-        $csp
+      watch \
+        build \
+          $csp
   done
 }
 
 dev_dotnet_maui_build_app_hybrid_blazor ()
 {
+  echo "--------------------------------------------------------------------------------------------------------------"
   csproj=( $(find . -name "AppMAUI.HybridBlazor.*.csproj") )
   
   for csp in ${csproj[@]} ; 
@@ -649,8 +663,9 @@ dev_dotnet_maui_build_app_hybrid_blazor ()
     echo "$csp"
 
     dotnet \
-      build \
-        $csp
+      watch \
+        build \
+          $csp
   done
 }
 
@@ -663,6 +678,7 @@ dev_dotnet_maui_build_all ()
 
 dev_dotnet_maui_run_app_android ()
 {
+  echo "--------------------------------------------------------------------------------------------------------------"
   echo $1
   echo $2
   echo $3
@@ -671,32 +687,62 @@ dev_dotnet_maui_run_app_android ()
   do
     echo "$d"
 
+    echo \
+    "
     dotnet \
-      build \
-        $d \
-        -t:Run \
-        -f:net7.0-android
+      watch \
+        build \
+            $d \
+            -t:Run \
+            -f:net7.0-android \
+            /p:AndroidSdkDirectory=$ANDROID_HOME
+    "
+
+    dotnet \
+      watch \
+        build \
+            $d \
+            -t:Run \
+            -f:net7.0-android \
+            /p:AndroidSdkDirectory=$ANDROID_HOME
 
   done
 }
 
 dev_dotnet_maui_run_app_ios ()
 {
+  echo "--------------------------------------------------------------------------------------------------------------"
   for d in AppMAUI.*/ ; 
   do
     echo "$d"
 
+    echo \
+    "
     dotnet \
-      build \
-        $d \
-        -t:Run \
-          -f:net7.0-ios \
-          -p:_DeviceName=:v2:udid=$IOS_DEVICE_ID
+      watch \
+        build \
+          $d \
+          -t:Run \
+            -f:net7.0-ios \
+            -p:_DeviceName=:v2:udid=$IOS_DEVICE_ID
+    "
+
+    dotnet \
+      watch \
+        build \
+          $d \
+          -t:Run \
+            -f:net7.0-ios \
+            -p:_DeviceName=:v2:udid=$IOS_DEVICE_ID
+
+
+
   done
 }
 
 dev_dotnet_maui_build_app_hybrid_blazor ()
 {
+  echo "--------------------------------------------------------------------------------------------------------------"
   for d in AppMAUI.HybridBlazor.*/ ; 
   do
       echo "$d"
@@ -704,6 +750,14 @@ dev_dotnet_maui_build_app_hybrid_blazor ()
           build \
             $d
   done
+}
+
+dev_vscode_backups ()
+{
+  tree "$HOME/Library/Application Support/Code/Backups"
+
+
+  tree "$HOME/Library/Application Support/Code - Insiders/Backups"
 }
 
 #----------------------------------------------------------------------------------------------------------------------
