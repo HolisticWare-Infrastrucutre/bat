@@ -51,7 +51,16 @@ function disk_usage_android()
 alias ll='ls -al'
 
 
+alias vs="open -aVisual\ Studio\ \(Preview\)"
+alias vsc="code -n"
+# implemented as function
+# alias rider="open -a Rider"
+
 alias edge="open -a Microsoft\ Edge $1"
+alias edge_beta="open -a Microsoft\ Edge\ Beta $1"
+
+alias rstudio="open -a RStudio"
+
 # alias edge="/Applications/Microsoft\ Edge.app/Contents/MacOS/Microsoft\ Edge"
 
 #----------------------------------------------------------------------------------------------------------------------
@@ -60,43 +69,12 @@ setopt complete_aliases
 
 # zsh parameter completion for the dotnet CLI
 
-finder_open_windows_and_tabs()
-{ 
-};
-
-dotnet_workloads_reinstall()
-{ 
-  source $HOME/bat/01-system-integration/mac/02-install/dotnet-workloads.sh
-};
-
-dotnet_tools_reinstall()
-{ 
-  source $HOME/bat/01-system-integration/mac/02-install/install-dotnet-tools.sh
-};
-
-# https://docs.microsoft.com/en-us/dotnet/core/tools/enable-tab-autocomplete
-dotnet_zsh_complete()
+sys_finder_open_windows_and_tabs()
 {
-  local completions=("$(dotnet complete "$words")")
+  source $HOME/bat/03-productivity/mac/finder-open-window-with-tabs.sh
+};
 
-  reply=( "${(ps:\n:)completions}" )
-}
-
-dotnet_clean()
-{
-  rm -fr .dotnet/
-  rm -fr .nuget/
-  rm -fr .mono/
-  rm -fr .npm/
-  rm -fr .omnisharp/
-
-  rm -fr .quicktype-vscode/
-  rm -fr .vs-kubernetes/
-  rm -fr .vscode-insiders/
-  rm -fr .vscode*
-}
-
-diverse_clean()
+sys_diverse_clean()
 {
   rm -fr .cache/
   rm -fr .cocoapods/
@@ -110,58 +88,174 @@ diverse_clean()
   rm -fr .octave*
 }
 
-brew_update_upgrade()
+sys_brew_update_upgrade()
 {
   brew update
   brew upgrade
-
 }
 
 
-
-
-compctl -K _dotnet_zsh_complete dotnet
-
-decompile_jar_jar()
+dev_nuget_nuke()
 { 
-    echo "$*"
-    echo "using jar to decompile" $1
-    echo "jar tf $1"
-    jar tf $1
+  source $HOME/bat/01-system-integration/mac/nuget/clean.sh
 };
 
-decompile_jar_unzip()
+dev_info_dump()
+{
+  dev_dotnet_info_dump 
+  dev_android_info_dump
+  dev_ios_info_dump
+}
+
+dev_dotnet_android_bindings_binderator_update_config()
 { 
-    echo "$*"
-    echo "using unzip to decompile" $1
-    echo "unzip -l $1"
-    unzip -l $1
+  # dotnet script update-config.csx -- ./config.json <update|bump|published|sort>
+  echo \
+  "
+  dotnet script ./build/scripts/update-config.csx -- ./config.json update
+  "
+  dotnet script ./build/scripts/update-config.csx -- ./config.json update
+}  
+
+dev_dotnet_android_bindings_binderator_bump_config()
+{ 
+  # dotnet script update-config.csx -- ./config.json <update|bump|published|sort>
+  echo \
+  "
+  dotnet script ./build/scripts/update-config.csx -- ./config.json bump
+  "
+  dotnet script ./build/scripts/update-config.csx -- ./config.json bump
+}  
+
+dev_dotnet_info_dump()
+{ 
+  echo "=============================================================================================================="
+  echo "Microsoft .NET"
+  echo "dotnet --info"
+  dotnet --info
+  echo "dotnet --list-runtimes"
+  dotnet --list-runtimes
+  echo "dotnet --list-sdks"  
+  dotnet --list-sdks  
+  echo "--------------------------------------------------------------------------------------------------------------"
+  echo "dotnet workload list"
+  dotnet workload list
+  echo "--------------------------------------------------------------------------------------------------------------"
+  echo "dotnet tool list --global"
+  dotnet tool list --global
+  echo "--------------------------------------------------------------------------------------------------------------"
+  echo "dotnet new --list"
+  dotnet new --list
+}
+
+dev_android_info_dump()
+{ 
+  echo "=============================================================================================================="
+  echo "Google Android"
+  echo "JAVA_HOME"
+  echo $JAVA_HOME
+  echo "ANDROID_SDK_ROOT"
+  echo $ANDROID_SDK_ROOT
+  echo "ANDROID_HOME"
+  echo $ANDROID_HOME
+  echo "/Applications/Android Studio Preview.app/Contents/MacOS/studio" -version
+  "/Applications/Android Studio Preview.app/Contents/MacOS/studio" -version
+
 };
 
-decompile_jar_jadx()
+dev_ios_info_dump()
 { 
-    echo "$*"
-    echo "using jadx to decompile" $1
-    echo "-------------------------------------------------------------------------------"
-    $HOME/bin/jd-gui/bin/jadx --help
-    export TIMESTAMP=$(date +%Y-%m-%dT%H-%M-%S)
-    echo "-------------------------------------------------------------------------------"
-    echo "$HOME/bin/jd-gui/bin/jadx $1"
-    $HOME/bin/jd-gui/bin/jadx \
-      --output-dir hw-jadx-$TIMESTAMP \
-      $1 
+  echo "=============================================================================================================="
+  echo "Apple"
+
+  echo "--------------------------------------------------------------------------------------------------------------"
+  echo \
+  "
+  /usr/bin/xcodebuild -version
+  "
+  /usr/bin/xcodebuild -version
+
+  echo "--------------------------------------------------------------------------------------------------------------"
+  echo \
+  "
+  softwareupdate --history
+  "
+  softwareupdate --history
 };
 
-decompile_jar_luyten()
+dev_dotnet_workloads_install()
 { 
-    echo "$*"
-    echo "launching luyten to decompile" $1.
-    echo "java -jar $HOME/bin/Luyten/luyten.jar"
-    echo "Drag & Drop jar to decompile..."
-    echo "Luyten has no commandline support [yet]"
-    java -jar $HOME/bin/Luyten/luyten.jar $1
+  echo \
+  "
+  source $HOME/bat/01-system-integration/mac/dotnet/workload/install.sh
+  "
+  source $HOME/bat/01-system-integration/mac/dotnet/workload/install.sh
 };
 
+
+dev_dotnet_tools_reinstall()
+{ 
+  source $HOME/bat/01-system-integration/mac/02-install/install-dotnet-tools.sh
+};
+
+dev_dotnet_tool_cake_install_2_3_0()
+{ 
+  dotnet tool \
+    uninstall \
+      --global \
+        Cake.Tool
+
+  dotnet tool \
+    install \
+      --global \
+        Cake.Tool \
+          --version 2.3.0
+};
+
+dev_dotnet_autocomplete ()
+{
+  # https://learn.microsoft.com/en-us/dotnet/core/tools/enable-tab-autocomplete#bash
+  # https://learn.microsoft.com/en-us/dotnet/core/tools/enable-tab-autocomplete#zsh
+
+  local completions=("$(dotnet complete "$words")")
+
+  # If the completion list is empty, just continue with filename selection
+  if [ -z "$completions" ]
+  then
+    _arguments '*::arguments: _normal'
+    return
+  fi
+
+  # This is not a variable assignment, don't remove spaces!
+  _values = "${(ps:\n:)completions}"  
+}
+
+compdef dev_dotnet_autocomplete dotnet
+
+# https://docs.microsoft.com/en-us/dotnet/core/tools/enable-tab-autocomplete
+# dotnet_zsh_complete()
+# {
+#   local completions=("$(dotnet complete "$words")")
+# 
+#   reply=( "${(ps:\n:)completions}" )
+# 
+#   compctl -K dotnet_zsh_complete dotnet
+# }
+
+dev_dotnet_clean()
+{
+  rm -fr .dotnet/
+  source $HOME/bat/01-system-integration/mac/nuget/clean.sh
+
+  rm -fr .mono/
+  rm -fr .omnisharp/
+  rm -fr .npm/
+
+  rm -fr .quicktype-vscode/
+  rm -fr .vs-kubernetes/
+  rm -fr .vscode-insiders/
+  rm -fr .vscode*
+}
 #----------------------------------------------------------------------------------------------------------------------
 
 jdk()
@@ -179,12 +273,16 @@ jdk()
 # if firefox is opened this will open additonal tabs
 browse_moljac()
 {
-  source $HOME/bat.private/firefox-moljac.sh 
+  source $HOME/bat.private/mac/firefox-moljac.sh 
 };
 
 rider()
 {
-  /Applications/Rider.app/Contents/MacOS/rider $1
+  open -a \
+    Rider \
+      --args \
+        $1
+  # /Applications/Rider.app/Contents/MacOS/rider
 };
 
 # source $HOME/bat/03-productivity/mac/clear-screen-and-term-buffer.sh
@@ -204,38 +302,40 @@ brew_clean_update()
     brew upgrade
 
     brew cleanup
-    brew autoremove    
+    brew autoremove
+
+    source $HOME/bat/01-system-integration/mac/02-install/download/brew-01-upgrade.sh
 };
 
-browser_firefox_moljac()
+open_browser_firefox_moljac()
 {
-  source $HOME/bat.private/firefox-moljac.sh
+  source $HOME/bat.private/mac/firefox-moljac.sh
 };
 
-browser_edge_moljac_microsoft()
+open_browser_edge_moljac_microsoft()
 {
-  source $HOME/bat.private/edge-moljac-microsoft.sh
+  source $HOME/bat.private/mac/edge-moljac-microsoft.sh
 };
 
-browser_edge_beta_moljac_microsoft()
+open_browser_edge_beta_moljac_microsoft()
 {
-  source $HOME/bat.private/edge-beta-moljac-holisticware.sh
+  source $HOME/bat.private/mac/edge-beta-moljac-holisticware.sh
 };
 
-browser_edge_dev_moljac_microsoft()
+open_browser_edge_dev_moljac_microsoft()
 {
-  source $HOME/bat.private/edge-dev-moljac-holisticware.sh
+  source $HOME/bat.private/mac/edge-dev-moljac-holisticware.sh
 };
 
 open_finder_code_moljac_microsoft()
 {
-  source $HOME/bat.private/finder-code-moljac-microsoft.sh
+  source $HOME/bat.private/mac/finder-code-moljac-microsoft.sh
 };
 
 work_on_docs()
 {
   source $HOME/bat/03-productivity/mac/finder-code-notes-docs.sh
-  source $HOME/bat.private/finder-code-term-moljac-microsoft.sh  
+  source $HOME/bat.private/mac/finder-code-term-moljac-microsoft.sh  
 };
 
 work_on_maui()
@@ -245,18 +345,421 @@ work_on_maui()
 
 work_on_ax_gps_fb_mlkit()
 {
+  echo \
+  "
+  source $HOME/bat.private/finder-code-term-xamarin-ax-gps-fb-mlkit.sh
+  "
   source $HOME/bat.private/finder-code-term-xamarin-ax-gps-fb-mlkit.sh
 };
 
 work_on_ph4ct3x()
 {
-  source $HOME/bat.private/finder-code-term-ph4ct3x..sh
+  echo \
+  "
+  source $HOME/bat.private/finder-code-term-ph4ct3x.sh
+  "
+  source $HOME/bat.private/finder-code-term-ph4ct3x.sh
 };
 
 work_on_moljac_microsoft()
 {
+  echo \
+  "
+  source $HOME/bat.private/finder-code-term-moljac-microsoft.sh
+  "
   source $HOME/bat.private/finder-code-term-moljac-microsoft.sh
 };
+
+work_on_moljac_holisticware()
+{
+  source $HOME/bat.private/finder-code-term-moljac-microsoft.sh
+  source $HOME/bat.private/mchwn/firefox-moljac.sh
+  source $HOME/bat.private/mchwc/firefox-moljac.sh
+};
+
+work_on_moljac()
+{
+    work_on_moljac_microsoft
+    work_on_moljac_holisticware
+};
+
+dev_android_apk_analysis()
+{
+  echo \
+  "
+  java -jar $HOME/bin/classy-shark/ClassyShark.jar
+  "
+  java -jar $HOME/bin/classy-shark/ClassyShark.jar
+}
+
+dev_android_emulator_list()
+{
+  # start Android emulator to gain some time
+  $HOME/Library/Android/sdk/emulator/emulator \
+    -list-avds
+};
+
+dev_android_emulator_launch()
+{
+  if [ $# -lt 1 ]
+  then
+    echo "Usage: dev_android_emulator_launch <emulator_name>"
+
+    echo "Emulators Available:"
+    $HOME/Library/Android/sdk/emulator/emulator \
+      -list-avds  
+    echo
+    echo
+    echo \
+    "
+    $HOME/Library/Android/sdk/emulator/emulator \
+      -list-avds  
+    "
+    
+    return
+  fi
+
+  echo "First argument: $1"
+
+  echo \
+  "
+  $HOME/Library/Android/sdk/emulator/emulator \
+    -avd "$1" \
+    &
+  "
+  #$HOME/Library/Developer/Xamarin/android-sdk-macosx/emulator/emulator 
+  $HOME/Library/Android/sdk/emulator/emulator \
+    -avd "$1" \
+    &
+};
+
+dev_android_adb_setup()
+{
+  echo "--------------------------------------------------------------------------------------------------------------"
+  echo \
+  "
+  adb logcat -G 64M 
+  adb logcat -c
+  adb shell \
+    setprop debug.mono.log default,debugger,assembly,mono_log_level=debug,mono_log_mask=all
+  "
+
+  adb logcat -G 64M 
+  adb logcat -c
+  adb shell \
+    setprop debug.mono.log default,debugger,assembly,mono_log_level=debug,mono_log_mask=all
+};
+
+dev_android_adb_logcat_collect()
+{
+  export TIMESTAMP=$(date +%Y-%m-%dT%H-%M-%S)
+
+  echo "--------------------------------------------------------------------------------------------------------------"
+  echo \
+  "
+  adb logcat -d > log_$TIMESTAMP.txt
+  adb bugreport
+  "
+  
+  adb logcat -d > log_$TIMESTAMP.txt
+};
+
+dev_android_adb_bugreport()
+{
+  echo "--------------------------------------------------------------------------------------------------------------"
+  echo \
+  "
+  adb bugreport
+  adb shell ls /bugreports/
+  adb pull /bugreports/
+  "
+  
+  adb bugreport
+}
+
+dev_android_emulator_list()
+{
+  $HOME/Library/Android/sdk/emulator/emulator \
+    -list-avds
+};
+
+
+
+dev_android_decompile_jar_jar()
+{ 
+  echo "--------------------------------------------------------------------------------------------------------------"
+    echo "$*"
+    echo "using jar to decompile" $1
+    echo "jar tf $1"
+    jar tf $1
+};
+
+dev_android_decompile_jar_unzip()
+{ 
+  echo "--------------------------------------------------------------------------------------------------------------"
+    echo "$*"
+    echo "using unzip to decompile" $1
+    echo "unzip -l $1"
+    unzip -l $1
+};
+
+dev_android_decompile_jar_jadx()
+{ 
+    echo "--------------------------------------------------------------------------------------------------------------"
+    echo "$*"
+    echo "using jadx to decompile" $1
+    echo "-------------------------------------------------------------------------------"
+    $HOME/bin/jd-gui/bin/jadx --help
+    export TIMESTAMP=$(date +%Y-%m-%dT%H-%M-%S)
+    echo "-------------------------------------------------------------------------------"
+    echo "$HOME/bin/jd-gui/bin/jadx $1"
+    $HOME/bin/jd-gui/bin/jadx \
+      --output-dir hw-jadx-$TIMESTAMP \
+      $1 
+};
+
+dev_android_decompile_jar_luyten()
+{ 
+    echo "--------------------------------------------------------------------------------------------------------------"
+    echo "$*"
+    echo "launching luyten to decompile" $1.
+    echo "java -jar $HOME/bin/Luyten/luyten.jar"
+    echo "Drag & Drop jar to decompile..."
+    echo "Luyten has no commandline support [yet]"
+    java -jar $HOME/bin/Luyten/luyten.jar $1
+};
+
+dev_xcode_install_commandline_tools()
+{
+  echo "--------------------------------------------------------------------------------------------------------------"
+  sudo rm -rf /Library/Developer/CommandLineTools
+  sudo xcode-select --install
+  sleep 1
+  osascript \
+    -e 'tell application "System Events"' \
+      -e 'tell process "Install Command Line Developer Tools"' \
+        -e 'keystroke return' \
+        -e 'click button "Agree" of window "License Agreement"' \
+      -e 'end tell' \
+    -e 'end tell'
+};
+
+zshrc_reload()
+{
+  source $HOME/.zshrc 
+};
+
+dev_ios_emulator_list()
+{
+  xcrun simctl list
+};
+
+export IOS_DEVICE_ID="73FC4795-80E6-4ED9-9BB5-716206BDAFCD"
+
+dev_ios_emulator_launch()
+{
+  open -a \
+    Simulator \
+      --args \
+        -CurrentDeviceUDID $IOS_DEVICE_ID
+
+#  /Applications/Xcode.app/Contents/Developer/Applications/Simulator.app/Contents/MacOS/Simulator \
+#    -CurrentDeviceUDID \
+#      $DEVICE_ID
+
+# create device using xcrun simctl.
+# Boot the simulator with that device
+# xcrun simctl install <YOUR-DEVICE-ID> <PATH-TO-APPLICATION-BUNDLE>
+# xcrun simctl launch <YOUR-DEVICE-ID> <BUNDLE-ID-OF-APP-BUNDLE>      
+};
+
+dev_dotnet_msbuildlog ()
+{
+  dotnet $HOME/bin/msbuildlog/bin/StructuredLogViewer.Avalonia.dll
+}
+
+dev_dotnet_maui_new_lib ()
+{
+  TIMESTAMP=$( date "+%Y%m%d%H%M%S" )
+  echo    $TIMESTAMP
+
+  dotnet \
+      new \
+          mauilib \
+              --output ./LibraryMAUI.$TIMESTAMP
+
+
+}
+
+dev_dotnet_maui_new_app ()
+{
+  echo "--------------------------------------------------------------------------------------------------------------"
+  TIMESTAMP=$( date "+%Y%m%d%H%M%S" )
+  echo    $TIMESTAMP
+
+  dotnet \
+      new \
+          maui \
+              --output ./AppMAUI.$TIMESTAMP
+}
+
+dev_dotnet_maui_new_app_hybrid_blazor ()
+{
+  echo "--------------------------------------------------------------------------------------------------------------"
+  TIMESTAMP=$( date "+%Y%m%d%H%M%S" )
+  echo    $TIMESTAMP
+
+  dotnet \
+      new \
+          maui-blazor \
+              --output ./AppMAUI.HybridBlazor.$TIMESTAMP  
+}
+
+dev_dotnet_maui_new_all ()
+{
+  dev_dotnet_maui_new_lib
+  dev_dotnet_maui_new_app
+  dev_dotnet_maui_new_app_hybrid_blazor
+};
+
+dev_dotnet_maui_build_lib ()
+{
+  echo "--------------------------------------------------------------------------------------------------------------"
+  csproj=( $(find . -name "LibraryMAUI.*.csproj") )
+  
+  for csp in ${csproj[@]} ; 
+  do
+    echo "$csp"
+
+    dotnet \
+      build \
+        $csp
+  done
+}
+
+dev_dotnet_maui_build_app ()
+{
+  echo "--------------------------------------------------------------------------------------------------------------"
+  csproj=( $(find . -name "AppMAUI.*.csproj") )
+  
+  for csp in ${csproj[@]} ; 
+  do
+    echo "$csp"
+
+    dotnet \
+      watch \
+        build \
+          $csp
+  done
+}
+
+dev_dotnet_maui_build_app_hybrid_blazor ()
+{
+  echo "--------------------------------------------------------------------------------------------------------------"
+  csproj=( $(find . -name "AppMAUI.HybridBlazor.*.csproj") )
+  
+  for csp in ${csproj[@]} ; 
+  do
+    echo "$csp"
+
+    dotnet \
+      watch \
+        build \
+          $csp
+  done
+}
+
+dev_dotnet_maui_build_all ()
+{
+  dev_dotnet_maui_build_lib
+  dev_dotnet_maui_build_app
+  dev_dotnet_maui_build_app_hybrid_blazor
+};
+
+dev_dotnet_maui_run_app_android ()
+{
+  echo "--------------------------------------------------------------------------------------------------------------"
+  echo $1
+  echo $2
+  echo $3
+
+  for d in AppMAUI.*/ ; 
+  do
+    echo "$d"
+
+    echo \
+    "
+    dotnet \
+      watch \
+        build \
+            $d \
+            -t:Run \
+            -f:net7.0-android \
+            /p:AndroidSdkDirectory=$ANDROID_HOME
+    "
+
+    dotnet \
+      watch \
+        build \
+            $d \
+            -t:Run \
+            -f:net7.0-android \
+            /p:AndroidSdkDirectory=$ANDROID_HOME
+
+  done
+}
+
+dev_dotnet_maui_run_app_ios ()
+{
+  echo "--------------------------------------------------------------------------------------------------------------"
+  for d in AppMAUI.*/ ; 
+  do
+    echo "$d"
+
+    echo \
+    "
+    dotnet \
+      watch \
+        build \
+          $d \
+          -t:Run \
+            -f:net7.0-ios \
+            -p:_DeviceName=:v2:udid=$IOS_DEVICE_ID
+    "
+
+    dotnet \
+      watch \
+        build \
+          $d \
+          -t:Run \
+            -f:net7.0-ios \
+            -p:_DeviceName=:v2:udid=$IOS_DEVICE_ID
+
+
+
+  done
+}
+
+dev_dotnet_maui_build_app_hybrid_blazor ()
+{
+  echo "--------------------------------------------------------------------------------------------------------------"
+  for d in AppMAUI.HybridBlazor.*/ ; 
+  do
+      echo "$d"
+        dotnet \
+          build \
+            $d
+  done
+}
+
+dev_vscode_backups ()
+{
+  tree "$HOME/Library/Application Support/Code/Backups"
+
+
+  tree "$HOME/Library/Application Support/Code - Insiders/Backups"
+}
+
 #----------------------------------------------------------------------------------------------------------------------
 
 #----------------------------------------------------------------------------------------------------------------------
@@ -281,11 +784,11 @@ shell functions (bash/zsh) available:
 #----------------------------------------------------------------------------------------------------------------------
 fpath=(~/bat/01-system-integration/mac/zsh/functions $fpath);
 
-autoload -U ~/bat/01-system-integration/mac/zsh/functions/dotnet_tools_update
-autoload -U ~/bat/01-system-integration/mac/zsh/functions/launch_applications
-autoload -U ~/bat/01-system-integration/mac/zsh/functions/disk_usage_android
-autoload -U ~/bat/01-system-integration/mac/zsh/functions/markdown_bash_execute
-autoload -U ~/bat/01-system-integration/mac/zsh/functions/mbe
+autoload -U $HOME/bat/01-system-integration/mac/zsh/functions/dotnet_tools_update
+autoload -U $HOME/bat/01-system-integration/mac/zsh/functions/launch_applications
+autoload -U $HOME/bat/01-system-integration/mac/zsh/functions/disk_usage_android
+autoload -U $HOME/bat/01-system-integration/mac/zsh/functions/markdown_bash_execute
+autoload -U $HOME/bat/01-system-integration/mac/zsh/functions/mbe
 #----------------------------------------------------------------------------------------------------------------------
 
 
