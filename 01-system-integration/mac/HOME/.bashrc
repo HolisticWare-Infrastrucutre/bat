@@ -107,6 +107,34 @@ dev_info_dump()
   dev_ios_info_dump
 }
 
+dev_dotnet_android_bindings_binderator_clean()
+{
+  echo \
+  "
+  rm -fr output externals generated && dotnet cake -t=clean && git clean -xdf \
+  && \
+  clean_term_screen_and_buffer && git pull && git status
+  "
+  rm -fr output externals generated && dotnet cake -t=clean && git clean -xdf \
+  && \
+  clean_term_screen_and_buffer && git pull && git status
+
+}
+
+dev_dotnet_android_bindings_binderator_clean()
+{
+  echo \
+  "
+  rm -fr output externals generated && dotnet cake -t=clean && git clean -xdf \
+  && \
+  clean_term_screen_and_buffer && git pull && git status
+  "
+  rm -fr output externals generated && dotnet cake -t=clean && git clean -xdf \
+  && \
+  clean_term_screen_and_buffer && git pull && git status
+
+}
+
 dev_dotnet_android_bindings_binderator_update_config()
 { 
   # dotnet script update-config.csx -- ./config.json <update|bump|published|sort>
@@ -182,6 +210,14 @@ dev_ios_info_dump()
   "
   softwareupdate --history
 };
+
+dev_ios_xcode_commandline_tools()
+{
+  sudo rm -rf /Library/Developer/CommandLineTools
+  sudo xcode-select --install
+  softwareupdate --all --install --force
+}
+
 
 dev_dotnet_workloads_install()
 { 
