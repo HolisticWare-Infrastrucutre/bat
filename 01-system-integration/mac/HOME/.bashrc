@@ -107,54 +107,6 @@ dev_info_dump()
   dev_ios_info_dump
 }
 
-dev_dotnet_android_bindings_binderator_clean()
-{
-  echo \
-  "
-  rm -fr output externals generated && dotnet cake -t=clean && git clean -xdf \
-  && \
-  clean_term_screen_and_buffer && git pull && git status
-  "
-  rm -fr output externals generated && dotnet cake -t=clean && git clean -xdf \
-  && \
-  clean_term_screen_and_buffer && git pull && git status
-
-}
-
-dev_dotnet_android_bindings_binderator_clean()
-{
-  echo \
-  "
-  rm -fr output externals generated && dotnet cake -t=clean && git clean -xdf \
-  && \
-  clean_term_screen_and_buffer && git pull && git status
-  "
-  rm -fr output externals generated && dotnet cake -t=clean && git clean -xdf \
-  && \
-  clean_term_screen_and_buffer && git pull && git status
-
-}
-
-dev_dotnet_android_bindings_binderator_update_config()
-{ 
-  # dotnet script update-config.csx -- ./config.json <update|bump|published|sort>
-  echo \
-  "
-  dotnet script ./build/scripts/update-config.csx -- ./config.json update
-  "
-  dotnet script ./build/scripts/update-config.csx -- ./config.json update
-}  
-
-dev_dotnet_android_bindings_binderator_bump_config()
-{ 
-  # dotnet script update-config.csx -- ./config.json <update|bump|published|sort>
-  echo \
-  "
-  dotnet script ./build/scripts/update-config.csx -- ./config.json bump
-  "
-  dotnet script ./build/scripts/update-config.csx -- ./config.json bump
-}  
-
 dev_dotnet_info_dump()
 { 
   echo "=============================================================================================================="
@@ -564,6 +516,53 @@ dev_android_decompile_jar_luyten()
     echo "Luyten has no commandline support [yet]"
     java -jar $HOME/bin/Luyten/luyten.jar $1
 };
+
+dev_dotnet_android_bindings_binderator_clean()
+{
+  echo "=============================================================================================================="
+  echo \
+  "
+  rm -fr output externals generated && dotnet cake -t=clean && git clean -xdf \
+  && \
+  clean_term_screen_and_buffer && git pull && git status
+  "
+  rm -fr output externals generated && dotnet cake -t=clean && git clean -xdf \
+  && \
+  clean_term_screen_and_buffer && git pull && git status
+
+}
+
+dev_dotnet_android_bindings_binderator_build()
+{
+  echo "=============================================================================================================="
+  echo \
+  "
+  dotnet cake -t=ci && dotnet cake nuget-diff.cake && dotnet cake utilities.cake
+  "
+  dotnet cake -t=ci && dotnet cake nuget-diff.cake && dotnet cake utilities.cake  
+}
+
+dev_dotnet_android_bindings_binderator_config_update()
+{ 
+  echo "=============================================================================================================="
+  # dotnet script update-config.csx -- ./config.json <update|bump|published|sort>
+  echo \
+  "
+  dotnet script ./build/scripts/update-config.csx -- ./config.json update
+  "
+  dotnet script ./build/scripts/update-config.csx -- ./config.json update
+}  
+
+dev_dotnet_android_bindings_binderator_config_bump()
+{ 
+  echo "=============================================================================================================="
+  # dotnet script update-config.csx -- ./config.json <update|bump|published|sort>
+  echo \
+  "
+  dotnet script ./build/scripts/update-config.csx -- ./config.json bump
+  "
+  dotnet script ./build/scripts/update-config.csx -- ./config.json bump
+}  
 
 dev_xcode_install_commandline_tools()
 {
