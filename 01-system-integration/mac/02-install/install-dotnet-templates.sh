@@ -1,6 +1,8 @@
 #!/bin/zsh
 
 # https://docs.microsoft.com/en-us/dotnet/core/tools/dotnet-new
+# https://github.com/dotnet/templating/wiki/Available-templates-for-dotnet-new
+# https://dotnetnew.azurewebsites.net/
 
 export TEMPLATEZ=\
 "
@@ -8,10 +10,39 @@ export TEMPLATEZ=\
 HolisticWare.DotNetNew.XamarinProjectsStructureTemplate.CSharp
 HolisticWare.DotNetNew.XamarinAndroidMavenBindingsProjectsStructureTemplate.CSharp
 
+FiftyProtons.Templates.DotNetNew
+
 # dotnet new templates
 TimeWarp.Architecture
 LeanArchitecture.Dotnet.Templates.Project
 Clean.Architecture.Solution.Template
+
+Avalonia.Templates
+Uno.Templates
+Microsoft.AspNetCore.Blazor.Templates::*-*
+GtkSharp.Template.CSharp
+GCC.Build.Template
+NUnit3.DotNetNew.Template
+Prism.Forms.QuickstartTemplates
+RaspberryPi.Template
+ServiceStack.Core.Templates
+
+#------------------------------------------------------------
+# CMS
+cloudscribe.templates
+Umbraco.Templates
+#------------------------------------------------------------
+# Blazor and .NET MAUI Shared UI (blazor-maui-shared)
+VladislavAntonyuk.DotNetTemplates
+#------------------------------------------------------------
+#.NET MAUI Comet App (comet)
+Clancey.Comet.Templates.Multiplatform
+# Shiny GPS/BLE/
+Shiny.Templates
+# Prism
+Prism.Templates
+# Vulcan
+Vulcan.Maui.Template
 "
 
 IFS=$'\n'
