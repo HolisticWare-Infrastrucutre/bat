@@ -182,8 +182,21 @@ dev_dotnet_workloads_install()
 
 
 dev_dotnet_tools_reinstall()
-{ 
-  source $HOME/bat/01-system-integration/mac/02-install/install-dotnet-tools.sh
+{
+  echo \
+  "
+  source $HOME/bat/01-system-integration/mac/dotnet/tool/install.sh
+  "
+  source $HOME/bat/01-system-integration/mac/dotnet/tool/install.sh 
+};
+
+dev_dotnet_new_templates_reinstall()
+{
+  echo \
+  "
+  source $HOME/bat/01-system-integration/mac/dotnet/new-templates/install.sh
+  "
+  source $HOME/bat/01-system-integration/mac/dotnet/new-templates/install.sh 
 };
 
 dev_dotnet_tool_cake_install_2_3_0()
