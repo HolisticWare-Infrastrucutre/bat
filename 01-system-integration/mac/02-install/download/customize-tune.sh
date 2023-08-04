@@ -1,5 +1,16 @@
 #!/bin/bash
 
+
+# https://gist.github.com/akachrislee/3220956
+# https://git.herrbischoff.com/awesome-macos-command-line/about/
+# https://www.makeuseof.com/tag/customise-mac-os-x-dock-hidden-terminal-commands/
+# https://www.makeuseof.com/tag/hidden-mac-settings-defaults-command/
+# https://osxdaily.com/2012/10/09/best-defaults-write-commands-mac-os-x/
+# https://ss64.com/osx/syntax-defaults.html
+# https://pawelgrzybek.com/change-macos-user-preferences-via-command-line/
+# https://medium.com/swlh/top-mac-os-default-behaviors-you-should-consider-changing-419b679fe290
+
+
 # https://macos-defaults.com/
 defaults write com.apple.screencapture "location" -string "~/Downloads" && killall SystemUIServer
 
