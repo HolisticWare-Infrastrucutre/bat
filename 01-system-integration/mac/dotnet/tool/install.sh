@@ -47,6 +47,8 @@ Rapicgen
 Microsoft.dotnet-openapi
 dotnet-dev-certs
 dotnet-config2json
+# https://github.com/SimonCropp/WinDebloat
+WinDebloat
 # HTTP tools
 dotnet-serve
 dotnet-httpie
