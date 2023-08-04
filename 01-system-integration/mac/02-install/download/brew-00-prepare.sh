@@ -1,17 +1,24 @@
 #!/bin/bash
 
+open https://dotnet.microsoft.com/en-us/download
+
+open https://visualstudio.microsoft.com/
+
+open https://visualstudio.microsoft.com/vs/preview/#download-preview
+
 #----------------------------------------------------------------------------------------------
 # fingerprint in terminal
 # sudo nano /etc/pam.d/sudo
 # add this at the begining
 # auth       sufficient     pam_tid.so
 
-echo "auth       sufficient     pam_tid.so" | cat - /etc/pam.d/sudo > /tmp/out && mv /tmp/out /etc/pam.d/sudo
+echo "auth       sufficient     pam_tid.so" | cat - /etc/pam.d/sudo > /tmp/out \
+&& \
+mv /tmp/out /etc/pam.d/sudo
+
 cat /etc/pam.d/sudo 
 #----------------------------------------------------------------------------------------------
 
-
-mkdir /Users//Shared/Projects/
 
 defaults write com.apple.finder AppleShowAllFiles YES
 defaults write com.apple.finder _FXShowPosixPathInTitle -bool false
@@ -41,8 +48,31 @@ pod
 eval "$(/opt/homebrew/bin/brew shellenv)"
 
 # https://github.com/Homebrew/homebrew-cask/blob/master/USAGE.md
+# /usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
 
-/usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
+
+brew install --cask \
+    mysides \
+    iterm2 \
+
+mkdir /Users/Shared/Projects/
+
+mysides add \
+    Projects \
+    file:///Users/Shared/Projects
+
+mysides add \
+    moljac \
+    file:///Users/moljac
+
+mysides add \
+    "Macintosh HD" \
+    "file:///Volumes/Macintosh HD/"
+
+
+
+
+
 
 osascript -e 'tell app "System Events" to display dialog "$ACTION_VERB XCode"'
 #osascript -e 'tell app "Finder" to display dialog "$ACTION_VERB Xcode"'
@@ -50,11 +80,7 @@ open -a "App Store"
 
 sudo xcodebuild -license
 
-open https://dotnet.microsoft.com/en-us/download
-
-open https://visualstudio.microsoft.com/
-
-cd ~
+cd $HOME
 git clone https://github.com/moljac/bat.git
 
 

@@ -3,6 +3,7 @@
 
 # https://gist.github.com/akachrislee/3220956
 # https://git.herrbischoff.com/awesome-macos-command-line/about/
+# https://github.com/rusty1s/dotfiles/blob/master/macos/defaults.sh
 # https://www.makeuseof.com/tag/customise-mac-os-x-dock-hidden-terminal-commands/
 # https://www.makeuseof.com/tag/hidden-mac-settings-defaults-command/
 # https://osxdaily.com/2012/10/09/best-defaults-write-commands-mac-os-x/
@@ -11,21 +12,38 @@
 # https://medium.com/swlh/top-mac-os-default-behaviors-you-should-consider-changing-419b679fe290
 
 
+# https://github.com/kdeldycke/dotfiles/blob/main/macos-config.sh
+
+
 # https://macos-defaults.com/
-defaults write com.apple.screencapture "location" -string "~/Downloads" && killall SystemUIServer
+defaults write com.apple.screencapture "location" -string "~/Downloads" \
+&& \
+killall SystemUIServer
 
 
 # https://macos-defaults.com/finder/AppleShowAllExtensions.html
-defaults write NSGlobalDomain "AppleShowAllExtensions" -bool "true" && killall Finder
+defaults write NSGlobalDomain "AppleShowAllExtensions" -bool "true" \
+&& \
+killall Finder
 
 # https://macos-defaults.com/finder/AppleShowAllFiles.html#set-to-true
-defaults write com.apple.Finder "AppleShowAllFiles" -bool "true" && killall Finder
+defaults write com.apple.Finder "AppleShowAllFiles" -bool "true" \
+&& \
+killall Finder
 
+# https://github.com/tech-otaku/macos-defaults/blob/master/date-time.sh
 # https://macos-defaults.com/menubar/DateFormat.html#set-to-quot-eee-d-mmm-hh-mm-ss-quot
 defaults write com.apple.menuextra.clock IsAnalog -bool false
-defaults write com.apple.menuextra.clock "DateFormat" -string "\"EEE MM-dd HH:mm:ss\""  \
-    && \
-    killall SystemUIServer
+# https://www.tech-otaku.com/mac/setting-the-date-and-time-format-for-the-macos-menu-bar-clock-using-terminal/
+
+# defaults write com.apple.menuextra.clock DateFormat -string "EEE d MMM HH:mm" && killall SystemUIServer
+# defaults write com.apple.menuextra.clock FlashDateSeparators -bool true && killall SystemUIServer
+defaults write com.apple.menuextra.clock "DateFormat" -string "YYYY-MM-ddTHH:mm:ss EEE"  \
+&& \
+killall SystemUIServer
+
+
+
 # https://github.com/herrbischoff/awesome-macos-command-line#memory-management
 # https://github.com/DannyNemer/dotfiles/blob/master/macos.sh
 # https://www.snip2code.com/Snippet/1138321/Bootstrap-Mac-OS-X-Configuration
@@ -34,22 +52,7 @@ defaults write com.apple.menuextra.clock "DateFormat" -string "\"EEE MM-dd HH:mm
 # https://github.com/ryanb/dotfiles
 # https://github.com/holman/dotfiles
 
-brew cask install \
-    mysides \
 
-
-mkdir /Users/Shared/Projects
-mysides add \
-    Projects \
-    file:///Users/Shared/Projects
-
-mysides add \
-    "Macintosh HD" \
-    "file:///Volumes/Macintosh HD/"
-
-
-brew cask install \
-    iterm2 \
 
 # https://pawelgrzybek.com/change-macos-user-preferences-via-command-line/
 # https://eclecticlight.co/2019/08/15/global-defaults-in-macos-mojave/
@@ -112,6 +115,7 @@ defaults write -g PMPrintingExpandedStateForPrint -bool TRUE
 defaults write com.apple.finder QuitMenuItem -bool TRUE 
 
 killall Finder
+killall SystemUIServer
 
 #   Save to Disk by Default
 #       Sets default save target to be a local disk, not iCloud.
@@ -147,6 +151,10 @@ defaults write \
     com.googlecode.iterm2 \
     FocusFollowsMouse -string YES
 
+killall Finder
+killall SystemUIServer
+
+
 # Xcode
 #   Install Command Line Tools without Xcode
 xcode-select --install
@@ -157,14 +165,7 @@ xcrun simctl delete unavailable
 defaults write com.apple.menuextra.battery ShowPercent -string "YES"
 killall SystemUIServer
 
-# https://www.tech-otaku.com/mac/setting-the-date-and-time-format-for-the-macos-menu-bar-clock-using-terminal/
-
-defaults write com.apple.menuextra.clock DateFormat -string "EEE d MMM HH:mm" && killall SystemUIServer
-defaults write com.apple.menuextra.clock FlashDateSeparators -bool true && killall SystemUIServer
  
-
-
-
 # https://blog.jiayu.co/2018/12/quickly-configuring-hot-corners-on-macos/
 # https://apple.stackexchange.com/questions/300696/toggle-hot-corners-with-a-script
 
@@ -220,6 +221,8 @@ defaults write com.apple.dock wvous-tr-corner -int 2
 defaults write com.apple.dock wvous-tr-modifier -int 0
 
 killall Dock
+killall Finder
+killall SystemUIServer
 
 # make the shell script quit immediately in case of error. 
 #   -e means "Exit immediately if a command exits with a non-zero status".
@@ -233,7 +236,10 @@ for corner in tl tr br bl;
   do
     defaults write com.apple.dock "wvous-$corner-corner" -int 0
   done
+
 killall Dock
+killall Finder
+killall SystemUIServer
 
 
 defaults write \
@@ -242,7 +248,10 @@ defaults write \
 
 defaults write com.apple.dock mru-spaces -bool false
 defaults write com.apple.dock mru-spaces -boolean NO
+
 killall Dock
+killall Finder
+killall SystemUIServer
 
 
 # turn off the creation of .DS_Store files
@@ -260,3 +269,8 @@ defaults write com.apple.desktopservices DSDontWriteNetworkStores true
 # output was 3 for me
 defaults read -g com.apple.mouse.scaling 
 defaults write -g com.apple.mouse.scaling 10
+
+
+killall Dock
+killall Finder
+killall SystemUIServer
