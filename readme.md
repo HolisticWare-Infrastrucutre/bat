@@ -101,3 +101,24 @@ Here is list of the most common system file storages:
 ~/Library/Preferences
 ~/Library/Containers
 ~/Library/Cookies
+
+
+
+## Visual Studio
+
+https://learn.microsoft.com/en-us/visualstudio/mac/uninstall?view=vsmac-2022#uninstall-scripts
+
+
+sudo rm -rf "/Applications/Visual Studio.app"
+rm -rf ~/Library/Caches/VisualStudio
+rm -rf ~/Library/Preferences/VisualStudio
+rm -rf ~/Library/Preferences/Visual\ Studio
+rm -rf ~/Library/Logs/VisualStudio
+rm -rf ~/Library/VisualStudio
+rm -rf ~/Library/Preferences/Xamarin/
+rm -rf ~/Library/Application\ Support/VisualStudio
+
+rm -rf ~/Library/Developer/Xamarin
+sudo rm -rf /Library/Frameworks/Mono.framework
+sudo pkgutil --forget com.xamarin.mono-MDK.pkg
+sudo rm -rf /etc/paths.d/mono-commands
