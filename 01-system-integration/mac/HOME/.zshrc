@@ -800,6 +800,27 @@ dev_dotnet_maui_build_app_hybrid_blazor ()
   done
 }
 
+dev_dotnet_maui_repo_build ()
+{
+  echo "--------------------------------------------------------------------------------------------------------------"
+  echo \
+  "
+    dotnet tool restore
+    dotnet cake --target=VS --workloads=global
+    dotnet cake --target=VS --workloads=global \
+        --android \
+        --ios  \
+        --catalyst
+  "
+
+  dotnet tool restore
+  dotnet cake --target=VS --workloads=global
+  dotnet cake --target=VS --workloads=global \
+      --android \
+      --ios  \
+      --catalyst
+}
+
 dev_vscode_backups ()
 {
   tree "$HOME/Library/Application Support/Code/Backups"
