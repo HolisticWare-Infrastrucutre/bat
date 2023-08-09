@@ -175,9 +175,11 @@ brew $ACTION_VERB --cask \
     
 
 brew $ACTION_VERB \
-    keepassc \
-    keepassx \
+    keepasxc \
 
+#    keepassc \
+#    keepassx \
+#
     
 
 # plugins for zsh (nvm)
@@ -290,6 +292,9 @@ brew $ACTION_VERB --cask \
     tor-browser \
     opera \
     opera-neon \
+
+
+brew $ACTION_VERB --cask \
     browserosaurus \
     charles \
     chromedriver \
