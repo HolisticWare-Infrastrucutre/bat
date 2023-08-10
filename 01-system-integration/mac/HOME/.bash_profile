@@ -434,19 +434,60 @@ dev_android_emulator_launch()
     &
 };
 
-dev_android_adb_setup()
+dev_android_adb_logcat_buffers_clear_non_rooted()
 {
   echo "--------------------------------------------------------------------------------------------------------------"
   echo \
   "
-  adb logcat -G 64M 
   adb logcat -c
+  "
+
+  adb logcat -c
+}
+
+dev_android_adb_logcat_buffers_clear_rooted()
+{
+  echo "--------------------------------------------------------------------------------------------------------------"
+  echo \
+  "
+  adb root
+  adb logcat -b all -c
+  adb root
+  adb shell logcat -b all -c
+  "
+
+  adb root
+  adb logcat -b all -c
+  adb root
+  adb shell logcat -b all -c
+}
+
+dev_android_adb_logcat_buffers_clear_all()
+{
+  echo "--------------------------------------------------------------------------------------------------------------"
+  echo \
+  "
+  dev_android_adb_logcat_buffers_clear_rooted
+  dev_android_adb_logcat_buffers_clear_rooted
+  "
+
+  dev_android_adb_logcat_buffers_clear_rooted
+  dev_android_adb_logcat_buffers_clear_rooted
+}
+
+dev_android_adb_logcat_init()
+{
+  echo "--------------------------------------------------------------------------------------------------------------"
+  echo \
+  "
+  dev_android_adb_logcat_clear
+  adb logcat -G 64M 
   adb shell \
     setprop debug.mono.log default,debugger,assembly,mono_log_level=debug,mono_log_mask=all
   "
 
+  dev_android_adb_logcat_clear
   adb logcat -G 64M 
-  adb logcat -c
   adb shell \
     setprop debug.mono.log default,debugger,assembly,mono_log_level=debug,mono_log_mask=all
 };
