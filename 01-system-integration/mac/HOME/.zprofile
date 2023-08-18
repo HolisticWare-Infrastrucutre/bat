@@ -51,8 +51,8 @@ function disk_usage_android()
 alias ll='ls -al'
 
 
-alias vs="open -aVisual\ Studio\ \(Preview\)"
-alias vsc="code -n"
+alias vs="open -a Visual\ Studio\ \(Preview\)"
+alias vsc="code -n ."
 # implemented as function
 # alias rider="open -a Rider"
 
@@ -384,6 +384,10 @@ work_on_moljac()
     work_on_moljac_holisticware
 };
 
+
+
+
+
 dev_android_apk_analysis()
 {
   echo \
@@ -433,6 +437,21 @@ dev_android_emulator_launch()
     -avd "$1" \
     &
 };
+
+dev_android_adb_reset()
+{
+  echo "--------------------------------------------------------------------------------------------------------------"
+  echo \
+  "
+    adb kill-server
+    adb start-server
+    adb devices
+  "
+
+    adb kill-server
+    adb start-server
+    adb devices
+}
 
 dev_android_adb_logcat_buffers_clear_non_rooted()
 {
@@ -618,7 +637,21 @@ dev_dotnet_android_bindings_binderator_config_bump()
   dotnet script ./build/scripts/update-config.csx -- ./config.json bump
 }  
 
-dev_xcode_install_commandline_tools()
+dev_macios_xcode_reset()
+{
+  # https://learn.microsoft.com/en-us/dotnet/maui/troubleshooting#couldnt-find-a-valid-xcode-app-bundle
+
+  echo "--------------------------------------------------------------------------------------------------------------"
+  echo \
+  "
+  sudo xcode-select --reset
+  "
+
+  sudo xcode-select --reset
+
+}
+
+dev_macios_xcode_install_commandline_tools()
 {
   echo "--------------------------------------------------------------------------------------------------------------"
   sudo rm -rf /Library/Developer/CommandLineTools
@@ -861,6 +894,44 @@ dev_dotnet_maui_repo_build ()
       --ios  \
       --catalyst
 }
+
+dev_dotnet_maui_fix_installation ()
+{
+  # Visual Studio for Mac's installer and updater uses dotnet workload install commands to install the 
+  # .NET MAUI .pkg files.
+  # Since .pkg files can't be uninstalled, the simplest approach to uninstalling the workloads on a Mac 
+  # is to run the following commands to delete the specified folders:
+  echo "--------------------------------------------------------------------------------------------------------------"
+  echo \
+  "
+  rm -rf $HOME/.dotnet/
+  sudo rm -rf /usr/local/share/dotnet/
+
+  open -na "Google Chrome" \
+      --args \
+      --new-window \
+          "https://dotnet.microsoft.com/download" \
+          "https://dotnet.microsoft.com/en-us/download/dotnet/8.0" \
+          "https://dotnet.microsoft.com/en-us/download/dotnet/7.0" \
+          "https://dotnet.microsoft.com/en-us/download/dotnet/6.0" \
+          
+  "
+
+  rm -rf $HOME/.dotnet/
+  sudo rm -rf /usr/local/share/dotnet/
+
+  # -na  - new application
+  open -na "Google Chrome" \
+      --args \
+      --new-window \
+          "https://dotnet.microsoft.com/download" \
+          "https://dotnet.microsoft.com/en-us/download/dotnet/8.0" \
+          "https://dotnet.microsoft.com/en-us/download/dotnet/7.0" \
+          "https://dotnet.microsoft.com/en-us/download/dotnet/6.0" \
+
+
+}
+
 
 dev_vscode_backups ()
 {
