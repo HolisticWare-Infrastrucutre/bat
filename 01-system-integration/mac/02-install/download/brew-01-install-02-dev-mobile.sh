@@ -30,10 +30,75 @@ brew $ACTION_VERB \
 # https://bintray.com/jetbrains/intellij-jdk/
 # https://bintray.com/jetbrains/intellij-jbr/jbrsdk8-osx-x64/1644.3#files
 
+
+
+
+
+ll      /Library/Java/JavaVirtualMachines 
+ls -1   /Library/Java/JavaVirtualMachines 
+
 brew tap adoptopenjdk/openjdk
+
+
+brew $ACTION_VERB --cask \
+    homebrew/cask-versions/adoptopenjdk8 \
+
+brew $ACTION_VERB --cask \
+    adoptopenjdk/openjdk/adoptopenjdk8 \
+    adoptopenjdk/openjdk/adoptopenjdk@11 \
+    adoptopenjdk/openjdk/adoptopenjdk@17 \
+    adoptopenjdk/openjdk/adoptopenjdk11 \
+    adoptopenjdk/openjdk/adoptopenjdk17 \
+
 brew $ACTION_VERB --cask \
     adoptopenjdk \
     adoptopenjdk8 \
+    adoptopenjdk/openjdk/adoptopenjdk8 \
+
+
+brew untap adoptopenjdk/openjdk
+
+
+brew update
+brew tap homebrew/cask-versions
+
+brew $ACTION_VERB --cask \
+    homebrew/cask-versions/zulu8 \
+    homebrew/cask-versions/zulu11 \
+    homebrew/cask-versions/zulu17 \
+
+
+brew $ACTION_VERB --cask \
+    microsoft-openjdk \
+    microsoft-openjdk11 \
+    openjdk \
+    openjdk@8 \
+    openjdk@11 \
+    openjdk@17 \
+    openjdk@20 \
+    oracle-jdk \
+    oracle-jdk \
+    oracle-jdk17 \
+    semeru-jdk-open \
+    semeru-jdk8-open \
+    semeru-jdk11-open \
+    semeru-jdk17-open \
+    graal-jdk \
+    graal-jdk17 \
+
+boots https://corretto.aws/downloads/latest/amazon-corretto-17-aarch64-macos-jdk.pkg
+
+
+brew $ACTION_VERB --cask \
+    temurin \
+    temurin11 \
+    temurin17 \
+
+
+alias java8="unset JAVA_HOME; export JAVA_HOME=`/usr/libexec/java_home -v 1.8`; java -version"
+alias java11="unset JAVA_HOME; export JAVA_HOME=`/usr/libexec/java_home -v 11`; java -version"
+alias java16="unset JAVA_HOME; export JAVA_HOME=`/usr/libexec/java_home -v 16`; java -version"
+alias java17="unset JAVA_HOME; export JAVA_HOME=`/usr/libexec/java_home -v 17`; java -version"
 
 # https://github.com/Homebrew/homebrew-cask-versions/tree/master/Casks
 brew tap homebrew/cask-versions
