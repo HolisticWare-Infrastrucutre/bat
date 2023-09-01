@@ -6,19 +6,6 @@ open https://visualstudio.microsoft.com/
 
 open https://visualstudio.microsoft.com/vs/preview/#download-preview
 
-#----------------------------------------------------------------------------------------------
-# fingerprint in terminal
-# sudo nano /etc/pam.d/sudo
-# add this at the begining
-# auth       sufficient     pam_tid.so
-
-echo "auth       sufficient     pam_tid.so" | cat - /etc/pam.d/sudo > /tmp/out \
-&& \
-mv /tmp/out /etc/pam.d/sudo
-
-cat /etc/pam.d/sudo 
-#----------------------------------------------------------------------------------------------
-
 
 defaults write com.apple.finder AppleShowAllFiles YES
 defaults write com.apple.finder _FXShowPosixPathInTitle -bool false
