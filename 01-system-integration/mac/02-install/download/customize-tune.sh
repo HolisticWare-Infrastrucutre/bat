@@ -1,6 +1,13 @@
 #!/bin/bash
 
 
+# make the shell script quit immediately in case of error. 
+#   -e means "Exit immediately if a command exits with a non-zero status".
+#   -u means "Treat unset variables as an error when substituting". 
+# The script will still work without it, but many people consider it a best practice to include it 
+# at the top of every shell script, since it makes it more likely you will catch bugs.
+set -eu
+
 # https://gist.github.com/akachrislee/3220956
 # https://git.herrbischoff.com/awesome-macos-command-line/about/
 # https://github.com/rusty1s/dotfiles/blob/master/macos/defaults.sh
@@ -142,6 +149,10 @@ defaults write com.apple.Safari com.apple.Safari.ContentPageGroupIdentifier.WebK
 && \
 defaults write -g WebKitDeveloperExtras -bool true
 
+
+
+
+
 # Terminal
 #   Focus Follows Mouse
 defaults write \
@@ -224,22 +235,6 @@ killall Dock
 killall Finder
 killall SystemUIServer
 
-# make the shell script quit immediately in case of error. 
-#   -e means "Exit immediately if a command exits with a non-zero status".
-#   -u means "Treat unset variables as an error when substituting". 
-# The script will still work without it, but many people consider it a best practice to include it 
-# at the top of every shell script, since it makes it more likely you will catch bugs.
-set -eu
-
-# Turn off hot-corners
-for corner in tl tr br bl;
-  do
-    defaults write com.apple.dock "wvous-$corner-corner" -int 0
-  done
-
-killall Dock
-killall Finder
-killall SystemUIServer
 
 
 defaults write \
