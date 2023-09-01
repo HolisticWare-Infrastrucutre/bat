@@ -7,8 +7,6 @@ export ACTION_VERB=install
 
 source ./brew-00-prepare.sh
 
-
-
 #----------------------------------------------------------------------------------------------
 # https://docs.microsoft.com/en-us/powershell/scripting/install/installing-powershell-core-on-macos?view=powershell-6
 
@@ -332,34 +330,6 @@ brew $ACTION_VERB \
     avro-tools \
     flatbuffers \
     
-
-brew upgrade
-brew update
-
-#----------------------------------------------------------------------------------------------
-# communications
-# IM
-brew $ACTION_VERB --cask \
-    slack \
-    microsoft-teams \
-    gitter \
-    android-messages \
-    google-hangouts \
-    discord \
-    telegram \
-    signal \
-
-    
-brew $ACTION_VERB --cask \
-    master-pdf-editor \
-    foxit-pdf-editor \
-    pdf-expert \
-    pdfpen \
-    sejda-pdf \
-
-brew $ACTION_VERB --cask \
-    microsoft-office \
-    thunderbird \
 
 brew $ACTION_VERB --cask \
     dash \
