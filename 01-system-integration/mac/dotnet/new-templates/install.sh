@@ -8,8 +8,8 @@ source $HOME/bat/01-system-integration/mac/01-uninstall-clean-remove-nuke/nuget.
 # https://github.com/dotnet/templating/wiki
 # https://learn.microsoft.com/en-us/dotnet/core/tools/dotnet-new
 # https://github.com/dotnet/templating/wiki
-https://github.com/dotnet/samples/tree/main/core/tutorials/cli-templates-create-item-template
-https://learn.microsoft.com/en-us/dotnet/core/tutorials/cli-templates-create-template-package
+# https://github.com/dotnet/samples/tree/main/core/tutorials/cli-templates-create-item-template
+# https://learn.microsoft.com/en-us/dotnet/core/tutorials/cli-templates-create-template-package
 
 # https://auth0.com/blog/create-dotnet-project-template/
 # https://damienbod.com/2022/08/15/creating-dotnet-solution-and-project-templates/
@@ -26,6 +26,8 @@ Microsoft.TemplateEngine.Authoring.Templates
 # Blazor - Full stack web development with C# and WebAssembly
 # http://blazor.net/
 Microsoft.AspNetCore.Blazor.Templates::3.0.0-*
+# DevExpress
+DevExpress.Maui.ProjectTemplates
 # Cake.Frosting
 # https://github.com/cake-build/cake
 Cake.Frosting.Template
