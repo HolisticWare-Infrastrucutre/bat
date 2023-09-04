@@ -74,6 +74,35 @@ sys_finder_open_windows_and_tabs()
   source $HOME/bat/03-productivity/mac/finder-open-window-with-tabs.sh
 };
 
+sys_terminal_fingerprint()
+{
+  #----------------------------------------------------------------------------------------------
+  # fingerprint in terminal
+  # sudo nano /etc/pam.d/sudo
+  # add this at the begining
+  # auth       sufficient     pam_tid.so
+
+  #----------------------------------------------------------------------------------------------
+
+  echo "--------------------------------------------------------------------------------------------------------------"
+  echo \
+  "
+  echo "auth       sufficient     pam_tid.so" | cat - /etc/pam.d/sudo > /tmp/out \
+  && \
+  mv /tmp/out /etc/pam.d/sudo
+
+  cat /etc/pam.d/sudo 
+  "
+
+  echo "auth       sufficient     pam_tid.so" | cat - /etc/pam.d/sudo > /tmp/out \
+  && \
+  mv /tmp/out /etc/pam.d/sudo
+
+  cat /etc/pam.d/sudo 
+};
+
+
+
 sys_diverse_clean()
 {
   rm -fr .cache/
