@@ -13,9 +13,10 @@ brew update
 # IM
 brew $ACTION_VERB --cask \
     microsoft-teams \
+    discord \
+    whatsapp \
     slack \
     android-messages \
-    discord \
     telegram \
     signal \
     google-chat \
@@ -27,6 +28,7 @@ brew $ACTION_VERB --cask \
 brew $ACTION_VERB --cask \
     microsoft-office \
     thunderbird \
+    keep \
 
 
 brew $ACTION_VERB --cask \
