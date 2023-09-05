@@ -17,6 +17,17 @@ source $HOME/bat/01-system-integration/mac/01-uninstall-clean-remove-nuke/nuget.
 
 export TEMPLATEZ=\
 "\
+Brushtail.Enterprise.Template
+UraniumUI.Templates
+VijayAnand.MauiTemplates
+Reactor.Maui.TemplatePack
+Epoxy.Templates
+Shiny.Templates
+Fabulous.MauiControls.Templates
+DevExpress.Maui.ProjectTemplates
+Goldie.BlankMauiTemplate
+Fun.SunUI.Templates
+AvantiPoint.MauiMicroMvvm.Templates
 "
 
 
