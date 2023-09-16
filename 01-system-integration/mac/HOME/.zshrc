@@ -88,7 +88,7 @@ sys_terminal_fingerprint()
   echo \
   "
   echo "auth       sufficient     pam_tid.so" | cat - /etc/pam.d/sudo > /tmp/out \\
-  && \\
+  && \
   mv /tmp/out /etc/pam.d/sudo
 
   cat /etc/pam.d/sudo 
@@ -100,6 +100,7 @@ sys_terminal_fingerprint()
 
   cat /etc/pam.d/sudo 
 };
+
 
 
 sys_diverse_clean()
@@ -428,36 +429,34 @@ dev_android_apk_analysis()
 dev_android_emulator_list()
 {
   # start Android emulator to gain some time
+  echo "--------------------------------------------------------------------------------------------------------------"
+  echo \
   $HOME/Library/Android/sdk/emulator/emulator \
     -list-avds
 };
 
+dev_android_emulator_reboot()
+{
+  echo "--------------------------------------------------------------------------------------------------------------"  
 dev_android_emulator_launch()
 {
+  echo "First argument: $1"
+
   if [ $# -lt 1 ]
   then
     echo "Usage: dev_android_emulator_launch <emulator_name>"
 
-    echo "Emulators Available:"
-    $HOME/Library/Android/sdk/emulator/emulator \
-      -list-avds  
-    echo
-    echo
-    echo \
-    "
-    $HOME/Library/Android/sdk/emulator/emulator \
-      -list-avds  
-    "
+    dev_android_emulator_list
     
     return
   fi
 
-  echo "First argument: $1"
-
   echo \
   "
-  $HOME/Library/Android/sdk/emulator/emulator \
-    -avd "$1" \
+  $HOME/Library/Android/sdk/emulator/emulator \\
+    -avd "$1" \\
+    -no-cache \\
+    -no-snapshot-load \\
     &
   "
   #$HOME/Library/Developer/Xamarin/android-sdk-macosx/emulator/emulator 
@@ -465,6 +464,65 @@ dev_android_emulator_launch()
     -avd "$1" \
     &
 };
+
+dev_android_emulator_avds_all_rm_img_data()
+{
+  echo "--------------------------------------------------------------------------------------------------------------"  
+  echo \
+  "
+  find $HOME/.android/avd/ -iname "*.avd" 
+  rm -fr $(find $HOME/.android/avd/ -iname "*.img") 
+  "
+  find $HOME/.android/avd/ -iname "*.avd" 
+  rm -fr $(find $HOME/.android/avd/ -iname "*.img") 
+
+}
+
+
+dev_android_emulator_launch_wipe_data_no_cache_no_snapshot()
+{
+  echo "--------------------------------------------------------------------------------------------------------------"  
+  echo "First argument: $1"
+
+  if [ $# -lt 1 ]
+  then
+    echo "Usage: dev_android_emulator_launch <emulator_name>"
+
+    dev_android_emulator_list
+    
+    return
+  fi
+
+  echo \
+  "
+  $HOME/Library/Android/sdk/emulator/emulator \
+    -avd "$1" \
+    -wipe-data \
+    -no-cache \
+    -no-snapshot-load \
+    &
+  "
+  #$HOME/Library/Developer/Xamarin/android-sdk-macosx/emulator/emulator 
+  $HOME/Library/Android/sdk/emulator/emulator \
+    -avd "$1" \
+    -no-cache \
+    -no-snapshot-load \
+    &
+};
+
+dev_android_adb_fastboot()
+{
+  echo \
+  "
+  adb reboot bootloader
+
+
+  fastboot devices
+  fastboot erase userdata
+  fastboot erase cache
+  "
+  adb reboot bootloader
+}
 
 dev_android_adb_reset()
 {
@@ -527,13 +585,13 @@ dev_android_adb_logcat_init()
   echo "--------------------------------------------------------------------------------------------------------------"
   echo \
   "
-  dev_android_adb_logcat_buffers_clear_all
+  dev_android_adb_logcat_clear
   adb logcat -G 64M 
-  adb shell \
+  adb shell \\
     setprop debug.mono.log default,debugger,assembly,mono_log_level=debug,mono_log_mask=all
   "
 
-  dev_android_adb_logcat_buffers_clear_all
+  dev_android_adb_logcat_clear
   adb logcat -G 64M 
   adb shell \
     setprop debug.mono.log default,debugger,assembly,mono_log_level=debug,mono_log_mask=all
@@ -706,22 +764,13 @@ dev_ios_emulator_list()
   "
   xcrun simctl list
   "
+  xcrun simctl list
 };
 
 export IOS_DEVICE_ID="73FC4795-80E6-4ED9-9BB5-716206BDAFCD"
 
 dev_ios_emulator_launch()
 {
-  echo "--------------------------------------------------------------------------------------------------------------"
-  echo \
-  "
-  dev_ios_emulator_list
-  open -a \\
-    Simulator \\
-      --args \\
-        -CurrentDeviceUDID $IOS_DEVICE_ID
-  "
-  dev_ios_emulator_list
   open -a \
     Simulator \
       --args \
@@ -739,6 +788,11 @@ dev_ios_emulator_launch()
 
 dev_dotnet_msbuildlog ()
 {
+  echo "--------------------------------------------------------------------------------------------------------------"
+  echo \
+  "
+  dotnet $HOME/bin/msbuildlog/bin/StructuredLogViewer.Avalonia.dll
+  "
   dotnet $HOME/bin/msbuildlog/bin/StructuredLogViewer.Avalonia.dll
 }
 
@@ -986,7 +1040,7 @@ dev_vscode_backups ()
 #----------------------------------------------------------------------------------------------------------------------
 
 #----------------------------------------------------------------------------------------------------------------------
-export PATH="$PATH:/usr/local/share/dotnet"
+export PATH="$PATH:/usr/local/share/dotnet:$HOME/.dotnet/tools/"
 #----------------------------------------------------------------------------------------------------------------------
 
 
