@@ -87,8 +87,8 @@ sys_terminal_fingerprint()
   echo "--------------------------------------------------------------------------------------------------------------"
   echo \
   "
-  echo "auth       sufficient     pam_tid.so" | cat - /etc/pam.d/sudo > /tmp/out \
-  && \
+  echo "auth       sufficient     pam_tid.so" | cat - /etc/pam.d/sudo > /tmp/out \\
+  && \\
   mv /tmp/out /etc/pam.d/sudo
 
   cat /etc/pam.d/sudo 
@@ -100,7 +100,6 @@ sys_terminal_fingerprint()
 
   cat /etc/pam.d/sudo 
 };
-
 
 
 sys_diverse_clean()
@@ -528,13 +527,13 @@ dev_android_adb_logcat_init()
   echo "--------------------------------------------------------------------------------------------------------------"
   echo \
   "
-  dev_android_adb_logcat_clear
+  dev_android_adb_logcat_buffers_clear_all
   adb logcat -G 64M 
   adb shell \
     setprop debug.mono.log default,debugger,assembly,mono_log_level=debug,mono_log_mask=all
   "
 
-  dev_android_adb_logcat_clear
+  dev_android_adb_logcat_buffers_clear_all
   adb logcat -G 64M 
   adb shell \
     setprop debug.mono.log default,debugger,assembly,mono_log_level=debug,mono_log_mask=all
@@ -624,8 +623,8 @@ dev_dotnet_android_bindings_binderator_clean()
   echo "=============================================================================================================="
   echo \
   "
-  rm -fr output externals generated && dotnet cake -t=clean && git clean -xdf \
-  && \
+  rm -fr output externals generated && dotnet cake -t=clean && git clean -xdf \\
+  && \\
   clean_term_screen_and_buffer && git pull && git status
   "
   rm -fr output externals generated && dotnet cake -t=clean && git clean -xdf \
@@ -702,13 +701,27 @@ zshrc_reload()
 
 dev_ios_emulator_list()
 {
+  echo "--------------------------------------------------------------------------------------------------------------"
+  echo \
+  "
   xcrun simctl list
+  "
 };
 
 export IOS_DEVICE_ID="73FC4795-80E6-4ED9-9BB5-716206BDAFCD"
 
 dev_ios_emulator_launch()
 {
+  echo "--------------------------------------------------------------------------------------------------------------"
+  echo \
+  "
+  dev_ios_emulator_list
+  open -a \\
+    Simulator \\
+      --args \\
+        -CurrentDeviceUDID $IOS_DEVICE_ID
+  "
+  dev_ios_emulator_list
   open -a \
     Simulator \
       --args \
