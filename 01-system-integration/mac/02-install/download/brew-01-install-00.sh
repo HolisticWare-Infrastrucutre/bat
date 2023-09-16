@@ -329,7 +329,11 @@ brew $ACTION_VERB \
     bond \
     avro-tools \
     flatbuffers \
-    
+
+
+brew $ACTION_VERB \
+    jsontypedef/jsontypedef/jtd-infer \
+    jsontypedef/jsontypedef/jtd-codegen \   
 
 brew $ACTION_VERB --cask \
     dash \
