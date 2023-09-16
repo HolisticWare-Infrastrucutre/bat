@@ -431,6 +431,11 @@ dev_android_emulator_list()
   # start Android emulator to gain some time
   echo "--------------------------------------------------------------------------------------------------------------"
   echo \
+  "
+  $HOME/Library/Android/sdk/emulator/emulator \\
+  -list-avds
+  "
+  echo
   $HOME/Library/Android/sdk/emulator/emulator \
     -list-avds
 };
@@ -438,8 +443,19 @@ dev_android_emulator_list()
 dev_android_emulator_reboot()
 {
   echo "--------------------------------------------------------------------------------------------------------------"  
+  echo \
+  "
+  adb -e reboot
+  "
+  adb -e reboot
+  # ????
+  # adb reboot
+  # ????
+}
+
 dev_android_emulator_launch()
 {
+  echo "--------------------------------------------------------------------------------------------------------------"  
   echo "First argument: $1"
 
   if [ $# -lt 1 ]
