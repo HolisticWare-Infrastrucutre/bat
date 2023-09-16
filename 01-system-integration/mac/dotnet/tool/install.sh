@@ -69,6 +69,8 @@ dotnet-deb
 dotnet-rpm
 dotnet-tarball
 dotnet-version-cli
+# Data Formats
+Corvus.Json.JsonSchema.TypeGeneratorTool
 # Documentation
 docfx
 # templating
