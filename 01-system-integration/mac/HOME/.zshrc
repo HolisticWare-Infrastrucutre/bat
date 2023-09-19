@@ -89,14 +89,14 @@ sys_terminal_fingerprint()
   "
   echo "auth       sufficient     pam_tid.so" | cat - /etc/pam.d/sudo > /tmp/out \\
   && \
-  mv /tmp/out /etc/pam.d/sudo
+  sudo mv /tmp/out /etc/pam.d/sudo
 
   cat /etc/pam.d/sudo 
   "
 
   echo "auth       sufficient     pam_tid.so" | cat - /etc/pam.d/sudo > /tmp/out \
   && \
-  mv /tmp/out /etc/pam.d/sudo
+  sudo mv /tmp/out /etc/pam.d/sudo
 
   cat /etc/pam.d/sudo 
 };
@@ -129,7 +129,8 @@ dev_nuget_nuke()
   source $HOME/bat/01-system-integration/mac/nuget/clean.sh
 };
 
-dev_info_dump()
+
+dev_info_dump_long()
 {
   dev_dotnet_info_dump 
   dev_android_info_dump
@@ -137,23 +138,76 @@ dev_info_dump()
 }
 
 dev_dotnet_info_dump()
-{ 
+{
   echo "=============================================================================================================="
-  echo "Microsoft .NET"
-  echo "dotnet --info"
+  echo "\
+  Microsoft .NET 
+  "
+  echo \
+  "
   dotnet --info
-  echo "dotnet --list-runtimes"
+  "
+  dotnet --info
+  
+  echo \
+  "
   dotnet --list-runtimes
-  echo "dotnet --list-sdks"  
+  "
+  dotnet --list-runtimes
+  echo \
+  "
+  dotnet --list-sdks
+  "  
   dotnet --list-sdks  
   echo "--------------------------------------------------------------------------------------------------------------"
-  echo "dotnet workload list"
+  echo \
+  "
   dotnet workload list
+  "
+  dotnet workload list
+}
+
+dev_dotnet_info_dump_long()
+{ 
+  echo "=============================================================================================================="
+  echo "\
+  Microsoft .NET 
+  "
+  echo \
+  "
+  dotnet --info
+  "
+  dotnet --info
+  
+  echo \
+  "
+  dotnet --list-runtimes
+  "
+  dotnet --list-runtimes
+  echo \
+  "
+  dotnet --list-sdks
+  "  
+  dotnet --list-sdks  
   echo "--------------------------------------------------------------------------------------------------------------"
-  echo "dotnet tool list --global"
+  echo \
+  "
+  dotnet workload list
+  "
+  dotnet workload list
+
+
+  echo "--------------------------------------------------------------------------------------------------------------"
+  echo \
+  "
+  dotnet tool list --global
+  "
   dotnet tool list --global
   echo "--------------------------------------------------------------------------------------------------------------"
-  echo "dotnet new --list"
+  echo \
+  "
+  dotnet new --list
+  "
   dotnet new --list
 }
 
@@ -167,6 +221,7 @@ dev_android_info_dump()
   echo $ANDROID_SDK_ROOT
   echo "ANDROID_HOME"
   echo $ANDROID_HOME
+
   echo "/Applications/Android Studio Preview.app/Contents/MacOS/studio" -version
   "/Applications/Android Studio Preview.app/Contents/MacOS/studio" -version
 
@@ -194,6 +249,14 @@ dev_ios_info_dump()
 
 dev_ios_xcode_commandline_tools()
 {
+  echo "--------------------------------------------------------------------------------------------------------------"
+  echo \
+  "
+  sudo rm -rf /Library/Developer/CommandLineTools
+  sudo xcode-select --install
+  softwareupdate --all --install --force
+  "
+
   sudo rm -rf /Library/Developer/CommandLineTools
   sudo xcode-select --install
   softwareupdate --all --install --force
@@ -773,20 +836,30 @@ zshrc_reload()
   source $HOME/.zshrc 
 };
 
-dev_ios_emulator_list()
+dev_ios_simulator_list()
 {
   echo "--------------------------------------------------------------------------------------------------------------"
   echo \
   "
   xcrun simctl list
   "
+
   xcrun simctl list
 };
 
 export IOS_DEVICE_ID="73FC4795-80E6-4ED9-9BB5-716206BDAFCD"
 
-dev_ios_emulator_launch()
+dev_ios_simulator_launch()
 {
+  echo "--------------------------------------------------------------------------------------------------------------"
+  echo \
+  "
+  open -a \
+    Simulator \
+      --args \
+        -CurrentDeviceUDID $IOS_DEVICE_ID
+  "
+
   open -a \
     Simulator \
       --args \
