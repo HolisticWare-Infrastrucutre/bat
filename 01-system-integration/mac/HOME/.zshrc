@@ -263,7 +263,7 @@ dev_ios_xcode_commandline_tools()
 }
 
 
-dev_dotnet_workloads_install()
+dev_dotnet_workloads_reinstall()
 { 
   echo \
   "
@@ -652,14 +652,14 @@ dev_android_adb_logcat_buffers_clear_all()
   echo \
   "
   dev_android_adb_logcat_buffers_clear_rooted
-  dev_android_adb_logcat_buffers_clear_rooted
+  dev_android_adb_logcat_buffers_clear_non_rooted
   "
 
   dev_android_adb_logcat_buffers_clear_rooted
-  dev_android_adb_logcat_buffers_clear_rooted
+  dev_android_adb_logcat_buffers_clear_non_rooted
 }
 
-dev_android_adb_logcat_init()
+dev_android_adb_logcat_mono_log_init()
 {
   echo "--------------------------------------------------------------------------------------------------------------"
   echo \
@@ -674,6 +674,23 @@ dev_android_adb_logcat_init()
   adb logcat -G 64M 
   adb shell \
     setprop debug.mono.log default,debugger,assembly,mono_log_level=debug,mono_log_mask=all
+};
+
+dev_android_adb_logcat_mono_trace_init()
+{
+  echo "--------------------------------------------------------------------------------------------------------------"
+  echo \
+  "
+  dev_android_adb_logcat_clear
+  adb logcat -G 64M 
+  adb shell \\
+    setprop debug.mono.trace all
+  "
+
+  dev_android_adb_logcat_clear
+  adb logcat -G 64M 
+  adb shell \
+    setprop debug.mono.trace all
 };
 
 dev_android_adb_logcat_collect()
