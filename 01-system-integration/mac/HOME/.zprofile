@@ -589,8 +589,15 @@ dev_android_emulator_launch_wipe_data_no_cache_no_snapshot()
     &
 };
 
+# https://developer.android.com/tools/adb
+# https://gist.github.com/Pulimet/5013acf2cd5b28e55036c82c91bd56d8
+# https://technastic.com/adb-shell-commands-list/
+# https://technastic.com/adb-shell-commands-list/
+# https://hack.technoherder.com/adb-shell/
+
 dev_android_adb_fastboot()
 {
+  echo "--------------------------------------------------------------------------------------------------------------"
   echo \
   "
   adb reboot bootloader
@@ -611,11 +618,50 @@ dev_android_adb_reset()
     adb kill-server
     adb start-server
     adb devices
+    adb devices -l
   "
 
     adb kill-server
     adb start-server
     adb devices
+    adb devices -l
+}
+
+dev_android_shell_pm_list_users()
+{
+  echo "--------------------------------------------------------------------------------------------------------------"
+  echo \
+  "
+    adb shell pm list users
+  "
+
+    adb shell pm list users
+}
+
+dev_android_adb_devices()
+{
+  echo "--------------------------------------------------------------------------------------------------------------"
+  echo \
+  "
+    adb devices
+    adb devices -l
+  "
+
+  adb devices
+  adb devices -l
+}
+
+dev_android_shell_pm_list_users()
+{
+  echo "--------------------------------------------------------------------------------------------------------------"
+  echo \
+  "
+    adb shell \\
+      getprop ro.build.version.release 
+  "
+
+    adb shell \
+      getprop ro.build.version.release 
 }
 
 dev_android_adb_logcat_buffers_clear_non_rooted()
