@@ -69,10 +69,81 @@ setopt complete_aliases
 
 # zsh parameter completion for the dotnet CLI
 
+sys_zsh_functions_list ()
+{
+  # The functions are stored in an associative array functions
+  # to get only the function names 
+  #   (k flag for keys) in alphabetical order 
+  #   (o flag for ordering)
+  echo "--------------------------------------------------------------------------------------------------------------"
+  echo \
+  "
+  print -l ${(ok)functions}
+  "
+
+  print -l ${(ok)functions}
+}
+
+
 sys_finder_open_windows_and_tabs()
 {
   source $HOME/bat/03-productivity/mac/finder-open-window-with-tabs.sh
 };
+
+sys_audio_restart_kill_9()
+{
+  # sudo pkill -9 coreaudiod kills the coreaudio process immediately. 
+  # MacOS will automatically restart the coreaudio daemon, which will fix audio output in most cases.
+
+  echo "--------------------------------------------------------------------------------------------------------------"
+  echo \
+  "
+  Restarting audio services:
+
+  sudo kill -9 `ps ax|grep 'coreaudio[a-z]' | awk '{print $1}'`
+  "
+  sudo kill -9 `ps ax|grep 'coreaudio[a-z]' | awk '{print $1}'`
+}
+
+sys_audio_restart_pkill_9()
+{
+  echo "--------------------------------------------------------------------------------------------------------------"
+  echo \
+  "
+  Restarting audio services:
+
+  sudo pkill -9 coreaudiod
+  "
+  sudo pkill -9 coreaudiod
+}
+
+sys_audio_restart_kext_reload()
+{
+  echo "--------------------------------------------------------------------------------------------------------------"
+  echo \
+  "
+  Restarting audio services:
+
+  sudo kextunload /System/Library/Extensions/AppleHDA.kext 
+  sudo kextload /System/Library/Extensions/AppleHDA.kext
+  "
+  sudo kextunload /System/Library/Extensions/AppleHDA.kext 
+  sudo kextload /System/Library/Extensions/AppleHDA.kext
+}
+
+sys_audio_restart_launchctl_stop()
+{
+  echo "--------------------------------------------------------------------------------------------------------------"
+  echo \
+  "
+  Restarting audio services:
+
+  sudo launchctl stop   com.apple.audio.coreaudiod 
+  sudo launchctl start  com.apple.audio.coreaudiod 
+  "
+  sudo launchctl stop   com.apple.audio.coreaudiod 
+  sudo launchctl start  com.apple.audio.coreaudiod 
+}
 
 sys_terminal_fingerprint()
 {
@@ -659,9 +730,53 @@ dev_android_shell_pm_list_users()
     adb shell \\
       getprop ro.build.version.release 
   "
-
     adb shell \
       getprop ro.build.version.release 
+
+  echo \
+  "
+    adb shell \\
+      ro.build.version.sdk 
+  "
+    adb shell \
+      ro.build.version.sdk 
+
+  echo \
+  "
+    adb shell \\
+      ro.product.manufacturer
+  "
+    adb shell \
+      ro.product.manufacturer
+
+  echo \
+  "
+    adb shell \\
+      ro.product.model
+  "
+    adb shell \
+      ro.product.model
+
+  echo \
+  "
+    adb shell \\
+      gsm.version.ril-impl
+  "
+    adb shell \
+      gsm.version.ril-impl
+
+  echo \
+  "
+    adb shell \\
+  "
+    adb shell \
+
+
+  echo \
+  "
+    adb shell \\
+  "
+    adb shell \
 }
 
 dev_android_adb_logcat_buffers_clear_non_rooted()
@@ -710,13 +825,13 @@ dev_android_adb_logcat_mono_log_init()
   echo "--------------------------------------------------------------------------------------------------------------"
   echo \
   "
-  dev_android_adb_logcat_clear
+  dev_android_adb_logcat_buffers_clear_all
   adb logcat -G 64M 
   adb shell \\
     setprop debug.mono.log default,debugger,assembly,mono_log_level=debug,mono_log_mask=all
   "
 
-  dev_android_adb_logcat_clear
+  dev_android_adb_logcat_buffers_clear_all
   adb logcat -G 64M 
   adb shell \
     setprop debug.mono.log default,debugger,assembly,mono_log_level=debug,mono_log_mask=all
