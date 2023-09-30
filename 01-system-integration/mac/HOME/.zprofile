@@ -90,6 +90,88 @@ sys_finder_open_windows_and_tabs()
   source $HOME/bat/03-productivity/mac/finder-open-window-with-tabs.sh
 };
 
+sys_network_restart()
+{
+  echo "--------------------------------------------------------------------------------------------------------------"
+  echo \
+  "
+  Restarting audio services:
+
+  networksetup -listnetworkserviceorder
+
+  sudo ifconfig en0 down
+  sudo ifconfig en0 up
+  "
+  
+  networksetup -listnetworkserviceorder
+  
+  sudo ifconfig en0 down
+  sudo ifconfig en0 up
+}
+
+sys_network_restart_brute()
+{
+  echo "--------------------------------------------------------------------------------------------------------------"
+  echo \
+  "
+  export TIMESTAMP=$(date +%Y-%m-%dT%H-%M-%S)
+  export DESTINATION=$HOME/Downloads/$TIMESTAMP
+  mkdir $DESTINATION
+  cd /Library/Preferences/SystemConfiguration/
+  mv \\
+    com.apple.airport.preferences.plist \\
+    $DESTINATION
+  mv \\
+    com.apple.network.identification.plist \\
+    $DESTINATION
+  mv \\
+    com.apple.network.eapolclient.configuration.plist \\
+    $DESTINATION
+  mv \\
+    com.apple.wifi.message-tracer.plist \\
+    $DESTINATION
+  mv \\
+    NetworkInterfaces.plist \\
+    $DESTINATION
+  mv \\
+    preferences.plist \\
+    $DESTINATION
+  "
+
+  export TIMESTAMP=$(date +%Y-%m-%dT%H-%M-%S)
+  export DESTINATION=$HOME/Downloads/$TIMESTAMP
+  mkdir $DESTINATION
+  cd /Library/Preferences/SystemConfiguration/
+  mv \
+    com.apple.airport.preferences.plist \
+    $DESTINATION
+  mv \
+    com.apple.network.identification.plist \
+    $DESTINATION
+  mv \
+    com.apple.network.eapolclient.configuration.plist \
+    $DESTINATION
+  mv \
+    com.apple.wifi.message-tracer.plist \
+    $DESTINATION
+  mv \
+    NetworkInterfaces.plist \
+    $DESTINATION
+  mv \
+    preferences.plist \
+    $DESTINATION
+
+}
+
+com.apple.airport.preferences.plist
+com.apple.network.identification.plist
+com.apple.network.eapolclient.configuration.plist
+com.apple.wifi.message-tracer.plist
+NetworkInterfaces.plist
+preferences.plist
+
+
+
 sys_audio_restart_kill_9()
 {
   # sudo pkill -9 coreaudiod kills the coreaudio process immediately. 
@@ -722,7 +804,7 @@ dev_android_adb_devices()
   adb devices -l
 }
 
-dev_android_shell_pm_list_users()
+dev_android_shell_getprop()
 {
   echo "--------------------------------------------------------------------------------------------------------------"
   echo \
@@ -842,6 +924,8 @@ dev_android_adb_logcat_mono_trace_init()
   echo "--------------------------------------------------------------------------------------------------------------"
   echo \
   "
+  WARNING : prints a lot - use if app crashes fairly quickly on startup!!!!
+
   dev_android_adb_logcat_clear
   adb logcat -G 64M 
   adb shell \\
