@@ -69,163 +69,19 @@ setopt complete_aliases
 
 # zsh parameter completion for the dotnet CLI
 
-sys_zsh_functions_list ()
+
+sys_postinstall()
 {
-  # The functions are stored in an associative array functions
-  # to get only the function names 
-  #   (k flag for keys) in alphabetical order 
-  #   (o flag for ordering)
-  echo "--------------------------------------------------------------------------------------------------------------"
-  echo \
-  "
-  print -l ${(ok)functions}
-  "
+  # Agreeing to the Xcode/iOS license requires admin privileges, please run “sudo xcodebuild -license” and then retry this command.
+  sys_terminal_fingerprint
 
-  print -l ${(ok)functions}
+  sudo xcodebuild -license accept
 }
-
 
 sys_finder_open_windows_and_tabs()
 {
   source $HOME/bat/03-productivity/mac/finder-open-window-with-tabs.sh
 };
-
-sys_network_restart()
-{
-  echo "--------------------------------------------------------------------------------------------------------------"
-  echo \
-  "
-  Restarting audio services:
-
-  networksetup -listnetworkserviceorder
-
-  sudo ifconfig en0 down
-  sudo ifconfig en0 up
-  "
-  
-  networksetup -listnetworkserviceorder
-  
-  sudo ifconfig en0 down
-  sudo ifconfig en0 up
-}
-
-sys_network_restart_brute()
-{
-  echo "--------------------------------------------------------------------------------------------------------------"
-  echo \
-  "
-  export TIMESTAMP=$(date +%Y-%m-%dT%H-%M-%S)
-  export DESTINATION=$HOME/Downloads/$TIMESTAMP
-  mkdir $DESTINATION
-  cd /Library/Preferences/SystemConfiguration/
-  mv \\
-    com.apple.airport.preferences.plist \\
-    $DESTINATION
-  mv \\
-    com.apple.network.identification.plist \\
-    $DESTINATION
-  mv \\
-    com.apple.network.eapolclient.configuration.plist \\
-    $DESTINATION
-  mv \\
-    com.apple.wifi.message-tracer.plist \\
-    $DESTINATION
-  mv \\
-    NetworkInterfaces.plist \\
-    $DESTINATION
-  mv \\
-    preferences.plist \\
-    $DESTINATION
-  "
-
-  export TIMESTAMP=$(date +%Y-%m-%dT%H-%M-%S)
-  export DESTINATION=$HOME/Downloads/$TIMESTAMP
-  mkdir $DESTINATION
-  cd /Library/Preferences/SystemConfiguration/
-  mv \
-    com.apple.airport.preferences.plist \
-    $DESTINATION
-  mv \
-    com.apple.network.identification.plist \
-    $DESTINATION
-  mv \
-    com.apple.network.eapolclient.configuration.plist \
-    $DESTINATION
-  mv \
-    com.apple.wifi.message-tracer.plist \
-    $DESTINATION
-  mv \
-    NetworkInterfaces.plist \
-    $DESTINATION
-  mv \
-    preferences.plist \
-    $DESTINATION
-
-}
-
-com.apple.airport.preferences.plist
-com.apple.network.identification.plist
-com.apple.network.eapolclient.configuration.plist
-com.apple.wifi.message-tracer.plist
-NetworkInterfaces.plist
-preferences.plist
-
-
-
-sys_audio_restart_kill_9()
-{
-  # sudo pkill -9 coreaudiod kills the coreaudio process immediately. 
-  # MacOS will automatically restart the coreaudio daemon, which will fix audio output in most cases.
-
-  echo "--------------------------------------------------------------------------------------------------------------"
-  echo \
-  "
-  Restarting audio services:
-
-  sudo kill -9 `ps ax|grep 'coreaudio[a-z]' | awk '{print $1}'`
-  "
-  sudo kill -9 `ps ax|grep 'coreaudio[a-z]' | awk '{print $1}'`
-}
-
-sys_audio_restart_pkill_9()
-{
-  echo "--------------------------------------------------------------------------------------------------------------"
-  echo \
-  "
-  Restarting audio services:
-
-  sudo pkill -9 coreaudiod
-  "
-  sudo pkill -9 coreaudiod
-}
-
-sys_audio_restart_kext_reload()
-{
-  echo "--------------------------------------------------------------------------------------------------------------"
-  echo \
-  "
-  Restarting audio services:
-
-  sudo kextunload /System/Library/Extensions/AppleHDA.kext 
-  sudo kextload /System/Library/Extensions/AppleHDA.kext
-  "
-  sudo kextunload /System/Library/Extensions/AppleHDA.kext 
-  sudo kextload /System/Library/Extensions/AppleHDA.kext
-}
-
-sys_audio_restart_launchctl_stop()
-{
-  echo "--------------------------------------------------------------------------------------------------------------"
-  echo \
-  "
-  Restarting audio services:
-
-  sudo launchctl stop   com.apple.audio.coreaudiod 
-  sudo launchctl start  com.apple.audio.coreaudiod 
-  "
-  sudo launchctl stop   com.apple.audio.coreaudiod 
-  sudo launchctl start  com.apple.audio.coreaudiod 
-}
 
 sys_terminal_fingerprint()
 {
@@ -255,7 +111,6 @@ sys_terminal_fingerprint()
 };
 
 
-
 sys_diverse_clean()
 {
   rm -fr .cache/
@@ -276,15 +131,43 @@ sys_brew_update_upgrade()
   brew upgrade
 }
 
+sys_brew_clean_update()
+{
+    clean_term_screen_and_buffer
 
+    brew cleanup
+    brew autoremove
+
+    brew update
+    brew upgrade
+
+    brew cleanup
+    brew autoremove
+
+    source $HOME/bat/01-system-integration/mac/02-install/download/brew-01-upgrade.sh
+};
+
+#======================================================================================================================
 dev_nuget_nuke()
 { 
+  echo "=============================================================================================================="
+  echo "\
+  source $HOME/bat/01-system-integration/mac/nuget/clean.sh
+  "
+  
   source $HOME/bat/01-system-integration/mac/nuget/clean.sh
 };
 
 
 dev_info_dump_long()
 {
+  echo "=============================================================================================================="
+  echo "\
+  dev_dotnet_info_dump 
+  dev_android_info_dump
+  dev_ios_info_dump
+  "
+
   dev_dotnet_info_dump 
   dev_android_info_dump
   dev_ios_info_dump
@@ -522,7 +405,7 @@ browse_moljac()
   source $HOME/bat.private/mac/firefox-moljac.sh 
 };
 
-rider()
+dev_dotnet_ide_rider()
 {
   open -a \
     Rider \
@@ -535,22 +418,6 @@ rider()
 clean_term_screen_and_buffer()
 {
   source $HOME/bat/01-system-integration/mac/zsh/functions/clean_term_screen_and_buffer
-};
-
-brew_clean_update()
-{
-    clean_term_screen_and_buffer
-
-    brew cleanup
-    brew autoremove
-
-    brew update
-    brew upgrade
-
-    brew cleanup
-    brew autoremove
-
-    source $HOME/bat/01-system-integration/mac/02-install/download/brew-01-upgrade.sh
 };
 
 open_browser_firefox_moljac()
@@ -804,7 +671,7 @@ dev_android_adb_devices()
   adb devices -l
 }
 
-dev_android_shell_getprop()
+dev_android_shell_pm_list_users()
 {
   echo "--------------------------------------------------------------------------------------------------------------"
   echo \
@@ -812,53 +679,9 @@ dev_android_shell_getprop()
     adb shell \\
       getprop ro.build.version.release 
   "
+
     adb shell \
       getprop ro.build.version.release 
-
-  echo \
-  "
-    adb shell \\
-      ro.build.version.sdk 
-  "
-    adb shell \
-      ro.build.version.sdk 
-
-  echo \
-  "
-    adb shell \\
-      ro.product.manufacturer
-  "
-    adb shell \
-      ro.product.manufacturer
-
-  echo \
-  "
-    adb shell \\
-      ro.product.model
-  "
-    adb shell \
-      ro.product.model
-
-  echo \
-  "
-    adb shell \\
-      gsm.version.ril-impl
-  "
-    adb shell \
-      gsm.version.ril-impl
-
-  echo \
-  "
-    adb shell \\
-  "
-    adb shell \
-
-
-  echo \
-  "
-    adb shell \\
-  "
-    adb shell \
 }
 
 dev_android_adb_logcat_buffers_clear_non_rooted()
@@ -907,13 +730,13 @@ dev_android_adb_logcat_mono_log_init()
   echo "--------------------------------------------------------------------------------------------------------------"
   echo \
   "
-  dev_android_adb_logcat_buffers_clear_all
+  dev_android_adb_logcat_clear
   adb logcat -G 64M 
   adb shell \\
     setprop debug.mono.log default,debugger,assembly,mono_log_level=debug,mono_log_mask=all
   "
 
-  dev_android_adb_logcat_buffers_clear_all
+  dev_android_adb_logcat_clear
   adb logcat -G 64M 
   adb shell \
     setprop debug.mono.log default,debugger,assembly,mono_log_level=debug,mono_log_mask=all
@@ -924,8 +747,6 @@ dev_android_adb_logcat_mono_trace_init()
   echo "--------------------------------------------------------------------------------------------------------------"
   echo \
   "
-  WARNING : prints a lot - use if app crashes fairly quickly on startup!!!!
-
   dev_android_adb_logcat_clear
   adb logcat -G 64M 
   adb shell \\
