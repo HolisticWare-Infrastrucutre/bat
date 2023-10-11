@@ -69,17 +69,47 @@ setopt complete_aliases
 
 # zsh parameter completion for the dotnet CLI
 
+sys_zsh_functions_list()
+{
+  echo "--------------------------------------------------------------------------------------------------------------"
+  echo \
+  "
+  print -l ${(ok)functions}
+  "
+  print -l ${(ok)functions}
+}
+
+sys_zshrc_reload()
+{
+  echo "--------------------------------------------------------------------------------------------------------------"
+  echo \
+  "
+  source $HOME/.zshrc 
+  "
+  source $HOME/.zshrc 
+};
 
 sys_postinstall()
 {
-  # Agreeing to the Xcode/iOS license requires admin privileges, please run “sudo xcodebuild -license” and then retry this command.
+  echo "--------------------------------------------------------------------------------------------------------------"
+  echo \
+  "
   sys_terminal_fingerprint
-
+  sudo xcodebuild -license accept
+  "
+  # Agreeing to the Xcode/iOS license requires admin privileges, please run “sudo xcodebuild -license” and then retry 
+  # this command.
+  sys_terminal_fingerprint
   sudo xcodebuild -license accept
 }
 
 sys_finder_open_windows_and_tabs()
 {
+  echo "--------------------------------------------------------------------------------------------------------------"
+  echo \
+  "
+  source $HOME/bat/03-productivity/mac/finder-open-window-with-tabs.sh
+  "
   source $HOME/bat/03-productivity/mac/finder-open-window-with-tabs.sh
 };
 
@@ -154,7 +184,7 @@ dev_nuget_nuke()
   echo "\
   source $HOME/bat/01-system-integration/mac/nuget/clean.sh
   "
-  
+
   source $HOME/bat/01-system-integration/mac/nuget/clean.sh
 };
 
@@ -301,6 +331,7 @@ dev_ios_xcode_commandline_tools()
 
 dev_dotnet_workloads_reinstall()
 { 
+  echo "--------------------------------------------------------------------------------------------------------------"
   echo \
   "
   source $HOME/bat/01-system-integration/mac/dotnet/workload/install.sh
@@ -311,6 +342,7 @@ dev_dotnet_workloads_reinstall()
 
 dev_dotnet_tools_reinstall()
 {
+  echo "--------------------------------------------------------------------------------------------------------------"
   echo \
   "
   source $HOME/bat/01-system-integration/mac/dotnet/tool/install.sh
@@ -320,6 +352,7 @@ dev_dotnet_tools_reinstall()
 
 dev_dotnet_new_templates_reinstall()
 {
+  echo "--------------------------------------------------------------------------------------------------------------"
   echo \
   "
   source $HOME/bat/01-system-integration/mac/dotnet/new-templates/install.sh
@@ -329,6 +362,10 @@ dev_dotnet_new_templates_reinstall()
 
 dev_dotnet_tool_cake_install_2_3_0()
 { 
+  echo "--------------------------------------------------------------------------------------------------------------"
+  echo \
+  "
+  "
   dotnet tool \
     uninstall \
       --global \
@@ -373,6 +410,22 @@ compdef dev_dotnet_autocomplete dotnet
 
 dev_dotnet_clean()
 {
+  echo "--------------------------------------------------------------------------------------------------------------"
+  echo \
+  "
+  rm -fr .dotnet/
+  source $HOME/bat/01-system-integration/mac/nuget/clean.sh
+
+  rm -fr .mono/
+  rm -fr .omnisharp/
+  rm -fr .npm/
+
+  rm -fr .quicktype-vscode/
+  rm -fr .vs-kubernetes/
+  rm -fr .vscode-insiders/
+  rm -fr .vscode*
+  "
+
   rm -fr .dotnet/
   source $HOME/bat/01-system-integration/mac/nuget/clean.sh
 
@@ -389,10 +442,18 @@ dev_dotnet_clean()
 
 jdk()
 {
-      version=$1
-      unset JAVA_HOME;
-      export JAVA_HOME=$(/usr/libexec/java_home -v"$version");
-      java -version
+  echo "--------------------------------------------------------------------------------------------------------------"
+  echo \
+  "
+  version=$1
+  unset JAVA_HOME;
+  export JAVA_HOME=$(/usr/libexec/java_home -v"$version");
+  java -version
+  "
+  version=$1
+  unset JAVA_HOME;
+  export JAVA_HOME=$(/usr/libexec/java_home -v"$version");
+  java -version
 };
 
 
@@ -402,11 +463,24 @@ jdk()
 # if firefox is opened this will open additonal tabs
 browse_moljac()
 {
+  echo "--------------------------------------------------------------------------------------------------------------"
+  echo \
+  "
+  source $HOME/bat.private/mac/firefox-moljac.sh 
+  "
   source $HOME/bat.private/mac/firefox-moljac.sh 
 };
 
 dev_dotnet_ide_rider()
 {
+  echo "--------------------------------------------------------------------------------------------------------------"
+  echo \
+  "
+  open -a \
+    Rider \
+      --args \
+        $1
+  "
   open -a \
     Rider \
       --args \
@@ -417,47 +491,89 @@ dev_dotnet_ide_rider()
 # source $HOME/bat/03-productivity/mac/clear-screen-and-term-buffer.sh
 clean_term_screen_and_buffer()
 {
+  echo "--------------------------------------------------------------------------------------------------------------"
+  echo \
+  "
+  source $HOME/bat/01-system-integration/mac/zsh/functions/clean_term_screen_and_buffer
+  "
   source $HOME/bat/01-system-integration/mac/zsh/functions/clean_term_screen_and_buffer
 };
 
 open_browser_firefox_moljac()
 {
+  echo "--------------------------------------------------------------------------------------------------------------"
+  echo \
+  "
+  source $HOME/bat.private/mac/firefox-moljac.sh
+  "
   source $HOME/bat.private/mac/firefox-moljac.sh
 };
 
 open_browser_edge_moljac_microsoft()
 {
+  echo "--------------------------------------------------------------------------------------------------------------"
+  echo \
+  "
+  source $HOME/bat.private/mac/edge-moljac-microsoft.sh
+  "
   source $HOME/bat.private/mac/edge-moljac-microsoft.sh
 };
 
 open_browser_edge_beta_moljac_microsoft()
 {
+  echo "--------------------------------------------------------------------------------------------------------------"
+  echo \
+  "
+  source $HOME/bat.private/mac/edge-beta-moljac-holisticware.sh
+  "
   source $HOME/bat.private/mac/edge-beta-moljac-holisticware.sh
 };
 
 open_browser_edge_dev_moljac_microsoft()
 {
+  echo "--------------------------------------------------------------------------------------------------------------"
+  echo \
+  "
+  source $HOME/bat.private/mac/edge-dev-moljac-holisticware.sh
+  "
   source $HOME/bat.private/mac/edge-dev-moljac-holisticware.sh
 };
 
 open_finder_code_moljac_microsoft()
 {
+  echo "--------------------------------------------------------------------------------------------------------------"
+  echo \
+  "
+  source $HOME/bat.private/mac/finder-code-moljac-microsoft.sh
+  "
   source $HOME/bat.private/mac/finder-code-moljac-microsoft.sh
 };
 
 work_on_docs()
 {
+  echo "--------------------------------------------------------------------------------------------------------------"
+  echo \
+  "
+  source $HOME/bat/03-productivity/mac/finder-code-notes-docs.sh
+  source $HOME/bat.private/mac/finder-code-term-moljac-microsoft.sh  
+  "
   source $HOME/bat/03-productivity/mac/finder-code-notes-docs.sh
   source $HOME/bat.private/mac/finder-code-term-moljac-microsoft.sh  
 };
 
 work_on_maui()
 {
+  echo "--------------------------------------------------------------------------------------------------------------"
+  echo \
+  "
+  source $HOME/bat.private/finder-code-term-maui.sh
+  "
   source $HOME/bat.private/finder-code-term-maui.sh
 };
 
 work_on_ax_gps_fb_mlkit()
 {
+  echo "--------------------------------------------------------------------------------------------------------------"
   echo \
   "
   source $HOME/bat.private/finder-code-term-xamarin-ax-gps-fb-mlkit.sh
@@ -467,6 +583,7 @@ work_on_ax_gps_fb_mlkit()
 
 work_on_ph4ct3x()
 {
+  echo "--------------------------------------------------------------------------------------------------------------"
   echo \
   "
   source $HOME/bat.private/finder-code-term-ph4ct3x.sh
@@ -476,6 +593,7 @@ work_on_ph4ct3x()
 
 work_on_moljac_microsoft()
 {
+  echo "--------------------------------------------------------------------------------------------------------------"
   echo \
   "
   source $HOME/bat.private/finder-code-term-moljac-microsoft.sh
@@ -485,6 +603,13 @@ work_on_moljac_microsoft()
 
 work_on_moljac_holisticware()
 {
+  echo "--------------------------------------------------------------------------------------------------------------"
+  echo \
+  "
+  source $HOME/bat.private/finder-code-term-moljac-microsoft.sh
+  source $HOME/bat.private/mchwn/firefox-moljac.sh
+  source $HOME/bat.private/mchwc/firefox-moljac.sh
+  "
   source $HOME/bat.private/finder-code-term-moljac-microsoft.sh
   source $HOME/bat.private/mchwn/firefox-moljac.sh
   source $HOME/bat.private/mchwc/firefox-moljac.sh
@@ -492,16 +617,19 @@ work_on_moljac_holisticware()
 
 work_on_moljac()
 {
-    work_on_moljac_microsoft
-    work_on_moljac_holisticware
+  echo "--------------------------------------------------------------------------------------------------------------"
+  echo \
+  "
+  work_on_moljac_microsoft
+  work_on_moljac_holisticware
+  "
+  work_on_moljac_microsoft
+  work_on_moljac_holisticware
 };
-
-
-
-
 
 dev_android_apk_analysis()
 {
+  echo "--------------------------------------------------------------------------------------------------------------"
   echo \
   "
   java -jar $HOME/bin/classy-shark/ClassyShark.jar
@@ -912,11 +1040,6 @@ dev_macios_xcode_install_commandline_tools()
         -e 'click button "Agree" of window "License Agreement"' \
       -e 'end tell' \
     -e 'end tell'
-};
-
-zshrc_reload()
-{
-  source $HOME/.zshrc 
 };
 
 dev_ios_simulator_list()
