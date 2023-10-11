@@ -19,6 +19,10 @@ find \
 	$HOME/ \
 		-type d \
 			\( \
+					-name "bin/" \
+					-o \
+					-name "obj/" \
+					-o \
 					-name "Debug" \
 					-o \
 					-name "Release" \
@@ -32,8 +36,6 @@ find \
 					-name ".mfractor" \
 					-o \
 					-name ".droidres" \
-					-o \
-					-name ".idea" \
 					-o \
 					-name "__pycache__" \
 					-o \
@@ -138,8 +140,6 @@ find \
 					-o \
 					-name ".droidres" \
 					-o \
-					-name ".idea" \
-					-o \
 					-name "__pycache__" \
 					-o \
 					-path "*/Library/Caches/Xamarin/AndroidDesigner" \
@@ -185,6 +185,23 @@ find \
 		-not -path "*Dropbox*" \
 		-not -path "*Google Drive*" \
 		-exec rm -rf {} \;
+
+
+find \
+	/Users/Shared//Projects/ \
+		-type d \
+			\( \
+					-name ".idea" \
+			\) \
+		-not -path "*/X/AX/*" \
+		-not -path "*/X.F4W/AX/*" \
+		-exec rm -rf {} \;
+
+
+
+
+
+
 
 #---------------------------------------------------------------------------
 # http://lastexitcode.com/projects/NuGet/FileLocations/
@@ -239,3 +256,7 @@ df >> df-post.txt
 
 source ./clean-nuget.sh
 source ./clean-android-gradle.sh
+
+rm -fr $HOME/Library/Caches/Homebrew/downloads/
+
+rm -fr $HOME/Library/Caches/
