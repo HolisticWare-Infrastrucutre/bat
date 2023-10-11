@@ -75,6 +75,8 @@ find \
 					-o \
 					-path ".vscode/" \
 					-o \
+					-path ".vscode/" \
+					-o \
 					-path "scriptcs_packages/" \
 			\) \
 		-not -path "*Dropbox*" \
