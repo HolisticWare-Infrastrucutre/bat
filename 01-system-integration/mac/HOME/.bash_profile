@@ -140,6 +140,142 @@ sys_terminal_fingerprint()
   cat /etc/pam.d/sudo 
 };
 
+sys_network_restart()
+{
+  echo "--------------------------------------------------------------------------------------------------------------"
+  echo \
+  "
+  Restarting audio services:
+
+  networksetup -listnetworkserviceorder
+
+  sudo ifconfig en0 down
+  sudo ifconfig en0 up
+  "
+  
+  networksetup -listnetworkserviceorder
+  
+  sudo ifconfig en0 down
+  sudo ifconfig en0 up
+}
+
+
+sys_network_restart_brute()
+{
+  # com.apple.airport.preferences.plist
+  # com.apple.network.identification.plist
+  # com.apple.network.eapolclient.configuration.plist
+  # com.apple.wifi.message-tracer.plist
+  # NetworkInterfaces.plist
+  # preferences.plist
+
+  echo "--------------------------------------------------------------------------------------------------------------"
+  echo \
+  "
+  export TIMESTAMP=$(date +%Y-%m-%dT%H-%M-%S)
+  export DESTINATION=$HOME/Downloads/$TIMESTAMP
+  mkdir $DESTINATION
+  cd /Library/Preferences/SystemConfiguration/
+  mv \\
+    com.apple.airport.preferences.plist \\
+    $DESTINATION
+  mv \\
+    com.apple.network.identification.plist \\
+    $DESTINATION
+  mv \\
+    com.apple.network.eapolclient.configuration.plist \\
+    $DESTINATION
+  mv \\
+    com.apple.wifi.message-tracer.plist \\
+    $DESTINATION
+  mv \\
+    NetworkInterfaces.plist \\
+    $DESTINATION
+  mv \\
+    preferences.plist \\
+    $DESTINATION
+  "
+
+  export TIMESTAMP=$(date +%Y-%m-%dT%H-%M-%S)
+  export DESTINATION=$HOME/Downloads/$TIMESTAMP
+  mkdir $DESTINATION
+  cd /Library/Preferences/SystemConfiguration/
+  mv \
+    com.apple.airport.preferences.plist \
+    $DESTINATION
+  mv \
+    com.apple.network.identification.plist \
+    $DESTINATION
+  mv \
+    com.apple.network.eapolclient.configuration.plist \
+    $DESTINATION
+  mv \
+    com.apple.wifi.message-tracer.plist \
+    $DESTINATION
+  mv \
+    NetworkInterfaces.plist \
+    $DESTINATION
+  mv \
+    preferences.plist \
+    $DESTINATION
+
+}
+
+sys_audio_restart_kill_9()
+{
+  # sudo pkill -9 coreaudiod kills the coreaudio process immediately. 
+  # MacOS will automatically restart the coreaudio daemon, which will fix audio output in most cases.
+
+  echo "--------------------------------------------------------------------------------------------------------------"
+  echo \
+  "
+  Restarting audio services:
+
+  sudo kill -9 `ps ax|grep 'coreaudio[a-z]' | awk '{print $1}'`
+  "
+  sudo kill -9 `ps ax|grep 'coreaudio[a-z]' | awk '{print $1}'`
+}
+
+sys_audio_restart_pkill_9()
+{
+  echo "--------------------------------------------------------------------------------------------------------------"
+  echo \
+  "
+  Restarting audio services:
+
+  sudo pkill -9 coreaudiod
+  "
+  sudo pkill -9 coreaudiod
+}
+
+sys_audio_restart_kext_reload()
+{
+  echo "--------------------------------------------------------------------------------------------------------------"
+  echo \
+  "
+  Restarting audio services:
+
+  sudo kextunload /System/Library/Extensions/AppleHDA.kext 
+  sudo kextload /System/Library/Extensions/AppleHDA.kext
+  "
+  sudo kextunload /System/Library/Extensions/AppleHDA.kext 
+  sudo kextload /System/Library/Extensions/AppleHDA.kext
+}
+
+sys_audio_restart_launchctl_stop()
+{
+  echo "--------------------------------------------------------------------------------------------------------------"
+  echo \
+  "
+  Restarting audio services:
+
+  sudo launchctl stop   com.apple.audio.coreaudiod 
+  sudo launchctl start  com.apple.audio.coreaudiod 
+  "
+  sudo launchctl stop   com.apple.audio.coreaudiod 
+  sudo launchctl start  com.apple.audio.coreaudiod 
+}
+
 
 sys_diverse_clean()
 {
@@ -279,7 +415,10 @@ dev_dotnet_info_dump_long()
 
 dev_android_info_dump()
 { 
-  echo "=============================================================================================================="
+  echo "--------------------------------------------------------------------------------------------------------------"
+  echo \
+  "
+  "
   echo "Google Android"
   echo "JAVA_HOME"
   echo $JAVA_HOME
@@ -292,6 +431,47 @@ dev_android_info_dump()
   "/Applications/Android Studio Preview.app/Contents/MacOS/studio" -version
 
 };
+
+dev_android_sdkmanager()
+{ 
+  echo "--------------------------------------------------------------------------------------------------------------"
+  echo \
+  "
+  export JAVA_HOME=/Library/Java/JavaVirtualMachines/adoptopenjdk-8.jdk/Contents/Home
+
+  sdkmanager \
+      --update
+
+  sdkmanager \
+      --install \
+          \"cmdline-tools;latest\"
+
+  sdkmanager \
+      --licenses
+  "
+  # java 8 is required
+  export JAVA_HOME=/Library/Java/JavaVirtualMachines/adoptopenjdk-8.jdk/Contents/Home
+
+  sdkmanager \
+      --update
+
+  sdkmanager \
+      --install \
+          "cmdline-tools;latest"
+
+  # run following from the command-line if:
+  # - Android Studio is not installed, or 
+  # - it is for a CI server or other headless Linux device without a GUI installed
+  sdkmanager \
+      --licenses
+
+  # sdkmanager \
+  #     "platforms;android-25" \
+  #     "build-tools;25.0.2" \
+  #     "extras;google;m2repository" \
+  #     "extras;android;m2repository"
+}
+
 
 dev_ios_info_dump()
 { 
