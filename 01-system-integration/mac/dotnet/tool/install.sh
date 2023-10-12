@@ -29,8 +29,8 @@ SourceLink
 # Binaries Analysis
 api-tools
 dotnet-ildasm
-ilspycmd
 dotnet-ilverify
+ilspycmd
 assembly-differ
 assembly-rewriter
 ClangSharpPInvokeGenerator
