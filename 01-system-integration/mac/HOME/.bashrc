@@ -69,6 +69,20 @@ setopt complete_aliases
 
 # zsh parameter completion for the dotnet CLI
 
+git_really_clean()
+{
+  echo "--------------------------------------------------------------------------------------------------------------"
+  echo \
+  "
+  git clean -xfd
+  git submodule foreach --recursive git clean -xfd
+  git submodule update --init --recursive
+  "
+  git clean -xfd
+  git submodule foreach --recursive git clean -xfd
+  git submodule update --init --recursive
+}
+
 sys_zsh_functions_list()
 {
   echo "--------------------------------------------------------------------------------------------------------------"
@@ -101,6 +115,28 @@ sys_postinstall()
   # this command.
   sys_terminal_fingerprint
   sudo xcodebuild -license accept
+}
+
+sys_finder_settings()
+{
+  # https://www.hexnode.com/mobile-device-management/help/script-to-customize-finder-preferences-on-mac/
+  echo "--------------------------------------------------------------------------------------------------------------"
+  echo \
+  "
+  defaults write NSGlobalDomain AppleShowAllExtensions -boolean true
+  defaults write com.apple.finder ShowRemovableMediaOnDesktop -boolean true
+  defaults write com.apple.finder FXEnableExtensionChangeWarning -boolean true
+  defaults write com.apple.finder AppleShowAllFiles -boolean true
+  defaults write com.apple.finder FXPreferredViewStyle -string "Nlsv"
+  killall Finder
+  "
+  defaults write NSGlobalDomain AppleShowAllExtensions -boolean true
+  defaults write com.apple.finder ShowRemovableMediaOnDesktop -boolean true
+  defaults write com.apple.finder FXEnableExtensionChangeWarning -boolean true
+  defaults write com.apple.finder AppleShowAllFiles -boolean true
+  defaults write com.apple.finder FXPreferredViewStyle -string "Nlsv"
+  defaults write com.apple.finder FXPreferredViewStyle -string "Nlsv"
+  killall Finder
 }
 
 sys_finder_open_windows_and_tabs()
