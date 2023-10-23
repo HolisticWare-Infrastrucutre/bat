@@ -339,6 +339,14 @@ brew $ACTION_VERB --cask \
     dash \
 
 
+brew update 
+brew $ACTION_VERB \
+    azure-cli
+
+brew $ACTION_VERB --cask \
+    google-cloud-sdk    
+
+
 #----------------------------------------------------------------------------------------------
 # DevOps
 # gitlab
