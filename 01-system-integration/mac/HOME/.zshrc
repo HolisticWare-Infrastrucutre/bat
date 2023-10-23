@@ -1551,7 +1551,8 @@ dev_vscode_backups ()
 #----------------------------------------------------------------------------------------------------------------------
 
 #----------------------------------------------------------------------------------------------------------------------
-export PATH=/usr/local/sbin:/usr/local/share/dotnet$PATH::$HOME/.dotnet/tools/
+export PATH="/usr/local/sbin:/usr/local/share/dotnet:$PATH:$HOME/.dotnet/tools/"
+export PATH="$PATH:/Applications/Visual Studio Code.app/Contents/Resources/app/bin"
 #----------------------------------------------------------------------------------------------------------------------
 
 
