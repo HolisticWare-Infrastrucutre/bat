@@ -562,8 +562,22 @@ dev_dotnet_tools_reinstall()
   echo \
   "
   source $HOME/bat/01-system-integration/mac/dotnet/tool/install.sh
+
+  dotnet tool uninstall --global \
+      Cake.Tool
+  dotnet tool install --global \
+      Cake.Tool \
+      --add-source https://pkgs.dev.azure.com/cake-build/Cake/_packaging/cake/nuget/v3/index.json \
+      -version 3.2.0-alpha0025  
   "
   source $HOME/bat/01-system-integration/mac/dotnet/tool/install.sh 
+
+  dotnet tool uninstall --global \
+      Cake.Tool
+  dotnet tool install --global \
+      Cake.Tool \
+      --add-source https://pkgs.dev.azure.com/cake-build/Cake/_packaging/cake/nuget/v3/index.json \
+      -version 3.2.0-alpha0025  
 };
 
 dev_dotnet_new_templates_reinstall()
@@ -1578,6 +1592,9 @@ autoload -U $HOME/bat/01-system-integration/mac/zsh/functions/launch_application
 autoload -U $HOME/bat/01-system-integration/mac/zsh/functions/disk_usage_android
 autoload -U $HOME/bat/01-system-integration/mac/zsh/functions/markdown_bash_execute
 autoload -U $HOME/bat/01-system-integration/mac/zsh/functions/mbe
+
+autoload bashcompinit && bashcompinit
+source $(brew --prefix)/etc/bash_completion.d/az
 #----------------------------------------------------------------------------------------------------------------------
 
 
