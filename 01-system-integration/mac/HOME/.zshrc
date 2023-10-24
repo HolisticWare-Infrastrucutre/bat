@@ -83,6 +83,32 @@ git_really_clean()
   git submodule update --init --recursive
 }
 
+git_prune()
+{
+  # to clean your local checkout by removing all the branches+tags that no longer exist upstream
+  # run this script (or its powershell/cmd equivalent):
+  echo "--------------------------------------------------------------------------------------------------------------"
+  echo \
+  "
+  REMOTES=\"\`git remote\`\"
+
+  git fetch --prune --prune-tags
+  git gc --aggressive --prune=now --cruft
+  for r in $REMOTES; do
+          git remote prune $r
+  done
+  git worktree prune
+  "
+  REMOTES="`git remote`"
+
+  git fetch --prune --prune-tags
+  git gc --aggressive --prune=now --cruft
+  for r in $REMOTES; do
+          git remote prune $r
+  done
+  git worktree prune
+}
+
 sys_zsh_functions_list()
 {
   echo "--------------------------------------------------------------------------------------------------------------"
