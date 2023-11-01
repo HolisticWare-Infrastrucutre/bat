@@ -589,21 +589,48 @@ dev_dotnet_tools_reinstall()
   "
   source $HOME/bat/01-system-integration/mac/dotnet/tool/install.sh
 
-  dotnet tool uninstall --global \
-      Cake.Tool
-  dotnet tool install --global \
+  dotnet tool \
+    uninstall \
       Cake.Tool \
-      --add-source https://pkgs.dev.azure.com/cake-build/Cake/_packaging/cake/nuget/v3/index.json \
-      -version 3.2.0-alpha0025  
+      --global \
+
+  dotnet tool \
+    install \
+      --global \
+        Cake.Tool \
+        --add-source https://pkgs.dev.azure.com/cake-build/Cake/_packaging/cake/nuget/v3/index.json \
+        --version 3.2.0-alpha0025  
+
   "
   source $HOME/bat/01-system-integration/mac/dotnet/tool/install.sh 
 
-  dotnet tool uninstall --global \
-      Cake.Tool
-  dotnet tool install --global \
+  dotnet tool \
+    uninstall \
+      --global \
+      Microsoft.DotNet.XHarness.CLI 
+
+dotnet tool \
+  install \
+    Microsoft.DotNet.XHarness.CLI \
+      --global \
+      --add-source https://pkgs.dev.azure.com/dnceng/public/_packaging/dotnet-eng/nuget/v3/index.json \
+      --prerelease \
+      --verbosity:diag \
+
+  dotnet tool \
+    uninstall \
       Cake.Tool \
-      --add-source https://pkgs.dev.azure.com/cake-build/Cake/_packaging/cake/nuget/v3/index.json \
-      -version 3.2.0-alpha0025  
+      --global \
+
+  dotnet tool \
+    install \
+      --global \
+        Cake.Tool \
+        --add-source https://pkgs.dev.azure.com/cake-build/Cake/_packaging/cake/nuget/v3/index.json \
+        --prerelease \
+        --verbosity:diag \
+
+#        --version 3.2.0-alpha0025  
 };
 
 dev_dotnet_new_templates_reinstall()
@@ -1579,6 +1606,32 @@ dev_dotnet_maui_fix_installation ()
 
 }
 
+dev_dotnet_assembly_references ()
+{  
+  echo "--------------------------------------------------------------------------------------------------------------"
+  echo \
+  "
+  for f in $(find $FIND_ROOT -type f -iname "*.dll") ;
+  do 
+    echo "## " $f ;
+    monodis --assemblyref $f ; 
+  done
+  "
+  if [ $# -lt 1 ]
+  then
+    echo "Usage: dev_dotnet_assembly_references <folder_root>"
+
+    export FIND_ROOT=.
+  else
+    export FIND_ROOT=$1
+  fi
+
+  for f in $(find $FIND_ROOT -type f -iname "*.dll") ;
+  do 
+    echo "## " $f ;
+    monodis --assemblyref $f ; 
+  done
+}
 
 dev_vscode_backups ()
 {
