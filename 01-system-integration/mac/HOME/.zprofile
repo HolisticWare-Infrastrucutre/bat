@@ -571,6 +571,25 @@ dev_ios_xcode_commandline_tools()
 }
 
 
+dev_dotnet_installation_clean()
+{
+  echo "--------------------------------------------------------------------------------------------------------------"
+  echo \
+  "
+  sudo rm -fr \
+      /usr/local/share/dotnet/sdk/* \
+      /usr/local/share/dotnet/sdk-manifests/* \
+      /usr/local/share/dotnet/shared/Microsoft.AspNetCore.App/* \
+      /usr/local/share/dotnet/shared/Microsoft.NETCore.App/* \
+  "
+  sudo rm -fr \
+      /usr/local/share/dotnet/sdk/* \
+      /usr/local/share/dotnet/sdk-manifests/* \
+      /usr/local/share/dotnet/shared/Microsoft.AspNetCore.App/* \
+      /usr/local/share/dotnet/shared/Microsoft.NETCore.App/* \
+
+}
+
 dev_dotnet_workloads_reinstall()
 { 
   echo "--------------------------------------------------------------------------------------------------------------"
@@ -580,6 +599,19 @@ dev_dotnet_workloads_reinstall()
   "
   source $HOME/bat/01-system-integration/mac/dotnet/workload/install.sh
 };
+
+dev_dotnet_workloads_clean()
+{ 
+  echo "--------------------------------------------------------------------------------------------------------------"
+  echo \
+  "
+  sudo dotnet workload clean
+#  sudo dotnet workload clean --all
+  "
+  sudo dotnet workload clean
+#  sudo dotnet workload clean --all
+};
+
 
 
 dev_dotnet_tools_reinstall()
@@ -1548,7 +1580,7 @@ dev_dotnet_maui_build_app_hybrid_blazor ()
   done
 }
 
-dev_dotnet_maui_repo_build ()
+dev_dotnet_maui_repo_build_visual_studio ()
 {
   echo "--------------------------------------------------------------------------------------------------------------"
   echo \
@@ -1564,6 +1596,27 @@ dev_dotnet_maui_repo_build ()
   dotnet tool restore
   dotnet cake --target=VS --workloads=global
   dotnet cake --target=VS --workloads=global \
+      --android \
+      --ios  \
+      --catalyst
+}
+
+dev_dotnet_maui_repo_build_visual_studio_code ()
+{
+  echo "--------------------------------------------------------------------------------------------------------------"
+  echo \
+  "
+    dotnet tool restore
+    dotnet cake --target=VSCode --workloads=global
+    dotnet cake --target=VSCode --workloads=global \
+        --android \
+        --ios  \
+        --catalyst
+  "
+
+  dotnet tool restore
+  dotnet cake --target=VSCode --workloads=global
+  dotnet cake --target=VSCode --workloads=global \
       --android \
       --ios  \
       --catalyst
