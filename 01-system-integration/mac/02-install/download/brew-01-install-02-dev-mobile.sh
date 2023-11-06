@@ -37,8 +37,13 @@ brew $ACTION_VERB \
 ll      /Library/Java/JavaVirtualMachines 
 ls -1   /Library/Java/JavaVirtualMachines 
 
-brew tap adoptopenjdk/openjdk
+brew install \
+    java11
 
+brew update
+brew tap homebrew/cask-versions
+
+brew tap adoptopenjdk/openjdk
 
 brew $ACTION_VERB --cask \
     homebrew/cask-versions/adoptopenjdk8 \
@@ -55,12 +60,8 @@ brew $ACTION_VERB --cask \
     adoptopenjdk8 \
     adoptopenjdk/openjdk/adoptopenjdk8 \
 
-
 brew untap adoptopenjdk/openjdk
 
-
-brew update
-brew tap homebrew/cask-versions
 
 brew $ACTION_VERB --cask \
     homebrew/cask-versions/zulu8 \
@@ -71,28 +72,38 @@ brew $ACTION_VERB --cask \
 brew $ACTION_VERB --cask \
     microsoft-openjdk \
     microsoft-openjdk11 \
+
+
+brew $ACTION_VERB --cask \
     openjdk \
     openjdk@8 \
     openjdk@11 \
     openjdk@17 \
     openjdk@20 \
+
+
+brew $ACTION_VERB --cask \
     oracle-jdk \
     oracle-jdk \
     oracle-jdk17 \
+
+
+brew $ACTION_VERB --cask \
     semeru-jdk-open \
     semeru-jdk8-open \
     semeru-jdk11-open \
     semeru-jdk17-open \
+
+brew $ACTION_VERB --cask \
     graal-jdk \
     graal-jdk17 \
-
-boots https://corretto.aws/downloads/latest/amazon-corretto-17-aarch64-macos-jdk.pkg
-
 
 brew $ACTION_VERB --cask \
     temurin \
     temurin11 \
     temurin17 \
+
+boots https://corretto.aws/downloads/latest/amazon-corretto-17-aarch64-macos-jdk.pkg
 
 
 alias java8="unset JAVA_HOME; export JAVA_HOME=`/usr/libexec/java_home -v 1.8`; java -version"
@@ -195,15 +206,20 @@ brew $ACTION_VERB --cask \
     android-ndk \
 
 
+
 brew $ACTION_VERB --cask \
     android-studio \
     android-file-transfer \
     androidtool \
 
 
+
 ls -al $HOME/Library/Android/sdk/
 
 
+sdkmanager "system-images;android-31;google_apis;x86_64"
+
+avdmanager create avd -n my_android_31 -k "system-images;android-31;google_apis;x86_64"
 
 #----------------------------------------------------------------------------------------------
 # tools development
