@@ -429,6 +429,18 @@ dev_dotnet_info_dump()
   dotnet workload list
   "
   dotnet workload list
+  echo "--------------------------------------------------------------------------------------------------------------"
+  echo \
+  "
+  dotnet workload list --machine-readable
+  "
+  dotnet workload list --machine-readable
+  echo "--------------------------------------------------------------------------------------------------------------"
+  echo \
+  "
+  dotnet workload update --print-rollback
+  "
+  dotnet workload update --print-rollback
 }
 
 dev_dotnet_info_dump_long()
@@ -459,7 +471,18 @@ dev_dotnet_info_dump_long()
   dotnet workload list
   "
   dotnet workload list
-
+  echo "--------------------------------------------------------------------------------------------------------------"
+  echo \
+  "
+  dotnet workload list --machine-readable
+  "
+  dotnet workload list --machine-readable
+  echo "--------------------------------------------------------------------------------------------------------------"
+  echo \
+  "
+  dotnet workload update --print-rollback
+  "
+  dotnet workload update --print-rollback
 
   echo "--------------------------------------------------------------------------------------------------------------"
   echo \
@@ -1622,6 +1645,113 @@ dev_dotnet_maui_repo_build_visual_studio_code ()
       --catalyst
 }
 
+dev_dotnet_maui_repo_build_projects ()
+{
+  csproj=( $(find . -type f -iname "*.csproj") )
+  for csp in ${csproj[@]} ; 
+  do
+    if echo $csp | grep -iqF unittest ;
+    then
+      break 1
+    fi
+    if echo $csp | grep -iqF uitest ;
+    then
+      break 2
+    fi
+    if echo $csp | grep -iqF devicetest ;
+    then
+      break 3
+    fi
+
+    echo "--------------------------------------------------------------------------------------------------------------"
+    echo $csp  
+    dotnet build $csp
+  done
+}
+
+dev_dotnet_maui_repo_build_unit_tests ()
+{
+  export PROJECTS=\
+"
+./src/Core/tests/UnitTests/Core.UnitTests.csproj
+./src/Compatibility/Core/tests/WinUI/Compatibility.Windows.UnitTests.csproj
+./src/Compatibility/Core/tests/Compatibility.UnitTests/Compatibility.Core.UnitTests.csproj
+./src/Compatibility/Core/tests/Android/Compatibility.Android.UnitTests.csproj
+./src/Compatibility/Core/tests/iOS/Compatibility.iOS.UnitTests.csproj
+./src/Essentials/test/UnitTests/Essentials.UnitTests.csproj
+./src/SingleProject/Resizetizer/test/UnitTests/Resizetizer.UnitTests.csproj
+./src/Controls/Foldable/test/Controls.DualScreen.UnitTests.csproj
+./src/Controls/tests/Xaml.UnitTests.ExternalAssembly/Controls.Xaml.UnitTests.ExternalAssembly.csproj
+./src/Controls/tests/Xaml.UnitTests.InternalsVisibleAssembly/Controls.Xaml.UnitTests.InternalsVisibleAssembly.csproj
+./src/Controls/tests/Core.UnitTests/Controls.Core.UnitTests.csproj
+./src/Controls/tests/Core.Design.UnitTests/Controls.Core.Design.UnitTests.csproj
+./src/Controls/tests/Xaml.UnitTests/Controls.Xaml.UnitTests.csproj
+./src/Controls/tests/Xaml.UnitTests.InternalsHiddenAssembly/Controls.Xaml.UnitTests.InternalsHiddenAssembly.csproj
+"
+
+  csproj=( $(find . -type f -iname "*unittest*.csproj") )
+  
+  for csp in ${csproj[@]} ; 
+  do
+    if echo $csp | grep -iqF windows ;
+    then
+      break
+  fi
+
+    echo "--------------------------------------------------------------------------------------------------------------"
+    echo $csp  
+    dotnet build $csp
+  done
+}
+
+dev_dotnet_maui_repo_build_ui_tests ()
+{
+  export PROJECTS=\
+"
+/src/TestUtils/src/UITest.Core/UITest.Core.csproj
+./src/TestUtils/src/UITest.Appium/UITest.Appium.csproj
+./src/TestUtils/src/UITest.NUnit/UITest.NUnit.csproj
+./src/Compatibility/ControlGallery/test/iOS.UITests/Compatibility.ControlGallery.iOS.UITests.csproj
+./src/Compatibility/ControlGallery/test/Xamarin.Forms.Core.macOS.UITests/Xamarin.Forms.Core.macOS.UITests.csproj
+./src/Compatibility/ControlGallery/test/Android.UITests/Compatibility.ControlGallery.Android.UITests.csproj
+./src/Compatibility/ControlGallery/test/WinUI.UITests/WinUI.UITests.csproj
+./src/Controls/samples/Controls.Sample.UITests/Controls.Sample.UITests.csproj
+"
+
+  csproj=( $(find . -type f -iname "*uitest*.csproj") )
+  
+  for csp in ${csproj[@]} ; 
+  do
+    echo "--------------------------------------------------------------------------------------------------------------"
+    echo $csp  
+    dotnet build $csp
+  done
+}
+
+dev_dotnet_maui_repo_build_device_tests ()
+{
+  export PROJECTS=\
+"
+/src/TestUtils/src/UITest.Core/UITest.Core.csproj
+./src/TestUtils/src/UITest.Appium/UITest.Appium.csproj
+./src/TestUtils/src/UITest.NUnit/UITest.NUnit.csproj
+./src/Compatibility/ControlGallery/test/iOS.UITests/Compatibility.ControlGallery.iOS.UITests.csproj
+./src/Compatibility/ControlGallery/test/Xamarin.Forms.Core.macOS.UITests/Xamarin.Forms.Core.macOS.UITests.csproj
+./src/Compatibility/ControlGallery/test/Android.UITests/Compatibility.ControlGallery.Android.UITests.csproj
+./src/Compatibility/ControlGallery/test/WinUI.UITests/WinUI.UITests.csproj
+./src/Controls/samples/Controls.Sample.UITests/Controls.Sample.UITests.csproj
+"
+
+  csproj=( $(find . -type f -iname "*devicetest*.csproj") )
+  
+  for csp in ${csproj[@]} ; 
+  do
+    echo "--------------------------------------------------------------------------------------------------------------"
+    echo $csp  
+    dotnet build $csp
+  done
+}
+
 dev_dotnet_maui_fix_installation ()
 {
   # Visual Studio for Mac's installer and updater uses dotnet workload install commands to install the 
@@ -1736,10 +1866,12 @@ export PATH="$PATH:/usr/local/share/dotnet"
 
 if type brew &>/dev/null; then
   HOMEBREW_PREFIX=/usr/local
-  if [[ -r /etc/profile.d/bash_completion.sh ]]; then
+  if [[ -r /etc/profile.d/bash_completion.sh ]] ; 
+  then
     source /etc/profile.d/bash_completion.sh
   else
-    for COMPLETION in /etc/bash_completion.d/*; do
+    for COMPLETION in /etc/bash_completion.d/* ; 
+    do
       [[ -r  ]] && source 
     done
   fi
