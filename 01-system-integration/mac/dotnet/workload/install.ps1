@@ -2,7 +2,7 @@
 
 # * Ensure the pwsh or powershell command is in PATH
 # * Use this interpreter directive: #!/usr/bin/env pwsh
-# * Ensure the script uses Unix-style line endings (\n, not \r\n)
+# * Ensure the script uses Unix-style line endings (`n, not `r`n)
 
 dotnet nuget locals all --clear
 
@@ -16,21 +16,57 @@ dotnet workload search tvos
 dotnet workload search maui
 
 sudo `
-    dotnet workload `
-        install `
-            android `
-            ios `
-            maccatalyst `
-            macos `
-            maui `
-            maui-android `
-            maui-ios `
-            maui-maccatalyst `
-            maui-mobile `
-            maui-tizen `
-            maui-windows `
-            tvos `
-            wasm-tools
+    dotnet `
+        workload `
+            uninstall `
+                android `
+                ios `
+                maccatalyst `
+                tvos `
+                macos `
+                maui `
+                maui `
+                maui-android `
+                maui-ios `
+                maui-maccatalyst `
+                maui-mobile `
+                maui-windows `
+                maui-tizen `
+                tvos `
+                wasm-tools `
+                wasm-tools-net6 `
+                wasm-tools-net7 `
+                wasi-experimental `
+                wasm-experimental `
+                wasm-experimental-net7 `
+                aspire `
+
+
+sudo `
+    dotnet `
+        workload `
+            install `
+                android `
+                ios `
+                maccatalyst `
+                tvos `
+                macos `
+                maui `
+                maui `
+                maui-android `
+                maui-ios `
+                maui-maccatalyst `
+                maui-mobile `
+                maui-windows `
+                maui-tizen `
+                tvos `
+                wasm-tools `
+                wasm-tools-net6 `
+                wasm-tools-net7 `
+                wasi-experimental `
+                wasm-experimental `
+                wasm-experimental-net7 `
+                aspire `
 
 
 
