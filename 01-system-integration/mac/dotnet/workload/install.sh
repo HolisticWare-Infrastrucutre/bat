@@ -23,8 +23,15 @@ sudo \
                 maui-maccatalyst \
                 maui-mobile \
                 maui-windows \
+                maui-tizen \
                 tvos \
                 wasm-tools \
+                wasm-tools-net6 \
+                wasm-tools-net7 \
+                wasi-experimental \
+                wasm-experimental \
+                wasm-experimental-net7 \
+                aspire \
 
 
 sudo \
@@ -43,8 +50,15 @@ sudo \
                 maui-maccatalyst \
                 maui-mobile \
                 maui-windows \
+                maui-tizen \
                 tvos \
                 wasm-tools \
+                wasm-tools-net6 \
+                wasm-tools-net7 \
+                wasi-experimental \
+                wasm-experimental \
+                wasm-experimental-net7 \
+                aspire \
 
 
 
@@ -169,6 +183,7 @@ sudo \
 #   microsoft-tvos-sdk-full
 #   tvos
 #   wasm-tools
+#   aspire
 #   "
 #   
 #   IFS=$'\n'
