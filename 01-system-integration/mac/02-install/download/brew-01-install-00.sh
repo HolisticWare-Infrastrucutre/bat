@@ -73,6 +73,9 @@ brew $ACTION_VERB \
     tmux \
     watchman \
     ffmpeg \
+    exiftool \
+
+brew $ACTION_VERB --cask \
     the-unarchiver \
 
 brew $ACTION_VERB \
