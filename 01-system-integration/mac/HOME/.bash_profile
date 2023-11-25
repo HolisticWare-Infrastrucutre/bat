@@ -4,12 +4,31 @@ setopt PROMPT_SUBST
 PROMPT='%F{yellow}%3~%f %# '
 
 #----------------------------------------------------------------------------------------------------------------------
-export JAVA_HOME_ZULU=/Library/Java/JavaVirtualMachines/zulu-8.jdk/Contents/Home
-export JAVA_HOME_CORRETO=/Library/Java/JavaVirtualMachines/amazon-corretto-8.jdk/Contents/Home
-export JAVA_HOME_ADOPTOPENJDK=/Library/Java/JavaVirtualMachines/adoptopenjdk-8.jdk/Contents/Home
+# ls -1 /Library/Java/JavaVirtualMachines/
+
+# adoptopenjdk-8.jdk
+# amazon-corretto-8.jdk
+# jdk-21.jdk
+# microsoft-11.jdk
+# microsoft-16.jdk
+# microsoft-17.jdk
+# openjdk-8.jdk
+# temurin-8.jdk
+# zulu-8.jdk
+
+export JAVA_HOME_ADOPTOPENJDK_8=/Library/Java/JavaVirtualMachines/adoptopenjdk-8.jdk/Contents/Home
+export JAVA_HOME_CORRETO_8=/Library/Java/JavaVirtualMachines/amazon-corretto-8.jdk/Contents/Home
+export JAVA_HOME_OEPNJDJ_8=/Library/Java/JavaVirtualMachines/openjdk-8.jdk/Contents/Home
+export JAVA_HOME_TEMURIN_8=/Library/Java/JavaVirtualMachines/temurin-8.jdk/Contents/Home
+export JAVA_HOME_ZULU_8=/Library/Java/JavaVirtualMachines/zulu-8.jdk/Contents/Home
+export JAVA_HOME_MICROSOFT_11=/Library/Java/JavaVirtualMachines/microsoft-11.jdk/Contents/Home
+export JAVA_HOME_MICROSOFT_16=/Library/Java/JavaVirtualMachines/microsoft-16.jdk/Contents/Home
+export JAVA_HOME_MICROSOFT_17=/Library/Java/JavaVirtualMachines/microsoft-17.jdk/Contents/Home
+export JAVA_HOME_JDK_21=/Library/Java/JavaVirtualMachines/jdk-21.jdk/Contents/Home
+
 export JAVA_HOME_ANDROID_STUDIO=/Applications/Android\ Studio.app/Contents/jre/jdk/Contents/Home
 # export JAVA_HOME_MICROSOFT=$HOME/Library/Developer/Xamarin/jdk/microsoft_dist_openjdk_1.8.0.25
-export JAVA_HOME_MICROSOFT=/Library/Java/JavaVirtualMachines/microsoft-11.jdk/Contents/Home
+export JAVA_HOME_MICROSOFT=$JAVA_HOME_MICROSOFT_11
 
 export JAVA_HOME=$JAVA_HOME_MICROSOFT
 #----------------------------------------------------------------------------------------------------------------------
@@ -1324,9 +1343,19 @@ dev_dotnet_android_bindings_binderator_build()
   echo "=============================================================================================================="
   echo \
   "
-  dotnet cake -t=ci && dotnet cake nuget-diff.cake && dotnet cake utilities.cake
+  dotnet cake -t=ci \\
+  && \\
+  dotnet \\
+  cake nuget-diff.cake -v:diagnostic \\
+  && \\
+  dotnet cake utilities.cake  
   "
-  dotnet cake -t=ci && dotnet cake nuget-diff.cake && dotnet cake utilities.cake  
+  dotnet cake -t=ci \
+  && \
+  dotnet \
+  cake nuget-diff.cake -v:diagnostic \
+  && \
+  dotnet cake utilities.cake  
 }
 
 dev_dotnet_android_bindings_binderator_config_update()
@@ -1349,7 +1378,9 @@ dev_dotnet_android_bindings_binderator_config_bump()
   dotnet script ./build/scripts/update-config.csx -- ./config.json bump
   "
   dotnet script ./build/scripts/update-config.csx -- ./config.json bump
-}  
+}
+
+
 
 dev_macios_xcode_reset()
 {
