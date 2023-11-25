@@ -34,13 +34,33 @@ brew $ACTION_VERB \
 
 
 
-ll      /Library/Java/JavaVirtualMachines 
-ls -1   /Library/Java/JavaVirtualMachines 
-
-brew install \
-    java11
+ll      /Library/Java/JavaVirtualMachines/
+ls -1   /Library/Java/JavaVirtualMachines/ 
 
 brew update
+
+brew $ACTION_VERB \
+    java11
+
+brew $ACTION_VERB \
+    openjdk \
+    openjdk@8 \
+    openjdk@11 \
+    openjdk@17 \
+
+brew $ACTION_VERB --cask \
+    adoptopenjdk \
+    corretto \
+    graalvm-jdk \
+    microsoft-jdk \
+    oracle-jdk \
+    sapmachine-jdk \
+    semeru-jdk-open \
+
+ll      /Library/Java/JavaVirtualMachines/
+ls -1   /Library/Java/JavaVirtualMachines/ 
+
+
 brew tap homebrew/cask-versions
 
 brew tap adoptopenjdk/openjdk
@@ -72,7 +92,6 @@ brew $ACTION_VERB --cask \
 brew $ACTION_VERB --cask \
     microsoft-openjdk \
     microsoft-openjdk11 \
-
 
 brew $ACTION_VERB --cask \
     openjdk \
@@ -117,6 +136,8 @@ brew tap homebrew/cask-versions
 # https://docs.brew.sh/Taps#formula-with-duplicate-names
 brew $ACTION_VERB --cask \
     java \
+
+
 
 
 brew $ACTION_VERB --cask \
