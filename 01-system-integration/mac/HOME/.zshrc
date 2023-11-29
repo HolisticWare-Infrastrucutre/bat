@@ -32,7 +32,6 @@ export JAVA_HOME_MICROSOFT=$JAVA_HOME_MICROSOFT_11
 
 export JAVA_HOME=$JAVA_HOME_MICROSOFT
 #----------------------------------------------------------------------------------------------------------------------
-
 #----------------------------------------------------------------------------------------------------------------------
 # installed with Visual Studio (Xamarin)
 export ANDROID_HOME_XAMARIN=$HOME/Library/Developer/Xamarin/android-sdk-macosx
@@ -45,16 +44,22 @@ export ANDROID_HOME_BREW=/usr/local/share/android-sdk
 
 export ANDROID_HOME=$ANDROID_HOME_ANDROID_STUDIO
 export ANDROID_SDK_ROOT=$ANDROID_HOME
-
-export AndroidSdkDirectory=$ANDROID_HOME
-#----------------------------------------------------------------------------------------------------------------------
 export ANDROID_NDK_HOME=$ANDROID_NDK_HOME_XAMARIN
+export AndroidSdkDirectory=$ANDROID_HOME
+
+#ANDROID_HOME
+export PATH="$ANDROID_HOME/bin:$PATH"
+export PATH="$ANDROID_HOME/tools:$PATH"
+export PATH="$ANDROID_HOME/tools/bin:$PATH"
+export PATH="$ANDROID_HOME/platform-tools:PATH"
+export PATH="$JAVA_HOME/:PATH"
+export PATH="$JAVA_HOME/bin:PATH"
 #----------------------------------------------------------------------------------------------------------------------
 echo "JAVA_HOME           = " $JAVA_HOME
 echo "ANDROID_SDK_ROOT    = " $ANDROID_SDK_ROOT
 echo "ANDROID_HOME        = " $ANDROID_HOME
 echo "ANDROID_NDK_HOME    = " $ANDROID_NDK_HOME
-
+echo "AndroidSdkDirectory = " $AndroidSdkDirectory
 
 function disk_usage_android()
 {
@@ -395,6 +400,15 @@ sys_brew_clean_update()
 };
 
 #======================================================================================================================
+dev_git_clean ()
+{
+  echo "=============================================================================================================="
+  echo "\
+  git clean -xdf && git status && git pull
+  "
+  git clean -xdf && git status && git pull
+}
+
 dev_nuget_nuke()
 { 
   echo "=============================================================================================================="
@@ -1634,22 +1648,158 @@ dev_dotnet_maui_build_app_hybrid_blazor ()
   done
 }
 
+#----------------------------------------------------------------------------------------------------------------------
+#----------------------------------------------------------------------------------------------------------------------
+dev_dotnet_maui_repo_build_buildtasks ()
+{
+  dotnet tool restore
+  dotnet cake \
+    --target=dotnet-buildtasks \
+    --configuration="Release" \
+    --workloads=global
+}
+
+dev_dotnet_maui_repo_build_device_tests ()
+{
+  dev_dotnet_maui_repo_build_device_tests_maccatalyst
+  dev_dotnet_maui_repo_build_device_tests_ios
+  dev_dotnet_maui_repo_build_device_tests_android
+}
+
+dev_dotnet_maui_repo_build_device_tests_maccatalyst ()
+{
+  export PWD=$(pwd)
+  export PROJECTS=\
+"
+src/Core/tests/DeviceTests/Core.DeviceTests.csproj
+src/Controls/tests/DeviceTests/Controls.DeviceTests.csproj
+src/Graphics/tests/DeviceTests/Graphics.DeviceTests.csproj
+src/BlazorWebView/tests/MauiDeviceTests/MauiBlazorWebView.DeviceTests.csproj
+"
+
+  IFS=$'\n'
+  # ZSH does not split words by default (like other shells):
+  setopt sh_word_split
+
+  for PROJECT in $PROJECTS ; 
+  do
+    echo "--------------------------------------------------------------------------------------------------------------"
+    echo $PROJECT
+    echo \
+    "
+    dotnet cake \\
+      -script eng/devices/catalyst.cake \\
+      --verbosity=diagnostic \\
+      --project="$PWD/$PROJECT" \\
+      --device=maccatalyst \\
+      --workloads=global
+    "
+  
+    dotnet cake \
+      -script eng/devices/catalyst.cake \
+      --verbosity=diagnostic \
+      --project="$PWD/$PROJECT" \
+      --device=maccatalyst  \
+      --workloads=global
+  done
+}
+
+dev_dotnet_maui_repo_build_device_tests_android ()
+{
+  export PWD=$(pwd)
+  export PROJECTS=\
+"
+src/Core/tests/DeviceTests/Core.DeviceTests.csproj
+src/Controls/tests/DeviceTests/Controls.DeviceTests.csproj
+src/Graphics/tests/DeviceTests/Graphics.DeviceTests.csproj
+src/BlazorWebView/tests/MauiDeviceTests/MauiBlazorWebView.DeviceTests.csproj
+"
+
+  IFS=$'\n'
+  # ZSH does not split words by default (like other shells):
+  setopt sh_word_split
+
+  for PROJECT in $PROJECTS ; 
+  do
+    echo "--------------------------------------------------------------------------------------------------------------"
+    echo $PROJECT
+    echo \
+    "
+    dotnet cake \\
+      -script eng/devices/android.cake \\
+      --project="$PWD/$PROJECT" \\
+      --device=ios-simulator-64  \\
+      --workloads=global
+    "
+  
+    dotnet cake \
+      -script eng/devices/android.cake \
+      --project="$PWD/$PROJECT" \
+      --device=ios-simulator-64  \
+      --workloads=global
+  done
+}
+
+dev_dotnet_maui_repo_build_device_tests_ios ()
+{
+  export PWD=$(pwd)
+  export PROJECTS=\
+"
+src/Core/tests/DeviceTests/Core.DeviceTests.csproj
+src/Controls/tests/DeviceTests/Controls.DeviceTests.csproj
+src/Graphics/tests/DeviceTests/Graphics.DeviceTests.csproj
+src/BlazorWebView/tests/MauiDeviceTests/MauiBlazorWebView.DeviceTests.csproj
+"
+
+  IFS=$'\n'
+  # ZSH does not split words by default (like other shells):
+  setopt sh_word_split
+
+  for PROJECT in $PROJECTS ; 
+  do
+    echo "--------------------------------------------------------------------------------------------------------------"
+    echo $PROJECT
+    echo \
+    "
+    dotnet cake \\
+      -script eng/devices/ios.cake \\
+      --project="$PWD/$PROJECT" \\
+      --device=ios-simulator-64  \\
+      --workloads=global
+    "
+  
+    dotnet cake \
+      -script eng/devices/ios.cake \
+      --project="$PWD/$PROJECT" \
+      --device=ios-simulator-64  \
+      --workloads=global
+  done
+}
+
 dev_dotnet_maui_repo_build_visual_studio ()
 {
   echo "--------------------------------------------------------------------------------------------------------------"
   echo \
   "
-    dotnet tool restore
-    dotnet cake --target=VS --workloads=global
-    dotnet cake --target=VS --workloads=global \
-        --android \
-        --ios  \
-        --catalyst
+  dotnet tool restore
+  dotnet cake \
+    --target=VS \
+    --workloads=global
+  dotnet cake \
+    --target=VS \
+    --workloads=global \
+      --android \
+      --ios  \
+      --catalyst
   "
 
   dotnet tool restore
-  dotnet cake --target=VS --workloads=global
-  dotnet cake --target=VS --workloads=global \
+  dotnet cake \
+    --target=VS \
+    --workloads=global
+  dotnet cake \
+    --target=VS \
+    --workloads=global \
       --android \
       --ios  \
       --catalyst
@@ -1851,17 +2001,15 @@ dev_vscode_backups ()
 {
   tree "$HOME/Library/Application Support/Code/Backups"
 
-
   tree "$HOME/Library/Application Support/Code - Insiders/Backups"
 }
 
 #----------------------------------------------------------------------------------------------------------------------
-
 #----------------------------------------------------------------------------------------------------------------------
 export PATH="/usr/local/sbin:/usr/local/share/dotnet:$PATH:$HOME/.dotnet/tools/"
-export PATH="$PATH:/usr/local/share/dotnet:$HOME/.dotnet/tools/"
 export PATH="$PATH:/usr/local/bin/pwsh"
 export PATH="$PATH:/Applications/Visual Studio Code.app/Contents/Resources/app/bin"
+export PATH="$ANDROID_SDK_ROOT:$PATH"
 #----------------------------------------------------------------------------------------------------------------------
 
 
