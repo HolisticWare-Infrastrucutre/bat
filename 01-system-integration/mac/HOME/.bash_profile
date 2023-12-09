@@ -3,6 +3,13 @@ setopt PROMPT_SUBST
 # PROMPT='$fg[cyan]%m:$fg[yellow] %T %B%30<..<%~%b %(!.#.>) '
 PROMPT='%F{yellow}%3~%f %# '
 
+
+
+echo "runing as   $(whoami)" 
+echo "runing as   $(id -u)" 
+echo "runing in   $(groups $(whoami) | cut -d' ' -f1)" 
+echo "runing in   $(id -g)" 
+
 #----------------------------------------------------------------------------------------------------------------------
 # ls -1 /Library/Java/JavaVirtualMachines/
 
@@ -33,6 +40,8 @@ export JAVA_HOME_MICROSOFT=$JAVA_HOME_MICROSOFT_11
 export JAVA_HOME=$JAVA_HOME_MICROSOFT
 #----------------------------------------------------------------------------------------------------------------------
 #----------------------------------------------------------------------------------------------------------------------
+# ANDROID_HOME
+# ANDROID_SDK_ROOT
 # installed with Visual Studio (Xamarin)
 export ANDROID_HOME_XAMARIN=$HOME/Library/Developer/Xamarin/android-sdk-macosx
 export ANDROID_NDK_HOME_XAMARIN=/usr/local/bin
@@ -46,20 +55,51 @@ export ANDROID_HOME=$ANDROID_HOME_ANDROID_STUDIO
 export ANDROID_SDK_ROOT=$ANDROID_HOME
 export ANDROID_NDK_HOME=$ANDROID_NDK_HOME_XAMARIN
 export AndroidSdkDirectory=$ANDROID_HOME
-
-#ANDROID_HOME
-export PATH="$ANDROID_HOME/bin:$PATH"
-export PATH="$ANDROID_HOME/tools:$PATH"
-export PATH="$ANDROID_HOME/tools/bin:$PATH"
-export PATH="$ANDROID_HOME/platform-tools:PATH"
-export PATH="$JAVA_HOME/:PATH"
-export PATH="$JAVA_HOME/bin:PATH"
 #----------------------------------------------------------------------------------------------------------------------
-echo "JAVA_HOME           = " $JAVA_HOME
-echo "ANDROID_SDK_ROOT    = " $ANDROID_SDK_ROOT
-echo "ANDROID_HOME        = " $ANDROID_HOME
-echo "ANDROID_NDK_HOME    = " $ANDROID_NDK_HOME
-echo "AndroidSdkDirectory = " $AndroidSdkDirectory
+
+
+# Terminal autocomplete fix
+autoload -Uz compinit && compinit
+
+plugins=\
+(
+    git
+    docker
+    asdf
+    zsh-autosuggestions
+    zsh-completions 
+    zsh-history-substring-search 
+    zsh-syntax-highlighting
+)
+
+
+# autoload -U compinit promptinit
+# promptinit
+# prompt pure
+# 
+# compinit
+# zstyle ':completion:*' matcher-list 'm:{a-zA-Z}={A-Za-z}' 'r:|=*' 'l:|=* r:|=*'
+# fpath=(/usr/local/share/zsh-completions $fpath)
+
+#autoload -U +X compinit && compinit
+autoload -U +X bashcompinit && bashcompinit 
+
+#----------------------------------------------------------------------------------------------------------------------
+# PATH
+export PATH=/usr/bin/:/bin/:/usr/sbin/:/sbin/:/usr/local/bin/:/usr/local/sbin/
+export PATH=$PATH:$ANDROID_HOME/bin/
+export PATH=$PATH:$ANDROID_HOME/tools/
+export PATH=$PATH:$ANDROID_HOME/tools/bin/
+export PATH=$PATH:$ANDROID_HOME/platform-tool/
+export PATH=$PATH:$ANDROID_HOME/bundle-tool/
+export PATH=$PATH:$ANDROID_SDK_ROOT/
+export PATH=$PATH:$JAVA_HOME/
+export PATH=$PATH:$JAVA_HOME/bin/
+export PATH=$PATH:/usr/local/share/dotnet:$HOME/.dotnet/tools/
+export PATH=$PATH:/usr/local/bin/pwsh/
+export PATH=$PATH:"/Applications/Visual Studio Code.app/Contents/Resources/app/bin/"
+#----------------------------------------------------------------------------------------------------------------------
+
 
 function disk_usage_android()
 {
@@ -720,6 +760,16 @@ dotnet tool \
 
 #        --version 3.2.0-alpha0025  
 };
+
+dev_dotnet_tools_reinstall_api_tools()
+{
+  echo "--------------------------------------------------------------------------------------------------------------"
+  echo \
+  "
+  source $HOME/bat/01-system-integration/mac/dotnet/tool/api-tools-private.sh
+  "
+  source $HOME/bat/01-system-integration/mac/dotnet/tool/api-tools-private.sh
+}
 
 dev_dotnet_new_templates_reinstall()
 {
@@ -1659,8 +1709,104 @@ dev_dotnet_maui_repo_build_buildtasks ()
     --workloads=global
 }
 
+dev_dotnet_maui_repo_tools_tests_init ()
+{
+  echo "--------------------------------------------------------------------------------------------------------------"
+  echo \
+  "
+  brew install \
+      node \
+      carthage
+      
+  echo "JAVA_HOME         = $JAVA_HOME"
+  echo "ANDROID_HOME      = $ANDROID_HOME"
+  echo "ANDROID_SDK_ROOT  = $ANDROID_SDK_ROOT"
+  sudo dotnet pwsh eng/scripts/appium-install.ps1   
+  "
+  brew install \
+      node \
+      carthage
+      
+  echo "JAVA_HOME         = $JAVA_HOME"
+  echo "ANDROID_HOME      = $ANDROID_HOME"
+  echo "ANDROID_SDK_ROOT  = $ANDROID_SDK_ROOT"
+
+  sudo dotnet pwsh eng/scripts/appium-install.ps1   
+
+  appium-doctor --android
+
+  appium -v
+
+  brew \
+    install \
+      opencv@4 \
+      bundletool \
+      gstreamer \
+      gst-plugins-base \
+      gst-plugins-good \
+      gst-plugins-bad \
+      gst-plugins-ugly \
+      gst-libav \
+
+
+  sudo \
+    npm \
+      install \
+        -g \
+          appium-doctor \
+          mjpeg-consumer \
+          bundletool \
+          opencv4nodejs \
+          
+  ll $HOME/.npm
+  ll $HOME/.appium
+
+  sudo chown -R "$(id -u):$(id -g)" "$HOME/.npm"
+  sudo chown -R "$(id -u):$(id -g)" "$HOME/.appium"
+
+  mkdir $ANDROID_HOME/bundle-tool/
+  curl \
+    -k -L -s \
+    https://github.com/google/bundletool/releases/download/1.15.6/bundletool-all-1.15.6.jar \
+    -o $ANDROID_HOME/bundle-tool/bundletool.jar
+
+  chmod +x $ANDROID_HOME/bundle-tool/bundletool.jar
+  ll $ANDROID_HOME/bundle-tool/bundletool.jar
+  alias bundletool='java -jar $ANDROID_HOME/bundle-tool/bundletool.jar'
+  bundletool --version
+
+  DevToolsSecurity -enable
+
+  appium-doctor --ios
+}
+
+dev_dotnet_maui_repo_tools_tests_verify ()
+{
+  echo "--------------------------------------------------------------------------------------------------------------"
+  echo \
+  "
+  appium-doctor --android
+  "
+  appium-doctor --android
+
+
+npm i -g mjpeg-consumer
+WARN AppiumDoctor  ➜ bundletool.jar is used to handle Android App Bundle. Please read http://appium.io/docs/en/writing-running-appium/android/android-appbundle/ to install it
+WARN AppiumDoctor  ➜ gst-launch-1.0 and gst-inspect-1.0 are used to stream the screen of the device under test. Please read https://appium.io/docs/en/writing-running-appium/android/android-screen-streaming/ to install them and for more details
+  echo "--------------------------------------------------------------------------------------------------------------"
+  echo \
+  "
+  appium-doctor --ios
+  "
+  appium-doctor --ios
+}
+
 dev_dotnet_maui_repo_build_device_tests ()
 {
+  echo "--------------------------------------------------------------------------------------------------------------"
+  echo \
+  "
+  "
   dev_dotnet_maui_repo_build_device_tests_maccatalyst
   dev_dotnet_maui_repo_build_device_tests_ios
   dev_dotnet_maui_repo_build_device_tests_android
@@ -1668,6 +1814,10 @@ dev_dotnet_maui_repo_build_device_tests ()
 
 dev_dotnet_maui_repo_build_device_tests_maccatalyst ()
 {
+  echo "--------------------------------------------------------------------------------------------------------------"
+  echo \
+  "
+  "
   export PWD=$(pwd)
   export PROJECTS=\
 "
@@ -1706,6 +1856,10 @@ src/BlazorWebView/tests/MauiDeviceTests/MauiBlazorWebView.DeviceTests.csproj
 
 dev_dotnet_maui_repo_build_device_tests_android ()
 {
+  echo "--------------------------------------------------------------------------------------------------------------"
+  echo \
+  "
+  "
   export PWD=$(pwd)
   export PROJECTS=\
 "
@@ -1742,6 +1896,10 @@ src/BlazorWebView/tests/MauiDeviceTests/MauiBlazorWebView.DeviceTests.csproj
 
 dev_dotnet_maui_repo_build_device_tests_ios ()
 {
+  echo "--------------------------------------------------------------------------------------------------------------"
+  echo \
+  "
+  "
   export PWD=$(pwd)
   export PROJECTS=\
 "
@@ -2005,12 +2163,6 @@ dev_vscode_backups ()
 }
 
 #----------------------------------------------------------------------------------------------------------------------
-#----------------------------------------------------------------------------------------------------------------------
-export PATH="/usr/local/sbin:/usr/local/share/dotnet:$PATH:$HOME/.dotnet/tools/"
-export PATH="$PATH:/usr/local/bin/pwsh"
-export PATH="$PATH:/Applications/Visual Studio Code.app/Contents/Resources/app/bin"
-export PATH="$ANDROID_SDK_ROOT:$PATH"
-#----------------------------------------------------------------------------------------------------------------------
 
 
 
@@ -2043,7 +2195,14 @@ source $(brew --prefix)/etc/bash_completion.d/az
 
 
 #----------------------------------------------------------------------------------------------------------------------
-export PATH="$PATH:/usr/local/share/dotnet"
+echo "PATH                = " $PATH
+echo "JAVA_HOME           = " $JAVA_HOME
+echo "ANDROID_SDK_ROOT    = " $ANDROID_SDK_ROOT
+echo "ANDROID_HOME        = " $ANDROID_HOME
+echo "ANDROID_NDK_HOME    = " $ANDROID_NDK_HOME
+echo "AndroidSdkDirectory = " $AndroidSdkDirectory
+#----------------------------------------------------------------------------------------------------------------------
+#----------------------------------------------------------------------------------------------------------------------
 
 if type brew &>/dev/null; then
   HOMEBREW_PREFIX=/usr/local
