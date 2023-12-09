@@ -29,9 +29,13 @@ dotnet tool \
     install \
         api-tools \
             --global \
+            --verbosity=diagnostic \
             --add-source ./output/ \
             --ignore-failed-sources \
-            --prerelease \
+            --version 1.0.0-preview.0
+
+
+#            --prerelease \
 
 
 cd -
