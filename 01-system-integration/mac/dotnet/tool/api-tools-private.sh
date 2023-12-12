@@ -15,6 +15,7 @@ unzip \
     ./Mono.ApiTools.NuGetDiff-master.zip
 
 cd ./Mono.ApiTools.NuGetDiff-master
+dotnet tool restore
 dotnet cake
 
 
