@@ -3,12 +3,40 @@ setopt PROMPT_SUBST
 # PROMPT='$fg[cyan]%m:$fg[yellow] %T %B%30<..<%~%b %(!.#.>) '
 PROMPT='%F{yellow}%3~%f %# '
 
-
-
 echo "runing as   $(whoami)" 
 echo "runing as   $(id -u)" 
 echo "runing in   $(groups $(whoami) | cut -d' ' -f1)" 
 echo "runing in   $(id -g)" 
+
+
+# Terminal autocomplete fix
+autoload -Uz compinit && compinit
+autoload -U promptinit && promptinit
+
+plugins=\
+(
+    git
+    docker
+    asdf
+    zsh-autosuggestions
+    zsh-completions 
+    zsh-history-substring-search 
+    zsh-syntax-highlighting
+)
+
+# prompt pure
+# 
+# compinit
+# zstyle ':completion:*' matcher-list 'm:{a-zA-Z}={A-Za-z}' 'r:|=*' 'l:|=* r:|=*'
+# fpath=(/usr/local/share/zsh-completions $fpath)
+
+#autoload -U +X compinit && compinit
+#autoload -U +X bashcompinit && bashcompinit 
+
+
+#######################################################################################################################
+#----------------------------------------------------------------------------------------------------------------------
+# PATH
 
 #----------------------------------------------------------------------------------------------------------------------
 # ls -1 /Library/Java/JavaVirtualMachines/
@@ -39,6 +67,7 @@ export JAVA_HOME_MICROSOFT=$JAVA_HOME_MICROSOFT_11
 
 export JAVA_HOME=$JAVA_HOME_MICROSOFT
 #----------------------------------------------------------------------------------------------------------------------
+
 #----------------------------------------------------------------------------------------------------------------------
 # ANDROID_HOME
 # ANDROID_SDK_ROOT
@@ -56,37 +85,11 @@ export ANDROID_SDK_ROOT=$ANDROID_HOME
 export ANDROID_NDK_HOME=$ANDROID_NDK_HOME_XAMARIN
 export AndroidSdkDirectory=$ANDROID_HOME
 #----------------------------------------------------------------------------------------------------------------------
+export MONO_GAC_PREFIX="/opt/homebrew"
 
 
-# Terminal autocomplete fix
-autoload -Uz compinit && compinit
-
-plugins=\
-(
-    git
-    docker
-    asdf
-    zsh-autosuggestions
-    zsh-completions 
-    zsh-history-substring-search 
-    zsh-syntax-highlighting
-)
-
-
-# autoload -U compinit promptinit
-# promptinit
-# prompt pure
-# 
-# compinit
-# zstyle ':completion:*' matcher-list 'm:{a-zA-Z}={A-Za-z}' 'r:|=*' 'l:|=* r:|=*'
-# fpath=(/usr/local/share/zsh-completions $fpath)
-
-#autoload -U +X compinit && compinit
-autoload -U +X bashcompinit && bashcompinit 
-
-#----------------------------------------------------------------------------------------------------------------------
-# PATH
 export PATH=/usr/bin/:/bin/:/usr/sbin/:/sbin/:/usr/local/bin/:/usr/local/sbin/
+export PATH=/opt/homebrew/bin/:/opt/homebrew/sbin/:$PATH
 export PATH=$PATH:$ANDROID_HOME/bin/
 export PATH=$PATH:$ANDROID_HOME/tools/
 export PATH=$PATH:$ANDROID_HOME/tools/bin/
@@ -99,21 +102,11 @@ export PATH=$PATH:/usr/local/share/dotnet:$HOME/.dotnet/tools/
 export PATH=$PATH:/usr/local/bin/pwsh/
 export PATH=$PATH:"/Applications/Visual Studio Code.app/Contents/Resources/app/bin/"
 #----------------------------------------------------------------------------------------------------------------------
+#######################################################################################################################
 
 
-function disk_usage_android()
-{
-  [ -d $ANDROID_HOME_XAMARIN ]        && echo "ANDROID_HOME_XAMARIN"        && du -sh $ANDROID_HOME_XAMARIN
-  [ -d $ANDROID_HOME_ANDROID_STUDIO ] && echo "ANDROID_HOME_ANDROID_STUDIO" && du -sh $ANDROID_HOME_ANDROID_STUDIO
-  [ -d $ANDROID_HOME_BREW ]           && echo "ANDROID_HOME_BREW"           && du -sh $ANDROID_HOME_BREW
-}
-#----------------------------------------------------------------------------------------------------------------------
-
-
-
-#----------------------------------------------------------------------------------------------------------------------
+#######################################################################################################################
 alias ll='ls -al'
-
 
 alias vs="open -a Visual\ Studio\ \(Preview\)"
 alias vsc="code -n ."
@@ -133,79 +126,70 @@ setopt complete_aliases
 
 # zsh parameter completion for the dotnet CLI
 
-git_really_clean()
-{
-  echo "--------------------------------------------------------------------------------------------------------------"
-  echo \
-  "
-  git clean -xfd
-  git submodule foreach --recursive git clean -xfd
-  git submodule update --init --recursive
-  "
-  git clean -xfd
-  git submodule foreach --recursive git clean -xfd
-  git submodule update --init --recursive
-}
+# if type brew &>/dev/null; then
+#   HOMEBREW_PREFIX=/usr/local
+#   if [[ -r /etc/profile.d/bash_completion.sh ]] ; 
+#   then
+#     source /etc/profile.d/bash_completion.sh
+#   else
+#     for COMPLETION in /etc/bash_completion.d/* ; 
+#     do
+#       [[ -r  ]] && source 
+#     done
+#   fi
+# fi
+#######################################################################################################################
 
-git_prune()
-{
-  # to clean your local checkout by removing all the branches+tags that no longer exist upstream
-  # run this script (or its powershell/cmd equivalent):
-  echo "--------------------------------------------------------------------------------------------------------------"
-  echo \
-  "
-  REMOTES=\"\`git remote\`\"
 
-  git fetch --prune --prune-tags
-  git gc --aggressive --prune=now --cruft
-  for r in $REMOTES; do
-          git remote prune $r
-  done
-  git worktree prune
-  "
-  REMOTES="`git remote`"
 
-  git fetch --prune --prune-tags
-  git gc --aggressive --prune=now --cruft
-  for r in $REMOTES; do
-          git remote prune $r
-  done
-  git worktree prune
-}
-
-sys_zsh_functions_list()
-{
-  echo "--------------------------------------------------------------------------------------------------------------"
-  echo \
-  "
-  print -l ${(ok)functions}
-  "
-  print -l ${(ok)functions}
-}
-
-sys_zshrc_reload()
-{
-  echo "--------------------------------------------------------------------------------------------------------------"
-  echo \
-  "
-  source $HOME/.zshrc 
-  "
-  source $HOME/.zshrc 
-};
+#######################################################################################################################
+# sys
+# start
 
 sys_postinstall()
 {
   echo "--------------------------------------------------------------------------------------------------------------"
   echo \
   "
-  sys_terminal_fingerprint
+  sys_term_fingerprint
   sudo xcodebuild -license accept
   "
   # Agreeing to the Xcode/iOS license requires admin privileges, please run “sudo xcodebuild -license” and then retry 
   # this command.
-  sys_terminal_fingerprint
+  sys_term_fingerprint
   sudo xcodebuild -license accept
 }
+
+sys_diverse_clean()
+{
+  rm -fr .android/cache/
+  rm -fr .android/build-cache/
+  rm -fr .dotnet/TelemetryStorageService/
+  rm -fr .dotnet/*rc*/
+  rm -fr .dotnet/*preview*/
+
+  rm -fr .cache/
+  rm -fr .cocoapods/
+  rm -fr .docker/
+  rm -fr .gitlab-runner/
+  rm -fr .gradle/
+  rm -fr .julia/
+  rm -fr .jupyter/
+  rm -fr .kube/
+
+  rm -fr .octave*
+}
+
+
+# stop
+# sys
+#######################################################################################################################
+
+
+#######################################################################################################################
+# sys
+#   finder
+# start
 
 sys_finder_settings()
 {
@@ -237,9 +221,47 @@ sys_finder_open_windows_and_tabs()
   source $HOME/bat/03-productivity/mac/finder-open-window-with-tabs.sh
   "
   source $HOME/bat/03-productivity/mac/finder-open-window-with-tabs.sh
+}
+
+# stop
+#   finder
+# sys
+#######################################################################################################################
+
+
+
+#======================================================================================================================
+# sys   
+#   term
+# start
+
+sys_term_tab_completion_reset()
+{
+  echo "--------------------------------------------------------------------------------------------------------------"
+  echo \
+  "
+  rm -f ~/.zcompdump
+  "
+  rm -f ~/.zcompdump
+}
+
+sys_term_autocompletion_reset()
+{
+  sys_term_tab_completion_reset
+}
+
+# source $HOME/bat/03-productivity/mac/clear-screen-and-term-buffer.sh
+sys_term_clean_screen_and_buffer()
+{
+  echo "--------------------------------------------------------------------------------------------------------------"
+  echo \
+  "
+  source $HOME/bat/01-system-integration/mac/zsh/functions/sys_term_clean_screen_and_buffer
+  "
+  source $HOME/bat/01-system-integration/mac/zsh/functions/sys_term_clean_screen_and_buffer
 };
 
-sys_terminal_fingerprint()
+sys_term_fingerprint()
 {
   #----------------------------------------------------------------------------------------------
   # fingerprint in terminal
@@ -265,6 +287,124 @@ sys_terminal_fingerprint()
 
   cat /etc/pam.d/sudo 
 };
+
+# stop
+#   term
+# sys   
+#======================================================================================================================
+
+#======================================================================================================================
+# sys   
+#   brew
+# start
+sys_brew_update_upgrade()
+{
+  sys_brew_clean
+
+  brew update
+  brew upgrade
+
+  sys_brew_clean
+}
+
+sys_brew_clean()
+{
+    sys_term_clean_screen_and_buffer
+
+    brew cleanup
+    brew autoremove
+    brew doctor
+}
+
+sys_brew_clean_update()
+{
+    sys_term_clean_screen_and_buffer
+
+    brew cleanup
+    brew autoremove
+
+    brew update
+    brew upgrade
+
+    brew cleanup
+    brew autoremove
+
+    source $HOME/bat/01-system-integration/mac/02-install/download/brew-01-upgrade.sh
+};
+
+sys_brew_repair_installation()
+{
+    sys_term_clean_screen_and_buffer
+
+    echo "export PATH=/opt/homebrew/bin/:$PATH" >> ~/.zshrc
+    echo "export PATH=/opt/homebrew/sbin/:$PATH" >> ~/.zshrc
+    /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+    brew doctor
+    eval $(/opt/homebrew/bin/brew shellenv)
+    echo "eval $(/opt/homebrew/bin/brew shellenv)" >> ~/.zshrc
+};
+
+# stop
+#   brew
+# sys   
+#======================================================================================================================
+
+
+#======================================================================================================================
+# sys   
+#   zsh
+# start
+
+sys_zsh_functions_list()
+{
+  echo "--------------------------------------------------------------------------------------------------------------"
+  echo \
+  "
+  shell functions (bash/zsh) available:
+  
+  print -l ${(ok)functions}
+  "
+  print -l ${(ok)functions}
+}
+
+sys_zshrc_reload()
+{
+  echo "--------------------------------------------------------------------------------------------------------------"
+  echo \
+  "
+  source $HOME/.zshrc 
+  "
+  source $HOME/.zshrc 
+}
+
+
+sys_zsh_functions_load()
+{
+
+  fpath=($HOME/bat/01-system-integration/mac/zsh/functions $fpath);
+  
+  autoload -U $HOME/bat/01-system-integration/mac/zsh/functions/dotnet_tools_update
+  autoload -U $HOME/bat/01-system-integration/mac/zsh/functions/launch_applications
+  autoload -U $HOME/bat/01-system-integration/mac/zsh/functions/disk_usage_android
+  autoload -U $HOME/bat/01-system-integration/mac/zsh/functions/markdown_bash_execute
+  autoload -U $HOME/bat/01-system-integration/mac/zsh/functions/mbe
+  
+  autoload bashcompinit && bashcompinit
+#  source $(brew --prefix)/etc/bash_completion.d/az
+
+}
+#----------------------------------------------------------------------------------------------------------------------
+
+# stop
+#   zsh
+# sys   
+#======================================================================================================================
+
+
+#======================================================================================================================
+# sys   
+#   network
+# start
 
 sys_network_restart()
 {
@@ -347,6 +487,16 @@ sys_network_restart_brute()
 
 }
 
+# sys   
+#   network
+# stop
+#======================================================================================================================
+
+#======================================================================================================================
+# sys   
+#   audio
+# start
+
 sys_audio_restart_kill_9()
 {
   # sudo pkill -9 coreaudiod kills the coreaudio process immediately. 
@@ -402,68 +552,21 @@ sys_audio_restart_launchctl_stop()
   sudo launchctl start  com.apple.audio.coreaudiod 
 }
 
+# stop
+#   audio
+# sys   
+#======================================================================================================================
 
-sys_diverse_clean()
-{
-  rm -fr .cache/
-  rm -fr .cocoapods/
-  rm -fr .docker/
-  rm -fr .gitlab-runner/
-  rm -fr .gradle/
-  rm -fr .julia/
-  rm -fr .jupyter/
-  rm -fr .kube/
-
-  rm -fr .octave*
-}
-
-sys_brew_update_upgrade()
-{
-  brew update
-  brew upgrade
-}
-
-sys_brew_clean_update()
-{
-    clean_term_screen_and_buffer
-
-    brew cleanup
-    brew autoremove
-
-    brew update
-    brew upgrade
-
-    brew cleanup
-    brew autoremove
-
-    source $HOME/bat/01-system-integration/mac/02-install/download/brew-01-upgrade.sh
-};
 
 #======================================================================================================================
-dev_git_clean ()
-{
-  echo "=============================================================================================================="
-  echo "\
-  git clean -xdf && git status && git pull
-  "
-  git clean -xdf && git status && git pull
-}
-
-dev_nuget_nuke()
-{ 
-  echo "=============================================================================================================="
-  echo "\
-  source $HOME/bat/01-system-integration/mac/nuget/clean.sh
-  "
-
-  source $HOME/bat/01-system-integration/mac/nuget/clean.sh
-};
-
+# dev   
+# start
 
 dev_info_dump_long()
 {
   echo "=============================================================================================================="
-  echo "\
+  echo \
+  "
   dev_dotnet_info_dump 
   dev_android_info_dump
   dev_ios_info_dump
@@ -474,102 +577,43 @@ dev_info_dump_long()
   dev_ios_info_dump
 }
 
-dev_dotnet_info_dump()
+# stop
+# dev   
+#======================================================================================================================
+
+
+#======================================================================================================================
+# dev   
+#   jdk
+# start
+
+jdk()
 {
-  echo "=============================================================================================================="
-  echo "\
-  Microsoft .NET 
-  "
-  echo \
-  "
-  dotnet --info
-  "
-  dotnet --info
-  
-  echo \
-  "
-  dotnet --list-runtimes
-  "
-  dotnet --list-runtimes
-  echo \
-  "
-  dotnet --list-sdks
-  "  
-  dotnet --list-sdks  
   echo "--------------------------------------------------------------------------------------------------------------"
   echo \
   "
-  dotnet workload list
+  version=$1
+  unset JAVA_HOME;
+  export JAVA_HOME=$(/usr/libexec/java_home -v"$version");
+  java -version
   "
-  dotnet workload list
-  echo "--------------------------------------------------------------------------------------------------------------"
-  echo \
-  "
-  dotnet workload list --machine-readable
-  "
-  dotnet workload list --machine-readable
-  echo "--------------------------------------------------------------------------------------------------------------"
-  echo \
-  "
-  dotnet workload update --print-rollback
-  "
-  dotnet workload update --print-rollback
+  version=$1
+  unset JAVA_HOME;
+  export JAVA_HOME=$(/usr/libexec/java_home -v"$version");
+  java -version
 }
 
-dev_dotnet_info_dump_long()
-{ 
-  echo "=============================================================================================================="
-  echo "\
-  Microsoft .NET 
-  "
-  echo \
-  "
-  dotnet --info
-  "
-  dotnet --info
-  
-  echo \
-  "
-  dotnet --list-runtimes
-  "
-  dotnet --list-runtimes
-  echo \
-  "
-  dotnet --list-sdks
-  "  
-  dotnet --list-sdks  
-  echo "--------------------------------------------------------------------------------------------------------------"
-  echo \
-  "
-  dotnet workload list
-  "
-  dotnet workload list
-  echo "--------------------------------------------------------------------------------------------------------------"
-  echo \
-  "
-  dotnet workload list --machine-readable
-  "
-  dotnet workload list --machine-readable
-  echo "--------------------------------------------------------------------------------------------------------------"
-  echo \
-  "
-  dotnet workload update --print-rollback
-  "
-  dotnet workload update --print-rollback
 
-  echo "--------------------------------------------------------------------------------------------------------------"
-  echo \
-  "
-  dotnet tool list --global
-  "
-  dotnet tool list --global
-  echo "--------------------------------------------------------------------------------------------------------------"
-  echo \
-  "
-  dotnet new --list
-  "
-  dotnet new --list
-}
+# stop
+#   jdk
+# dev   
+#======================================================================================================================
+
+
+#======================================================================================================================
+# dev   
+#   android
+# start
 
 dev_android_info_dump()
 { 
@@ -587,8 +631,7 @@ dev_android_info_dump()
 
   echo "/Applications/Android Studio Preview.app/Contents/MacOS/studio" -version
   "/Applications/Android Studio Preview.app/Contents/MacOS/studio" -version
-
-};
+}
 
 dev_android_sdkmanager()
 { 
@@ -630,423 +673,12 @@ dev_android_sdkmanager()
   #     "extras;android;m2repository"
 }
 
-
-dev_ios_info_dump()
-{ 
-  echo "=============================================================================================================="
-  echo "Apple"
-
-  echo "--------------------------------------------------------------------------------------------------------------"
-  echo \
-  "
-  /usr/bin/xcodebuild -version
-  "
-  /usr/bin/xcodebuild -version
-
-  echo "--------------------------------------------------------------------------------------------------------------"
-  echo \
-  "
-  softwareupdate --history
-  "
-  softwareupdate --history
-};
-
-dev_ios_xcode_commandline_tools()
+dev_android_info_disk_usage()
 {
-  echo "--------------------------------------------------------------------------------------------------------------"
-  echo \
-  "
-  sudo rm -rf /Library/Developer/CommandLineTools
-  sudo xcode-select --install
-  softwareupdate --all --install --force
-  "
-
-  sudo rm -rf /Library/Developer/CommandLineTools
-  sudo xcode-select --install
-  softwareupdate --all --install --force
+  [ -d $ANDROID_HOME_XAMARIN ]        && echo "ANDROID_HOME_XAMARIN"        && du -sh $ANDROID_HOME_XAMARIN
+  [ -d $ANDROID_HOME_ANDROID_STUDIO ] && echo "ANDROID_HOME_ANDROID_STUDIO" && du -sh $ANDROID_HOME_ANDROID_STUDIO
+  [ -d $ANDROID_HOME_BREW ]           && echo "ANDROID_HOME_BREW"           && du -sh $ANDROID_HOME_BREW
 }
-
-
-dev_dotnet_installation_clean()
-{
-  echo "--------------------------------------------------------------------------------------------------------------"
-  echo \
-  "
-  sudo rm -fr \
-      /usr/local/share/dotnet/sdk/* \
-      /usr/local/share/dotnet/sdk-manifests/* \
-      /usr/local/share/dotnet/shared/Microsoft.AspNetCore.App/* \
-      /usr/local/share/dotnet/shared/Microsoft.NETCore.App/* \
-  "
-  sudo rm -fr \
-      /usr/local/share/dotnet/sdk/* \
-      /usr/local/share/dotnet/sdk-manifests/* \
-      /usr/local/share/dotnet/shared/Microsoft.AspNetCore.App/* \
-      /usr/local/share/dotnet/shared/Microsoft.NETCore.App/* \
-
-}
-
-dev_dotnet_workloads_reinstall()
-{ 
-  echo "--------------------------------------------------------------------------------------------------------------"
-  echo \
-  "
-  source $HOME/bat/01-system-integration/mac/dotnet/workload/install.sh
-  "
-  source $HOME/bat/01-system-integration/mac/dotnet/workload/install.sh
-};
-
-dev_dotnet_workloads_clean()
-{ 
-  echo "--------------------------------------------------------------------------------------------------------------"
-  echo \
-  "
-  sudo dotnet workload clean
-#  sudo dotnet workload clean --all
-  "
-  sudo dotnet workload clean
-#  sudo dotnet workload clean --all
-};
-
-
-
-dev_dotnet_tools_reinstall()
-{
-  echo "--------------------------------------------------------------------------------------------------------------"
-  echo \
-  "
-  source $HOME/bat/01-system-integration/mac/dotnet/tool/install.sh
-
-  dotnet tool \
-    uninstall \
-      Cake.Tool \
-      --global \
-
-  dotnet tool \
-    install \
-      --global \
-        Cake.Tool \
-        --add-source https://pkgs.dev.azure.com/cake-build/Cake/_packaging/cake/nuget/v3/index.json \
-        --version 3.2.0-alpha0025  
-
-  "
-  source $HOME/bat/01-system-integration/mac/dotnet/tool/install.sh 
-
-  dotnet tool \
-    uninstall \
-      --global \
-      Microsoft.DotNet.XHarness.CLI 
-
-dotnet tool \
-  install \
-    Microsoft.DotNet.XHarness.CLI \
-      --global \
-      --add-source https://pkgs.dev.azure.com/dnceng/public/_packaging/dotnet-eng/nuget/v3/index.json \
-      --prerelease \
-      --verbosity:diag \
-
-  dotnet tool \
-    uninstall \
-      Cake.Tool \
-      --global \
-
-  dotnet tool \
-    install \
-      --global \
-        Cake.Tool \
-        --add-source https://pkgs.dev.azure.com/cake-build/Cake/_packaging/cake/nuget/v3/index.json \
-        --prerelease \
-        --verbosity:diag \
-
-#        --version 3.2.0-alpha0025  
-};
-
-dev_dotnet_tools_reinstall_api_tools()
-{
-  echo "--------------------------------------------------------------------------------------------------------------"
-  echo \
-  "
-  source $HOME/bat/01-system-integration/mac/dotnet/tool/api-tools-private.sh
-  "
-  source $HOME/bat/01-system-integration/mac/dotnet/tool/api-tools-private.sh
-}
-
-dev_dotnet_new_templates_reinstall()
-{
-  echo "--------------------------------------------------------------------------------------------------------------"
-  echo \
-  "
-  source $HOME/bat/01-system-integration/mac/dotnet/new-templates/install.sh
-  "
-  source $HOME/bat/01-system-integration/mac/dotnet/new-templates/install.sh 
-};
-
-dev_dotnet_tool_cake_install_2_3_0()
-{ 
-  echo "--------------------------------------------------------------------------------------------------------------"
-  echo \
-  "
-  "
-  dotnet tool \
-    uninstall \
-      --global \
-        Cake.Tool
-
-  dotnet tool \
-    install \
-      --global \
-        Cake.Tool \
-          --version 2.3.0
-};
-
-dev_dotnet_autocomplete ()
-{
-  # https://learn.microsoft.com/en-us/dotnet/core/tools/enable-tab-autocomplete#bash
-  # https://learn.microsoft.com/en-us/dotnet/core/tools/enable-tab-autocomplete#zsh
-
-  local completions=("$(dotnet complete "$words")")
-
-  # If the completion list is empty, just continue with filename selection
-  if [ -z "$completions" ]
-  then
-    _arguments '*::arguments: _normal'
-    return
-  fi
-
-  # This is not a variable assignment, don't remove spaces!
-  _values = "${(ps:\n:)completions}"  
-}
-
-compdef dev_dotnet_autocomplete dotnet
-
-# https://docs.microsoft.com/en-us/dotnet/core/tools/enable-tab-autocomplete
-# dotnet_zsh_complete()
-# {
-#   local completions=("$(dotnet complete "$words")")
-# 
-#   reply=( "${(ps:\n:)completions}" )
-# 
-#   compctl -K dotnet_zsh_complete dotnet
-# }
-
-dev_dotnet_clean()
-{
-  echo "--------------------------------------------------------------------------------------------------------------"
-  echo \
-  "
-  rm -fr .dotnet/
-  source $HOME/bat/01-system-integration/mac/nuget/clean.sh
-
-  rm -fr .mono/
-  rm -fr .omnisharp/
-  rm -fr .npm/
-
-  rm -fr .quicktype-vscode/
-  rm -fr .vs-kubernetes/
-  rm -fr .vscode-insiders/
-  rm -fr .vscode*
-  "
-
-  rm -fr .dotnet/
-  source $HOME/bat/01-system-integration/mac/nuget/clean.sh
-
-  rm -fr .mono/
-  rm -fr .omnisharp/
-  rm -fr .npm/
-
-  rm -fr .quicktype-vscode/
-  rm -fr .vs-kubernetes/
-  rm -fr .vscode-insiders/
-  rm -fr .vscode*
-}
-#----------------------------------------------------------------------------------------------------------------------
-
-jdk()
-{
-  echo "--------------------------------------------------------------------------------------------------------------"
-  echo \
-  "
-  version=$1
-  unset JAVA_HOME;
-  export JAVA_HOME=$(/usr/libexec/java_home -v"$version");
-  java -version
-  "
-  version=$1
-  unset JAVA_HOME;
-  export JAVA_HOME=$(/usr/libexec/java_home -v"$version");
-  java -version
-};
-
-
-#----------------------------------------------------------------------------------------------------------------------
-# Open Firefox moljac/holisticware
-
-# if firefox is opened this will open additonal tabs
-browse_moljac()
-{
-  echo "--------------------------------------------------------------------------------------------------------------"
-  echo \
-  "
-  source $HOME/bat.private/mac/firefox-moljac.sh 
-  "
-  source $HOME/bat.private/mac/firefox-moljac.sh 
-};
-
-dev_dotnet_ide_rider()
-{
-  echo "--------------------------------------------------------------------------------------------------------------"
-  echo \
-  "
-  open -a \
-    Rider \
-      --args \
-        $1
-  "
-  open -a \
-    Rider \
-      --args \
-        $1
-  # /Applications/Rider.app/Contents/MacOS/rider
-};
-
-# source $HOME/bat/03-productivity/mac/clear-screen-and-term-buffer.sh
-clean_term_screen_and_buffer()
-{
-  echo "--------------------------------------------------------------------------------------------------------------"
-  echo \
-  "
-  source $HOME/bat/01-system-integration/mac/zsh/functions/clean_term_screen_and_buffer
-  "
-  source $HOME/bat/01-system-integration/mac/zsh/functions/clean_term_screen_and_buffer
-};
-
-open_browser_firefox_moljac()
-{
-  echo "--------------------------------------------------------------------------------------------------------------"
-  echo \
-  "
-  source $HOME/bat.private/mac/firefox-moljac.sh
-  "
-  source $HOME/bat.private/mac/firefox-moljac.sh
-};
-
-open_browser_edge_moljac_microsoft()
-{
-  echo "--------------------------------------------------------------------------------------------------------------"
-  echo \
-  "
-  source $HOME/bat.private/mac/edge-moljac-microsoft.sh
-  "
-  source $HOME/bat.private/mac/edge-moljac-microsoft.sh
-};
-
-open_browser_edge_beta_moljac_microsoft()
-{
-  echo "--------------------------------------------------------------------------------------------------------------"
-  echo \
-  "
-  source $HOME/bat.private/mac/edge-beta-moljac-holisticware.sh
-  "
-  source $HOME/bat.private/mac/edge-beta-moljac-holisticware.sh
-};
-
-open_browser_edge_dev_moljac_microsoft()
-{
-  echo "--------------------------------------------------------------------------------------------------------------"
-  echo \
-  "
-  source $HOME/bat.private/mac/edge-dev-moljac-holisticware.sh
-  "
-  source $HOME/bat.private/mac/edge-dev-moljac-holisticware.sh
-};
-
-open_finder_code_moljac_microsoft()
-{
-  echo "--------------------------------------------------------------------------------------------------------------"
-  echo \
-  "
-  source $HOME/bat.private/mac/finder-code-moljac-microsoft.sh
-  "
-  source $HOME/bat.private/mac/finder-code-moljac-microsoft.sh
-};
-
-work_on_docs()
-{
-  echo "--------------------------------------------------------------------------------------------------------------"
-  echo \
-  "
-  source $HOME/bat/03-productivity/mac/finder-code-notes-docs.sh
-  source $HOME/bat.private/mac/finder-code-term-moljac-microsoft.sh  
-  "
-  source $HOME/bat/03-productivity/mac/finder-code-notes-docs.sh
-  source $HOME/bat.private/mac/finder-code-term-moljac-microsoft.sh  
-};
-
-work_on_maui()
-{
-  echo "--------------------------------------------------------------------------------------------------------------"
-  echo \
-  "
-  source $HOME/bat.private/finder-code-term-maui.sh
-  "
-  source $HOME/bat.private/finder-code-term-maui.sh
-};
-
-work_on_ax_gps_fb_mlkit()
-{
-  echo "--------------------------------------------------------------------------------------------------------------"
-  echo \
-  "
-  source $HOME/bat.private/finder-code-term-xamarin-ax-gps-fb-mlkit.sh
-  "
-  source $HOME/bat.private/finder-code-term-xamarin-ax-gps-fb-mlkit.sh
-};
-
-work_on_ph4ct3x()
-{
-  echo "--------------------------------------------------------------------------------------------------------------"
-  echo \
-  "
-  source $HOME/bat.private/finder-code-term-ph4ct3x.sh
-  "
-  source $HOME/bat.private/finder-code-term-ph4ct3x.sh
-};
-
-work_on_moljac_microsoft()
-{
-  echo "--------------------------------------------------------------------------------------------------------------"
-  echo \
-  "
-  source $HOME/bat.private/finder-code-term-moljac-microsoft.sh
-  "
-  source $HOME/bat.private/finder-code-term-moljac-microsoft.sh
-};
-
-work_on_moljac_holisticware()
-{
-  echo "--------------------------------------------------------------------------------------------------------------"
-  echo \
-  "
-  source $HOME/bat.private/finder-code-term-moljac-microsoft.sh
-  source $HOME/bat.private/mchwn/firefox-moljac.sh
-  source $HOME/bat.private/mchwc/firefox-moljac.sh
-  "
-  source $HOME/bat.private/finder-code-term-moljac-microsoft.sh
-  source $HOME/bat.private/mchwn/firefox-moljac.sh
-  source $HOME/bat.private/mchwc/firefox-moljac.sh
-};
-
-work_on_moljac()
-{
-  echo "--------------------------------------------------------------------------------------------------------------"
-  echo \
-  "
-  work_on_moljac_microsoft
-  work_on_moljac_holisticware
-  "
-  work_on_moljac_microsoft
-  work_on_moljac_holisticware
-};
 
 dev_android_apk_analysis()
 {
@@ -1374,7 +1006,7 @@ dev_android_decompile_jar_jadx()
     $HOME/bin/jd-gui/bin/jadx \
       --output-dir hw-jadx-$TIMESTAMP \
       $1 
-};
+}
 
 dev_android_decompile_jar_luyten()
 { 
@@ -1385,7 +1017,531 @@ dev_android_decompile_jar_luyten()
     echo "Drag & Drop jar to decompile..."
     echo "Luyten has no commandline support [yet]"
     java -jar $HOME/bin/Luyten/luyten.jar $1
+}
+
+# stop
+#   android
+# dev   
+#======================================================================================================================
+
+
+#======================================================================================================================
+# dev   
+#   ios
+# start
+
+dev_ios_info_dump()
+{ 
+  echo "=============================================================================================================="
+  echo "Apple iOS/MacOS"
+
+  echo "--------------------------------------------------------------------------------------------------------------"
+  echo \
+  "
+  /usr/bin/xcodebuild -version
+  "
+  /usr/bin/xcodebuild -version
+
+  echo "--------------------------------------------------------------------------------------------------------------"
+  echo \
+  "
+  softwareupdate --history
+  "
+  softwareupdate --history
+}
+
+dev_ios_xcode_commandline_tools()
+{
+  echo "--------------------------------------------------------------------------------------------------------------"
+  echo \
+  "
+  sudo rm -rf /Library/Developer/CommandLineTools
+  sudo xcode-select --install
+  softwareupdate --all --install --force
+  "
+
+  sudo rm -rf /Library/Developer/CommandLineTools
+  sudo xcode-select --install
+  softwareupdate --all --install --force
+}
+
+# stop
+#   ios
+# dev   
+#======================================================================================================================
+
+
+#======================================================================================================================
+# dev   
+#   dotnet
+# start
+
+dev_dotnet_nuget_nuke()
+{ 
+  echo "=============================================================================================================="
+  echo \
+  "
+  source $HOME/bat/01-system-integration/mac/nuget/clean.sh
+  "
+
+  source $HOME/bat/01-system-integration/mac/nuget/clean.sh
+}
+
+dev_dotnet_info_dump()
+{
+  echo "=============================================================================================================="
+  echo \
+  "
+  Microsoft .NET 
+  "
+  echo \
+  "
+  dotnet --info
+  "
+  dotnet --info
+  
+  echo \
+  "
+  dotnet --list-runtimes
+  "
+  dotnet --list-runtimes
+  echo \
+  "
+  dotnet --list-sdks
+  "  
+  dotnet --list-sdks  
+
+  echo \
+  "
+  dev_dotnet_workloads_list
+  "  
+  dev_dotnet_workloads_list
+}
+
+dev_dotnet_info_dump_long()
+{ 
+  echo "=============================================================================================================="
+  echo \
+  "
+  Microsoft .NET 
+  "
+  echo \
+  "
+  dotnet --info
+  "
+  dotnet --info
+  
+  echo \
+  "
+  dotnet --list-runtimes
+  "
+  dotnet --list-runtimes
+  echo \
+  "
+  dotnet --list-sdks
+  "  
+  dotnet --list-sdks  
+  echo "--------------------------------------------------------------------------------------------------------------"
+  echo \
+  "
+  dotnet workload list
+  "
+  dotnet workload list
+  echo "--------------------------------------------------------------------------------------------------------------"
+  echo \
+  "
+  dotnet workload list --machine-readable
+  "
+  dotnet workload list --machine-readable
+  echo "--------------------------------------------------------------------------------------------------------------"
+  echo \
+  "
+  dotnet workload update --print-rollback
+  "
+  dotnet workload update --print-rollback
+
+  echo "--------------------------------------------------------------------------------------------------------------"
+  echo \
+  "
+  dotnet tool list --global
+  "
+  dotnet tool list --global
+  echo "--------------------------------------------------------------------------------------------------------------"
+  echo \
+  "
+  dotnet new --list
+  "
+  dotnet new --list
+}
+
+dev_dotnet_installation_clean()
+{
+  echo "--------------------------------------------------------------------------------------------------------------"
+  echo \
+  "
+  sudo rm -fr \
+      /usr/local/share/dotnet/sdk/* \
+      /usr/local/share/dotnet/sdk-manifests/* \
+      /usr/local/share/dotnet/shared/Microsoft.AspNetCore.App/* \
+      /usr/local/share/dotnet/shared/Microsoft.NETCore.App/* \
+  "
+  sudo rm -fr \
+      /usr/local/share/dotnet/sdk/* \
+      /usr/local/share/dotnet/sdk-manifests/* \
+      /usr/local/share/dotnet/shared/Microsoft.AspNetCore.App/* \
+      /usr/local/share/dotnet/shared/Microsoft.NETCore.App/* \
+
+}
+
+dev_dotnet_workloads_list()
+{
+  echo "--------------------------------------------------------------------------------------------------------------"
+  echo \
+  "
+  dotnet workload list
+  "
+  dotnet workload list
+  echo "--------------------------------------------------------------------------------------------------------------"
+  echo \
+  "
+  dotnet workload list --machine-readable
+  "
+  dotnet workload list --machine-readable
+  echo "--------------------------------------------------------------------------------------------------------------"
+  echo \
+  "
+  dotnet workload update --print-rollback
+  "
+  dotnet workload update --print-rollback
+}
+
+dev_dotnet_workloads_reinstall()
+{ 
+  echo "--------------------------------------------------------------------------------------------------------------"
+  echo \
+  "
+  source $HOME/bat/01-system-integration/mac/dotnet/workload/install.sh
+
+  dev_dotnet_workloads_list
+  "
+  source $HOME/bat/01-system-integration/mac/dotnet/workload/install.sh
+
+  dev_dotnet_workloads_list
 };
+
+dev_dotnet_workloads_clean()
+{ 
+  echo "--------------------------------------------------------------------------------------------------------------"
+  echo \
+  "
+  sudo dotnet workload clean
+#  sudo dotnet workload clean --all
+  dev_dotnet_workloads_list
+  "
+  sudo dotnet workload clean
+#  sudo dotnet workload clean --all
+  dev_dotnet_workloads_list
+}
+
+dev_dotnet_tools_reinstall()
+{
+  echo "--------------------------------------------------------------------------------------------------------------"
+  echo \
+  "
+  source $HOME/bat/01-system-integration/mac/dotnet/tool/install.sh
+
+  dotnet tool \
+    uninstall \
+      Cake.Tool \
+      --global \
+
+  dotnet tool \
+    install \
+      --global \
+        Cake.Tool \
+        --add-source https://pkgs.dev.azure.com/cake-build/Cake/_packaging/cake/nuget/v3/index.json \
+        --version 3.2.0-alpha0025  
+
+  "
+  source $HOME/bat/01-system-integration/mac/dotnet/tool/install.sh 
+
+  dotnet tool \
+    uninstall \
+      --global \
+      Microsoft.DotNet.XHarness.CLI 
+
+dotnet tool \
+  install \
+    Microsoft.DotNet.XHarness.CLI \
+      --global \
+      --add-source https://pkgs.dev.azure.com/dnceng/public/_packaging/dotnet-eng/nuget/v3/index.json \
+      --prerelease \
+      --verbosity:diag \
+
+  dotnet tool \
+    uninstall \
+      Cake.Tool \
+      --global \
+
+  dotnet tool \
+    install \
+      --global \
+        Cake.Tool \
+        --add-source https://pkgs.dev.azure.com/cake-build/Cake/_packaging/cake/nuget/v3/index.json \
+        --prerelease \
+        --verbosity:diag \
+
+#        --version 3.2.0-alpha0025  
+}
+
+dev_dotnet_tools_reinstall_api_tools()
+{
+  echo "--------------------------------------------------------------------------------------------------------------"
+  echo \
+  "
+  source $HOME/bat/01-system-integration/mac/dotnet/tool/api-tools-private.sh
+  "
+  source $HOME/bat/01-system-integration/mac/dotnet/tool/api-tools-private.sh
+}
+
+dev_dotnet_new_templates_reinstall()
+{
+  echo "--------------------------------------------------------------------------------------------------------------"
+  echo \
+  "
+  source $HOME/bat/01-system-integration/mac/dotnet/new-templates/install.sh
+  "
+  source $HOME/bat/01-system-integration/mac/dotnet/new-templates/install.sh 
+};
+
+dev_dotnet_tool_cake_install_2_3_0()
+{ 
+  echo "--------------------------------------------------------------------------------------------------------------"
+  echo \
+  "
+  "
+  dotnet tool \
+    uninstall \
+      --global \
+        Cake.Tool
+
+  dotnet tool \
+    install \
+      --global \
+        Cake.Tool \
+          --version 2.3.0
+}
+
+dev_dotnet_autocomplete ()
+{
+  # https://learn.microsoft.com/en-us/dotnet/core/tools/enable-tab-autocomplete#bash
+  # https://learn.microsoft.com/en-us/dotnet/core/tools/enable-tab-autocomplete#zsh
+
+  local completions=("$(dotnet complete "$words")")
+
+  # If the completion list is empty, just continue with filename selection
+  if [ -z "$completions" ]
+  then
+    _arguments '*::arguments: _normal'
+    return
+  fi
+
+  # This is not a variable assignment, don't remove spaces!
+  _values = "${(ps:\n:)completions}"  
+}
+
+compdef dev_dotnet_autocomplete dotnet
+
+# https://docs.microsoft.com/en-us/dotnet/core/tools/enable-tab-autocomplete
+# dotnet_zsh_complete()
+# {
+#   local completions=("$(dotnet complete "$words")")
+# 
+#   reply=( "${(ps:\n:)completions}" )
+# 
+#   compctl -K dotnet_zsh_complete dotnet
+# }
+
+dev_dotnet_clean()
+{
+  echo "--------------------------------------------------------------------------------------------------------------"
+  echo \
+  "
+  rm -fr .dotnet/
+  source $HOME/bat/01-system-integration/mac/nuget/clean.sh
+
+  rm -fr .mono/
+  rm -fr .omnisharp/
+  rm -fr .npm/
+
+  rm -fr .quicktype-vscode/
+  rm -fr .vs-kubernetes/
+  rm -fr .vscode-insiders/
+  rm -fr .vscode*
+  "
+
+  rm -fr .dotnet/
+  source $HOME/bat/01-system-integration/mac/nuget/clean.sh
+
+  rm -fr .mono/
+  rm -fr .omnisharp/
+  rm -fr .npm/
+
+  rm -fr .quicktype-vscode/
+  rm -fr .vs-kubernetes/
+  rm -fr .vscode-insiders/
+  rm -fr .vscode*
+}
+
+dev_dotnet_ide_rider()
+{
+  echo "--------------------------------------------------------------------------------------------------------------"
+  echo \
+  "
+  open -a \
+    Rider \
+      --args \
+        $1
+  "
+  open -a \
+    Rider \
+      --args \
+        $1
+  # /Applications/Rider.app/Contents/MacOS/rider
+}
+
+dev_dotnet_msbuildlog ()
+{
+  echo "--------------------------------------------------------------------------------------------------------------"
+  echo \
+  "
+  dotnet $HOME/bin/msbuildlog/bin/StructuredLogViewer.Avalonia.dll
+  "
+  dotnet $HOME/bin/msbuildlog/bin/StructuredLogViewer.Avalonia.dll
+}
+
+# https://learn.microsoft.com/en-us/dotnet/core/tools/enable-tab-autocomplete
+dev_dotnet_tab_completion_zsh()
+{
+  echo "--------------------------------------------------------------------------------------------------------------"
+  echo \
+  "
+  local completions=(\"$(dotnet complete \"$words\")\")
+
+  # If the completion list is empty, just continue with filename selection
+  if [ -z \"$completions\" ]
+  then
+    _arguments '*::arguments: _normal'
+    return
+  fi
+
+  # This is not a variable assignment, don't remove spaces!
+  _values = \"${(ps:\\n:)completions}\"
+  "
+  local completions=("$(dotnet complete "$words")")
+
+  # If the completion list is empty, just continue with filename selection
+  if [ -z "$completions" ]
+  then
+    _arguments '*::arguments: _normal'
+    return
+  fi
+
+  # This is not a variable assignment, don't remove spaces!
+  _values = "${(ps:\n:)completions}"
+}
+
+compdef dev_dotnet_tab_completion_zsh dotnet
+
+# function dev_dotnet_tab_completion_bash()
+# {
+#   local cur="${COMP_WORDS[COMP_CWORD]}" IFS=$'\n' # On Windows you may need to use use IFS=$'\r\n'
+#   local candidates
+# 
+#   read -d '' -ra candidates < <(dotnet complete --position "${COMP_POINT}" "${COMP_LINE}" 2>/dev/null)
+# 
+#   read -d '' -ra COMPREPLY < <(compgen -W "${candidates[*]:-}" -- "$cur")
+# }
+# 
+# complete -f -F dev_dotnet_tab_completion_bash dotnet
+
+dev_dotnet_maui_new_lib ()
+{
+  TIMESTAMP=$( date "+%Y%m%d%H%M%S" )
+  echo    $TIMESTAMP
+
+  dotnet \
+      new \
+          mauilib \
+              --output ./LibraryMAUI.$TIMESTAMP
+}
+
+dev_dotnet_assembly_references ()
+{  
+  echo "--------------------------------------------------------------------------------------------------------------"
+  echo \
+  "
+  for f in $(find $FIND_ROOT -type f -iname \"*.dll\") ;
+  do 
+    echo \"## \" $f ;
+    monodis --assemblyref $f ; 
+  done
+  "
+  if [ $# -lt 1 ]
+  then
+    echo "Usage: dev_dotnet_assembly_references <folder_root>"
+
+    export FIND_ROOT=.
+  else
+    export FIND_ROOT=$1
+  fi
+
+  for f in $(find $FIND_ROOT -type f -iname "*.dll") ;
+  do 
+    echo "## " $f ;
+    monodis --assemblyref $f ; 
+  done
+}
+
+# stop
+#   dotnet
+# dev   
+#======================================================================================================================
+
+#======================================================================================================================
+# dev   
+#   code vscode
+# start
+
+#----------------------------------------------------------------------------------------------------------------------
+dev_vscode_backups ()
+{
+  echo "--------------------------------------------------------------------------------------------------------------"
+  echo \
+  "
+  tree "$HOME/Library/Application Support/Code/Backups"
+  "
+  tree "$HOME/Library/Application Support/Code/Backups"
+
+  echo "--------------------------------------------------------------------------------------------------------------"
+  echo \
+  "
+  tree "$HOME/Library/Application Support/Code - Insiders/Backups"
+  "
+  tree "$HOME/Library/Application Support/Code - Insiders/Backups"
+}
+#----------------------------------------------------------------------------------------------------------------------
+
+# stop
+#   code vscode
+# dev   
+#======================================================================================================================
+
+#======================================================================================================================
+# dev   
+#   dotnet
+#       android
+# start
 
 dev_dotnet_android_bindings_binderator_clean()
 {
@@ -1394,11 +1550,11 @@ dev_dotnet_android_bindings_binderator_clean()
   "
   rm -fr output externals generated && dotnet cake -t=clean && git clean -xdf \\
   && \\
-  clean_term_screen_and_buffer && git pull && git status
+  sys_term_clean_screen_and_buffer && git pull && git status
   "
   rm -fr output externals generated && dotnet cake -t=clean && git clean -xdf \
   && \
-  clean_term_screen_and_buffer && git pull && git status
+  sys_term_clean_screen_and_buffer && git pull && git status
 
 }
 
@@ -1444,98 +1600,17 @@ dev_dotnet_android_bindings_binderator_config_bump()
   dotnet script ./build/scripts/update-config.csx -- ./config.json bump
 }
 
+# stop
+#       android
+#   dotnet
+# dev   
+#======================================================================================================================
 
-
-dev_macios_xcode_reset()
-{
-  # https://learn.microsoft.com/en-us/dotnet/maui/troubleshooting#couldnt-find-a-valid-xcode-app-bundle
-
-  echo "--------------------------------------------------------------------------------------------------------------"
-  echo \
-  "
-  sudo xcode-select --reset
-  "
-
-  sudo xcode-select --reset
-
-}
-
-dev_macios_xcode_install_commandline_tools()
-{
-  echo "--------------------------------------------------------------------------------------------------------------"
-  sudo rm -rf /Library/Developer/CommandLineTools
-  sudo xcode-select --install
-  sleep 1
-  osascript \
-    -e 'tell application "System Events"' \
-      -e 'tell process "Install Command Line Developer Tools"' \
-        -e 'keystroke return' \
-        -e 'click button "Agree" of window "License Agreement"' \
-      -e 'end tell' \
-    -e 'end tell'
-};
-
-dev_ios_simulator_list()
-{
-  echo "--------------------------------------------------------------------------------------------------------------"
-  echo \
-  "
-  xcrun simctl list
-  "
-
-  xcrun simctl list
-};
-
-export IOS_DEVICE_ID="73FC4795-80E6-4ED9-9BB5-716206BDAFCD"
-
-dev_ios_simulator_launch()
-{
-  echo "--------------------------------------------------------------------------------------------------------------"
-  echo \
-  "
-  open -a \
-    Simulator \
-      --args \
-        -CurrentDeviceUDID $IOS_DEVICE_ID
-  "
-
-  open -a \
-    Simulator \
-      --args \
-        -CurrentDeviceUDID $IOS_DEVICE_ID
-
-#  /Applications/Xcode.app/Contents/Developer/Applications/Simulator.app/Contents/MacOS/Simulator \
-#    -CurrentDeviceUDID \
-#      $DEVICE_ID
-
-# create device using xcrun simctl.
-# Boot the simulator with that device
-# xcrun simctl install <YOUR-DEVICE-ID> <PATH-TO-APPLICATION-BUNDLE>
-# xcrun simctl launch <YOUR-DEVICE-ID> <BUNDLE-ID-OF-APP-BUNDLE>      
-};
-
-dev_dotnet_msbuildlog ()
-{
-  echo "--------------------------------------------------------------------------------------------------------------"
-  echo \
-  "
-  dotnet $HOME/bin/msbuildlog/bin/StructuredLogViewer.Avalonia.dll
-  "
-  dotnet $HOME/bin/msbuildlog/bin/StructuredLogViewer.Avalonia.dll
-}
-
-dev_dotnet_maui_new_lib ()
-{
-  TIMESTAMP=$( date "+%Y%m%d%H%M%S" )
-  echo    $TIMESTAMP
-
-  dotnet \
-      new \
-          mauilib \
-              --output ./LibraryMAUI.$TIMESTAMP
-
-
-}
+#======================================================================================================================
+# dev   
+#   dotnet
+#       maui
+# start
 
 dev_dotnet_maui_new_app ()
 {
@@ -1714,70 +1789,10 @@ dev_dotnet_maui_repo_tools_tests_init ()
   echo "--------------------------------------------------------------------------------------------------------------"
   echo \
   "
-  brew install \
-      node \
-      carthage
-      
-  echo "JAVA_HOME         = $JAVA_HOME"
-  echo "ANDROID_HOME      = $ANDROID_HOME"
-  echo "ANDROID_SDK_ROOT  = $ANDROID_SDK_ROOT"
-  sudo dotnet pwsh eng/scripts/appium-install.ps1   
+  brew install \\
+      node \\
+      carthage      
   "
-  brew install \
-      node \
-      carthage
-      
-  echo "JAVA_HOME         = $JAVA_HOME"
-  echo "ANDROID_HOME      = $ANDROID_HOME"
-  echo "ANDROID_SDK_ROOT  = $ANDROID_SDK_ROOT"
-
-  sudo dotnet pwsh eng/scripts/appium-install.ps1   
-
-  appium-doctor --android
-
-  appium -v
-
-  brew \
-    install \
-      opencv@4 \
-      bundletool \
-      gstreamer \
-      gst-plugins-base \
-      gst-plugins-good \
-      gst-plugins-bad \
-      gst-plugins-ugly \
-      gst-libav \
-
-
-  sudo \
-    npm \
-      install \
-        -g \
-          appium-doctor \
-          mjpeg-consumer \
-          bundletool \
-          opencv4nodejs \
-          
-  ll $HOME/.npm
-  ll $HOME/.appium
-
-  sudo chown -R "$(id -u):$(id -g)" "$HOME/.npm"
-  sudo chown -R "$(id -u):$(id -g)" "$HOME/.appium"
-
-  mkdir $ANDROID_HOME/bundle-tool/
-  curl \
-    -k -L -s \
-    https://github.com/google/bundletool/releases/download/1.15.6/bundletool-all-1.15.6.jar \
-    -o $ANDROID_HOME/bundle-tool/bundletool.jar
-
-  chmod +x $ANDROID_HOME/bundle-tool/bundletool.jar
-  ll $ANDROID_HOME/bundle-tool/bundletool.jar
-  alias bundletool='java -jar $ANDROID_HOME/bundle-tool/bundletool.jar'
-  bundletool --version
-
-  DevToolsSecurity -enable
-
-  appium-doctor --ios
 }
 
 dev_dotnet_maui_repo_tools_tests_verify ()
@@ -1789,16 +1804,6 @@ dev_dotnet_maui_repo_tools_tests_verify ()
   "
   appium-doctor --android
 
-
-npm i -g mjpeg-consumer
-WARN AppiumDoctor  ➜ bundletool.jar is used to handle Android App Bundle. Please read http://appium.io/docs/en/writing-running-appium/android/android-appbundle/ to install it
-WARN AppiumDoctor  ➜ gst-launch-1.0 and gst-inspect-1.0 are used to stream the screen of the device under test. Please read https://appium.io/docs/en/writing-running-appium/android/android-screen-streaming/ to install them and for more details
-  echo "--------------------------------------------------------------------------------------------------------------"
-  echo \
-  "
-  appium-doctor --ios
-  "
-  appium-doctor --ios
 }
 
 dev_dotnet_maui_repo_build_device_tests ()
@@ -2091,6 +2096,10 @@ dev_dotnet_maui_repo_build_device_tests ()
   done
 }
 
+dev_dotnet_maui_repo_setup_device_tests ()
+{
+}
+
 dev_dotnet_maui_fix_installation ()
 {
   # Visual Studio for Mac's installer and updater uses dotnet workload install commands to install the 
@@ -2103,7 +2112,7 @@ dev_dotnet_maui_fix_installation ()
   rm -rf $HOME/.dotnet/
   sudo rm -rf /usr/local/share/dotnet/
 
-  open -na "Google Chrome" \
+  open -na \"Google Chrome\" \
       --args \
       --new-window \
           "https://dotnet.microsoft.com/download" \
@@ -2125,75 +2134,448 @@ dev_dotnet_maui_fix_installation ()
           "https://dotnet.microsoft.com/en-us/download/dotnet/7.0" \
           "https://dotnet.microsoft.com/en-us/download/dotnet/6.0" \
 
-
 }
 
-dev_dotnet_assembly_references ()
-{  
+# stop
+#       maui
+#   dotnet
+# dev   
+#======================================================================================================================
+
+#======================================================================================================================
+# dev   
+#   dotnet
+#       ios
+# start
+
+dev_macios_xcode_reset()
+{
+  # https://learn.microsoft.com/en-us/dotnet/maui/troubleshooting#couldnt-find-a-valid-xcode-app-bundle
+
   echo "--------------------------------------------------------------------------------------------------------------"
   echo \
   "
-  for f in $(find $FIND_ROOT -type f -iname "*.dll") ;
-  do 
-    echo "## " $f ;
-    monodis --assemblyref $f ; 
-  done
+  sudo xcode-select --reset
   "
-  if [ $# -lt 1 ]
-  then
-    echo "Usage: dev_dotnet_assembly_references <folder_root>"
 
-    export FIND_ROOT=.
-  else
-    export FIND_ROOT=$1
-  fi
+  sudo xcode-select --reset
 
-  for f in $(find $FIND_ROOT -type f -iname "*.dll") ;
-  do 
-    echo "## " $f ;
-    monodis --assemblyref $f ; 
-  done
 }
 
-dev_vscode_backups ()
+dev_macios_xcode_install_commandline_tools()
 {
-  tree "$HOME/Library/Application Support/Code/Backups"
+  echo "--------------------------------------------------------------------------------------------------------------"
+  sudo rm -rf /Library/Developer/CommandLineTools
+  sudo xcode-select --install
+  sleep 1
+  osascript \
+    -e 'tell application "System Events"' \
+      -e 'tell process "Install Command Line Developer Tools"' \
+        -e 'keystroke return' \
+        -e 'click button "Agree" of window "License Agreement"' \
+      -e 'end tell' \
+    -e 'end tell'
+};
 
-  tree "$HOME/Library/Application Support/Code - Insiders/Backups"
+dev_ios_simulator_list()
+{
+  echo "--------------------------------------------------------------------------------------------------------------"
+  echo \
+  "
+  xcrun simctl list
+  "
+
+  xcrun simctl list
+};
+
+export IOS_DEVICE_ID="73FC4795-80E6-4ED9-9BB5-716206BDAFCD"
+
+dev_ios_simulator_launch()
+{
+  echo "--------------------------------------------------------------------------------------------------------------"
+  echo \
+  "
+  open -a \
+    Simulator \
+      --args \
+        -CurrentDeviceUDID $IOS_DEVICE_ID
+  "
+
+  open -a \
+    Simulator \
+      --args \
+        -CurrentDeviceUDID $IOS_DEVICE_ID
+
+#  /Applications/Xcode.app/Contents/Developer/Applications/Simulator.app/Contents/MacOS/Simulator \
+#    -CurrentDeviceUDID \
+#      $DEVICE_ID
+
+# create device using xcrun simctl.
+# Boot the simulator with that device
+# xcrun simctl install <YOUR-DEVICE-ID> <PATH-TO-APPLICATION-BUNDLE>
+# xcrun simctl launch <YOUR-DEVICE-ID> <BUNDLE-ID-OF-APP-BUNDLE>      
+};
+
+# stop
+#       ios
+#   dotnet
+# dev   
+#======================================================================================================================
+
+#======================================================================================================================
+# dev   
+#   tools
+#     git
+# start
+
+dev_tools_git_clean ()
+{
+  echo "=============================================================================================================="
+  echo \
+  "
+  git clean -xdf && git status && git pull
+  "
+  git clean -xdf && git status && git pull
 }
 
+dev_tools_git_really_clean()
+{
+  echo "--------------------------------------------------------------------------------------------------------------"
+  echo \
+  "
+  git clean -xfd
+  git submodule foreach --recursive git clean -xfd
+  git submodule update --init --recursive
+  "
+  git clean -xfd
+  git submodule foreach --recursive git clean -xfd
+  git submodule update --init --recursive
+}
+
+dev_tools_git_prune()
+{
+  # to clean your local checkout by removing all the branches+tags that no longer exist upstream
+  # run this script (or its powershell/cmd equivalent):
+  echo "--------------------------------------------------------------------------------------------------------------"
+  echo \
+  "
+  REMOTES=\"\`git remote\`\"
+
+  git fetch --prune --prune-tags
+  git gc --aggressive --prune=now --cruft
+  for r in $REMOTES; do
+          git remote prune $r
+  done
+  git worktree prune
+  "
+  REMOTES="`git remote`"
+
+  git fetch --prune --prune-tags
+  git gc --aggressive --prune=now --cruft
+  for r in $REMOTES; do
+          git remote prune $r
+  done
+  git worktree prune
+}
+
+# stop
+#     git
+#   tools
+# dev   
+#======================================================================================================================
+
+
+#======================================================================================================================
+# dev   
+#   android
+# start
+
+# stop
+#   android
+# dev   
+#======================================================================================================================
+
+#======================================================================================================================
+# dev   
+#   mac ios
+# start
+
+dev_macios_xcode_reset()
+{
+  # https://learn.microsoft.com/en-us/dotnet/maui/troubleshooting#couldnt-find-a-valid-xcode-app-bundle
+
+  echo "--------------------------------------------------------------------------------------------------------------"
+  echo \
+  "
+  sudo xcode-select --reset
+  "
+
+  sudo xcode-select --reset
+
+}
+
+dev_macios_xcode_install_commandline_tools()
+{
+  echo "--------------------------------------------------------------------------------------------------------------"
+  sudo rm -rf /Library/Developer/CommandLineTools
+  sudo xcode-select --install
+  sleep 1
+  osascript \
+    -e 'tell application "System Events"' \
+      -e 'tell process "Install Command Line Developer Tools"' \
+        -e 'keystroke return' \
+        -e 'click button "Agree" of window "License Agreement"' \
+      -e 'end tell' \
+    -e 'end tell'
+};
+
+dev_ios_simulator_list()
+{
+  echo "--------------------------------------------------------------------------------------------------------------"
+  echo \
+  "
+  xcrun simctl list
+  "
+
+  xcrun simctl list
+};
+
+export IOS_DEVICE_ID="73FC4795-80E6-4ED9-9BB5-716206BDAFCD"
+
+dev_ios_simulator_launch()
+{
+  echo "--------------------------------------------------------------------------------------------------------------"
+  echo \
+  "
+  open -a \
+    Simulator \
+      --args \
+        -CurrentDeviceUDID $IOS_DEVICE_ID
+  "
+
+  open -a \
+    Simulator \
+      --args \
+        -CurrentDeviceUDID $IOS_DEVICE_ID
+
+#  /Applications/Xcode.app/Contents/Developer/Applications/Simulator.app/Contents/MacOS/Simulator \
+#    -CurrentDeviceUDID \
+#      $DEVICE_ID
+
+# create device using xcrun simctl.
+# Boot the simulator with that device
+# xcrun simctl install <YOUR-DEVICE-ID> <PATH-TO-APPLICATION-BUNDLE>
+# xcrun simctl launch <YOUR-DEVICE-ID> <BUNDLE-ID-OF-APP-BUNDLE>      
+};
+
+# stop
+#   mac ios
+# dev   
+#======================================================================================================================
+
+#======================================================================================================================
+# work   
+#   vscode
+# start
+
+# stop
+#   dotnet
+# work   
+#======================================================================================================================
+
 #----------------------------------------------------------------------------------------------------------------------
+# Open Firefox moljac/holisticware
+
+# if firefox is opened this will open additonal tabs
+browse_moljac()
+{
+  echo "--------------------------------------------------------------------------------------------------------------"
+  echo \
+  "
+  source $HOME/bat.private/mac/firefox-moljac.sh 
+  "
+  source $HOME/bat.private/mac/firefox-moljac.sh 
+};
 
 
+open_browser_firefox_moljac()
+{
+  echo "--------------------------------------------------------------------------------------------------------------"
+  echo \
+  "
+  source $HOME/bat.private/mac/firefox-moljac.sh
+  "
+  source $HOME/bat.private/mac/firefox-moljac.sh
+};
+
+open_browser_edge_moljac_microsoft()
+{
+  echo "--------------------------------------------------------------------------------------------------------------"
+  echo \
+  "
+  source $HOME/bat.private/mac/edge-moljac-microsoft.sh
+  "
+  source $HOME/bat.private/mac/edge-moljac-microsoft.sh
+};
+
+open_browser_edge_beta_moljac_microsoft()
+{
+  echo "--------------------------------------------------------------------------------------------------------------"
+  echo \
+  "
+  source $HOME/bat.private/mac/edge-beta-moljac-holisticware.sh
+  "
+  source $HOME/bat.private/mac/edge-beta-moljac-holisticware.sh
+};
+
+open_browser_edge_dev_moljac_microsoft()
+{
+  echo "--------------------------------------------------------------------------------------------------------------"
+  echo \
+  "
+  source $HOME/bat.private/mac/edge-dev-moljac-holisticware.sh
+  "
+  source $HOME/bat.private/mac/edge-dev-moljac-holisticware.sh
+};
+
+open_finder_code_moljac_microsoft()
+{
+  echo "--------------------------------------------------------------------------------------------------------------"
+  echo \
+  "
+  source $HOME/bat.private/mac/finder-code-moljac-microsoft.sh
+  "
+  source $HOME/bat.private/mac/finder-code-moljac-microsoft.sh
+};
+
+work_on_docs()
+{
+  echo "--------------------------------------------------------------------------------------------------------------"
+  echo \
+  "
+  source $HOME/bat/03-productivity/mac/finder-code-notes-docs.sh
+  source $HOME/bat.private/mac/finder-code-term-moljac-microsoft.sh  
+  "
+  source $HOME/bat/03-productivity/mac/finder-code-notes-docs.sh
+  source $HOME/bat.private/mac/finder-code-term-moljac-microsoft.sh  
+};
+
+work_on_maui()
+{
+  echo "--------------------------------------------------------------------------------------------------------------"
+  echo \
+  "
+  source $HOME/bat.private/finder-code-term-maui.sh
+  "
+  source $HOME/bat.private/finder-code-term-maui.sh
+};
+
+work_on_ax_gps_fb_mlkit()
+{
+  echo "--------------------------------------------------------------------------------------------------------------"
+  echo \
+  "
+  source $HOME/bat.private/finder-code-term-xamarin-ax-gps-fb-mlkit.sh
+  "
+  source $HOME/bat.private/finder-code-term-xamarin-ax-gps-fb-mlkit.sh
+};
+
+work_on_ph4ct3x()
+{
+  echo "--------------------------------------------------------------------------------------------------------------"
+  echo \
+  "
+  source $HOME/bat.private/finder-code-term-ph4ct3x.sh
+  "
+  source $HOME/bat.private/finder-code-term-ph4ct3x.sh
+};
+
+work_on_moljac_microsoft()
+{
+  echo "--------------------------------------------------------------------------------------------------------------"
+  echo \
+  "
+  source $HOME/bat.private/finder-code-term-moljac-microsoft.sh
+  "
+  source $HOME/bat.private/finder-code-term-moljac-microsoft.sh
+};
+
+work_on_moljac_holisticware()
+{
+  echo "--------------------------------------------------------------------------------------------------------------"
+  echo \
+  "
+  source $HOME/bat.private/finder-code-term-moljac-microsoft.sh
+  source $HOME/bat.private/mchwn/firefox-moljac.sh
+  source $HOME/bat.private/mchwc/firefox-moljac.sh
+  "
+  source $HOME/bat.private/finder-code-term-moljac-microsoft.sh
+  source $HOME/bat.private/mchwn/firefox-moljac.sh
+  source $HOME/bat.private/mchwc/firefox-moljac.sh
+};
+
+work_on_moljac()
+{
+  echo "--------------------------------------------------------------------------------------------------------------"
+  echo \
+  "
+  work_on_moljac_microsoft
+  work_on_moljac_holisticware
+  "
+  work_on_moljac_microsoft
+  work_on_moljac_holisticware
+};
 
 
-#----------------------------------------------------------------------------------------------------------------------
-# https://scriptingosx.com/2019/07/moving-to-zsh-part-4-aliases-and-functions/
+#======================================================================================================================
+# work   
+#   dotnet
+# start
 
-echo \
-"
-shell functions (bash/zsh) available:
-    dotnet_updates          - update dotnet global tools
-    launch_applications     - launch applications commonly used
-    markdown_bash_execute   - execute bash code from markdown scripts (notebook/workbook styles)
-    mbe                     - 
-    disk_usage_android      - report disk usage by android installations
-"
-#----------------------------------------------------------------------------------------------------------------------
-fpath=(~/bat/01-system-integration/mac/zsh/functions $fpath);
-
-autoload -U $HOME/bat/01-system-integration/mac/zsh/functions/dotnet_tools_update
-autoload -U $HOME/bat/01-system-integration/mac/zsh/functions/launch_applications
-autoload -U $HOME/bat/01-system-integration/mac/zsh/functions/disk_usage_android
-autoload -U $HOME/bat/01-system-integration/mac/zsh/functions/markdown_bash_execute
-autoload -U $HOME/bat/01-system-integration/mac/zsh/functions/mbe
-
-autoload bashcompinit && bashcompinit
-source $(brew --prefix)/etc/bash_completion.d/az
-#----------------------------------------------------------------------------------------------------------------------
+# stop
+#   dotnet
+# work   
+#======================================================================================================================
 
 
+#======================================================================================================================
+# work   
+#   dotnet
+#       android
+# start
 
+# stop
+#       android
+#   dotnet
+# work   
+#======================================================================================================================
+
+#======================================================================================================================
+# work   
+#   dotnet
+#       maui
+# start
+
+# stop
+#       maui
+#   dotnet
+# work   
+#======================================================================================================================
+
+#======================================================================================================================
+# work   
+#   dotnet
+#       aspire
+# start
+
+# stop
+#       aspire
+#   dotnet
+# work   
+#======================================================================================================================
+
+
+#======================================================================================================================
 #----------------------------------------------------------------------------------------------------------------------
 echo "PATH                = " $PATH
 echo "JAVA_HOME           = " $JAVA_HOME
@@ -2202,17 +2584,7 @@ echo "ANDROID_HOME        = " $ANDROID_HOME
 echo "ANDROID_NDK_HOME    = " $ANDROID_NDK_HOME
 echo "AndroidSdkDirectory = " $AndroidSdkDirectory
 #----------------------------------------------------------------------------------------------------------------------
-#----------------------------------------------------------------------------------------------------------------------
+#======================================================================================================================
 
-if type brew &>/dev/null; then
-  HOMEBREW_PREFIX=/usr/local
-  if [[ -r /etc/profile.d/bash_completion.sh ]] ; 
-  then
-    source /etc/profile.d/bash_completion.sh
-  else
-    for COMPLETION in /etc/bash_completion.d/* ; 
-    do
-      [[ -r  ]] && source 
-    done
-  fi
-fi
+sys_zsh_functions_list
+sys_zsh_functions_load
