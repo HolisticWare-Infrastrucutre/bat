@@ -1513,8 +1513,11 @@ dev_dotnet_assembly_references ()
 #   code vscode
 # start
 
-#----------------------------------------------------------------------------------------------------------------------
-dev_vscode_backups ()
+# Windows   %USERPROFILE%\.vscode\extensions
+# macOS     $HOME/.vscode/extensions
+# Linux     $HOME/.vscode/extensions
+
+dev_code_vscode_backups ()
 {
   echo "--------------------------------------------------------------------------------------------------------------"
   echo \
@@ -1530,7 +1533,64 @@ dev_vscode_backups ()
   "
   tree "$HOME/Library/Application Support/Code - Insiders/Backups"
 }
-#----------------------------------------------------------------------------------------------------------------------
+
+dev_code_vscode_extensions_list ()
+{
+  # https://code.visualstudio.com/docs/editor/extension-marketplace#_command-line-extension-management
+  echo "--------------------------------------------------------------------------------------------------------------"
+  echo \
+  "
+  code \
+    --list-extensions
+  "
+  code \
+    --list-extensions
+}
+
+dev_code_vscode_extensions_list_versions ()
+{
+  # https://code.visualstudio.com/docs/editor/extension-marketplace#_command-line-extension-management
+  echo "--------------------------------------------------------------------------------------------------------------"
+  echo \
+  "
+  code \
+    --list-extensions \
+    --show-versions \
+  "
+  code \
+    --list-extensions \
+    --show-versions \
+
+}
+
+dev_code_vscode_insiders_extensions_list ()
+{
+  # https://code.visualstudio.com/docs/editor/extension-marketplace#_command-line-extension-management
+  echo "--------------------------------------------------------------------------------------------------------------"
+  echo \
+  "
+  code-insiders \
+    --list-extensions
+  "
+  code-insiders \
+    --list-extensions
+}
+
+dev_code_vscode_insiders_extensions_list_versions ()
+{
+  # https://code.visualstudio.com/docs/editor/extension-marketplace#_command-line-extension-management
+  echo "--------------------------------------------------------------------------------------------------------------"
+  echo \
+  "
+  code-insiders \
+    --list-extensions \
+    --show-versions \
+  "
+  code-insiders \
+    --list-extensions \
+    --show-versions \
+
+}
 
 # stop
 #   code vscode
@@ -2375,7 +2435,7 @@ dev_ios_simulator_launch()
 
 #======================================================================================================================
 # work   
-#   vscode
+#   dotnet
 # start
 
 # stop
