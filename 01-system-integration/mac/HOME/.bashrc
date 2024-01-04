@@ -256,9 +256,9 @@ sys_term_clean_screen_and_buffer()
   echo "--------------------------------------------------------------------------------------------------------------"
   echo \
   "
-  source $HOME/bat/01-system-integration/mac/zsh/functions/sys_term_clean_screen_and_buffer
+  source $HOME/bat/01-system-integration/mac/zsh/functions/sys_term_clean_screen_and_buffer.sh
   "
-  source $HOME/bat/01-system-integration/mac/zsh/functions/sys_term_clean_screen_and_buffer
+  source $HOME/bat/01-system-integration/mac/zsh/functions/sys_term_clean_screen_and_buffer.sh
 };
 
 sys_term_fingerprint()
@@ -1332,36 +1332,6 @@ dev_dotnet_tool_cake_install_2_3_0()
           --version 2.3.0
 }
 
-dev_dotnet_autocomplete ()
-{
-  # https://learn.microsoft.com/en-us/dotnet/core/tools/enable-tab-autocomplete#bash
-  # https://learn.microsoft.com/en-us/dotnet/core/tools/enable-tab-autocomplete#zsh
-
-  local completions=("$(dotnet complete "$words")")
-
-  # If the completion list is empty, just continue with filename selection
-  if [ -z "$completions" ]
-  then
-    _arguments '*::arguments: _normal'
-    return
-  fi
-
-  # This is not a variable assignment, don't remove spaces!
-  _values = "${(ps:\n:)completions}"  
-}
-
-compdef dev_dotnet_autocomplete dotnet
-
-# https://docs.microsoft.com/en-us/dotnet/core/tools/enable-tab-autocomplete
-# dotnet_zsh_complete()
-# {
-#   local completions=("$(dotnet complete "$words")")
-# 
-#   reply=( "${(ps:\n:)completions}" )
-# 
-#   compctl -K dotnet_zsh_complete dotnet
-# }
-
 dev_dotnet_clean()
 {
   echo "--------------------------------------------------------------------------------------------------------------"
@@ -1420,24 +1390,25 @@ dev_dotnet_msbuildlog ()
   dotnet $HOME/bin/msbuildlog/bin/StructuredLogViewer.Avalonia.dll
 }
 
+
 # https://learn.microsoft.com/en-us/dotnet/core/tools/enable-tab-autocomplete
 dev_dotnet_tab_completion_zsh()
 {
-  echo "--------------------------------------------------------------------------------------------------------------"
-  echo \
-  "
-  local completions=(\"$(dotnet complete \"$words\")\")
-
-  # If the completion list is empty, just continue with filename selection
-  if [ -z \"$completions\" ]
-  then
-    _arguments '*::arguments: _normal'
-    return
-  fi
-
-  # This is not a variable assignment, don't remove spaces!
-  _values = \"${(ps:\\n:)completions}\"
-  "
+#  echo "--------------------------------------------------------------------------------------------------------------"
+#  echo \
+#  "
+#  local completions=(\"$(dotnet complete \"$words\")\")
+#
+#  # If the completion list is empty, just continue with filename selection
+#  if [ -z \"$completions\" ]
+#  then
+#    _arguments '*::arguments: _normal'
+#    return
+#  fi
+#
+#  # This is not a variable assignment, don't remove spaces!
+#  _values = \"${(ps:\\n:)completions}\"
+#  "
   local completions=("$(dotnet complete "$words")")
 
   # If the completion list is empty, just continue with filename selection
@@ -1465,16 +1436,36 @@ compdef dev_dotnet_tab_completion_zsh dotnet
 # 
 # complete -f -F dev_dotnet_tab_completion_bash dotnet
 
-dev_dotnet_maui_new_lib ()
-{
-  TIMESTAMP=$( date "+%Y%m%d%H%M%S" )
-  echo    $TIMESTAMP
+# dev_dotnet_autocomplete ()
+# {
+#   # https://learn.microsoft.com/en-us/dotnet/core/tools/enable-tab-autocomplete#bash
+#   # https://learn.microsoft.com/en-us/dotnet/core/tools/enable-tab-autocomplete#zsh
+# 
+#   local completions=("$(dotnet complete "$words")")
+# 
+#   # If the completion list is empty, just continue with filename selection
+#   if [ -z "$completions" ]
+#   then
+#     _arguments '*::arguments: _normal'
+#     return
+#   fi
+# 
+#   # This is not a variable assignment, don't remove spaces!
+#   _values = "${(ps:\n:)completions}"  
+# }
 
-  dotnet \
-      new \
-          mauilib \
-              --output ./LibraryMAUI.$TIMESTAMP
-}
+# compdef dev_dotnet_autocomplete dotnet
+compdef dev_dotnet_tab_completion_zsh dotnet
+
+# https://docs.microsoft.com/en-us/dotnet/core/tools/enable-tab-autocomplete
+# dotnet_zsh_complete()
+# {
+#   local completions=("$(dotnet complete "$words")")
+# 
+#   reply=( "${(ps:\n:)completions}" )
+# 
+#   compctl -K dotnet_zsh_complete dotnet
+# }
 
 dev_dotnet_assembly_references ()
 {  
@@ -1671,6 +1662,17 @@ dev_dotnet_android_bindings_binderator_config_bump()
 #   dotnet
 #       maui
 # start
+
+dev_dotnet_maui_new_lib ()
+{
+  TIMESTAMP=$( date "+%Y%m%d%H%M%S" )
+  echo    $TIMESTAMP
+
+  dotnet \
+      new \
+          mauilib \
+              --output ./LibraryMAUI.$TIMESTAMP
+}
 
 dev_dotnet_maui_new_app ()
 {
@@ -2447,7 +2449,8 @@ dev_ios_simulator_launch()
 # Open Firefox moljac/holisticware
 
 # if firefox is opened this will open additonal tabs
-browse_moljac()
+
+work_moljac()
 {
   echo "--------------------------------------------------------------------------------------------------------------"
   echo \
@@ -2645,6 +2648,8 @@ echo "ANDROID_NDK_HOME    = " $ANDROID_NDK_HOME
 echo "AndroidSdkDirectory = " $AndroidSdkDirectory
 #----------------------------------------------------------------------------------------------------------------------
 #======================================================================================================================
+
+eval "$(/opt/homebrew/bin/brew shellenv)"
 
 sys_zsh_functions_list
 sys_zsh_functions_load
