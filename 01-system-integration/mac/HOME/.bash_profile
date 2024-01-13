@@ -256,9 +256,9 @@ sys_term_clean_screen_and_buffer()
   echo "--------------------------------------------------------------------------------------------------------------"
   echo \
   "
-  source $HOME/bat/01-system-integration/mac/zsh/functions/sys_term_clean_screen_and_buffer.sh
+  source $HOME/bat/01-system-integration/mac/zsh/functions/sys_term_clean_screen_and_buffer
   "
-  source $HOME/bat/01-system-integration/mac/zsh/functions/sys_term_clean_screen_and_buffer.sh
+  source $HOME/bat/01-system-integration/mac/zsh/functions/sys_term_clean_screen_and_buffer
 };
 
 sys_term_fingerprint()
