@@ -1,5 +1,9 @@
 #!/bin/bash
 
+# Action/Verb
+# install / uninstall / reinstall
+export ACTION_VERB=install
+
 brew \
     info \
         nuget
@@ -16,8 +20,20 @@ brew \
     list \
         mono
 
+
+
+brew uninstall --cask \
+    mono-mdk
+
 brew \
-    install \
+    $ACTION_VERB \
+        mono
+
+
+# https://www.mono-project.com/download/stable/#download-mac
+
+brew \
+    $ACTION_VERB \
         mono \
         msbuild \
         nuget \
