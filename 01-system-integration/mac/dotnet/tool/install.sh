@@ -14,6 +14,7 @@ boots
 git-credential-manager
 dotnet-gcm
 cake.tool
+cs-script.cli
 # Xamarin.Android
 xamarin.androidbinderator.tool
 xamarin.androidx.migration.tool
