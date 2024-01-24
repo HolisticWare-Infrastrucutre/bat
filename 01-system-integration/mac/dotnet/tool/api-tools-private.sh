@@ -1,5 +1,8 @@
 #!/bin/zsh
 
+export DIRECTORY=$(pwd)
+echo $DIRECTORY
+
 cd $HOME/Downloads/
 
 rm -fr  ./Mono.ApiTools.NuGetDiff-master
@@ -38,5 +41,8 @@ dotnet tool \
 
 #            --prerelease \
 
+cd ../
+rm -fr  ./Mono.ApiTools.NuGetDiff-master
+rm      Mono.ApiTools.NuGetDiff-master.zip
 
-cd -
+cd $DIRECTORY
