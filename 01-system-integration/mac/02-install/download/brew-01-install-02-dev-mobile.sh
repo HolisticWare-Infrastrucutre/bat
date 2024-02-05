@@ -247,6 +247,11 @@ avdmanager create avd -n my_android_31 -k "system-images;android-31;google_apis;
 brew $ACTION_VERB \
     cocoapods \
 
+brew $ACTION_VERB \
+    fastlane
+# https://github.com/fastlane/snapshot
+snapshot reset_simulator
+
 #----------------------------------------------------------------------------------------------
 
 #----------------------------------------------------------------------------------------------
