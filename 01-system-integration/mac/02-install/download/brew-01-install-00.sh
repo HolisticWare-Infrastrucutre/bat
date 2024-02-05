@@ -52,69 +52,12 @@ mas search XCode --price
 mas upgrade
 #----------------------------------------------------------------------------------------------
 
-
-# https://www.warp.dev/
-brew $ACTION_VERB --cask \
-    warp \
-    iterm2 \
-
 brew $ACTION_VERB \
     jandedobbeleer/oh-my-posh/oh-my-posh
 
-#----------------------------------------------------------------------------------------------
-# tools
-
-# tools - brew completion
-brew $ACTION_VERB \
-    curl \
-    wget \
-    bash-completion \
-    openssl \
-    tmux \
-    watchman \
-    ffmpeg \
-    exiftool \
-
-brew $ACTION_VERB --cask \
-    the-unarchiver \
-
-brew $ACTION_VERB \
-    zip \
-    unzip \
-    fuse-zip \
-    p7zip \
-    rar \
-    archiver \
-    snzip \
-    lrzip \
-    archiver \
-    sevenzip \
 
 
 
-brew $ACTION_VERB --cask \
-    the-unarchiver \
-    winzip \
-    betterzip \
-
-
-# tools for development
-brew $ACTION_VERB \
-    tree        \
-    automake    \
-    autoconf    \
-    dos2unix    \
-    gettext	    \
-    libevent    \
-    libtool     \
-    gradle      \
-    node        \
-    openssl     \
-    pkg-config  \
-    watchman    \
-    gettext     \
-    pcre        \
-    swig        \
 
 # Xamarin.Android xamarin-android repo
 #   user want git from brew anyway, the apple-provided one is a fossil
@@ -254,12 +197,6 @@ brew $ACTION_VERB --cask \
 brew $ACTION_VERB \
     ghostscript \
 
-
-#----------------------------------------------------------------------------------------------
-#
-brew $ACTION_VERB --cask \
-    visual-studio-code \
-    homebrew/cask-versions/visual-studio-code-insiders \
 
 #----------------------------------------------------------------------------------------------
 brew $ACTION_VERB --cask \
