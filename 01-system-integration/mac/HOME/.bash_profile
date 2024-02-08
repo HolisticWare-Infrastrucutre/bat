@@ -101,11 +101,6 @@ export PATH=$PATH:$JAVA_HOME/bin/
 export PATH=$PATH:/usr/local/share/dotnet:$HOME/.dotnet/tools/
 export PATH=$PATH:/usr/local/bin/pwsh/
 export PATH=$PATH:"/Applications/Visual Studio Code.app/Contents/Resources/app/bin/"
-export PATH=$PATH:"/Library/Frameworks/Mono.framework/Versions/Current/bin/"
-export PATH=$PATH:"$HOME/bin/"
-export PATH=$PATH:"$HOME/bin.private/"
-export PATH=$PATH:"$HOME/bat/"
-export PATH=$PATH:"$HOME/bat.private/"
 #----------------------------------------------------------------------------------------------------------------------
 #######################################################################################################################
 
@@ -122,7 +117,6 @@ alias edge="open -a Microsoft\ Edge $1"
 alias edge_beta="open -a Microsoft\ Edge\ Beta $1"
 
 alias rstudio="open -a RStudio"
-alias nuget="mono /usr/local/bin/nuget.exe"
 
 # alias edge="/Applications/Microsoft\ Edge.app/Contents/MacOS/Microsoft\ Edge"
 
@@ -751,6 +745,18 @@ dev_android_emulator_launch()
     &
 };
 
+dev_android_emulator_reset()
+{
+  echo "--------------------------------------------------------------------------------------------------------------"  
+  echo \
+  "
+  sudo rm -fr $($HOME/.android/avd/Pixel_3a_API_34_extension_level_7_arm64-v8a.avd/*.img)
+  sudo rm -fr $($HOME/.android/avd/nexus_9_api_33.avd/*.img) 
+  "
+  sudo rm -fr $($HOME/.android/avd/Pixel_3a_API_34_extension_level_7_arm64-v8a.avd/*.img)
+  sudo rm -fr $($HOME/.android/avd/nexus_9_api_33.avd/*.img) 
+}
+
 dev_android_emulator_avds_all_rm_img_data()
 {
   echo "--------------------------------------------------------------------------------------------------------------"  
@@ -761,7 +767,6 @@ dev_android_emulator_avds_all_rm_img_data()
   "
   find $HOME/.android/avd/ -iname "*.avd" 
   rm -fr $(find $HOME/.android/avd/ -iname "*.img") 
-
 }
 
 
@@ -1081,6 +1086,17 @@ dev_ios_xcode_commandline_tools()
 # dev   
 #   dotnet
 # start
+
+dev_dotnet_folders_nuke()
+{ 
+  echo "=============================================================================================================="
+  echo \
+  "
+  rm -fr $(find . -type d -iname "bin" -o -iname "obj" -o -iname ".meteor" -o -iname ".idea" -o -iname ".vs")
+  "
+
+  rm -fr $(find . -type d -iname "bin" -o -iname "obj" -o -iname ".meteor" -o -iname ".idea" -o -iname ".vs")
+}
 
 dev_dotnet_nuget_nuke()
 { 
@@ -2212,8 +2228,7 @@ dev_dotnet_maui_fix_installation ()
 
 #======================================================================================================================
 # dev   
-#   dotnet
-#       ios
+#   ios
 # start
 
 dev_macios_xcode_reset()
@@ -2284,85 +2299,20 @@ dev_ios_simulator_launch()
 # xcrun simctl launch <YOUR-DEVICE-ID> <BUNDLE-ID-OF-APP-BUNDLE>      
 };
 
+dev_ios_simulator_reset()
+{
+  echo "--------------------------------------------------------------------------------------------------------------"
+  echo \
+  "
+  xcrun simctl erase all
+  "
+  xcrun simctl erase all
+}
+
 # stop
-#       ios
-#   dotnet
+#   ios
 # dev   
 #======================================================================================================================
-
-#======================================================================================================================
-# dev   
-#   mono
-# start
-
-# stop
-#   dotnet
-# dev   
-#======================================================================================================================
-
-dev_mono_version ()
-{
-  echo "=============================================================================================================="
-  echo \
-  "
-  /Library/Frameworks/Mono.framework/Versions/Current/bin/mono --version
-  "
-  
-  /Library/Frameworks/Mono.framework/Versions/Current/bin/mono --version
-}
-
-dev_mono_web_open ()
-{
-  echo "=============================================================================================================="
-  echo \
-  "
-  edge \\
-    --url https://www.mono-project.com/docs/getting-started/install/mac/
-  "
-  edge \
-    --url https://www.mono-project.com/docs/getting-started/install/mac/
-}
-
-dev_mono_install ()
-{
-  echo "=============================================================================================================="
-  echo \
-  "
-  export DIRECTORY=$(pwd)
-  cd $HOME/Downloads/
-  curl \\
-      -v -L -C - \\
-      -O \\
-          https://download.mono-project.com/archive/6.12.0/macos-10-universal/MonoFramework-MDK-6.12.0.199.macos10.xamarin.universal.pkg
-
-  sudo installer -pkg MonoFramework-MDK-6.12.0.199.macos10.xamarin.universal.pkg -target /
-  cd $DIRECTORY
-  "
-  export DIRECTORY=$(pwd)
-  cd $HOME/Downloads/
-  curl \
-      -v -L -C - \
-      -O \
-          https://download.mono-project.com/archive/6.12.0/macos-10-universal/MonoFramework-MDK-6.12.0.199.macos10.xamarin.universal.pkg
-
-  sudo installer -pkg MonoFramework-MDK-6.12.0.199.macos10.xamarin.universal.pkg -target /
-  cd $DIRECTORY
-}
-
-dev_mono_uninstall ()
-{
-  echo "=============================================================================================================="
-  echo \
-  "
-  sudo rm -rf /Library/Frameworks/Mono.framework
-  sudo pkgutil --forget com.xamarin.mono-MDK.pkg
-  sudo rm /etc/paths.d/mono-commands
-  "
-  sudo rm -rf /Library/Frameworks/Mono.framework
-  sudo pkgutil --forget com.xamarin.mono-MDK.pkg
-  sudo rm /etc/paths.d/mono-commands
-}
-
 
 #======================================================================================================================
 # dev   
