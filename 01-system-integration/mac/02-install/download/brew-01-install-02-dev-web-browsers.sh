@@ -1,0 +1,60 @@
+#!/bin/bash
+
+# Action/Verb
+# install / uninstall / reinstall
+export ACTION_VERB=install
+
+#----------------------------------------------------------------------------------------------
+# browsers
+brew tap homebrew/cask-versions
+
+brew $ACTION_VERB --cask \
+    google-chrome \
+    google-chrome-canary \
+    google-chrome-beta \
+    google-chrome-dev \
+    microsoft-edge \
+    microsoft-edge-beta \
+    firefox \
+    firefox-developer-edition \
+    firefox-nightly \
+    opera \
+    opera-beta \
+    opera-developer \
+    chromium \
+    tor-browser \
+    opera \
+    opera-neon \
+
+
+brew $ACTION_VERB --cask \
+    browserosaurus \
+    charles \
+    chromedriver \
+    opera-mobile-emulator \
+
+brew $ACTION_VERB --cask \
+    microsoft-edge \
+    microsoft-edge-dev \
+    microsoft-edge-beta \
+    google-chrome \
+    google-chrome-canary \
+    firefox \
+    firefox-developer-edition \
+
+#   conflicts
+brew $ACTION_VERB --cask \
+    firefox-beta \
+    tor-browser-alpha \
+
+brew $ACTION_VERB \
+    tor
+
+brew untap homebrew/cask-versions
+
+brew $ACTION_VERB --cask \
+    postman \
+    postman-agent \
+    postman-cli \
+    postmancanary \
+    protonvpn \

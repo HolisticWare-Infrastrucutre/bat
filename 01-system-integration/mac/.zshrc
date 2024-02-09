@@ -110,6 +110,7 @@ alias ll='ls -al'
 
 alias vs="open -a Visual\ Studio\ \(Preview\)"
 alias vsc="code -n ."
+alias bode="open -a Brackets"
 # implemented as function
 # alias rider="open -a Rider"
 
@@ -2406,9 +2407,46 @@ dev_macios_xcode_reset()
 
 }
 
+dev_macios_xcode_install_simulators()
+{
+  echo "--------------------------------------------------------------------------------------------------------------"
+  echo \
+  "
+  xcode-select -s /Applications/Xcode.app
+  xcodebuild -runFirstLaunch
+  xcodebuild -downloadAllPlatforms
+  xcodebuild -downloadPlatform iOS
+  xcodebuild -downloadPlatform iPadOS
+  xcodebuild -downloadPlatform tvOS
+  xcodebuild -downloadPlatform watchOS
+  xcodebuild -downloadPlatform visionOS
+  "
+  xcode-select -s /Applications/Xcode.app
+  xcodebuild -runFirstLaunch
+  xcodebuild -downloadAllPlatforms
+  xcodebuild -downloadPlatform iOS
+  xcodebuild -downloadPlatform iPadOS
+  xcodebuild -downloadPlatform tvOS
+  xcodebuild -downloadPlatform watchOS
+  xcodebuild -downloadPlatform visionOS
+}
+
 dev_macios_xcode_install_commandline_tools()
 {
   echo "--------------------------------------------------------------------------------------------------------------"
+  echo \
+  "
+  sudo rm -rf /Library/Developer/CommandLineTools
+  sudo xcode-select --install
+  sleep 1
+  osascript \\
+    -e 'tell application "System Events"' \\
+      -e 'tell process "Install Command Line Developer Tools"' \\
+        -e 'keystroke return' \\
+        -e 'click button "Agree" of window "License Agreement"' \\
+      -e 'end tell' \\
+    -e 'end tell'
+  "
   sudo rm -rf /Library/Developer/CommandLineTools
   sudo xcode-select --install
   sleep 1
@@ -2428,7 +2466,6 @@ dev_ios_simulator_list()
   "
   xcrun simctl list
   "
-
   xcrun simctl list
 };
 
