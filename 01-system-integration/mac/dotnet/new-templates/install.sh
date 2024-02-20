@@ -18,6 +18,9 @@ source $HOME/bat/01-system-integration/mac/01-uninstall-clean-remove-nuke/nuget.
 export TEMPLATEZ=\
 "\
 # HolisticWare
+HolisticWare.DotNetNew.Templates.Project.MAUI.AppSampleReproXXXXX.CSharp
+HolisticWare.DotNetNew.Templates.Project.Architecture.AspireWithClientsMaui
+HolisticWare.DotNetNew.Templates.Project.Architecture.AspireWithClientsMaui.Bret
 HolisticWare.DotNetNew.XamarinProjectsStructureTemplate.CSharp
 HolisticWare.DotNetNew.XamarinAndroidMavenBindingsProjectsStructureTemplate.CSharp
 # Microsoft.TemplateEngine.Authoring.Templates
@@ -70,8 +73,10 @@ do
             --verbosity diagnostic
 done
 
+echo "-----------------------------------------------------------------------------------------------------------------"
 dotnet new list --type project
+echo "-----------------------------------------------------------------------------------------------------------------"
 dotnet new list --type item
-
+echo "-----------------------------------------------------------------------------------------------------------------"
 dotnet new list
 
