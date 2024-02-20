@@ -110,7 +110,7 @@ alias ll='ls -al'
 
 alias vs="open -a Visual\ Studio\ \(Preview\)"
 alias vsc="code -n ."
-alias bode="open -a Brackets"
+alias bode="open -na Brackets"
 # implemented as function
 # alias rider="open -a Rider"
 
@@ -153,12 +153,22 @@ sys_postinstall()
   echo \
   "
   sys_term_fingerprint
-  sudo xcodebuild -license accept
+  sys_brew_clean_update
+  dev_macios_xcode_license_accept
+  dev_dotnet_workloads_reinstall
+  dev_dotnet_new_templates_reinstall
+  dev_dotnet_tools_reinstall
+  dev_dotnet_tools_reinstall_api_tools
   "
   # Agreeing to the Xcode/iOS license requires admin privileges, please run “sudo xcodebuild -license” and then retry 
   # this command.
   sys_term_fingerprint
-  sudo xcodebuild -license accept
+  sys_brew_clean_update
+  dev_macios_xcode_license_accept
+  dev_dotnet_workloads_reinstall
+  dev_dotnet_new_templates_reinstall
+  dev_dotnet_tools_reinstall
+  dev_dotnet_tools_reinstall_api_tools
 }
 
 sys_diverse_clean()
@@ -235,6 +245,27 @@ sys_finder_open_windows_and_tabs()
 # sys   
 #   term
 # start
+
+# creates a new terminal window
+function term() 
+{
+  echo "--------------------------------------------------------------------------------------------------------------"
+  echo \
+  "
+  if [[ $# -eq 0 ]]; 
+  then
+      open -a "Terminal" "$PWD"
+  else
+      open -a "Terminal" "$@"
+  fi
+  "
+  if [[ $# -eq 0 ]]; 
+  then
+      open -a "Terminal" "$PWD"
+  else
+      open -a "Terminal" "$@"
+  fi
+}
 
 sys_term_tab_completion_reset()
 {
@@ -1088,12 +1119,22 @@ dev_ios_xcode_commandline_tools()
 #   dotnet
 # start
 
+dev_dotnet_build_brute_csproj()
+{ 
+  echo "=============================================================================================================="
+  echo \
+  "
+  find . -type f -iname "*.csproj" -exec dotnet build \{\} \\;
+  "
+  find . -type f -iname "*.csproj" -exec dotnet build {} \;
+}
+
 dev_dotnet_folders_nuke()
 { 
   echo "=============================================================================================================="
   echo \
   "
-  rm -fr $(find . -type d -iname "bin" -o -iname "obj" -o -iname ".meteor" -o -iname ".idea" -o -iname ".vs")
+  rm -fr\ $\(find . -type d -iname "bin" -o -iname "obj" -o -iname ".meteor" -o -iname ".idea" -o -iname ".vs" \)
   "
 
   rm -fr $(find . -type d -iname "bin" -o -iname "obj" -o -iname ".meteor" -o -iname ".idea" -o -iname ".vs")
@@ -1214,6 +1255,87 @@ dev_dotnet_installation_clean()
       /usr/local/share/dotnet/shared/Microsoft.AspNetCore.App/* \
       /usr/local/share/dotnet/shared/Microsoft.NETCore.App/* \
 
+}
+
+dev_dotnet_installation_nuke_previews()
+{
+  echo "=============================================================================================================="
+  echo \
+  "
+  dotnet --list-sdks
+  dotnet --list-runtimes
+
+  sudo rm -fr $(find /usr/local/share/dotnet/sdk -iname "*-preview*" -o -iname "*-rc*")
+  sudo rm -fr $(find /usr/local/share/dotnet/shared/Microsoft.AspNetCore.App -iname "*-preview*" -o -iname "*-rc*")
+  sudo rm -fr $(find /usr/local/share/dotnet/shared/Microsoft.NETCore.App -iname "*-preview*" -o -iname "*-rc*")
+
+  dotnet --list-sdks
+  dotnet --list-runtimes
+
+  dev_dotnet_workloads_reinstall
+  dev_dotnet_workloads_list
+  "
+  dotnet --list-sdks
+  dotnet --list-runtimes
+
+  sudo rm -fr $(find /usr/local/share/dotnet/sdk -iname "*-preview*" -o -iname "*-rc*")
+  sudo rm -fr $(find /usr/local/share/dotnet/shared/Microsoft.AspNetCore.App -iname "*-preview*" -o -iname "*-rc*")
+  sudo rm -fr $(find /usr/local/share/dotnet/shared/Microsoft.NETCore.App -iname "*-preview*" -o -iname "*-rc*")
+
+  dotnet --list-sdks
+  dotnet --list-runtimes
+
+  dev_dotnet_workloads_reinstall
+  dev_dotnet_workloads_list
+}
+
+dev_dotnet_installation_install_preview()
+{
+  echo "=============================================================================================================="
+  echo \
+  "
+  dotnet --list-sdks
+  dotnet --list-runtimes
+
+  cd $HOME/Downloads/
+  curl \\
+    -v -L -C - \\
+    -o dotnet-sdk-downloaded.pkg \\
+    -O \\
+      https://download.visualstudio.microsoft.com/download/pr/f3a5f6fd-0b74-407c-a3cf-52792d76415f/53c4911d66ce7a8757c9d10c2c4d6414/dotnet-sdk-9.0.100-preview.1.24101.2-osx-arm64.pkg
+
+  sudo installer \\
+    -pkg $HOME/Downloads/dotnet-sdk-downloaded.pkg \\
+    -target /  
+  rm -f dotnet-sdk-*.pkg
+  cd -
+
+  dotnet --list-sdks
+  dotnet --list-runtimes
+
+  dev_dotnet_workloads_reinstall
+  dev_dotnet_workloads_list
+  "
+  dotnet --list-sdks
+  dotnet --list-runtimes
+
+  cd $HOME/Downloads/
+  curl \
+    -v -L -C - \
+    -o dotnet-sdk-downloaded.pkg \
+    -O \
+      https://download.visualstudio.microsoft.com/download/pr/f3a5f6fd-0b74-407c-a3cf-52792d76415f/53c4911d66ce7a8757c9d10c2c4d6414/dotnet-sdk-9.0.100-preview.1.24101.2-osx-arm64.pkg
+
+  sudo installer \
+    -pkg $HOME/Downloads/dotnet-sdk-downloaded.pkg \
+    -target /  
+  rm -f dotnet-sdk-*.pkg
+  cd -
+
+  dotnet --list-sdks
+  dotnet --list-runtimes
+
+  dev_dotnet_workloads_reinstall
 }
 
 dev_dotnet_workloads_list()
@@ -2232,6 +2354,16 @@ dev_dotnet_maui_fix_installation ()
 #   ios
 # start
 
+dev_macios_xcode_license_accept()
+{
+  echo "--------------------------------------------------------------------------------------------------------------"
+  echo \
+  "
+  sudo xcodebuild -license accept
+  "
+  sudo xcodebuild -license accept
+}
+
 dev_macios_xcode_reset()
 {
   # https://learn.microsoft.com/en-us/dotnet/maui/troubleshooting#couldnt-find-a-valid-xcode-app-bundle
@@ -2241,9 +2373,7 @@ dev_macios_xcode_reset()
   "
   sudo xcode-select --reset
   "
-
   sudo xcode-select --reset
-
 }
 
 dev_macios_xcode_install_commandline_tools()
@@ -2655,6 +2785,31 @@ work_on_moljac()
   work_on_moljac_microsoft
   work_on_moljac_holisticware
 };
+
+work_on_judo()
+{
+  echo "--------------------------------------------------------------------------------------------------------------"
+  echo \
+  "
+  source $HOME/bat/03-productivity/mac/finder-open-window-with-tabs-09-private-sport.sh
+
+  term \\
+    /Volumes/xFAT-1TB-2/e/personal-private/judo/
+
+  term \\
+    /Volumes/xFAT-1TB-2/e/personal-private/judo/HJS/01-pravno/DORH/02-kaznena-prijava-koraci/TODO/mails
+  "
+
+  source $HOME/bat/03-productivity/mac/finder-open-window-with-tabs-09-private-sport.sh
+
+  term \
+    /Volumes/xFAT-1TB-2/e/personal-private/judo/
+
+  term \
+    /Volumes/xFAT-1TB-2/e/personal-private/judo/HJS/01-pravno/DORH/02-kaznena-prijava-koraci/TODO/mails
+};
+
+
 
 
 #======================================================================================================================
