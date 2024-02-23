@@ -1294,6 +1294,15 @@ dev_dotnet_installation_install_preview()
   echo "=============================================================================================================="
   echo \
   "
+  if [[ $\(uname -m\) == 'arm64' ]];
+  then
+    echo MBP M1/M2/M3
+    export FILE_DOTNET_PKG=https://download.visualstudio.microsoft.com/download/pr/ca8378e2-a2b8-4dc9-b54b-206feeff5ec5/22fdb7f35fab91ba799ea05bcae84742/dotnet-sdk-8.0.201-osx-arm64.pkg
+  else
+    echo MBP intel
+    export FILE_DOTNET_PKG=https://download.visualstudio.microsoft.com/download/pr/9508dade-753c-45eb-8220-216e8b552548/a5fc65c2b7ef2df9dfa003fbeac44f9f/dotnet-sdk-8.0.201-osx-x64.pkg
+  fi
+
   dotnet --list-sdks
   dotnet --list-runtimes
 
@@ -1302,7 +1311,7 @@ dev_dotnet_installation_install_preview()
     -v -L -C - \\
     -o dotnet-sdk-downloaded.pkg \\
     -O \\
-      https://download.visualstudio.microsoft.com/download/pr/f3a5f6fd-0b74-407c-a3cf-52792d76415f/53c4911d66ce7a8757c9d10c2c4d6414/dotnet-sdk-9.0.100-preview.1.24101.2-osx-arm64.pkg
+      $FILE_DOTNET_PKG
 
   sudo installer \\
     -pkg $HOME/Downloads/dotnet-sdk-downloaded.pkg \\
@@ -1316,6 +1325,16 @@ dev_dotnet_installation_install_preview()
   dev_dotnet_workloads_reinstall
   dev_dotnet_workloads_list
   "
+  if [[ $(uname -m) == 'arm64' ]];
+  then
+    echo MBP M1/M2/M3
+    export FILE_DOTNET_PKG=https://download.visualstudio.microsoft.com/download/pr/ca8378e2-a2b8-4dc9-b54b-206feeff5ec5/22fdb7f35fab91ba799ea05bcae84742/dotnet-sdk-8.0.201-osx-arm64.pkg
+  else
+    echo MBP intel
+    export FILE_DOTNET_PKG=https://download.visualstudio.microsoft.com/download/pr/9508dade-753c-45eb-8220-216e8b552548/a5fc65c2b7ef2df9dfa003fbeac44f9f/dotnet-sdk-8.0.201-osx-x64.pkg
+  fi
+
+
   dotnet --list-sdks
   dotnet --list-runtimes
 
@@ -1324,7 +1343,7 @@ dev_dotnet_installation_install_preview()
     -v -L -C - \
     -o dotnet-sdk-downloaded.pkg \
     -O \
-      https://download.visualstudio.microsoft.com/download/pr/f3a5f6fd-0b74-407c-a3cf-52792d76415f/53c4911d66ce7a8757c9d10c2c4d6414/dotnet-sdk-9.0.100-preview.1.24101.2-osx-arm64.pkg
+      $FILE_DOTNET_PKG
 
   sudo installer \
     -pkg $HOME/Downloads/dotnet-sdk-downloaded.pkg \
