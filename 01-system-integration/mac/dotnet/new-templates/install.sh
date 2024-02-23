@@ -2,6 +2,9 @@
 
 source $HOME/bat/01-system-integration/mac/01-uninstall-clean-remove-nuke/nuget.sh
 
+source $HOME/bat/01-system-integration/mac/dotnet/new-templates/install-holisticware.sh
+source $HOME/bat/01-system-integration/mac/dotnet/new-templates/install-maui.sh
+
 # https://github.com/dotnet/templating/wiki/Available-templates-for-dotnet-new
 # https://dotnetnew.azurewebsites.net/
 
@@ -17,12 +20,6 @@ source $HOME/bat/01-system-integration/mac/01-uninstall-clean-remove-nuke/nuget.
 
 export TEMPLATEZ=\
 "\
-# HolisticWare
-HolisticWare.DotNetNew.Templates.Project.MAUI.AppSampleReproXXXXX.CSharp
-HolisticWare.DotNetNew.Templates.Project.Architecture.AspireWithClientsMaui
-HolisticWare.DotNetNew.Templates.Project.Architecture.AspireWithClientsMaui.Bret
-HolisticWare.DotNetNew.XamarinProjectsStructureTemplate.CSharp
-HolisticWare.DotNetNew.XamarinAndroidMavenBindingsProjectsStructureTemplate.CSharp
 # Microsoft.TemplateEngine.Authoring.Templates
 # https://learn.microsoft.com/en-us/dotnet/core/tutorials/cli-templates-create-template-package#create-a-template-package-project
 Microsoft.TemplateEngine.Authoring.Templates
