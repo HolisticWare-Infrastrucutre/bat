@@ -121,19 +121,16 @@ dotnet-dump
 dotnet-gcdump
 dotnet-gcmon
 dotnet-dsrouter
+dotnet-stack
+dotnet-symbol
+# Testing Coverage
+dotnet-coverage
+coverlet.console
+JetBrains.dotCover.GlobalTool
+minicover
+coveralls.net
+altcover.visualizer
 JetBrains.dotTrace.GlobalTools
-microsoft.tye 
-wyam.tool
-dotnet-vs
-Microsoft.dotnet-httprepl
-Microsoft.dotnet-openapi
-dotnet-ignore
-dotnet-cleanup
-dotnet-depends
-dotnet-obfuscar
-nukeeper
-dotnet-releaser
-NuSight
 # Deployment
 dotnet-sshdeploy
 # Testing
@@ -143,13 +140,20 @@ dotnet-stryker
 # Testing Benchmarking
 BenchmarkDotNet.Tool
 Microsoft.Crank.Agent
-# Testing Coverage
-dotnet-coverage
-coverlet.console
-JetBrains.dotCover.GlobalTool
-minicover
-coveralls.net
-altcover.visualizer
+# Cloud.Orchestrating
+microsoft.tye 
+# Web
+Microsoft.dotnet-httprepl
+Microsoft.dotnet-openapi
+wyam.tool
+dotnet-vs
+dotnet-ignore
+dotnet-cleanup
+dotnet-depends
+dotnet-obfuscar
+nukeeper
+dotnet-releaser
+NuSight
 # Security
 dotnet-retire
 Microsoft.CST.DevSkim.CLI
