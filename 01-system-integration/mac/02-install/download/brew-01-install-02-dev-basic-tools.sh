@@ -25,9 +25,6 @@ brew $ACTION_VERB \
     ffmpeg \
     exiftool \
 
-brew $ACTION_VERB --cask \
-    the-unarchiver \
-
 brew $ACTION_VERB \
     zip \
     unzip \
@@ -39,13 +36,27 @@ brew $ACTION_VERB \
     lrzip \
     archiver \
     sevenzip \
-
-
+    brotli \
+    bzip2 \
+    bzip3 \
+    gzip \
+    laszip \
+    lhasa \
+    lizard \
+    lzip \
+    ncompress \
+    rzip \
+    snzip \    
 
 brew $ACTION_VERB --cask \
     the-unarchiver \
     winzip \
     betterzip \
+    izip \
+    MacWinZipper \
+    MacZip \
+    MacZip4Win \
+    WinZip \
 
 
 # tools for development
