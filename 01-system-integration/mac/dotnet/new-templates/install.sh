@@ -26,6 +26,8 @@ Microsoft.TemplateEngine.Authoring.Templates
 # Blazor - Full stack web development with C# and WebAssembly
 # http://blazor.net/
 Microsoft.AspNetCore.Blazor.Templates::3.0.0-*
+Microsoft.FluentUI.AspNetCore.Templates
+Microsoft.Fast.Templates.FluentUI
 # DevExpress
 DevExpress.Maui.ProjectTemplates
 # Cake.Frosting
