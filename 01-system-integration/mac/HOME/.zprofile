@@ -848,7 +848,6 @@ dev_android_emulator_avds_all_rm_img_data()
   rm -fr $(find $HOME/.android/avd/ -iname "*.img") 
 }
 
-
 dev_android_emulator_launch_wipe_data_no_cache_no_snapshot()
 {
   echo "--------------------------------------------------------------------------------------------------------------"  
@@ -879,6 +878,24 @@ dev_android_emulator_launch_wipe_data_no_cache_no_snapshot()
     -no-snapshot-load \
     &
 };
+
+dev_android_emulators_install()
+{
+  echo \
+  "
+  source bat/01-system-integration/mac/02-install/mobile/android/emulators-install.sh
+  "
+  source bat/01-system-integration/mac/02-install/mobile/android/emulators-install.sh
+}
+
+dev_android_emulators_uninstall()
+{
+  echo \
+  "
+  source bat/01-system-integration/mac/02-install/mobile/android/emulators-uninstall.sh
+  "
+  source bat/01-system-integration/mac/02-install/mobile/android/emulators-uninstall.sh  
+}
 
 # https://developer.android.com/tools/adb
 # https://gist.github.com/Pulimet/5013acf2cd5b28e55036c82c91bd56d8
