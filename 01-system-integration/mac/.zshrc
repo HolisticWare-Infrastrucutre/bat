@@ -619,17 +619,40 @@ dev_info_dump_long()
 #   jdk
 # start
 
-jdk()
+dev_jdks_list()
 {
   echo "--------------------------------------------------------------------------------------------------------------"
   echo \
   "
+  java --version
+  "
+  java --version
+  echo "--------------------------------------------------------------------------------------------------------------"
+  echo \
+  "
+  /usr/libexec/java_home
+  "
+  /usr/libexec/java_home
+  echo "--------------------------------------------------------------------------------------------------------------"
+  echo \
+  "
+  /usr/libexec/java_home -V
+  "
+  /usr/libexec/java_home -V
+}
+
+dev_jdks_set()
+{
+  echo "--------------------------------------------------------------------------------------------------------------"
+  echo \
+  "
+  export version=$1
   version=$1
   unset JAVA_HOME;
   export JAVA_HOME=$(/usr/libexec/java_home -v"$version");
   java -version
   "
-  version=$1
+  export version=$1
   unset JAVA_HOME;
   export JAVA_HOME=$(/usr/libexec/java_home -v"$version");
   java -version
@@ -641,6 +664,27 @@ jdk()
 # dev   
 #======================================================================================================================
 
+#======================================================================================================================
+# dev   
+#   profiling speedscope
+# start
+
+dev_profiling_speedscope()
+{
+  echo "--------------------------------------------------------------------------------------------------------------"
+  echo \
+  "
+  open -na "Microsoft Edge Beta" \\
+    $HOME/bin/speedscope/index.html}
+  "
+  open -na "Microsoft Edge Beta" \
+    $HOME/bin/speedscope/index.html
+}
+
+# stop
+#   profiling speedscope
+# dev   
+#======================================================================================================================
 
 #======================================================================================================================
 # dev   
@@ -682,6 +726,7 @@ dev_android_sdkmanager()
   sdkmanager \
       --licenses
   "
+  sdkmanager --install "cmdline-tools;latest"
   # java 8 is required
   export JAVA_HOME=/Library/Java/JavaVirtualMachines/adoptopenjdk-8.jdk/Contents/Home
 
@@ -703,6 +748,8 @@ dev_android_sdkmanager()
   #     "build-tools;25.0.2" \
   #     "extras;google;m2repository" \
   #     "extras;android;m2repository"
+
+  export JAVA_HOME=/Library/Java/JavaVirtualMachines/microsoft-11.jdk/Contents/Home/
 }
 
 dev_android_info_disk_usage()
@@ -1463,9 +1510,10 @@ dev_dotnet_tools_reinstall_api_tools()
   echo "--------------------------------------------------------------------------------------------------------------"
   echo \
   "
-  source $HOME/bat/01-system-integration/mac/dotnet/tool/api-tools-private.sh
+  dotnet tool install --global private-api-tools --version 1.0.1
   "
-  source $HOME/bat/01-system-integration/mac/dotnet/tool/api-tools-private.sh
+  # source $HOME/bat/01-system-integration/mac/dotnet/tool/api-tools-private.sh
+  dotnet tool install --global private-api-tools --version 1.0.1
 }
 
 dev_dotnet_new_templates_reinstall()
@@ -1814,6 +1862,102 @@ dev_dotnet_android_bindings_binderator_config_bump()
   "
   dotnet script ./build/scripts/update-config.csx -- ./config.json bump
 }
+
+dev_dotnet_android_profiling_setup_emulator()
+{
+  # https://devblogs.microsoft.com/dotnet/performance-improvements-in-dotnet-maui/#startup-performance-improvements
+  echo "=============================================================================================================="
+  echo \
+  "
+  "
+  #-------------------------------------------------------------------------------------------------
+  adb forward --list
+  adb forward --remove-all
+  adb reverse --list
+  adb reverse --remove-all
+
+  adb forward --list
+  adb reverse --list
+  adb kill-server
+  adb start-server
+  #-------------------------------------------------------------------------------------------------
+  # Set up reverse port forwarding:
+  #     emulator          - skip this step
+  #     physical device   - required
+  # adb reverse tcp:9000 tcp:9001
+  # alternative
+  #     allocate a random port on remote and forward it to port 9001 on the host
+  #      forwarded port is printed by adb
+  # adb reverse tcp:0 tcp:9001
+  #-------------------------------------------------------------------------------------------------
+  # Configure the device so that the profiled app suspends until tracing utility connects
+  adb shell setprop debug.mono.profile '127.0.0.1:9000,suspend'
+  #-------------------------------------------------------------------------------------------------
+  # profiling on emulator
+  dotnet-dsrouter android-emu --verbose debug
+  # profiling on device
+  # dotnet-dsrouter server-server -tcps 127.0.0.1:9001 --verbose debug
+  export PORT=$(dotnet-trace ps | grep dotnet-dsrouter | awk '{ print $1 }')
+  echo "PORT = $PORT"
+  dotnet-trace collect -p $PORT --format speedscope
+}
+
+dev_dotnet_android_profiling_setup_device()
+{ 
+  # https://devblogs.microsoft.com/dotnet/performance-improvements-in-dotnet-maui/#startup-performance-improvements
+  echo "=============================================================================================================="
+  echo \
+  "
+  "
+  # Set up reverse port forwarding:
+  #     emulator          - skip this step
+  #     physical device   - required
+  adb reverse tcp:9000 tcp:9001
+  # alternative
+  #     allocate a random port on remote and forward it to port 9001 on the host
+  #      forwarded port is printed by adb
+  # adb reverse tcp:0 tcp:9001
+  # Configure the device so that the profiled app suspends until tracing utility connects
+  adb shell setprop debug.mono.profile '127.0.0.1:9000,suspend'
+  # profiling on emulator
+  # dotnet-dsrouter android-emu --verbose diagnostic
+  # profiling on device
+  dotnet-dsrouter server-server -tcps 127.0.0.1:9001 --verbose debug
+  dotnet-dsrouter client-server -tcps 127.0.0.1:9001 --verbose debug -ipcc /tmp/maui-app
+}
+
+dev_dotnet_android_profiling_profile()
+{ 
+  # https://devblogs.microsoft.com/dotnet/performance-improvements-in-dotnet-maui/#startup-performance-improvements
+  echo "=============================================================================================================="
+  echo \
+  "
+  "
+  export PROJECT=./net8.0/ProjectsStructureTemplate.AppMAUI.DemoSample/ProjectsStructureTemplate.AppMAUI.DemoSample.csproj
+  dotnet build \
+    $PROJECT \
+      -f net8.0-android \
+      -t:Run \
+      -c Release \
+      -p:AndroidEnableProfiler=true \
+      -p:IsEmulator=true \
+      /p:RunAOTCompilation=true 
+
+}
+
+dev_dotnet_android_packages_uninstall()
+{
+  export PATTERN=com.companyname
+  #export PATTERN=com.jsuarezruiz
+  export PATTERN=com.microsoft.maui
+  for ap in $( adb shell pm list packages | grep "$PATTERN" | awk -F':' '{print $2}' ) ; 
+  do
+    echo "$ap"
+    adb uninstall "$ap"    
+  done
+}
+
+
 
 # stop
 #       android
@@ -2666,25 +2810,16 @@ dev_ios_simulator_launch()
 
 # if firefox is opened this will open additonal tabs
 
-work_moljac()
-{
-  echo "--------------------------------------------------------------------------------------------------------------"
-  echo \
-  "
-  source $HOME/bat.private/mac/firefox-moljac.sh 
-  "
-  source $HOME/bat.private/mac/firefox-moljac.sh 
-};
-
-
 open_browser_firefox_moljac()
 {
   echo "--------------------------------------------------------------------------------------------------------------"
   echo \
   "
-  source $HOME/bat.private/mac/firefox-moljac.sh
+  source $HOME/bat.private/mac/mchwc/firefox-moljac.sh
+  source $HOME/bat.private/mac/mchwn/firefox-moljac.sh
   "
-  source $HOME/bat.private/mac/firefox-moljac.sh
+  source $HOME/bat.private/mac/mchwc/firefox-moljac.sh
+  source $HOME/bat.private/mac/mchwn/firefox-moljac.sh
 };
 
 open_browser_edge_moljac_microsoft()
@@ -2725,6 +2860,30 @@ open_finder_code_moljac_microsoft()
   source $HOME/bat.private/mac/finder-code-moljac-microsoft.sh
   "
   source $HOME/bat.private/mac/finder-code-moljac-microsoft.sh
+};
+
+
+
+
+
+work_moljac()
+{
+  echo "--------------------------------------------------------------------------------------------------------------"
+  echo \
+  "
+  source $HOME/bat.private/mac/firefox-moljac.sh 
+
+  code -n $HOME/bat.private/mac/mchwc/firefox-moljac.sh
+  code -n $HOME/bat.private/mac/mchwn/firefox-moljac.sh
+  source $HOME/bat.private/mac/mchwc/firefox-moljac.sh
+  source $HOME/bat.private/mac/mchwn/firefox-moljac.sh
+  "
+  source $HOME/bat.private/mac/firefox-moljac.sh 
+
+  code -n $HOME/bat.private/mac/mchwc/firefox-moljac.sh
+  code -n $HOME/bat.private/mac/mchwn/firefox-moljac.sh
+  source $HOME/bat.private/mac/mchwc/firefox-moljac.sh
+  source $HOME/bat.private/mac/mchwn/firefox-moljac.sh
 };
 
 work_on_docs()
