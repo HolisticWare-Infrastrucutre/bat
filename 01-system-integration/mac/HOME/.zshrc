@@ -89,6 +89,10 @@ export MONO_GAC_PREFIX="/opt/homebrew"
 
 
 export PATH=/usr/bin/:/bin/:/usr/sbin/:/sbin/:/usr/local/bin/:/usr/local/sbin/
+export PATH=$PATH:/usr/local/share/dotnet:$HOME/.dotnet/tools/
+export PATH=$PATH:/usr/local/bin/pwsh/
+# https://www.mono-project.com/docs/about-mono/supported-platforms/macos/
+export PATH=$PATH:/Library/Frameworks/Mono.framework/Versions/Current/bin
 export PATH=/opt/homebrew/bin/:/opt/homebrew/sbin/:$PATH
 export PATH=$PATH:$ANDROID_HOME/bin/
 export PATH=$PATH:$ANDROID_HOME/tools/
@@ -98,8 +102,6 @@ export PATH=$PATH:$ANDROID_HOME/bundle-tool/
 export PATH=$PATH:$ANDROID_SDK_ROOT/
 export PATH=$PATH:$JAVA_HOME/
 export PATH=$PATH:$JAVA_HOME/bin/
-export PATH=$PATH:/usr/local/share/dotnet:$HOME/.dotnet/tools/
-export PATH=$PATH:/usr/local/bin/pwsh/
 export PATH=$PATH:"/Applications/Visual Studio Code.app/Contents/Resources/app/bin/"
 #----------------------------------------------------------------------------------------------------------------------
 #######################################################################################################################
@@ -171,8 +173,40 @@ sys_postinstall()
   dev_dotnet_tools_reinstall_api_tools
 }
 
-sys_diverse_clean()
+sys_clean()
 {
+  source $HOME/bat/01-system-integration/mac/clean.sh
+
+  echo "--------------------------------------------------------------------------------------------------------------"
+  echo \
+  "
+  source $HOME/bat/01-system-integration/mac/clean.sh
+  "
+  source $HOME/bat/01-system-integration/mac/clean.sh
+}
+
+sys_clean_diverse()
+{
+  echo "--------------------------------------------------------------------------------------------------------------"
+  echo \
+  "
+  rm -fr .android/cache/
+  rm -fr .android/build-cache/
+  rm -fr .dotnet/TelemetryStorageService/
+  rm -fr .dotnet/*rc*/
+  rm -fr .dotnet/*preview*/
+
+  rm -fr .cache/
+  rm -fr .cocoapods/
+  rm -fr .docker/
+  rm -fr .gitlab-runner/
+  rm -fr .gradle/
+  rm -fr .julia/
+  rm -fr .jupyter/
+  rm -fr .kube/
+
+  rm -fr .octave*
+  "
   rm -fr .android/cache/
   rm -fr .android/build-cache/
   rm -fr .dotnet/TelemetryStorageService/
@@ -192,7 +226,7 @@ sys_diverse_clean()
 }
 
 
-# stop
+#   stop
 # sys
 #######################################################################################################################
 
