@@ -1497,11 +1497,11 @@ dev_dotnet_workloads_clean()
   echo \
   "
   sudo dotnet workload clean
-#  sudo dotnet workload clean --all
+  # sudo dotnet workload clean --all
   dev_dotnet_workloads_list
   "
   sudo dotnet workload clean
-#  sudo dotnet workload clean --all
+  # sudo dotnet workload clean --all
   dev_dotnet_workloads_list
 }
 
@@ -1512,17 +1512,19 @@ dev_dotnet_tools_reinstall()
   "
   source $HOME/bat/01-system-integration/mac/dotnet/tool/install.sh
 
-  dotnet tool \
-    uninstall \
-      Cake.Tool \
-      --global \
+  dotnet tool \\
+    uninstall \\
+      Cake.Tool \\
+      --global \\
 
-  dotnet tool \
-    install \
-      --global \
-        Cake.Tool \
-        --add-source https://pkgs.dev.azure.com/cake-build/Cake/_packaging/cake/nuget/v3/index.json \
-        --version 3.2.0-alpha0025  
+  # installs preview cake
+  dotnet tool \\
+    install \\
+      --global \\
+        Cake.Tool \\
+        --add-source https://pkgs.dev.azure.com/cake-build/Cake/_packaging/cake/nuget/v3/index.json \\
+        --prerelease \\
+        --verbosity:diag \\
 
   "
   source $HOME/bat/01-system-integration/mac/dotnet/tool/install.sh 
@@ -1545,6 +1547,7 @@ dotnet tool \
       Cake.Tool \
       --global \
 
+  # installs preview cake
   dotnet tool \
     install \
       --global \
@@ -1561,10 +1564,12 @@ dev_dotnet_tools_reinstall_api_tools()
   echo "--------------------------------------------------------------------------------------------------------------"
   echo \
   "
-  dotnet tool install --global private-api-tools --version 1.0.1
+  dotnet tool uninstall --global private-api-tools
+  dotnet tool install --global private-api-tools --version 1.0.2
   "
   # source $HOME/bat/01-system-integration/mac/dotnet/tool/api-tools-private.sh
-  dotnet tool install --global private-api-tools --version 1.0.1
+  dotnet tool uninstall --global private-api-tools
+  dotnet tool install --global private-api-tools --version 1.0.2
 }
 
 dev_dotnet_new_templates_reinstall()
