@@ -1093,6 +1093,7 @@ dev_android_adb_logcat_collect()
   "
   
   adb logcat -d > log_$TIMESTAMP.txt
+  adb bugreport
 };
 
 dev_android_adb_bugreport()
@@ -1106,6 +1107,8 @@ dev_android_adb_bugreport()
   "
   
   adb bugreport
+  adb shell ls /bugreports/
+  adb pull /bugreports/
 }
 
 dev_android_emulator_list()
@@ -2756,7 +2759,7 @@ dev_macios_xcode_reset()
 
 }
 
-dev_macios_xcode_install_simulators()
+dev_xcode_macios_install_simulators()
 {
   echo "--------------------------------------------------------------------------------------------------------------"
   echo \
@@ -2780,7 +2783,7 @@ dev_macios_xcode_install_simulators()
   xcodebuild -downloadPlatform visionOS
 }
 
-dev_macios_xcode_install_commandline_tools()
+dev_xcode_macios_install_commandline_tools()
 {
   echo "--------------------------------------------------------------------------------------------------------------"
   echo \
