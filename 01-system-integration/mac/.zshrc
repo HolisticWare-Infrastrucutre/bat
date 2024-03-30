@@ -88,7 +88,8 @@ export AndroidSdkDirectory=$ANDROID_HOME
 export MONO_GAC_PREFIX="/opt/homebrew"
 
 
-export PATH=/usr/bin/:/bin/:/usr/sbin/:/sbin/:/usr/local/bin/:/usr/local/sbin/
+export PATH=/usr/local/bin/:/usr/local/sbin/:
+export PATH=$PATH:/usr/bin/:/bin/:/usr/sbin/:/sbin/
 export PATH=$PATH:/usr/local/share/dotnet:$HOME/.dotnet/tools/
 export PATH=$PATH:/usr/local/bin/pwsh/
 # https://www.mono-project.com/docs/about-mono/supported-platforms/macos/
