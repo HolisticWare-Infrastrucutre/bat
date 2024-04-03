@@ -1569,11 +1569,11 @@ dev_dotnet_tools_reinstall_api_tools()
   echo \
   "
   dotnet tool uninstall --global private-api-tools
-  dotnet tool install --global private-api-tools --version 1.0.2
+  dotnet tool install --global private-api-tools --version 1.0.3
   "
   # source $HOME/bat/01-system-integration/mac/dotnet/tool/api-tools-private.sh
   dotnet tool uninstall --global private-api-tools
-  dotnet tool install --global private-api-tools --version 1.0.2
+  dotnet tool install --global private-api-tools --version 1.0.3
 }
 
 dev_dotnet_new_templates_reinstall()
@@ -1585,24 +1585,6 @@ dev_dotnet_new_templates_reinstall()
   "
   source $HOME/bat/01-system-integration/mac/dotnet/new-templates/install.sh 
 };
-
-dev_dotnet_tool_cake_install_2_3_0()
-{ 
-  echo "--------------------------------------------------------------------------------------------------------------"
-  echo \
-  "
-  "
-  dotnet tool \
-    uninstall \
-      --global \
-        Cake.Tool
-
-  dotnet tool \
-    install \
-      --global \
-        Cake.Tool \
-          --version 2.3.0
-}
 
 dev_dotnet_clean()
 {
@@ -2924,7 +2906,25 @@ open_finder_code_moljac_microsoft()
 
 
 
+work_on_microsoft_dotnet_android_ax_gps_fb_mlkit()
+{
+  echo "--------------------------------------------------------------------------------------------------------------"
+  echo \
+  "
+  source $HOME/bat.private/mac/microsoft/dotnet/android/ax-gps-fb-mlkit/all.sh
+  "
+  source $HOME/bat.private/mac/microsoft/dotnet/android/ax-gps-fb-mlkit/all.sh
+};
 
+work_on_microsoft_dotnet_maui()
+{
+  echo "--------------------------------------------------------------------------------------------------------------"
+  echo \
+  "
+  source $HOME/bat.private/mac/microsoft/dotnet/maui/all.sh
+  "
+  source $HOME/bat.private/mac/microsoft/dotnet/maui/all.sh
+};
 
 work_moljac()
 {
@@ -2946,7 +2946,47 @@ work_moljac()
   source $HOME/bat.private/mac/mchwn/firefox-moljac.sh
 };
 
-work_on_docs()
+work_on_microsoft_dotnet_maui_repo()
+{
+  echo "--------------------------------------------------------------------------------------------------------------"
+  echo \
+  "
+  "
+};
+
+work_on_microsoft_dotnet_maui_repo()
+{
+  echo "--------------------------------------------------------------------------------------------------------------"
+  echo \
+  "
+  "
+};
+
+work_on_microsoft_dotnet_maui_learn()
+{
+  echo "--------------------------------------------------------------------------------------------------------------"
+  echo \
+  "
+  source $HOME/bat.private/finder-code-term-maui.sh
+  "
+  source $HOME/bat.private/finder-code-term-maui.sh
+};
+
+work_on_moljac_holisticware()
+{
+  echo "--------------------------------------------------------------------------------------------------------------"
+  echo \
+  "
+  source $HOME/bat.private/finder-code-term-moljac-microsoft.sh
+  source $HOME/bat.private/mchwn/firefox-moljac.sh
+  source $HOME/bat.private/mchwc/firefox-moljac.sh
+  "
+  source $HOME/bat.private/finder-code-term-moljac-microsoft.sh
+  source $HOME/bat.private/mchwn/firefox-moljac.sh
+  source $HOME/bat.private/mchwc/firefox-moljac.sh
+};
+
+work_on_moljac_holisticware_doc()
 {
   echo "--------------------------------------------------------------------------------------------------------------"
   echo \
@@ -2958,27 +2998,9 @@ work_on_docs()
   source $HOME/bat.private/mac/finder-code-term-moljac-microsoft.sh  
 };
 
-work_on_maui()
-{
-  echo "--------------------------------------------------------------------------------------------------------------"
-  echo \
-  "
-  source $HOME/bat.private/finder-code-term-maui.sh
-  "
-  source $HOME/bat.private/finder-code-term-maui.sh
-};
 
-work_on_ax_gps_fb_mlkit()
-{
-  echo "--------------------------------------------------------------------------------------------------------------"
-  echo \
-  "
-  source $HOME/bat.private/finder-code-term-xamarin-ax-gps-fb-mlkit.sh
-  "
-  source $HOME/bat.private/finder-code-term-xamarin-ax-gps-fb-mlkit.sh
-};
 
-work_on_ph4ct3x()
+work_on_moljac_holisticware_ph4ct3x()
 {
   echo "--------------------------------------------------------------------------------------------------------------"
   echo \
@@ -2998,20 +3020,6 @@ work_on_moljac_microsoft()
   source $HOME/bat.private/finder-code-term-moljac-microsoft.sh
 };
 
-work_on_moljac_holisticware()
-{
-  echo "--------------------------------------------------------------------------------------------------------------"
-  echo \
-  "
-  source $HOME/bat.private/finder-code-term-moljac-microsoft.sh
-  source $HOME/bat.private/mchwn/firefox-moljac.sh
-  source $HOME/bat.private/mchwc/firefox-moljac.sh
-  "
-  source $HOME/bat.private/finder-code-term-moljac-microsoft.sh
-  source $HOME/bat.private/mchwn/firefox-moljac.sh
-  source $HOME/bat.private/mchwc/firefox-moljac.sh
-};
-
 work_on_moljac()
 {
   echo "--------------------------------------------------------------------------------------------------------------"
@@ -3024,25 +3032,31 @@ work_on_moljac()
   work_on_moljac_holisticware
 };
 
-work_on_judo()
+work_on_moljac_judo()
+{
+  echo "--------------------------------------------------------------------------------------------------------------"
+  echo \
+  "
+  source $HOME/bat.private/mac/moljac/judo/all.sh
+  "
+  source $HOME/bat.private/mac/moljac/judo/all.sh
+}
+
+work_on_judo_remove_me()
 {
   echo "--------------------------------------------------------------------------------------------------------------"
   echo \
   "
   source $HOME/bat/03-productivity/mac/finder-open-window-with-tabs-09-private-sport.sh
-
   term \\
     /Volumes/xFAT-1TB-2/e/personal-private/judo/
-
   term \\
     /Volumes/xFAT-1TB-2/e/personal-private/judo/HJS/01-pravno/DORH/02-kaznena-prijava-koraci/TODO/mails
   "
 
   source $HOME/bat/03-productivity/mac/finder-open-window-with-tabs-09-private-sport.sh
-
   term \
     /Volumes/xFAT-1TB-2/e/personal-private/judo/
-
   term \
     /Volumes/xFAT-1TB-2/e/personal-private/judo/HJS/01-pravno/DORH/02-kaznena-prijava-koraci/TODO/mails
 };
