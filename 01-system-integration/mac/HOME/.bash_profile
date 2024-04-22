@@ -1873,14 +1873,18 @@ dev_dotnet_android_bindings_binderator_build()
   dotnet \\
   cake nuget-diff.cake -v:diagnostic \\
   && \\
-  dotnet cake utilities.cake  
+  dotnet cake utilities.cake  \\
+  && \\
+  dotnet cake utilities.cake -t=generate-namespace-file 
   "
   dotnet cake -t=ci \
   && \
   dotnet \
   cake nuget-diff.cake -v:diagnostic \
   && \
-  dotnet cake utilities.cake  
+  dotnet cake utilities.cake \
+  && \
+  dotnet cake utilities.cake -t=generate-namespace-file 
 }
 
 dev_dotnet_android_bindings_binderator_config_update()
