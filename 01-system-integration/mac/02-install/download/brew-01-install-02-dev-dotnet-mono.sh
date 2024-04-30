@@ -39,6 +39,9 @@ brew \
         nuget \
 
 
+# old
+# brew install mono-mdk
+# brew install visual-studio
 
 
 
