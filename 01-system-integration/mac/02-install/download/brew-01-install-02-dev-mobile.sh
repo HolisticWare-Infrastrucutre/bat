@@ -242,6 +242,19 @@ sdkmanager "system-images;android-31;google_apis;x86_64"
 
 avdmanager create avd -n my_android_31 -k "system-images;android-31;google_apis;x86_64"
 
+
+#----------------------------------------------------------------------------------------------
+# https://github.com/xamarin/xamarin-macios/blob/main/DOWNLOADS.md
+# 
+brew $ACTION_VERB \
+    --cask \
+        xamarin-android \
+        xamarin-ios \
+        xamarin-mac \
+
+#----------------------------------------------------------------------------------------------
+
+
 #----------------------------------------------------------------------------------------------
 # tools development
 brew $ACTION_VERB \
