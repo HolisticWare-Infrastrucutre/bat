@@ -69,21 +69,27 @@ export JAVA_HOME=$JAVA_HOME_MICROSOFT
 #----------------------------------------------------------------------------------------------------------------------
 
 #----------------------------------------------------------------------------------------------------------------------
+# https://developer.android.com/tools/variables
 # ANDROID_HOME
 # ANDROID_SDK_ROOT
 # installed with Visual Studio (Xamarin)
-export ANDROID_HOME_XAMARIN=$HOME/Library/Developer/Xamarin/android-sdk-macosx
-export ANDROID_NDK_HOME_XAMARIN=/usr/local/bin
+export ANDROID_HOME_XAMARIN=$HOME/Library/Developer/Xamarin/android-sdk-macosx/
+export ANDROID_NDK_HOME_XAMARIN=/usr/local/bin/
 
 # installed with Android Studio
-export ANDROID_HOME_ANDROID_STUDIO=$HOME/Library/Android/sdk
+export ANDROID_HOME_ANDROID_STUDIO=$HOME/Library/Android/sdk/
 # installed with brew
-export ANDROID_HOME_BREW=/usr/local/share/android-sdk
+export ANDROID_HOME_BREW=/usr/local/share/android-sdk/
 
 export ANDROID_HOME=$ANDROID_HOME_ANDROID_STUDIO
 export ANDROID_SDK_ROOT=$ANDROID_HOME
 export ANDROID_NDK_HOME=$ANDROID_NDK_HOME_XAMARIN
 export AndroidSdkDirectory=$ANDROID_HOME
+export ANDROID_USER_HOME=$HOME/.android/
+export ANDROID_AVD_HOME=$ANDROID_USER_HOME/avd/
+export ANDROID_EMULATOR_HOME=$ANDROID_USER_HOME
+
+export ANDROID_PATH_CUMULATIVE=$PATH:$ANDROID_HOME/tools/:$ANDROID_HOME/tools/bin/:$ANDROID_HOME/platform-tools/
 #----------------------------------------------------------------------------------------------------------------------
 export MONO_GAC_PREFIX="/opt/homebrew"
 
@@ -99,6 +105,8 @@ export PATH=$PATH:$ANDROID_HOME/bin/
 export PATH=$PATH:$ANDROID_HOME/tools/
 export PATH=$PATH:$ANDROID_HOME/tools/bin/
 export PATH=$PATH:$ANDROID_HOME/platform-tool/
+export PATH=$PATH:$ANDROID_HOME/platform-tools/
+# ANDROID_PATH_CUMULATIVE
 export PATH=$PATH:$ANDROID_HOME/bundle-tool/
 export PATH=$PATH:$ANDROID_SDK_ROOT/
 export PATH=$PATH:$JAVA_HOME/
@@ -2845,6 +2853,59 @@ dev_ios_simulator_launch()
 # work   
 #   dotnet
 # start
+work_on_dev_dotnet_set ()
+{
+  work_on_dev_dotnet_nuget_set
+  work_on_dev_dotnet_github_set
+}
+
+work_on_dev_dotnet_clear ()
+{
+  work_on_dev_dotnet_nuget_clear
+  work_on_dev_dotnet_github_clear
+}
+
+work_on_dev_dotnet_nuget_set ()
+{
+  echo "--------------------------------------------------------------------------------------------------------------"
+  echo \
+  "
+  source $HOME/bat.private/mac/development/api-keys/nuget/set.sh
+  "
+  source $HOME/bat.private/mac/development/api-keys/nuget/clear.sh
+}
+
+work_on_dev_dotnet_nuget_set ()
+{
+  echo "--------------------------------------------------------------------------------------------------------------"
+  echo \
+  "
+  source $HOME/bat.private/mac/development/api-keys/nuget/set.sh
+  "
+  source $HOME/bat.private/mac/development/api-keys/nuget/set.sh
+  
+}
+
+work_on_dev_dotnet_github_set ()
+{
+  echo "--------------------------------------------------------------------------------------------------------------"
+  echo \
+  "
+  source $HOME/bat.private/mac/development/api-keys/github/set.sh
+  "
+  source $HOME/bat.private/mac/development/api-keys/github/clear.sh
+}
+
+work_on_dev_dotnet_github_set ()
+{
+  echo "--------------------------------------------------------------------------------------------------------------"
+  echo \
+  "
+  source $HOME/bat.private/mac/development/api-keys/github/set.sh
+  "
+  source $HOME/bat.private/mac/development/api-keys/github/set.sh
+  
+}
 
 # stop
 #   dotnet
@@ -3066,6 +3127,18 @@ work_on_judo_remove_me()
 };
 
 
+#======================================================================================================================
+# work   
+#   API Keys
+# start
+work_on_dev_api_keys ()
+{
+  
+}
+# stop
+#   API Keys
+# work   
+#======================================================================================================================
 
 
 #======================================================================================================================
