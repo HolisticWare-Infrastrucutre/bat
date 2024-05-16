@@ -1346,6 +1346,18 @@ dev_dotnet_info_dump_long()
   dotnet new --list
   "
   dotnet new --list
+
+  dev_dotnet_sdk_check
+}
+
+dev_dotnet_sdk_check()
+{ 
+  echo "--------------------------------------------------------------------------------------------------------------"
+  echo \
+  "
+  dotnet sdk check
+  "
+  dotnet sdk check
 }
 
 dev_dotnet_installation_clean()
@@ -2853,57 +2865,74 @@ dev_ios_simulator_launch()
 # work   
 #   dotnet
 # start
-work_on_dev_dotnet_set ()
+
+work_on_dev_dotnet_api_keys_set ()
 {
-  work_on_dev_dotnet_nuget_set
-  work_on_dev_dotnet_github_set
+  echo "--------------------------------------------------------------------------------------------------------------"
+  echo \
+  "
+  work_on_dev_dotnet_api_keys_nuget_set
+  work_on_dev_dotnet_api_keys_github_set
+  "
+  work_on_dev_dotnet_api_keys_nuget_set
+  work_on_dev_dotnet_api_keys_github_set
+
+  env
 }
 
-work_on_dev_dotnet_clear ()
-{
-  work_on_dev_dotnet_nuget_clear
-  work_on_dev_dotnet_github_clear
+work_on_dev_dotnet_api_keys_clear ()
+{  
+  echo "--------------------------------------------------------------------------------------------------------------"
+  echo \
+  "
+  work_on_dev_dotnet_api_keys_nuget_set
+  work_on_dev_dotnet_api_keys_github_set
+  "
+  work_on_dev_dotnet_api_keys_nuget_set
+  work_on_dev_dotnet_api_keys_github_set
+
+  env
 }
 
-work_on_dev_dotnet_nuget_set ()
+work_on_dev_dotnet_api_keys_nuget_set ()
 {
   echo "--------------------------------------------------------------------------------------------------------------"
   echo \
   "
   source $HOME/bat.private/mac/development/api-keys/nuget/set.sh
+  "
+  source $HOME/bat.private/mac/development/api-keys/nuget/set.sh
+}
+
+work_on_dev_dotnet_api_keys_nuget_clear ()
+{
+  echo "--------------------------------------------------------------------------------------------------------------"
+  echo \
   "
   source $HOME/bat.private/mac/development/api-keys/nuget/clear.sh
-}
-
-work_on_dev_dotnet_nuget_set ()
-{
-  echo "--------------------------------------------------------------------------------------------------------------"
-  echo \
   "
-  source $HOME/bat.private/mac/development/api-keys/nuget/set.sh
-  "
-  source $HOME/bat.private/mac/development/api-keys/nuget/set.sh
+  source $HOME/bat.private/mac/development/api-keys/nuget/clear.sh
   
 }
 
-work_on_dev_dotnet_github_set ()
+work_on_dev_dotnet_api_keys_github_set ()
 {
   echo "--------------------------------------------------------------------------------------------------------------"
   echo \
   "
   source $HOME/bat.private/mac/development/api-keys/github/set.sh
   "
-  source $HOME/bat.private/mac/development/api-keys/github/clear.sh
+  source $HOME/bat.private/mac/development/api-keys/github/set.sh
 }
 
-work_on_dev_dotnet_github_set ()
+work_on_dev_dotnet_api_keys_github_clear ()
 {
   echo "--------------------------------------------------------------------------------------------------------------"
   echo \
   "
-  source $HOME/bat.private/mac/development/api-keys/github/set.sh
+  source $HOME/bat.private/mac/development/api-keys/github/clear.sh
   "
-  source $HOME/bat.private/mac/development/api-keys/github/set.sh
+  source $HOME/bat.private/mac/development/api-keys/github/clear.sh
   
 }
 
