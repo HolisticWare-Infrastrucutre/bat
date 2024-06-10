@@ -112,6 +112,7 @@ export PATH=$PATH:$ANDROID_SDK_ROOT/
 export PATH=$PATH:$JAVA_HOME/
 export PATH=$PATH:$JAVA_HOME/bin/
 export PATH=$PATH:"/Applications/Visual Studio Code.app/Contents/Resources/app/bin/"
+export PATH="/opt/homebrew/opt/gnu-sed/libexec/gnubin":$PATH
 #----------------------------------------------------------------------------------------------------------------------
 #######################################################################################################################
 
@@ -180,6 +181,18 @@ sys_postinstall()
   dev_dotnet_new_templates_reinstall
   dev_dotnet_tools_reinstall
   dev_dotnet_tools_reinstall_api_tools
+
+  echo \
+  "
+  sys_term_fingerprint
+  sys_brew_clean_update
+  dev_macios_xcode_license_accept
+  dev_dotnet_workloads_reinstall
+  dev_dotnet_new_templates_reinstall
+  dev_dotnet_tools_reinstall
+  dev_dotnet_tools_reinstall_api_tools
+  "
+
 }
 
 sys_clean()
@@ -379,6 +392,12 @@ sys_brew_update_upgrade()
   brew update
   brew upgrade
 
+  brew update-reset && brew update
+
+  brew doctor
+  brew upgrade
+  brew upgrade --cask
+
   sys_brew_clean
 }
 
@@ -400,6 +419,12 @@ sys_brew_clean_update()
 
     brew update
     brew upgrade
+
+    brew update-reset && brew update
+
+    brew doctor
+    brew upgrade
+    brew upgrade --cask
 
     brew cleanup
     brew autoremove
@@ -1409,6 +1434,22 @@ dev_dotnet_installation_nuke_previews()
 
   dev_dotnet_workloads_reinstall
   dev_dotnet_workloads_list
+
+  echo \
+  "
+  dotnet --list-sdks
+  dotnet --list-runtimes
+
+  sudo rm -fr $(find /usr/local/share/dotnet/sdk -iname "*-preview*" -o -iname "*-rc*")
+  sudo rm -fr $(find /usr/local/share/dotnet/shared/Microsoft.AspNetCore.App -iname "*-preview*" -o -iname "*-rc*")
+  sudo rm -fr $(find /usr/local/share/dotnet/shared/Microsoft.NETCore.App -iname "*-preview*" -o -iname "*-rc*")
+
+  dotnet --list-sdks
+  dotnet --list-runtimes
+
+  dev_dotnet_workloads_reinstall
+  dev_dotnet_workloads_list
+  "
 }
 
 dev_dotnet_installation_install_preview()
@@ -1484,21 +1525,33 @@ dev_dotnet_workloads_list()
   echo "--------------------------------------------------------------------------------------------------------------"
   echo \
   "
-  dotnet workload list
+  dotnet sdk check
   "
-  dotnet workload list
+  dotnet sdk check
+  echo \
+  "
+  dotnet sdk check
+  "
+}
+dev_dotnet_workloads_list()
+{
   echo "--------------------------------------------------------------------------------------------------------------"
   echo \
   "
+  dotnet workload list
   dotnet workload list --machine-readable
+  dotnet workload update --print-rollback
   "
+  dotnet workload list
   dotnet workload list --machine-readable
-  echo "--------------------------------------------------------------------------------------------------------------"
+  dotnet workload update --print-rollback
+
   echo \
   "
+  dotnet workload list
+  dotnet workload list --machine-readable
   dotnet workload update --print-rollback
   "
-  dotnet workload update --print-rollback
 }
 
 dev_dotnet_workloads_reinstall()
@@ -1507,13 +1560,30 @@ dev_dotnet_workloads_reinstall()
   echo \
   "
   source $HOME/bat/01-system-integration/mac/dotnet/workload/install.sh
-
+  sudo dotnet workloads update
   dev_dotnet_workloads_list
   "
   source $HOME/bat/01-system-integration/mac/dotnet/workload/install.sh
-
+  sudo dotnet workloads update
   dev_dotnet_workloads_list
+
+  echo \
+  "
+  source $HOME/bat/01-system-integration/mac/dotnet/workload/install.sh
+  sudo dotnet workloads update
+  dev_dotnet_workloads_list
+  "
 };
+
+dev_dotnet_workloads_edit()
+{
+  echo "--------------------------------------------------------------------------------------------------------------"
+  echo \
+  "
+  code -n $HOME/bat/01-system-integration/mac/dotnet/workload/
+  "
+  code -n $HOME/bat/01-system-integration/mac/dotnet/workload/
+}
 
 dev_dotnet_workloads_clean()
 { 
@@ -2583,7 +2653,18 @@ dev_dotnet_maui_fix_installation ()
 #   ios
 # start
 
-dev_macios_xcode_license_accept()
+
+dev_macios_xcode_xcodebuild_sdks()
+{
+  echo "--------------------------------------------------------------------------------------------------------------"
+  echo \
+  "
+  xcodebuild -showsdks
+  "
+  xcodebuild -showsdks
+}
+
+dev_macios_xcode_xcodebuild_license_accept()
 {
   echo "--------------------------------------------------------------------------------------------------------------"
   echo \
@@ -2593,7 +2674,7 @@ dev_macios_xcode_license_accept()
   sudo xcodebuild -license accept
 }
 
-dev_macios_xcode_reset()
+dev_macios_xcode_xcodebuild_reset()
 {
   # https://learn.microsoft.com/en-us/dotnet/maui/troubleshooting#couldnt-find-a-valid-xcode-app-bundle
 
@@ -2766,6 +2847,7 @@ dev_macios_xcode_reset()
 
 }
 
+
 dev_xcode_macios_install_simulators()
 {
   echo "--------------------------------------------------------------------------------------------------------------"
@@ -2877,7 +2959,14 @@ work_on_dev_dotnet_api_keys_set ()
   work_on_dev_dotnet_api_keys_nuget_set
   work_on_dev_dotnet_api_keys_github_set
 
+  echo "--------------------------------------------------------------------------------------------------------------"
+  echo \
+  "
   env
+  env | grep 'API' 
+  "
+  env
+  env | grep 'API' 
 }
 
 work_on_dev_dotnet_api_keys_clear ()
@@ -2891,7 +2980,29 @@ work_on_dev_dotnet_api_keys_clear ()
   work_on_dev_dotnet_api_keys_nuget_set
   work_on_dev_dotnet_api_keys_github_set
 
+  echo "--------------------------------------------------------------------------------------------------------------"
+  echo \
+  "
   env
+  "
+  env
+  
+  echo "--------------------------------------------------------------------------------------------------------------"
+  echo \
+  "
+  env | grep 'API' 
+  "
+  env | grep 'API' 
+}
+
+work_on_dev_dotnet_aspire ()
+{
+  echo "--------------------------------------------------------------------------------------------------------------"
+  echo \
+  "
+  export ASPIRE_ALLOW_UNSECURED_TRANSPORT=true  
+  "
+  export ASPIRE_ALLOW_UNSECURED_TRANSPORT=true  
 }
 
 work_on_dev_dotnet_api_keys_nuget_set ()
@@ -2911,8 +3022,7 @@ work_on_dev_dotnet_api_keys_nuget_clear ()
   "
   source $HOME/bat.private/mac/development/api-keys/nuget/clear.sh
   "
-  source $HOME/bat.private/mac/development/api-keys/nuget/clear.sh
-  
+  source $HOME/bat.private/mac/development/api-keys/nuget/clear.sh 
 }
 
 work_on_dev_dotnet_api_keys_github_set ()
