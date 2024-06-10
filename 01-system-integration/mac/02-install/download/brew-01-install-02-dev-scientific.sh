@@ -1,5 +1,9 @@
 #!/bin/bash
 
+# Action/Verb
+# install / uninstall / reinstall
+export ACTION_VERB=install
+
 #----------------------------------------------------------------------------------------------
 brew tap homebrew/science # adds another source for applications.
 brew $ACTION_VERB \
@@ -67,3 +71,29 @@ jupyter-lab &
 jupyter notebook &
 voila &
 
+
+
+brew install \
+    gnu-sed
+
+brew install \
+    ddgr
+
+brew install --cask \
+    duckduckgo
+
+# search rigrep
+brew install \
+    rga \
+
+brew install \
+    pandoc \
+    poppler \
+    ffmpeg
+
+brew install \
+    ack
+
+brew install --cask \
+    devonthink
+    calibre

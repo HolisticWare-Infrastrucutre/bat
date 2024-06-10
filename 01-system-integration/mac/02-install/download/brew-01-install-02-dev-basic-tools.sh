@@ -24,6 +24,7 @@ brew $ACTION_VERB \
     watchman \
     ffmpeg \
     exiftool \
+    gnu-sed \
 
 brew $ACTION_VERB \
     zip \

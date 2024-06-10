@@ -1,14 +1,15 @@
 #!/bin/bash
 
 
+# Action/Verb
+# install / uninstall / reinstall
+export ACTION_VERB=install
 
 brew $ACTION_VERB \
     antigen \
 
 echo \
 "
-#!/bin/zsh
-
 source /usr/local/share/antigen/antigen.zsh
 antigen bundle lukechilds/zsh-nvm
 antigen apply

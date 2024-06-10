@@ -6,6 +6,7 @@ open https://visualstudio.microsoft.com/
 
 open https://visualstudio.microsoft.com/vs/preview/#download-preview
 
+export ACTION_VERB=install
 
 defaults write com.apple.finder AppleShowAllFiles YES
 defaults write com.apple.finder _FXShowPosixPathInTitle -bool false
@@ -36,6 +37,12 @@ eval "$(/opt/homebrew/bin/brew shellenv)"
 
 # https://github.com/Homebrew/homebrew-cask/blob/master/USAGE.md
 # /usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
+
+
+brew update
+brew install \
+    rbenv \
+    ruby-build
 
 
 brew install --cask \

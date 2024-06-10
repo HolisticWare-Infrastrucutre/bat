@@ -58,3 +58,10 @@ brew $ACTION_VERB --cask \
     postman-cli \
     postmancanary \
     protonvpn \
+
+brew $ACTION_VERB \
+    ddgr
+
+brew $ACTION_VERB --cask \
+    duckduckgo
+
