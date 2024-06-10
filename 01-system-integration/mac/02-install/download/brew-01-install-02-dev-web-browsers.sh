@@ -44,8 +44,8 @@ brew $ACTION_VERB --cask \
 
 #   conflicts
 brew $ACTION_VERB --cask \
-    firefox-beta \
     tor-browser-alpha \
+    firefox-beta \
 
 brew $ACTION_VERB \
     tor
@@ -59,9 +59,11 @@ brew $ACTION_VERB --cask \
     postmancanary \
     protonvpn \
 
-brew $ACTION_VERB \
-    ddgr
-
 brew $ACTION_VERB --cask \
     duckduckgo
+
+# https://github.com/jarun/ddgr
+# duck duck go 
+brew $ACTION_VERB \
+    ddgr
 
