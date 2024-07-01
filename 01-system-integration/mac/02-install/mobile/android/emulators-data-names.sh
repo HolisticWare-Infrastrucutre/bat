@@ -3,6 +3,8 @@
 # java 8 is required
 export JAVA_HOME=/Library/Java/JavaVirtualMachines/adoptopenjdk-8.jdk/Contents/Home
 
+# https://gist.github.com/mrk-han/66ac1a724456cadf1c93f4218c6060ae
+
 export EMULATORS=\
 "
 pixel
@@ -10,11 +12,6 @@ pixel_c
 pixel_xl
 "
 
-sdkmanager --list
-sdkmanager --update
-
-# need to download the image with sdkmanager
-sdkmanager "system-images;android-34;google_apis;arm64-v8a"
 
 export EMULATOR_NAME_PREFIX="emulator-android-34-google-apis-arm-v8a"
 
