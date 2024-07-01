@@ -48,6 +48,21 @@ do
 
 done
 
+export EMULATOR_NAME_PREFIX="emulator-android-34-google-apis-arm-v8a"
+
+echo "no" \
+    | \
+    avdmanager \
+        --verbose \
+            create avd \
+            --force \
+            --name $EMULATOR_NAME_PREFIX-Tablet \
+            --device 34 \
+            --package "system-images;android-34;google_apis;arm64-v8a" \
+            --tag "google_apis" \
+            --abi "arm64-v8a" \
+
+
 export JAVA_HOME=/Library/Java/JavaVirtualMachines/microsoft-11.jdk/Contents/Home/
 
 for EMULATOR in $EMULATORS;
