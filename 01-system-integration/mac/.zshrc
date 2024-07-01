@@ -92,8 +92,14 @@ export ANDROID_EMULATOR_HOME=$ANDROID_USER_HOME
 export ANDROID_PATH_CUMULATIVE=$PATH:$ANDROID_HOME/tools/:$ANDROID_HOME/tools/bin/:$ANDROID_HOME/platform-tools/
 #----------------------------------------------------------------------------------------------------------------------
 export MONO_GAC_PREFIX="/opt/homebrew"
+#----------------------------------------------------------------------------------------------------------------------
+export EDITOR="code"
+export HOMEBREW_EDITOR="/opt/homebrew/bin/code"
 
 
+#----------------------------------------------------------------------------------------------------------------------
+
+export PATH=/opt/homebrew/bin/:/opt/homebrew/bin:/opt/homebrew/sbin:/opt/homebrew/bin/:/opt/homebrew/sbin/
 export PATH=/usr/local/bin/:/usr/local/sbin/:
 export PATH=$PATH:/usr/bin/:/bin/:/usr/sbin/:/sbin/
 export PATH=$PATH:/usr/local/share/dotnet:$HOME/.dotnet/tools/
@@ -1253,6 +1259,23 @@ dev_ios_xcode_commandline_tools()
 # dev   
 #   dotnet
 # start
+
+dev_dotnet_build_server_shutdown()
+{
+  echo "=============================================================================================================="
+  echo \
+  "
+  dotnet build-server shutdown \
+    --msbuild
+  dotnet build-server shutdown \
+    --razor
+  "
+  dotnet build-server shutdown \
+    --msbuild
+  dotnet build-server shutdown \
+    --razor
+}
+
 
 dev_dotnet_build_brute_csproj()
 { 
@@ -2937,6 +2960,7 @@ dev_ios_simulator_launch()
 # xcrun simctl install <YOUR-DEVICE-ID> <PATH-TO-APPLICATION-BUNDLE>
 # xcrun simctl launch <YOUR-DEVICE-ID> <BUNDLE-ID-OF-APP-BUNDLE>      
 };
+
 
 # stop
 #   mac ios
