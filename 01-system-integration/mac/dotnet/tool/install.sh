@@ -161,6 +161,7 @@ Microsoft.CST.AttackSurfaceAnalyzer.CLI
 Microsoft.CST.OSSGadget.FindSquats.CLI
 security-scan
 NuGetDefense.Tool
+NuGet.PackageSourceMapper
 dotnet-ossindex
 # Security.Obfuscation
 Obfuscar.GlobalTool 
