@@ -129,6 +129,7 @@ alias ll='ls -al'
 alias vs="open -a Visual\ Studio\ \(Preview\)"
 alias vsc="code -n ."
 alias bode="open -na Brackets"
+alias brackets="open -na Brackets"
 # implemented as function
 # alias rider="open -a Rider"
 
@@ -253,11 +254,49 @@ sys_clean_diverse()
   rm -fr .octave*
 }
 
+sys_mode_light ()
+{
+  osascript -e 'tell app "System Events" to tell appearance preferences to set dark mode to not dark mode'
+  # osascript -e 'tell app "System Events" to tell appearance preferences to set
+
+  # defaults write -g NSRequiresAquaSystemAppearance -bool true
+  # defaults write -g AppleInterfaceStyleSwitchesAutomatically -bool true
+
+}
+
+sys_apps_reinstall_browsers_edge ()
+{
+  echo "--------------------------------------------------------------------------------------------------------------"
+  echo \
+  "
+  source bat/01-system-integration/mac/02-install/download/brew-01-install-02-dev-web-browsers-edge.sh
+  "
+
+  source bat/01-system-integration/mac/02-install/download/brew-01-install-02-dev-web-browsers-edge.sh
+}
 
 #   stop
 # sys
 #######################################################################################################################
 
+#######################################################################################################################
+# sys
+#   apps
+# start
+
+sys_apps_reinstall_browsers_edge()
+{
+  echo "--------------------------------------------------------------------------------------------------------------"
+  echo \
+  "
+  source ./bat/01-system-integration/mac/02-install/download/brew-01-install-02-dev-web-browsers-edge.sh  
+  "
+  source ./bat/01-system-integration/mac/02-install/download/brew-01-install-02-dev-web-browsers-edge.sh  
+}
+# stop
+#   apps
+# sys
+#######################################################################################################################
 
 #######################################################################################################################
 # sys
@@ -953,6 +992,12 @@ dev_android_emulator_launch_wipe_data_no_cache_no_snapshot()
     &
 };
 
+
+dev_android_emulators_avdmanager_list_avd()
+{
+  source bat/01-system-integration/mac/02-install/mobile/android/avdmanager-list-avd.sh
+}
+
 dev_android_emulators_install()
 {
   echo \
@@ -1254,11 +1299,226 @@ dev_ios_xcode_commandline_tools()
 # dev   
 #======================================================================================================================
 
+#======================================================================================================================
+# dev   
+#   devbox
+# start
+dev_devbox_browser()
+{
+  echo "=============================================================================================================="
+  echo \
+  "
+  open https://devbox.microsoft.com/
+  "
+
+  open https://devbox.microsoft.com/
+}
+
+dev_devbox_remote_desktop_connection()
+{
+  echo "=============================================================================================================="
+  echo \
+  "
+  open -a "Microsoft Remote Desktop"
+  "
+
+  open -a "Microsoft Remote Desktop"
+}
+
+# stop
+#   devbox
+# dev   
+#======================================================================================================================
 
 #======================================================================================================================
 # dev   
 #   dotnet
 # start
+
+dev_dotnet_installation_nuke()
+{
+  echo "=============================================================================================================="
+  echo \
+  "
+  START executing:
+  source $HOME/bat/01-system-integration/mac/dotnet/nuke.sh
+  "
+
+  source $HOME/bat/01-system-integration/mac/dotnet/nuke.sh
+
+  echo "=============================================================================================================="
+  echo \
+  "
+  STOP executing:
+  source $HOME/bat/01-system-integration/mac/dotnet/nuke.sh
+  "
+}
+
+dev_dotnet_installation_nuke_previews()
+{
+  echo "=============================================================================================================="
+  echo \
+  "
+  dotnet --list-sdks
+  dotnet --list-runtimes
+
+  sudo rm -fr $(find /usr/local/share/dotnet/sdk -iname "*-preview*" -o -iname "*-rc*")
+  sudo rm -fr $(find /usr/local/share/dotnet/shared/Microsoft.AspNetCore.App -iname "*-preview*" -o -iname "*-rc*")
+  sudo rm -fr $(find /usr/local/share/dotnet/shared/Microsoft.NETCore.App -iname "*-preview*" -o -iname "*-rc*")
+
+  dotnet --list-sdks
+  dotnet --list-runtimes
+
+  dev_dotnet_workloads_reinstall
+  dev_dotnet_workloads_list
+  "
+  dotnet --list-sdks
+  dotnet --list-runtimes
+
+  sudo rm -fr $(find /usr/local/share/dotnet/sdk -iname "*-preview*" -o -iname "*-rc*")
+  sudo rm -fr $(find /usr/local/share/dotnet/shared/Microsoft.AspNetCore.App -iname "*-preview*" -o -iname "*-rc*")
+  sudo rm -fr $(find /usr/local/share/dotnet/shared/Microsoft.NETCore.App -iname "*-preview*" -o -iname "*-rc*")
+
+  dotnet --list-sdks
+  dotnet --list-runtimes
+
+  dev_dotnet_workloads_reinstall
+  dev_dotnet_workloads_list
+
+  echo \
+  "
+  dotnet --list-sdks
+  dotnet --list-runtimes
+
+  sudo rm -fr $(find /usr/local/share/dotnet/sdk -iname "*-preview*" -o -iname "*-rc*")
+  sudo rm -fr $(find /usr/local/share/dotnet/shared/Microsoft.AspNetCore.App -iname "*-preview*" -o -iname "*-rc*")
+  sudo rm -fr $(find /usr/local/share/dotnet/shared/Microsoft.NETCore.App -iname "*-preview*" -o -iname "*-rc*")
+
+  dotnet --list-sdks
+  dotnet --list-runtimes
+
+  dev_dotnet_workloads_reinstall
+  dev_dotnet_workloads_list
+  "
+}
+
+dev_dotnet_installation_install_preview()
+{
+  echo "=============================================================================================================="
+  echo \
+  "
+  if [[ $\(uname -m\) == 'arm64' ]];
+  then
+    echo MBP M1/M2/M3
+    export FILE_DOTNET_PKG=https://download.visualstudio.microsoft.com/download/pr/ca8378e2-a2b8-4dc9-b54b-206feeff5ec5/22fdb7f35fab91ba799ea05bcae84742/dotnet-sdk-8.0.201-osx-arm64.pkg
+  else
+    echo MBP intel
+    export FILE_DOTNET_PKG=https://download.visualstudio.microsoft.com/download/pr/9508dade-753c-45eb-8220-216e8b552548/a5fc65c2b7ef2df9dfa003fbeac44f9f/dotnet-sdk-8.0.201-osx-x64.pkg
+  fi
+
+  dotnet --list-sdks
+  dotnet --list-runtimes
+
+  cd $HOME/Downloads/
+  curl \\
+    -v -L -C - \\
+    -o dotnet-sdk-downloaded.pkg \\
+    -O \\
+      $FILE_DOTNET_PKG
+
+  sudo installer \\
+    -pkg $HOME/Downloads/dotnet-sdk-downloaded.pkg \\
+    -target /  
+  rm -f dotnet-sdk-*.pkg
+  cd -
+
+  dotnet --list-sdks
+  dotnet --list-runtimes
+
+  dev_dotnet_workloads_reinstall
+  dev_dotnet_workloads_list
+  "
+  if [[ $(uname -m) == 'arm64' ]];
+  then
+    echo MBP M1/M2/M3
+    export FILE_DOTNET_PKG=https://download.visualstudio.microsoft.com/download/pr/ca8378e2-a2b8-4dc9-b54b-206feeff5ec5/22fdb7f35fab91ba799ea05bcae84742/dotnet-sdk-8.0.201-osx-arm64.pkg
+  else
+    echo MBP intel
+    export FILE_DOTNET_PKG=https://download.visualstudio.microsoft.com/download/pr/9508dade-753c-45eb-8220-216e8b552548/a5fc65c2b7ef2df9dfa003fbeac44f9f/dotnet-sdk-8.0.201-osx-x64.pkg
+  fi
+
+
+  dotnet --list-sdks
+  dotnet --list-runtimes
+
+  cd $HOME/Downloads/
+  curl \
+    -v -L -C - \
+    -o dotnet-sdk-downloaded.pkg \
+    -O \
+      $FILE_DOTNET_PKG
+
+  sudo installer \
+    -pkg $HOME/Downloads/dotnet-sdk-downloaded.pkg \
+    -target /  
+  rm -f dotnet-sdk-*.pkg
+  cd -
+
+  dotnet --list-sdks
+  dotnet --list-runtimes
+
+  dev_dotnet_workloads_reinstall
+}
+
+dev_dotnet_installation_uninstall()
+{
+  echo "=============================================================================================================="
+  echo \
+  "
+  START executing:
+  source $HOME/bat/01-system-integration/mac/dotnet/9.0/uninstall.sh
+  source $HOME/bat/01-system-integration/mac/dotnet/8.0/uninstall.sh
+  source $HOME/bat/01-system-integration/mac/dotnet/6.0/uninstall.sh
+  "
+
+  source $HOME/bat/01-system-integration/mac/dotnet/9.0/uninstall.sh
+  source $HOME/bat/01-system-integration/mac/dotnet/8.0/uninstall.sh
+  source $HOME/bat/01-system-integration/mac/dotnet/6.0/uninstall.sh
+
+  echo "=============================================================================================================="
+  echo \
+  "
+  STOP executing:
+  source $HOME/bat/01-system-integration/mac/dotnet/9.0/uninstall.sh
+  source $HOME/bat/01-system-integration/mac/dotnet/8.0/uninstall.sh
+  source $HOME/bat/01-system-integration/mac/dotnet/6.0/uninstall.sh
+  "
+}
+
+dev_dotnet_installation_download_packages()
+{
+  echo "=============================================================================================================="
+  echo \
+  "
+  START executing:
+  source $HOME/bat/01-system-integration/mac/dotnet/9.0/download.sh
+  source $HOME/bat/01-system-integration/mac/dotnet/8.0/download.sh
+  source $HOME/bat/01-system-integration/mac/dotnet/6.0/download.sh
+  "
+
+  source $HOME/bat/01-system-integration/mac/dotnet/9.0/download.sh
+  source $HOME/bat/01-system-integration/mac/dotnet/8.0/download.sh
+  source $HOME/bat/01-system-integration/mac/dotnet/6.0/download.sh
+
+  echo "=============================================================================================================="
+  echo \
+  "
+  STOP executing:
+  source $HOME/bat/01-system-integration/mac/dotnet/9.0/download.sh
+  source $HOME/bat/01-system-integration/mac/dotnet/8.0/download.sh
+  source $HOME/bat/01-system-integration/mac/dotnet/6.0/download.sh
+  "
+}
 
 dev_dotnet_build_server_shutdown()
 {
@@ -1406,141 +1666,6 @@ dev_dotnet_sdk_check()
   dotnet sdk check
   "
   dotnet sdk check
-}
-
-dev_dotnet_installation_clean()
-{
-  echo "--------------------------------------------------------------------------------------------------------------"
-  echo \
-  "
-  sudo rm -fr \
-      /usr/local/share/dotnet/sdk/* \
-      /usr/local/share/dotnet/sdk-manifests/* \
-      /usr/local/share/dotnet/shared/Microsoft.AspNetCore.App/* \
-      /usr/local/share/dotnet/shared/Microsoft.NETCore.App/* \
-  "
-  sudo rm -fr \
-      /usr/local/share/dotnet/sdk/* \
-      /usr/local/share/dotnet/sdk-manifests/* \
-      /usr/local/share/dotnet/shared/Microsoft.AspNetCore.App/* \
-      /usr/local/share/dotnet/shared/Microsoft.NETCore.App/* \
-
-}
-
-dev_dotnet_installation_nuke_previews()
-{
-  echo "=============================================================================================================="
-  echo \
-  "
-  dotnet --list-sdks
-  dotnet --list-runtimes
-
-  sudo rm -fr $(find /usr/local/share/dotnet/sdk -iname "*-preview*" -o -iname "*-rc*")
-  sudo rm -fr $(find /usr/local/share/dotnet/shared/Microsoft.AspNetCore.App -iname "*-preview*" -o -iname "*-rc*")
-  sudo rm -fr $(find /usr/local/share/dotnet/shared/Microsoft.NETCore.App -iname "*-preview*" -o -iname "*-rc*")
-
-  dotnet --list-sdks
-  dotnet --list-runtimes
-
-  dev_dotnet_workloads_reinstall
-  dev_dotnet_workloads_list
-  "
-  dotnet --list-sdks
-  dotnet --list-runtimes
-
-  sudo rm -fr $(find /usr/local/share/dotnet/sdk -iname "*-preview*" -o -iname "*-rc*")
-  sudo rm -fr $(find /usr/local/share/dotnet/shared/Microsoft.AspNetCore.App -iname "*-preview*" -o -iname "*-rc*")
-  sudo rm -fr $(find /usr/local/share/dotnet/shared/Microsoft.NETCore.App -iname "*-preview*" -o -iname "*-rc*")
-
-  dotnet --list-sdks
-  dotnet --list-runtimes
-
-  dev_dotnet_workloads_reinstall
-  dev_dotnet_workloads_list
-
-  echo \
-  "
-  dotnet --list-sdks
-  dotnet --list-runtimes
-
-  sudo rm -fr $(find /usr/local/share/dotnet/sdk -iname "*-preview*" -o -iname "*-rc*")
-  sudo rm -fr $(find /usr/local/share/dotnet/shared/Microsoft.AspNetCore.App -iname "*-preview*" -o -iname "*-rc*")
-  sudo rm -fr $(find /usr/local/share/dotnet/shared/Microsoft.NETCore.App -iname "*-preview*" -o -iname "*-rc*")
-
-  dotnet --list-sdks
-  dotnet --list-runtimes
-
-  dev_dotnet_workloads_reinstall
-  dev_dotnet_workloads_list
-  "
-}
-
-dev_dotnet_installation_install_preview()
-{
-  echo "=============================================================================================================="
-  echo \
-  "
-  if [[ $\(uname -m\) == 'arm64' ]];
-  then
-    echo MBP M1/M2/M3
-    export FILE_DOTNET_PKG=https://download.visualstudio.microsoft.com/download/pr/ca8378e2-a2b8-4dc9-b54b-206feeff5ec5/22fdb7f35fab91ba799ea05bcae84742/dotnet-sdk-8.0.201-osx-arm64.pkg
-  else
-    echo MBP intel
-    export FILE_DOTNET_PKG=https://download.visualstudio.microsoft.com/download/pr/9508dade-753c-45eb-8220-216e8b552548/a5fc65c2b7ef2df9dfa003fbeac44f9f/dotnet-sdk-8.0.201-osx-x64.pkg
-  fi
-
-  dotnet --list-sdks
-  dotnet --list-runtimes
-
-  cd $HOME/Downloads/
-  curl \\
-    -v -L -C - \\
-    -o dotnet-sdk-downloaded.pkg \\
-    -O \\
-      $FILE_DOTNET_PKG
-
-  sudo installer \\
-    -pkg $HOME/Downloads/dotnet-sdk-downloaded.pkg \\
-    -target /  
-  rm -f dotnet-sdk-*.pkg
-  cd -
-
-  dotnet --list-sdks
-  dotnet --list-runtimes
-
-  dev_dotnet_workloads_reinstall
-  dev_dotnet_workloads_list
-  "
-  if [[ $(uname -m) == 'arm64' ]];
-  then
-    echo MBP M1/M2/M3
-    export FILE_DOTNET_PKG=https://download.visualstudio.microsoft.com/download/pr/ca8378e2-a2b8-4dc9-b54b-206feeff5ec5/22fdb7f35fab91ba799ea05bcae84742/dotnet-sdk-8.0.201-osx-arm64.pkg
-  else
-    echo MBP intel
-    export FILE_DOTNET_PKG=https://download.visualstudio.microsoft.com/download/pr/9508dade-753c-45eb-8220-216e8b552548/a5fc65c2b7ef2df9dfa003fbeac44f9f/dotnet-sdk-8.0.201-osx-x64.pkg
-  fi
-
-
-  dotnet --list-sdks
-  dotnet --list-runtimes
-
-  cd $HOME/Downloads/
-  curl \
-    -v -L -C - \
-    -o dotnet-sdk-downloaded.pkg \
-    -O \
-      $FILE_DOTNET_PKG
-
-  sudo installer \
-    -pkg $HOME/Downloads/dotnet-sdk-downloaded.pkg \
-    -target /  
-  rm -f dotnet-sdk-*.pkg
-  cd -
-
-  dotnet --list-sdks
-  dotnet --list-runtimes
-
-  dev_dotnet_workloads_reinstall
 }
 
 dev_dotnet_workloads_list()
@@ -2006,9 +2131,19 @@ dev_dotnet_android_bindings_binderator_config_update()
   # dotnet script update-config.csx -- ./config.json <update|bump|published|sort>
   echo \
   "
-  dotnet script ./build/scripts/update-config.csx -- ./config.json update
+  dotnet cake -t=update-config
   "
-  dotnet script ./build/scripts/update-config.csx -- ./config.json update
+  
+  # dotnet script ./build/scripts/update-config.csx -- ./config.json update
+  dotnet cake -t=update-config
+
+  echo "_______________________________________________________________________________________________________________"
+  echo \
+  "
+  dotnet cake -t=update-config
+  DONE
+  "
+  echo "=============================================================================================================="
 }  
 
 dev_dotnet_android_bindings_binderator_config_bump()
