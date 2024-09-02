@@ -9,6 +9,7 @@ open \
         --args  \
         --new-window \
             "https://dotnet.microsoft.com/en-us/download" \
+            "https://dotnet.microsoft.com/en-us/download/dotnet/9.0" \
             "https://dotnet.microsoft.com/en-us/download/dotnet/8.0" \
             "https://dotnet.microsoft.com/en-us/download/dotnet/7.0" \
             "https://dotnet.microsoft.com/en-us/download/dotnet/6.0" \            
