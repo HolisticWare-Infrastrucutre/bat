@@ -1520,6 +1520,25 @@ dev_dotnet_installation_download_packages()
   "
 }
 
+dev_dotnet_installation_test()
+{
+  echo "=============================================================================================================="
+  echo \
+  "
+  START executing:
+  source $HOME/bat/01-system-integration/mac/dotnet/test.sh
+  "
+
+  source $HOME/bat/01-system-integration/mac/dotnet/test.sh
+
+  echo "=============================================================================================================="
+  echo \
+  "
+  STOP executing:
+  source $HOME/bat/01-system-integration/mac/dotnet/test.sh
+  "
+}
+
 dev_dotnet_build_server_shutdown()
 {
   echo "=============================================================================================================="
@@ -3381,6 +3400,18 @@ work_on_moljac_microsoft()
   source $HOME/bat.private/finder-code-term-moljac-microsoft.sh
   "
   source $HOME/bat.private/finder-code-term-moljac-microsoft.sh
+};
+
+
+work_on_moljac_private()
+{
+  echo "--------------------------------------------------------------------------------------------------------------"
+  echo \
+  "
+  $HOME/bat/03-productivity/mac/finder-open-window-with-tabs-09-private.sh
+  "
+  source \
+    $HOME/bat/03-productivity/mac/finder-open-window-with-tabs-09-private.sh
 };
 
 work_on_moljac()
