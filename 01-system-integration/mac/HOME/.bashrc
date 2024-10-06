@@ -166,6 +166,17 @@ setopt complete_aliases
 # sys
 # start
 
+sys_mount()
+{
+  diskutil list
+  diskutil mount /dev/disk6 /Volumes/xFAT-1TB-2
+  diskutil mountDisk /dev/disk6
+  mount -t /dev/disk6
+  mount force -t /dev/disk6
+  diskutil verifyDisk /dev/disk6
+  diskutil repairDisk /dev/disk6
+  diskutil repairDisk /dev/disk6
+}
 sys_postinstall()
 {
   echo "--------------------------------------------------------------------------------------------------------------"
@@ -2457,6 +2468,7 @@ dev_dotnet_maui_build_app_hybrid_blazor ()
 }
 
 #----------------------------------------------------------------------------------------------------------------------
+
 #----------------------------------------------------------------------------------------------------------------------
 dev_dotnet_maui_repo_build_buildtasks ()
 {
@@ -2819,6 +2831,25 @@ dev_dotnet_maui_fix_installation ()
 
 }
 
+dev_dotnet_maui_repo_build_all ()
+{
+  echo "--------------------------------------------------------------------------------------------------------------"
+  echo \
+  "
+  git clean -xdf ; dev_dotnet_maui_repo_build_visual_studio_code
+  git clean -xdf ; dev_dotnet_maui_repo_build_projects
+  git clean -xdf ; dev_dotnet_maui_repo_build_device_unit_tests
+  git clean -xdf ; dev_dotnet_maui_repo_build_device_ui_tests
+  git clean -xdf ; dev_dotnet_maui_repo_build_device_tests
+  "
+  git clean -xdf ; dev_dotnet_maui_repo_build_visual_studio_code
+  git clean -xdf ; dev_dotnet_maui_repo_build_projects
+  git clean -xdf ; dev_dotnet_maui_repo_build_device_unit_tests
+  git clean -xdf ; dev_dotnet_maui_repo_build_device_ui_tests
+  git clean -xdf ; dev_dotnet_maui_repo_build_device_tests
+}
+
+
 # stop
 #       maui
 #   dotnet
@@ -3126,6 +3157,10 @@ dev_ios_simulator_launch()
 #   dotnet
 # start
 
+work_init()
+{
+  finder-open-window-with-tabs-09-private.sh
+}
 work_on_dev_dotnet_api_keys_set ()
 {
   echo "--------------------------------------------------------------------------------------------------------------"
@@ -3354,6 +3389,18 @@ work_on_microsoft_dotnet_maui_learn()
   source $HOME/bat.private/finder-code-term-maui.sh
 };
 
+work_on_holisticware_core()
+{
+  echo "--------------------------------------------------------------------------------------------------------------"
+  echo \
+  "
+  open \\
+    https://github.com/AArnott/Library.Template
+  "
+  open \
+    https://github.com/AArnott/Library.Template
+};
+
 work_on_moljac_holisticware()
 {
   echo "--------------------------------------------------------------------------------------------------------------"
@@ -3402,6 +3449,28 @@ work_on_moljac_microsoft()
   source $HOME/bat.private/finder-code-term-moljac-microsoft.sh
 };
 
+work_on_init()
+{
+  echo "--------------------------------------------------------------------------------------------------------------"
+  echo \
+  "
+  work_on_main
+  work_on_moljac_private
+  "
+  work_on_main
+  work_on_moljac_private
+}
+
+work_on_main()
+{
+  echo "--------------------------------------------------------------------------------------------------------------"
+  echo \
+  "
+  $HOME/bat/03-productivity/mac/finder-open-window-with-tabs-00-main.sh
+  "
+  source \
+    $HOME/bat/03-productivity/mac/finder-open-window-with-tabs-00-main.sh
+};
 
 work_on_moljac_private()
 {
