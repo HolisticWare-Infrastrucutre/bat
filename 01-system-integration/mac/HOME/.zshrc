@@ -1698,17 +1698,23 @@ dev_dotnet_sdk_check()
   dotnet sdk check
 }
 
-dev_dotnet_workloads_list()
+dev_dotnet_workloads_maui_install()
 {
   echo "--------------------------------------------------------------------------------------------------------------"
   echo \
   "
-  dotnet sdk check
+  dotnet workload install \\
+    maui \\
+      --source https://api.nuget.org/v3/index.json
   "
-  dotnet sdk check
+  dotnet workload install \
+    maui \
+      --source https://api.nuget.org/v3/index.json
   echo \
   "
-  dotnet sdk check
+  dotnet workload install \\
+    maui \\
+      --source https://api.nuget.org/v3/index.json
   "
 }
 dev_dotnet_workloads_list()
