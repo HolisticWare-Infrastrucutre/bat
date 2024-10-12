@@ -177,6 +177,27 @@ sys_mount()
   diskutil repairDisk /dev/disk6
   diskutil repairDisk /dev/disk6
 }
+
+sys_dock_reset()
+{
+  echo "--------------------------------------------------------------------------------------------------------------"
+  echo \
+  "
+  source $HOME/bat/03-productivity/mac/dock-reset-applications.sh
+  "
+  source $HOME/bat/03-productivity/mac/dock-reset-applications.sh
+}
+
+sys_dock_setup()
+{
+  echo "--------------------------------------------------------------------------------------------------------------"
+  echo \
+  "
+  source $HOME/bat/03-productivity/mac/dock-setup-applications.sh
+  "
+  source $HOME/bat/03-productivity/mac/dock-setup-applications.sh
+}
+
 sys_postinstall()
 {
   echo "--------------------------------------------------------------------------------------------------------------"
@@ -2476,8 +2497,29 @@ dev_dotnet_maui_build_app_hybrid_blazor ()
 #----------------------------------------------------------------------------------------------------------------------
 
 #----------------------------------------------------------------------------------------------------------------------
+
+dev_dotnet_maui_android_java ()
+{
+  echo "--------------------------------------------------------------------------------------------------------------"
+  echo \
+  "
+  export JAVA_HOME=$JAVA_HOME_MICROSOFT_17
+  "
+  export JAVA_HOME=$JAVA_HOME_MICROSOFT_17
+}
+
 dev_dotnet_maui_repo_build_buildtasks ()
 {
+  echo "--------------------------------------------------------------------------------------------------------------"
+  echo \
+  "
+  dotnet tool restore
+  dotnet cake \
+    --target=dotnet-buildtasks \
+    --configuration="Release" \
+    --workloads=global
+  "
+
   dotnet tool restore
   dotnet cake \
     --target=dotnet-buildtasks \
@@ -3483,10 +3525,11 @@ work_on_moljac_private()
   echo "--------------------------------------------------------------------------------------------------------------"
   echo \
   "
-  $HOME/bat/03-productivity/mac/finder-open-window-with-tabs-09-private.sh
+  source \
+    $HOME/bat/03-productivity/mac/finder-open-window-with-tabs-09-private-e-external.scpt.sh
   "
   source \
-    $HOME/bat/03-productivity/mac/finder-open-window-with-tabs-09-private.sh
+    $HOME/bat/03-productivity/mac/finder-open-window-with-tabs-09-private-e-external.scpt.sh
 };
 
 work_on_moljac()
