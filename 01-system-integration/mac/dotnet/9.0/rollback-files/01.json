@@ -1,3 +1,6 @@
+/*
+  rc2
+*/
 {
     "microsoft.net.sdk.android": "35.0.0-rc.2.134/9.0.100-rc.2",
     "microsoft.net.sdk.ios": "18.0.9600-net9-rc2/9.0.100-rc.2",

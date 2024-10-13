@@ -1,0 +1,18 @@
+/*
+    8.0.402
+*/
+{
+  "microsoft.net.sdk.android": "34.0.138/8.0.100",
+  "microsoft.net.sdk.ios": "17.5.8030/8.0.100",
+  "microsoft.net.sdk.maccatalyst": "17.5.8030/8.0.100",
+  "microsoft.net.sdk.macos": "14.5.8030/8.0.100",
+  "microsoft.net.sdk.maui": "8.0.82/8.0.100",
+  "microsoft.net.sdk.tvos": "17.5.8030/8.0.100",
+  "microsoft.net.workload.mono.toolchain.current": "8.0.8/8.0.100",
+  "microsoft.net.workload.emscripten.current": "8.0.8/8.0.100",
+  "microsoft.net.workload.emscripten.net6": "8.0.8/8.0.100",
+  "microsoft.net.workload.emscripten.net7": "8.0.8/8.0.100",
+  "microsoft.net.workload.mono.toolchain.net6": "8.0.8/8.0.100",
+  "microsoft.net.workload.mono.toolchain.net7": "8.0.8/8.0.100",
+  "microsoft.net.sdk.aspire": "8.2.0/8.0.100"
+}
