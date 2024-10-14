@@ -55,4 +55,8 @@ do
 done
 
 
+# https://download.visualstudio.microsoft.com/download/pr
+# 
 
+
+35b0fb29-cadc-4083-aa26-6cecd2e7ffa1/1a9972a435b73ffdd0b462f979ea5b23/dotnet-sdk-8.0.403-osx-arm64.pkg
