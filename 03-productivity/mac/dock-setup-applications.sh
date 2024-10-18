@@ -5,6 +5,7 @@ export APPS=\
 /System/Applications/Utilities/Activity Monitor.app
 /System/Applications/Utilities/Terminal.app
 /Applications/iTerm.app
+/Applications/KeePassXC.app
 /Applications/Company Portal.app
 /Applications/Thunderbird.app
 /Applications/Microsoft Outlook.app
@@ -21,7 +22,7 @@ export APPS=\
 /Applications/Brackets.app
 /Applications/GitHub Desktop.app
 /Applications/Rider.app
-/Applications/Android\ Studio.app
+/Applications/Android Studio.app
 #/Applications/R.app
 #/Applications/RStudio.app
 /Applications/Docker.app
@@ -31,12 +32,12 @@ export APPS=\
 /Applications/Microsoft Edge Beta.app
 /Applications/Microsoft Edge Dev.app
 /Applications/Google Chrome.app
-/Applications/Google Chrome Dev.app
 /Applications/Google Chrome Beta.app
+/Applications/Google Chrome Dev.app
 /Applications/Google Chrome Canary.app
+/Applications/Firefox.app
 /Applications/Firefox Developer Edition.app
 /Applications/Firefox Nightly.app
-/Applications/Firefox.app
 /Applications/Opera.app
 /Applications/Opera Beta.app
 /Applications/Opera Mobile Emulator.app
