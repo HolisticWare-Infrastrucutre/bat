@@ -1,3 +1,5 @@
+# Amazon Q pre block. Keep at the top of this file.
+[[ -f "${HOME}/Library/Application Support/amazon-q/shell/zshrc.pre.zsh" ]] && builtin source "${HOME}/Library/Application Support/amazon-q/shell/zshrc.pre.zsh"
 setopt PROMPT_SUBST
 # PROMPT='%{$(pwd|grep --color=always /)%${#PWD}G%} %(!.%F{red}.%F{cyan})%n%f@%F{yellow}%m%f%(!.%F{red}.)%#%f '
 # PROMPT='$fg[cyan]%m:$fg[yellow] %T %B%30<..<%~%b %(!.#.>) '
@@ -41,14 +43,17 @@ plugins=\
 #----------------------------------------------------------------------------------------------------------------------
 # ls -1 /Library/Java/JavaVirtualMachines/
 
-# adoptopenjdk-8.jdk
 # amazon-corretto-8.jdk
-# jdk-21.jdk
+# jdk-23.jdk
 # microsoft-11.jdk
-# microsoft-16.jdk
 # microsoft-17.jdk
-# openjdk-8.jdk
+# microsoft-21.jdk
+# temurin-11.jdk
+# temurin-17.jdk
+# temurin-23.jdk
 # temurin-8.jdk
+# zulu-11.jdk
+# zulu-17.jdk
 # zulu-8.jdk
 
 export JAVA_HOME_ADOPTOPENJDK_8=/Library/Java/JavaVirtualMachines/adoptopenjdk-8.jdk/Contents/Home
@@ -57,8 +62,8 @@ export JAVA_HOME_OEPNJDJ_8=/Library/Java/JavaVirtualMachines/openjdk-8.jdk/Conte
 export JAVA_HOME_TEMURIN_8=/Library/Java/JavaVirtualMachines/temurin-8.jdk/Contents/Home
 export JAVA_HOME_ZULU_8=/Library/Java/JavaVirtualMachines/zulu-8.jdk/Contents/Home
 export JAVA_HOME_MICROSOFT_11=/Library/Java/JavaVirtualMachines/microsoft-11.jdk/Contents/Home
-export JAVA_HOME_MICROSOFT_16=/Library/Java/JavaVirtualMachines/microsoft-16.jdk/Contents/Home
 export JAVA_HOME_MICROSOFT_17=/Library/Java/JavaVirtualMachines/microsoft-17.jdk/Contents/Home
+export JAVA_HOME_MICROSOFT_21=/Library/Java/JavaVirtualMachines/microsoft-21.jdk/Contents/Home
 export JAVA_HOME_JDK_21=/Library/Java/JavaVirtualMachines/jdk-21.jdk/Contents/Home
 
 export JAVA_HOME_ANDROID_STUDIO=/Applications/Android\ Studio.app/Contents/jre/jdk/Contents/Home
@@ -75,6 +80,7 @@ export JAVA_HOME=$JAVA_HOME_MICROSOFT
 # installed with Visual Studio (Xamarin)
 export ANDROID_HOME_XAMARIN=$HOME/Library/Developer/Xamarin/android-sdk-macosx/
 export ANDROID_NDK_HOME_XAMARIN=/usr/local/bin/
+export ANDROID_NDK_HOME_BREW="/opt/homebrew/share/android-ndk"
 
 # installed with Android Studio
 export ANDROID_HOME_ANDROID_STUDIO=$HOME/Library/Android/sdk/
@@ -130,6 +136,7 @@ alias vs="open -a Visual\ Studio\ \(Preview\)"
 alias vsc="code -n ."
 alias bode="open -na Brackets"
 alias brackets="open -na Brackets"
+
 # implemented as function
 # alias rider="open -a Rider"
 
@@ -294,6 +301,20 @@ sys_mode_light ()
   # defaults write -g NSRequiresAquaSystemAppearance -bool true
   # defaults write -g AppleInterfaceStyleSwitchesAutomatically -bool true
 
+}
+
+sys_apps_reset_discord ()
+{
+  echo "--------------------------------------------------------------------------------------------------------------"
+  echo \
+  "
+  rm -fr "$HOME/Library/Application Support/discord/"
+  rm -fr "$HOME/Library/Caches/com.hnc.Discord/"
+  rm -fr "$HOME/Library/Caches/com.hnc.Discord.ShipIt/"
+  "
+  rm -fr "$HOME/Library/Application Support/discord/"
+  rm -fr "$HOME/Library/Caches/com.hnc.Discord/"
+  rm -fr "$HOME/Library/Caches/com.hnc.Discord.ShipIt/"
 }
 
 sys_apps_reinstall_browsers_edge ()
@@ -824,6 +845,63 @@ dev_profiling_speedscope()
   "
   open -na "Microsoft Edge Beta" \
     $HOME/bin/speedscope/index.html
+}
+
+# stop
+#   profiling speedscope
+# dev   
+#======================================================================================================================
+
+#======================================================================================================================
+# dev   
+#   java
+# start
+
+dev_java_jdk_8()
+{ 
+  echo "--------------------------------------------------------------------------------------------------------------"
+  echo \
+  "
+  export JAVA_HOME=$JAVA_HOME_CORRETO_8
+  "
+  export JAVA_HOME=$JAVA_HOME_CORRETO_8
+}
+
+dev_java_jdk_11()
+{ 
+  echo "--------------------------------------------------------------------------------------------------------------"
+  echo \
+  "
+  export JAVA_HOME=$JAVA_HOME_MICROSOFT_11
+  "
+  export JAVA_HOME=$JAVA_HOME_MICROSOFT_11
+
+  echo JAVA_HOME=$JAVA_HOME
+}
+
+dev_java_jdk_17()
+{ 
+  echo "--------------------------------------------------------------------------------------------------------------"
+  echo \
+  "
+  export JAVA_HOME=$JAVA_HOME_MICROSOFT_17
+  "
+  export JAVA_HOME=$JAVA_HOME_MICROSOFT_17
+
+  echo JAVA_HOME=$JAVA_HOME
+}
+
+
+dev_java_jdk_21()
+{ 
+  echo "--------------------------------------------------------------------------------------------------------------"
+  echo \
+  "
+  export JAVA_HOME=$JAVA_HOME_MICROSOFT_21
+  "
+  export JAVA_HOME=$JAVA_HOME_MICROSOFT_21
+
+  echo JAVA_HOME=$JAVA_HOME
 }
 
 # stop
@@ -1721,6 +1799,8 @@ dev_dotnet_sdk_check()
 
 dev_dotnet_workloads_maui_install()
 {
+  # https://github.com/dotnet/maui/wiki
+  # https://github.com/dotnet/maui/wiki/Release-Versions
   echo "--------------------------------------------------------------------------------------------------------------"
   echo \
   "
@@ -1927,6 +2007,14 @@ dev_dotnet_ide_rider()
       --args \
         $1
   # /Applications/Rider.app/Contents/MacOS/rider
+
+#---------------------------------------------------------------------
+# /Applications/PhpStorm.app/Contents/bin/idea.properties
+# $HOME/Library/Application\ Support/JetBrains/Rider2024.2/idea.properties
+# echo idea.case.sensitive.fs=true >> /Applications/Rider.app/Contents/bin/idea.properties
+#---------------------------------------------------------------------
+idea.case.sensitive.fs=true
+
 }
 
 dev_dotnet_msbuildlog ()
@@ -3651,3 +3739,6 @@ eval "$(/opt/homebrew/bin/brew shellenv)"
 
 sys_zsh_functions_list
 sys_zsh_functions_load
+
+# Amazon Q post block. Keep at the bottom of this file.
+[[ -f "${HOME}/Library/Application Support/amazon-q/shell/zshrc.post.zsh" ]] && builtin source "${HOME}/Library/Application Support/amazon-q/shell/zshrc.post.zsh"
