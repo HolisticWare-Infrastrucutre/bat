@@ -155,16 +155,20 @@ nukeeper
 dotnet-releaser
 NuSight
 # Security
+# Security.Packages.Dependencies
 dotnet-retire
-Microsoft.CST.DevSkim.CLI
-Microsoft.CST.AttackSurfaceAnalyzer.CLI
-Microsoft.CST.OSSGadget.FindSquats.CLI
-security-scan
 NuGetDefense.Tool
 NuGet.PackageSourceMapper
+dotnetarium-scs
 dotnet-ossindex
+# Security.StaticAnalysis
+security-scan
+Microsoft.CST.DevSkim.CLI
 # Security.Obfuscation
 Obfuscar.GlobalTool 
+# Security
+Microsoft.CST.AttackSurfaceAnalyzer.CLI
+Microsoft.CST.OSSGadget.FindSquats.CLI
 # Database
 dotnet-ef
 dotnet-orm
