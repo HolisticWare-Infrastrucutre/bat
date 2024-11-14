@@ -26,6 +26,13 @@ brew $ACTION_VERB --cask \
     opera \
     opera-neon \
 
+brew $ACTION_VERB \
+    --force \
+    --cask \
+        google-chrome@beta \
+        google-chrome@canary \
+        google-chrome@dev
+
 
 brew $ACTION_VERB --cask \
     browserosaurus \
