@@ -7,7 +7,8 @@
 # https://gist.github.com/cemo/6256fc41baa3914ace626fc7fe2cd955
 # https://stackoverflow.com/questions/42792947/how-to-create-android-virtual-device-with-command-line-and-avdmanager
 
-export JAVA_HOME=/Library/Java/JavaVirtualMachines/adoptopenjdk-8.jdk/Contents/Home
+export JAVA_HOME=$JAVA_HOME_JDK_8
+
 sdkmanager --list
 sdkmanager --update
 # recommendation always using the new 
@@ -21,4 +22,6 @@ export SYSTEM_IMAGE="system-images;android-34;google_atd;arm64-v8a"
 # need to download the image with sdkmanager
 sdkmanager $SYSTEM_IMAGE
 sdkmanager --install $SYSTEM_IMAGE
-export JAVA_HOME=/Library/Java/JavaVirtualMachines/microsoft-11.jdk/Contents/Home/
+
+export JAVA_HOME=$JAVA_HOME_JDK_11
+
