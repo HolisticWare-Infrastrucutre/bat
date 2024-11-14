@@ -6,7 +6,7 @@
 source "$(dirname "$0")/emulators-data-names.sh"
 
 # java 8 is required
-export JAVA_HOME=/Library/Java/JavaVirtualMachines/adoptopenjdk-8.jdk/Contents/Home
+export JAVA_HOME=$JAVA_HOME_JDK_8
 java -version
 
 echo \
@@ -63,7 +63,7 @@ echo "no" \
             --abi "arm64-v8a" \
 
 
-export JAVA_HOME=/Library/Java/JavaVirtualMachines/microsoft-11.jdk/Contents/Home/
+export JAVA_HOME=$JAVA_HOME_JDK_11
 
 for EMULATOR in $EMULATORS;
 do
