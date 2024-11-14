@@ -56,19 +56,27 @@ plugins=\
 # zulu-17.jdk
 # zulu-8.jdk
 
-export JAVA_HOME_ADOPTOPENJDK_8=/Library/Java/JavaVirtualMachines/adoptopenjdk-8.jdk/Contents/Home
-export JAVA_HOME_CORRETO_8=/Library/Java/JavaVirtualMachines/amazon-corretto-8.jdk/Contents/Home
-export JAVA_HOME_OEPNJDJ_8=/Library/Java/JavaVirtualMachines/openjdk-8.jdk/Contents/Home
+export JAVA_HOME_AMAZON_CORRETO_8=/Library/Java/JavaVirtualMachines/amazon-corretto-8.jdk/Contents/Home
+export JAVA_HOME_OEPNJDK_8=/Library/Java/JavaVirtualMachines/openjdk-8.jdk/Contents/Home
 export JAVA_HOME_TEMURIN_8=/Library/Java/JavaVirtualMachines/temurin-8.jdk/Contents/Home
+export JAVA_HOME_TEMURIN_11=/Library/Java/JavaVirtualMachines/temurin-11.jdk/Contents/Home
+export JAVA_HOME_TEMURIN_17=/Library/Java/JavaVirtualMachines/temurin-17.jdk/Contents/Home
+export JAVA_HOME_TEMURIN_23=/Library/Java/JavaVirtualMachines/temurin-23.jdk/Contents/Home
 export JAVA_HOME_ZULU_8=/Library/Java/JavaVirtualMachines/zulu-8.jdk/Contents/Home
+export JAVA_HOME_ZULU_11=/Library/Java/JavaVirtualMachines/zulu-11.jdk/Contents/Home
+export JAVA_HOME_ZULU_17=/Library/Java/JavaVirtualMachines/zulu-17.jdk/Contents/Home
 export JAVA_HOME_MICROSOFT_11=/Library/Java/JavaVirtualMachines/microsoft-11.jdk/Contents/Home
 export JAVA_HOME_MICROSOFT_17=/Library/Java/JavaVirtualMachines/microsoft-17.jdk/Contents/Home
 export JAVA_HOME_MICROSOFT_21=/Library/Java/JavaVirtualMachines/microsoft-21.jdk/Contents/Home
-export JAVA_HOME_JDK_21=/Library/Java/JavaVirtualMachines/jdk-21.jdk/Contents/Home
+export JAVA_HOME_JDK_8=$JAVA_HOME_AMAZON_CORRETO_8
+export JAVA_HOME_JDK_11=$JAVA_HOME_MICROSOFT_11
+export JAVA_HOME_JDK_17=$JAVA_HOME_MICROSOFT_17
+export JAVA_HOME_JDK_21=$JAVA_HOME_MICROSOFT_21
+export JAVA_HOME_JDK_23=$JAVA_HOME_TEMURIN_23
 
 export JAVA_HOME_ANDROID_STUDIO=/Applications/Android\ Studio.app/Contents/jre/jdk/Contents/Home
 # export JAVA_HOME_MICROSOFT=$HOME/Library/Developer/Xamarin/jdk/microsoft_dist_openjdk_1.8.0.25
-export JAVA_HOME_MICROSOFT=$JAVA_HOME_MICROSOFT_11
+export JAVA_HOME_MICROSOFT=$JAVA_HOME_JDK_11
 
 export JAVA_HOME=$JAVA_HOME_MICROSOFT
 #----------------------------------------------------------------------------------------------------------------------
@@ -322,10 +330,10 @@ sys_apps_reinstall_browsers_edge ()
   echo "--------------------------------------------------------------------------------------------------------------"
   echo \
   "
-  source bat/01-system-integration/mac/02-install/download/brew-01-install-02-dev-web-browsers-edge.sh
+  source $HOME/bat/01-system-integration/mac/02-install/download/brew-01-install-02-dev-web-browsers-edge.sh
   "
 
-  source bat/01-system-integration/mac/02-install/download/brew-01-install-02-dev-web-browsers-edge.sh
+  source $HOME/bat/01-system-integration/mac/02-install/download/brew-01-install-02-dev-web-browsers-edge.sh
 }
 
 #   stop
@@ -1105,25 +1113,25 @@ dev_android_emulator_launch_wipe_data_no_cache_no_snapshot()
 
 dev_android_emulators_avdmanager_list_avd()
 {
-  source bat/01-system-integration/mac/02-install/mobile/android/avdmanager-list-avd.sh
+  source $HOME/bat/01-system-integration/mac/02-install/mobile/android/avdmanager-list-avd.sh
 }
 
 dev_android_emulators_install()
 {
   echo \
   "
-  source bat/01-system-integration/mac/02-install/mobile/android/emulators-install.sh
+  source $HOME/bat/01-system-integration/mac/02-install/mobile/android/emulators-install.sh
   "
-  source bat/01-system-integration/mac/02-install/mobile/android/emulators-install.sh
+  source $HOME/bat/01-system-integration/mac/02-install/mobile/android/emulators-install.sh
 }
 
 dev_android_emulators_uninstall()
 {
   echo \
   "
-  source bat/01-system-integration/mac/02-install/mobile/android/emulators-uninstall.sh
+  source $HOME/bat/01-system-integration/mac/02-install/mobile/android/emulators-uninstall.sh
   "
-  source bat/01-system-integration/mac/02-install/mobile/android/emulators-uninstall.sh  
+  source $HOME/bat/01-system-integration/mac/02-install/mobile/android/emulators-uninstall.sh  
 }
 
 # https://developer.android.com/tools/adb
