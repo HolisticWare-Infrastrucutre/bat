@@ -9,17 +9,19 @@ export APPS=\
 /Applications/Company Portal.app
 /Applications/Thunderbird.app
 /Applications/Microsoft Outlook.app
-/Applications/Microsoft Remote Desktop.app
+#/Applications/Microsoft Remote Desktop.app
+/Applications/Windows App.app/
 /Applications/Microsoft Teams.app
 /Applications/Slack.app
 /Applications/Discord.app
 /Applications/WhatsApp.app
 /Applications/Telegram.app
-/Applications/Android Messages.app
+#/Applications/Android Messages.app
 /Applications/Visual Studio Code.app
 /Applications/Visual Studio Code - Insiders.app
-/Applications/Atom.app
-/Applications/Brackets.app
+#/Applications/Atom.app
+#/Applications/Brackets.app
+/Applications/Phoenix Code.app
 /Applications/GitHub Desktop.app
 /Applications/Rider.app
 /Applications/Android Studio.app
@@ -40,7 +42,7 @@ export APPS=\
 /Applications/Firefox Nightly.app
 /Applications/Opera.app
 /Applications/Opera Beta.app
-/Applications/Opera Mobile Emulator.app
+#/Applications/Opera Mobile Emulator.app
 /Applications/Postman Agent.app
 /Applications/Postman.app
 #
