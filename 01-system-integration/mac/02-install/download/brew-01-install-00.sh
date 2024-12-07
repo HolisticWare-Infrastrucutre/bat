@@ -175,9 +175,6 @@ brew $ACTION_VERB --cask \
     onyx \
     diffmerge \
 
-brew $ACTION_VERB --cask \
-    microsoft-remote-desktop
-
 
 # mind mapping and knowledge
 brew $ACTION_VERB --cask \
@@ -233,9 +230,6 @@ brew $ACTION_VERB --cask \
     dash \
 
 
-brew update 
-brew $ACTION_VERB \
-    azure-cli
 
 brew $ACTION_VERB --cask \
     google-cloud-sdk    
