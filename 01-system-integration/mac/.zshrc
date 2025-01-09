@@ -179,7 +179,25 @@ setopt complete_aliases
 
 #######################################################################################################################
 # sys
-# start
+#   start
+
+sys_name()
+{
+  # https://commons.lbl.gov/display/itfaq/The+different+types+of+computer+names+for+Mac+computers
+  echo "--------------------------------------------------------------------------------------------------------------"
+  echo \
+  "
+  scutil --get LocalHostName
+  scutil --get ComputerName
+  scutil --get HostName
+  hostname
+  "
+
+  scutil --get LocalHostName
+  scutil --get ComputerName
+  scutil --get HostName
+  hostname
+}
 
 sys_mount()
 {
@@ -325,6 +343,16 @@ sys_apps_reset_discord ()
   rm -fr "$HOME/Library/Caches/com.hnc.Discord.ShipIt/"
 }
 
+sys_apps_kill_Browserosaurus ()
+{
+  echo "--------------------------------------------------------------------------------------------------------------"
+  echo \
+  "
+  kill -9 $(ps aux | grep Browserosaurus | grep -v grep | awk '{print $2}')
+  "
+  kill -9 $(ps aux | grep Browserosaurus | grep -v grep | awk '{print $2}')
+}
+
 sys_apps_reinstall_browsers_edge ()
 {
   echo "--------------------------------------------------------------------------------------------------------------"
@@ -408,6 +436,34 @@ sys_finder_open_windows_and_tabs()
 #   term
 # start
 
+function pkill()
+{
+  echo "--------------------------------------------------------------------------------------------------------------"
+  echo \
+  "
+  if [[ $# -eq 0 ]]; 
+  then
+    kill -9 $(ps aux | grep Browserosaurus | grep -v grep | awk '{print $2}')
+  else
+    for X in `ps acx | grep -i $1 | awk {'print $1'}`; 
+    do
+      kill $X;
+    done  
+  fi
+  "
+  if [[ $# -eq 0 ]]; 
+  then
+    ARG=Browserosaurus
+    kill -9 $(ps aux | grep $ARG | grep -v grep | awk '{print $2}')
+  else
+    ARG=$1
+    for X in `ps acx | grep -i $ARG | awk {'print $ARG'}`; 
+    do
+      echo $X
+      # kill $X;
+    done  
+  fi
+}
 # creates a new terminal window
 function term() 
 {
@@ -692,6 +748,41 @@ sys_network_restart_brute()
     $DESTINATION
 
 }
+
+sys_network_wifi_name()
+{
+  echo "--------------------------------------------------------------------------------------------------------------"
+  echo \
+  "
+  system_profiler SPAirPortDataType \\
+  | \\
+  awk '/Current Network Information:/ { getline; print substr($0, 13, (length($0) - 13)); exit }'
+
+  system_profiler SPAirPortDataType \\
+  | \\
+  awk -F':' '/Current Network Information:/ {
+      getline
+      sub(/^ */, "")
+      sub(/:$/, "")
+      print
+  }'  
+  "
+  
+  system_profiler SPAirPortDataType \
+  | \
+  awk '/Current Network Information:/ { getline; print substr($0, 13, (length($0) - 13)); exit }'
+
+  system_profiler SPAirPortDataType \
+  | \
+  awk -F':' '/Current Network Information:/ {
+      getline
+      sub(/^ */, "")
+      sub(/:$/, "")
+      print
+  }'  
+
+}
+
 
 # sys   
 #   network
@@ -2418,6 +2509,81 @@ dev_dotnet_android_packages_uninstall()
 #       maui
 # start
 
+dev_dotnet_maui_new_demo_repro_multitarget ()
+{
+  echo "--------------------------------------------------------------------------------------------------------------"
+  echo \
+  "
+  mkdir net8.0
+  mkdir net9.0
+
+  dotnet new \
+      globaljson \
+          --sdk-version 8.0.404 \
+          --output net8.0\
+
+
+  dotnet new \
+      globaljson \
+          --sdk-version 9.0.100 \
+          --output net9.0\
+
+  dotnet new \
+      maui \
+          --framework net8.0 \
+          --output net8.0/AppMAUI
+
+  dotnet new \
+      maui \
+          --framework net9.0 \
+          --output net9.0/AppMAUI
+
+  dotnet new \
+      sln \
+          --output net8.0/ \
+          --name Repro
+
+  dotnet new \
+      sln \
+          --output net9.0/ \
+          --name Repro
+  "
+  mkdir net8.0
+  mkdir net9.0
+
+  dotnet new \
+      globaljson \
+          --sdk-version 8.0.404 \
+          --output net8.0\
+
+
+  dotnet new \
+      globaljson \
+          --sdk-version 9.0.100 \
+          --output net9.0\
+
+  dotnet new \
+      maui \
+          --framework net8.0 \
+          --output net8.0/AppMAUI
+
+  dotnet new \
+      maui \
+          --framework net9.0 \
+          --output net9.0/AppMAUI
+
+  dotnet new \
+      sln \
+          --output net8.0/ \
+          --name Repro
+
+  dotnet new \
+      sln \
+          --output net9.0/ \
+          --name Repro
+
+}
+
 dev_dotnet_maui_new_lib ()
 {
   TIMESTAMP=$( date "+%Y%m%d%H%M%S" )
@@ -2805,6 +2971,13 @@ dev_dotnet_maui_repo_build_visual_studio ()
       --android \
       --ios  \
       --catalyst
+
+  dotnet build ./Microsoft.Maui.BuildTasks.slnf      
+  dotnet build ./Microsoft.Maui-mac.slnf
+  dotnet build ./Microsoft.Maui.Samples.slnf
+  dotnet build ./Microsoft.Maui.LegacyControlGallery.slnf /p:EnableWindowsTargeting=true
+  dotnet build ./Microsoft.Maui.Packages-mac.slnf
+  #  dotnet build ./Microsoft.Maui.Graphics.slnf /p:EnableWindowsTargeting=true
 }
 
 dev_dotnet_maui_repo_build_visual_studio_code ()
@@ -2996,6 +3169,40 @@ dev_dotnet_maui_repo_build_all ()
 
 # stop
 #       maui
+#   dotnet
+# dev   
+#======================================================================================================================
+
+#======================================================================================================================
+# dev   
+#   dotnet
+#       macios
+# start
+
+dev_dotnet_macios_xcode_cli_tools ()
+{
+  xcodebuild -version
+  #On versions 10.9 and later (OS X Yosemite to macOS Monterey):
+  pkgutil --pkg-info=com.apple.pkg.CLTools_Executables
+  # on OS X 10.8 (Mountain Lion):
+  pkgutil --pkg-info=com.apple.pkg.DeveloperToolsCLI
+  softwareupdate --history
+}
+
+# greyed out simulators
+dev_dotnet_macios_xcode_reset ()
+{
+  echo "--------------------------------------------------------------------------------------------------------------"
+  echo \
+  "
+  sudo xcode-select --reset
+  sudo xcode-select -s /Applications/Xcode.app  
+  "
+  sudo xcode-select --reset
+  sudo xcode-select -s /Applications/Xcode.app
+}
+# stop
+#       macios
 #   dotnet
 # dev   
 #======================================================================================================================
@@ -3413,6 +3620,9 @@ work_on_dev_dotnet_api_keys_github_clear ()
 
 # if firefox is opened this will open additonal tabs
 
+# Miljenkos-MacBook-Pro-16-2023-ARM-M2
+# Miljenkos-MacBook-Pro-16-2019-x64
+
 open_browser_firefox_moljac()
 {
   echo "--------------------------------------------------------------------------------------------------------------"
@@ -3674,9 +3884,24 @@ work_on_judo_remove_me()
 # work   
 #   API Keys
 # start
+
+# Miljenkos-MacBook-Pro-16-2023-ARM-M2
+# Miljenkos-MacBook-Pro-16-2019-x64
+
 work_on_dev_api_keys ()
 {
-  
+  export BOXNAME=$(scutil --get LocalHostName)
+  case $BOXNAME in
+    Miljenkos-MacBook-Pro-16-2023-ARM-M2)  
+      echo NEW
+      ;;
+    Miljenkos-MacBook-Pro-16-2019-x64)  
+      echo OLD
+      ;;
+    *)    
+      echo something else
+      ;;
+  esac  
 }
 # stop
 #   API Keys
