@@ -110,7 +110,7 @@ export MONO_GAC_PREFIX="/opt/homebrew"
 export EDITOR="code"
 export HOMEBREW_EDITOR="/opt/homebrew/bin/code"
 
-
+# export MSBUILDDISABLENODEREUSE=1
 #----------------------------------------------------------------------------------------------------------------------
 
 export PATH=/opt/homebrew/bin/:/opt/homebrew/bin:/opt/homebrew/sbin:/opt/homebrew/bin/:/opt/homebrew/sbin/
@@ -197,6 +197,38 @@ sys_name()
   scutil --get ComputerName
   scutil --get HostName
   hostname
+}
+
+sys_box_name()
+{
+  echo \
+  "
+  export BOXNAME=$(scutil --get LocalHostName)
+  case $BOXNAME in
+    Miljenkos-MacBook-Pro-16-2023-ARM-M2)  
+      echo Miljenkos-MacBook-Pro-16-2023-ARM-M2
+      ;;
+    Miljenkos-MacBook-Pro-16-2019-x64)  
+      echo Miljenkos-MacBook-Pro-16-2019-x64
+      ;;
+    *)    
+      echo Unknown box
+      ;;
+  esac  
+  "
+
+  export BOXNAME=$(scutil --get LocalHostName)
+  case $BOXNAME in
+    Miljenkos-MacBook-Pro-16-2023-ARM-M2)  
+      echo Miljenkos-MacBook-Pro-16-2023-ARM-M2
+      ;;
+    Miljenkos-MacBook-Pro-16-2019-x64)  
+      echo Miljenkos-MacBook-Pro-16-2019-x64
+      ;;
+    *)    
+      echo Unknown box
+      ;;
+  esac  
 }
 
 sys_mount()
@@ -857,7 +889,7 @@ sys_audio_restart_launchctl_stop()
 
 #======================================================================================================================
 # dev   
-# start
+#   start
 
 dev_info_dump_long()
 {
@@ -866,15 +898,14 @@ dev_info_dump_long()
   "
   dev_dotnet_info_dump 
   dev_android_info_dump
-  dev_ios_info_dump
+  dev_macios_info_dump
   "
-
   dev_dotnet_info_dump 
   dev_android_info_dump
-  dev_ios_info_dump
+  dev_macios_info_dump
 }
 
-# stop
+#   stop
 # dev   
 #======================================================================================================================
 
@@ -1468,40 +1499,7 @@ dev_android_decompile_jar_luyten()
 #   ios
 # start
 
-dev_ios_info_dump()
-{ 
-  echo "=============================================================================================================="
-  echo "Apple iOS/MacOS"
 
-  echo "--------------------------------------------------------------------------------------------------------------"
-  echo \
-  "
-  /usr/bin/xcodebuild -version
-  "
-  /usr/bin/xcodebuild -version
-
-  echo "--------------------------------------------------------------------------------------------------------------"
-  echo \
-  "
-  softwareupdate --history
-  "
-  softwareupdate --history
-}
-
-dev_ios_xcode_commandline_tools()
-{
-  echo "--------------------------------------------------------------------------------------------------------------"
-  echo \
-  "
-  sudo rm -rf /Library/Developer/CommandLineTools
-  sudo xcode-select --install
-  softwareupdate --all --install --force
-  "
-
-  sudo rm -rf /Library/Developer/CommandLineTools
-  sudo xcode-select --install
-  softwareupdate --all --install --force
-}
 
 # stop
 #   ios
@@ -3179,138 +3177,9 @@ dev_dotnet_maui_repo_build_all ()
 #       macios
 # start
 
-dev_dotnet_macios_xcode_cli_tools ()
-{
-  xcodebuild -version
-  #On versions 10.9 and later (OS X Yosemite to macOS Monterey):
-  pkgutil --pkg-info=com.apple.pkg.CLTools_Executables
-  # on OS X 10.8 (Mountain Lion):
-  pkgutil --pkg-info=com.apple.pkg.DeveloperToolsCLI
-  softwareupdate --history
-}
-
-# greyed out simulators
-dev_dotnet_macios_xcode_reset ()
-{
-  echo "--------------------------------------------------------------------------------------------------------------"
-  echo \
-  "
-  sudo xcode-select --reset
-  sudo xcode-select -s /Applications/Xcode.app  
-  "
-  sudo xcode-select --reset
-  sudo xcode-select -s /Applications/Xcode.app
-}
 # stop
 #       macios
 #   dotnet
-# dev   
-#======================================================================================================================
-
-#======================================================================================================================
-# dev   
-#   ios
-# start
-
-
-dev_macios_xcode_xcodebuild_sdks()
-{
-  echo "--------------------------------------------------------------------------------------------------------------"
-  echo \
-  "
-  xcodebuild -showsdks
-  "
-  xcodebuild -showsdks
-}
-
-dev_macios_xcode_xcodebuild_license_accept()
-{
-  echo "--------------------------------------------------------------------------------------------------------------"
-  echo \
-  "
-  sudo xcodebuild -license accept
-  "
-  sudo xcodebuild -license accept
-}
-
-dev_macios_xcode_xcodebuild_reset()
-{
-  # https://learn.microsoft.com/en-us/dotnet/maui/troubleshooting#couldnt-find-a-valid-xcode-app-bundle
-
-  echo "--------------------------------------------------------------------------------------------------------------"
-  echo \
-  "
-  sudo xcode-select --reset
-  "
-  sudo xcode-select --reset
-}
-
-dev_macios_xcode_install_commandline_tools()
-{
-  echo "--------------------------------------------------------------------------------------------------------------"
-  sudo rm -rf /Library/Developer/CommandLineTools
-  sudo xcode-select --install
-  sleep 1
-  osascript \
-    -e 'tell application "System Events"' \
-      -e 'tell process "Install Command Line Developer Tools"' \
-        -e 'keystroke return' \
-        -e 'click button "Agree" of window "License Agreement"' \
-      -e 'end tell' \
-    -e 'end tell'
-};
-
-dev_ios_simulator_list()
-{
-  echo "--------------------------------------------------------------------------------------------------------------"
-  echo \
-  "
-  xcrun simctl list
-  "
-
-  xcrun simctl list
-};
-
-export IOS_DEVICE_ID="73FC4795-80E6-4ED9-9BB5-716206BDAFCD"
-
-dev_ios_simulator_launch()
-{
-  echo "--------------------------------------------------------------------------------------------------------------"
-  echo \
-  "
-  open -a \
-    Simulator \
-      --args \
-        -CurrentDeviceUDID $IOS_DEVICE_ID
-  "
-
-  open -a \
-    Simulator \
-      --args \
-        -CurrentDeviceUDID $IOS_DEVICE_ID
-
-#  /Applications/Xcode.app/Contents/Developer/Applications/Simulator.app/Contents/MacOS/Simulator \
-#    -CurrentDeviceUDID \
-#      $DEVICE_ID
-
-# create device using xcrun simctl.
-# Boot the simulator with that device
-# xcrun simctl install <YOUR-DEVICE-ID> <PATH-TO-APPLICATION-BUNDLE>
-# xcrun simctl launch <YOUR-DEVICE-ID> <BUNDLE-ID-OF-APP-BUNDLE>      
-};
-
-dev_ios_simulator_reset()
-{
-  echo "--------------------------------------------------------------------------------------------------------------"
-  echo \
-  "
-  xcrun simctl erase all
-  "
-  xcrun simctl erase all
-}
-
-# stop
-#   ios
 # dev   
 #======================================================================================================================
 
@@ -3389,8 +3258,194 @@ dev_tools_git_prune()
 
 #======================================================================================================================
 # dev   
-#   mac ios
+#   macios
 # start
+
+dev_macios_xcode_cli_tools ()
+{
+  xcodebuild -version
+  #On versions 10.9 and later (OS X Yosemite to macOS Monterey):
+  pkgutil --pkg-info=com.apple.pkg.CLTools_Executables
+  # on OS X 10.8 (Mountain Lion):
+  pkgutil --pkg-info=com.apple.pkg.DeveloperToolsCLI
+  softwareupdate --history
+}
+
+# greyed out simulators
+dev_macios_xcode_reset ()
+{
+  echo "--------------------------------------------------------------------------------------------------------------"
+  echo \
+  "
+  sudo xcode-select --reset
+  sudo xcode-select -s /Applications/Xcode.app  
+  "
+  sudo xcode-select --reset
+  sudo xcode-select -s /Applications/Xcode.app
+}
+
+dev_macios_info_dump()
+{ 
+  echo "=============================================================================================================="
+  echo "Apple iOS/MacOS"
+
+  echo "--------------------------------------------------------------------------------------------------------------"
+  echo \
+  "
+  /usr/bin/xcodebuild -version
+  "
+  /usr/bin/xcodebuild -version
+
+  echo "--------------------------------------------------------------------------------------------------------------"
+  echo \
+  "
+  softwareupdate --history
+  "
+  softwareupdate --history
+}
+
+dev_macios_xcode_commandline_tools_reinstall()
+{
+  echo "--------------------------------------------------------------------------------------------------------------"
+  echo \
+  "
+  sudo rm -rf /Library/Developer/CommandLineTools
+  sudo xcode-select --install
+  softwareupdate --all --install --force
+  "
+  sudo rm -rf /Library/Developer/CommandLineTools
+  sudo xcode-select --install
+  softwareupdate --all --install --force
+}
+
+dev_macios_xcode_commandline_tools_version()
+{
+  echo "--------------------------------------------------------------------------------------------------------------"
+  echo \
+  "
+  #On versions 10.9 and later (OS X Yosemite to macOS Monterey):
+  pkgutil --pkg-info=com.apple.pkg.CLTools_Executables
+  # on OS X 10.8 (Mountain Lion):
+  pkgutil --pkg-info=com.apple.pkg.DeveloperToolsCLI
+  "
+  #On versions 10.9 and later (OS X Yosemite to macOS Monterey):
+  pkgutil --pkg-info=com.apple.pkg.CLTools_Executables
+  # on OS X 10.8 (Mountain Lion):
+  pkgutil --pkg-info=com.apple.pkg.DeveloperToolsCLI
+}
+
+dev_macios_xcode_version()
+{
+  echo "--------------------------------------------------------------------------------------------------------------"
+  echo \
+  "
+  xcodebuild -version
+  "
+  xcodebuild -version
+}
+
+dev_macios_softwareupdate_history()
+{
+  echo "--------------------------------------------------------------------------------------------------------------"
+  echo \
+  "
+  softwareupdate --history
+  "
+  softwareupdate --history
+}
+
+dev_macios_xcode_xcodebuild_sdks()
+{
+  echo "--------------------------------------------------------------------------------------------------------------"
+  echo \
+  "
+  xcodebuild -showsdks
+  "
+  xcodebuild -showsdks
+}
+
+dev_macios_xcode_xcodebuild_license_accept()
+{
+  echo "--------------------------------------------------------------------------------------------------------------"
+  echo \
+  "
+  sudo xcodebuild -license accept
+  "
+  sudo xcodebuild -license accept
+}
+
+dev_macios_xcode_xcodebuild_reset()
+{
+  # https://learn.microsoft.com/en-us/dotnet/maui/troubleshooting#couldnt-find-a-valid-xcode-app-bundle
+
+  echo "--------------------------------------------------------------------------------------------------------------"
+  echo \
+  "
+  sudo xcode-select --reset
+  "
+  sudo xcode-select --reset
+}
+
+dev_macios_xcode_install_commandline_tools()
+{
+  echo "--------------------------------------------------------------------------------------------------------------"
+  sudo rm -rf /Library/Developer/CommandLineTools
+  sudo xcode-select --install
+  sleep 1
+  osascript \
+    -e 'tell application "System Events"' \
+      -e 'tell process "Install Command Line Developer Tools"' \
+        -e 'keystroke return' \
+        -e 'click button "Agree" of window "License Agreement"' \
+      -e 'end tell' \
+    -e 'end tell'
+};
+
+dev_macios_simulator_list()
+{
+  echo "--------------------------------------------------------------------------------------------------------------"
+  echo \
+  "
+  xcrun simctl list
+  "
+  xcrun simctl list
+};
+
+export IOS_DEVICE_ID="73FC4795-80E6-4ED9-9BB5-716206BDAFCD"
+
+dev_macios_simulator_launch()
+{
+  echo "--------------------------------------------------------------------------------------------------------------"
+  echo \
+  "
+  open -a \
+    Simulator \
+      --args \
+        -CurrentDeviceUDID $IOS_DEVICE_ID
+  "
+  open -a \
+    Simulator \
+      --args \
+        -CurrentDeviceUDID $IOS_DEVICE_ID
+#  /Applications/Xcode.app/Contents/Developer/Applications/Simulator.app/Contents/MacOS/Simulator \
+#    -CurrentDeviceUDID \
+#      $DEVICE_ID
+
+# create device using xcrun simctl.
+# Boot the simulator with that device
+# xcrun simctl install <YOUR-DEVICE-ID> <PATH-TO-APPLICATION-BUNDLE>
+# xcrun simctl launch <YOUR-DEVICE-ID> <BUNDLE-ID-OF-APP-BUNDLE>      
+};
+
+dev_macios_simulator_reset()
+{
+  echo "--------------------------------------------------------------------------------------------------------------"
+  echo \
+  "
+  xcrun simctl erase all
+  "
+  xcrun simctl erase all
+}
 
 dev_macios_xcode_reset()
 {
@@ -3401,13 +3456,10 @@ dev_macios_xcode_reset()
   "
   sudo xcode-select --reset
   "
-
   sudo xcode-select --reset
-
 }
 
-
-dev_xcode_macios_install_simulators()
+dev_macios_xcode_install_simulators()
 {
   echo "--------------------------------------------------------------------------------------------------------------"
   echo \
@@ -3431,7 +3483,7 @@ dev_xcode_macios_install_simulators()
   xcodebuild -downloadPlatform visionOS
 }
 
-dev_xcode_macios_install_commandline_tools()
+dev_macios_xcode_install_commandline_tools()
 {
   echo "--------------------------------------------------------------------------------------------------------------"
   echo \
@@ -3459,7 +3511,7 @@ dev_xcode_macios_install_commandline_tools()
     -e 'end tell'
 };
 
-dev_ios_simulator_list()
+dev_macios_simulator_list()
 {
   echo "--------------------------------------------------------------------------------------------------------------"
   echo \
@@ -3471,7 +3523,7 @@ dev_ios_simulator_list()
 
 export IOS_DEVICE_ID="73FC4795-80E6-4ED9-9BB5-716206BDAFCD"
 
-dev_ios_simulator_launch()
+dev_macios_simulator_launch()
 {
   echo "--------------------------------------------------------------------------------------------------------------"
   echo \
@@ -3499,7 +3551,7 @@ dev_ios_simulator_launch()
 
 
 # stop
-#   mac ios
+#   macios
 # dev   
 #======================================================================================================================
 
@@ -3831,11 +3883,28 @@ work_on_moljac_private()
   echo "--------------------------------------------------------------------------------------------------------------"
   echo \
   "
-  source \
-    $HOME/bat/03-productivity/mac/finder-open-window-with-tabs-09-private-e-external.scpt.sh
+  sys_box_name
+  echo BOXNAME=$BOXNAME
+
+  source \\
+    $HOME/bat/03-productivity/mac/finder-open-new-window.scpt.sh
+
+  source \\
+    $HOME/bat/03-productivity/mac/$BOXNAME/finder-window-add-tabs-09-private-e-external.scpt.sh
+  source \\
+    $HOME/bat.private/03-productivity/mac/$BOXNAME/finder-window-add-tabs-09-private-e-external.scpt.sh
   "
+  sys_box_name
+  echo BOXNAME=$BOXNAME
+
   source \
-    $HOME/bat/03-productivity/mac/finder-open-window-with-tabs-09-private-e-external.scpt.sh
+    $HOME/bat/03-productivity/mac/finder-open-new-window.scpt.sh
+
+  source \
+    $HOME/bat/03-productivity/mac/$BOXNAME/finder-window-add-tabs-09-private-e-external.scpt.sh
+  source \
+    $HOME/bat.private/03-productivity/mac/$BOXNAME/finder-window-add-tabs-09-private-e-external.scpt.sh
+
 };
 
 work_on_moljac()
@@ -3885,23 +3954,8 @@ work_on_judo_remove_me()
 #   API Keys
 # start
 
-# Miljenkos-MacBook-Pro-16-2023-ARM-M2
-# Miljenkos-MacBook-Pro-16-2019-x64
-
 work_on_dev_api_keys ()
 {
-  export BOXNAME=$(scutil --get LocalHostName)
-  case $BOXNAME in
-    Miljenkos-MacBook-Pro-16-2023-ARM-M2)  
-      echo NEW
-      ;;
-    Miljenkos-MacBook-Pro-16-2019-x64)  
-      echo OLD
-      ;;
-    *)    
-      echo something else
-      ;;
-  esac  
 }
 # stop
 #   API Keys
