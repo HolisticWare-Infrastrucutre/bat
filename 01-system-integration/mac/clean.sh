@@ -262,3 +262,8 @@ source ./clean-android-gradle.sh
 rm -fr $HOME/Library/Caches/Homebrew/downloads/
 
 rm -fr $HOME/Library/Caches/
+
+rm -fr \
+    $HOME/Library/Logs/Google/AndroidStudio2024.2/* \
+    $HOME/Library/Logs/JetBrains/Rider2024.3/*
+    $HOME/Library/Logs/CoreSimulator/* \
