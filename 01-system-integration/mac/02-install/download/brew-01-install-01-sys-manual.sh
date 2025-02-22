@@ -51,20 +51,6 @@ nvm use --lts
 
 
 
-#----------------------------------------------------------------------------------------------
-# tools NTFS disks
-brew $ACTION_VERB --cask \
-    osxfuse \
-
-brew $ACTION_VERB \
-        ntfs-3g \
-
-
-
-
-
-
-
 
 echo \
 "
