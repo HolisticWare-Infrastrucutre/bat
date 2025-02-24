@@ -5,12 +5,13 @@
 # "$(dirname "${BASH_SOURCE[0]}")/emulators-data-names.sh"
 source "$(dirname "$0")/emulators-data-names.sh"
 
-# java 8 is required
-export JAVA_HOME=$JAVA_HOME_JDK_8
+export AVDMANAGER=$HOME/Library/Android/sdk/cmdline-tools/11.0/bin/avdmanager
+
+export JAVA_HOME=$JAVA_HOME_JDK_21
 
 echo \
 "
-        avdmanager \\
+        $AVDMANAGER \\
             --verbose \\
                 delete avd \\
                 --n $EMULATOR_NAME_ROOT-$EMULATOR \\
@@ -22,18 +23,14 @@ do
     echo "=============================================================================================================="
     echo "AVD: $EMULATOR"
 
-        avdmanager \
+        $AVDMANAGER \
             --verbose \
                 delete avd \
                 -n $EMULATOR_NAME_PREFIX-$EMULATOR \
 
 done
 
+rm -fr  $HOME/.android/avd/**
+ 
 export JAVA_HOME=$JAVA_HOME_JDK_11
-
-
-for EMULATOR in $EMULATORS;
-do
-    dev_android_emulator_launch $EMULATOR_NAME_PREFIX-$EMULATOR
-done
 
