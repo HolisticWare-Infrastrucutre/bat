@@ -12,9 +12,10 @@ brew $ACTION_VERB --cask \
 
 #----------------------------------------------------------------------------------------------
 #
-brew install --cask \
+brew $ACTION_VERB --cask \
     sublime-text \
     atom \
     brackets \
     bbedit \
-
+    zed \
+    zed@preview \
