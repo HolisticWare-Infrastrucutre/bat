@@ -19,7 +19,7 @@ source $HOME/bat/01-system-integration/mac/dotnet/new-templates/install-maui.sh
 # https://betterprogramming.pub/create-a-custom-template-for-dotnet-new-9feae7ed5b55
 
 export TEMPLATEZ=\
-"\
+"
 # Microsoft.TemplateEngine.Authoring.Templates
 # https://learn.microsoft.com/en-us/dotnet/core/tutorials/cli-templates-create-template-package#create-a-template-package-project
 Microsoft.TemplateEngine.Authoring.Templates
@@ -44,6 +44,8 @@ Clancey.Comet.Templates.Multiplatform
 Avalonia.Templates
 # WCF
 CoreWCF.Templates
+# AI
+Microsoft.Extensions.AI.Templates
 "
 
 
