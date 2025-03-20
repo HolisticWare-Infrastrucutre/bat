@@ -7,38 +7,13 @@ export WORKLOADZ=\
 "
 #            maui-tizen \
 
-sudo \
-    dotnet \
-        workload \
-            uninstall \
-                android \
-                ios \
-                maccatalyst \
-                tvos \
-                macos \
-                maui \
-                maui \
-                maui-android \
-                maui-ios \
-                maui-maccatalyst \
-                maui-mobile \
-                maui-windows \
-                maui-tizen \
-                tvos \
-                wasm-tools \
-                wasm-tools-net6 \
-                wasm-tools-net7 \
-                wasi-experimental \
-                wasm-experimental \
-                wasm-experimental-net7 \
-                aspire \
-
 
 sudo \
     dotnet \
         workload \
             install \
                 android \
+                android-net8 \
                 ios \
                 maccatalyst \
                 tvos \
@@ -53,11 +28,11 @@ sudo \
                 maui-tizen \
                 tvos \
                 wasm-tools \
-                wasm-tools-net6 \
-                wasm-tools-net7 \
-                wasi-experimental \
+                wasm-tools-net8 \
+                wasm-tools-net9 \
                 wasm-experimental \
-                wasm-experimental-net7 \
+                wasm-experimental-net8 \
+                wasm-experimental-net9 \
                 aspire \
 
 
