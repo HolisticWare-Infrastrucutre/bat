@@ -173,7 +173,7 @@ Microsoft.CST.OSSGadget.FindSquats.CLI
 dotnet-ef
 dotnet-orm
 dotnet-roundhouse
-# 
+# AI/ML
 MLNet
 # Diverse
 WildernessLabs.Meadow.CLI
