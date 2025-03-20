@@ -1,6 +1,7 @@
 # Amazon Q pre block. Keep at the top of this file.
 [[ -f "${HOME}/Library/Application Support/amazon-q/shell/zshrc.pre.zsh" ]] && builtin source "${HOME}/Library/Application Support/amazon-q/shell/zshrc.pre.zsh"
 setopt PROMPT_SUBST
+
 # PROMPT='%{$(pwd|grep --color=always /)%${#PWD}G%} %(!.%F{red}.%F{cyan})%n%f@%F{yellow}%m%f%(!.%F{red}.)%#%f '
 # PROMPT='$fg[cyan]%m:$fg[yellow] %T %B%30<..<%~%b %(!.#.>) '
 PROMPT='%F{yellow}%3~%f %# '
@@ -68,15 +69,15 @@ export JAVA_HOME_ZULU_17=/Library/Java/JavaVirtualMachines/zulu-17.jdk/Contents/
 export JAVA_HOME_MICROSOFT_11=/Library/Java/JavaVirtualMachines/microsoft-11.jdk/Contents/Home
 export JAVA_HOME_MICROSOFT_17=/Library/Java/JavaVirtualMachines/microsoft-17.jdk/Contents/Home
 export JAVA_HOME_MICROSOFT_21=/Library/Java/JavaVirtualMachines/microsoft-21.jdk/Contents/Home
-export JAVA_HOME_JDK_8=$JAVA_HOME_AMAZON_CORRETO_8
-export JAVA_HOME_JDK_11=$JAVA_HOME_MICROSOFT_11
-export JAVA_HOME_JDK_17=$JAVA_HOME_MICROSOFT_17
-export JAVA_HOME_JDK_21=$JAVA_HOME_MICROSOFT_21
-export JAVA_HOME_JDK_23=$JAVA_HOME_TEMURIN_23
+export JAVA_HOME_8=$JAVA_HOME_AMAZON_CORRETO_8
+export JAVA_HOME_11=$JAVA_HOME_MICROSOFT_11
+export JAVA_HOME_17=$JAVA_HOME_MICROSOFT_17
+export JAVA_HOME_21=$JAVA_HOME_MICROSOFT_21
+export JAVA_HOME_23=$JAVA_HOME_TEMURIN_23
 
 export JAVA_HOME_ANDROID_STUDIO=/Applications/Android\ Studio.app/Contents/jre/jdk/Contents/Home
 # export JAVA_HOME_MICROSOFT=$HOME/Library/Developer/Xamarin/jdk/microsoft_dist_openjdk_1.8.0.25
-export JAVA_HOME_MICROSOFT=$JAVA_HOME_JDK_11
+export JAVA_HOME_MICROSOFT=$JAVA_HOME_11
 
 export JAVA_HOME=$JAVA_HOME_MICROSOFT
 #----------------------------------------------------------------------------------------------------------------------
@@ -180,6 +181,27 @@ setopt complete_aliases
 #######################################################################################################################
 # sys
 #   start
+cdh()
+{
+  echo "--------------------------------------------------------------------------------------------------------------"
+  echo \
+  "
+  cd here
+  cd $(pwd)
+  "
+  cd $(pwd)
+}
+
+mdr()
+{
+  echo "--------------------------------------------------------------------------------------------------------------"
+  echo \
+  "
+  create directory recursively
+  mkdir -p $1
+  "
+  mkdir -p $1
+}
 
 sys_name()
 {
@@ -271,7 +293,7 @@ sys_postinstall()
   sys_term_fingerprint
   sys_brew_clean_update
   dev_macios_xcode_license_accept
-  dev_dotnet_workloads_reinstall
+  dev_dotnet_workload_reinstall
   dev_dotnet_new_templates_reinstall
   dev_dotnet_tools_reinstall
   dev_dotnet_tools_reinstall_api_tools
@@ -281,7 +303,7 @@ sys_postinstall()
   sys_term_fingerprint
   sys_brew_clean_update
   dev_macios_xcode_license_accept
-  dev_dotnet_workloads_reinstall
+  dev_dotnet_workload_reinstall
   dev_dotnet_new_templates_reinstall
   dev_dotnet_tools_reinstall
   dev_dotnet_tools_reinstall_api_tools
@@ -291,7 +313,7 @@ sys_postinstall()
   sys_term_fingerprint
   sys_brew_clean_update
   dev_macios_xcode_license_accept
-  dev_dotnet_workloads_reinstall
+  dev_dotnet_workload_reinstall
   dev_dotnet_new_templates_reinstall
   dev_dotnet_tools_reinstall
   dev_dotnet_tools_reinstall_api_tools
@@ -361,41 +383,6 @@ sys_mode_light ()
 
 }
 
-sys_apps_reset_discord ()
-{
-  echo "--------------------------------------------------------------------------------------------------------------"
-  echo \
-  "
-  rm -fr "$HOME/Library/Application Support/discord/"
-  rm -fr "$HOME/Library/Caches/com.hnc.Discord/"
-  rm -fr "$HOME/Library/Caches/com.hnc.Discord.ShipIt/"
-  "
-  rm -fr "$HOME/Library/Application Support/discord/"
-  rm -fr "$HOME/Library/Caches/com.hnc.Discord/"
-  rm -fr "$HOME/Library/Caches/com.hnc.Discord.ShipIt/"
-}
-
-sys_apps_kill_Browserosaurus ()
-{
-  echo "--------------------------------------------------------------------------------------------------------------"
-  echo \
-  "
-  kill -9 $(ps aux | grep Browserosaurus | grep -v grep | awk '{print $2}')
-  "
-  kill -9 $(ps aux | grep Browserosaurus | grep -v grep | awk '{print $2}')
-}
-
-sys_apps_reinstall_browsers_edge ()
-{
-  echo "--------------------------------------------------------------------------------------------------------------"
-  echo \
-  "
-  source $HOME/bat/01-system-integration/mac/02-install/download/brew-01-install-02-dev-web-browsers-edge.sh
-  "
-
-  source $HOME/bat/01-system-integration/mac/02-install/download/brew-01-install-02-dev-web-browsers-edge.sh
-}
-
 #   stop
 # sys
 #######################################################################################################################
@@ -405,15 +392,41 @@ sys_apps_reinstall_browsers_edge ()
 #   apps
 # start
 
-sys_apps_reinstall_browsers_edge()
+sys_apps_discord_reset ()
 {
   echo "--------------------------------------------------------------------------------------------------------------"
   echo \
   "
-  source ./bat/01-system-integration/mac/02-install/download/brew-01-install-02-dev-web-browsers-edge.sh  
+  rm -fr "$HOME/Library/Application Support/discord/"
+  rm -fr "$HOME/Library/Caches/com.hnc.Discord/"
+  rm -fr "$HOME/Library/Caches/com.hnc.Discord.ShipIt/"
   "
-  source ./bat/01-system-integration/mac/02-install/download/brew-01-install-02-dev-web-browsers-edge.sh  
+  rm -fr "$HOME/Library/Application Support/discord/"
+  rm -fr "$HOME/Library/Caches/com.hnc.Discord/"
+  rm -fr "$HOME/Library/Caches/com.hnc.Discord.ShipIt/"
 }
+
+sys_apps_Browserosaurus_kill ()
+{
+  echo "--------------------------------------------------------------------------------------------------------------"
+  echo \
+  "
+  kill -9 $(ps aux | grep Browserosaurus | grep -v grep | awk '{print $2}')
+  "
+  kill -9 $(ps aux | grep Browserosaurus | grep -v grep | awk '{print $2}')
+}
+
+sys_apps_browsers_edge_reinstall ()
+{
+  echo "--------------------------------------------------------------------------------------------------------------"
+  echo \
+  "
+  source $HOME/bat/01-system-integration/mac/02-install/download/brew-01-install-02-dev-web-browsers-edge.sh
+  "
+
+  source $HOME/bat/01-system-integration/mac/02-install/download/brew-01-install-02-dev-web-browsers-edge.sh
+}
+
 # stop
 #   apps
 # sys
@@ -992,9 +1005,9 @@ dev_java_jdk_8()
   echo "--------------------------------------------------------------------------------------------------------------"
   echo \
   "
-  export JAVA_HOME=$JAVA_HOME_CORRETO_8
+  export JAVA_HOME=$JAVA_HOME_8
   "
-  export JAVA_HOME=$JAVA_HOME_CORRETO_8
+  export JAVA_HOME=$JAVA_HOME_8
 }
 
 dev_java_jdk_11()
@@ -1002,9 +1015,9 @@ dev_java_jdk_11()
   echo "--------------------------------------------------------------------------------------------------------------"
   echo \
   "
-  export JAVA_HOME=$JAVA_HOME_MICROSOFT_11
+  export JAVA_HOME=$JAVA_HOME_11
   "
-  export JAVA_HOME=$JAVA_HOME_MICROSOFT_11
+  export JAVA_HOME=$JAVA_HOME_11
 
   echo JAVA_HOME=$JAVA_HOME
 }
@@ -1014,9 +1027,9 @@ dev_java_jdk_17()
   echo "--------------------------------------------------------------------------------------------------------------"
   echo \
   "
-  export JAVA_HOME=$JAVA_HOME_MICROSOFT_17
+  export JAVA_HOME=$JAVA_HOME_17
   "
-  export JAVA_HOME=$JAVA_HOME_MICROSOFT_17
+  export JAVA_HOME=$JAVA_HOME_17
 
   echo JAVA_HOME=$JAVA_HOME
 }
@@ -1027,9 +1040,9 @@ dev_java_jdk_21()
   echo "--------------------------------------------------------------------------------------------------------------"
   echo \
   "
-  export JAVA_HOME=$JAVA_HOME_MICROSOFT_21
+  export JAVA_HOME=$JAVA_HOME_21
   "
-  export JAVA_HOME=$JAVA_HOME_MICROSOFT_21
+  export JAVA_HOME=$JAVA_HOME_21
 
   echo JAVA_HOME=$JAVA_HOME
 }
@@ -1067,7 +1080,7 @@ dev_android_sdkmanager()
   echo "--------------------------------------------------------------------------------------------------------------"
   echo \
   "
-  export JAVA_HOME=/Library/Java/JavaVirtualMachines/adoptopenjdk-8.jdk/Contents/Home
+  export JAVA_HOME=$JAVA_HOME_17
 
   sdkmanager \
       --update
@@ -1081,7 +1094,7 @@ dev_android_sdkmanager()
   "
   sdkmanager --install "cmdline-tools;latest"
   # java 8 is required
-  export JAVA_HOME=/Library/Java/JavaVirtualMachines/adoptopenjdk-8.jdk/Contents/Home
+  export JAVA_HOME=$JAVA_HOME_17
 
   sdkmanager \
       --update
@@ -1102,7 +1115,7 @@ dev_android_sdkmanager()
   #     "extras;google;m2repository" \
   #     "extras;android;m2repository"
 
-  export JAVA_HOME=/Library/Java/JavaVirtualMachines/microsoft-11.jdk/Contents/Home/
+  export JAVA_HOME=$JAVA_HOME_17
 }
 
 dev_android_info_disk_usage()
@@ -1129,7 +1142,7 @@ dev_android_emulator_list()
   echo \
   "
   $HOME/Library/Android/sdk/emulator/emulator \\
-  -list-avds
+    -list-avds
   "
   echo
   $HOME/Library/Android/sdk/emulator/emulator \
@@ -1185,8 +1198,11 @@ dev_android_emulator_reset()
   sudo rm -fr $($HOME/.android/avd/Pixel_3a_API_34_extension_level_7_arm64-v8a.avd/*.img)
   sudo rm -fr $($HOME/.android/avd/nexus_9_api_33.avd/*.img) 
   "
-  sudo rm -fr $($HOME/.android/avd/Pixel_3a_API_34_extension_level_7_arm64-v8a.avd/*.img)
-  sudo rm -fr $($HOME/.android/avd/nexus_9_api_33.avd/*.img) 
+
+  sudo rm -fr $($HOME/.android/avd/emulator-android-34-google-apis-arm-v8a-Tablet.avd/*.img)
+  sudo rm -fr $($HOME/.android/avd/emulator-android-34-google-apis-arm-v8a-pixel.avd/*.img) 
+  sudo rm -fr $($HOME/.android/avd/emulator-android-34-google-apis-arm-v8a-pixel_c.avd/*.img)
+  sudo rm -fr $($HOME/.android/avd/emulator-android-34-google-apis-arm-v8a-pixel_xl.avd/*.img) 
 }
 
 dev_android_emulator_avds_all_rm_img_data()
@@ -1576,8 +1592,8 @@ dev_dotnet_installation_nuke_previews()
   dotnet --list-sdks
   dotnet --list-runtimes
 
-  dev_dotnet_workloads_reinstall
-  dev_dotnet_workloads_list
+  dev_dotnet_workload_reinstall
+  dev_dotnet_workload_list
   "
   dotnet --list-sdks
   dotnet --list-runtimes
@@ -1589,8 +1605,8 @@ dev_dotnet_installation_nuke_previews()
   dotnet --list-sdks
   dotnet --list-runtimes
 
-  dev_dotnet_workloads_reinstall
-  dev_dotnet_workloads_list
+  dev_dotnet_workload_reinstall
+  dev_dotnet_workload_list
 
   echo \
   "
@@ -1604,8 +1620,8 @@ dev_dotnet_installation_nuke_previews()
   dotnet --list-sdks
   dotnet --list-runtimes
 
-  dev_dotnet_workloads_reinstall
-  dev_dotnet_workloads_list
+  dev_dotnet_workload_reinstall
+  dev_dotnet_workload_list
   "
 }
 
@@ -1642,8 +1658,8 @@ dev_dotnet_installation_install_preview()
   dotnet --list-sdks
   dotnet --list-runtimes
 
-  dev_dotnet_workloads_reinstall
-  dev_dotnet_workloads_list
+  dev_dotnet_workload_reinstall
+  dev_dotnet_workload_list
   "
   if [[ $(uname -m) == 'arm64' ]];
   then
@@ -1674,7 +1690,7 @@ dev_dotnet_installation_install_preview()
   dotnet --list-sdks
   dotnet --list-runtimes
 
-  dev_dotnet_workloads_reinstall
+  dev_dotnet_workload_reinstall
 }
 
 dev_dotnet_installation_uninstall()
@@ -1821,9 +1837,9 @@ dev_dotnet_info_dump()
 
   echo \
   "
-  dev_dotnet_workloads_list
+  dev_dotnet_workload_list
   "  
-  dev_dotnet_workloads_list
+  dev_dotnet_workload_list
 }
 
 dev_dotnet_info_dump_long()
@@ -1894,7 +1910,7 @@ dev_dotnet_sdk_check()
   dotnet sdk check
 }
 
-dev_dotnet_workloads_maui_install()
+dev_dotnet_workload_maui_install()
 {
   # https://github.com/dotnet/maui/wiki
   # https://github.com/dotnet/maui/wiki/Release-Versions
@@ -1915,7 +1931,7 @@ dev_dotnet_workloads_maui_install()
       --source https://api.nuget.org/v3/index.json
   "
 }
-dev_dotnet_workloads_list()
+dev_dotnet_workload_list()
 {
   echo "--------------------------------------------------------------------------------------------------------------"
   echo \
@@ -1936,28 +1952,43 @@ dev_dotnet_workloads_list()
   "
 }
 
-dev_dotnet_workloads_reinstall()
+dev_dotnet_workload_reinstall()
 { 
   echo "--------------------------------------------------------------------------------------------------------------"
   echo \
   "
+  source $HOME/bat/01-system-integration/mac/dotnet/workload/uninstall-old.sh
+  source $HOME/bat/01-system-integration/mac/dotnet/workload/uninstall.sh
   source $HOME/bat/01-system-integration/mac/dotnet/workload/install.sh
-  sudo dotnet workloads update
-  dev_dotnet_workloads_list
+  source $HOME/bat/01-system-integration/mac/dotnet/workload/config.sh
+  source $HOME/bat/01-system-integration/mac/dotnet/workload/update.sh
+  source $HOME/bat/01-system-integration/mac/dotnet/workload/repair.sh
+
+  dev_dotnet_workload_list
   "
+  source $HOME/bat/01-system-integration/mac/dotnet/workload/uninstall-old.sh
+  source $HOME/bat/01-system-integration/mac/dotnet/workload/uninstall.sh
   source $HOME/bat/01-system-integration/mac/dotnet/workload/install.sh
-  sudo dotnet workloads update
-  dev_dotnet_workloads_list
+  source $HOME/bat/01-system-integration/mac/dotnet/workload/config.sh
+  source $HOME/bat/01-system-integration/mac/dotnet/workload/update.sh
+  source $HOME/bat/01-system-integration/mac/dotnet/workload/repair.sh
+
+  dev_dotnet_workload_list
 
   echo \
   "
+  source $HOME/bat/01-system-integration/mac/dotnet/workload/uninstall-old.sh
+  source $HOME/bat/01-system-integration/mac/dotnet/workload/uninstall.sh
   source $HOME/bat/01-system-integration/mac/dotnet/workload/install.sh
-  sudo dotnet workloads update
-  dev_dotnet_workloads_list
+  source $HOME/bat/01-system-integration/mac/dotnet/workload/config.sh
+  source $HOME/bat/01-system-integration/mac/dotnet/workload/update.sh
+  source $HOME/bat/01-system-integration/mac/dotnet/workload/repair.sh
+
+  dev_dotnet_workload_list
   "
 };
 
-dev_dotnet_workloads_edit()
+dev_dotnet_workload_edit()
 {
   echo "--------------------------------------------------------------------------------------------------------------"
   echo \
@@ -1967,18 +1998,18 @@ dev_dotnet_workloads_edit()
   code -n $HOME/bat/01-system-integration/mac/dotnet/workload/
 }
 
-dev_dotnet_workloads_clean()
+dev_dotnet_workload_clean()
 { 
   echo "--------------------------------------------------------------------------------------------------------------"
   echo \
   "
   sudo dotnet workload clean
   # sudo dotnet workload clean --all
-  dev_dotnet_workloads_list
+  dev_dotnet_workload_list
   "
   sudo dotnet workload clean
   # sudo dotnet workload clean --all
-  dev_dotnet_workloads_list
+  dev_dotnet_workload_list
 }
 
 dev_dotnet_tools_reinstall()
@@ -2763,9 +2794,25 @@ dev_dotnet_maui_android_java ()
   echo "--------------------------------------------------------------------------------------------------------------"
   echo \
   "
-  export JAVA_HOME=$JAVA_HOME_MICROSOFT_17
+  export JAVA_HOME=$JAVA_HOME_17
   "
-  export JAVA_HOME=$JAVA_HOME_MICROSOFT_17
+  export JAVA_HOME=$JAVA_HOME_17
+}
+
+dev_dotnet_maui_repo_build_all ()
+{
+  echo "--------------------------------------------------------------------------------------------------------------"
+  echo \
+  "
+  dev_dotnet_maui_repo_build_visual_studio_code
+  dev_dotnet_maui_repo_build_samples
+#  dev_dotnet_maui_repo_build_device_tests
+  "
+  dev_dotnet_maui_repo_build_visual_studio_code
+  dev_dotnet_maui_repo_build_samples
+  dev_dotnet_maui_repo_build_tests_all_AAAA
+#  dev_dotnet_maui_repo_build_tests
+#  dev_dotnet_maui_repo_build_device_tests
 }
 
 dev_dotnet_maui_repo_build_buildtasks ()
@@ -2786,6 +2833,126 @@ dev_dotnet_maui_repo_build_buildtasks ()
     --configuration="Release" \
     --workloads=global
 }
+
+dev_dotnet_maui_repo_build_samples ()
+{
+  dotnet tool restore
+  dev_dotnet_maui_repo_build_visual_studio_code
+
+  export PROJECTS=\
+"
+./src/Controls/samples/Controls.Sample/Maui.Controls.Sample.csproj
+./src/Controls/samples/Controls.Sample.Sandbox/Maui.Controls.Sample.Sandbox.csproj
+./src/Essentials/samples/Samples/Essentials.Sample.csproj 
+./src/BlazorWebView/samples/BlazorWinFormsApp/Maui.BlazorWinFormsApp.Sample.csproj
+./src/BlazorWebView/samples/BlazorWpfApp/Maui.BlazorWpfApp.Sample.csproj
+"
+
+  IFS=$'\n'
+  # ZSH does not split words by default (like other shells):
+  setopt sh_word_split
+  
+  for csp in $PROJECTS ; 
+  do
+    echo "--------------------------------------------------------------------------------------------------------------"
+    echo $csp  
+    dotnet build $csp
+  done
+}
+
+dev_dotnet_maui_repo_build_tests_all_AAAA ()
+{
+  dotnet tool restore
+  brew uninstall node
+  brew install node
+  
+  export PROJECTS=\
+"
+./src/TestUtils/src/UITest.Core/UITest.Core.csproj
+./src/TestUtils/src/UITest.Appium/UITest.Appium.csproj
+./src/TestUtils/src/UITest.NUnit/UITest.NUnit.csproj
+./src/Controls/samples/Controls.Sample.UITests/Controls.Sample.UITests.csproj
+./src/Controls/tests/DeviceTests/Controls.DeviceTests.csproj
+./src/Controls/tests/TestCases.Shared.Tests/Controls.TestCases.Shared.Tests.csproj
+./src/Controls/tests/TestCases.Android.Tests/Controls.TestCases.Android.Tests.csproj
+./src/Controls/tests/TestCases.iOS.Tests/Controls.TestCases.iOS.Tests.csproj
+./src/Controls/tests/TestCases.Mac.Tests/Controls.TestCases.Mac.Tests.csproj
+./src/Controls/tests/TestCases.WinUI.Tests/Controls.TestCases.WinUI.Tests.csproj
+./src/Controls/tests/SourceGen.UnitTests/SourceGen.UnitTests.csproj
+./src/Controls/tests/Xaml.UnitTests.InternalsHiddenAssembly/Controls.Xaml.UnitTests.InternalsHiddenAssembly.csproj
+./src/Controls/Foldable/test/Controls.DualScreen.UnitTests.csproj
+./src/Compatibility/Core/tests/Compatibility.UnitTests/Compatibility.Core.UnitTests.csproj
+./src/Compatibility/Core/tests/Android/Compatibility.Android.UnitTests.csproj
+./src/Compatibility/Core/tests/iOS/Compatibility.iOS.UnitTests.csproj
+./src/Compatibility/Core/tests/WinUI/Compatibility.Windows.UnitTests.csproj
+./src/Compatibility/ControlGallery/test/Xamarin.Forms.Core.macOS.UITests/Xamarin.Forms.Core.macOS.UITests.csproj
+./src/Compatibility/ControlGallery/test/Android.UITests/Compatibility.ControlGallery.Android.UITests.csproj
+./src/Compatibility/ControlGallery/test/iOS.UITests/Compatibility.ControlGallery.iOS.UITests.csproj
+./src/Compatibility/ControlGallery/test/WinUI.UITests/WinUI.UITests.csproj
+./src/SingleProject/Resizetizer/test/UnitTests/Resizetizer.UnitTests.csproj
+./src/Essentials/test/UnitTests/Essentials.UnitTests.csproj
+./src/Essentials/test/DeviceTests/Essentials.DeviceTests.csproj
+./src/Graphics/tests/Graphics.Tests/Graphics.Tests.csproj
+./src/Graphics/tests/DeviceTests/Graphics.DeviceTests.csproj
+./src/TestUtils/src/DeviceTests/TestUtils.DeviceTests.csproj
+./src/TestUtils/samples/DeviceTests.Sample/TestUtils.DeviceTests.Sample.csproj
+./src/TestUtils/src/DeviceTests.Runners/TestUtils.DeviceTests.Runners.csproj
+./src/TestUtils/src/DeviceTests.Runners.SourceGen/TestUtils.DeviceTests.Runners.SourceGen.csproj
+./src/TestUtils/src/Microsoft.Maui.IntegrationTests/Microsoft.Maui.IntegrationTests.csproj
+"
+  IFS=$'\n'
+  # ZSH does not split words by default (like other shells):
+  setopt sh_word_split
+  
+  for csp in $PROJECTS ; 
+  do
+    echo "--------------------------------------------------------------------------------------------------------------"
+    echo $csp  
+    dotnet build $csp
+  done
+
+  dotnet tool restore
+  brew uninstall node
+  brew install node
+  curl \
+    -v -L -C - \
+    -o $HOME/Downloads/appium-install.ps \
+    -O \
+      https://github.com/dotnet/maui/blob/main/eng/scripts/appium-install.ps1?raw=true
+
+  sudo dotnet pwsh $HOME/Downloads/appium-install.ps1
+}
+
+
+dev_dotnet_maui_repo_build_tests ()
+{
+  echo "--------------------------------------------------------------------------------------------------------------"
+  echo \
+  "
+./src/Core/tests/UnitTests/Core.UnitTests.csproj
+./src/Core/tests/DeviceTests/Core.DeviceTests.csproj
+./src/Core/tests/DeviceTests.Shared/Core.DeviceTests.Shared.csproj
+./src/BlazorWebView/tests/MauiDeviceTests/MauiBlazorWebView.DeviceTests.csproj
+./src/Controls/tests/Core.UnitTests/Controls.Core.UnitTests.csproj
+./src/Controls/tests/Core.Design.UnitTests/Controls.Core.Design.UnitTests.csproj
+./src/Controls/tests/Xaml.UnitTests/Controls.Xaml.UnitTests.csproj
+./src/Controls/tests/Xaml.UnitTests.ExternalAssembly/Controls.Xaml.UnitTests.ExternalAssembly.csproj
+./src/Controls/tests/BindingSourceGen.UnitTests/Controls.BindingSourceGen.UnitTests.csproj
+./src/Controls/tests/Xaml.UnitTests.InternalsVisibleAssembly/Controls.Xaml.UnitTests.InternalsVisibleAssembly.csproj
+  "
+  IFS=$'\n'
+  # ZSH does not split words by default (like other shells):
+  setopt sh_word_split
+  
+  for csp in $PROJECTS ; 
+  do
+    echo "--------------------------------------------------------------------------------------------------------------"
+    echo $csp  
+    dotnet build $csp
+  done
+}
+
+
 
 dev_dotnet_maui_repo_tools_tests_init ()
 {
@@ -3082,30 +3249,6 @@ dev_dotnet_maui_repo_build_ui_tests ()
   done
 }
 
-dev_dotnet_maui_repo_build_device_tests ()
-{
-  export PROJECTS=\
-"
-/src/TestUtils/src/UITest.Core/UITest.Core.csproj
-./src/TestUtils/src/UITest.Appium/UITest.Appium.csproj
-./src/TestUtils/src/UITest.NUnit/UITest.NUnit.csproj
-./src/Compatibility/ControlGallery/test/iOS.UITests/Compatibility.ControlGallery.iOS.UITests.csproj
-./src/Compatibility/ControlGallery/test/Xamarin.Forms.Core.macOS.UITests/Xamarin.Forms.Core.macOS.UITests.csproj
-./src/Compatibility/ControlGallery/test/Android.UITests/Compatibility.ControlGallery.Android.UITests.csproj
-./src/Compatibility/ControlGallery/test/WinUI.UITests/WinUI.UITests.csproj
-./src/Controls/samples/Controls.Sample.UITests/Controls.Sample.UITests.csproj
-"
-
-  csproj=( $(find . -type f -iname "*devicetest*.csproj") )
-  
-  for csp in ${csproj[@]} ; 
-  do
-    echo "--------------------------------------------------------------------------------------------------------------"
-    echo $csp  
-    dotnet build $csp
-  done
-}
-
 dev_dotnet_maui_repo_setup_device_tests ()
 {
 }
@@ -3278,10 +3421,17 @@ dev_macios_xcode_reset ()
   echo \
   "
   sudo xcode-select --reset
-  sudo xcode-select -s /Applications/Xcode.app  
+  sudo xcode-select -s /Applications/Xcode.app
+  sudo xcode-select -switch /Applications/Xcode.app/Contents/Ddeveloper
+  sudo xcodebuild -license accept
+  sudo xcodebuild -runFirstLaunch
   "
   sudo xcode-select --reset
   sudo xcode-select -s /Applications/Xcode.app
+  sudo xcode-select -switch /Applications/Xcode.app/Contents/Ddeveloper
+  sudo xcodebuild -license accept
+  sudo xcodebuild -runFirstLaunch
+
 }
 
 dev_macios_info_dump()
@@ -4019,6 +4169,10 @@ echo "ANDROID_SDK_ROOT    = " $ANDROID_SDK_ROOT
 echo "ANDROID_HOME        = " $ANDROID_HOME
 echo "ANDROID_NDK_HOME    = " $ANDROID_NDK_HOME
 echo "AndroidSdkDirectory = " $AndroidSdkDirectory
+echo "ANDROID_AVD_HOME    = " $ANDROID_AVD_HOME
+tree $ANDROID_AVD_HOME
+
+# export VISUAL="code --wait"
 #----------------------------------------------------------------------------------------------------------------------
 #======================================================================================================================
 
