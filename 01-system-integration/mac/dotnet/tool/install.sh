@@ -93,10 +93,11 @@ dotnet-search
 dotnet-dependency-analyzer
 Uno.PackageDiff
 dotnet-updatr
-# Project Management
+# Project Management MSBuild
 try-convert
 dotnet-references
 dotnet-affected
+sln-tool
 dotnet-nosln
 release-notes
 Versionize
@@ -175,7 +176,7 @@ dotnet-orm
 dotnet-roundhouse
 # AI/ML
 MLNet
-# Diverse
+# Embedded
 WildernessLabs.Meadow.CLI
 nanoclr
 "
