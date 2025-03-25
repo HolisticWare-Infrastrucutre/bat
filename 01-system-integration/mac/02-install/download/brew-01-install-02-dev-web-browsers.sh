@@ -48,6 +48,10 @@ brew $ACTION_VERB --cask \
     google-chrome-canary \
     firefox \
     firefox-developer-edition \
+    brave-browser \
+    brave-browser@dev \
+    brave-browser@beta \
+
 
 #   conflicts
 brew $ACTION_VERB --cask \
