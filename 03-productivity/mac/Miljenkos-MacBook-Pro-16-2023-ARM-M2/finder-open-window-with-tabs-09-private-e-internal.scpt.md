@@ -19,6 +19,7 @@ set paths to ¬
 		"/Volumes/xFAT-1TB-2/e/personal-private/judo/", ¬
 		"/Volumes/xFAT-1TB-2/e/personal-private/judo/HJS/01-pravno/DORH/02-kaznena-prijava-koraci/TODO/mails/", ¬
 		"/Volumes/xFAT-1TB-2/e/personal-private/judo/HJS/01-pravno/DORH/03-kaznene-prijave-protiv-mene/", ¬
+		"/Volumes/xFAT-1TB-2/e/personal-private/judo/HJS/01-pravno/DORH/03-kaznene-prijave-protiv-mene/04-hoo-krajac-slapp-tuzba-kleveta/", ¬
         "/Users/moljac/Downloads/"}
 
 -- open all paths as new tabs
