@@ -3,6 +3,12 @@
 finder-open-window-with-tabs-09-private.scpt.md
 
 ```
+tell application "Finder"
+	activate
+	set finderWindow to make new Finder window
+	set toolbar visible of finderWindow to true
+end tell
+
 set paths to ¬
 	{¬
 		"/Users/moljac/", ¬
@@ -13,6 +19,7 @@ set paths to ¬
 		"/Volumes/xFAT-1TB-2/e/personal-private/judo/", ¬
 		"/Volumes/xFAT-1TB-2/e/personal-private/judo/HJS/01-pravno/DORH/02-kaznena-prijava-koraci/TODO/mails/", ¬
 		"/Volumes/xFAT-1TB-2/e/personal-private/judo/HJS/01-pravno/DORH/03-kaznene-prijave-protiv-mene/", ¬
+		"/Volumes/xFAT-1TB-2/e/personal-private/judo/HJS/01-pravno/DORH/03-kaznene-prijave-protiv-mene/04-hoo-krajac-slapp-tuzba-kleveta/", ¬
         "/Users/moljac/Downloads/"}
 
 -- open all paths as new tabs
