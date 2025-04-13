@@ -143,6 +143,8 @@ alias ll='ls -al'
 
 alias vs="open -a Visual\ Studio\ \(Preview\)"
 alias vsc="code -n ."
+alias codeh="code -n ."
+alias codi="code-insiders"
 alias bode="open -na Brackets"
 alias brackets="open -na Brackets"
 
@@ -4104,8 +4106,39 @@ work_on_judo_remove_me()
 #   API Keys
 # start
 
+# tree $HOME/bat.private/mac/development/api-keys 
+$HOME/bat.private/mac/development/api-keys/
+
+dev_api_keys_set ()
+{
+  source  $HOME/bat.private/mac/development/api-keys/github/set.sh 
+  source  $HOME/bat.private/mac/development/api-keys/nuget/set.sh 
+
+  dev_api_keys_set_ai
+}
+
+dev_api_keys_set_ai ()
+{
+  source  $HOME/bat.private/mac/development/api-keys/ai/anthropic/set.sh 
+  # source  $HOME/bat.private/mac/development/api-keys/ai/open-ai/set.sh 
+  source  $HOME/bat.private/mac/development/api-keys/ai/perplexity/set.sh 
+  source  $HOME/bat.private/mac/development/api-keys/ai/picovoice/set.sh 
+
+}
+
+dev_api_keys_set_weather ()
+{
+}
+
+dev_api_keys_clean ()
+{  
+}
+
 work_on_dev_api_keys ()
 {
+  open $HOME/bat.private/mac/development/api-keys
+  code -n $HOME/bat.private/mac/development/api-keys
+  code -n $HOME/.zshrc
 }
 # stop
 #   API Keys
