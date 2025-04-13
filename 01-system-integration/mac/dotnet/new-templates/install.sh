@@ -74,10 +74,47 @@ do
             --verbosity diagnostic
 done
 
+
+
+echo "-----------------------------------------------------------------------------------------------------------------"
+export TEMPLATEZ=\
+"
+Microsoft.Android.Templates
+"
+
+IFS=$'\n'
+# ZSH does not split words by default (like other shells):
+setopt sh_word_split
+
+for TEMPLATE in $TEMPLATEZ
+do
+    if [[ $TEMPLATE == "#"* ]]
+    then
+        echo "......................................................................"
+        echo $TEMPLATE
+        continue
+    fi
+
+    echo "Template: $TEMPLATE"
+    echo "      uninstalling"
+    dotnet new uninstall   \
+            $TEMPLATE \
+            --verbosity diagnostic
+
+    echo "      installing"
+    dotnet new install \
+            $TEMPLATE \
+            --force \
+            --verbosity diagnostic
+done
+
+
 echo "-----------------------------------------------------------------------------------------------------------------"
 dotnet new list --type project
 echo "-----------------------------------------------------------------------------------------------------------------"
 dotnet new list --type item
 echo "-----------------------------------------------------------------------------------------------------------------"
 dotnet new list
+
+
 
