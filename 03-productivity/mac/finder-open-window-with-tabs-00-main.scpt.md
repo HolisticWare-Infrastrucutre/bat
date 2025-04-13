@@ -24,9 +24,11 @@ set paths to ¬
 		"/Users/Shared/Projects/d/X/XC/", ¬
 		"/Users/Shared/Projects/d/hw/", ¬
 		"/Users/Shared/Projects/d/hw/core/", ¬
-		"/Users/Shared/Projects/d/hw-tools/", ¬
-		"/Users/Shared/Projects/d/hw/HolisticWare.WebSite.Notes/", ¬
+		"/Users/Shared/Projects/d/hw/tools/", ¬
+		"/Users/Shared/Projects/d/hw/bindings/", ¬
+		"/Users/Shared/Projects/d/hw/apps/", ¬
 		"/Users/Shared/Projects/d/hw/apps/Ph4ct3x/", ¬
+		"/Users/Shared/Projects/d/hw/HolisticWare.WebSite.Notes/", ¬
 		"/Users/Shared/Projects/d/Samples-Playgrounds/", ¬
 		"/Users/Shared/Projects/d/Samples-Playgrounds/gh/", ¬
 		"/Users/Shared/Projects/d/Samples-Playgrounds/gh/AX/", ¬
@@ -36,6 +38,7 @@ set paths to ¬
 		"/Users/Shared/Projects/d/Samples-Playgrounds/gh/Blazor/", ¬
 		"/Users/Shared/Projects/d/Samples-Playgrounds/gh/Aspire/", ¬
 		"/Users/Shared/Projects/d/Samples-Playgrounds/gh/CSharp/", ¬
+		"/Users/Shared/Projects/d/Samples-Playgrounds/gh/Python/", ¬
 		"/Users/Shared/Projects/d/tmp/", ¬
         "/Users/Shared/Projects/d/X.tmp/"}
 
