@@ -2383,21 +2383,24 @@ dev_dotnet_android_bindings_binderator_build()
   "
   dotnet cake -t=ci \\
   && \\
-  dotnet \\
-  cake nuget-diff.cake -v:diagnostic \\
+  dotnet cake utilities.cake \\
   && \\
-  dotnet cake utilities.cake  \\
+  dotnet cake utilities.cake -t=generate-namespace-file \\
   && \\
-  dotnet cake utilities.cake -t=generate-namespace-file 
+  dotnet build tests/extended/ExtendedTests.csproj -c Release \\
+  && \\
+  dotnet cake nuget-diff.cake -v:diagnostic \\
   "
   dotnet cake -t=ci \
   && \
-  dotnet \
-  cake nuget-diff.cake -v:diagnostic \
-  && \
   dotnet cake utilities.cake \
   && \
-  dotnet cake utilities.cake -t=generate-namespace-file 
+  dotnet cake utilities.cake -t=generate-namespace-file \
+  && \
+  dotnet build tests/extended/ExtendedTests.csproj -c Release \
+  && \
+  dotnet cake nuget-diff.cake -v:diagnostic \
+
 }
 
 dev_dotnet_android_bindings_binderator_config_update()
@@ -4121,7 +4124,7 @@ dev_api_keys_set_ai ()
 {
   source  $HOME/bat.private/mac/development/api-keys/ai/anthropic/set.sh 
   # source  $HOME/bat.private/mac/development/api-keys/ai/open-ai/set.sh 
-  source  $HOME/bat.private/mac/development/api-keys/ai/perplexity/set.sh 
+  #source  $HOME/bat.private/mac/development/api-keys/ai/perplexity/set.sh 
   source  $HOME/bat.private/mac/development/api-keys/ai/picovoice/set.sh 
 
 }
