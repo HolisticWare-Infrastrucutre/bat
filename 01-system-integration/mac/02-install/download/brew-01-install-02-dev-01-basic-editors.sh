@@ -11,6 +11,9 @@ brew $ACTION_VERB \
         visual-studio-code \
         visual-studio-code-insiders \
 
+brew $ACTION_VERB \
+    --cask \
+        vscodium \
 
 brew $ACTION_VERB \
     --cask \
@@ -20,7 +23,7 @@ brew $ACTION_VERB \
         bbedit \
         zed \
         zed@preview \
-        fleet
+        fleet \
 
 
 brew $ACTION_VERB \
