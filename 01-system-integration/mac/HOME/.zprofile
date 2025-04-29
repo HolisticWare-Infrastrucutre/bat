@@ -135,6 +135,7 @@ export PATH=$PATH:$JAVA_HOME/bin/
 export PATH=$PATH:"/Applications/Visual Studio Code.app/Contents/Resources/app/bin/"
 export PATH="/opt/homebrew/opt/gnu-sed/libexec/gnubin":$PATH
 #----------------------------------------------------------------------------------------------------------------------
+export PATH=$HOME/.dotnet/tools/:$PATH
 #######################################################################################################################
 
 
@@ -3614,6 +3615,8 @@ dev_macios_xcode_reset()
   sudo xcode-select --reset
 }
 
+# xcodebuild -downloadPlatform <iOS|watchOS|tvOS|visionOS>  [-exportPath <destinationpath> -buildVersion <version>]
+
 dev_macios_xcode_install_simulators()
 {
   echo "--------------------------------------------------------------------------------------------------------------"
@@ -3623,19 +3626,17 @@ dev_macios_xcode_install_simulators()
   xcodebuild -runFirstLaunch
   xcodebuild -downloadAllPlatforms
   xcodebuild -downloadPlatform iOS
-  xcodebuild -downloadPlatform iPadOS
   xcodebuild -downloadPlatform tvOS
   xcodebuild -downloadPlatform watchOS
-  xcodebuild -downloadPlatform visionOS
+  # xcodebuild -downloadPlatform visionOS
   "
-  xcode-select -s /Applications/Xcode.app
+  sudo xcode-select -s /Applications/Xcode.app
   xcodebuild -runFirstLaunch
   xcodebuild -downloadAllPlatforms
   xcodebuild -downloadPlatform iOS
-  xcodebuild -downloadPlatform iPadOS
   xcodebuild -downloadPlatform tvOS
   xcodebuild -downloadPlatform watchOS
-  xcodebuild -downloadPlatform visionOS
+#  xcodebuild -downloadPlatform visionOS
 }
 
 dev_macios_xcode_install_commandline_tools()
