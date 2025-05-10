@@ -15,6 +15,8 @@ set paths to ¬
 		"/Volumes/xFAT-1TB-2/", ¬
 		"/Volumes/xFAT-1TB-2/e/personal-private/microsoft", ¬
 		"/Volumes/xFAT-1TB-2/e/personal-private/microsoft/teams/Cloud-and-AI/DevDiv/IDE-Platform-and-Experience-VSCX/VSCX-SDKs", ¬
+		"/Volumes/xFAT-1TB-2/e/personal-private/microsoft/teams/Cloud-and-AI/DevDiv/IDE-Platform-and-Experience-VSCX/VSCX-SDKs/Android", ¬
+		"/Volumes/xFAT-1TB-2/e/personal-private/microsoft/teams/Cloud-and-AI/DevDiv/IDE-Platform-and-Experience-VSCX/VSCX-SDKs/MAUI", ¬
 		"/Volumes/xFAT-1TB-2/e/personal-private/microsoft-media", ¬
 		"/Volumes/xFAT-1TB-2/e/personal-private/moljac-repo", ¬
 		"/Volumes/xFAT-1TB-2/e/personal-private/judo/", ¬
