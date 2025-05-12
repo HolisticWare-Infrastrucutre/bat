@@ -113,6 +113,7 @@ export HOMEBREW_EDITOR="/opt/homebrew/bin/code"
 
 # export MSBUILDDISABLENODEREUSE=1
 #----------------------------------------------------------------------------------------------------------------------
+# https://developer.android.com/tools/variables#set
 
 export PATH=/opt/homebrew/bin/:/opt/homebrew/bin:/opt/homebrew/sbin:/opt/homebrew/bin/:/opt/homebrew/sbin/
 export PATH=/usr/local/bin/:/usr/local/sbin/:
@@ -128,6 +129,7 @@ export PATH=$PATH:$ANDROID_HOME/tools/bin/
 export PATH=$PATH:$ANDROID_HOME/platform-tool/
 export PATH=$PATH:$ANDROID_HOME/platform-tools/
 # ANDROID_PATH_CUMULATIVE
+export PATH=$PATH:$ANDROID_HOME/cmdline-tools/latest/bin/
 export PATH=$PATH:$ANDROID_HOME/bundle-tool/
 export PATH=$PATH:$ANDROID_SDK_ROOT/
 export PATH=$PATH:$JAVA_HOME/
@@ -378,12 +380,32 @@ sys_clean_diverse()
 
 sys_mode_light ()
 {
+  echo "--------------------------------------------------------------------------------------------------------------"
+  echo \
+  "
+  osascript -e 'tell app "System Events" to tell appearance preferences to set dark mode to not dark mode'
+  "
   osascript -e 'tell app "System Events" to tell appearance preferences to set dark mode to not dark mode'
   # osascript -e 'tell app "System Events" to tell appearance preferences to set
 
   # defaults write -g NSRequiresAquaSystemAppearance -bool true
   # defaults write -g AppleInterfaceStyleSwitchesAutomatically -bool true
 
+}
+
+sys_usbd_sd_card_restart ()
+{
+  echo "--------------------------------------------------------------------------------------------------------------"
+  echo \
+  "
+  sudo launchctl stop com.apple.usbd
+  sudo launchctl start com.apple.usbd
+  diskutil list 
+  "
+  sudo launchctl stop com.apple.usbd
+  sudo launchctl start com.apple.usbd
+  diskutil list
+  diskutil verifyVolume /Volumes/xFAT-1TB-2/
 }
 
 #   stop
@@ -1078,6 +1100,38 @@ dev_android_info_dump()
   "/Applications/Android Studio Preview.app/Contents/MacOS/studio" -version
 }
 
+dev_android_install_commandline_tools()
+{
+  echo "--------------------------------------------------------------------------------------------------------------"
+  echo \
+  "
+  "
+  rm -fr $HOME/Downloads/Android/
+  mkdir $HOME/Downloads/Android/
+  curl \
+    -v -L -C - \
+    --output $HOME/Downloads/Android/commandlinetools.zip \
+    -O https://dl.google.com/android/repository/commandlinetools-mac-13114758_latest.zip
+
+  unzip \
+    $HOME/Downloads/Android/commandlinetools.zip \
+    -d $HOME/Downloads/Android/sdk/
+
+  export JAVA_HOME=$JAVA_HOME_MICROSOFT_21
+  $HOME/Downloads/Android/sdk/cmdline-tools/bin/sdkmanager \
+      --sdk_root=$ANDROID_HOME \
+      --install \
+        "cmdline-tools;latest" \
+        "cmdline-tools;13.0" \
+        "cmdline-tools;12.0" \
+
+  sdkmanager \
+    "platform-tools" \
+    "platforms;android-34" \
+    "platforms;android-35" \
+
+}
+
 dev_android_sdkmanager()
 { 
   echo "--------------------------------------------------------------------------------------------------------------"
@@ -1095,6 +1149,7 @@ dev_android_sdkmanager()
   sdkmanager \
       --licenses
   "
+
   sdkmanager --install "cmdline-tools;latest"
   # java 8 is required
   export JAVA_HOME=$JAVA_HOME_17
@@ -2436,6 +2491,27 @@ dev_dotnet_android_bindings_binderator_config_bump()
   dotnet script ./build/scripts/update-config.csx -- ./config.json bump
 }
 
+
+dev_dotnet_android_repo_build_01()
+{
+  echo "=============================================================================================================="
+  echo \
+  "
+  "
+}
+
+dev_dotnet_android_repo_build_02()
+{
+  echo "=============================================================================================================="
+  echo \
+  "
+  dotnet build Xamarin.Android.sln -t:Prepare --no-restore --tl:off -bl
+  dotnet-local.cmd build Xamarin.Android.sln -t:BuildDotNet --tl:off -bl
+  "
+  dotnet build Xamarin.Android.sln -t:Prepare --no-restore --tl:off -bl
+  dotnet-local.cmd build Xamarin.Android.sln -t:BuildDotNet --tl:off -bl
+}
+
 dev_dotnet_android_profiling_setup_emulator()
 {
   # https://devblogs.microsoft.com/dotnet/performance-improvements-in-dotnet-maui/#startup-performance-improvements
@@ -2733,7 +2809,7 @@ dev_dotnet_maui_run_app_android ()
         build \
             $d \
             -t:Run \
-            -f:net7.0-android \
+            -f:net9.0-android \
             /p:AndroidSdkDirectory=$ANDROID_HOME
     "
 
@@ -2742,7 +2818,7 @@ dev_dotnet_maui_run_app_android ()
         build \
             $d \
             -t:Run \
-            -f:net7.0-android \
+            -f:net9.0-android \
             /p:AndroidSdkDirectory=$ANDROID_HOME
 
   done
@@ -2762,7 +2838,7 @@ dev_dotnet_maui_run_app_ios ()
         build \
           $d \
           -t:Run \
-            -f:net7.0-ios \
+            -f:net9.0-ios \
             -p:_DeviceName=:v2:udid=$IOS_DEVICE_ID
     "
 
@@ -2771,7 +2847,7 @@ dev_dotnet_maui_run_app_ios ()
         build \
           $d \
           -t:Run \
-            -f:net7.0-ios \
+            -f:net9.0-ios \
             -p:_DeviceName=:v2:udid=$IOS_DEVICE_ID
 
 
