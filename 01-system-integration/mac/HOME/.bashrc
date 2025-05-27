@@ -414,6 +414,50 @@ sys_usbd_sd_card_restart ()
 
 #######################################################################################################################
 # sys
+#   info
+# start
+function sys_info ()
+{
+  echo "--------------------------------------------------------------------------------------------------------------"
+  echo \
+  "
+  export TIMESTAMP=$(date +%Y-%m-%dT%H-%M-%S)
+  export BOX_NAME=sys_box_name
+
+  system_profiler SPHardwareDataType        >> $HOME/Downloads/info-$BOXNAME-$TIMESTAMP.log
+  sysctl machdep.cpu.brand_string           >> $HOME/Downloads/info-$BOXNAME-$TIMESTAMP.log
+  sysctl -a | grep cpu                      >> $HOME/Downloads/info-$BOXNAME-$TIMESTAMP.log
+  sysctl hw.memsize                         >> $HOME/Downloads/info-$BOXNAME-$TIMESTAMP.log
+
+  ioreg -l | grep IOPlatformSerialNumber    >> $HOME/Downloads/info-$BOXNAME-$TIMESTAMP.log
+  sw_vers -buildVersion                     >> $HOME/Downloads/info-$BOXNAME-$TIMESTAMP.log
+
+  system_profiler -detailLevel basic        >> $HOME/Downloads/info-$BOXNAME-$TIMESTAMP.system_profiler-basic.log
+  system_profiler -xml                      >> $HOME/Downloads/info-$BOXNAME-$TIMESTAMP.system_profiler.xml
+  "
+  export TIMESTAMP=$(date +%Y-%m-%dT%H-%M-%S)
+  export BOX_NAME=sys_box_name
+
+  system_profiler SPHardwareDataType        >> $HOME/Downloads/info-$BOXNAME-$TIMESTAMP.log
+  sysctl machdep.cpu.brand_string           >> $HOME/Downloads/info-$BOXNAME-$TIMESTAMP.log
+  sysctl -a | grep cpu                      >> $HOME/Downloads/info-$BOXNAME-$TIMESTAMP.log
+  sysctl hw.memsize                         >> $HOME/Downloads/info-$BOXNAME-$TIMESTAMP.log
+
+  ioreg -l | grep IOPlatformSerialNumber    >> $HOME/Downloads/info-$BOXNAME-$TIMESTAMP.log
+  sw_vers -buildVersion                     >> $HOME/Downloads/info-$BOXNAME-$TIMESTAMP.log
+
+  system_profiler -detailLevel basic        >> $HOME/Downloads/info-$BOXNAME-$TIMESTAMP.system_profiler-basic.log
+  system_profiler -xml                      >> $HOME/Downloads/info-$BOXNAME-$TIMESTAMP.system_profiler.xml
+
+}
+# start
+#   info
+# sys
+#######################################################################################################################
+
+
+#######################################################################################################################
+# sys
 #   apps
 # start
 
@@ -555,7 +599,7 @@ function term()
   fi
 }
 
-sys_term_tab_completion_reset()
+function sys_term_tab_completion_reset()
 {
   echo "--------------------------------------------------------------------------------------------------------------"
   echo \
