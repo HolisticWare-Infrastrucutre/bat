@@ -19,12 +19,15 @@ export APPS=\
 #/Applications/Android Messages.app
 /Applications/Visual Studio Code.app
 /Applications/Visual Studio Code - Insiders.app
-#/Applications/Atom.app
-#/Applications/Brackets.app
+/Applications/VSCodium.app
+/Applications/Cursor.app
+/Applications/Atom.app
+/Applications/Brackets.app
 /Applications/Phoenix Code.app
 /Applications/GitHub Desktop.app
 /Applications/Rider.app
 /Applications/Android Studio.app
+/Applications/Claude.app
 #/Applications/R.app
 #/Applications/RStudio.app
 /Applications/Docker.app
