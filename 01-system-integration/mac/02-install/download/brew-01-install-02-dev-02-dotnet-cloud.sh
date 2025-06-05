@@ -6,9 +6,6 @@ export ACTION_VERB=install
 cd $HOME/Downloads/
 
 
-# https://github.com/sharkdp/fd
-brew $ACTION_VERB \
-    fd
 
 # https://learn.microsoft.com/en-us/azure/developer/azure-developer-cli/install-azd
 brew tap azure/azd \
@@ -21,12 +18,7 @@ brew $ACTION_VERB \
 # brew uninstall \
 #     azd
 
-# https://cli.github.com/
-# https://github.com/cli/cli#installation
-brew $ACTION_VERB \
-    gh
-
-# https://github.com/cli/cli#installation
+brew update 
 
 # Add the tap for bicep
 brew tap \
@@ -36,6 +28,9 @@ brew tap \
 brew $ACTION_VERB \
     bicep
 
+
+brew $ACTION_VERB \
+    azure-cli
 
 # https://cloud.google.com/sdk/
 brew $ACTION_VERB \
