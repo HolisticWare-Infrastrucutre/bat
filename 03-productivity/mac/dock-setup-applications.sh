@@ -28,6 +28,8 @@ export APPS=\
 /Applications/Rider.app
 /Applications/Android Studio.app
 /Applications/Claude.app
+/Applications/Msty.app
+/Applications/LM Studio.app
 #/Applications/R.app
 #/Applications/RStudio.app
 /Applications/Docker.app
