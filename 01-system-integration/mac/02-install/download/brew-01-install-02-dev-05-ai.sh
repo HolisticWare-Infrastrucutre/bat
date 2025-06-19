@@ -10,11 +10,27 @@ brew  cleanup
 #---------------------------------------------------------------------------------------------------
 
 brew $ACTION_VERB \
+        ollama \
+        llamc.cpp \
+        aider \
+        gptscript \
+        promptfoo \
+
+brew $ACTION_VERB \
+    --cask \
+        ollamac \
+        ollama \
+
+
+brew $ACTION_VERB \
     --cask \
         lm-studio \
         backyard-ai \
         msty \
         jan \
+        anythingllm \
+        sanctum \
+        gpt4all \
 
 
 # The intelligent terminal.
@@ -23,15 +39,6 @@ brew $ACTION_VERB \
         claude \
         warp \
         amazon-q \
-
-brew $ACTION_VERB \
-        aider \
-        ollama \
-
-brew $ACTION_VERB \
-    --cask \
-        ollamac \
-        ollama \
 
 
 # claude code
