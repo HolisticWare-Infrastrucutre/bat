@@ -139,10 +139,12 @@ export PATH="/opt/homebrew/opt/gnu-sed/libexec/gnubin":$PATH
 #----------------------------------------------------------------------------------------------------------------------
 export PATH=$HOME/.dotnet/tools/:$PATH
 #######################################################################################################################
+export ROOT_NOTES=/Users/Shared/Projects/d/hw/HolisticWare.WebSite.Notes/
 
 
 #######################################################################################################################
 alias ll='ls -al'
+alias md='mkdir -p'
 
 alias vs="open -a Visual\ Studio\ \(Preview\)"
 alias vsc="code -n ."
@@ -206,6 +208,45 @@ mdr()
   mkdir -p $1
   "
   mkdir -p $1
+}
+
+sys_energy_low()
+{
+  # https://commons.lbl.gov/display/itfaq/The+different+types+of+computer+names+for+Mac+computers
+  echo "--------------------------------------------------------------------------------------------------------------"
+  echo \
+  "
+  "
+  sudo pmset -a lowpower 1
+  sudo pmset -a lowpowermode 1
+  blueutil -p 0
+  networksetup -setairportpower en0 off
+  networksetup -setnetworkserviceenabled Wi-Fi off
+
+  for i in $(seq 1 10);
+  do
+    osascript -e 'tell application "System Events"' -e 'key code 145' -e ' end tell'
+  done
+}
+
+sys_energy_high()
+{
+  # https://github.com/guarinogabriel/Mac-CLI
+  # https://commons.lbl.gov/display/itfaq/The+different+types+of+computer+names+for+Mac+computers
+  echo "--------------------------------------------------------------------------------------------------------------"
+  echo \
+  "
+  "
+  sudo pmset -a lowpower 0
+  sudo pmset -a lowpowermode 0
+  blueutil -p 1
+  networksetup -setairportpower en0 on
+  networksetup -setnetworkserviceenabled Wi-Fi on
+
+  for i in $(seq 1 10);
+  do
+    osascript -e 'tell application "System Events"' -e 'key code 144' -e ' end tell'
+  done
 }
 
 sys_name()
@@ -4154,6 +4195,77 @@ work_on_main()
     $HOME/bat/03-productivity/mac/finder-open-window-with-tabs-00-main.sh
 };
 
+work_on_moljac_learn()
+{
+  echo "--------------------------------------------------------------------------------------------------------------"
+  echo \
+  "
+  work_on_moljac_learn_dotnet_csharp_maui
+  work_on_moljac_learn_ai
+  work_on_moljac_learn_software_engineering
+  "
+  work_on_moljac_learn_dotnet_csharp_maui
+  work_on_moljac_learn_ai
+  work_on_moljac_learn_software_engineering
+}
+
+work_on_moljac_learn_dotnet_csharp_maui()
+{
+  echo "--------------------------------------------------------------------------------------------------------------"
+  echo \
+  "
+  source $HOME/bat.private/mac/mchwc/firefox-moljac-learn-dotnet-csharp-maui.sh
+  # open -n -a /System/Applications/Utilities/Terminal.app
+  open -a Terminal \\
+    $ROOT_NOTES/data-structures-and-algorithms/data-science/ai-artificial-intelligence/ \\
+    $ROOT_NOTES/data-structures-and-algorithms/ \\
+  "
+  source $HOME/bat.private/mac/mchwc/firefox-moljac-learn-dotnet-csharp-maui.sh
+  # open -n -a /System/Applications/Utilities/Terminal.app
+  open -a Terminal \
+    $ROOT_NOTES/data-structures-and-algorithms/data-science/ai-artificial-intelligence/ \
+    $ROOT_NOTES/data-structures-and-algorithms/ \
+
+}
+
+work_on_moljac_learn_ai()
+{
+  echo "--------------------------------------------------------------------------------------------------------------"
+  echo \
+  "
+  source $HOME/bat.private/mac/mchwc/firefox-moljac-learn-ai.sh
+  # open -n -a /System/Applications/Utilities/Terminal.app
+  open -a Terminal \\
+    $ROOT_NOTES/data-structures-and-algorithms/data-science/ai-artificial-intelligence/ \\
+    $ROOT_NOTES/data-structures-and-algorithms/ \\
+  "
+  source $HOME/bat.private/mac/mchwc/firefox-moljac-learn-ai.sh
+  # open -n -a /System/Applications/Utilities/Terminal.app
+  open -a Terminal \
+    $ROOT_NOTES/data-structures-and-algorithms/data-science/ai-artificial-intelligence/ \
+    $ROOT_NOTES/data-structures-and-algorithms/ \
+
+}
+
+work_on_moljac_learn_software_engineering()
+{
+  echo "--------------------------------------------------------------------------------------------------------------"
+  echo \
+  "
+  source $HOME/bat.private/mac/mchwc/firefox-moljac-learn-software-engineering.sh
+  # open -n -a /System/Applications/Utilities/Terminal.app
+  open -a Terminal \\
+    $ROOT_NOTES/data-structures-and-algorithms/data-science/ai-artificial-intelligence/ \\
+    $ROOT_NOTES/data-structures-and-algorithms/ \\
+  "
+  source $HOME/bat.private/mac/mchwc/firefox-moljac-learn-software-engineering.sh
+  # open -n -a /System/Applications/Utilities/Terminal.app
+  open -a Terminal \
+    $ROOT_NOTES/data-structures-and-algorithms/data-science/ai-artificial-intelligence/ \
+    $ROOT_NOTES/data-structures-and-algorithms/ \
+
+}
+
 work_on_moljac_private()
 {
   echo "--------------------------------------------------------------------------------------------------------------"
@@ -4340,3 +4452,8 @@ sys_zsh_functions_load
 
 # Amazon Q post block. Keep at the bottom of this file.
 [[ -f "${HOME}/Library/Application Support/amazon-q/shell/zshrc.post.zsh" ]] && builtin source "${HOME}/Library/Application Support/amazon-q/shell/zshrc.post.zsh"
+
+# Added by LM Studio CLI (lms)
+export PATH="$PATH:/Users/moljac/.lmstudio/bin"
+# End of LM Studio CLI section
+
