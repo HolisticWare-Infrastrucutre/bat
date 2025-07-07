@@ -13,7 +13,6 @@ dotnet-suggest
 boots
 git-credential-manager
 dotnet-gcm
-cake.tool
 cs-script.cli
 # Xamarin.Android
 xamarin.androidbinderator.tool
@@ -49,6 +48,8 @@ Microsoft.dotnet-openapi
 dotnet-dev-certs
 dotnet-config2json
 # https://github.com/SimonCropp/WinDebloat
+# Aspire
+aspireate
 WinDebloat
 # HTTP tools
 dotnet-serve
@@ -181,11 +182,41 @@ WildernessLabs.Meadow.CLI
 nanoclr
 "
 
+export TOOLZ_PREVIEWS=\
+"
+cake.tool
+aspire.cli
+"
+
+
 IFS=$'\n'
 # ZSH does not split words by default (like other shells):
 setopt sh_word_split
 
 for TOOL in $TOOLZ
+do
+    if [[ $TOOL == "#"* ]]
+    then
+        echo "......................................................................"
+        echo $TOOL
+        continue
+    fi
+
+    echo "Tool: $TOOL"
+    echo "      uninstalling"
+    dotnet tool uninstall   \
+        --global \
+            $TOOL
+
+    echo "      installing"
+    dotnet tool install \
+        --global \
+            $TOOL \
+            --version "*-*" \
+            --verbosity diagnostic
+done
+
+for TOOL in $TOOLZ_PREVIEWS
 do
     if [[ $TOOL == "#"* ]]
     then
