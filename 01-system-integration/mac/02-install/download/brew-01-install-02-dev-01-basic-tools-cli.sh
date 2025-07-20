@@ -4,6 +4,30 @@
 # install / uninstall / reinstall
 export ACTION_VERB=install
 
+brew doctor
+brew upgrade
+brew update
+
+brew $ACTION_VERB \
+    --formula \
+        git \
+        gh \
+        github-mcp-server \
+        github-markdown-toc \
+        gitlab-ci-local \
+        gitlab-runner \
+        glab \
+        wget \
+
+
+
+brew $ACTION_VERB \
+    --cask \
+        github \
+        github@beta \
+        git-credential-manager \
+
+
 #----------------------------------------------------------------------------------------------
 #
 # find
