@@ -1,11 +1,12 @@
 #!/bin/bash
 
+source ./brew-00-prepare.sh
+
 # Action/Verb
 # install / uninstall / reinstall
 export ACTION_VERB=install
 
 
-source ./brew-00-prepare.sh
 
 #----------------------------------------------------------------------------------------------
 # https://docs.microsoft.com/en-us/powershell/scripting/install/installing-powershell-core-on-macos?view=powershell-6
