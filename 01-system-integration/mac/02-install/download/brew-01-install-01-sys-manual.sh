@@ -98,8 +98,9 @@ fi
 
 brew $ACTION_VERB --cask \
     docker \
-    docker-machine \
     docker-toolbox \
+
+#    docker-machine \
 
 boots https://desktop.docker.com/mac/stable/amd64/Docker.dmg
 
