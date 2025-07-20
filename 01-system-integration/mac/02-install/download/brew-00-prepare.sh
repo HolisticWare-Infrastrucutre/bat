@@ -68,8 +68,8 @@ mysides add \
 
 
 
-osascript -e 'tell app "System Events" to display dialog "$ACTION_VERB XCode"'
-#osascript -e 'tell app "Finder" to display dialog "$ACTION_VERB Xcode"'
+osascript -e 'tell app "System Events" to display dialog "Install XCode"'
+#osascript -e 'tell app "Finder" to display dialog "Install Xcode"'
 open -a "App Store"
 
 sudo xcodebuild -license
