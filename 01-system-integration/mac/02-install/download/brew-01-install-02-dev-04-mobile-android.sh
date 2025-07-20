@@ -9,14 +9,16 @@ brew  doctor
 brew  cleanup  
 
 
-brew $ACTION_VERB --cask \
+brew $ACTION_VERB \
+    --cask \
     android-sdk \
     android-platform-tools \
     android-ndk \
 
 
 
-brew $ACTION_VERB --cask \
+brew $ACTION_VERB \
+    --cask \
     android-studio \
     android-file-transfer \
     androidtool \
