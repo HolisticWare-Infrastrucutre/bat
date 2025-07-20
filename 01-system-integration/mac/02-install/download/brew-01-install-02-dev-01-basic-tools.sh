@@ -49,15 +49,6 @@ brew $ACTION_VERB \
     rzip \
     snzip \    
 
-brew $ACTION_VERB --cask \
-    the-unarchiver \
-    winzip \
-    betterzip \
-    izip \
-    MacWinZipper \
-    MacZip \
-    MacZip4Win \
-    WinZip \
 
 
 # tools for development
@@ -77,3 +68,15 @@ brew $ACTION_VERB \
     gettext     \
     pcre        \
     swig        \
+
+
+brew $ACTION_VERB --cask \
+    the-unarchiver \
+
+#    winzip \
+#    betterzip \
+#    izip \
+#    MacWinZipper \
+#    MacZip \
+#    MacZip4Win \
+#    WinZip \
