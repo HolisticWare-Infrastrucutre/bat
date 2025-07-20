@@ -34,8 +34,9 @@ brew install \
 
 # https://github.com/XcodesOrg/XcodesApp
 
-brew install --cask \
-    xcodes
+brew install \
+    --cask \
+        xcodes
 #----------------------------------------------------------------------------------------------
 
 
