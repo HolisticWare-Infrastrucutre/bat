@@ -4,6 +4,11 @@
 # install / uninstall / reinstall
 export ACTION_VERB=install
 
+brew doctor
+brew upgrade
+brew update
+
+
 #-----------------------------------------------------------------------------------------------------------------------
 # clipboard
 
@@ -15,9 +20,10 @@ export ACTION_VERB=install
 
 # https://github.com/p0deje/Maccy
 
-brew install \
+brew $ACTION_VERB \
     maccy
 
-brew install --cask \
-    copyclip
+brew $ACTION_VERB \
+    --cask \
+        copyclip
     
