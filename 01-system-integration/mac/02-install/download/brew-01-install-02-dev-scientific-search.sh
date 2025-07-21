@@ -17,8 +17,9 @@ brew $ACTION_VERB \
 brew $ACTION_VERB \
     ack
 
-brew $ACTION_VERB --cask \
-    devonthink \
-    calibre
+brew $ACTION_VERB \
+    --cask \
+        devonthink \
+        calibre \
 
 #----------------------------------------------------------------------------------------------
