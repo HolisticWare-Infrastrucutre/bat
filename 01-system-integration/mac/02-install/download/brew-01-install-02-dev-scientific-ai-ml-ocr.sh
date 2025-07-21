@@ -6,19 +6,20 @@ export ACTION_VERB=install
 
 #----------------------------------------------------------------------------------------------
 # search rigrep
-brew install \
+brew $ACTION_VERB \
     rga \
 
-brew install \
+brew $ACTION_VERB \
     pandoc \
     poppler \
     ffmpeg
 
-brew install \
+brew $ACTION_VERB \
     ack
 
-brew install --cask \
-    devonthink
-    calibre
+brew $ACTION_VERB \
+    --cask \
+        devonthink \
+        calibre \
 
 #----------------------------------------------------------------------------------------------
