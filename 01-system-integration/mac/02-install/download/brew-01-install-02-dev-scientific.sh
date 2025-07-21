@@ -10,12 +10,18 @@ brew $ACTION_VERB \
     octave \
     R \
     python \
-    python3 \
     julia \
 
-brew $ACTION_VERB --cask \
+#     python3 \
+# python@3.13
+# Install command:
+# brew install python@3.13
+# Also known as: python, python3, python@3
+
+
+brew $ACTION_VERB \
+    --cask \
     R \
-    homebrew/cask-versions/adoptopenjdk8 \
     scilab \
     r \
     rstudio \
@@ -30,9 +36,6 @@ source $HOME/.zshrc
 
 
 #----------------------------------------------------------------------------------------------
-brew $ACTION_VERB \
-    python \
-    python3 \
 
 python --version
 python3 --version
@@ -71,29 +74,3 @@ jupyter-lab &
 jupyter notebook &
 voila &
 
-
-
-brew install \
-    gnu-sed
-
-brew install \
-    ddgr
-
-brew install --cask \
-    duckduckgo
-
-# search rigrep
-brew install \
-    rga \
-
-brew install \
-    pandoc \
-    poppler \
-    ffmpeg
-
-brew install \
-    ack
-
-brew install --cask \
-    devonthink
-    calibre
