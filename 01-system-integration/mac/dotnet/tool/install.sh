@@ -65,6 +65,10 @@ dotnet-json
 protobuf-net.Protogen
 Apache.Avro.Tools
 MessagePack.Generator
+# Code Style / Formatting
+editorconfig-tool
+dotnet-format
+csharpier
 # Publishing/Packaging
 dotnet-zip
 dotnet-deb
