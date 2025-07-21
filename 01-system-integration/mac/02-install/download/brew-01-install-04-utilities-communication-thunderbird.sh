@@ -2,18 +2,16 @@
 
 # Action/Verb
 # install / uninstall / reinstall
+export ACTION_VERB=install
 
-
+brew doctor
 brew upgrade
 brew update
 
-brew uninstall \
-    --cask \
-        thunderbird
-brew install \
-    --cask \
-        thunderbird
-        
+#----------------------------------------------------------------------------------------------
 
+brew $ACTION_VERB \
+    --cask \
+        thunderbird
 
 brew doctor
