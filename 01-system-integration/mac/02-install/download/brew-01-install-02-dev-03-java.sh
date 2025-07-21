@@ -10,18 +10,19 @@ brew  cleanup
 #----------------------------------------------------------------------------------------------
 # Development Java/Android
 brew $ACTION_VERB \
-    gradle \
-    ant	\
-    jabba \
-    jenv \
-    cfr-decompiler \
-    jadx \
-    procyon-decompiler \
-    smali \
-    dex2jar \
+    --formula \
+        gradle \
+        ant	\
+        jabba \
+        jenv \
+        cfr-decompiler \
+        jadx \
+        procyon-decompiler \
+        smali \
+        dex2jar \
 
 
-brew install \
+brew $ACTION_VERB \
     --cask \
         microsoft-openjdk@11 \
         microsoft-openjdk@17 \
@@ -61,22 +62,25 @@ ls -1   /Library/Java/JavaVirtualMachines/
 brew update
 
 brew $ACTION_VERB \
-    java11
+    --formula \
+        java11
 
 brew $ACTION_VERB \
-    openjdk \
-    openjdk@8 \
-    openjdk@11 \
-    openjdk@17 \
+    --formula \
+        openjdk \
+        openjdk@8 \
+        openjdk@11 \
+        openjdk@17 \
 
-brew $ACTION_VERB --cask \
-    adoptopenjdk \
-    corretto \
-    graalvm-jdk \
-    microsoft-jdk \
-    oracle-jdk \
-    sapmachine-jdk \
-    semeru-jdk-open \
+brew $ACTION_VERB \
+    --cask \
+        adoptopenjdk \
+        corretto \
+        graalvm-jdk \
+        microsoft-jdk \
+        oracle-jdk \
+        sapmachine-jdk \
+        semeru-jdk-open \
 
 ll      /Library/Java/JavaVirtualMachines/
 ls -1   /Library/Java/JavaVirtualMachines/ 
@@ -86,62 +90,72 @@ brew tap homebrew/cask-versions
 
 brew tap adoptopenjdk/openjdk
 
-brew $ACTION_VERB --cask \
-    homebrew/cask-versions/adoptopenjdk8 \
+brew $ACTION_VERB \
+    --cask \
+        homebrew/cask-versions/adoptopenjdk8 \
 
-brew $ACTION_VERB --cask \
-    adoptopenjdk/openjdk/adoptopenjdk8 \
-    adoptopenjdk/openjdk/adoptopenjdk@11 \
-    adoptopenjdk/openjdk/adoptopenjdk@17 \
-    adoptopenjdk/openjdk/adoptopenjdk11 \
-    adoptopenjdk/openjdk/adoptopenjdk17 \
+brew $ACTION_VERB \
+    --cask \
+        adoptopenjdk/openjdk/adoptopenjdk8 \
+        adoptopenjdk/openjdk/adoptopenjdk@11 \
+        adoptopenjdk/openjdk/adoptopenjdk@17 \
+        adoptopenjdk/openjdk/adoptopenjdk11 \
+        adoptopenjdk/openjdk/adoptopenjdk17 \
 
-brew $ACTION_VERB --cask \
-    adoptopenjdk \
-    adoptopenjdk8 \
-    adoptopenjdk/openjdk/adoptopenjdk8 \
+brew $ACTION_VERB \
+    --cask \
+        adoptopenjdk \
+        adoptopenjdk8 \
+        adoptopenjdk/openjdk/adoptopenjdk8 \
 
 brew untap adoptopenjdk/openjdk
 
 
-brew $ACTION_VERB --cask \
-    homebrew/cask-versions/zulu8 \
-    homebrew/cask-versions/zulu11 \
-    homebrew/cask-versions/zulu17 \
+brew $ACTION_VERB \
+    --cask \
+        homebrew/cask-versions/zulu8 \
+        homebrew/cask-versions/zulu11 \
+        homebrew/cask-versions/zulu17 \
 
 
-brew $ACTION_VERB --cask \
-    microsoft-openjdk \
-    microsoft-openjdk11 \
+brew $ACTION_VERB \
+    --cask \
+        microsoft-openjdk \
+        microsoft-openjdk11 \
 
-brew $ACTION_VERB --cask \
-    openjdk \
-    openjdk@8 \
-    openjdk@11 \
-    openjdk@17 \
-    openjdk@20 \
-
-
-brew $ACTION_VERB --cask \
-    oracle-jdk \
-    oracle-jdk \
-    oracle-jdk17 \
+brew $ACTION_VERB \
+    --cask \
+        openjdk \
+        openjdk@8 \
+        openjdk@11 \
+        openjdk@17 \
+        openjdk@20 \
 
 
-brew $ACTION_VERB --cask \
-    semeru-jdk-open \
-    semeru-jdk8-open \
-    semeru-jdk11-open \
-    semeru-jdk17-open \
+brew $ACTION_VERB \
+    --cask \
+        oracle-jdk \
+        oracle-jdk \
+        oracle-jdk17 \
 
-brew $ACTION_VERB --cask \
-    graal-jdk \
-    graal-jdk17 \
 
-brew $ACTION_VERB --cask \
-    temurin \
-    temurin11 \
-    temurin17 \
+brew $ACTION_VERB \
+    --cask \
+        semeru-jdk-open \
+        semeru-jdk8-open \
+        semeru-jdk11-open \
+        semeru-jdk17-open \
+
+brew $ACTION_VERB \
+    --cask \
+        graal-jdk \
+        graal-jdk17 \
+
+brew $ACTION_VERB \
+    --cask \
+        temurin \
+        temurin11 \
+        temurin17 \
 
 boots https://corretto.aws/downloads/latest/amazon-corretto-17-aarch64-macos-jdk.pkg
 
@@ -155,24 +169,28 @@ alias java17="unset JAVA_HOME; export JAVA_HOME=`/usr/libexec/java_home -v 17`; 
 brew tap homebrew/cask-versions
 
 # https://docs.brew.sh/Taps#formula-with-duplicate-names
-brew $ACTION_VERB --cask \
-    java \
+brew $ACTION_VERB \
+    --cask \
+        java \
 
 
 
 
-brew $ACTION_VERB --cask \
-    homebrew/cask-versions/zulu8 \
-    adoptopenjdk/openjdk/adoptopenjdk8 \
-    homebrew/cask-versions/corretto8 \
+brew $ACTION_VERB \
+    --cask \
+        homebrew/cask-versions/zulu8 \
+        adoptopenjdk/openjdk/adoptopenjdk8 \
+        homebrew/cask-versions/corretto8 \
 
-brew $ACTION_VERB --cask \
-    oracle-jdk \
-    oracle-jdk17 \
-    oracle-jdk-javadoc \
+brew $ACTION_VERB \
+    --cask \
+        oracle-jdk \
+        oracle-jdk17 \
+        oracle-jdk-javadoc \
 
-brew $ACTION_VERB --cask \
-    jad \
+brew $ACTION_VERB \
+    --cask \
+        jad \
 
 /usr/libexec/java_home -V
 
