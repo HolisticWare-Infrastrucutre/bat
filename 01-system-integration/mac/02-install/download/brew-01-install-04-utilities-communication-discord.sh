@@ -4,6 +4,7 @@
 # install / uninstall / reinstall
 
 
+brew doctor
 brew upgrade
 brew update
 
