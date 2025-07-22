@@ -1,15 +1,16 @@
 #!/bin/bash
 
-brew cask info \
-    android-sdk
-brew cask info \
-    java
+
+# https://developer.android.com/studio/archive
+wget \
+    https://redirector.gvt1.com/edgedl/android/studio/install/2025.1.1.13/android-studio-2025.1.1.13-mac_arm.dmg
 
 
-brew cask install \
-    homebrew/cask-versions/adoptopenjdk8
+export PATH="/usr/local/opt/openjdk/bin:$PATH"
+#>> ~/.zshrc
 
 sdkmanager --update
+
 
 sdkmanager \
     "platform-tools" \
