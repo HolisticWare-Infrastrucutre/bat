@@ -12,7 +12,7 @@ marco-o1:latest
 qwq:latest
 all-minilm:latest
 llama3.3:latest
-llama3.2-vision:latest
+#llama3.2-vision:latest
 "
 
 IFS=$'\n'
@@ -21,6 +21,15 @@ setopt sh_word_split
 
 for MODEL in $MODELS;
 do
-    echo model = $MODEL
+    echo "......................................................................"
+    if [[ $MODEL == "#"* ]]
+    then
+        echo skipping:
+        echo        $MODEL
+        continue
+    fi
+
+    echo installing:
+    echo        $MODEL
     ollama pull $MODEL
 done
