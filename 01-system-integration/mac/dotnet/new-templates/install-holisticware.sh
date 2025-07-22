@@ -32,10 +32,11 @@ setopt sh_word_split
 
 for TEMPLATE in $TEMPLATEZ
 do
+    echo "......................................................................"
     if [[ $TEMPLATE == "#"* ]]
     then
-        echo "......................................................................"
-        echo $TEMPLATE
+        echo skipping:
+        echo        $TEMPLATE
         continue
     fi
 
