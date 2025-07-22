@@ -28,11 +28,13 @@ setopt sh_word_split
 for TOOL in $TOOLS;
 do
     echo tool = $VC_EXTENSION
-    brew install --cask \
-        $TOOL
+    brew install \
+        --cask \
+            $TOOL
     brew update
-    brew upgrade --cask \
-        $TOOL
+    brew upgrade \
+        --cask \
+            $TOOL
 done
 #----------------------------------------------------------------------------------------------
 
@@ -77,39 +79,16 @@ git config --global \
     user.name
 
 ## Install GCM using Homebrew:
-
 brew tap \
     microsoft/git
 
-brew $ACTION_VERB --cask \
-    git-credential-manager-core
-
+brew $ACTION_VERB \
+    --cask \
+        git-credential-manager-core
 
 brew $ACTION_VERB \
-    make \
-    cmake \
-    libtool \
-    gdk-pixbuf \
-    gettext \
-    coreutils \
-    findutils \
-    gnu-tar \
-    gnu-sed \
-    gawk \
-    gnutls \
-    gnu-indent \
-    gnu-getopt \
-    intltool \
-    ninja \
-    scons \
-    wget \
-    xz \
-    mingw-w64 \
-    mingw-zlib \
-    quicktype \
-
-brew $ACTION_VERB \
-    git-lfs \
+    --formula \
+        git-lfs \
 
 # Update global git config
 sudo git lfs $ACTION_VERB
@@ -117,13 +96,41 @@ sudo git lfs $ACTION_VERB
 # Update system git config
 sudo git lfs $ACTION_VERB --system
 
-brew $ACTION_VERB --cask \
-    github \
-    gitup \
-    diffmerge \
-    p4v \
-    menumeters \
-    onyx \
+
+
+brew $ACTION_VERB \
+    --formula \
+        make \
+        cmake \
+        libtool \
+        gdk-pixbuf \
+        gettext \
+        coreutils \
+        findutils \
+        gnu-tar \
+        gnu-sed \
+        gawk \
+        gnutls \
+        gnu-indent \
+        gnu-getopt \
+        intltool \
+        ninja \
+        scons \
+        wget \
+        xz \
+        quicktype \
+
+#        mingw-w64 \
+#        mingw-zlib \
+
+brew $ACTION_VERB \
+    --cask \
+        github \
+        gitup \
+        diffmerge \
+        p4v \
+        menumeters \
+        onyx \
     
     
 
@@ -144,9 +151,10 @@ brew $ACTION_VERB \
 # 2 hrs
 caffeinate -t 7200 &
 
-brew $ACTION_VERB --cask \
-    caffeine \
-    menumeters \
+brew $ACTION_VERB \
+    --cask \
+        caffeine \
+        menumeters \
 
 
 brew tap fwartner/tap
