@@ -13,6 +13,7 @@ brew $ACTION_VERB \
     --formula \
         gradle \
         ant	\
+        maven \
         jabba \
         jenv \
         cfr-decompiler \
@@ -24,10 +25,18 @@ brew $ACTION_VERB \
 
 brew $ACTION_VERB \
     --cask \
+        android-ndk
+
+#        android-sdk\
+
+
+brew $ACTION_VERB \
+    --cask \
         microsoft-openjdk@11 \
         microsoft-openjdk@17 \
         microsoft-openjdk@21 \
         microsoft-openjdk \
+
 
 # Error: Could not find PKG source file 
 # found 
@@ -38,6 +47,15 @@ brew $ACTION_VERB \
 # found 
 #     'microsoft-jdk-11.0.25-macos-aarch64.pkg' 
 # instead.
+
+export BREW_DOWNLOAD=$HOME/Library/Caches/Homebrew/downloads/
+
+brew install \
+    $BREW_DOWNLOAD/14caf32db3f58e886a8dc6cdc74d48bd03e6f697b661bd6c4555aea7586593ac--microsoft-jdk-17.0.15-macos-aarch64.pkg
+brew install \
+    $BREW_DOWNLOAD/924d21fd26825726cd6e6b4d6a65dc5e2d49712fe3a06f92f3d85bb85a3b2bcb--microsoft-jdk-21.0.7-macos-aarch64.pkg
+brew install \
+    $BREW_DOWNLOAD/ed92cd1b0f5d2533e54f0ec76241cb2348f57661c567ddeb97458a27146e19e5--microsoft-jdk-11.0.27-macos-aarch64.pkg
 
 
 # https://stackoverflow.com/questions/52524112/how-do-i-$ACTION_VERB-java-on-mac-osx-allowing-version-switching
@@ -154,8 +172,10 @@ brew $ACTION_VERB \
 brew $ACTION_VERB \
     --cask \
         temurin \
-        temurin11 \
-        temurin17 \
+        temurin@8 \
+        temurin@11 \
+        temurin@17 \
+        temurin@21 \
 
 boots https://corretto.aws/downloads/latest/amazon-corretto-17-aarch64-macos-jdk.pkg
 
