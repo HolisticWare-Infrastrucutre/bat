@@ -28,15 +28,6 @@ defaults write com.apple.screencapture "location" -string "~/Downloads" \
 killall SystemUIServer
 
 
-# https://macos-defaults.com/finder/AppleShowAllExtensions.html
-defaults write NSGlobalDomain "AppleShowAllExtensions" -bool "true" \
-&& \
-killall Finder
-
-# https://macos-defaults.com/finder/AppleShowAllFiles.html#set-to-true
-defaults write com.apple.Finder "AppleShowAllFiles" -bool "true" \
-&& \
-killall Finder
 
 # https://github.com/tech-otaku/macos-defaults/blob/master/date-time.sh
 # https://macos-defaults.com/menubar/DateFormat.html#set-to-quot-eee-d-mmm-hh-mm-ss-quot
@@ -74,44 +65,9 @@ defaults domains | tr ',' '\n'
 # possible to use the shortcut:
 #   CMD + SHIFT + .
 
-defaults write  com.apple.finder AppleShowAllFiles YES
+source ./customize-tune/finder.sh
 
-# too long paths when multiple tabs are opened
-defaults write  com.apple.finder _FXShowPosixPathInTitle -bool false
 
-# Finder
-
-#   PathBar
-defaults write  com.apple.finder ShowPathbar -bool true
-
-#   Status Bar
-defaults write  com.apple.finder ShowStatusBar -bool true
-
-#   Set Current Folder as Default Search Scope
-defaults write  com.apple.finder FXDefaultSearchScope -string "SCcf"
-
-defaults read   com.apple.finder NewWindowTargetPath
-defaults write  com.apple.finder NewWindowTargetPath -string "file:///Users/Shared/Projects/"
-
-# Set Desktop as Default:
-# defaults write com.apple.finder NewWindowTarget -string "PfDe"
-# Set Documents as Default:
-# defaults write com.apple.finder NewWindowTarget -string "PfDo"
-
-# hard drives:
-defaults write com.apple.finder ShowHardDrivesOnDesktop -bool true
-
-# external hard drives:
-defaults write com.apple.finder ShowExternalHardDrivesOnDesktop -bool true
-
-# removable media:
-defaults write com.apple.finder ShowRemovableMediaOnDesktop -bool true
-
-# mounted servers
-defaults write com.apple.finder ShowMountedServersOnDesktop -bool true
-
-defaults write NSGlobalDomain AppleShowAllExtensions -bool true
-defaults write NSGlobalDomain NSAppSleepDisabled -bool YES
 
 # Enable the additional information (reboot needed)
 sudo defaults write /Library/Preferences/com.apple.loginwindow AdminHostInfo HostName
@@ -153,6 +109,7 @@ defaults write -g WebKitDeveloperExtras -bool true
 
 
 
+
 # Terminal
 #   Focus Follows Mouse
 defaults write \
@@ -180,60 +137,6 @@ killall SystemUIServer
 # https://blog.jiayu.co/2018/12/quickly-configuring-hot-corners-on-macos/
 # https://apple.stackexchange.com/questions/300696/toggle-hot-corners-with-a-script
 
-defaults read com.apple.dock | grep wvous 
-
-#    "wvous-bl-corner" = 11;
-#    "wvous-bl-modifier" = 0;
-#    "wvous-br-corner" = 12;
-#    "wvous-br-modifier" = 0;
-#    "wvous-tl-corner" = 3;
-#    "wvous-tl-modifier" = 0;
-#    "wvous-tr-corner" = 2;
-#    "wvous-tr-modifier" = 0;
-
-# bl, br, tl and tr refer to the bottom-left, bottom-right, top-left and top-right corners respectively.
-# The values for the wvous-*-corner keys represent the actions associated with each corner
-# The values for the vwous-*-modifier keys represent combinations of modifier keys which need to be pressed 
-# for the hot corner to trigger as a bit mask: 
-# no modifier key is 0, 
-# Shift is 2^17 or 131072, 
-# Control is 2^18 or 262144, 
-# Option is 2^19 or 524288 and 
-# Command is 2^20 or 1048576.
-
-# https://github.com/mathiasbynens/dotfiles/blob/master/.macos#L415
-
-# Hot corners
-# Possible values:
-#  0: no-op
-#  2: Mission Control
-#  3: Show application windows
-#  4: Desktop
-#  5: Start screen saver
-#  6: Disable screen saver
-#  7: Dashboard
-# 10: Put display to sleep
-# 11: Launchpad
-# 12: Notification Center
-# 13: Lock Screen
-
-
-# Bottom left screen corner → Launchpad
-defaults write com.apple.dock wvous-bl-corner -int 4
-defaults write com.apple.dock wvous-bl-modifier -int 0
-# Bottom right screen corner → Notification Center
-defaults write com.apple.dock wvous-br-corner -int 12
-defaults write com.apple.dock wvous-br-modifier -int 0
-# Top right screen corner → Show application windows
-defaults write com.apple.dock wvous-tl-corner -int 3
-defaults write com.apple.dock wvous-tl-modifier -int 0
-# Top right screen corner → Mission Control
-defaults write com.apple.dock wvous-tr-corner -int 2
-defaults write com.apple.dock wvous-tr-modifier -int 0
-
-killall Dock
-killall Finder
-killall SystemUIServer
 
 
 
