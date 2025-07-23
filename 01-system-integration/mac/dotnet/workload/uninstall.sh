@@ -12,7 +12,6 @@ sudo \
         workload \
             uninstall \
                 android \
-                android-net8 \
                 ios \
                 maccatalyst \
                 tvos \
@@ -33,3 +32,5 @@ sudo \
                 wasm-experimental-net8 \
                 wasm-experimental-net9 \
                 aspire \
+
+#                android-net8 \
