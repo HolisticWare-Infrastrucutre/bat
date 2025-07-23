@@ -36,6 +36,13 @@ sudo \
                 aspire \
 
 
+sudo \
+    dotnet \
+        workload \
+            update \
+
+
+
 
 #               –sdk-version 7.0.202 \
 #               –no-cache \
