@@ -3,6 +3,10 @@
 
 export MODELS=\
 "
+deepseek-coder:33b
+deepseek-coder:latest
+deepseek-coder-v2:latest
+deepseek-coder-v2:236b
 phi3.5:latest
 phi:latest
 deepseek-r1:latest
