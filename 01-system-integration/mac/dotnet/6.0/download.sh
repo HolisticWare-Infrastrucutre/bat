@@ -8,9 +8,13 @@ export EXT=pkg
 
 export VERSIONS=\
 "
-6.0
-6.0.1xx
-6.0.4xx
+8.0
+8.0.1xx
+8.0.2xx
+8.0.3xx
+8.0.4xx
+9.0
+9.0.1xx
 "
 export PRODUCTS=\
 "
@@ -47,7 +51,6 @@ do
     mkdir $HOME/Downloads/dotnet/$VERSION/$OS/$ARCH/daily/
     mkdir $HOME/Downloads/dotnet/$VERSION/$OS/$ARCH/preview/
 
-
     for PRODUCT in $PRODUCTS
     do
         if [[ $PRODUCT == "#"* ]]
@@ -73,6 +76,38 @@ do
             --output-dir $HOME/Downloads/dotnet/$VERSION/$OS/$ARCH/preview/ \
         -O https://aka.ms/dotnet/$VERSION/preview/dotnet-$PRODUCT-$OS-$ARCH.$EXT
 
+    done
+
+done
+
+for VERSION in $VERSIONS
+do
+    if [[ $VERSION == "#"* ]]
+    then
+        echo skipping:
+        echo "VERSION   :"  $VERSION
+        continue
+    fi
+
+    mkdir $HOME/Downloads/dotnet/$VERSION/
+    mkdir $HOME/Downloads/dotnet/$VERSION/$OS/
+    mkdir $HOME/Downloads/dotnet/$VERSION/$OS/$ARCH/
+    mkdir $HOME/Downloads/dotnet/$VERSION/$OS/$ARCH/daily/
+    mkdir $HOME/Downloads/dotnet/$VERSION/$OS/$ARCH/preview/
+
+    for PRODUCT in $PRODUCTS
+    do
+        if [[ $PRODUCT == "#"* ]]
+        then
+            echo skipping:
+            echo "PRODUCT   :"  $PRODUCT
+            continue
+        fi
+
+        echo installing:
+        echo "          "   $PRODUCT
+        echo "PRODUCT   :"  $PRODUCT
+        echo "ARCH.     :"  $ARCH
     done
 
 done
