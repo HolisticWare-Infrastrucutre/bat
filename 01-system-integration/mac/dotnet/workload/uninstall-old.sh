@@ -7,10 +7,10 @@ export WORKLOADZ=\
 "
 #            maui-tizen \
 
-sudo \
-    dotnet \
-        workload \
-            uninstall \
-                wasm-tools-net6 \
-                wasm-tools-net7 \
-                wasm-experimental-net7 \
+#sudo \
+#    dotnet \
+#        workload \
+#            uninstall \
+#                wasm-tools-net6 \
+#                wasm-tools-net7 \
+#                wasm-experimental-net7 \
