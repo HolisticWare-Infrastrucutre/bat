@@ -70,7 +70,10 @@ brew $ACTION_VERB \
 # claude code
 npm $ACTION_VERB \
     -g \
-        @anthropic-ai/claude-code        
+        @anthropic-ai/claude-code \
+        @musistudio/claude-code-router \
+        @google/gemini-cli \
+        @qwen-code/qwen-code \
 
 # PDF
 brew $ACTION_VERB \
