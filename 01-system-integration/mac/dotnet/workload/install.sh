@@ -13,7 +13,6 @@ sudo \
         workload \
             install \
                 android \
-                android-net8 \
                 ios \
                 maccatalyst \
                 tvos \
@@ -28,13 +27,14 @@ sudo \
                 maui-tizen \
                 tvos \
                 wasm-tools \
-                wasm-tools-net8 \
                 wasm-tools-net9 \
                 wasm-experimental \
-                wasm-experimental-net8 \
                 wasm-experimental-net9 \
                 aspire \
 
+#                wasm-tools-net8 \
+#                wasm-experimental-net8 \
+#                android-net8 \
 
 sudo \
     dotnet \
