@@ -9,10 +9,13 @@ brew upgrade
 brew update
 
 #----------------------------------------------------------------------------------------------
-sudo \
-    brew $ACTION_VERB \
-        --cask \
-            parallels \
-            virtualbox \
-            virtualbuddy \
-            virtualbuddy@beta \
+
+brew $ACTION_VERB \
+    --cask \
+        virtualbox \
+        virtualbuddy \
+        virtualbuddy@beta \
+
+brew $ACTION_VERB \
+    --cask \
+        parallels \
