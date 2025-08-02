@@ -39,6 +39,8 @@ upgrade-assistant
 # Services
 dotnet-svcutil
 # Web
+#Aspire
+aspirate
 # https://playwright.dev/dotnet/docs/intro
 Microsoft.Playwright.CLI
 NSwag.ConsoleCore
