@@ -11,7 +11,8 @@ cd $HOME/Downloads/
 brew tap azure/azd \
 && \
 brew $ACTION_VERB \
-    azd
+    --formula \
+        azd
 
 # brew upgrade \
 #     azd
@@ -26,19 +27,22 @@ brew tap \
 
 # Install the tool
 brew $ACTION_VERB \
-    bicep
+    --formula \
+        bicep
 
 
 brew $ACTION_VERB \
-    azure-cli
+    --formula \
+        azure-cli
 
 # https://cloud.google.com/sdk/
 brew $ACTION_VERB \
     --cask \
-    google-cloud-sdk
+        google-cloud-sdk
 
 # 
 brew $ACTION_VERB \
-    awscli
+    --formula \
+        awscli
 
 cd -
