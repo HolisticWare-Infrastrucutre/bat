@@ -175,14 +175,16 @@ brew $ACTION_VERB --cask \
     openssl \
 
 
-brew link --force \
-    openssl
+brew link \
+    --force \
+        openssl
 
-brew $ACTION_VERB --cask \
-    virtualbox \
-    cheatsheet \
-    onyx \
-    diffmerge \
+brew $ACTION_VERB 
+    --cask \
+        virtualbox \
+        cheatsheet \
+        onyx \
+        diffmerge \
 
 
 # mind mapping and knowledge
