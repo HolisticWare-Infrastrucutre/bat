@@ -38,8 +38,8 @@ plugins=\
 
 
 #######################################################################################################################
-#----------------------------------------------------------------------------------------------------------------------
 # PATH
+#   start
 
 #----------------------------------------------------------------------------------------------------------------------
 # ls -1 /Library/Java/JavaVirtualMachines/
@@ -79,7 +79,7 @@ export JAVA_HOME_ANDROID_STUDIO=/Applications/Android\ Studio.app/Contents/jre/j
 # export JAVA_HOME_MICROSOFT=$HOME/Library/Developer/Xamarin/jdk/microsoft_dist_openjdk_1.8.0.25
 export JAVA_HOME_MICROSOFT=$JAVA_HOME_11
 
-export JAVA_HOME=$JAVA_HOME_MICROSOFT
+export JAVA_HOME=$JAVA_HOME_11
 #----------------------------------------------------------------------------------------------------------------------
 
 #----------------------------------------------------------------------------------------------------------------------
@@ -135,11 +135,33 @@ export PATH=$PATH:$ANDROID_SDK_ROOT/
 export PATH=$PATH:$JAVA_HOME/
 export PATH=$PATH:$JAVA_HOME/bin/
 export PATH=$PATH:"/Applications/Visual Studio Code.app/Contents/Resources/app/bin/"
+
+
+
+# GNU
 export PATH="/opt/homebrew/opt/gnu-sed/libexec/gnubin":$PATH
+
 #----------------------------------------------------------------------------------------------------------------------
 export PATH=$HOME/.dotnet/tools/:$PATH
-#######################################################################################################################
+
+# Added by LM Studio CLI (lms)
+export PATH="$PATH:$HOME/.lmstudio/bin"
+# End of LM Studio CLI section
+
+# Added by Windsurf
+export PATH="$HOME/.codeium/windsurf/bin:$PATH"
+
+# Added by get-aspire-cli.sh
+export PATH="$HOME/.aspire/bin:$PATH"
+
+# Added by moljac manually
+export PATH="$HOME/bin/llamafile/bin:$PATH"
+
 export ROOT_NOTES=/Users/Shared/Projects/d/hw/HolisticWare.WebSite.Notes/
+#   stop
+# PATH
+#######################################################################################################################
+
 
 
 #######################################################################################################################
@@ -152,6 +174,12 @@ alias codeh="code -n ."
 alias codi="code-insiders"
 alias bode="open -na Brackets"
 alias brackets="open -na Brackets"
+alias kiro="open -na Kiro"
+alias python="python3"
+
+# Windsurf's Command Palette: has `Shell Command: Install 'surf' command in PATH`
+alias windsurf="/Applications/Windsurf.app/Contents/MacOS/Electron"
+
 
 # implemented as function
 # alias rider="open -a Rider"
@@ -188,7 +216,7 @@ setopt complete_aliases
 #######################################################################################################################
 # sys
 #   start
-cdh()
+function cdh()
 {
   echo "--------------------------------------------------------------------------------------------------------------"
   echo \
@@ -199,7 +227,7 @@ cdh()
   cd $(pwd)
 }
 
-mdr()
+function mdr()
 {
   echo "--------------------------------------------------------------------------------------------------------------"
   echo \
@@ -210,7 +238,7 @@ mdr()
   mkdir -p $1
 }
 
-sys_energy_low()
+function sys_energy_low()
 {
   # https://commons.lbl.gov/display/itfaq/The+different+types+of+computer+names+for+Mac+computers
   echo "--------------------------------------------------------------------------------------------------------------"
@@ -229,7 +257,7 @@ sys_energy_low()
   done
 }
 
-sys_energy_high()
+function sys_energy_high()
 {
   # https://github.com/guarinogabriel/Mac-CLI
   # https://commons.lbl.gov/display/itfaq/The+different+types+of+computer+names+for+Mac+computers
@@ -249,7 +277,7 @@ sys_energy_high()
   done
 }
 
-sys_name()
+function sys_name()
 {
   # https://commons.lbl.gov/display/itfaq/The+different+types+of+computer+names+for+Mac+computers
   echo "--------------------------------------------------------------------------------------------------------------"
@@ -267,7 +295,7 @@ sys_name()
   hostname
 }
 
-sys_box_name()
+function sys_box_name()
 {
   echo \
   "
@@ -299,7 +327,7 @@ sys_box_name()
   esac  
 }
 
-sys_mount()
+function sys_mount()
 {
   diskutil list
   diskutil mount /dev/disk6 /Volumes/xFAT-1TB-2
@@ -311,7 +339,7 @@ sys_mount()
   diskutil repairDisk /dev/disk6
 }
 
-sys_dock_reset()
+function sys_dock_reset()
 {
   echo "--------------------------------------------------------------------------------------------------------------"
   echo \
@@ -321,7 +349,7 @@ sys_dock_reset()
   source $HOME/bat/03-productivity/mac/dock-reset-applications.sh
 }
 
-sys_dock_setup()
+function sys_dock_setup()
 {
   echo "--------------------------------------------------------------------------------------------------------------"
   echo \
@@ -331,7 +359,7 @@ sys_dock_setup()
   source $HOME/bat/03-productivity/mac/dock-setup-applications.sh
 }
 
-sys_postinstall()
+function sys_postinstall()
 {
   echo "--------------------------------------------------------------------------------------------------------------"
   echo \
@@ -367,7 +395,7 @@ sys_postinstall()
 
 }
 
-sys_clean()
+function sys_clean()
 {
   source $HOME/bat/01-system-integration/mac/clean.sh
 
@@ -379,7 +407,7 @@ sys_clean()
   source $HOME/bat/01-system-integration/mac/clean.sh
 }
 
-sys_clean_diverse()
+function sys_clean_diverse()
 {
   echo "--------------------------------------------------------------------------------------------------------------"
   echo \
@@ -419,7 +447,7 @@ sys_clean_diverse()
   rm -fr .octave*
 }
 
-sys_mode_light ()
+function sys_mode_light ()
 {
   echo "--------------------------------------------------------------------------------------------------------------"
   echo \
@@ -434,7 +462,7 @@ sys_mode_light ()
 
 }
 
-sys_usbd_sd_card_restart ()
+function sys_usbd_sd_card_restart ()
 {
   echo "--------------------------------------------------------------------------------------------------------------"
   echo \
@@ -502,7 +530,7 @@ function sys_info ()
 #   apps
 # start
 
-sys_apps_discord_reset ()
+function sys_apps_discord_reset ()
 {
   echo "--------------------------------------------------------------------------------------------------------------"
   echo \
@@ -516,7 +544,7 @@ sys_apps_discord_reset ()
   rm -fr "$HOME/Library/Caches/com.hnc.Discord.ShipIt/"
 }
 
-sys_apps_Browserosaurus_kill ()
+function sys_apps_Browserosaurus_kill ()
 {
   echo "--------------------------------------------------------------------------------------------------------------"
   echo \
@@ -526,7 +554,7 @@ sys_apps_Browserosaurus_kill ()
   kill -9 $(ps aux | grep Browserosaurus | grep -v grep | awk '{print $2}')
 }
 
-sys_apps_browsers_edge_reinstall ()
+function sys_apps_browsers_edge_reinstall ()
 {
   echo "--------------------------------------------------------------------------------------------------------------"
   echo \
@@ -547,7 +575,7 @@ sys_apps_browsers_edge_reinstall ()
 #   finder
 # start
 
-sys_finder_settings()
+function sys_finder_settings()
 {
   # https://www.hexnode.com/mobile-device-management/help/script-to-customize-finder-preferences-on-mac/
   echo "--------------------------------------------------------------------------------------------------------------"
@@ -569,7 +597,7 @@ sys_finder_settings()
   killall Finder
 }
 
-sys_finder_open_windows_and_tabs()
+function sys_finder_open_windows_and_tabs()
 {
   echo "--------------------------------------------------------------------------------------------------------------"
   echo \
@@ -650,13 +678,13 @@ function sys_term_tab_completion_reset()
   rm -f ~/.zcompdump
 }
 
-sys_term_autocompletion_reset()
+function sys_term_autocompletion_reset()
 {
   sys_term_tab_completion_reset
 }
 
 # source $HOME/bat/03-productivity/mac/clear-screen-and-term-buffer.sh
-sys_term_clean_screen_and_buffer()
+function sys_term_clean_screen_and_buffer()
 {
   echo "--------------------------------------------------------------------------------------------------------------"
   echo \
@@ -666,7 +694,7 @@ sys_term_clean_screen_and_buffer()
   source $HOME/bat/01-system-integration/mac/zsh/functions/sys_term_clean_screen_and_buffer
 };
 
-sys_term_fingerprint()
+function sys_term_fingerprint()
 {
   #----------------------------------------------------------------------------------------------
   # fingerprint in terminal
@@ -702,7 +730,7 @@ sys_term_fingerprint()
 # sys   
 #   brew
 # start
-sys_brew_update_upgrade()
+function sys_brew_update_upgrade()
 {
   sys_brew_clean
 
@@ -718,7 +746,7 @@ sys_brew_update_upgrade()
   sys_brew_clean
 }
 
-sys_brew_clean()
+function sys_brew_clean()
 {
     sys_term_clean_screen_and_buffer
 
@@ -727,7 +755,7 @@ sys_brew_clean()
     brew doctor
 }
 
-sys_brew_clean_update()
+function sys_brew_clean_update()
 {
     sys_term_clean_screen_and_buffer
 
@@ -749,7 +777,7 @@ sys_brew_clean_update()
     source $HOME/bat/01-system-integration/mac/02-install/download/brew-01-upgrade.sh
 };
 
-sys_brew_repair_installation()
+function sys_brew_repair_installation()
 {
     sys_term_clean_screen_and_buffer
 
@@ -772,7 +800,7 @@ sys_brew_repair_installation()
 #   zsh
 # start
 
-sys_zsh_functions_list()
+function sys_zsh_functions_list()
 {
   echo "--------------------------------------------------------------------------------------------------------------"
   echo \
@@ -784,7 +812,7 @@ sys_zsh_functions_list()
   print -l ${(ok)functions}
 }
 
-sys_zshrc_reload()
+function sys_zshrc_reload()
 {
   echo "--------------------------------------------------------------------------------------------------------------"
   echo \
@@ -795,7 +823,7 @@ sys_zshrc_reload()
 }
 
 
-sys_zsh_functions_load()
+function sys_zsh_functions_load()
 {
 
   fpath=($HOME/bat/01-system-integration/mac/zsh/functions $fpath);
@@ -823,7 +851,7 @@ sys_zsh_functions_load()
 #   network
 # start
 
-sys_network_restart()
+function sys_network_restart()
 {
   echo "--------------------------------------------------------------------------------------------------------------"
   echo \
@@ -843,7 +871,7 @@ sys_network_restart()
 }
 
 
-sys_network_restart_brute()
+function sys_network_restart_brute()
 {
   # com.apple.airport.preferences.plist
   # com.apple.network.identification.plist
@@ -904,7 +932,7 @@ sys_network_restart_brute()
 
 }
 
-sys_network_wifi_name()
+function sys_network_wifi_name()
 {
   echo "--------------------------------------------------------------------------------------------------------------"
   echo \
@@ -949,7 +977,7 @@ sys_network_wifi_name()
 #   audio
 # start
 
-sys_audio_restart_kill_9()
+function sys_audio_restart_kill_9()
 {
   # sudo pkill -9 coreaudiod kills the coreaudio process immediately. 
   # MacOS will automatically restart the coreaudio daemon, which will fix audio output in most cases.
@@ -964,7 +992,7 @@ sys_audio_restart_kill_9()
   sudo kill -9 `ps ax|grep 'coreaudio[a-z]' | awk '{print $1}'`
 }
 
-sys_audio_restart_pkill_9()
+function sys_audio_restart_pkill_9()
 {
   echo "--------------------------------------------------------------------------------------------------------------"
   echo \
@@ -976,7 +1004,7 @@ sys_audio_restart_pkill_9()
   sudo pkill -9 coreaudiod
 }
 
-sys_audio_restart_kext_reload()
+function sys_audio_restart_kext_reload()
 {
   echo "--------------------------------------------------------------------------------------------------------------"
   echo \
@@ -990,7 +1018,7 @@ sys_audio_restart_kext_reload()
   sudo kextload /System/Library/Extensions/AppleHDA.kext
 }
 
-sys_audio_restart_launchctl_stop()
+function sys_audio_restart_launchctl_stop()
 {
   echo "--------------------------------------------------------------------------------------------------------------"
   echo \
@@ -1011,10 +1039,70 @@ sys_audio_restart_launchctl_stop()
 
 
 #======================================================================================================================
+# dev
+#   ai   
+#   start
+
+function dev_ai()
+{
+  echo "=============================================================================================================="
+  echo \
+  "
+  dev_ai_launch
+  "
+  dev_ai_launch
+}
+
+function dev_ai_launch()
+{
+  echo "=============================================================================================================="
+  echo \
+  "
+  source 03-productivity/mac/ai/launch.sh $*
+  "
+  source 03-productivity/mac/ai/launch.sh $*
+}
+#   stop
+#   ai   
+# dev   
+#======================================================================================================================
+
+
+#======================================================================================================================
+# dev
+#   ai   
+#   start
+
+function dev_web()
+{
+  echo "=============================================================================================================="
+  echo \
+  "
+  dev_web_launch
+  "
+  dev_web_launch
+}
+
+function dev_web_launch()
+{
+  echo "=============================================================================================================="
+  echo \
+  "
+  source 03-productivity/mac/web/launch.sh $*
+  "
+  source 03-productivity/mac/web/launch.sh $*
+}
+#   stop
+#   ai   
+# dev   
+#======================================================================================================================
+
+
+#======================================================================================================================
 # dev   
 #   start
 
-dev_info_dump_long()
+function dev_info_dump_long()
 {
   echo "=============================================================================================================="
   echo \
@@ -1032,13 +1120,12 @@ dev_info_dump_long()
 # dev   
 #======================================================================================================================
 
-
 #======================================================================================================================
 # dev   
 #   jdk
 # start
 
-dev_jdks_list()
+function dev_jdks_list()
 {
   echo "--------------------------------------------------------------------------------------------------------------"
   echo \
@@ -1060,7 +1147,7 @@ dev_jdks_list()
   /usr/libexec/java_home -V
 }
 
-dev_jdks_set()
+function dev_jdks_set()
 {
   echo "--------------------------------------------------------------------------------------------------------------"
   echo \
@@ -1088,7 +1175,7 @@ dev_jdks_set()
 #   profiling speedscope
 # start
 
-dev_profiling_speedscope()
+function dev_profiling_speedscope()
 {
   echo "--------------------------------------------------------------------------------------------------------------"
   echo \
@@ -1110,7 +1197,7 @@ dev_profiling_speedscope()
 #   java
 # start
 
-dev_java_jdk_8()
+function dev_java_jdk_8()
 { 
   echo "--------------------------------------------------------------------------------------------------------------"
   echo \
@@ -1120,7 +1207,7 @@ dev_java_jdk_8()
   export JAVA_HOME=$JAVA_HOME_8
 }
 
-dev_java_jdk_11()
+function dev_java_jdk_11()
 { 
   echo "--------------------------------------------------------------------------------------------------------------"
   echo \
@@ -1132,7 +1219,7 @@ dev_java_jdk_11()
   echo JAVA_HOME=$JAVA_HOME
 }
 
-dev_java_jdk_17()
+function dev_java_jdk_17()
 { 
   echo "--------------------------------------------------------------------------------------------------------------"
   echo \
@@ -1145,7 +1232,7 @@ dev_java_jdk_17()
 }
 
 
-dev_java_jdk_21()
+function dev_java_jdk_21()
 { 
   echo "--------------------------------------------------------------------------------------------------------------"
   echo \
@@ -1167,7 +1254,7 @@ dev_java_jdk_21()
 #   android
 # start
 
-dev_android_info_dump()
+function dev_android_info_dump()
 { 
   echo "--------------------------------------------------------------------------------------------------------------"
   echo \
@@ -1185,7 +1272,7 @@ dev_android_info_dump()
   "/Applications/Android Studio Preview.app/Contents/MacOS/studio" -version
 }
 
-dev_android_install_commandline_tools()
+function dev_android_install_commandline_tools()
 {
   echo "--------------------------------------------------------------------------------------------------------------"
   echo \
@@ -1217,7 +1304,7 @@ dev_android_install_commandline_tools()
 
 }
 
-dev_android_sdkmanager()
+function dev_android_sdkmanager()
 { 
   echo "--------------------------------------------------------------------------------------------------------------"
   echo \
@@ -1261,14 +1348,14 @@ dev_android_sdkmanager()
   export JAVA_HOME=$JAVA_HOME_17
 }
 
-dev_android_info_disk_usage()
+function dev_android_info_disk_usage()
 {
   [ -d $ANDROID_HOME_XAMARIN ]        && echo "ANDROID_HOME_XAMARIN"        && du -sh $ANDROID_HOME_XAMARIN
   [ -d $ANDROID_HOME_ANDROID_STUDIO ] && echo "ANDROID_HOME_ANDROID_STUDIO" && du -sh $ANDROID_HOME_ANDROID_STUDIO
   [ -d $ANDROID_HOME_BREW ]           && echo "ANDROID_HOME_BREW"           && du -sh $ANDROID_HOME_BREW
 }
 
-dev_android_apk_analysis()
+function dev_android_apk_analysis()
 {
   echo "--------------------------------------------------------------------------------------------------------------"
   echo \
@@ -1278,7 +1365,7 @@ dev_android_apk_analysis()
   java -jar $HOME/bin/classy-shark/ClassyShark.jar
 }
 
-dev_android_emulator_list()
+function dev_android_emulator_list()
 {
   # start Android emulator to gain some time
   echo "--------------------------------------------------------------------------------------------------------------"
@@ -1292,7 +1379,7 @@ dev_android_emulator_list()
     -list-avds
 };
 
-dev_android_emulator_reboot()
+function dev_android_emulator_reboot()
 {
   echo "--------------------------------------------------------------------------------------------------------------"  
   echo \
@@ -1305,7 +1392,7 @@ dev_android_emulator_reboot()
   # ????
 }
 
-dev_android_emulator_launch()
+function dev_android_emulator_launch()
 {
   echo "--------------------------------------------------------------------------------------------------------------"  
   echo "First argument: $1"
@@ -1333,7 +1420,7 @@ dev_android_emulator_launch()
     &
 };
 
-dev_android_emulator_reset()
+function dev_android_emulator_reset()
 {
   echo "--------------------------------------------------------------------------------------------------------------"  
   echo \
@@ -1348,7 +1435,7 @@ dev_android_emulator_reset()
   sudo rm -fr $($HOME/.android/avd/emulator-android-34-google-apis-arm-v8a-pixel_xl.avd/*.img) 
 }
 
-dev_android_emulator_avds_all_rm_img_data()
+function dev_android_emulator_avds_all_rm_img_data()
 {
   echo "--------------------------------------------------------------------------------------------------------------"  
   echo \
@@ -1360,7 +1447,7 @@ dev_android_emulator_avds_all_rm_img_data()
   rm -fr $(find $HOME/.android/avd/ -iname "*.img") 
 }
 
-dev_android_emulator_launch_wipe_data_no_cache_no_snapshot()
+function dev_android_emulator_launch_wipe_data_no_cache_no_snapshot()
 {
   echo "--------------------------------------------------------------------------------------------------------------"  
   echo "First argument: $1"
@@ -1392,12 +1479,12 @@ dev_android_emulator_launch_wipe_data_no_cache_no_snapshot()
 };
 
 
-dev_android_emulators_avdmanager_list_avd()
+function dev_android_emulators_avdmanager_list_avd()
 {
   source $HOME/bat/01-system-integration/mac/02-install/mobile/android/avdmanager-list-avd.sh
 }
 
-dev_android_emulators_install()
+function dev_android_emulators_install()
 {
   echo \
   "
@@ -1406,7 +1493,7 @@ dev_android_emulators_install()
   source $HOME/bat/01-system-integration/mac/02-install/mobile/android/emulators-install.sh
 }
 
-dev_android_emulators_uninstall()
+function dev_android_emulators_uninstall()
 {
   echo \
   "
@@ -1421,7 +1508,7 @@ dev_android_emulators_uninstall()
 # https://technastic.com/adb-shell-commands-list/
 # https://hack.technoherder.com/adb-shell/
 
-dev_android_adb_fastboot()
+function dev_android_adb_fastboot()
 {
   echo "--------------------------------------------------------------------------------------------------------------"
   echo \
@@ -1436,7 +1523,7 @@ dev_android_adb_fastboot()
   adb reboot bootloader
 }
 
-dev_android_adb_reset()
+function dev_android_adb_reset()
 {
   echo "--------------------------------------------------------------------------------------------------------------"
   echo \
@@ -1453,7 +1540,7 @@ dev_android_adb_reset()
     adb devices -l
 }
 
-dev_android_shell_pm_list_users()
+function dev_android_shell_pm_list_users()
 {
   echo "--------------------------------------------------------------------------------------------------------------"
   echo \
@@ -1464,7 +1551,7 @@ dev_android_shell_pm_list_users()
     adb shell pm list users
 }
 
-dev_android_adb_devices()
+function dev_android_adb_devices()
 {
   echo "--------------------------------------------------------------------------------------------------------------"
   echo \
@@ -1477,7 +1564,7 @@ dev_android_adb_devices()
   adb devices -l
 }
 
-dev_android_shell_pm_list_users()
+function dev_android_shell_pm_list_users()
 {
   echo "--------------------------------------------------------------------------------------------------------------"
   echo \
@@ -1490,7 +1577,7 @@ dev_android_shell_pm_list_users()
       getprop ro.build.version.release 
 }
 
-dev_android_adb_logcat_buffers_clear_non_rooted()
+function dev_android_adb_logcat_buffers_clear_non_rooted()
 {
   echo "--------------------------------------------------------------------------------------------------------------"
   echo \
@@ -1501,7 +1588,7 @@ dev_android_adb_logcat_buffers_clear_non_rooted()
   adb logcat -c
 }
 
-dev_android_adb_logcat_buffers_clear_rooted()
+function dev_android_adb_logcat_buffers_clear_rooted()
 {
   echo "--------------------------------------------------------------------------------------------------------------"
   echo \
@@ -1518,7 +1605,7 @@ dev_android_adb_logcat_buffers_clear_rooted()
   adb shell logcat -b all -c
 }
 
-dev_android_adb_logcat_buffers_clear_all()
+function dev_android_adb_logcat_buffers_clear_all()
 {
   echo "--------------------------------------------------------------------------------------------------------------"
   echo \
@@ -1531,7 +1618,7 @@ dev_android_adb_logcat_buffers_clear_all()
   dev_android_adb_logcat_buffers_clear_non_rooted
 }
 
-dev_android_adb_logcat_mono_log_init()
+function dev_android_adb_logcat_mono_log_init()
 {
   echo "--------------------------------------------------------------------------------------------------------------"
   echo \
@@ -1548,7 +1635,7 @@ dev_android_adb_logcat_mono_log_init()
     setprop debug.mono.log default,debugger,assembly,mono_log_level=debug,mono_log_mask=all
 };
 
-dev_android_adb_logcat_mono_trace_init()
+function dev_android_adb_logcat_mono_trace_init()
 {
   echo "--------------------------------------------------------------------------------------------------------------"
   echo \
@@ -1565,7 +1652,7 @@ dev_android_adb_logcat_mono_trace_init()
     setprop debug.mono.trace all
 };
 
-dev_android_adb_logcat_collect()
+function dev_android_adb_logcat_collect()
 {
   export TIMESTAMP=$(date +%Y-%m-%dT%H-%M-%S)
 
@@ -1580,7 +1667,7 @@ dev_android_adb_logcat_collect()
   adb bugreport
 };
 
-dev_android_adb_bugreport()
+function dev_android_adb_bugreport()
 {
   echo "--------------------------------------------------------------------------------------------------------------"
   echo \
@@ -1595,7 +1682,7 @@ dev_android_adb_bugreport()
   adb pull /bugreports/
 }
 
-dev_android_emulator_list()
+function dev_android_emulator_list()
 {
   $HOME/Library/Android/sdk/emulator/emulator \
     -list-avds
@@ -1603,7 +1690,7 @@ dev_android_emulator_list()
 
 
 
-dev_android_decompile_jar_jar()
+function dev_android_decompile_jar_jar()
 { 
   echo "--------------------------------------------------------------------------------------------------------------"
     echo "$*"
@@ -1612,7 +1699,7 @@ dev_android_decompile_jar_jar()
     jar tf $1
 };
 
-dev_android_decompile_jar_unzip()
+function dev_android_decompile_jar_unzip()
 { 
   echo "--------------------------------------------------------------------------------------------------------------"
     echo "$*"
@@ -1621,7 +1708,7 @@ dev_android_decompile_jar_unzip()
     unzip -l $1
 };
 
-dev_android_decompile_jar_jadx()
+function dev_android_decompile_jar_jadx()
 { 
     echo "--------------------------------------------------------------------------------------------------------------"
     echo "$*"
@@ -1636,7 +1723,7 @@ dev_android_decompile_jar_jadx()
       $1 
 }
 
-dev_android_decompile_jar_luyten()
+function dev_android_decompile_jar_luyten()
 { 
     echo "--------------------------------------------------------------------------------------------------------------"
     echo "$*"
@@ -3148,6 +3235,9 @@ dev_dotnet_maui_repo_build_device_tests ()
   echo "--------------------------------------------------------------------------------------------------------------"
   echo \
   "
+  dev_dotnet_maui_repo_build_device_tests_maccatalyst
+  dev_dotnet_maui_repo_build_device_tests_ios
+  dev_dotnet_maui_repo_build_device_tests_android
   "
   dev_dotnet_maui_repo_build_device_tests_maccatalyst
   dev_dotnet_maui_repo_build_device_tests_ios
@@ -3992,7 +4082,7 @@ work_on_dev_dotnet_api_keys_github_clear ()
 # Miljenkos-MacBook-Pro-16-2023-ARM-M2
 # Miljenkos-MacBook-Pro-16-2019-x64
 
-open_browser_firefox_moljac()
+function open_browser_firefox_moljac()
 {
   echo "--------------------------------------------------------------------------------------------------------------"
   echo \
@@ -4004,7 +4094,7 @@ open_browser_firefox_moljac()
   source $HOME/bat.private/mac/mchwn/firefox-moljac.sh
 };
 
-open_browser_edge_moljac_microsoft()
+function open_browser_edge_moljac_microsoft()
 {
   echo "--------------------------------------------------------------------------------------------------------------"
   echo \
@@ -4014,7 +4104,7 @@ open_browser_edge_moljac_microsoft()
   source $HOME/bat.private/mac/edge-moljac-microsoft.sh
 };
 
-open_browser_edge_beta_moljac_microsoft()
+function open_browser_edge_beta_moljac_microsoft()
 {
   echo "--------------------------------------------------------------------------------------------------------------"
   echo \
@@ -4024,7 +4114,7 @@ open_browser_edge_beta_moljac_microsoft()
   source $HOME/bat.private/mac/edge-beta-moljac-holisticware.sh
 };
 
-open_browser_edge_dev_moljac_microsoft()
+function open_browser_edge_dev_moljac_microsoft()
 {
   echo "--------------------------------------------------------------------------------------------------------------"
   echo \
@@ -4034,7 +4124,7 @@ open_browser_edge_dev_moljac_microsoft()
   source $HOME/bat.private/mac/edge-dev-moljac-holisticware.sh
 };
 
-open_finder_code_moljac_microsoft()
+function open_finder_code_moljac_microsoft()
 {
   echo "--------------------------------------------------------------------------------------------------------------"
   echo \
@@ -4046,7 +4136,7 @@ open_finder_code_moljac_microsoft()
 
 
 
-work_on_microsoft_dotnet_android_ax_gps_fb_mlkit()
+function work_on_microsoft_dotnet_android_ax_gps_fb_mlkit()
 {
   echo "--------------------------------------------------------------------------------------------------------------"
   echo \
@@ -4056,7 +4146,7 @@ work_on_microsoft_dotnet_android_ax_gps_fb_mlkit()
   source $HOME/bat.private/mac/microsoft/dotnet/android/ax-gps-fb-mlkit/all.sh
 };
 
-work_on_microsoft_dotnet_maui()
+function work_on_microsoft_dotnet_maui()
 {
   echo "--------------------------------------------------------------------------------------------------------------"
   echo \
@@ -4066,7 +4156,7 @@ work_on_microsoft_dotnet_maui()
   source $HOME/bat.private/mac/microsoft/dotnet/maui/all.sh
 };
 
-work_moljac()
+function work_moljac()
 {
   echo "--------------------------------------------------------------------------------------------------------------"
   echo \
@@ -4086,7 +4176,7 @@ work_moljac()
   source $HOME/bat.private/mac/mchwn/firefox-moljac.sh
 };
 
-work_on_microsoft_dotnet_maui_repo()
+function work_on_microsoft_dotnet_maui_repo()
 {
   echo "--------------------------------------------------------------------------------------------------------------"
   echo \
@@ -4094,7 +4184,7 @@ work_on_microsoft_dotnet_maui_repo()
   "
 };
 
-work_on_microsoft_dotnet_maui_repo()
+function work_on_microsoft_dotnet_maui_repo()
 {
   echo "--------------------------------------------------------------------------------------------------------------"
   echo \
@@ -4102,7 +4192,7 @@ work_on_microsoft_dotnet_maui_repo()
   "
 };
 
-work_on_microsoft_dotnet_maui_learn()
+function work_on_microsoft_dotnet_maui_learn()
 {
   echo "--------------------------------------------------------------------------------------------------------------"
   echo \
@@ -4112,7 +4202,7 @@ work_on_microsoft_dotnet_maui_learn()
   source $HOME/bat.private/finder-code-term-maui.sh
 };
 
-work_on_holisticware_core()
+function work_on_holisticware_core()
 {
   echo "--------------------------------------------------------------------------------------------------------------"
   echo \
@@ -4124,7 +4214,7 @@ work_on_holisticware_core()
     https://github.com/AArnott/Library.Template
 };
 
-work_on_moljac_holisticware()
+function work_on_moljac_holisticware()
 {
   echo "--------------------------------------------------------------------------------------------------------------"
   echo \
@@ -4138,7 +4228,7 @@ work_on_moljac_holisticware()
   source $HOME/bat.private/mchwc/firefox-moljac.sh
 };
 
-work_on_moljac_holisticware_doc()
+function work_on_moljac_holisticware_doc()
 {
   echo "--------------------------------------------------------------------------------------------------------------"
   echo \
@@ -4152,7 +4242,7 @@ work_on_moljac_holisticware_doc()
 
 
 
-work_on_moljac_holisticware_ph4ct3x()
+function work_on_moljac_holisticware_ph4ct3x()
 {
   echo "--------------------------------------------------------------------------------------------------------------"
   echo \
@@ -4162,7 +4252,17 @@ work_on_moljac_holisticware_ph4ct3x()
   source $HOME/bat.private/finder-code-term-ph4ct3x.sh
 };
 
-work_on_moljac_microsoft()
+function work_on_moljac_holisticware_libraries()
+{
+  echo "--------------------------------------------------------------------------------------------------------------"
+  echo \
+  "
+  source $HOME/bat.private/mac/mchwc/firefox-moljac-projects-github-repos-active-working.sh
+   "
+  source $HOME/bat.private/mac/mchwc/firefox-moljac-projects-github-repos-active-working.sh
+ };
+
+function work_on_moljac_microsoft()
 {
   echo "--------------------------------------------------------------------------------------------------------------"
   echo \
@@ -4172,7 +4272,7 @@ work_on_moljac_microsoft()
   source $HOME/bat.private/finder-code-term-moljac-microsoft.sh
 };
 
-work_on_init()
+function work_on_init()
 {
   echo "--------------------------------------------------------------------------------------------------------------"
   echo \
@@ -4184,7 +4284,7 @@ work_on_init()
   work_on_moljac_private
 }
 
-work_on_main()
+function work_on_main()
 {
   echo "--------------------------------------------------------------------------------------------------------------"
   echo \
@@ -4195,7 +4295,7 @@ work_on_main()
     $HOME/bat/03-productivity/mac/finder-open-window-with-tabs-00-main.sh
 };
 
-work_on_moljac_learn()
+function work_on_moljac_learn()
 {
   echo "--------------------------------------------------------------------------------------------------------------"
   echo \
@@ -4209,7 +4309,7 @@ work_on_moljac_learn()
   work_on_moljac_learn_software_engineering
 }
 
-work_on_moljac_learn_dotnet_csharp_maui()
+function work_on_moljac_learn_dotnet_csharp_maui()
 {
   echo "--------------------------------------------------------------------------------------------------------------"
   echo \
@@ -4228,18 +4328,20 @@ work_on_moljac_learn_dotnet_csharp_maui()
 
 }
 
-work_on_moljac_learn_ai()
+function work_on_moljac_learn_ai()
 {
   echo "--------------------------------------------------------------------------------------------------------------"
   echo \
   "
   source $HOME/bat.private/mac/mchwc/firefox-moljac-learn-ai.sh
+  source $HOME/bat.private/mac/mchwc/firefox-moljac-learn-ai-chatbots.sh
   # open -n -a /System/Applications/Utilities/Terminal.app
   open -a Terminal \\
     $ROOT_NOTES/data-structures-and-algorithms/data-science/ai-artificial-intelligence/ \\
     $ROOT_NOTES/data-structures-and-algorithms/ \\
   "
   source $HOME/bat.private/mac/mchwc/firefox-moljac-learn-ai.sh
+  source $HOME/bat.private/mac/mchwc/firefox-moljac-learn-ai-chatbots.sh
   # open -n -a /System/Applications/Utilities/Terminal.app
   open -a Terminal \
     $ROOT_NOTES/data-structures-and-algorithms/data-science/ai-artificial-intelligence/ \
@@ -4247,7 +4349,7 @@ work_on_moljac_learn_ai()
 
 }
 
-work_on_moljac_learn_software_engineering()
+function work_on_moljac_learn_software_engineering()
 {
   echo "--------------------------------------------------------------------------------------------------------------"
   echo \
@@ -4266,7 +4368,7 @@ work_on_moljac_learn_software_engineering()
 
 }
 
-work_on_moljac_private()
+function work_on_moljac_private()
 {
   echo "--------------------------------------------------------------------------------------------------------------"
   echo \
@@ -4295,7 +4397,19 @@ work_on_moljac_private()
 
 };
 
-work_on_moljac()
+function work_on_moljac_private_egov()
+{
+  echo "--------------------------------------------------------------------------------------------------------------"
+  echo \
+  "
+  source \
+    $HOME/bat.private/mac/mchwc/firefox-moljac-personal-egov.sh
+  "
+  source \
+    $HOME/bat.private/mac/mchwc/firefox-moljac-personal-egov.sh
+};
+
+function work_on_moljac()
 {
   echo "--------------------------------------------------------------------------------------------------------------"
   echo \
@@ -4307,7 +4421,7 @@ work_on_moljac()
   work_on_moljac_holisticware
 };
 
-work_on_moljac_judo()
+function work_on_moljac_judo()
 {
   echo "--------------------------------------------------------------------------------------------------------------"
   echo \
@@ -4317,7 +4431,7 @@ work_on_moljac_judo()
   source $HOME/bat.private/mac/moljac/judo/all.sh
 }
 
-work_on_judo_remove_me()
+function work_on_judo_remove_me()
 {
   echo "--------------------------------------------------------------------------------------------------------------"
   echo \
@@ -4355,11 +4469,17 @@ dev_api_keys_set ()
 
 dev_api_keys_set_ai ()
 {
-  source  $HOME/bat.private/mac/development/api-keys/ai/anthropic/set.sh 
-  # source  $HOME/bat.private/mac/development/api-keys/ai/open-ai/set.sh 
-  #source  $HOME/bat.private/mac/development/api-keys/ai/perplexity/set.sh 
-  source  $HOME/bat.private/mac/development/api-keys/ai/picovoice/set.sh 
-
+  echo \
+  "
+  source  $HOME/bat.private/mac/development/api-keys/ai/picovoice/set.sh
+  source  $HOME/bat.private/mac/development/api-keys/ai/anthropic/set.sh
+  source  $HOME/bat.private/mac/development/api-keys/ai/open-ai/set.sh
+  source  $HOME/bat.private/mac/development/api-keys/ai/google/gemini/set.sh
+  "
+  source  $HOME/bat.private/mac/development/api-keys/ai/picovoice/set.sh
+  source  $HOME/bat.private/mac/development/api-keys/ai/anthropic/set.sh
+  source  $HOME/bat.private/mac/development/api-keys/ai/open-ai/set.sh
+  source  $HOME/bat.private/mac/development/api-keys/ai/google/gemini/set.sh
 }
 
 dev_api_keys_set_weather ()
@@ -4452,8 +4572,3 @@ sys_zsh_functions_load
 
 # Amazon Q post block. Keep at the bottom of this file.
 [[ -f "${HOME}/Library/Application Support/amazon-q/shell/zshrc.post.zsh" ]] && builtin source "${HOME}/Library/Application Support/amazon-q/shell/zshrc.post.zsh"
-
-# Added by LM Studio CLI (lms)
-export PATH="$PATH:/Users/moljac/.lmstudio/bin"
-# End of LM Studio CLI section
-
