@@ -4,7 +4,7 @@
     echo \
     "
     rm -fr \\
-        $HOME/Downloads/AppMacCatalyst/
+        $HOME/Downloads/dotnet/samples/AppMacCatalyst/
 
     dotnet new \\
         install \\
@@ -16,16 +16,16 @@
     dotnet new \\
         maccatalyst \\
             --output \\
-                $HOME/Downloads/AppMacCatalyst/
+                $HOME/DownDownloads/dotnet/samplesloads/AppMacCatalyst/
 
     dotnet \\
         run \\
         --project \\
-                $HOME/Downloads/AppMacCatalyst/
+                $HOME/Downloads/dotnet/samples/AppMacCatalyst/
 
     "
     rm -fr \
-        $HOME/Downloads/AppMacCatalyst/
+        $HOME/Downloads/dotnet/samples/AppMacCatalyst/
 
     dotnet new \
         uninstall \
@@ -37,9 +37,9 @@
     dotnet new \
         maccatalyst \
             --output \
-                $HOME/Downloads/AppMacCatalyst/
+                $HOME/Downloads/dotnet/samples/AppMacCatalyst/
 
     dotnet \
         run \
         --project \
-                $HOME/Downloads/AppMacCatalyst/
+                $HOME/Downloads/dotnet/samples/AppMacCatalyst/
