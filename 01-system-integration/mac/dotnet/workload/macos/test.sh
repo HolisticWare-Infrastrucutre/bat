@@ -4,21 +4,42 @@
     echo \
     "
     rm -fr \\
-        $HOME/Downloads/AppiOS/
+        $HOME/Downloads/AppMacOS/
 
     dotnet new \\
-        ios \\
-            --output $HOME/Downloads/AppiOS/
+        uninstall \\
+            Microsoft.macOS.Templates
+    dotnet new \\
+        install \\
+            Microsoft.macOS.Templates
+
+    dotnet new \\
+        macos \\
+            --output \\
+                $HOME/Downloads/AppMacOS/
+
+    dotnet \\
+        run \\
+        --project \\
+                $HOME/Downloads/AppMacOS/
 
     "
     rm -fr \
-        $HOME/Downloads/AppiOS/
+        $HOME/Downloads/AppMacOS/
 
     dotnet new \
-        ios \
-            --output 
-                $HOME/Downloads/AppiOS/
+        uninstall \
+            Microsoft.macOS.Templates
+    dotnet new \
+        install \
+            Microsoft.macOS.Templates
 
-    dotnet run \
+    dotnet new \
+        macos \
+            --output \
+                $HOME/Downloads/AppMacOS/
+
+    dotnet \
+        run \
         --project \
-            $HOME/Downloads/AppiOS/
+                $HOME/Downloads/AppMacOS/
