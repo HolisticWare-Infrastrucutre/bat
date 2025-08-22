@@ -8,17 +8,17 @@
 
     dotnet new \\
         ios \\
-            --output $HOME/Downloads/AppiOS/
+            --output $HOME/Downloads/dotnet/samples/AppiOS/
 
     "
     rm -fr \
-        $HOME/Downloads/AppiOS/
+        $HOME/Downloads/dotnet/samples/AppiOS/
 
     dotnet new \
         ios \
-            --output 
-                $HOME/Downloads/AppiOS/
+            --output \
+                $HOME/Downloads/dotnet/samples/AppiOS/
 
     dotnet run \
         --project \
-            $HOME/Downloads/AppiOS/
+            $HOME/Downloads/dotnet/samples/AppiOS/
