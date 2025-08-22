@@ -18,7 +18,6 @@ sudo \
                 tvos \
                 macos \
                 maui \
-                maui \
                 maui-android \
                 maui-ios \
                 maui-maccatalyst \
