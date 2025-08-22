@@ -6,7 +6,7 @@
     echo \
     "
     rm -fr \\
-        $HOME/Downloads/AppMacCatalyst/
+        $HOME/Downloads/dotnet/samples/AppMacCatalyst/
 
     dotnet new \\
         uninstall \\
@@ -20,16 +20,16 @@
         unoapp \\
             -preset=blank \\
             --output \\
-                $HOME/Downloads/AppUno.PresetBlank/
+                $HOME/Downloads/dotnet/samples/AppUno.PresetBlank/
 
     dotnet \
         run \
         --project \
-                $HOME/Downloads/AppUno.PresetBlank/
+                $HOME/Downloads/dotnet/samples/AppUno.PresetBlank/
 
     "
     rm -fr \
-        $HOME/Downloads/AppMacCatalyst/
+        $HOME/Downloads/dotnet/samples/AppMacCatalyst/
 
     dotnet new \
         uninstall \
@@ -39,27 +39,29 @@
         install \
             Uno.Templates
 
+    rm -fr \
+        $HOME/Downloads/dotnet/samples/AppUno.PresetBlank/
+
     dotnet new \
         unoapp \
             -preset=blank \
             --output \
-                $HOME/Downloads/AppUno.PresetBlank/
+                $HOME/Downloads/dotnet/samples/AppUno.PresetBlank/
 
     dotnet \
         build \
         --target:run \
-        --framework:net9.0-android \
-            $HOME/Downloads/AppUno.PresetBlank/AppUno.PresetBlank
+        --framework:net9.0-ios \
+            $HOME/Downloads/dotnet/samples/AppUno.PresetBlank/AppUno.PresetBlank
 
     dotnet \
         run \
-            --framework:net9.0-ios \
+            --framework:net9.0-maccatalyst \
                 --project \
-                    $HOME/Downloads/AppUno.PresetBlank/AppUno.PresetBlank/AppUno.PresetBlank.csproj
+                    $HOME/Downloads/dotnet/samples/AppUno.PresetBlank/AppUno.PresetBlank/AppUno.PresetBlank.csproj
 
-
-    dotnet \
-        run \
-            --framework:net9.0-desktop \
-                --project \
-                    $HOME/Downloads/AppUno.PresetBlank/AppUno.PresetBlank/AppUno.PresetBlank.csproj
+#    dotnet \
+#        run \
+#            --framework:net9.0-desktop \
+#                --project \
+#                    $HOME/Downloads/dotnet/samples/AppUno.PresetBlank/AppUno.PresetBlank/AppUno.PresetBlank.csproj
