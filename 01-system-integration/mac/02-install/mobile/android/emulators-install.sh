@@ -12,7 +12,7 @@ java -version
 echo EMULATOR_NAME_PREFIX_34=$EMULATOR_NAME_PREFIX_34
 echo EMULATOR_NAME_PREFIX_35=$EMULATOR_NAME_PREFIX_35
 
-export AVDMANAGER=$HOME/Library/Android/sdk/cmdline-tools/11.0/bin/avdmanager
+export AVDMANAGER=$HOME/Library/Android/sdk/cmdline-tools/latest/bin/avdmanager
 
 IFS=$'\n'
 # ZSH does not split words by default (like other shells):
