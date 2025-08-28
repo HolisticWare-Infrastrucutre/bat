@@ -3,20 +3,34 @@
 
 export MODELS=\
 "
-deepseek-coder:33b
-deepseek-coder:latest
-deepseek-coder-v2:latest
+gemma3:27b
+gemma3:12b
+gemma3:4b
+gemma3:latest
+gpt-oss:120b
+gpt-oss:latest
+gpt-oss:20b
+phind-codellama:34b
+phind-codellama:latest
+mistral-large:123b
+mistral-large:latest
+codegemma:7b
+codegemma:latest
+codellama:70b
 deepseek-coder-v2:236b
-phi3.5:latest
-phi:latest
+deepseek-coder-v2:latest
+deepseek-coder:latest
+deepseek-coder:33b
+llama3.3:latest
+all-minilm:latest
+qwq:latest
+marco-o1:latest
+phi4:latest
 deepseek-r1:latest
 nomic-embed-text:latest
-phi4:latest
-marco-o1:latest
-qwq:latest
-all-minilm:latest
-llama3.3:latest
-#llama3.2-vision:latest
+phi:latest
+phi3.5:latest
+llama3.2-vision:latest
 "
 
 IFS=$'\n'
@@ -37,3 +51,6 @@ do
     echo        $MODEL
     ollama pull $MODEL
 done
+
+
+
