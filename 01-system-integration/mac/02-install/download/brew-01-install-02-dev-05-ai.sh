@@ -11,77 +11,133 @@ brew update
 
 #---------------------------------------------------------------------------------------------------
 
-brew $ACTION_VERB \
-    --formula \
-        ollama \
-        llamc.cpp \
-        aider \
-        gptscript \
-        promptfoo \
-        gemini-cli \
-        aichat \
-        aicommit \
-        aicommits \
-        block-goose-cli \
-        claude-squad \
-        codex \
-        cortexso \
-        gptme \
-        localai \
-        ramalama \
-        tgpt \
-        tmuxai \
-        vespa-cli \
-        whisper-cpp \
+brew \
+    $ACTION_VERB \
+        --formula \
+            ollama \
+            llamc.cpp \
+            aider \
+            gptscript \
+            promptfoo \
+            gemini-cli \
+            aichat \
+            aicommit \
+            aicommits \
+            block-goose-cli \
+            claude-squad \
+            codex \
+            cortexso \
+            gptme \
+            localai \
+            ramalama \
+            tgpt \
+            tmuxai \
+            vespa-cli \
+            whisper-cpp \
 
-brew $ACTION_VERB \
-    --cask \
-        ollamac \
-        ollama \
-        lm-studio \
-        backyard-ai \
-        msty \
-        jan \
-        anythingllm \
-        sanctum \
-        gpt4all \
-        chatbox \
-        chatgpt \
+brew \
+    $ACTION_VERB \
+        --formula \
+            ultraviolet/uv/uv \
+
+# providers/runners
+brew \
+    $ACTION_VERB \
+        --formula \
+            llama.cpp \
+            llm \
+            mcphost \
+            gorilla-cli \
+
+# prompting
+brew \
+    $ACTION_VERB \
+        --formula \
+            pdl \
+            code2prompt \
+            promptfoo \
+            gptscript \
+            tenere \
+
+#        rawdog
+
+
+# To use gpt4all in the terminal with ‘llm’
+llm install llm-gpt4all
+llm models list
+
+brew \
+    $ACTION_VERB \
+        --cask \
+            gpt4all \
+            anythingllm \
+            chatwise \
+            cherry-studio \
+            macai \
+            msty \
+            sanctum \
+            
+
+# To increase the amount of RAM available to the llama-server process, use the following command:
+# on a 192GB machine, raise the limit from 154GB (default) to 180GB
+sudo sysctl iogpu.wired_limit_mb=180000
+
+# Devices with more than 96GB RAM
+# The M2 Max, M3 Max, M4 Max, M1 Ultra, M2 Ultra, M3 Ultra, etc. chips can run both models at full context:
+
+
+brew \
+    $ACTION_VERB \
+        --cask \
+            ollamac \
+            ollama \
+            lm-studio \
+            backyard-ai \
+            msty \
+            jan \
+            anythingllm \
+            sanctum \
+            gpt4all \
+            chatbox \
+            chatgpt \
 
 
 # The intelligent terminal.
-brew $ACTION_VERB \
-    --cask \
-        claude \
-        claude-code \
-        cursor \
-        deepchat \
-        warp \
-        amazon-q \
-        itermai \
-        langflow \
-        pdf-pals \
-        rivet \
-        vibemeter \
+brew \
+    $ACTION_VERB \
+        --cask \
+            claude \
+            claude-code \
+            cursor \
+            deepchat \
+            warp \
+            amazon-q \
+            itermai \
+            langflow \
+            pdf-pals \
+            rivet \
+            vibemeter \
         
 
 
 
 # claude code
-npm $ACTION_VERB \
-    -g \
-        @anthropic-ai/claude-code \
-        @musistudio/claude-code-router \
-        @google/gemini-cli \
-        @qwen-code/qwen-code \
+npm \
+    $ACTION_VERB \
+        -g \
+            @anthropic-ai/claude-code \
+            @musistudio/claude-code-router \
+            @google/gemini-cli \
+            @qwen-code/qwen-code \
 
 # PDF
-brew $ACTION_VERB \
-    --cask \
-    --force \
-        libmagic \
-        poppler \
-        tesseract
+brew \
+    $ACTION_VERB \
+        --cask \
+        --force \
+            libmagic \
+            poppler \
+            tesseract
 
 
 # in editors
