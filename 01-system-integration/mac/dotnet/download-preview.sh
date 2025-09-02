@@ -3,6 +3,13 @@
 # https://dotnet.microsoft.com/en-us/download/dotnet
 # https://github.com/dotnet/installer/issues/11040
 
+# https://aka.ms/dotnet/{version}/dotnet-{product}-{os}-{arch}.{ext}
+#   https://aka.ms/dotnet/10.0/dotnet-sdk-osx-arm64.pkg
+
+# wget \
+#     --output-document $HOME/Downloads/dotnet/a.pkg \
+#         https://dotnet.microsoft.com/en-us/download/dotnet/thank-you/sdk-10.0.100-preview.7-macos-arm64-installer
+
 export OS=osx
 export EXT=pkg
 
@@ -28,6 +35,7 @@ else
 fi
 
 md $HOME/Downloads/dotnet/
+
 
 IFS=$'\n'
 # ZSH does not split words by default (like other shells):
