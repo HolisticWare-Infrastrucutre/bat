@@ -98,44 +98,48 @@ sudo git lfs $ACTION_VERB --system
 
 
 
-brew $ACTION_VERB \
-    --formula \
-        make \
-        cmake \
-        libtool \
-        gdk-pixbuf \
-        gettext \
-        coreutils \
-        findutils \
-        gnu-tar \
-        gnu-sed \
-        gawk \
-        gnutls \
-        gnu-indent \
-        gnu-getopt \
-        intltool \
-        ninja \
-        scons \
-        wget \
-        xz \
-        quicktype \
+brew \
+    $ACTION_VERB \
+        --formula \
+            make \
+            cmake \
+            libtool \
+            gdk-pixbuf \
+            gettext \
+            coreutils \
+            findutils \
+            gnu-tar \
+            gnu-sed \
+            gawk \
+            gnutls \
+            gnu-indent \
+            gnu-getopt \
+            intltool \
+            ninja \
+            scons \
+            wget \
+            xz \
+            quicktype \
 
 #        mingw-w64 \
 #        mingw-zlib \
 
-brew $ACTION_VERB \
-    --cask \
-        github \
-        gitup \
-        diffmerge \
-        p4v \
-        menumeters \
-        onyx \
+brew \
+    $ACTION_VERB \
+        --cask \
+            github \
+            gitup \
+            diffmerge \
+            p4v \
+            menumeters \
+            onyx \
     
     
 
-brew $ACTION_VERB \
-    keepasxc \
+brew \
+    $ACTION_VERB \
+        --formula \
+            keepasxc \
 
 #    keepassc \
 #    keepassx \
