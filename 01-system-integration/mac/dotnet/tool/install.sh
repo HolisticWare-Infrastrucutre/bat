@@ -120,6 +120,7 @@ dotnet-script
 csharprepl
 dotnet-repl
 Microsoft.dotnet-interactive
+Microsoft.dotnet-try
 # Diagnostic tools
 dotnet-monitor
 dotnet-sos
@@ -162,10 +163,14 @@ dotnet-obfuscar
 nukeeper
 dotnet-releaser
 NuSight
+Microsoft.Playwright.CLI
+Microsoft.Crank.Controller
+Microsoft.Crank.Agent
 # Security
 # Security.Packages.Dependencies
 dotnet-retire
 NuGetDefense.Tool
+Microsoft.Sbom.DotNetTool
 NuGet.PackageSourceMapper
 dotnetarium-scs
 dotnet-ossindex
@@ -186,6 +191,8 @@ MLNet
 # Embedded
 WildernessLabs.Meadow.CLI
 nanoclr
+# AI
+Microsoft.Extensions.AI.Evaluation.Console
 "
 
 export TOOLZ_PREVIEWS=\
