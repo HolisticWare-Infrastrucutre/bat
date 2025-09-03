@@ -5,9 +5,15 @@
 export ACTION_VERB=install
 
 #----------------------------------------------------------------------------------------------
-brew uninstall bash-completion
-brew unlink bash-completion
-brew install bash-completion@2
+brew \
+    uninstall \
+    bash-completion
+brew \
+    unlink \
+        bash-completion
+brew \
+    install \
+        bash-completion@2
 
 #----------------------------------------------------------------------------------------------
 # Amazon Q
@@ -15,12 +21,15 @@ brew install bash-completion@2
 # https://fig.io/
 # https://github.com/withfig/autocomplete
 
-brew $ACTION_VERB \
-        amazon-q
+brew \
+    $ACTION_VERB \
+        --formula \
+            amazon-q
 
-brew $ACTION_VERB \
-    --cask \
-        amazon-q
+brew \
+    $ACTION_VERB \
+        --cask \
+            amazon-q
 
 #----------------------------------------------------------------------------------------------
 # ChatWithCloud
@@ -28,5 +37,7 @@ brew $ACTION_VERB \
 # https://www.reddit.com/r/aws/comments/1dbrwae/i_made_amazon_q_for_terminal_but_a_bit_better/
 brew tap chatwithcloud/tap \
 && \
-brew $ACTION_VERB \
-    chat-with-cloud
+brew \
+    $ACTION_VERB \
+        --formula \
+            chat-with-cloud
