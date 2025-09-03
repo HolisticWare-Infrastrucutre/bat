@@ -20,14 +20,21 @@ source $HOME/bat/01-system-integration/mac/dotnet/new-templates/install-maui.sh
 
 export TEMPLATEZ=\
 "
+#----------------------------------------------------------------------------------------------------------------------
+# Aspire
+Aspire.ProjectTemplates
+#----------------------------------------------------------------------------------------------------------------------
 # Microsoft.TemplateEngine.Authoring.Templates
 # https://learn.microsoft.com/en-us/dotnet/core/tutorials/cli-templates-create-template-package#create-a-template-package-project
 Microsoft.TemplateEngine.Authoring.Templates
+Microsoft.TemplateEngine.Samples
+#----------------------------------------------------------------------------------------------------------------------
 # Blazor - Full stack web development with C# and WebAssembly
 # http://blazor.net/
 Microsoft.AspNetCore.Blazor.Templates::3.0.0-*
 Microsoft.FluentUI.AspNetCore.Templates
 Microsoft.Fast.Templates.FluentUI
+#----------------------------------------------------------------------------------------------------------------------
 # DevExpress
 DevExpress.Maui.ProjectTemplates
 # Cake.Frosting
@@ -39,13 +46,28 @@ Prism.Forms.QuickstartTemplates
 # .NET MAUI Comet App (comet)
 #
 Clancey.Comet.Templates.Multiplatform
+#----------------------------------------------------------------------------------------------------------------------
 # Avalonia
 # 
 Avalonia.Templates
+Uno.Templates
+Microsoft.Maui.Templates.net8
+Microsoft.Maui.Templates.net9
+Microsoft.Maui.Templates.net10
+Microsoft.iOS.Templates
+Microsoft.Android.Templates
+Microsoft.MacCatalyst.Templates
+Microsoft.macOS.Templates
+Microsoft.tvOS.Templates
+
+#----------------------------------------------------------------------------------------------------------------------
 # WCF
 CoreWCF.Templates
+Microsoft.OData.WebApiTemplate
+#----------------------------------------------------------------------------------------------------------------------
 # AI
 Microsoft.Extensions.AI.Templates
+
 "
 
 
