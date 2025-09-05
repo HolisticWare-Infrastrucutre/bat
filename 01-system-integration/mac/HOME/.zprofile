@@ -1756,7 +1756,7 @@ function dev_android_decompile_jar_luyten()
 # dev   
 #   devbox
 # start
-dev_devbox_browser()
+function dev_devbox_browser()
 {
   echo "=============================================================================================================="
   echo \
@@ -1767,7 +1767,7 @@ dev_devbox_browser()
   open https://devbox.microsoft.com/
 }
 
-dev_devbox_remote_desktop_connection()
+function dev_devbox_remote_desktop_connection()
 {
   echo "=============================================================================================================="
   echo \
@@ -1788,7 +1788,7 @@ dev_devbox_remote_desktop_connection()
 #   dotnet
 # start
 
-dev_dotnet_installation_nuke()
+function dev_dotnet_installation_nuke()
 {
   echo "=============================================================================================================="
   echo \
@@ -1799,15 +1799,45 @@ dev_dotnet_installation_nuke()
 
   source $HOME/bat/01-system-integration/mac/dotnet/nuke.sh
 
-  echo "=============================================================================================================="
   echo \
   "
   STOP executing:
   source $HOME/bat/01-system-integration/mac/dotnet/nuke.sh
   "
+  echo "=============================================================================================================="
 }
 
-dev_dotnet_installation_nuke_previews()
+function dev_dotnet_installation_reinstall_full()
+{
+  source $HOME/bat/01-system-integration/mac/dotnet/nuke.sh
+  source $HOME/bat/01-system-integration/mac/dotnet/download-stable.sh
+  source $HOME/bat/01-system-integration/mac/dotnet/install-stable.sh
+
+  source $HOME/bat/01-system-integration/mac/dotnet/workload/install-minimal.sh
+  source $HOME/bat/01-system-integration/mac/dotnet/tool/install-minimal.sh
+  source $HOME/bat/01-system-integration/mac/dotnet/new-templates/install.sh
+  source $HOME/bat/01-system-integration/mac/dotnet/new-templates/install-maui.sh
+  source $HOME/bat/01-system-integration/mac/dotnet/new-templates/install-holisticware.sh
+
+  source $HOME/bat/01-system-integration/mac/dotnet/download-preview.sh
+  source $HOME/bat/01-system-integration/mac/dotnet/install-preview.sh
+
+  source $HOME/bat/01-system-integration/mac/dotnet/workload/install-minimal.sh
+  source $HOME/bat/01-system-integration/mac/dotnet/tool/install-minimal.sh
+
+  source $HOME/bat/01-system-integration/mac/dotnet/new-templates/install.sh
+  source $HOME/bat/01-system-integration/mac/dotnet/new-templates/install-maui.sh
+  source $HOME/bat/01-system-integration/mac/dotnet/new-templates/install-holisticware.sh
+
+  source $HOME/bat/01-system-integration/mac/dotnet/workload/android/test.sh
+  source $HOME/bat/01-system-integration/mac/dotnet/workload/ios/test.sh
+  source $HOME/bat/01-system-integration/mac/dotnet/workload/maccatalyst/test.sh
+  source $HOME/bat/01-system-integration/mac/dotnet/workload/maui/test.sh
+
+  source $HOME/bat/01-system-integration/mac/02-install/development/dotnet/uno/test.sh 
+}
+
+function dev_dotnet_installation_nuke_previews()
 {
   echo "=============================================================================================================="
   echo \
@@ -1855,7 +1885,7 @@ dev_dotnet_installation_nuke_previews()
   "
 }
 
-dev_dotnet_installation_install_preview()
+function dev_dotnet_installation_install_preview()
 {
   echo "=============================================================================================================="
   echo \
@@ -1923,7 +1953,7 @@ dev_dotnet_installation_install_preview()
   dev_dotnet_workload_reinstall
 }
 
-dev_dotnet_installation_uninstall()
+function dev_dotnet_installation_uninstall()
 {
   echo "=============================================================================================================="
   echo \
@@ -1948,7 +1978,7 @@ dev_dotnet_installation_uninstall()
   "
 }
 
-dev_dotnet_installation_download_packages()
+function dev_dotnet_installation_download_packages()
 {
   echo "=============================================================================================================="
   echo \
@@ -1973,7 +2003,7 @@ dev_dotnet_installation_download_packages()
   "
 }
 
-dev_dotnet_installation_test()
+function dev_dotnet_installation_test()
 {
   echo "=============================================================================================================="
   echo \
@@ -1992,7 +2022,7 @@ dev_dotnet_installation_test()
   "
 }
 
-dev_dotnet_build_server_shutdown()
+function dev_dotnet_build_server_shutdown()
 {
   echo "=============================================================================================================="
   echo \
@@ -2009,7 +2039,7 @@ dev_dotnet_build_server_shutdown()
 }
 
 
-dev_dotnet_build_brute_csproj()
+function dev_dotnet_build_brute_csproj()
 { 
   echo "=============================================================================================================="
   echo \
@@ -2019,7 +2049,7 @@ dev_dotnet_build_brute_csproj()
   find . -type f -iname "*.csproj" -exec dotnet build {} \;
 }
 
-dev_dotnet_folders_nuke()
+function dev_dotnet_folders_nuke()
 { 
   echo "=============================================================================================================="
   echo \
@@ -2030,7 +2060,7 @@ dev_dotnet_folders_nuke()
   rm -fr $(find . -type d -iname "bin" -o -iname "obj" -o -iname ".meteor" -o -iname ".idea" -o -iname ".vs")
 }
 
-dev_dotnet_nuget_nuke()
+function dev_dotnet_nuget_nuke()
 { 
   echo "=============================================================================================================="
   echo \
@@ -2041,7 +2071,7 @@ dev_dotnet_nuget_nuke()
   source $HOME/bat/01-system-integration/mac/nuget/clean.sh
 }
 
-dev_dotnet_info_dump()
+function dev_dotnet_info_dump()
 {
   echo "=============================================================================================================="
   echo \
@@ -2072,7 +2102,7 @@ dev_dotnet_info_dump()
   dev_dotnet_workload_list
 }
 
-dev_dotnet_info_dump_long()
+function dev_dotnet_info_dump_long()
 { 
   echo "=============================================================================================================="
   echo \
@@ -2130,7 +2160,7 @@ dev_dotnet_info_dump_long()
   dev_dotnet_sdk_check
 }
 
-dev_dotnet_sdk_check()
+function dev_dotnet_sdk_check()
 { 
   echo "--------------------------------------------------------------------------------------------------------------"
   echo \
@@ -2140,7 +2170,7 @@ dev_dotnet_sdk_check()
   dotnet sdk check
 }
 
-dev_dotnet_workload_maui_install()
+function dev_dotnet_workload_maui_install()
 {
   # https://github.com/dotnet/maui/wiki
   # https://github.com/dotnet/maui/wiki/Release-Versions
@@ -2161,7 +2191,8 @@ dev_dotnet_workload_maui_install()
       --source https://api.nuget.org/v3/index.json
   "
 }
-dev_dotnet_workload_list()
+
+function dev_dotnet_workload_list()
 {
   echo "--------------------------------------------------------------------------------------------------------------"
   echo \
@@ -2182,7 +2213,7 @@ dev_dotnet_workload_list()
   "
 }
 
-dev_dotnet_workload_reinstall()
+function dev_dotnet_workload_reinstall()
 { 
   echo "--------------------------------------------------------------------------------------------------------------"
   echo \
@@ -2218,7 +2249,7 @@ dev_dotnet_workload_reinstall()
   "
 };
 
-dev_dotnet_workload_edit()
+function dev_dotnet_workload_edit()
 {
   echo "--------------------------------------------------------------------------------------------------------------"
   echo \
@@ -2228,7 +2259,7 @@ dev_dotnet_workload_edit()
   code -n $HOME/bat/01-system-integration/mac/dotnet/workload/
 }
 
-dev_dotnet_workload_clean()
+function dev_dotnet_workload_clean()
 { 
   echo "--------------------------------------------------------------------------------------------------------------"
   echo \
@@ -2242,7 +2273,7 @@ dev_dotnet_workload_clean()
   dev_dotnet_workload_list
 }
 
-dev_dotnet_tools_reinstall()
+function dev_dotnet_tools_reinstall()
 {
   echo "--------------------------------------------------------------------------------------------------------------"
   echo \
@@ -2296,7 +2327,7 @@ dotnet tool \
 #        --version 3.2.0-alpha0025  
 }
 
-dev_dotnet_tools_reinstall_api_tools()
+function dev_dotnet_tools_reinstall_api_tools()
 {
   echo "--------------------------------------------------------------------------------------------------------------"
   echo \
@@ -2309,7 +2340,7 @@ dev_dotnet_tools_reinstall_api_tools()
   dotnet tool install --global private-api-tools --version 1.0.3
 }
 
-dev_dotnet_new_templates_reinstall()
+function dev_dotnet_new_templates_reinstall()
 {
   echo "--------------------------------------------------------------------------------------------------------------"
   echo \
@@ -2319,7 +2350,7 @@ dev_dotnet_new_templates_reinstall()
   source $HOME/bat/01-system-integration/mac/dotnet/new-templates/install.sh 
 };
 
-dev_dotnet_clean()
+function dev_dotnet_clean()
 {
   echo "--------------------------------------------------------------------------------------------------------------"
   echo \
@@ -2350,7 +2381,7 @@ dev_dotnet_clean()
   rm -fr .vscode*
 }
 
-dev_dotnet_ide_rider()
+function dev_dotnet_ide_rider()
 {
   echo "--------------------------------------------------------------------------------------------------------------"
   echo \
@@ -2375,7 +2406,7 @@ idea.case.sensitive.fs=true
 
 }
 
-dev_dotnet_msbuildlog ()
+function dev_dotnet_msbuildlog ()
 {
   echo "--------------------------------------------------------------------------------------------------------------"
   echo \
@@ -2387,7 +2418,7 @@ dev_dotnet_msbuildlog ()
 
 
 # https://learn.microsoft.com/en-us/dotnet/core/tools/enable-tab-autocomplete
-dev_dotnet_tab_completion_zsh()
+function dev_dotnet_tab_completion_zsh()
 {
 #  echo "--------------------------------------------------------------------------------------------------------------"
 #  echo \
@@ -2462,7 +2493,7 @@ compdef dev_dotnet_tab_completion_zsh dotnet
 #   compctl -K dotnet_zsh_complete dotnet
 # }
 
-dev_dotnet_assembly_references ()
+function dev_dotnet_assembly_references ()
 {  
   echo "--------------------------------------------------------------------------------------------------------------"
   echo \
@@ -2503,7 +2534,7 @@ dev_dotnet_assembly_references ()
 # macOS     $HOME/.vscode/extensions
 # Linux     $HOME/.vscode/extensions
 
-dev_code_vscode_backups ()
+function dev_code_vscode_backups ()
 {
   echo "--------------------------------------------------------------------------------------------------------------"
   echo \
@@ -2520,7 +2551,7 @@ dev_code_vscode_backups ()
   tree "$HOME/Library/Application Support/Code - Insiders/Backups"
 }
 
-dev_code_vscode_extensions_list ()
+function dev_code_vscode_extensions_list ()
 {
   # https://code.visualstudio.com/docs/editor/extension-marketplace#_command-line-extension-management
   echo "--------------------------------------------------------------------------------------------------------------"
@@ -2533,7 +2564,7 @@ dev_code_vscode_extensions_list ()
     --list-extensions
 }
 
-dev_code_vscode_extensions_list_versions ()
+function dev_code_vscode_extensions_list_versions ()
 {
   # https://code.visualstudio.com/docs/editor/extension-marketplace#_command-line-extension-management
   echo "--------------------------------------------------------------------------------------------------------------"
@@ -2549,7 +2580,7 @@ dev_code_vscode_extensions_list_versions ()
 
 }
 
-dev_code_vscode_insiders_extensions_list ()
+function dev_code_vscode_insiders_extensions_list ()
 {
   # https://code.visualstudio.com/docs/editor/extension-marketplace#_command-line-extension-management
   echo "--------------------------------------------------------------------------------------------------------------"
@@ -2562,7 +2593,7 @@ dev_code_vscode_insiders_extensions_list ()
     --list-extensions
 }
 
-dev_code_vscode_insiders_extensions_list_versions ()
+function dev_code_vscode_insiders_extensions_list_versions ()
 {
   # https://code.visualstudio.com/docs/editor/extension-marketplace#_command-line-extension-management
   echo "--------------------------------------------------------------------------------------------------------------"
@@ -2589,7 +2620,7 @@ dev_code_vscode_insiders_extensions_list_versions ()
 #       android
 # start
 
-dev_dotnet_android_bindings_binderator_clean()
+function dev_dotnet_android_bindings_binderator_clean()
 {
   echo "=============================================================================================================="
   echo \
@@ -2604,11 +2635,12 @@ dev_dotnet_android_bindings_binderator_clean()
 
 }
 
-dev_dotnet_android_bindings_binderator_build()
+function dev_dotnet_android_bindings_binderator_build()
 {
   echo "=============================================================================================================="
   echo \
   "
+  export JAVA_HOME=$JAVA_HOME_17
   dotnet cake -t=ci \\
   && \\
   dotnet cake utilities.cake \\
@@ -2619,6 +2651,7 @@ dev_dotnet_android_bindings_binderator_build()
   && \\
   dotnet cake nuget-diff.cake -v:diagnostic \\
   "
+  export JAVA_HOME=$JAVA_HOME_17
   dotnet cake -t=ci \
   && \
   dotnet cake utilities.cake \
@@ -2629,16 +2662,33 @@ dev_dotnet_android_bindings_binderator_build()
   && \
   dotnet cake nuget-diff.cake -v:diagnostic \
 
+
+  echo \
+  "
+  export JAVA_HOME=$JAVA_HOME_17
+  dotnet cake -t=ci \\
+  && \\
+  dotnet cake utilities.cake \\
+  && \\
+  dotnet cake utilities.cake -t=generate-namespace-file \\
+  && \\
+  dotnet build tests/extended/ExtendedTests.csproj -c Release \\
+  && \\
+  dotnet cake nuget-diff.cake -v:diagnostic \\
+  "
+  echo "=============================================================================================================="
 }
 
-dev_dotnet_android_bindings_binderator_config_update()
+function dev_dotnet_android_bindings_binderator_config_update()
 { 
   echo "=============================================================================================================="
   # dotnet script update-config.csx -- ./config.json <update|bump|published|sort>
   echo \
   "
+  export JAVA_HOME=$JAVA_HOME_17
   dotnet cake -t=update-config
   "
+  export JAVA_HOME=$JAVA_HOME_17  
   
   # dotnet script ./build/scripts/update-config.csx -- ./config.json update
   dotnet cake -t=update-config
@@ -2646,25 +2696,27 @@ dev_dotnet_android_bindings_binderator_config_update()
   echo "_______________________________________________________________________________________________________________"
   echo \
   "
+  export JAVA_HOME=$JAVA_HOME_17
   dotnet cake -t=update-config
-  DONE
   "
   echo "=============================================================================================================="
 }  
 
-dev_dotnet_android_bindings_binderator_config_bump()
+function dev_dotnet_android_bindings_binderator_config_bump()
 { 
   echo "=============================================================================================================="
   # dotnet script update-config.csx -- ./config.json <update|bump|published|sort>
   echo \
   "
+  export JAVA_HOME=$JAVA_HOME_17
   dotnet script ./build/scripts/update-config.csx -- ./config.json bump
   "
+  export JAVA_HOME=$JAVA_HOME_17
   dotnet script ./build/scripts/update-config.csx -- ./config.json bump
 }
 
 
-dev_dotnet_android_repo_build_01()
+function dev_dotnet_android_repo_build_01()
 {
   echo "=============================================================================================================="
   echo \
@@ -2672,7 +2724,7 @@ dev_dotnet_android_repo_build_01()
   "
 }
 
-dev_dotnet_android_repo_build_02()
+function dev_dotnet_android_repo_build_02()
 {
   echo "=============================================================================================================="
   echo \
@@ -2684,7 +2736,7 @@ dev_dotnet_android_repo_build_02()
   dotnet-local.cmd build Xamarin.Android.sln -t:BuildDotNet --tl:off -bl
 }
 
-dev_dotnet_android_profiling_setup_emulator()
+function dev_dotnet_android_profiling_setup_emulator()
 {
   # https://devblogs.microsoft.com/dotnet/performance-improvements-in-dotnet-maui/#startup-performance-improvements
   echo "=============================================================================================================="
@@ -2723,7 +2775,7 @@ dev_dotnet_android_profiling_setup_emulator()
   dotnet-trace collect -p $PORT --format speedscope
 }
 
-dev_dotnet_android_profiling_setup_device()
+function dev_dotnet_android_profiling_setup_device()
 { 
   # https://devblogs.microsoft.com/dotnet/performance-improvements-in-dotnet-maui/#startup-performance-improvements
   echo "=============================================================================================================="
@@ -2747,7 +2799,7 @@ dev_dotnet_android_profiling_setup_device()
   dotnet-dsrouter client-server -tcps 127.0.0.1:9001 --verbose debug -ipcc /tmp/maui-app
 }
 
-dev_dotnet_android_profiling_profile()
+function dev_dotnet_android_profiling_profile()
 { 
   # https://devblogs.microsoft.com/dotnet/performance-improvements-in-dotnet-maui/#startup-performance-improvements
   echo "=============================================================================================================="
@@ -2766,7 +2818,7 @@ dev_dotnet_android_profiling_profile()
 
 }
 
-dev_dotnet_android_packages_uninstall()
+function dev_dotnet_android_packages_uninstall()
 {
   export PATTERN=com.companyname
   #export PATTERN=com.jsuarezruiz
@@ -2792,7 +2844,7 @@ dev_dotnet_android_packages_uninstall()
 #       maui
 # start
 
-dev_dotnet_maui_new_demo_repro_multitarget ()
+function dev_dotnet_maui_new_demo_repro_multitarget ()
 {
   echo "--------------------------------------------------------------------------------------------------------------"
   echo \
@@ -2867,7 +2919,7 @@ dev_dotnet_maui_new_demo_repro_multitarget ()
 
 }
 
-dev_dotnet_maui_new_lib ()
+function dev_dotnet_maui_new_lib ()
 {
   TIMESTAMP=$( date "+%Y%m%d%H%M%S" )
   echo    $TIMESTAMP
@@ -2878,7 +2930,7 @@ dev_dotnet_maui_new_lib ()
               --output ./LibraryMAUI.$TIMESTAMP
 }
 
-dev_dotnet_maui_new_app ()
+function dev_dotnet_maui_new_app ()
 {
   echo "--------------------------------------------------------------------------------------------------------------"
   TIMESTAMP=$( date "+%Y%m%d%H%M%S" )
@@ -2890,7 +2942,7 @@ dev_dotnet_maui_new_app ()
               --output ./AppMAUI.$TIMESTAMP
 }
 
-dev_dotnet_maui_new_app_hybrid_blazor ()
+function dev_dotnet_maui_new_app_hybrid_blazor ()
 {
   echo "--------------------------------------------------------------------------------------------------------------"
   TIMESTAMP=$( date "+%Y%m%d%H%M%S" )
@@ -2902,14 +2954,14 @@ dev_dotnet_maui_new_app_hybrid_blazor ()
               --output ./AppMAUI.HybridBlazor.$TIMESTAMP  
 }
 
-dev_dotnet_maui_new_all ()
+function dev_dotnet_maui_new_all ()
 {
   dev_dotnet_maui_new_lib
   dev_dotnet_maui_new_app
   dev_dotnet_maui_new_app_hybrid_blazor
 };
 
-dev_dotnet_maui_build_lib ()
+function dev_dotnet_maui_build_lib ()
 {
   echo "--------------------------------------------------------------------------------------------------------------"
   csproj=( $(find . -name "LibraryMAUI.*.csproj") )
@@ -2924,7 +2976,7 @@ dev_dotnet_maui_build_lib ()
   done
 }
 
-dev_dotnet_maui_build_app ()
+function dev_dotnet_maui_build_app ()
 {
   echo "--------------------------------------------------------------------------------------------------------------"
   csproj=( $(find . -name "AppMAUI.*.csproj") )
@@ -2940,7 +2992,7 @@ dev_dotnet_maui_build_app ()
   done
 }
 
-dev_dotnet_maui_build_app_hybrid_blazor ()
+function dev_dotnet_maui_build_app_hybrid_blazor ()
 {
   echo "--------------------------------------------------------------------------------------------------------------"
   csproj=( $(find . -name "AppMAUI.HybridBlazor.*.csproj") )
@@ -2956,14 +3008,14 @@ dev_dotnet_maui_build_app_hybrid_blazor ()
   done
 }
 
-dev_dotnet_maui_build_all ()
+function dev_dotnet_maui_build_all ()
 {
   dev_dotnet_maui_build_lib
   dev_dotnet_maui_build_app
   dev_dotnet_maui_build_app_hybrid_blazor
 };
 
-dev_dotnet_maui_run_app_android ()
+function dev_dotnet_maui_run_app_android ()
 {
   echo "--------------------------------------------------------------------------------------------------------------"
   echo $1
@@ -2996,7 +3048,7 @@ dev_dotnet_maui_run_app_android ()
   done
 }
 
-dev_dotnet_maui_run_app_ios ()
+function dev_dotnet_maui_run_app_ios ()
 {
   echo "--------------------------------------------------------------------------------------------------------------"
   for d in AppMAUI.*/ ; 
@@ -3027,7 +3079,7 @@ dev_dotnet_maui_run_app_ios ()
   done
 }
 
-dev_dotnet_maui_build_app_hybrid_blazor ()
+function dev_dotnet_maui_build_app_hybrid_blazor ()
 {
   echo "--------------------------------------------------------------------------------------------------------------"
   for d in AppMAUI.HybridBlazor.*/ ; 
@@ -3043,7 +3095,7 @@ dev_dotnet_maui_build_app_hybrid_blazor ()
 
 #----------------------------------------------------------------------------------------------------------------------
 
-dev_dotnet_maui_android_java ()
+function dev_dotnet_maui_android_java ()
 {
   echo "--------------------------------------------------------------------------------------------------------------"
   echo \
@@ -3053,7 +3105,7 @@ dev_dotnet_maui_android_java ()
   export JAVA_HOME=$JAVA_HOME_17
 }
 
-dev_dotnet_maui_repo_build_all ()
+function dev_dotnet_maui_repo_build_all ()
 {
   echo "--------------------------------------------------------------------------------------------------------------"
   echo \
@@ -3069,7 +3121,7 @@ dev_dotnet_maui_repo_build_all ()
 #  dev_dotnet_maui_repo_build_device_tests
 }
 
-dev_dotnet_maui_repo_build_buildtasks ()
+function dev_dotnet_maui_repo_build_buildtasks ()
 {
   echo "--------------------------------------------------------------------------------------------------------------"
   echo \
@@ -3088,7 +3140,7 @@ dev_dotnet_maui_repo_build_buildtasks ()
     --workloads=global
 }
 
-dev_dotnet_maui_repo_build_samples ()
+function dev_dotnet_maui_repo_build_samples ()
 {
   dotnet tool restore
   dev_dotnet_maui_repo_build_visual_studio_code
@@ -3114,7 +3166,7 @@ dev_dotnet_maui_repo_build_samples ()
   done
 }
 
-dev_dotnet_maui_repo_build_tests_all_AAAA ()
+function dev_dotnet_maui_repo_build_tests_all_AAAA ()
 {
   dotnet tool restore
   brew uninstall node
@@ -3178,7 +3230,7 @@ dev_dotnet_maui_repo_build_tests_all_AAAA ()
 }
 
 
-dev_dotnet_maui_repo_build_tests ()
+function dev_dotnet_maui_repo_build_tests ()
 {
   echo "--------------------------------------------------------------------------------------------------------------"
   echo \
@@ -3208,7 +3260,7 @@ dev_dotnet_maui_repo_build_tests ()
 
 
 
-dev_dotnet_maui_repo_tools_tests_init ()
+function dev_dotnet_maui_repo_tools_tests_init ()
 {
   echo "--------------------------------------------------------------------------------------------------------------"
   echo \
@@ -3219,7 +3271,7 @@ dev_dotnet_maui_repo_tools_tests_init ()
   "
 }
 
-dev_dotnet_maui_repo_tools_tests_verify ()
+function dev_dotnet_maui_repo_tools_tests_verify ()
 {
   echo "--------------------------------------------------------------------------------------------------------------"
   echo \
@@ -3230,7 +3282,7 @@ dev_dotnet_maui_repo_tools_tests_verify ()
 
 }
 
-dev_dotnet_maui_repo_build_device_tests ()
+function dev_dotnet_maui_repo_build_device_tests ()
 {
   echo "--------------------------------------------------------------------------------------------------------------"
   echo \
@@ -3244,7 +3296,7 @@ dev_dotnet_maui_repo_build_device_tests ()
   dev_dotnet_maui_repo_build_device_tests_android
 }
 
-dev_dotnet_maui_repo_build_device_tests_maccatalyst ()
+function dev_dotnet_maui_repo_build_device_tests_maccatalyst ()
 {
   echo "--------------------------------------------------------------------------------------------------------------"
   echo \
@@ -3286,7 +3338,7 @@ src/BlazorWebView/tests/MauiDeviceTests/MauiBlazorWebView.DeviceTests.csproj
   done
 }
 
-dev_dotnet_maui_repo_build_device_tests_android ()
+function dev_dotnet_maui_repo_build_device_tests_android ()
 {
   echo "--------------------------------------------------------------------------------------------------------------"
   echo \
@@ -3326,7 +3378,7 @@ src/BlazorWebView/tests/MauiDeviceTests/MauiBlazorWebView.DeviceTests.csproj
   done
 }
 
-dev_dotnet_maui_repo_build_device_tests_ios ()
+function dev_dotnet_maui_repo_build_device_tests_ios ()
 {
   echo "--------------------------------------------------------------------------------------------------------------"
   echo \
@@ -3366,7 +3418,7 @@ src/BlazorWebView/tests/MauiDeviceTests/MauiBlazorWebView.DeviceTests.csproj
   done
 }
 
-dev_dotnet_maui_repo_build_visual_studio ()
+function dev_dotnet_maui_repo_build_visual_studio ()
 {
   echo "--------------------------------------------------------------------------------------------------------------"
   echo \
@@ -3402,7 +3454,7 @@ dev_dotnet_maui_repo_build_visual_studio ()
   #  dotnet build ./Microsoft.Maui.Graphics.slnf /p:EnableWindowsTargeting=true
 }
 
-dev_dotnet_maui_repo_build_visual_studio_code ()
+function dev_dotnet_maui_repo_build_visual_studio_code ()
 {
   echo "--------------------------------------------------------------------------------------------------------------"
   echo \
@@ -3423,7 +3475,7 @@ dev_dotnet_maui_repo_build_visual_studio_code ()
       --catalyst
 }
 
-dev_dotnet_maui_repo_build_projects ()
+function dev_dotnet_maui_repo_build_projects ()
 {
   csproj=( $(find . -type f -iname "*.csproj") )
   for csp in ${csproj[@]} ; 
@@ -3447,7 +3499,7 @@ dev_dotnet_maui_repo_build_projects ()
   done
 }
 
-dev_dotnet_maui_repo_build_unit_tests ()
+function dev_dotnet_maui_repo_build_unit_tests ()
 {
   export PROJECTS=\
 "
@@ -3482,7 +3534,7 @@ dev_dotnet_maui_repo_build_unit_tests ()
   done
 }
 
-dev_dotnet_maui_repo_build_ui_tests ()
+function dev_dotnet_maui_repo_build_ui_tests ()
 {
   export PROJECTS=\
 "
@@ -3506,11 +3558,11 @@ dev_dotnet_maui_repo_build_ui_tests ()
   done
 }
 
-dev_dotnet_maui_repo_setup_device_tests ()
+function dev_dotnet_maui_repo_setup_device_tests ()
 {
 }
 
-dev_dotnet_maui_fix_installation ()
+function dev_dotnet_maui_fix_installation ()
 {
   # Visual Studio for Mac's installer and updater uses dotnet workload install commands to install the 
   # .NET MAUI .pkg files.
@@ -3546,7 +3598,7 @@ dev_dotnet_maui_fix_installation ()
 
 }
 
-dev_dotnet_maui_repo_build_all ()
+function dev_dotnet_maui_repo_build_all ()
 {
   echo "--------------------------------------------------------------------------------------------------------------"
   echo \
@@ -3589,7 +3641,7 @@ dev_dotnet_maui_repo_build_all ()
 #     git
 # start
 
-dev_tools_git_clean ()
+function dev_tools_git_clean ()
 {
   echo "=============================================================================================================="
   echo \
@@ -3599,7 +3651,7 @@ dev_tools_git_clean ()
   git clean -xdf && git status && git pull
 }
 
-dev_tools_git_really_clean()
+function dev_tools_git_really_clean()
 {
   echo "--------------------------------------------------------------------------------------------------------------"
   echo \
@@ -3613,7 +3665,7 @@ dev_tools_git_really_clean()
   git submodule update --init --recursive
 }
 
-dev_tools_git_prune()
+function dev_tools_git_prune()
 {
   # to clean your local checkout by removing all the branches+tags that no longer exist upstream
   # run this script (or its powershell/cmd equivalent):
@@ -3661,7 +3713,7 @@ dev_tools_git_prune()
 #   macios
 # start
 
-dev_macios_xcode_cli_tools ()
+function dev_macios_xcode_cli_tools ()
 {
   xcodebuild -version
   #On versions 10.9 and later (OS X Yosemite to macOS Monterey):
@@ -3672,7 +3724,7 @@ dev_macios_xcode_cli_tools ()
 }
 
 # greyed out simulators
-dev_macios_xcode_reset ()
+function dev_macios_xcode_reset ()
 {
   echo "--------------------------------------------------------------------------------------------------------------"
   echo \
@@ -3691,7 +3743,7 @@ dev_macios_xcode_reset ()
 
 }
 
-dev_macios_info_dump()
+function dev_macios_info_dump()
 { 
   echo "=============================================================================================================="
   echo "Apple iOS/MacOS"
@@ -3711,7 +3763,7 @@ dev_macios_info_dump()
   softwareupdate --history
 }
 
-dev_macios_xcode_commandline_tools_reinstall()
+function dev_macios_xcode_commandline_tools_reinstall()
 {
   echo "--------------------------------------------------------------------------------------------------------------"
   echo \
@@ -3725,7 +3777,7 @@ dev_macios_xcode_commandline_tools_reinstall()
   softwareupdate --all --install --force
 }
 
-dev_macios_xcode_commandline_tools_version()
+function dev_macios_xcode_commandline_tools_version()
 {
   echo "--------------------------------------------------------------------------------------------------------------"
   echo \
@@ -3741,7 +3793,7 @@ dev_macios_xcode_commandline_tools_version()
   pkgutil --pkg-info=com.apple.pkg.DeveloperToolsCLI
 }
 
-dev_macios_xcode_version()
+function dev_macios_xcode_version()
 {
   echo "--------------------------------------------------------------------------------------------------------------"
   echo \
@@ -3751,7 +3803,7 @@ dev_macios_xcode_version()
   xcodebuild -version
 }
 
-dev_macios_softwareupdate_history()
+function dev_macios_softwareupdate_history()
 {
   echo "--------------------------------------------------------------------------------------------------------------"
   echo \
@@ -3761,7 +3813,7 @@ dev_macios_softwareupdate_history()
   softwareupdate --history
 }
 
-dev_macios_xcode_xcodebuild_sdks()
+function dev_macios_xcode_xcodebuild_sdks()
 {
   echo "--------------------------------------------------------------------------------------------------------------"
   echo \
@@ -3771,7 +3823,7 @@ dev_macios_xcode_xcodebuild_sdks()
   xcodebuild -showsdks
 }
 
-dev_macios_xcode_xcodebuild_license_accept()
+function  dev_macios_xcode_xcodebuild_license_accept()
 {
   echo "--------------------------------------------------------------------------------------------------------------"
   echo \
@@ -3781,7 +3833,7 @@ dev_macios_xcode_xcodebuild_license_accept()
   sudo xcodebuild -license accept
 }
 
-dev_macios_xcode_xcodebuild_reset()
+function dev_macios_xcode_xcodebuild_reset()
 {
   # https://learn.microsoft.com/en-us/dotnet/maui/troubleshooting#couldnt-find-a-valid-xcode-app-bundle
 
@@ -3793,7 +3845,7 @@ dev_macios_xcode_xcodebuild_reset()
   sudo xcode-select --reset
 }
 
-dev_macios_xcode_install_commandline_tools()
+function dev_macios_xcode_install_commandline_tools()
 {
   echo "--------------------------------------------------------------------------------------------------------------"
   sudo rm -rf /Library/Developer/CommandLineTools
@@ -3808,7 +3860,7 @@ dev_macios_xcode_install_commandline_tools()
     -e 'end tell'
 };
 
-dev_macios_simulator_list()
+function dev_macios_simulator_list()
 {
   echo "--------------------------------------------------------------------------------------------------------------"
   echo \
@@ -3820,7 +3872,7 @@ dev_macios_simulator_list()
 
 export IOS_DEVICE_ID="73FC4795-80E6-4ED9-9BB5-716206BDAFCD"
 
-dev_macios_simulator_launch()
+function dev_macios_simulator_launch()
 {
   echo "--------------------------------------------------------------------------------------------------------------"
   echo \
@@ -3844,7 +3896,7 @@ dev_macios_simulator_launch()
 # xcrun simctl launch <YOUR-DEVICE-ID> <BUNDLE-ID-OF-APP-BUNDLE>      
 };
 
-dev_macios_simulator_reset()
+function dev_macios_simulator_reset()
 {
   echo "--------------------------------------------------------------------------------------------------------------"
   echo \
@@ -3854,7 +3906,7 @@ dev_macios_simulator_reset()
   xcrun simctl erase all
 }
 
-dev_macios_xcode_reset()
+function dev_macios_xcode_reset()
 {
   # https://learn.microsoft.com/en-us/dotnet/maui/troubleshooting#couldnt-find-a-valid-xcode-app-bundle
 
@@ -3868,7 +3920,7 @@ dev_macios_xcode_reset()
 
 # xcodebuild -downloadPlatform <iOS|watchOS|tvOS|visionOS>  [-exportPath <destinationpath> -buildVersion <version>]
 
-dev_macios_xcode_install_simulators()
+function dev_macios_xcode_install_simulators()
 {
   echo "--------------------------------------------------------------------------------------------------------------"
   echo \
@@ -3890,7 +3942,7 @@ dev_macios_xcode_install_simulators()
 #  xcodebuild -downloadPlatform visionOS
 }
 
-dev_macios_xcode_install_commandline_tools()
+function dev_macios_xcode_install_commandline_tools()
 {
   echo "--------------------------------------------------------------------------------------------------------------"
   echo \
@@ -3918,7 +3970,7 @@ dev_macios_xcode_install_commandline_tools()
     -e 'end tell'
 };
 
-dev_macios_simulator_list()
+function dev_macios_simulator_list()
 {
   echo "--------------------------------------------------------------------------------------------------------------"
   echo \
@@ -3930,7 +3982,7 @@ dev_macios_simulator_list()
 
 export IOS_DEVICE_ID="73FC4795-80E6-4ED9-9BB5-716206BDAFCD"
 
-dev_macios_simulator_launch()
+function dev_macios_simulator_launch()
 {
   echo "--------------------------------------------------------------------------------------------------------------"
   echo \
@@ -3967,11 +4019,12 @@ dev_macios_simulator_launch()
 #   dotnet
 # start
 
-work_init()
+function work_init()
 {
   finder-open-window-with-tabs-09-private.sh
 }
-work_on_dev_dotnet_api_keys_set ()
+
+function work_on_dev_dotnet_api_keys_set ()
 {
   echo "--------------------------------------------------------------------------------------------------------------"
   echo \
@@ -3992,7 +4045,7 @@ work_on_dev_dotnet_api_keys_set ()
   env | grep 'API' 
 }
 
-work_on_dev_dotnet_api_keys_clear ()
+function work_on_dev_dotnet_api_keys_clear ()
 {  
   echo "--------------------------------------------------------------------------------------------------------------"
   echo \
@@ -4018,7 +4071,7 @@ work_on_dev_dotnet_api_keys_clear ()
   env | grep 'API' 
 }
 
-work_on_dev_dotnet_aspire ()
+function work_on_dev_dotnet_aspire ()
 {
   echo "--------------------------------------------------------------------------------------------------------------"
   echo \
@@ -4028,7 +4081,7 @@ work_on_dev_dotnet_aspire ()
   export ASPIRE_ALLOW_UNSECURED_TRANSPORT=true  
 }
 
-work_on_dev_dotnet_api_keys_nuget_set ()
+function work_on_dev_dotnet_api_keys_nuget_set ()
 {
   echo "--------------------------------------------------------------------------------------------------------------"
   echo \
@@ -4038,7 +4091,7 @@ work_on_dev_dotnet_api_keys_nuget_set ()
   source $HOME/bat.private/mac/development/api-keys/nuget/set.sh
 }
 
-work_on_dev_dotnet_api_keys_nuget_clear ()
+function work_on_dev_dotnet_api_keys_nuget_clear ()
 {
   echo "--------------------------------------------------------------------------------------------------------------"
   echo \
@@ -4048,7 +4101,7 @@ work_on_dev_dotnet_api_keys_nuget_clear ()
   source $HOME/bat.private/mac/development/api-keys/nuget/clear.sh 
 }
 
-work_on_dev_dotnet_api_keys_github_set ()
+function work_on_dev_dotnet_api_keys_github_set ()
 {
   echo "--------------------------------------------------------------------------------------------------------------"
   echo \
@@ -4058,7 +4111,7 @@ work_on_dev_dotnet_api_keys_github_set ()
   source $HOME/bat.private/mac/development/api-keys/github/set.sh
 }
 
-work_on_dev_dotnet_api_keys_github_clear ()
+function work_on_dev_dotnet_api_keys_github_clear ()
 {
   echo "--------------------------------------------------------------------------------------------------------------"
   echo \
@@ -4349,6 +4402,60 @@ function work_on_moljac_learn_ai()
 
 }
 
+function work_on_moljac_learn_ai_create_prompt()
+{
+  md prompt/
+  md prompt/cloud/
+  md prompt/cloud/chatgpt/
+  md prompt/cloud/claude/
+  md prompt/cloud/copilot/
+  md prompt/cloud/gemini/
+  md prompt/cloud/perplexity/
+  md prompt/cloud/meta-ai/
+  md prompt/cloud/mistral/
+  md prompt/cloud/deepseek/
+  md prompt/cloud/grok/
+  md prompt/cloud/groq/
+  md prompt/local/deepseek-coder-v2--236b/
+  md prompt/local/deepseek-coder-v2/
+  md prompt/local/deepseek-coder/
+  md prompt/local/deepseek-coder--36b/
+  md prompt/local/llama-3.3/
+  md prompt/local/llama-3.2-vision/
+  md prompt/local/qwq/
+  md prompt/local/phi4/
+  md prompt/local/marco-o1/
+  md prompt/local/qwen3--30b/
+  md prompt/local/qwen3--8b/
+  md prompt/local/qwen3--4b/
+
+
+  touch prompt/cloud/readme.md
+  touch prompt/cloud/chatgpt/readme.md
+  touch prompt/cloud/claude/readme.md
+  touch prompt/cloud/copilot/readme.md
+  touch prompt/cloud/gemini/readme.md
+  touch prompt/cloud/perplexity/readme.md
+  touch prompt/cloud/meta-ai/readme.md
+  touch prompt/cloud/mistral/readme.md
+  touch prompt/cloud/deepseek/readme.md
+  touch prompt/cloud/grok/readme.md
+  touch prompt/cloud/groq/readme.md
+  touch prompt/local/deepseek-coder-v2--236b/readme.md
+  touch prompt/local/deepseek-coder-v2/readme.md
+  touch prompt/local/deepseek-coder/readme.md
+  touch prompt/local/deepseek-coder--36b/readme.md
+  touch prompt/local/llama-3.3/readme.md
+  touch prompt/local/llama-3.2-vision/readme.md
+  touch prompt/local/qwq/readme.md
+  touch prompt/local/phi4/readme.md
+  touch prompt/local/marco-o1/readme.md
+  touch prompt/local/qwen3--30b/readme.md
+  touch prompt/local/qwen3--8b/readme.md
+  touch prompt/local/qwen3--4b/readme.md
+
+}
+
 function work_on_moljac_learn_software_engineering()
 {
   echo "--------------------------------------------------------------------------------------------------------------"
@@ -4403,10 +4510,15 @@ function work_on_moljac_private_egov()
   echo \
   "
   source \
+    $HOME/bat.private/mac/mchwc/apps-moljac-personal-egov.sh
+  source \
     $HOME/bat.private/mac/mchwc/firefox-moljac-personal-egov.sh
   "
   source \
+    $HOME/bat.private/mac/mchwc/apps-moljac-personal-egov.sh
+  source \
     $HOME/bat.private/mac/mchwc/firefox-moljac-personal-egov.sh
+
 };
 
 function work_on_moljac()
@@ -4459,7 +4571,7 @@ function work_on_judo_remove_me()
 # tree $HOME/bat.private/mac/development/api-keys 
 $HOME/bat.private/mac/development/api-keys/
 
-dev_api_keys_set ()
+function dev_api_keys_set ()
 {
   source  $HOME/bat.private/mac/development/api-keys/github/set.sh 
   source  $HOME/bat.private/mac/development/api-keys/nuget/set.sh 
@@ -4467,7 +4579,7 @@ dev_api_keys_set ()
   dev_api_keys_set_ai
 }
 
-dev_api_keys_set_ai ()
+function dev_api_keys_set_ai ()
 {
   echo \
   "
@@ -4482,15 +4594,15 @@ dev_api_keys_set_ai ()
   source  $HOME/bat.private/mac/development/api-keys/ai/google/gemini/set.sh
 }
 
-dev_api_keys_set_weather ()
+function dev_api_keys_set_weather ()
 {
 }
 
-dev_api_keys_clean ()
+function dev_api_keys_clean ()
 {  
 }
 
-work_on_dev_api_keys ()
+function work_on_dev_api_keys ()
 {
   open $HOME/bat.private/mac/development/api-keys
   code -n $HOME/bat.private/mac/development/api-keys
@@ -4572,3 +4684,10 @@ sys_zsh_functions_load
 
 # Amazon Q post block. Keep at the bottom of this file.
 [[ -f "${HOME}/Library/Application Support/amazon-q/shell/zshrc.post.zsh" ]] && builtin source "${HOME}/Library/Application Support/amazon-q/shell/zshrc.post.zsh"
+
+# Added by LM Studio CLI (lms)
+export PATH="$PATH:/Users/moljac/.lmstudio/bin"
+# End of LM Studio CLI section
+
+
+. "$HOME/.local/bin/env"
