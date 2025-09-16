@@ -47,7 +47,8 @@ sudo softwareupdate --$ACTION_VERB amphetamine
 
 #----------------------------------------------------------------------------------------------
 # https://github.com/mas-cli/mas
-brew $ACTION_VERB -y \
+brew \
+    $ACTION_VERB -y \
     mas
 
 mas list
@@ -55,8 +56,10 @@ mas search XCode --price
 mas upgrade
 #----------------------------------------------------------------------------------------------
 
-brew $ACTION_VERB \
-    jandedobbeleer/oh-my-posh/oh-my-posh
+brew \
+    $ACTION_VERB \
+        --formula \
+            jandedobbeleer/oh-my-posh/oh-my-posh
 
 
 
@@ -64,12 +67,16 @@ brew $ACTION_VERB \
 
 # Xamarin.Android xamarin-android repo
 #   user want git from brew anyway, the apple-provided one is a fossil
-brew tap \
-    xamarin/xamarin-android-windeps
+brew \
+    tap \
+        xamarin/xamarin-android-windeps
 
 # git shipped with MacOSx is crappy
-brew $ACTION_VERB \
-    git \
+brew \
+    $ACTION_VERB \
+        --formula \
+            git \
+            git-lfs \
 
 git config --global \
     user.name "moljac"
@@ -78,23 +85,24 @@ git config --global \
 git config --global \
     user.name
 
-## Install GCM using Homebrew:
-brew tap \
-    microsoft/git
-
-brew $ACTION_VERB \
-    --cask \
-        git-credential-manager-core
-
-brew $ACTION_VERB \
-    --formula \
-        git-lfs \
 
 # Update global git config
 sudo git lfs $ACTION_VERB
 
 # Update system git config
 sudo git lfs $ACTION_VERB --system
+
+
+## Install GCM using Homebrew:
+brew \
+    tap \
+        microsoft/git
+
+brew \
+    $ACTION_VERB \
+        --cask \
+            git-credential-manager-core
+
 
 
 
@@ -130,16 +138,22 @@ brew \
             github \
             gitup \
             diffmerge \
+
+brew \
+    $ACTION_VERB \
+        --cask \
             p4v \
             menumeters \
+            caffeine \
             onyx \
     
+# 2 hrs
+caffeinate -t 7200 &
     
 
 brew \
     $ACTION_VERB \
         --formula \
-            keepasxc \
 
 #    keepassc \
 #    keepassx \
@@ -147,18 +161,12 @@ brew \
     
 
 # plugins for zsh (nvm)
-brew $ACTION_VERB \
-    duti \
+brew \
+    $ACTION_VERB \
+        --formula \
+            duti \
+            keepasxc \
 
-
-
-# 2 hrs
-caffeinate -t 7200 &
-
-brew $ACTION_VERB \
-    --cask \
-        caffeine \
-        menumeters \
 
 
 brew tap fwartner/tap
