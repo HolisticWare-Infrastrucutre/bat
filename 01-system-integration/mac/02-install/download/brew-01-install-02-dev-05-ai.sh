@@ -16,16 +16,30 @@ brew \
         --formula \
             ollama \
             llamc.cpp \
+            llm \
+
+
+
+brew \
+    $ACTION_VERB \
+        --formula \
             aider \
+            codex \
+            gemini-cli \
+            block-goose-cli \
+            codex \
+            charmbracelet/tap/crush \
+            
+
+brew \
+    $ACTION_VERB \
+        --formula \
             gptscript \
             promptfoo \
-            gemini-cli \
             aichat \
             aicommit \
             aicommits \
-            block-goose-cli \
             claude-squad \
-            codex \
             cortexso \
             gptme \
             localai \
@@ -44,15 +58,16 @@ brew \
 brew \
     $ACTION_VERB \
         --formula \
-            llama.cpp \
-            llm \
             mcphost \
             gorilla-cli \
+
 
 # prompting
 brew \
     $ACTION_VERB \
         --formula \
+            block-goose \
+            warp \
             pdl \
             code2prompt \
             promptfoo \
