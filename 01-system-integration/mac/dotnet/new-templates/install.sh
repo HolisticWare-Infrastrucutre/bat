@@ -59,15 +59,16 @@ Microsoft.Android.Templates
 Microsoft.MacCatalyst.Templates
 Microsoft.macOS.Templates
 Microsoft.tvOS.Templates
-
 #----------------------------------------------------------------------------------------------------------------------
 # WCF
 CoreWCF.Templates
 Microsoft.OData.WebApiTemplate
 #----------------------------------------------------------------------------------------------------------------------
+# Data Science ML Python
+CSnakes.Templates
+#----------------------------------------------------------------------------------------------------------------------
 # AI
 Microsoft.Extensions.AI.Templates
-
 "
 
 
