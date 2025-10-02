@@ -30,6 +30,10 @@ brew \
             codex \
             charmbracelet/tap/crush \
             
+brew \
+    $ACTION_VERB \
+        --cask \
+            cursor-cli \
 
 brew \
     $ACTION_VERB \
