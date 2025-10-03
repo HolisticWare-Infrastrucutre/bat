@@ -10,12 +10,21 @@ brew update
 
 #----------------------------------------------------------------------------------------------
 
-brew $ACTION_VERB \
+brew \
+    $ACTION_VERB \
     --cask \
         virtualbox \
         virtualbuddy \
         virtualbuddy@beta \
 
-brew $ACTION_VERB \
-    --cask \
-        parallels \
+brew \
+    $ACTION_VERB \
+        --cask \
+            parallels \
+
+# disabled
+#            vmware-fusion
+
+
+
+cursor-cli
