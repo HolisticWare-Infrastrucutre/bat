@@ -177,6 +177,8 @@ alias brackets="open -na Brackets"
 alias kiro="open -na Kiro"
 alias python="python3"
 
+alias warp="open -na Warp"
+
 # Windsurf's Command Palette: has `Shell Command: Install 'surf' command in PATH`
 alias windsurf="/Applications/Windsurf.app/Contents/MacOS/Electron"
 
@@ -1813,6 +1815,10 @@ function dev_dotnet_installation_reinstall_full()
   source $HOME/bat/01-system-integration/mac/dotnet/download-stable.sh
   source $HOME/bat/01-system-integration/mac/dotnet/install-stable.sh
 
+  dev_dotnet_workload_reinstall
+  dev_dotnet_tools_reinstall
+  dev_dotnet_new_templates_reinstall 
+
   source $HOME/bat/01-system-integration/mac/dotnet/workload/install-minimal.sh
   source $HOME/bat/01-system-integration/mac/dotnet/tool/install-minimal.sh
   source $HOME/bat/01-system-integration/mac/dotnet/new-templates/install.sh
@@ -1824,6 +1830,10 @@ function dev_dotnet_installation_reinstall_full()
 
   source $HOME/bat/01-system-integration/mac/dotnet/workload/install-minimal.sh
   source $HOME/bat/01-system-integration/mac/dotnet/tool/install-minimal.sh
+
+  dev_dotnet_workload_reinstall
+  dev_dotnet_tools_reinstall
+  dev_dotnet_new_templates_reinstall 
 
   source $HOME/bat/01-system-integration/mac/dotnet/new-templates/install.sh
   source $HOME/bat/01-system-integration/mac/dotnet/new-templates/install-maui.sh
@@ -4267,6 +4277,23 @@ function work_on_holisticware_core()
     https://github.com/AArnott/Library.Template
 };
 
+function work_on_holisticware_business()
+{
+  echo "--------------------------------------------------------------------------------------------------------------"
+  echo \
+  "
+  source \
+    $HOME/bat.private/mac/mchwc/apps-holisticware-business.sh
+  source \
+    $HOME/bat.private/mac/mchwc/firefox-holisticware-business.sh
+  "
+  source \
+    $HOME/bat.private/mac/mchwc/apps-holisticware-business.sh
+  source \
+    $HOME/bat.private/mac/mchwc/firefox-holisticware-business.sh
+
+};
+
 function work_on_moljac_holisticware()
 {
   echo "--------------------------------------------------------------------------------------------------------------"
@@ -4294,6 +4321,17 @@ function work_on_moljac_holisticware_doc()
 };
 
 
+function work_on_moljac_reading()
+{
+  echo "--------------------------------------------------------------------------------------------------------------"
+  echo \
+  "
+  open \\
+    /Users/Shared/Projects/e/learning/books
+  "
+  open \
+    /Users/Shared/Projects/e/learning/books
+}
 
 function work_on_moljac_holisticware_ph4ct3x()
 {
@@ -4303,6 +4341,10 @@ function work_on_moljac_holisticware_ph4ct3x()
   source $HOME/bat.private/finder-code-term-ph4ct3x.sh
   "
   source $HOME/bat.private/finder-code-term-ph4ct3x.sh
+
+  code -n \
+    /Users/Shared/Projects/d/hw/apps/Ph4ct3x/gl/Ph4ct3x.Docs/private/features/business-domain-logic-sports-kinesiology/anthropometric-morphological/measurements-parameters-and-calculations-approximations.md
+
 };
 
 function work_on_moljac_holisticware_libraries()
@@ -4513,12 +4555,15 @@ function work_on_moljac_private_egov()
     $HOME/bat.private/mac/mchwc/apps-moljac-personal-egov.sh
   source \
     $HOME/bat.private/mac/mchwc/firefox-moljac-personal-egov.sh
+
+  /Applications/KeePassXC.app/Contents/MacOS/KeePassXC   
   "
   source \
     $HOME/bat.private/mac/mchwc/apps-moljac-personal-egov.sh
   source \
     $HOME/bat.private/mac/mchwc/firefox-moljac-personal-egov.sh
 
+  /Applications/KeePassXC.app/Contents/MacOS/KeePassXC
 };
 
 function work_on_moljac()
