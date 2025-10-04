@@ -8,6 +8,8 @@ brew doctor
 brew upgrade
 brew update
 
+# https://github.com/cli/cli#installation
+# https://cli.github.com/
 brew \
     $ACTION_VERB \
         --formula \
@@ -19,7 +21,6 @@ brew \
             gitlab-runner \
             glab \
             wget \
-
 
 
 brew \
@@ -37,20 +38,7 @@ brew \
 brew \
     $ACTION_VERB \
         --formula \
-            fd
-
-# grep
-# https://www.warp.dev/
-brew \
-    $ACTION_VERB \
-        --formula \
+            fd \
             ripgrep \
 
-# https://github.com/cli/cli#installation
-# https://cli.github.com/
-brew \
-    $ACTION_VERB \
-        --formula \
-            gh \
-            glab \
 
