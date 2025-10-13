@@ -1063,6 +1063,18 @@ function dev_ai_launch()
   source 03-productivity/mac/ai/launch.sh $*
   "
   source 03-productivity/mac/ai/launch.sh $*
+  # 01-system-integration/mac/02-install/ai/ollama/update-1.ps1
+  # 01-system-integration/mac/02-install/ai/ollama/update-2.ps1
+}
+
+function dev_ai_ollama_update()
+{
+  echo "=============================================================================================================="
+  echo \
+  "
+  source 03-productivity/mac/ai/ollama/update.sh
+  "
+  source 03-productivity/mac/ai/ollama/update.sh
 }
 #   stop
 #   ai   
