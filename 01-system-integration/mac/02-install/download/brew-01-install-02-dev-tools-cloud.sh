@@ -9,7 +9,8 @@ export ACTION_VERB=install
 brew uninstall \
     --cask \
         --force \
-            docker 
+            docker
+
 brew uninstall \
     --formula \
         --force \
@@ -32,6 +33,7 @@ brew $ACTION_VERB \
         docker-compose \
         docker-credential-helper \
         docker-credential-helper-ecr \
+        lazydocker \
 
 mkdir -p ~/.docker/cli-plugins
 ln -sfn \
