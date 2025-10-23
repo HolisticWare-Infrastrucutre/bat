@@ -1,5 +1,6 @@
 # Jana
 
+#
 winget install -e --id Microsoft.VisualStudioCode
 winget install -e --id Microsoft.VisualStudioCode.Insiders
 winget install -e --id VSCodium.VSCodium
@@ -22,6 +23,12 @@ winget install -e --id nektos.act
 winget install -e --id GLab.GLab
 winget install -e --id Gitlab.Runner
 
+winget install -e --id=MartinStorsjo.LLVM-MinGW.MSVCRT
+winget install -e --id=LLVM.LLVM
+winget install -e --id=Python.Python.3.14
+winget install -e --id=Julialang.Juliaup
+
+winget install -e --id=VideoLAN.VLC.Nightly
 winget install -e --id DonationCoder.ScreenshotCaptor
 winget install -e --id icsharpcode.ILSpy
 
@@ -33,7 +40,13 @@ winget install -e --id Microsoft.VisualStudio.2022.Community
 winget install -e --id JetBrains.Rider.EAP
 winget install -e --id dnSpyEx.dnSpy
 
+# VHDL
+winget install -e --id ghdl.ghdl.ucrt64.mcode
+winget install -e --id NickGasson.NVC
+
 winget install -e --id Mozilla.Thunderbird
+
+winget install -e --id VideoLAN.VLC.Nightly
 
 winget install -e --id Docker.DockerDesktop
 winget install -e --id Kubernetes.kompose
@@ -45,7 +58,30 @@ winget install -e --id 7zip.7zip
 
 winget install -e --id zumoshi.BrowserSelect
 
+winget install -e --id Microsoft.VisualStudio.Professional.Insiders
+winget install -e --id Microsoft.VisualStudio.2022.Community
 
+winget install -e --id Ollama.Ollama
+winget install -e --id ggml.llamacpp
+winget install -e --id ElementLabs.LMStudio
+winget install -e --id Anthropic.ClaudeCode
+winget install -e --id Alibaba.Qwen
+winget install -e --id WindSurfAI.WindSurf
+
+winget install -e --id Docker.DockerDesktop
+winget install -e --id Docker.DockerCompose
+winget install -e --id JesseDuffield.Lazydocker
+
+winget install --id=Mozilla.Firefox.MSIX.Nightly  -e
+winget install --id=Brave.Brave.Nightly  -e
+winget install --id=Google.Chrome.Dev  -e
+
+
+
+
+
+
+# Chocolatey
 Set-ExecutionPolicy Bypass -Scope Process -Force; `
 [System.Net.ServicePointManager]::SecurityProtocol `
             = [System.Net.ServicePointManager]::SecurityProtocol -bor 3072; `
