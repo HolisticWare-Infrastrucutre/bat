@@ -149,7 +149,7 @@ npm \
             @google/gemini-cli \
             @qwen-code/qwen-code \
 
-# PDF
+# OCR / PDF
 brew \
     $ACTION_VERB \
         --cask \
