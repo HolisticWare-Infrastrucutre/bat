@@ -42,3 +42,7 @@ brew \
             ripgrep \
 
 
+brew \
+    $ACTION_VERB \
+        --formula \
+            figlet
