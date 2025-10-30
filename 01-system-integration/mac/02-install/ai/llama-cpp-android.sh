@@ -66,9 +66,6 @@ adb shell "cd /data/local/tmp/llama.cpp"
 adb shell "LD_LIBRARY_PATH=./build-android/bin ./build-android/bin/llama-simple -m model.gguf"
 
 
-cd -
-
-
 # open $HOME/Downloads/llama.cpp/
 
 
@@ -91,9 +88,12 @@ cd -
 
 
 # https://developer.android.com/training/data-storage
-adb shell
+adb shell <<'EOF'
 cd /data/local/tmp/llama.cpp
-LD_LIBRARY_PATH=./build-android/bin ./build-android/bin/llama-simple -m model.gguf
+LD_LIBRARY_PATH=./build-android/bin ./build-android/bin/llama-simple -m model.gguf How to deserialize JSON in C#?
+EOF
 
 
-adb shell ls /data/local/tmp
+
+cd -
+
