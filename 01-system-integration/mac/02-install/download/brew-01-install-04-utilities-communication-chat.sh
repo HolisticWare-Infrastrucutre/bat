@@ -12,23 +12,33 @@ brew update
 # communications
 
 # Chat IM
-brew $ACTION_VERB \
-    --cask \
-        microsoft-teams \
-        discord \
-        whatsapp \
-        slack \
-        android-messages \
-        telegram \
-        signal \
-        google-chat \
-        zulip \
+brew \
+    $ACTION_VERB \
+        --cask \
+            microsoft-teams \
+            discord \
+            whatsapp \
+            slack \
+
+brew \
+    $ACTION_VERB \
+        --cask \
+            telegram \
+            signal \
+            google-chat \
+            zulip \
+
+
+
+#            android-messages \
+
 
 # MultiChat Apps
-brew $ACTION_VERB \
-    --cask \
-        franz \
-        ferdium \
+brew \
+    $ACTION_VERB \
+        --cask \
+            franz \
+            ferdium \
 
 #    gitter \
 #    google-hangouts \
