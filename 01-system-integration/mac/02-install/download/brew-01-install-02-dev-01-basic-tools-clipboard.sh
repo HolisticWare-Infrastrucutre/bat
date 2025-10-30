@@ -20,10 +20,13 @@ brew update
 
 # https://github.com/p0deje/Maccy
 
-brew $ACTION_VERB \
-    maccy
+brew \
+    $ACTION_VERB \
+        --formula \
+            maccy
 
-brew $ACTION_VERB \
-    --cask \
-        copyclip
+brew \
+    $ACTION_VERB \
+        --cask \
+            copyclip
     
