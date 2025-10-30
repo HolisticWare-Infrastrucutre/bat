@@ -10,6 +10,10 @@ brew update
 
 #----------------------------------------------------------------------------------------------
 #
-brew $ACTION_VERB \
-    --cask \
-        keepassxc
+brew \
+    $ACTION_VERB \
+        --cask \
+            keepassxc \
+            avast-security \
+
+            
