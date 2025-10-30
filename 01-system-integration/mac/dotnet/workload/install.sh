@@ -13,12 +13,14 @@ sudo \
         workload \
             install \
                 android \
+                android-36 \
                 ios \
                 maccatalyst \
                 tvos \
                 macos \
                 maui \
                 maui-android \
+                maui-desktop \
                 maui-ios \
                 maui-maccatalyst \
                 maui-mobile \
@@ -26,14 +28,15 @@ sudo \
                 maui-tizen \
                 tvos \
                 wasm-tools \
-                wasm-tools-net9 \
                 wasm-experimental \
-                wasm-experimental-net9 \
+                wasi-experimental \
                 aspire \
 
 #                wasm-tools-net8 \
 #                wasm-experimental-net8 \
 #                android-net8 \
+#                wasm-tools-net9 \
+#                wasm-experimental-net9 \
 
 sudo \
     dotnet \
