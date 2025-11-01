@@ -52,7 +52,7 @@ do
 
         sudo \
             installer \
-                -pkg $HOME/Downloads/dotnet/$VERSION/$OS/$ARCH/preview/dotnet-$PRODUCT-$OS-$ARCH.$EXT \
+                -pkg $HOME/Downloads/dotnet/$VERSION/$OS/$ARCH/dotnet-$PRODUCT-$OS-$ARCH.$EXT \
                 -target /
 
 
