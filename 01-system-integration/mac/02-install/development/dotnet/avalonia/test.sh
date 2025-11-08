@@ -19,117 +19,37 @@
             Avalonia.Templates
 
 
+# Avalonia .NET Core App                 avalonia.app       [C#],F#  Desktop/Xaml/Avalonia/Windows/Linux/macOS                                        
+# Avalonia .NET Core MVVM App            avalonia.mvvm      [C#],F#  Desktop/Xaml/Avalonia/Windows/Linux/macOS                                        
+# Avalonia Cross Platform Application    avalonia.xplat     [C#],F#  Desktop/Xaml/Avalonia/Web/Mobile                                                 
 
-    rm -fr \
-        $HOME/Downloads/dotnet/samples/AppAvalonia.Simple/
+export ROOT_SAMPLES=$HOME/Downloads/dotnet/samples
+rm -fr $ROOT_SAMPLES/AppAvalonia/
+dotnet new avalonia.app -o $ROOT_SAMPLES/AppAvalonia
+cd $ROOT_SAMPLES/AppAvalonia
+dotnet run
+cd -
 
-    dotnet new \
-        avalonia.app \
-            --framework net9.0 \
-            --output \
-                $HOME/Downloads/dotnet/samples/AppAvalonia.Simple/
+rm -fr $ROOT_SAMPLES/AppAvalonia.MVVM/
+dotnet new avalonia.mvvm -o $ROOT_SAMPLES/AppAvalonia.MVVM
+cd $ROOT_SAMPLES/AppAvalonia.MVVM
+dotnet run
+cd -
 
-    dotnet \
-        build \
-        --target:run \
-        --framework:net9.0-ios \
-            $HOME/Downloads/dotnet/samples/AppAvalonia.Simple/
+rm -fr $ROOT_SAMPLES/AppAvalonia.XPlat/
+dotnet new avalonia.xplat -o $ROOT_SAMPLES/AppAvalonia.XPlat
+cd $ROOT_SAMPLES/AppAvalonia.XPlat/AppAvalonia.XPlat.Android/
+dotnet run
+cd ../../
+cd AppAvalonia.XPlat/AppAvalonia.XPlat.iOS/
+dotnet run
+cd ../../
+cd AppAvalonia.XPlat/AppAvalonia.XPlat.Desktop/
+dotnet run
+cd ../../
+cd AppAvalonia.XPlat/AppAvalonia.XPlat.Browser/
+dotnet run
+cd ../../
 
-    dotnet \
-        run \
-            --framework:net9.0-maccatalyst \
-                --project \
-                $HOME/Downloads/dotnet/samples/AppAvalonia.Simple/
+cd -
 
-
-    rm -fr \
-        $HOME/Downloads/dotnet/samples/AppAvalonia.MVVM.CommunityToolkit/
-
-    dotnet new \
-        avalonia.mvvm \
-            --mvvm CommunityToolkit \
-            --framework net9.0 \
-            --output \
-                $HOME/Downloads/dotnet/samples/AppAvalonia.MVVM.CommunityToolkit/
-
-    dotnet \
-        build \
-        --target:run \
-        --framework:net9.0-ios \
-            $HOME/Downloads/dotnet/samples/AppAvalonia.MVVM.CommunityToolkit/
-
-    dotnet \
-        run \
-            --framework:net9.0-maccatalyst \
-                --project \
-                $HOME/Downloads/dotnet/samples/AppAvalonia.MVVM.CommunityToolkit/
-
-
-    rm -fr \
-        $HOME/Downloads/dotnet/samples/AppAvalonia.MVVM.ReactiveUI/
-
-    dotnet new \
-        avalonia.mvvm \
-            --mvvm ReactiveUI \
-            --framework net9.0 \
-            --output \
-                $HOME/Downloads/dotnet/samples/AppAvalonia.MVVM.ReactiveUI/
-
-    dotnet \
-        build \
-        --target:run \
-        --framework:net9.0-ios \
-            $HOME/Downloads/dotnet/samples/AppAvalonia.MVVM.ReactiveUI/
-
-    dotnet \
-        run \
-            --framework:net9.0-maccatalyst \
-                --project \
-                $HOME/Downloads/dotnet/samples/AppAvalonia.MVVM.ReactiveUI/
-
-
-
-    rm -fr \
-        $HOME/Downloads/dotnet/samples/AppAvalonia.XPlat.MVVM.CommunityToolkit/
-
-    dotnet new \
-        avalonia.xplat \
-            --mvvm CommunityToolkit \
-            --framework net9.0 \
-            --output \
-                $HOME/Downloads/dotnet/samples/AppAvalonia.XPlat.MVVM.CommunityToolkit/
-
-    dotnet \
-        build \
-        --target:run \
-        --framework:net9.0-ios \
-            $HOME/Downloads/dotnet/samples/AppAvalonia.XPlat.MVVM.CommunityToolkit/
-
-    dotnet \
-        run \
-            --framework:net9.0-maccatalyst \
-                --project \
-                $HOME/Downloads/dotnet/samples/AppAvalonia.XPlat.MVVM.CommunityToolkit/
-
-
-    rm -fr \
-        $HOME/Downloads/dotnet/samples/AppAvalonia.XPlat.MVVM.ReactiveUI/
-
-    dotnet new \
-        avalonia.xplat \
-            --mvvm ReactiveUI \
-            --framework net9.0 \
-            --output \
-                $HOME/Downloads/dotnet/samples/AppAvalonia.XPlat.MVVM.ReactiveUI/
-
-    dotnet \
-        build \
-        --target:run \
-        --framework:net9.0-ios \
-            $HOME/Downloads/dotnet/samples/AppAvalonia.XPlat.MVVM.ReactiveUI/
-
-    dotnet \
-        run \
-            --framework:net9.0-maccatalyst \
-                --project \
-                $HOME/Downloads/dotnet/samples/AppAvalonia.XPlat.MVVM.ReactiveUI/
