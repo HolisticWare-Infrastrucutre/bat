@@ -45,6 +45,12 @@ winget install -e --id ghdl.ghdl.ucrt64.mcode
 winget install -e --id NickGasson.NVC
 
 winget install -e --id Mozilla.Thunderbird
+winget install -e --id=SlackTechnologies.Slack
+winget install -e --id WhatsApp.WhatsApp
+winget install -e --id=Microsoft.Teams
+winget install -e --id=Discord.Discord
+winget install -e --id=Telegram.TelegramDesktop
+winget install -e --id=OpenWhisperSystems.Signal
 
 winget install -e --id VideoLAN.VLC.Nightly
 
@@ -72,9 +78,9 @@ winget install -e --id Docker.DockerDesktop
 winget install -e --id Docker.DockerCompose
 winget install -e --id JesseDuffield.Lazydocker
 
-winget install --id=Mozilla.Firefox.MSIX.Nightly  -e
-winget install --id=Brave.Brave.Nightly  -e
-winget install --id=Google.Chrome.Dev  -e
+winget install -e --id=Mozilla.Firefox.MSIX.Nightly
+winget install -e --id=Brave.Brave.Nightly
+winget install -e --id=Google.Chrome.Dev
 
 
 
