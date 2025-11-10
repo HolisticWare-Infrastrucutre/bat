@@ -1,12 +1,27 @@
 # Jana
 
-#
+$progressPreference = 'silentlyContinue'
+Write-Host "Installing WinGet PowerShell module from PSGallery..."
+Install-PackageProvider -Name NuGet -Force | Out-Null
+Install-Module -Name Microsoft.WinGet.Client -Force -Repository PSGallery | Out-Null
+Write-Host "Using Repair-WinGetPackageManager cmdlet to bootstrap WinGet..."
+Repair-WinGetPackageManager -AllUsers
+Write-Host "Done."
+
+
+
+winget install --interactive MSYS2.MSYS2
+pacman -S --needed base-devel mingw-w64-ucrt-x86_64-toolchain
+
+gcc --version
+g++ --version
+
 winget install -e --id Microsoft.VisualStudioCode
 winget install -e --id Microsoft.VisualStudioCode.Insiders
 winget install -e --id VSCodium.VSCodium
 winget install -e --id VSCodium.VSCodium.Insiders
 winget install -e --id zokugun.MrCode
-
+winget install -e --id=ZedIndustries.Zed
 
 winget install -e --id Git.Git
 winget install -e --id StephanDilly.gitui
