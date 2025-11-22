@@ -8,20 +8,28 @@ brew doctor
 brew upgrade
 brew update
 
+
 #----------------------------------------------------------------------------------------------
 #
-brew $ACTION_VERB \
-    --cask \
-        visual-studio-code \
-        visual-studio-code@insiders \
-        cursor \
-        vscodium \
-        vscodium@insiders \
-        windsurf \
-        windsurf@next \
-        kiro \
-        void \
+#   windsurf = codeium
+brew \
+    $ACTION_VERB \
+        --cask \
+            visual-studio-code \
+            visual-studio-code@insiders \
+            cursor \
+            antigravity \
+            vscodium \
+            vscodium@insiders \
+            windsurf \
+            windsurf@next \
+            kiro \
+            void \
 
+brew \
+    $ACTION_VERB \
+        --cask \
+            cursor \
 
 
 #   Windsurf now
