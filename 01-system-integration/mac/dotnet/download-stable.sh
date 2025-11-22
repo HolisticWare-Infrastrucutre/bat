@@ -24,6 +24,8 @@ export VERSIONS=\
 9.0.1xx
 9.0.2xx
 9.0.3xx
+10.0
+10.0.1xx
 "
 export PRODUCTS=\
 "
