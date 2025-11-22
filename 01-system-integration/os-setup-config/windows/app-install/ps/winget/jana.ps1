@@ -8,6 +8,29 @@ Write-Host "Using Repair-WinGetPackageManager cmdlet to bootstrap WinGet..."
 Repair-WinGetPackageManager -AllUsers
 Write-Host "Done."
 
+wsl --install
+wsl --install -d Debian
+
+
+sudo apt-get update && sudo apt-get upgrade -y
+sudo apt-get update && sudo apt-get dist-upgrade
+sudo apt-get install build-essential gdb
+whereis g++
+whereis gdb
+
+sudo apt autoremove -y
+sudo apt upgrade
+sudo apt install build-essential
+
+
+
+sudo apt-get install gcc g++ gdb -y
+gcc --version
+
+
+
+winget install --id Microsoft.WindowsTerminal -e
+
 
 
 winget install --interactive MSYS2.MSYS2
@@ -34,6 +57,9 @@ winget install -e --id GitHub.GitHubDesktop.Beta
 winget install -e --id Microsoft.Git
 winget install -e --id GitHub.cli
 winget install -e --id nektos.act
+
+winget install Microsoft.DotNet.SDK.9
+winget install Microsoft.DotNet.SDK.10
 
 winget install -e --id GLab.GLab
 winget install -e --id Gitlab.Runner
@@ -80,7 +106,8 @@ winget install -e --id 7zip.7zip
 winget install -e --id zumoshi.BrowserSelect
 
 winget install -e --id Microsoft.VisualStudio.Professional.Insiders
-winget install -e --id Microsoft.VisualStudio.2022.Community
+winget install -e --id Microsoft.VisualStudio.Community.Insiders
+
 
 winget install -e --id Ollama.Ollama
 winget install -e --id ggml.llamacpp
@@ -93,13 +120,20 @@ winget install -e --id Docker.DockerDesktop
 winget install -e --id Docker.DockerCompose
 winget install -e --id JesseDuffield.Lazydocker
 
-winget install -e --id=Mozilla.Firefox.MSIX.Nightly
-winget install -e --id=Brave.Brave.Nightly
+winget install -e --id Google.Chrome
 winget install -e --id=Google.Chrome.Dev
+winget install -e --id Microsoft.Edge.Canary
+winget install -e --id Microsoft.Edge.Beta
+winget install -e --id Mozilla.Firefox
+winget install -e --id=Mozilla.Firefox.MSIX.Nightly
+winget install -e --id Opera.Opera
+winget install -e --id TorProject.TorBrowser
+winget install -e --id=Brave.Brave.Nightly
+winget install -e --id zumoshi.BrowserSelect
 
+winget install -e --id JanDeDobbeleer.OhMyPosh
 
-
-
+winget install -e --id Microsoft.WindowsTerminal
 
 
 # Chocolatey
