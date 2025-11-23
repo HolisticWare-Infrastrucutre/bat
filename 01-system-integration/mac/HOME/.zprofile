@@ -490,6 +490,12 @@ function sys_update ()
   echo "--------------------------------------------------------------------------------------------------------------"
   echo \
   "
+  sys_brew_clean_update
+  source 03-productivity/mac/ai/ollama/update.sh
+  softwareupdate --all --install --force
+  dev_dotnet_workload_reinstall
+  dev_dotnet_new_templates_reinstall
+  dev_dotnet_tools_reinstall
   "
   sys_brew_clean_update
   source 03-productivity/mac/ai/ollama/update.sh
@@ -497,6 +503,30 @@ function sys_update ()
   dev_dotnet_workload_reinstall
   dev_dotnet_new_templates_reinstall
   dev_dotnet_tools_reinstall
+}
+
+function sys_test_editors ()
+{
+  echo "--------------------------------------------------------------------------------------------------------------"
+  echo \
+  "
+  code
+  code-insiders
+  # antigravity
+  agy
+  zed
+  windsurf
+  windsurf-next
+  kiro
+  "
+  code
+  code-insiders
+  # antigravity
+  agy
+  zed
+  windsurf
+  windsurf-next
+  kiro
 }
 
 #   stop
@@ -1092,9 +1122,9 @@ function dev_ai_ollama_update()
   echo "=============================================================================================================="
   echo \
   "
-  source 03-productivity/mac/ai/ollama/update.sh
+  source $HOME/bat/03-productivity/mac/ai/ollama/update.sh
   "
-  source 03-productivity/mac/ai/ollama/update.sh
+  source $HOME/bat/03-productivity/mac/ai/ollama/update.sh
 }
 #   stop
 #   ai   
@@ -4780,3 +4810,9 @@ export PATH="$PATH:/Users/moljac/.lmstudio/bin"
 
 
 . "$HOME/.local/bin/env"
+
+# Added by Windsurf - Next
+export PATH="/Users/moljac/.codeium/windsurf/bin:$PATH"
+
+# Added by Antigravity
+export PATH="/Users/moljac/.antigravity/antigravity/bin:$PATH"
