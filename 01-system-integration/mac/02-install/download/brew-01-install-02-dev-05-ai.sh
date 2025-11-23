@@ -152,11 +152,11 @@ npm \
 # OCR / PDF
 brew \
     $ACTION_VERB \
-        --cask \
-        --force \
-            libmagic \
+        --formula \
+            tesseract \
+            ocrmypdf \
             poppler \
-            tesseract
+            libmagic
 
 
 # in editors
