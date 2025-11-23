@@ -77,9 +77,9 @@ export JAVA_HOME_23=$JAVA_HOME_TEMURIN_23
 
 export JAVA_HOME_ANDROID_STUDIO=/Applications/Android\ Studio.app/Contents/jre/jdk/Contents/Home
 # export JAVA_HOME_MICROSOFT=$HOME/Library/Developer/Xamarin/jdk/microsoft_dist_openjdk_1.8.0.25
-export JAVA_HOME_MICROSOFT=$JAVA_HOME_11
+export JAVA_HOME_MICROSOFT=$JAVA_HOME_21
 
-export JAVA_HOME=$JAVA_HOME_11
+export JAVA_HOME=$JAVA_HOME_21
 #----------------------------------------------------------------------------------------------------------------------
 
 #----------------------------------------------------------------------------------------------------------------------
@@ -90,6 +90,7 @@ export JAVA_HOME=$JAVA_HOME_11
 export ANDROID_HOME_XAMARIN=$HOME/Library/Developer/Xamarin/android-sdk-macosx/
 export ANDROID_NDK_HOME_XAMARIN=/usr/local/bin/
 export ANDROID_NDK_HOME_BREW="/opt/homebrew/share/android-ndk"
+export ANDROID_NDK_HOME_ANDROID_STUDIO="$HOME/Library/Android/sdk/"
 
 # installed with Android Studio
 export ANDROID_HOME_ANDROID_STUDIO=$HOME/Library/Android/sdk/
@@ -98,7 +99,7 @@ export ANDROID_HOME_BREW=/usr/local/share/android-sdk/
 
 export ANDROID_HOME=$ANDROID_HOME_ANDROID_STUDIO
 export ANDROID_SDK_ROOT=$ANDROID_HOME
-export ANDROID_NDK_HOME=$ANDROID_NDK_HOME_XAMARIN
+export ANDROID_NDK_HOME=$ANDROID_NDK_HOME_ANDROID_STUDIO
 export AndroidSdkDirectory=$ANDROID_HOME
 export ANDROID_USER_HOME=$HOME/.android/
 export ANDROID_AVD_HOME=$ANDROID_USER_HOME/avd/
@@ -157,7 +158,9 @@ export PATH="$HOME/.aspire/bin:$PATH"
 # Added by moljac manually
 export PATH="$HOME/bin/llamafile/bin:$PATH"
 
-export ROOT_NOTES=/Users/Shared/Projects/d/hw/HolisticWare.WebSite.Notes/
+export ROOT_PROJECTS=/Users/Shared/Projects/d/hw
+export ROOT_PROJECTS_NOTES=$ROOT_PROJECTS/HolisticWare.WebSite.Notes/
+
 #   stop
 # PATH
 #######################################################################################################################
@@ -192,6 +195,9 @@ alias edge_beta="open -a Microsoft\ Edge\ Beta $1"
 alias rstudio="open -a RStudio"
 
 # alias edge="/Applications/Microsoft\ Edge.app/Contents/MacOS/Microsoft\ Edge"
+
+alias python="python3"
+alias pip="pip3"
 
 #----------------------------------------------------------------------------------------------------------------------
 ## aliases cannot have arguments, using functions instead
@@ -477,6 +483,50 @@ function sys_usbd_sd_card_restart ()
   sudo launchctl start com.apple.usbd
   diskutil list
   diskutil verifyVolume /Volumes/xFAT-1TB-2/
+}
+
+function sys_update ()
+{
+  echo "--------------------------------------------------------------------------------------------------------------"
+  echo \
+  "
+  sys_brew_clean_update
+  source 03-productivity/mac/ai/ollama/update.sh
+  softwareupdate --all --install --force
+  dev_dotnet_workload_reinstall
+  dev_dotnet_new_templates_reinstall
+  dev_dotnet_tools_reinstall
+  "
+  sys_brew_clean_update
+  source 03-productivity/mac/ai/ollama/update.sh
+  softwareupdate --all --install --force
+  dev_dotnet_workload_reinstall
+  dev_dotnet_new_templates_reinstall
+  dev_dotnet_tools_reinstall
+}
+
+function sys_test_editors ()
+{
+  echo "--------------------------------------------------------------------------------------------------------------"
+  echo \
+  "
+  code
+  code-insiders
+  # antigravity
+  agy
+  zed
+  windsurf
+  windsurf-next
+  kiro
+  "
+  code
+  code-insiders
+  # antigravity
+  agy
+  zed
+  windsurf
+  windsurf-next
+  kiro
 }
 
 #   stop
@@ -1072,9 +1122,9 @@ function dev_ai_ollama_update()
   echo "=============================================================================================================="
   echo \
   "
-  source 03-productivity/mac/ai/ollama/update.sh
+  source $HOME/bat/03-productivity/mac/ai/ollama/update.sh
   "
-  source 03-productivity/mac/ai/ollama/update.sh
+  source $HOME/bat/03-productivity/mac/ai/ollama/update.sh
 }
 #   stop
 #   ai   
@@ -1323,7 +1373,7 @@ function dev_android_sdkmanager()
   echo "--------------------------------------------------------------------------------------------------------------"
   echo \
   "
-  export JAVA_HOME=$JAVA_HOME_17
+  export JAVA_HOME=$JAVA_HOME_21
 
   sdkmanager \
       --update
@@ -1338,7 +1388,7 @@ function dev_android_sdkmanager()
 
   sdkmanager --install "cmdline-tools;latest"
   # java 8 is required
-  export JAVA_HOME=$JAVA_HOME_17
+  export JAVA_HOME=$JAVA_HOME_21
 
   sdkmanager \
       --update
@@ -1856,7 +1906,9 @@ function dev_dotnet_installation_reinstall_full()
   source $HOME/bat/01-system-integration/mac/dotnet/workload/maccatalyst/test.sh
   source $HOME/bat/01-system-integration/mac/dotnet/workload/maui/test.sh
 
+  source $HOME/bat/01-system-integration/mac/02-install/development/dotnet/avalonia/test.sh 
   source $HOME/bat/01-system-integration/mac/02-install/development/dotnet/uno/test.sh 
+  source $HOME/bat/01-system-integration/mac/02-install/development/dotnet/avalonia/test-complex.sh 
 }
 
 function dev_dotnet_installation_nuke_previews()
@@ -2662,7 +2714,8 @@ function dev_dotnet_android_bindings_binderator_build()
   echo "=============================================================================================================="
   echo \
   "
-  export JAVA_HOME=$JAVA_HOME_17
+  export JAVA_HOME=$JAVA_HOME_21
+  dotnet tool restore
   dotnet cake -t=ci \\
   && \\
   dotnet cake utilities.cake \\
@@ -2673,7 +2726,8 @@ function dev_dotnet_android_bindings_binderator_build()
   && \\
   dotnet cake nuget-diff.cake -v:diagnostic \\
   "
-  export JAVA_HOME=$JAVA_HOME_17
+  export JAVA_HOME=$JAVA_HOME_21
+  dotnet tool restore
   dotnet cake -t=ci \
   && \
   dotnet cake utilities.cake \
@@ -2687,7 +2741,8 @@ function dev_dotnet_android_bindings_binderator_build()
 
   echo \
   "
-  export JAVA_HOME=$JAVA_HOME_17
+  export JAVA_HOME=$JAVA_HOME_21
+  dotnet tool restore
   dotnet cake -t=ci \\
   && \\
   dotnet cake utilities.cake \\
@@ -2707,10 +2762,10 @@ function dev_dotnet_android_bindings_binderator_config_update()
   # dotnet script update-config.csx -- ./config.json <update|bump|published|sort>
   echo \
   "
-  export JAVA_HOME=$JAVA_HOME_17
+  export JAVA_HOME=$JAVA_HOME_21
   dotnet cake -t=update-config
   "
-  export JAVA_HOME=$JAVA_HOME_17  
+  export JAVA_HOME=$JAVA_HOME_21
   
   # dotnet script ./build/scripts/update-config.csx -- ./config.json update
   dotnet cake -t=update-config
@@ -2718,7 +2773,7 @@ function dev_dotnet_android_bindings_binderator_config_update()
   echo "_______________________________________________________________________________________________________________"
   echo \
   "
-  export JAVA_HOME=$JAVA_HOME_17
+  export JAVA_HOME=$JAVA_HOME_21
   dotnet cake -t=update-config
   "
   echo "=============================================================================================================="
@@ -2730,10 +2785,10 @@ function dev_dotnet_android_bindings_binderator_config_bump()
   # dotnet script update-config.csx -- ./config.json <update|bump|published|sort>
   echo \
   "
-  export JAVA_HOME=$JAVA_HOME_17
+  export JAVA_HOME=$JAVA_HOME_21
   dotnet script ./build/scripts/update-config.csx -- ./config.json bump
   "
-  export JAVA_HOME=$JAVA_HOME_17
+  export JAVA_HOME=$JAVA_HOME_21
   dotnet script ./build/scripts/update-config.csx -- ./config.json bump
 }
 
@@ -3122,9 +3177,9 @@ function dev_dotnet_maui_android_java ()
   echo "--------------------------------------------------------------------------------------------------------------"
   echo \
   "
-  export JAVA_HOME=$JAVA_HOME_17
+  export JAVA_HOME=$JAVA_HOME_21
   "
-  export JAVA_HOME=$JAVA_HOME_17
+  export JAVA_HOME=$JAVA_HOME_21
 }
 
 function dev_dotnet_maui_repo_build_all ()
@@ -4287,6 +4342,13 @@ function work_on_holisticware_core()
   "
   open \
     https://github.com/AArnott/Library.Template
+
+  open -a Terminal \
+    HWC.Serialization/ \
+    265-HWCMD.GraphTheory \
+    $ROOT_PROJECTS/core/gh/HWC.GeoLocation/ \
+    261-HWC.Math.Matrix/ \
+
 };
 
 function work_on_holisticware_business()
@@ -4424,14 +4486,14 @@ function work_on_moljac_learn_dotnet_csharp_maui()
   source $HOME/bat.private/mac/mchwc/firefox-moljac-learn-dotnet-csharp-maui.sh
   # open -n -a /System/Applications/Utilities/Terminal.app
   open -a Terminal \\
-    $ROOT_NOTES/data-structures-and-algorithms/data-science/ai-artificial-intelligence/ \\
-    $ROOT_NOTES/data-structures-and-algorithms/ \\
+    $ROOT_PROJECTS_NOTES/data-structures-and-algorithms/data-science/ai-artificial-intelligence/ \\
+    $ROOT_PROJECTS_NOTES/data-structures-and-algorithms/ \\
   "
   source $HOME/bat.private/mac/mchwc/firefox-moljac-learn-dotnet-csharp-maui.sh
   # open -n -a /System/Applications/Utilities/Terminal.app
   open -a Terminal \
-    $ROOT_NOTES/data-structures-and-algorithms/data-science/ai-artificial-intelligence/ \
-    $ROOT_NOTES/data-structures-and-algorithms/ \
+    $ROOT_PROJECTS_NOTES/data-structures-and-algorithms/data-science/ai-artificial-intelligence/ \
+    $ROOT_PROJECTS_NOTES/data-structures-and-algorithms/ \
 
 }
 
@@ -4444,15 +4506,15 @@ function work_on_moljac_learn_ai()
   source $HOME/bat.private/mac/mchwc/firefox-moljac-learn-ai-chatbots.sh
   # open -n -a /System/Applications/Utilities/Terminal.app
   open -a Terminal \\
-    $ROOT_NOTES/data-structures-and-algorithms/data-science/ai-artificial-intelligence/ \\
-    $ROOT_NOTES/data-structures-and-algorithms/ \\
+    $ROOT_PROJECTS_NOTES/data-structures-and-algorithms/data-science/ai-artificial-intelligence/ \\
+    $ROOT_PROJECTS_NOTES/data-structures-and-algorithms/ \\
   "
   source $HOME/bat.private/mac/mchwc/firefox-moljac-learn-ai.sh
   source $HOME/bat.private/mac/mchwc/firefox-moljac-learn-ai-chatbots.sh
   # open -n -a /System/Applications/Utilities/Terminal.app
   open -a Terminal \
-    $ROOT_NOTES/data-structures-and-algorithms/data-science/ai-artificial-intelligence/ \
-    $ROOT_NOTES/data-structures-and-algorithms/ \
+    $ROOT_PROJECTS_NOTES/data-structures-and-algorithms/data-science/ai-artificial-intelligence/ \
+    $ROOT_PROJECTS_NOTES/data-structures-and-algorithms/ \
 
 }
 
@@ -4518,14 +4580,14 @@ function work_on_moljac_learn_software_engineering()
   source $HOME/bat.private/mac/mchwc/firefox-moljac-learn-software-engineering.sh
   # open -n -a /System/Applications/Utilities/Terminal.app
   open -a Terminal \\
-    $ROOT_NOTES/data-structures-and-algorithms/data-science/ai-artificial-intelligence/ \\
-    $ROOT_NOTES/data-structures-and-algorithms/ \\
+    $ROOT_PROJECTS_NOTES/data-structures-and-algorithms/data-science/ai-artificial-intelligence/ \\
+    $ROOT_PROJECTS_NOTES/data-structures-and-algorithms/ \\
   "
   source $HOME/bat.private/mac/mchwc/firefox-moljac-learn-software-engineering.sh
   # open -n -a /System/Applications/Utilities/Terminal.app
   open -a Terminal \
-    $ROOT_NOTES/data-structures-and-algorithms/data-science/ai-artificial-intelligence/ \
-    $ROOT_NOTES/data-structures-and-algorithms/ \
+    $ROOT_PROJECTS_NOTES/data-structures-and-algorithms/data-science/ai-artificial-intelligence/ \
+    $ROOT_PROJECTS_NOTES/data-structures-and-algorithms/ \
 
 }
 
@@ -4748,3 +4810,9 @@ export PATH="$PATH:/Users/moljac/.lmstudio/bin"
 
 
 . "$HOME/.local/bin/env"
+
+# Added by Windsurf - Next
+export PATH="/Users/moljac/.codeium/windsurf/bin:$PATH"
+
+# Added by Antigravity
+export PATH="/Users/moljac/.antigravity/antigravity/bin:$PATH"
