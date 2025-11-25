@@ -47,6 +47,7 @@ winget install -e --id zokugun.MrCode
 winget install -e --id=ZedIndustries.Zed
 
 winget install -e --id Git.Git
+winget install -e --id git.git
 winget install -e --id StephanDilly.gitui
 winget install -e --id TortoiseGit.TortoiseGit
 winget install -e --id Microsoft.GitCredentialManagerCore
@@ -58,7 +59,10 @@ winget install -e --id Microsoft.Git
 winget install -e --id GitHub.cli
 winget install -e --id nektos.act
 
-winget install Microsoft.DotNet.SDK.9
+winget install -e --id cmake 
+winget install -e --id ninja-build.ninja
+
+inget install Microsoft.DotNet.SDK.9
 winget install Microsoft.DotNet.SDK.10
 
 winget install -e --id GLab.GLab
