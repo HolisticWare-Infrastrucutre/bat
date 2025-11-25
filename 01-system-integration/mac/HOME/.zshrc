@@ -2714,6 +2714,7 @@ function dev_dotnet_android_bindings_binderator_build()
   echo "=============================================================================================================="
   echo \
   "
+  sys_term_clean_screen_and_buffer 
   export JAVA_HOME=$JAVA_HOME_21
   dotnet tool restore
   dotnet cake -t=ci \\
@@ -2726,6 +2727,7 @@ function dev_dotnet_android_bindings_binderator_build()
   && \\
   dotnet cake nuget-diff.cake -v:diagnostic \\
   "
+  sys_term_clean_screen_and_buffer 
   export JAVA_HOME=$JAVA_HOME_21
   dotnet tool restore
   dotnet cake -t=ci \
@@ -2741,6 +2743,7 @@ function dev_dotnet_android_bindings_binderator_build()
 
   echo \
   "
+  sys_term_clean_screen_and_buffer 
   export JAVA_HOME=$JAVA_HOME_21
   dotnet tool restore
   dotnet cake -t=ci \\
@@ -2762,17 +2765,19 @@ function dev_dotnet_android_bindings_binderator_config_update()
   # dotnet script update-config.csx -- ./config.json <update|bump|published|sort>
   echo \
   "
+  sys_term_clean_screen_and_buffer 
   export JAVA_HOME=$JAVA_HOME_21
   dotnet cake -t=update-config
   "
-  export JAVA_HOME=$JAVA_HOME_21
-  
+  sys_term_clean_screen_and_buffer 
+  export JAVA_HOME=$JAVA_HOME_21  
   # dotnet script ./build/scripts/update-config.csx -- ./config.json update
   dotnet cake -t=update-config
 
   echo "_______________________________________________________________________________________________________________"
   echo \
   "
+  sys_term_clean_screen_and_buffer 
   export JAVA_HOME=$JAVA_HOME_21
   dotnet cake -t=update-config
   "
@@ -2785,11 +2790,22 @@ function dev_dotnet_android_bindings_binderator_config_bump()
   # dotnet script update-config.csx -- ./config.json <update|bump|published|sort>
   echo \
   "
+  sys_term_clean_screen_and_buffer 
   export JAVA_HOME=$JAVA_HOME_21
   dotnet script ./build/scripts/update-config.csx -- ./config.json bump
   "
+  sys_term_clean_screen_and_buffer 
   export JAVA_HOME=$JAVA_HOME_21
   dotnet script ./build/scripts/update-config.csx -- ./config.json bump
+
+  echo "_______________________________________________________________________________________________________________"
+  echo \
+  "
+  sys_term_clean_screen_and_buffer 
+  export JAVA_HOME=$JAVA_HOME_21
+  dotnet script ./build/scripts/update-config.csx -- ./config.json bump
+  "
+  echo "=============================================================================================================="
 }
 
 
