@@ -22,6 +22,11 @@ brew \
 brew \
     $ACTION_VERB \
         --formula \
+            onnxruntime \
+
+brew \
+    $ACTION_VERB \
+        --formula \
             aider \
             codex \
             gemini-cli \
@@ -143,6 +148,7 @@ brew \
 # claude code
 npm \
     $ACTION_VERB \
+        --formula \
         -g \
             @anthropic-ai/claude-code \
             @musistudio/claude-code-router \
@@ -158,6 +164,9 @@ brew \
             poppler \
             libmagic
 
+brew install 
+brew install tesseract
+brew install libreoffice
 
 # in editors
 # windsurf (ex Codeium)
