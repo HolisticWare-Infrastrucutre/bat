@@ -162,7 +162,8 @@ brew \
             tesseract \
             ocrmypdf \
             poppler \
-            libmagic
+            libmagic \
+            pandoc
 
 brew install 
 brew install tesseract
