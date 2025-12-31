@@ -1110,9 +1110,9 @@ function dev_ai_launch()
   echo "=============================================================================================================="
   echo \
   "
-  source 03-productivity/mac/ai/launch.sh $*
+  source $HOME/bat/03-productivity/mac/ai/launch.sh $*
   "
-  source 03-productivity/mac/ai/launch.sh $*
+  source $HOME/bat/03-productivity/mac/ai/launch.sh $*
   # 01-system-integration/mac/02-install/ai/ollama/update-1.ps1
   # 01-system-integration/mac/02-install/ai/ollama/update-2.ps1
 }
@@ -1874,8 +1874,14 @@ function dev_dotnet_installation_nuke()
 function dev_dotnet_installation_reinstall_full()
 {
   source $HOME/bat/01-system-integration/mac/dotnet/nuke.sh
-  source $HOME/bat/01-system-integration/mac/dotnet/download-stable.sh
-  source $HOME/bat/01-system-integration/mac/dotnet/install-stable.sh
+
+  dev_dotnet_installation_download_install_stable
+
+  softwareupdate --all --install --force
+  xcodebuild -license accept
+  xcodebuild -runFirstLaunch
+  xcodebuild -runFirstLaunch -checkForNewerComponents
+  xcodebuild -downloadPlatform iOS
 
   dev_dotnet_workload_reinstall
   dev_dotnet_tools_reinstall
@@ -1901,11 +1907,61 @@ function dev_dotnet_installation_reinstall_full()
   source $HOME/bat/01-system-integration/mac/dotnet/new-templates/install-maui.sh
   source $HOME/bat/01-system-integration/mac/dotnet/new-templates/install-holisticware.sh
 
+  dev_dotnet_installation_test_standard
+  dev_dotnet_installation_test_extras
+}
+
+function dev_dotnet_installation_download_install_stable()
+{
+  echo \
+  "
+  ======================================================================================================================
+  source $HOME/bat/01-system-integration/mac/dotnet/download-stable.sh
+  source $HOME/bat/01-system-integration/mac/dotnet/install-stable.sh
+  ======================================================================================================================
+  "
+  source $HOME/bat/01-system-integration/mac/dotnet/download-stable.sh
+  source $HOME/bat/01-system-integration/mac/dotnet/install-stable.sh
+
+  echo \
+  "
+  ======================================================================================================================
+  source $HOME/bat/01-system-integration/mac/dotnet/download-stable.sh
+  source $HOME/bat/01-system-integration/mac/dotnet/install-stable.sh
+  ======================================================================================================================
+  "
+}
+
+function dev_dotnet_installation_test_standard()
+{
+  echo \
+  "
+  ======================================================================================================================
+  source $HOME/bat/01-system-integration/mac/dotnet/workload/android/test.sh
+  source $HOME/bat/01-system-integration/mac/dotnet/workload/ios/test.sh
+  source $HOME/bat/01-system-integration/mac/dotnet/workload/maccatalyst/test.sh
+  source $HOME/bat/01-system-integration/mac/dotnet/workload/maui/test.sh
+  ======================================================================================================================
+  "
+
   source $HOME/bat/01-system-integration/mac/dotnet/workload/android/test.sh
   source $HOME/bat/01-system-integration/mac/dotnet/workload/ios/test.sh
   source $HOME/bat/01-system-integration/mac/dotnet/workload/maccatalyst/test.sh
   source $HOME/bat/01-system-integration/mac/dotnet/workload/maui/test.sh
 
+  echo \
+  "
+  ======================================================================================================================
+  source $HOME/bat/01-system-integration/mac/dotnet/workload/android/test.sh
+  source $HOME/bat/01-system-integration/mac/dotnet/workload/ios/test.sh
+  source $HOME/bat/01-system-integration/mac/dotnet/workload/maccatalyst/test.sh
+  source $HOME/bat/01-system-integration/mac/dotnet/workload/maui/test.sh
+  ======================================================================================================================
+  "
+}
+
+function dev_dotnet_installation_test_extras()
+{
   source $HOME/bat/01-system-integration/mac/02-install/development/dotnet/avalonia/test.sh 
   source $HOME/bat/01-system-integration/mac/02-install/development/dotnet/uno/test.sh 
   source $HOME/bat/01-system-integration/mac/02-install/development/dotnet/avalonia/test-complex.sh 
@@ -2128,7 +2184,7 @@ function dev_dotnet_folders_nuke()
   echo "=============================================================================================================="
   echo \
   "
-  rm -fr\ $\(find . -type d -iname "bin" -o -iname "obj" -o -iname ".meteor" -o -iname ".idea" -o -iname ".vs" \)
+  rm -fr\ $\(find . -type d -iname "bin" -o -iname "obj" -o -iname ".meteor" -o -iname ".idea" -o -iname ".vs" -iname ".qodo" \)
   "
 
   rm -fr $(find . -type d -iname "bin" -o -iname "obj" -o -iname ".meteor" -o -iname ".idea" -o -iname ".vs")
@@ -2714,6 +2770,7 @@ function dev_dotnet_android_bindings_binderator_build()
   echo "=============================================================================================================="
   echo \
   "
+  sys_term_clean_screen_and_buffer 
   export JAVA_HOME=$JAVA_HOME_21
   dotnet tool restore
   dotnet cake -t=ci \\
@@ -2726,6 +2783,7 @@ function dev_dotnet_android_bindings_binderator_build()
   && \\
   dotnet cake nuget-diff.cake -v:diagnostic \\
   "
+  sys_term_clean_screen_and_buffer 
   export JAVA_HOME=$JAVA_HOME_21
   dotnet tool restore
   dotnet cake -t=ci \
@@ -2741,6 +2799,7 @@ function dev_dotnet_android_bindings_binderator_build()
 
   echo \
   "
+  sys_term_clean_screen_and_buffer 
   export JAVA_HOME=$JAVA_HOME_21
   dotnet tool restore
   dotnet cake -t=ci \\
@@ -2762,17 +2821,19 @@ function dev_dotnet_android_bindings_binderator_config_update()
   # dotnet script update-config.csx -- ./config.json <update|bump|published|sort>
   echo \
   "
+  sys_term_clean_screen_and_buffer 
   export JAVA_HOME=$JAVA_HOME_21
   dotnet cake -t=update-config
   "
-  export JAVA_HOME=$JAVA_HOME_21
-  
+  sys_term_clean_screen_and_buffer 
+  export JAVA_HOME=$JAVA_HOME_21  
   # dotnet script ./build/scripts/update-config.csx -- ./config.json update
   dotnet cake -t=update-config
 
   echo "_______________________________________________________________________________________________________________"
   echo \
   "
+  sys_term_clean_screen_and_buffer 
   export JAVA_HOME=$JAVA_HOME_21
   dotnet cake -t=update-config
   "
@@ -2785,11 +2846,22 @@ function dev_dotnet_android_bindings_binderator_config_bump()
   # dotnet script update-config.csx -- ./config.json <update|bump|published|sort>
   echo \
   "
+  sys_term_clean_screen_and_buffer 
   export JAVA_HOME=$JAVA_HOME_21
   dotnet script ./build/scripts/update-config.csx -- ./config.json bump
   "
+  sys_term_clean_screen_and_buffer 
   export JAVA_HOME=$JAVA_HOME_21
   dotnet script ./build/scripts/update-config.csx -- ./config.json bump
+
+  echo "_______________________________________________________________________________________________________________"
+  echo \
+  "
+  sys_term_clean_screen_and_buffer 
+  export JAVA_HOME=$JAVA_HOME_21
+  dotnet script ./build/scripts/update-config.csx -- ./config.json bump
+  "
+  echo "=============================================================================================================="
 }
 
 
@@ -3808,7 +3880,7 @@ function dev_macios_xcode_reset ()
   "
   sudo xcode-select --reset
   sudo xcode-select -s /Applications/Xcode.app
-  sudo xcode-select -switch /Applications/Xcode.app/Contents/Ddeveloper
+  sudo xcode-select -switch /Applications/Xcode.app/Contents/Developer
   sudo xcodebuild -license accept
   sudo xcodebuild -runFirstLaunch
   "
@@ -4570,6 +4642,40 @@ function work_on_moljac_learn_ai_create_prompt()
   touch prompt/local/qwen3--8b/readme.md
   touch prompt/local/qwen3--4b/readme.md
 
+}
+
+function dev_ai_launch_ollama ()
+{
+  echo "--------------------------------------------------------------------------------------------------------------"
+  echo \
+  "
+  source $HOME/bat/03-productivity/mac/ai/ollama/start.sh
+  "
+
+  source $HOME/bat/03-productivity/mac/ai/ollama/start.sh
+
+  echo "--------------------------------------------------------------------------------------------------------------"
+  echo \
+  "
+  source $HOME/bat/03-productivity/mac/ai/ollama/start.sh
+  "
+}
+
+function dev_ai_launch_llxprt ()
+{
+  echo "--------------------------------------------------------------------------------------------------------------"
+  echo \
+  "
+  source $HOME/bat/03-productivity/mac/ai/llxprt/start.sh
+  "
+
+  source $HOME/bat/03-productivity/mac/ai/llxprt/start.sh
+
+  echo "--------------------------------------------------------------------------------------------------------------"
+  echo \
+  "
+  source $HOME/bat/03-productivity/mac/ai/llxprt/start.sh
+  "
 }
 
 function work_on_moljac_learn_software_engineering()
