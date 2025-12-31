@@ -39,8 +39,10 @@ upgrade-assistant
 # Services
 dotnet-svcutil
 # Web
-#Aspire
+# Aspire
 aspirate
+# Docker
+dotnet-build-image
 # https://playwright.dev/dotnet/docs/intro
 Microsoft.Playwright.CLI
 NSwag.ConsoleCore
@@ -50,8 +52,6 @@ Microsoft.dotnet-openapi
 dotnet-dev-certs
 dotnet-config2json
 # https://github.com/SimonCropp/WinDebloat
-# Aspire
-aspireate
 WinDebloat
 # HTTP tools
 dotnet-serve
