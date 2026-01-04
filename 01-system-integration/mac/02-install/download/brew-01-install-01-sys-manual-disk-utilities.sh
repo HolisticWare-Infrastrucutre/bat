@@ -5,10 +5,12 @@
 # install / uninstall / reinstall
 export ACTION_VERB=install
 
-brew $ACTION_VERB \
-    macfuse \
-    gsmartcontrol \
-    smartmontools \
+brew \
+    $ACTION_VERB \
+    --formula\
+        macfuse \
+        gsmartcontrol \
+        smartmontools \
 
 
 # linux needed
