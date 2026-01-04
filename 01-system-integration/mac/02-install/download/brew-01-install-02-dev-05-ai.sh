@@ -33,6 +33,30 @@ brew \
             block-goose-cli \
             codex \
             charmbracelet/tap/crush \
+            copilot-cli \
+            gemini-cli \
+            aichat \
+            fabric-ai \
+
+brew \
+    tap \
+        thesmokinator/copilot-cli
+brew \
+    $ACTION_VERB \
+        --formula \
+            copilot-cli
+
+https://github.com/thesmokinator/homebrew-copilot-cli
+
+
+# copilot-cli@prerelease
+
+brew 
+    $ACTION_VERB \
+        --cask \
+            codex \
+            opencode-desktop \
+            itermai \
             
 
 brew \
