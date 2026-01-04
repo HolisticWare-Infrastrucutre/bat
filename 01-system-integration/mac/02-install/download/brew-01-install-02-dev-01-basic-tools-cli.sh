@@ -40,9 +40,27 @@ brew \
         --formula \
             fd \
             ripgrep \
+            tmux \
+            colima \
+            dive \
+            ctop \
+            kubernetes-cli \
+            fzf \
+            ripgrep \
+            ripgrep-all \
+            fd \
+            bat \
+            lazygit \
+            xk6 \
+            vegeta \
+            gping \
+            doggo \
+            asciinema \
+            figlet \
 
 
 brew \
     $ACTION_VERB \
-        --formula \
-            figlet
+        --cask \
+            k6-studio
+
