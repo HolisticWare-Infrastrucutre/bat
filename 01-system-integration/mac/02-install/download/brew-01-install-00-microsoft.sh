@@ -6,5 +6,7 @@ export ACTION_VERB=install
 
 
 #    microsoft-remote-desktop
-brew $ACTION_VERB --cask \
-    windows-app
+brew \
+    $ACTION_VERB \
+        --cask \
+            windows-app
