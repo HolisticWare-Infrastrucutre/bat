@@ -10,12 +10,13 @@ brew upgrade
 brew update
 
 #---------------------------------------------------------------------------------------------------
-
 brew \
     $ACTION_VERB \
         --formula \
             ollama \
             llamc.cpp \
+            llm \
+            vllm \
             llm \
 
 
