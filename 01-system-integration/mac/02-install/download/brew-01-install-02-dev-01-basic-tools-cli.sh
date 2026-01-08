@@ -31,6 +31,15 @@ brew \
             git-credential-manager \
 
 
+# https://github.com/ninja-build/ninja
+# https://ninja-build.org/
+
+brew \
+    install \
+        --formula \
+            ninja \
+
+
 #----------------------------------------------------------------------------------------------
 #
 # find
