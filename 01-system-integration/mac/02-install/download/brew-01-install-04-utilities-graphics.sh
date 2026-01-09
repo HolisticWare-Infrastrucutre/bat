@@ -17,3 +17,4 @@ brew \
         --cask \
             inkscape \
             krita \
+            gimp
