@@ -3,7 +3,9 @@
 #:sdk Microsoft.NET.Sdk
 
 #:package System.CommandLine@2.0.1
+
 #:package Spectre.Console@0.54.0
+#:package ZString@2.6.0
 
 using System;
 using System.IO;
@@ -46,28 +48,32 @@ foreach (string dir in directories)
         "Directory.Build.props",
         """
         <Project>
+            <!--
+            <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />  
+            -->
+
             <PropertyGroup>
                 <TargetFrameworks>net9.0,net10.0</TargetFrameworks>
                 <ImplicitUsings>enable</ImplicitUsings>
 
-                <!-- 
+                <!--
                 Assemblies should be deterministic
                 -->
                 <Deterministic>true</Deterministic>
 
-                <!-- 
-                Generate NRT annotations 
+                <!--
+                Generate NRT annotations
                 <Nullable>enable</Nullable>
                 -->
                 <Nullable Condition=" '$(Nullable)' == '' ">enable</Nullable>
 
                 <StructuredDataForGenAI Condition=" '$(StructuredDataForGenAI)' == '' ">enable</StructuredDataForGenAI>
 
-                <!-- 
-                Warnings we want to error on: 
+                <!--
+                Warnings we want to error on:
                 -->
                 <!--
-                NU5104: A stable release of a package should not have a prerelease dependency. 
+                NU5104: A stable release of a package should not have a prerelease dependency.
                 -->
                 <WarningsAsErrors>$(WarningsAsErrors)</WarningsAsErrors>
             </PropertyGroup>
@@ -107,7 +113,7 @@ foreach (string dir in directories)
         <PropertyGroup Condition=" '$(StructuredDataForGenAI)' == 'enable' ">
             <ErrorLog>./obj/$(Configuration)/$(MSBuildProjectName).sarif.json</ErrorLog>
         </PropertyGroup>
-        </Project>        
+        </Project>
         """,
         ""
     ),
@@ -157,95 +163,180 @@ foreach (string dir in directories)
         """,
         ""
     ),
+    (
+        "source/Directory.Build.props",
+        """
+        <Project>
+            <Import Project="..\Directory.Build.props" />
+        </Project>
+        """,
+        ""
+    ),
 };
 
-foreach (string dir in directories)
+foreach ((string file, string content, string url) t in files)
 {
-    foreach ((string file, string content, string url) t in files)
+    string? file_content = null;
+
+    if (string.IsNullOrEmpty(t.content) && !string.IsNullOrEmpty(t.url))
     {
-        string full_path = Path.Combine(base_path, dir, t.file);
-        string file_content = t.content;
-
-        if (string.IsNullOrEmpty(t.content) && !string.IsNullOrEmpty(t.url))
-        {
-            // Fetch content from URL
-            using var httpClient = new HttpClient();
-            file_content = httpClient.GetStringAsync(t.url).Result;
-        }
-        else if (string.IsNullOrEmpty(t.content) && string.IsNullOrEmpty(t.url))
-        {
-            file_content = "";
-        }
-        else if (!string.IsNullOrEmpty(t.content) && string.IsNullOrEmpty(t.url))
-        {
-            // content is already provided, do nothing
-        }
-        else if (!string.IsNullOrEmpty(t.content) && !string.IsNullOrEmpty(t.url))
-        {
-            throw new InvalidOperationException("Both content and url cannot be provided simultaneously.");
-        }
-
-        File.WriteAllText(full_path, file_content);
-        Console.WriteLine($"Created file: {full_path}");
+        // Fetch content from URL
+        using var httpClient = new HttpClient();
+        file_content = httpClient.GetStringAsync(t.url).Result;
     }
+    else if (string.IsNullOrEmpty(t.content) && string.IsNullOrEmpty(t.url))
+    {
+        file_content = "";
+    }
+    else if (!string.IsNullOrEmpty(t.content) && string.IsNullOrEmpty(t.url))
+    {
+        // content is already provided, do nothing
+    }
+    else if (!string.IsNullOrEmpty(t.content) && !string.IsNullOrEmpty(t.url))
+    {
+        throw new InvalidOperationException("Both content and url cannot be provided simultaneously.");
+    }
+
+    System.IO.File.WriteAllText(t.file, file_content);
+    Console.WriteLine($"Created file: {t.file}");
 }
 
-string[] projects = new[]
+string[] projects_dotnet = new[]
 {
     """
-    dotnet \
-        new \ 
-            classlib \ 
-            --output source/business-domain-logic-models/HolisticWare.Core.BusinessDomainLogicModels \ 
+    new \
+        classlib \
+            --output source/business-domain-logic-models/HolisticWare.Core.BusinessDomainLogicModels \
 
     """,
     """
-    dotnet \
-        new \ 
-            classlib \ 
-            --output source/user-interface-ui/HolisticWare.Core.UserInterfaceUI \ 
+    new \
+        classlib \
+            --output source/user-interface-ui/HolisticWare.Core.UserInterfaceUI \
+    """,
+    """
+    new \
+        mauilib \
+            --output source/user-interface-ui/HolisticWare.Core.UserInterfaceUI.MAUI \
 
     """,
     """
-    dotnet \
-        new \ 
-            mauilib \ 
-            --output source/user-interface-ui/HolisticWare.Core.UserInterfaceUI.MAUI \ 
+    new \
+        razorclasslib \
+            --output source/user-interface-ui/HolisticWare.Core.UserInterfaceUI.Razor \
 
     """,
     """
-    dotnet \
-        new \ 
-            razorlib \ 
-            --output source/user-interface-ui/HolisticWare.Core.UserInterfaceUI.Razor \ 
-
+    new \
+        classlib \
+            --output source/utilities/ \
+            --name HolisticWare.Utilities \
     """,
     """
-    dotnet \
-        new \ 
-            classlib \ 
-            --output source/utilities/Utilities \ 
-    """,
-    """
-    dotnet \
-        new \ 
-            classlib \ 
-            --name HolisticWare.Core.UnitTests \ 
-            --output tests/unit-tests/UnitTests \ 
+    new \
+        classlib \
+            --output tests/unit-tests/UnitTests.NUnit \
             --framework net10.0
     """,
     """
-    dotnet \
-        new \ 
-            classlib \ 
-            --name HolisticWare.Core.BenchmarkTests \ 
-            --output tests/benchmark-tests/BenchmarkTests \ 
+    package \
+        add \
+            NUnit \
+            --project tests/unit-tests/UnitTests.NUnit \
+    """,
+    """
+    reference \
+        add \
+            --project tests/unit-tests/UnitTests.NUnit \
+            source/business-domain-logic-models/HolisticWare.Core.BusinessDomainLogicModels
+    """,
+    """
+    new \
+        classlib \
+            --output tests/unit-tests/UnitTests.MSTest \
             --framework net10.0
     """,
-    "tests/common/CommonTests.csproj"
+    """
+    package \
+        add \
+            MSTest \
+                --project tests/unit-tests/UnitTests.MSTest \
+    """,
+    """
+    new \
+        classlib \
+            --output tests/unit-tests/UnitTests.XUnit \
+            --framework net10.0
+    """,
+    """
+    package \
+        add \
+            XUnit \
+            --project tests/unit-tests/UnitTests.XUnit \
+    """,
+    """
+    new \
+        console \
+        --output tests/unit-tests/UnitTests.TUnit \
+        --framework net10.0
+    """,
+    """
+    new \
+        classlib \
+        --name tests/unit-tests/UnitTests.NUnit \
+        --framework net10.0
+    """,
+    """
+    new \
+        classlib \
+        --name tests/benchmark-tests/BenchmarkTests.BenchmarkDotNet \
+        --framework net10.0
+    """,
+    """
+    new \
+        sln \
+        --name source/Source.sln \
+    """,
+    """
+    sln \
+        migrate \
+        source/Source.sln \
+    """,
+    """
+    new \
+        sln \
+        --name samples/Samples.sln \
+        --output samples/ \
+    """,
+    """
+    sln \
+        migrate \
+        source/Samples.sln \
+    """,
+    """
+    new \
+        sln \
+        --name tests/Tests.sln \
+        --output tests/ \
+    """,
+    """
+    sln \
+        migrate \
+        tests/Tests.sln \
+    """,
 };
 
-Console.WriteLine("Project structure created successfully.");
+foreach (string project_args_item in projects_dotnet)
+{
+    Run
+        (
+            "dotnet",
+            project_args_item
+                .Replace(@"\", " ")
+                .Replace(System.Environment.NewLine, " ")
+        );
+}
+
 
 
 /*
@@ -286,5 +377,149 @@ gh \
 
 
 # gh repo create my-newrepo --public --source=. --remote=upstream --push
-
 */
+
+
+Console.WriteLine("Project structure created successfully.");
+
+return 0;
+
+static
+    void
+                                        StartProcessDotnet
+                                        (
+                                            string args
+                                        )
+{
+    System.Console.WriteLine
+                        (
+                            "Args                   {0}",
+                            args
+                        );
+
+    System.Diagnostics.Process si = new()
+    {
+        StartInfo = new System.Diagnostics.ProcessStartInfo
+        {
+            FileName = "dotnet",
+            Arguments = args,
+            RedirectStandardOutput = true,
+            RedirectStandardError = true,
+            UseShellExecute = false,
+        }
+    };
+    System.Diagnostics.Process p = System.Diagnostics.Process.Start(si.StartInfo);
+
+    IEnumerable<string> text_stdout;
+    IEnumerable<string> text_error;
+
+
+    /*
+    // Output last line of process output.
+    System.Console.WriteLine
+                        (
+                            "Last line of output:   {0}",
+                            string.Join(Environment.NewLine, text_stdout)
+                        );
+
+    // Throw exception if anything was written to the standard error.
+    if (text_error.Any())
+    {
+        throw new Exception
+                        (
+                            string.Format
+                                (
+                                    "Errors occurred: {0}",
+                                    string.Join(Environment.NewLine, text_error)
+                                )
+                        );
+    }
+    */
+
+    // This should output 0 as valid arguments supplied
+
+    return;
+}
+
+
+static
+    string
+                                        Run
+                                        (
+                                            string cpath,
+                                            string args
+                                        )
+{
+    using (System.Diagnostics.Process p = new())
+    {
+        // notice that we're using the Windows shell here and the unix-y 2>&1
+        p.StartInfo.FileName = @"dotnet";
+        p.StartInfo.Arguments = args;
+        p.StartInfo.UseShellExecute = false;
+        p.StartInfo.RedirectStandardOutput = true;
+        p.StartInfo.RedirectStandardError = true;
+
+        using (Cysharp.Text.Utf16ValueStringBuilder stdout = Cysharp.Text.ZString.CreateStringBuilder())
+        using (Cysharp.Text.Utf16ValueStringBuilder stderr = Cysharp.Text.ZString.CreateStringBuilder())
+        using (System.Threading.AutoResetEvent wait_handle = new(false))
+        {
+            p.OutputDataReceived += (sender, e) =>
+                                        {
+                                            // attach event handler
+                                            if (e.Data == null)
+                                            {
+                                                wait_handle.Set();
+                                            }
+                                            else
+                                            {
+                                                stdout.AppendLine(e.Data);
+                                            }
+                                        };
+
+            p.ErrorDataReceived += (sender, e) =>
+                                        {
+                                            if (e.Data == null)
+                                            {
+                                                wait_handle.Set();
+                                            }
+                                            else
+                                            {
+                                                stderr.AppendLine(e.Data);
+                                            }
+                                        };
+
+            // start process
+            p.Start();
+
+            // begin async read
+            p.BeginOutputReadLine();
+
+            // wait for process to terminate
+            p.WaitForExit();
+
+            // wait on handle
+            wait_handle.WaitOne();
+
+            // check exit code
+            if (p.ExitCode == 0)
+            {
+                return stdout.ToString();
+            }
+            else
+            {
+                using (Cysharp.Text.Utf16ValueStringBuilder msg = Cysharp.Text.ZString.CreateStringBuilder())
+                {
+                    msg.AppendLine("Error running process:");
+                    msg.AppendLine($"Path: {cpath}");
+                    msg.AppendLine($"Args: {args}");
+                    msg.AppendLine("Output:");
+                    msg.AppendLine(stdout.ToString());
+                    msg.AppendLine("Error:");
+                    msg.AppendLine(stderr.ToString());
+
+                    throw new Exception(msg.ToString());
+                }
+            }
+        }
+    }
+}
