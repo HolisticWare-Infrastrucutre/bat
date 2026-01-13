@@ -110,9 +110,31 @@ foreach (string dir in directories)
                 <NoWarn Condition=" '$(_AndroidIgnoreGeneratorWarnings)' == 'true' ">$(NoWarn);BG8102;BG8103;BG8300;BG8400;BG8401;BG8402;BG8403;BG8501;BG8502;BG8503;BG8504;BG8601;BG8604;BG8605;BG8606;BG8700;BG8701;BG8800;BG8801;BG8A00;BG8A01;BG8A04;BG8B00;BG8C00;BG8C01;nullable</NoWarn>
             </PropertyGroup>
 
-        <PropertyGroup Condition=" '$(StructuredDataForGenAI)' == 'enable' ">
-            <ErrorLog>./obj/$(Configuration)/$(MSBuildProjectName).sarif.json</ErrorLog>
-        </PropertyGroup>
+            <PropertyGroup Condition=" '$(StructuredDataForGenAI)' == 'enable' ">
+                <ErrorLog>./obj/$(Configuration)/$(MSBuildProjectName).sarif.json</ErrorLog>
+            </PropertyGroup>
+
+            <PropertyGroup>
+                <ManagePackageVersionsCentrally>true</ManagePackageVersionsCentrally>
+            </PropertyGroup>
+        </Project>
+        """,
+        ""
+    ),
+    (
+        "source/Directory.Build.props",
+        """
+        <Project>
+            <Import Project="..\Directory.Build.props" />            
+        </Project>
+        """,
+        ""
+    ),
+    (
+        "source/Directory.Packages.props",
+        """
+        <Project>
+            <Import Project="..\Directory.Packages.props" />
         </Project>
         """,
         ""
@@ -163,15 +185,6 @@ foreach (string dir in directories)
         """,
         ""
     ),
-    (
-        "source/Directory.Build.props",
-        """
-        <Project>
-            <Import Project="..\Directory.Build.props" />
-        </Project>
-        """,
-        ""
-    ),
 };
 
 foreach ((string file, string content, string url) t in files)
@@ -190,7 +203,7 @@ foreach ((string file, string content, string url) t in files)
     }
     else if (!string.IsNullOrEmpty(t.content) && string.IsNullOrEmpty(t.url))
     {
-        // content is already provided, do nothing
+        file_content = t.content;
     }
     else if (!string.IsNullOrEmpty(t.content) && !string.IsNullOrEmpty(t.url))
     {
