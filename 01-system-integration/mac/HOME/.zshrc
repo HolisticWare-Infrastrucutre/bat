@@ -158,8 +158,13 @@ export PATH="$HOME/.aspire/bin:$PATH"
 # Added by moljac manually
 export PATH="$HOME/bin/llamafile/bin:$PATH"
 
+
+export PATH="$HOME/bat/dotnet-csharp/:$PATH"
+
 export ROOT_PROJECTS=/Users/Shared/Projects/d/hw
 export ROOT_PROJECTS_NOTES=$ROOT_PROJECTS/HolisticWare.WebSite.Notes/
+
+
 
 #   stop
 # PATH
@@ -492,14 +497,18 @@ function sys_update ()
   "
   sys_brew_clean_update
   source 03-productivity/mac/ai/ollama/update.sh
+  softwareupdate -l
   softwareupdate --all --install --force
+  mas update
   dev_dotnet_workload_reinstall
   dev_dotnet_new_templates_reinstall
   dev_dotnet_tools_reinstall
   "
   sys_brew_clean_update
   source 03-productivity/mac/ai/ollama/update.sh
+  softwareupdate -l
   softwareupdate --all --install --force
+  mas update
   dev_dotnet_workload_reinstall
   dev_dotnet_new_templates_reinstall
   dev_dotnet_tools_reinstall
@@ -4644,7 +4653,7 @@ function work_on_moljac_learn_ai_create_prompt()
 
 }
 
-function dev_ai_launch_ollama ()
+function dev_ai_ollama_launch ()
 {
   echo "--------------------------------------------------------------------------------------------------------------"
   echo \
@@ -4659,6 +4668,35 @@ function dev_ai_launch_ollama ()
   "
   source $HOME/bat/03-productivity/mac/ai/ollama/start.sh
   "
+}
+
+function dev_ai_ollama_list ()
+{
+  list_output=$(ollama list)
+
+  # Print header
+  echo "NAME                                           ID              SIZE      MODIFIED       CAPABILITIES"
+  echo "------------------------------------------------------------------------------------------------"
+
+  # Process each model from ollama list
+  while IFS= read -r line; do
+    # Skip the header line
+    if [[ "$line" =~ ^NAME.* ]]; then
+      continue
+    fi
+
+    # Extract fields from ollama list (assuming fixed-width columns)
+    name=$(echo "$line" | awk "{print \$1}")
+    id=$(echo "$line" | awk "{print \$2}")
+    size=$(echo "$line" | awk "{print \$3}")
+    modified=$(echo "$line" | awk "{print \$4, \$5, \$6}")
+
+    # Get capabilities from ollama show, stopping at blank line or new section
+    capabilities=$(ollama show "$name" | awk "/Capabilities/{flag=1; next} flag && /^[[:space:]]*[a-zA-Z]/ && !/^[[:space:]]*$/{gsub(/^[[:space:]]+|[[:space:]]+$/, \"\"); print} flag && (/^[[:space:]]*$/ || /^[[:space:]]*[A-Z][a-zA-Z]*$/){flag=0}" | paste -sd, -)
+
+    # Print combined output
+    printf "%-46s %-15s %-9s %-15s %-s\n" "$name" "$id" "$size" "$modified" "$capabilities"
+  done <<< "$list_output"
 }
 
 function dev_ai_launch_llxprt ()
@@ -4911,14 +4949,14 @@ sys_zsh_functions_load
 [[ -f "${HOME}/Library/Application Support/amazon-q/shell/zshrc.post.zsh" ]] && builtin source "${HOME}/Library/Application Support/amazon-q/shell/zshrc.post.zsh"
 
 # Added by LM Studio CLI (lms)
-export PATH="$PATH:/Users/moljac/.lmstudio/bin"
+export PATH="$PATH:$HOME/.lmstudio/bin"
 # End of LM Studio CLI section
 
 
 . "$HOME/.local/bin/env"
 
 # Added by Windsurf - Next
-export PATH="/Users/moljac/.codeium/windsurf/bin:$PATH"
+export PATH="$HOME/.codeium/windsurf/bin:$PATH"
 
 # Added by Antigravity
-export PATH="/Users/moljac/.antigravity/antigravity/bin:$PATH"
+export PATH="$HOME/.antigravity/antigravity/bin:$PATH"
