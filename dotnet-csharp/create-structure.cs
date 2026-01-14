@@ -134,7 +134,6 @@ foreach (string dir in directories)
         "source/Directory.Packages.props",
         """
         <Project>
-            <Import Project="..\Directory.Packages.props" />
         </Project>
         """,
         ""
@@ -249,7 +248,6 @@ string[] projects_dotnet = new[]
     new \
         classlib \
             --output tests/unit-tests/UnitTests.NUnit \
-            --framework net10.0
     """,
     """
     package \
@@ -260,14 +258,13 @@ string[] projects_dotnet = new[]
     """
     reference \
         add \
+            source/business-domain-logic-models/HolisticWare.Core.BusinessDomainLogicModels \
             --project tests/unit-tests/UnitTests.NUnit \
-            source/business-domain-logic-models/HolisticWare.Core.BusinessDomainLogicModels
     """,
     """
     new \
         classlib \
             --output tests/unit-tests/UnitTests.MSTest \
-            --framework net10.0
     """,
     """
     package \
@@ -276,10 +273,15 @@ string[] projects_dotnet = new[]
                 --project tests/unit-tests/UnitTests.MSTest \
     """,
     """
+    reference \
+        add \
+            source/business-domain-logic-models/HolisticWare.Core.BusinessDomainLogicModels \
+            --project tests/unit-tests/UnitTests.MSTest \
+    """,
+    """
     new \
         classlib \
             --output tests/unit-tests/UnitTests.XUnit \
-            --framework net10.0
     """,
     """
     package \
@@ -288,54 +290,102 @@ string[] projects_dotnet = new[]
             --project tests/unit-tests/UnitTests.XUnit \
     """,
     """
+    reference \
+        add \
+            source/business-domain-logic-models/HolisticWare.Core.BusinessDomainLogicModels \
+            --project tests/unit-tests/UnitTests.XUnit \
+    """,
+    """
+    new \
+        classlib \
+        --output tests/unit-tests/UnitTests.TUnit \
+    """,
+    """
+    package \
+        add \
+            TUnit \
+            --project tests/unit-tests/UnitTests.TUnit \
+    """,
+    """
     new \
         console \
-        --output tests/unit-tests/UnitTests.TUnit \
-        --framework net10.0
+        --output tests/unit-tests/AppConsole.UnitTests.TUnit \
+    """,
+    """
+    reference \
+        add \
+            tests/unit-tests/AppConsole.UnitTests.TUnit \
+            --project tests/unit-tests/AppConsole.UnitTests.TUnit \
     """,
     """
     new \
         classlib \
-        --name tests/unit-tests/UnitTests.NUnit \
-        --framework net10.0
+        --output tests/benchmark-tests/BenchmarkTests.BenchmarkDotNet \
     """,
     """
     new \
-        classlib \
-        --name tests/benchmark-tests/BenchmarkTests.BenchmarkDotNet \
-        --framework net10.0
+        console \
+        --output tests/benchmark-tests/AppConsole.BenchmarkTests.BenchmarkDotNet \
     """,
     """
     new \
         sln \
-        --name source/Source.sln \
+        --output source/ \
     """,
     """
     sln \
-        migrate \
-        source/Source.sln \
+        source/source.slnx \
+            add \
+                --solution-folder source/business-domain-logic-models/ \
+                source/business-domain-logic-models/HolisticWare.Core.BusinessDomainLogicModels/ \
     """,
     """
     new \
         sln \
-        --name samples/Samples.sln \
         --output samples/ \
     """,
     """
     sln \
-        migrate \
-        source/Samples.sln \
+        samples/source.slnx \
+            add \
+                --solution-folder source/business-domain-logic-models/ \
+                source/business-domain-logic-models/HolisticWare.Core.BusinessDomainLogicModels/ \
     """,
     """
     new \
         sln \
-        --name tests/Tests.sln \
         --output tests/ \
     """,
     """
     sln \
-        migrate \
-        tests/Tests.sln \
+        tests/tests.slnx \
+            add \
+                --solution-folder source/business-domain-logic-models/ \
+                source/business-domain-logic-models/HolisticWare.Core.BusinessDomainLogicModels/ \
+    """,
+    """
+    new \
+        sln \
+        --output tests/unit-tests/ \
+    """,
+    """
+    sln \
+        tests/unit-tests/unit-tests.slnx \
+            add \
+                --solution-folder source/business-domain-logic-models/ \
+                source/business-domain-logic-models/HolisticWare.Core.BusinessDomainLogicModels/ \
+    """,
+    """
+    new \
+        sln \
+        --output tests/benchmark-tests/ \
+    """,
+    """
+    sln \
+        tests/benchmark-tests/benchmark-tests.slnx \
+            add \
+                --solution-folder source/business-domain-logic-models/ \
+                source/business-domain-logic-models/HolisticWare.Core.BusinessDomainLogicModels/ \
     """,
 };
 
