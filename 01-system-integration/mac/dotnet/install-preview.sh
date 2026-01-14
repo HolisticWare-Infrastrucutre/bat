@@ -5,8 +5,6 @@ export EXT=pkg
 
 export VERSIONS=\
 "
-10.0
-10.0.1xx
 "
 export PRODUCTS=\
 "
