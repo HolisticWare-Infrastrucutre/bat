@@ -340,13 +340,34 @@ string[] projects_dotnet = new[]
                 source/business-domain-logic-models/HolisticWare.Core.BusinessDomainLogicModels/ \
     """,
     """
+    sln \
+        source/source.slnx \
+            add \
+                --solution-folder source/business-domain-logic-models/ \
+                source/user-interface-ui/HolisticWare.Core.UserInterfaceUI/ \
+    """,
+    """
+    sln \
+        source/source.slnx \
+            add \
+                --solution-folder source/business-domain-logic-models/ \
+                source/user-interface-ui/HolisticWare.Core.UserInterfaceUI.MAUI/ \
+    """,
+    """
+    sln \
+        source/source.slnx \
+            add \
+                --solution-folder source/business-domain-logic-models/ \
+                source/user-interface-ui/HolisticWare.Core.UserInterfaceUI.Razor/ \
+    """,
+    """
     new \
         sln \
         --output samples/ \
     """,
     """
     sln \
-        samples/source.slnx \
+        samples/samples.slnx \
             add \
                 --solution-folder source/business-domain-logic-models/ \
                 source/business-domain-logic-models/HolisticWare.Core.BusinessDomainLogicModels/ \
