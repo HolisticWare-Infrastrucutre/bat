@@ -35,10 +35,10 @@ brew \
 # https://ninja-build.org/
 
 brew \
-    install \
+    $ACTION_VERB \
         --formula \
             ninja \
-
+            ccache
 
 #----------------------------------------------------------------------------------------------
 #
