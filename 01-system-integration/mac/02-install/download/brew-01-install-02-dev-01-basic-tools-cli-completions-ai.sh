@@ -4,16 +4,26 @@
 # install / uninstall / reinstall
 export ACTION_VERB=install
 
+# Action/Verb
+# install / uninstall / reinstall
+export ACTION_VERB=install
+
+brew doctor
+brew upgrade
+brew update
+
 #----------------------------------------------------------------------------------------------
 brew \
     uninstall \
     bash-completion
+
 brew \
     unlink \
         bash-completion
 brew \
-    install \
-        bash-completion@2
+    $ACTION_VERB \
+        --formula \
+            bash-completion@2
 
 #----------------------------------------------------------------------------------------------
 # Amazon Q
