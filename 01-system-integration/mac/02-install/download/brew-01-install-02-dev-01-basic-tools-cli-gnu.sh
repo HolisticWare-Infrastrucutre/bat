@@ -20,7 +20,7 @@ brew update
 # If you need to use it as "make", you can add a "gnubin" directory
 # to your PATH from your bashrc like:
 # 
-     PATH="/opt/homebrew/opt/make/libexec/gnubin:$PATH"
+PATH="/opt/homebrew/opt/make/libexec/gnubin:$PATH"
 # 
 # ==> libtool
 # All commands have been installed with the prefix "g".
@@ -31,34 +31,34 @@ brew update
 # ==> coreutils
 # Commands also provided by macOS and the commands dir, dircolors, vdir have been installed with the prefix "g".
 # If you need to use these commands with their normal names, you can add a "gnubin" directory to your PATH with:
-   PATH="/opt/homebrew/opt/coreutils/libexec/gnubin:$PATH"
+PATH="/opt/homebrew/opt/coreutils/libexec/gnubin:$PATH"
 # 
 # ==> findutils
 # All commands have been installed with the prefix "g".
 # If you need to use these commands with their normal names, you
 # can add a "gnubin" directory to your PATH from your bashrc like:
-   PATH="/opt/homebrew/opt/findutils/libexec/gnubin:$PATH"
+PATH="/opt/homebrew/opt/findutils/libexec/gnubin:$PATH"
 # 
 # ==> gnu-tar
 # GNU "tar" has been installed as "gtar".
 # If you need to use it as "tar", you can add a "gnubin" directory
 # to your PATH from your bashrc like:
 # 
-     PATH="/opt/homebrew/opt/gnu-tar/libexec/gnubin:$PATH"
+PATH="/opt/homebrew/opt/gnu-tar/libexec/gnubin:$PATH"
 # 
 # ==> gnu-sed
 # GNU "sed" has been installed as "gsed".
 # If you need to use it as "sed", you can add a "gnubin" directory
 # to your PATH from your bashrc like:
 # 
-     PATH="/opt/homebrew/opt/gnu-sed/libexec/gnubin:$PATH"
+PATH="/opt/homebrew/opt/gnu-sed/libexec/gnubin:$PATH"
 # 
 # ==> gawk
 # GNU "awk" has been installed as "gawk".
 # If you need to use it as "awk", you can add a "gnubin" directory
 # to your PATH from your ~/.bashrc and/or ~/.zshrc like:
 # 
-     PATH="/opt/homebrew/opt/gawk/libexec/gnubin:$PATH"
+PATH="/opt/homebrew/opt/gawk/libexec/gnubin:$PATH"
 # 
 # ==> gnutls
 # Guile bindings are now in the `guile-gnutls` formula.
@@ -68,7 +68,7 @@ brew update
 # If you need to use it as "indent", you can add a "gnubin" directory
 # to your PATH from your bashrc like:
 # 
-     PATH="/opt/homebrew/opt/gnu-indent/libexec/gnubin:$PATH"
+PATH="/opt/homebrew/opt/gnu-indent/libexec/gnubin:$PATH"
 # 
 # ==> gnu-getopt
 # gnu-getopt is keg-only, which means it was not symlinked into /opt/homebrew,
