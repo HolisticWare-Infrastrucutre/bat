@@ -18,10 +18,8 @@ brew \
             github-mcp-server \
             github-markdown-toc \
             gitlab-ci-local \
-            gitlab-runner \
             glab \
             wget \
-
 
 brew \
     $ACTION_VERB \
@@ -29,6 +27,13 @@ brew \
             github \
             github@beta \
             git-credential-manager \
+
+
+brew \
+    $ACTION_VERB \
+        --formula \
+            act \
+            gitlab-runner \
 
 
 # https://github.com/ninja-build/ninja
