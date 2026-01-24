@@ -40,9 +40,6 @@ brew \
             fabric-ai \
 
 brew \
-    tap \
-        thesmokinator/copilot-cli
-brew \
     $ACTION_VERB \
         --formula \
             copilot-cli
