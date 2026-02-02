@@ -1,0 +1,7 @@
+# https://stackoverflow.com/questions/1683620/getting-started-with-cronjobs-on-a-mac
+# https://dev.to/trueqap/how-to-run-cron-on-macos-in-2025-a-complete-guide-2b8e
+# crontab -r
+# crontab $HOME/bat/03-productivity/mac/crontab.txt
+0 1 * * 2,4,6 source $HOME/.zshrc ; sys_brew_clean_update
+0 2 * * 2,4,6 source $HOME/.zshrc ; source $HOME/bat/03-productivity/mac/ai/ollama/update.sh
+0 3 * * 2,4,6 source $HOME/.zshrc ; source $HOME/bat/03-productivity/mac/ai/ollama/pull.sh
