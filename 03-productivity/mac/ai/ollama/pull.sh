@@ -3,13 +3,16 @@
 
 export MODELS=\
 "
-qwen2.5-coder:32b
-qwen3-vl:32b
-qwen2.5vl:32b
-qwen3:32b
-qwen2.5-coder:32b
-qwen2-math:72b
-deepseek-coder:33b
+qwen3-coder-next:latest
+qwen3-coder-next:q8_0
+glm-4.7-flash:bf16
+# qwen2.5-coder:32b
+# qwen3-vl:32b
+# qwen2.5vl:32b
+# qwen3:32b
+# qwen2.5-coder:32b
+# qwen2-math:72b
+# deepseek-coder:33b
 # gemma3:27b
 # gemma3:12b
 # gemma3:4b
