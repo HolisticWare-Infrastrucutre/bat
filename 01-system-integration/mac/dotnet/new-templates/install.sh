@@ -71,6 +71,8 @@ CSnakes.Templates
 #----------------------------------------------------------------------------------------------------------------------
 # AI
 Microsoft.Extensions.AI.Templates
+# AI Python interop
+CSnakes.Templates
 "
 
 
