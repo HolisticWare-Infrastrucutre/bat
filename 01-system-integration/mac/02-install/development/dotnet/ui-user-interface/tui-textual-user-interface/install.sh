@@ -1,1 +1,1 @@
-dotnet new install Terminal.gui.templates@2.0.0-alpha.*
+dotnet new install Terminal.gui.templates
