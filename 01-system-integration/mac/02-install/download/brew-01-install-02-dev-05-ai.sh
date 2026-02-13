@@ -44,7 +44,7 @@ brew \
         --formula \
             copilot-cli
 
-https://github.com/thesmokinator/homebrew-copilot-cli
+# https://github.com/thesmokinator/homebrew-copilot-cli
 
 
 # copilot-cli@prerelease
@@ -187,9 +187,26 @@ brew \
             libmagic \
             pandoc
 
-brew install 
-brew install tesseract
 brew install libreoffice
+
+# textract
+brew \
+    $ACTION_VERB \
+        --cask \
+            xquartz
+
+
+brew \
+    $ACTION_VERB \
+        --formula \
+            poppler \
+            antiword \
+            unrtf \
+            tesseract \
+            swig
+
+
+
 
 # in editors
 # windsurf (ex Codeium)
