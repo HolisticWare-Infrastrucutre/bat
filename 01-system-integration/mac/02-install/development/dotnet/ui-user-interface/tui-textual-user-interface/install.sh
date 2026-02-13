@@ -1,1 +1,6 @@
-dotnet new install Terminal.gui.templates
+#!/bin/bash
+
+dotnet \
+    new \
+        install \
+            Terminal.gui.templates
