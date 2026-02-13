@@ -61,6 +61,8 @@ Microsoft.Android.Templates
 Microsoft.MacCatalyst.Templates
 Microsoft.macOS.Templates
 Microsoft.tvOS.Templates
+# TUI
+Terminal.gui.templates
 #----------------------------------------------------------------------------------------------------------------------
 # WCF
 CoreWCF.Templates
