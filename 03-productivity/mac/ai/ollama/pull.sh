@@ -6,6 +6,8 @@ export MODELS=\
 qwen3-coder-next:latest
 qwen3-coder-next:q8_0
 glm-4.7-flash:bf16
+nemotron-3-nano:30b
+nemotron:70b
 # qwen2.5-coder:32b
 # qwen3-vl:32b
 # qwen2.5vl:32b
