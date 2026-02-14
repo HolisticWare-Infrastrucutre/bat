@@ -1,5 +1,7 @@
 #!/bin/zsh
 
+# https://dotnet.microsoft.com/en-us/download
+# https://dotnet.microsoft.com/en-us/download/dotnet
 export OS=osx
 export EXT=pkg
 
