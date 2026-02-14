@@ -1,5 +1,10 @@
 #!/bin/bash
 
+# https://github.com/dotnet/aspnetcore/blob/main/README.md
+# https://github.com/dotnet/runtime/blob/main/docs/project/dogfooding.md
+# https://github.com/dotnet/dotnet/blob/main/src/runtime/docs/project/dogfooding.md
+# https://github.com/dotnet/dotnet/blob/main/docs/builds-table.md
+
 # https://dotnet.microsoft.com/en-us/download/dotnet
 # https://github.com/dotnet/installer/issues/11040
 
@@ -15,8 +20,8 @@ export EXT=pkg
 
 export VERSIONS=\
 "
-10.0
-10.0.1xx
+11.0
+11.0.1xx
 "
 export PRODUCTS=\
 "
