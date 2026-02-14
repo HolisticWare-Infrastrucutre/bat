@@ -205,7 +205,13 @@ brew \
             tesseract \
             swig
 
-
+# kreuzberg
+brew \
+    $ACTION_VERB \
+        --formula \
+            onnxruntime \
+            tesseract \
+            libreoffice \
 
 
 # in editors
