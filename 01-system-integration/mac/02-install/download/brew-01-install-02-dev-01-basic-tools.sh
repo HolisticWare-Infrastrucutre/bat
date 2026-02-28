@@ -6,3 +6,6 @@ source ./brew-00-prepare.sh
 # install / uninstall / reinstall
 export ACTION_VERB=install
 
+brew $ACTION_VERB \
+    --cask \
+        figma
