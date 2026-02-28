@@ -39,23 +39,28 @@ brew \
             aichat \
             fabric-ai \
 
+
 brew \
     $ACTION_VERB \
         --formula \
-            copilot-cli
+            copilot \
+            mistral-vibe \
+
+
+#           copilot-cli \
 
 # https://github.com/thesmokinator/homebrew-copilot-cli
 
 
 # copilot-cli@prerelease
 
-brew 
+brew
     $ACTION_VERB \
         --cask \
             codex \
             opencode-desktop \
             itermai \
-            
+
 
 brew \
     $ACTION_VERB \
@@ -122,7 +127,7 @@ brew \
             macai \
             msty \
             sanctum \
-            
+
 
 # To increase the amount of RAM available to the llama-server process, use the following command:
 # on a 192GB machine, raise the limit from 154GB (default) to 180GB
@@ -154,6 +159,10 @@ brew \
         --cask \
             claude \
             claude-code \
+
+brew \
+    $ACTION_VERB \
+        --cask \
             cursor \
             deepchat \
             warp \
@@ -163,7 +172,7 @@ brew \
             pdf-pals \
             rivet \
             vibemeter \
-        
+            mistral-vibe \
 
 
 
@@ -241,8 +250,8 @@ brew \
 # trae	                    1.0.12119	            Adaptive AI IDE
 # windsurf	                1.7.0,69a90000132...	Agentic IDE powered by AI Flow paradigm
 # windsurf@next	            1.7.101+next.2c96...	Agentic IDE powered by AI Flow paradigm
-# 
-# 
+#
+#
 # cortexso	                0.1.1	                Drop-in, local AI alternative to the OpenAI stack
 # fairymax	                5.0b	                AI for playing Chess variants
 # github-mcp-server	        0.1.1-release-val...	GitHub Model Context Protocol server for AI tools
