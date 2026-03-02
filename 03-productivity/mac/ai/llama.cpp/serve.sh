@@ -8,7 +8,6 @@ $LLAMA_CPP \
     -ngl 80 \
     --min-p 0 \
     --repeat-penalty 1.05 \
-    --no-webui \
     --timeout 300 \
     --flash-attn on \
     --jinja \
