@@ -1,7 +1,8 @@
 #!/bin/bash
 
 export LLAMA_CPP_SERVER_PORT=11454
-export LLAMA_CPP_MODEL_PATH="$HOME/Downloads/holisticware/gen-ai/models/phi-2.Q5_K_S.gguf"
+#export LLAMA_CPP_MODEL_PATH="$HOME/Downloads/holisticware/gen-ai/models/phi-2.Q5_K_S.gguf"
+export LLAMA_CPP_MODEL_PATH="$HOME/.lmstudio/models/unsloth/Qwen3.5-35B-A3B-Experiments-GGUF/Qwen3.5-35B-A3B_tok-16_out-16_exp-16-16-16_shr-16-16-16_ssm-16-16-16-32_atn-16-16-16-16-16-16.gguf"
 export LLAMA_CPP=$HOME/Downloads/llama.cpp/macosx/llama.cpp-master/llama.cpp-master/build-macosx/bin/llama-server
 
 $LLAMA_CPP \
