@@ -1,0 +1,925 @@
+{
+  // https://opencode.ai/docs
+  // https://opencode.ai/docs/config/
+  // https://github.com/search?q=path%3A**%2Fopencode.jsonc&type=code
+  "$schema": "https://opencode.ai/config.json",
+  // Theme configuration
+  "theme": "opencode",
+  "autoupdate": true,
+  "provider":
+  {
+    "ollama":
+    {
+      "npm": "@ai-sdk/openai-compatible",
+      "name": "Ollama (local)",
+      "options":
+      {
+        "baseURL": "http://localhost:11434/v1"
+      },
+      "models":
+      /*
+
+      dev_ai_ollama_list
+      NAME                                           ID              SIZE      MODIFIED       CAPABILITIES
+      ------------------------------------------------------------------------------------------------
+      codebooga:34b                                  05b83c5673dc    19        GB 14 hours     completion
+      codeup:13b                                     54289661f7a9    7.4       GB 14 hours     completion
+      codegeex4:9b                                   867b8e81d038    5.5       GB 14 hours     completion
+      codeqwen:7b                                    df352abf55b1    4.2       GB 14 hours     completion
+      cogito:70b                                     8f2632d0faa4    42        GB 14 hours     completion,tools
+      cogito:32b                                     0b4aab772f57    19        GB 14 hours     completion,tools
+      codegemma:7b                                   0c96700aaada    5.0       GB 14 hours     completion
+      codellama:70b                                  e59b580dfce7    38        GB 14 hours     completion
+      codellama:34b                                  685be00e1532    19        GB 14 hours     completion
+      codellama:13b                                  9f438cb9cd58    7.4       GB 14 hours     completion
+      devstral-small-2:latest                        24277f07f62d    15        GB 14 hours     completion,vision,tools
+      devstral-2:latest                              524a6607f0f5    74        GB 14 hours     completion,tools
+      karanchopda333/whisper:latest                  96681b6cccda    2.0       GB 14 hours     completion,tools
+      qwen3-coder:latest                             06c1097efce0    18        GB 10 days      completion,tools
+      all-minilm:latest                              1b226e2802db    45        MB 3 weeks      embedding
+      ibm/granite3.3:8b                              840c9066413c    4.9       GB 3 weeks      completion,tools,thinking
+      granite4:3b                                    89962fcc7523    2.1       GB 3 weeks      completion,tools
+      granite-code:34b                               4ce00960ca84    19        GB 3 weeks      completion
+      granite3.3:8b                                  fd429f23b909    4.9       GB 3 weeks      completion,tools
+      wizardcoder:33b                                5b944d3546ee    18        GB 4 weeks      completion
+      llava:34b                                      3d2d24f46674    20        GB 6 weeks      completion,vision
+      gemma3:4b                                      a2af6cc3eb7f    3.3       GB 8 weeks      completion,vision
+      gemma3:latest                                  a2af6cc3eb7f    3.3       GB 8 weeks      completion,vision
+      gemma3:12b                                     f4031aab637d    8.1       GB 8 weeks      completion,vision
+      gemma3:27b                                     a418f5838eaf    17        GB 8 weeks      completion,vision
+      gpt-oss:120b                                   a951a23b46a1    65        GB 8 weeks      completion,tools,thinking
+      gpt-oss:20b                                    17052f91a42e    13        GB 8 weeks      completion,tools,thinking
+      gpt-oss:latest                                 17052f91a42e    13        GB 8 weeks      completion,tools,thinking
+      phind-codellama:34b                            566e1b629c44    19        GB 8 weeks      completion
+      mistral-large:latest                           bbcf36dc47ad    73        GB 8 weeks      completion,tools
+      mistral-large:123b                             bbcf36dc47ad    73        GB 8 weeks      completion,tools
+      phind-codellama:latest                         566e1b629c44    19        GB 8 weeks      completion
+      codegemma:latest                               0c96700aaada    5.0       GB 8 weeks      completion
+      deepseek-coder-v2:236b                         c78d80129305    132       GB 8 weeks      completion,insert
+      deepseek-coder-v2:latest                       63fb193b3a9b    8.9       GB 8 weeks      completion,insert
+      deepseek-coder:latest                          3ddd2d3fc8d2    776       MB 8 weeks      completion
+      llama3.3:latest                                a6eb4748fd29    42        GB 8 weeks      completion,tools
+      deepseek-coder:33b                             acec7c0b0fd9    18        GB 8 weeks      completion
+      marco-o1:latest                                4752e62baa0a    4.7       GB 8 weeks      completion
+      qwq:latest                                     009cb3f08d74    19        GB 8 weeks      completion,tools
+      phi4:latest                                    ac896e5b8b34    9.1       GB 8 weeks      completion
+      deepseek-r1:latest                             6995872bfe4c    5.2       GB 8 weeks      completion,thinking
+      nomic-embed-text:latest                        0a109f422b47    274       MB 8 weeks      embedding
+      phi3.5:latest                                  61819fb370a3    2.2       GB 8 weeks      completion
+      llama3.2-vision:latest                         6f2f9757ae97    7.8       GB 8 weeks      completion,vision
+      phi:latest                                     e2fd6321a5fe    1.6       GB 8 weeks      completion
+      */
+      {
+        // completion
+        "codebooga:34b":
+        {
+          "name": "completion codebooga:34b",
+          "limit": 
+          { 
+            "context": 16000,
+            "output": 32000
+          },
+        },
+        "wizardcoder:33b":
+        {
+          "name": "completion wizardcoder:33b",
+          "limit": 
+          { 
+            "context": 16000,
+            "output": 32000
+          },
+        },
+        "codegeex4:9b":
+        {
+          "name": "completion codegeex4:9b",
+          "limit": 
+          { 
+            "context": 128000,
+            "output": 32000
+          },
+        },
+        "codeqwen:7b":
+        {
+          "name": "completion codeqwen:7b",
+          "limit": 
+          { 
+            "context": 64000,
+            "output": 32000
+          },
+        },
+        "codegemma:7b":
+        {
+          "name": "completion codegemma:7b",
+          "limit": 
+          { 
+            "context": 8000,
+            "output": 32000
+          },
+        },
+        "codellama:70b":
+        {
+          "name": "completion codellama:70b",
+          "limit": 
+          { 
+            "context": 2000,
+            "output": 32000
+          },
+        },
+        "codellama:34b":
+        {
+          "name": "completion codellama:34b",
+          "limit": 
+          { 
+            "context": 16000,
+            "output": 32000
+          },
+        },
+        "codellama:13b":
+        {
+          "name": "completion codellama:13b",
+          "limit": 
+          { 
+            "context": 16000,
+            "output": 32000
+          },
+        },
+        "phind-codellama:latest":
+        {
+          "name": "completion phind-codellama:latest",
+          "limit": 
+          { 
+            "context": 16000,
+            "output": 32000
+          },
+        },
+        "codegemma:latest":
+        {
+          "name": "completion codegemma:latest",
+          "limit": 
+          { 
+            "context": 8000,
+            "output": 32000
+          },
+        },
+        // completion+tools
+        "cogito:70b":
+        {
+          "name": "completion+tools cogito:70b",
+          "limit": 
+          { 
+            "context": 128000,
+            "output": 32000
+          },
+        },
+        "cogito:32b":
+        {
+          "name": "completion+tools cogito:32b",
+          "limit": 
+          { 
+            "context": 128000,
+            "output": 32000
+          },
+        },
+        "devstral-2:latest":
+        {
+          "name": "completion+tools devstral-2:latest",
+          "limit": 
+          { 
+            "context": 256000,
+            "output": 32000
+          },
+        },
+        "qwen3-coder:latest":
+        {
+          "name": "completion+tools qwen3-coder:latest",
+          "limit": 
+          { 
+            "context": 256000,
+            "output": 32000
+          },
+        },
+        "qwen3-coder-next:q8_0":
+        {
+          "name": "completion+tools qwen3-coder-next:q8_0",
+          "limit": 
+          { 
+            "context": 256000,
+            "output": 32000
+          },
+        },
+        "mistral-large:latest":
+        {
+          "name": "completion+tools mistral-large:latest",
+          "limit": 
+          { 
+            "context": 128000,
+            "output": 32000
+          },
+        },
+        "mistral-large:123b":
+        {
+          "name": "completion+tools mistral-large:123b",
+          "limit": 
+          { 
+            "context": 128000,
+            "output": 32000
+          },
+        },
+        "gpt-oss:120b" :
+        {
+          "name": "thinking+tools gpt-oss:120b",
+          "limit": 
+          { 
+            "context": 128000,
+            "output": 32000
+          },
+        },
+        "glm-4.7-flash:bf16":
+        {
+          "name": "thinking+tools glm-4.7-flash:bf16",
+          "limit": 
+          { 
+            "context": 192000,
+            "output": 32000
+          },
+        },
+        "nemotron-3-nano:30b":
+        {
+          "name": "thinking+tools nemotron-3-nano:30b",
+          "limit": 
+          { 
+            "context": 1000000,
+            "output": 32000
+          },
+        },
+        "qwen3:32b":
+        {
+          "name": "thinking+tools qwen3:32b",
+          "limit": 
+          { 
+            "context": 256000,
+            "output": 32000
+          },
+        },
+        "qwen3-vl:32b":
+        {
+          "name": "thinking+tools qwen3-vl:32b",
+          "limit": 
+          { 
+            "context": 256000,
+            "output": 32000
+          },
+        },
+        "gpt-oss:latest":
+        {
+          "name": "thinking+tools gpt-oss:latest",
+          "limit": 
+          { 
+            "context": 256000,
+            "output": 32000
+          },
+        },
+        "gpt-oss:20b":
+        {
+          "name": "thinking+tools gpt-oss:20b",
+          "limit": 
+          { 
+            "context": 256000,
+            "output": 32000
+          },
+        },
+        "deepseek-r1:latest":
+        {
+          "name": "thinking+tools deepseek-r1:latest",
+          "limit": 
+          { 
+            "context": 128000,
+            "output": 32000
+          },
+        },
+        "ibm/granite3.3:8b":
+        {
+          "name": "thinking+tools ibm/granite3.3:8b",
+          "limit": 
+          { 
+            "context": 128000,
+            "output": 32000
+          },
+        },
+      }
+    },
+    "LM-Studio":
+    {
+      "npm": "@ai-sdk/openai-compatible",
+      "name": "LM Studio (local)",
+      "options":
+      {
+        "baseURL": "http://127.0.0.1:11444/v1"
+      },
+      "models":
+      {
+        "gpt-oss-safeguard-120b-mlx" :
+        {
+          "name": "completion+tools gpt-oss-safeguard-120b-mlx",
+          "limit": 
+          { 
+            "context": 256000,
+            "output": 32000
+          }
+        },
+        "gpt-oss-safeguard-120b-mlx" :
+        {
+          "name": "completion+tools gpt-oss-safeguard-120b-mlx",
+          "limit": 
+          { 
+            "context": 256000,
+            "output": 32000
+          }
+        },
+        "zai-org/glm-4.7-flash" :
+        {
+          "name": "completion+tools zai-org/glm-4.7-flash",
+          "limit": 
+          { 
+            "context": 256000,
+            "output": 32000
+          }
+        },
+        "qwen/qwen3-coder-next" :
+        {
+          "name": "completion+tools qwen/qwen3-coder-next",
+          "limit": 
+          { 
+            "context": 256000,
+            "output": 32000
+          }
+        },
+        "mistralai_devstral-small-2-24b-instruct-2512-mlx" :
+        {
+          "name": "completion+tools mistralai_devstral-small-2-24b-instruct-2512-mlx",
+          "limit": 
+          { 
+            "context": 256000,
+            "output": 32000
+          }
+        },
+        "mistralai/devstral-small-2-2512" :
+        {
+          "name": "completion+tools mistralai/devstral-small-2-2512",
+          "limit": 
+          { 
+            "context": 256000,
+            "output": 32000
+          }
+        },
+        "openai/gpt-oss-20b" :
+        {
+          "name": "completion+tools openai/gpt-oss-20b",
+          "limit": 
+          { 
+            "context": 256000,
+            "output": 32000
+          }
+        },
+        "google/gemma-3-12b" :
+        {
+          "name": "completion+tools google/gemma-3-12b",
+          "limit": 
+          { 
+            "context": 256000,
+            "output": 32000
+          }
+        }
+      }
+    },
+    "llama-cpp":
+    {      
+      "name": "llama.cpp (local)",
+      "options": 
+      {
+        "baseURL": "http://127.0.0.1:11454/v1"
+      },
+      "models": 
+      {
+          "unsloth/Qwen3-Coder-30B-A3B-Instruct-GGUF:Q3_K_M": 
+          {
+            "name": "unsloth/Qwen3-Coder-30B-A3B-Instruct-GGUF:Q3_K_M",
+            "tools": true
+        }
+      }
+    }
+  },
+  // Tool Configuration
+  // https://opencode.ai/docs/tools
+  "tools":
+  {
+    "read": true,
+    "write": true,
+    "edit": true,
+    "bash": true,
+    "grep": true,
+    "glob": true,
+    "list": true,
+    "git": true,
+    "filesystem": true,
+    "lsp": true,
+    "playwright": true,
+    // Enable the skill loading tool
+    "skill": true,
+    "todowrite": true,
+    "todoread": true,
+    "webfetch": true,
+    // OPENCODE_ENABLE_EXA=1 opencode
+    "websearch": true,
+    "question": true,
+    /*
+    "git*": false,
+    "time*": false,
+    "fetch*": false,
+    "firecrawl*": false,
+    "brave-search*": false,
+    "duckduckgo*": false,
+    "context7*": false,
+    "playwright*": false,
+    */
+  },
+  // === Permissions ===
+  // Permission Configuration
+  "permission":
+  {
+    // "*": "ask",
+    // .env reads without prompts
+    /*
+    "read":
+    {
+      ".env": "allow",
+      ".env.*": "allow",
+      ".env-*": "allow"
+    },
+    */
+    "read": "allow",
+    "glob": "allow",
+    "grep": "allow",
+    // Only deny the truly catastrophic - everything else just runs
+    "bash":
+    {
+      "git push": "allow",
+      "git push *": "allow",
+      "sudo *": "deny",
+      "rm -rf /": "deny",
+      "rm -rf /*": "deny",
+      "rm -rf ~": "deny",
+      "rm -rf ~/*": "deny",
+      ":(){:|:&};:": "deny",  // fork bomb, just in case
+
+      // ✅ Safe Git commands (read-only)
+      "git status": "allow",
+      "git status*": "allow",
+      "git log*": "allow",
+      "git diff*": "allow",
+      "git show*": "allow",
+      "git branch": "allow",
+      "git branch -v*": "allow",
+      "git remote -v": "allow",
+      "git ls-files*": "allow",
+
+      // ✅ Modern CLI tools (preferred - read-only)
+      "rg*": "allow",          // ripgrep - better grep
+      "fd*": "allow",          // fd - better find
+      "bat*": "allow",         // bat - better cat
+      "eza*": "allow",         // eza - better ls
+      "jq*": "allow",          // jq - JSON processing
+      "fzf*": "allow",         // fzf - fuzzy finder
+
+      // ✅ Traditional shell commands (fallback)
+      "ls": "allow",
+      "ls *": "allow",
+      "pwd": "allow",
+      "cat *": "allow",
+      "head *": "allow",
+      "tail *": "allow",
+      "wc *": "allow",
+      "which *": "allow",
+      "find *": "allow",
+      "grep *": "allow",
+
+      // ⚠️ Git state changes - Ask (modifies repo)
+      "git add*": "ask",
+      "git commit*": "ask",
+      "git push*": "ask",
+      "git pull*": "ask",
+      "git fetch*": "ask",
+      "git checkout*": "ask",
+      "git switch*": "ask",
+      "git merge*": "ask",
+      "git rebase*": "ask",
+      "git reset*": "ask",
+      "git branch -d*": "ask",
+      "git branch -D*": "ask",
+      "git stash*": "ask",
+      "git restore*": "ask",
+
+      // ✅ GitHub CLI (read-only commands)
+      "gh repo view*": "allow",
+      "gh pr view*": "allow",
+      "gh pr list*": "allow",
+      "gh issue view*": "allow",
+      "gh issue list*": "allow",
+      "gh run view*": "allow",
+      "gh run list*": "allow",
+      "gh api*": "allow",      // API calls (mostly read)
+
+      // ⚠️ GitHub CLI - State changes (ask)
+      "gh pr create*": "ask",
+      "gh pr merge*": "ask",
+      "gh pr close*": "ask",
+      "gh issue create*": "ask",
+      "gh issue close*": "ask",
+      "gh run cancel*": "ask",
+      "gh run rerun*": "ask",
+
+          // ✅ Custom CLI tools (your hooks)
+      "node */gloomstalker/cli.js*": "allow",
+      "node */todo-enforcer/cli.js*": "allow",
+      "node */risk-assessor/cli.js*": "allow",
+
+      // ✅ Process inspection (for service management)
+      "lsof*": "allow",
+      "ps *": "allow",
+      "pgrep*": "allow",
+      "curl -s http://localhost*": "allow",
+      "curl -s https://localhost*": "allow",
+
+      // ✅ Docker inspection (read-only)
+      "docker ps*": "allow",
+      "docker images*": "allow",
+      "docker logs*": "allow",
+      "docker inspect*": "allow",
+      "docker-compose ps*": "allow",
+      "docker-compose logs*": "allow",
+
+      // ⚠️ Docker operations - Ask (can affect services)
+      "docker start*": "ask",
+      "docker stop*": "ask",
+      "docker restart*": "ask",
+      "docker rm*": "ask",
+      "docker rmi*": "ask",
+      "docker-compose up*": "ask",
+      "docker-compose down*": "ask",
+      "docker-compose restart*": "ask",
+
+      // ✅ Kubernetes inspection (read-only)
+      "kubectl get*": "allow",
+      "kubectl describe*": "allow",
+      "kubectl logs*": "allow",
+
+      // ⚠️ Kubernetes operations - Ask (can affect cluster)
+      "kubectl apply*": "ask",
+      "kubectl delete*": "ask",
+      "kubectl scale*": "ask",
+      "kubectl rollout*": "ask",
+
+      // ⚠️ Package managers - Ask (can be slow/change state)
+      "npm test*": "ask",
+      "npm run*": "ask",
+      "npm install*": "ask",
+      "npm ci*": "ask",
+      "npx*": "ask",
+      "yarn*": "ask",
+      "bun test*": "ask",
+      "bun run*": "ask",
+      "bun install*": "ask",
+      "bun add*": "ask",
+      "bun x*": "ask",         // bunx equivalent
+
+      
+      // ⚠️ Process management - Ask (can disrupt services)
+      "pkill*": "ask",
+      "kill*": "ask"
+    },
+    // Skill permissions - allow all project skills by default
+    "skill":
+    {
+      // Project-specific skills
+      /*
+      "write-concept": "allow",
+      "fact-check": "allow",
+      "seo-review": "allow",
+      "test-writer": "allow",
+      "resource-curator": "allow",
+      "concept-workflow": "allow",
+      // Default behavior for other skills
+      */
+      "*": "ask"
+    }
+  },
+  // https://opencode.ai/docs/custom-tools/#write-a-tool-in-python
+  "mcp":
+  {
+    // Web fetching - MCP official server (Python via uvx)
+    /*
+    "fetch":
+    {
+      "type": "local",
+      "command": ["bunx", "-y", "@modelcontextprotocol/server-fetch"],
+      "enabled": true
+    },
+    */
+    "fetch-mcp":
+    {
+      "type": "local",
+      "enabled": true,
+      "command": ["bunx", "-y", "@modelcontextprotocol/server-fetch"],
+    },
+    "git": 
+    {
+      "type": "local",
+      "enabled": true,
+      "command": ["uvx", "-y", "@modelcontextprotocol/server-git"]
+    },
+    "microsoft-docs":
+    {
+        "type": "remote",
+        "enabled": true,
+        "url": "https://learn.microsoft.com/api/mcp",
+    },
+    "context7":
+    {
+      "type": "remote",
+      "enabled": true,
+      "url": "https://mcp.context7.com/mcp",
+      "headers":
+      {
+        "CONTEXT7_API_KEY": "{env:CONTEXT7_API_KEY}"
+      },
+    },
+    "context7-slow":
+    {
+      "type": "remote",
+      "enabled": true,
+      "url": "https://mcp.context7.com/mcp",
+    },
+    "ddg-search":
+    {
+      "type": "local",
+      "enabled": true,
+      "command": ["uvx", "duckduckgo-mcp-server"],
+    },
+    /*
+      https://api-dashboard.search.brave.com/documentation/pricing
+
+      Note: The Brave Search MCP server may require additional setup, such as installing the 
+      @brave/brave-search-mcp-server package and configuring the BRAVE_API_KEY environment variable. 
+      Ensure you have the necessary dependencies and credentials to use this tool effectively.
+    
+      BRAVE_API_KEY=xxxxxx npx -y @brave/brave-search-mcp-server --transport stdio
+      BRAVE_API_KEY=xxxxxx bunx -y @brave/brave-search-mcp-server --transport stdio
+
+    "brave-search": 
+    {
+      "type": "local",
+      "command": ["bunx", "-y", "@brave/brave-search-mcp-server", "--transport", "stdio"],
+      "environment": { "BRAVE_API_KEY": "{env:BRAVE_API_KEY}" }
+    },
+    */
+    "duckduckgo":
+    {
+        "type": "local",
+        "enabled": true,
+        "command": ["uvx", "duckduckgo-mcp-server"],
+    },
+    "firecrawl":
+    {
+        "type": "local",
+        "enabled": true,
+        "environment": { "FIRECRAWL_API_KEY": "{env:FIRECRAWL_API_KEY}" },
+        "command": ["bunx",
+        "-y",
+        "firecrawl-mcp"
+      ],
+    },
+    "exa": {
+      "type": "local",
+      "command": ["npx", "-y", "exa-mcp-server"],
+      "environment": {
+        "EXA_API_KEY": "your-key"
+      }
+    },
+    "web-search": 
+    {
+      "type": "local",
+      "command": 
+      [
+        "npx",
+        "open-websearch@latest"
+      ],
+      "environment": 
+      {
+        "MODE": "stdio",
+        "DEFAULT_SEARCH_ENGINE": "duckduckgo",
+        "ALLOWED_SEARCH_ENGINES": "duckduckgo,bing,exa,brave,google"
+      }
+    },
+    // https://deepwiki.com/
+    "DeepWiki":
+    {
+      "type": "remote",
+      "enabled": true,
+      "url": "https://mcp.deepwiki.com/mcp",
+    },
+    "serena": {
+      "type": "local",
+      "command": [
+        "uvx",
+        "--from",
+        "git+https://github.com/oraios/serena",
+        "serena-mcp-server",
+        "--context",
+        "ide-assistant",
+        "--project",
+        "$(pwd)"
+      ],
+      "enabled": true
+    },
+    "github":
+    {
+      "type": "local",
+      "command": ["bunx", "@modelcontextprotocol/server-github"],
+      "environment":
+      {
+        "GITHUB_PERSONAL_ACCESS_TOKEN": "{env:GITHUB_PERSONAL_ACCESS_TOKEN}",
+        "GITHUB_TOOLSETS": "repos,issues,pull_requests,actions,code_security"
+      }
+    },
+    "github-grep":
+    {
+      "type": "remote",
+      "url": "https://mcp.grep.app",
+      "enabled": true
+    },
+    "github-copilot":
+    {
+      "type": "remote",
+      "enabled": true,
+      "url": "https://api.githubcopilot.com/mcp/",
+      "headers":
+      {
+        "Authorization": "Bearer <REDACTED_GITHUB_TOKEN>"
+      }
+    },
+    "gitlab":
+    {
+      "type": "local",
+      "enabled": true,
+      "command": ["npx", "-y", "@zereight/mcp-gitlab"],
+      "environment":
+      {
+        "GITLAB_PERSONAL_ACCESS_TOKEN": "{env:GITLAB_PERSONAL_ACCESS_TOKEN}",
+        "GITLAB_API_URL": "https://gitlab.com/api/v4/",
+      },
+    },
+    "filesystem":
+    {
+      "type": "local",
+      "enabled": true,
+      "command": [ "npx",
+        "-y",
+        "@modelcontextprotocol/server-filesystem",
+        "${workspaceFolder}"
+      ]
+    },
+    "playwright-mcp":
+    {
+      "type": "local",
+      "command": ["npx", "@playwright/mcp@latest"],
+      "enabled": true
+    },
+    "playwright":
+    {
+      "type": "local",
+      "command": ["bunx", "-y", "@executeautomation/playwright-mcp-server"],
+      "enabled": true
+    },
+    "chrome-devtools":
+    {
+      "type": "local",
+      "command": 
+      [
+        "npx",
+        "-y",
+        "chrome-devtools-mcp@latest"
+      ],
+      "enabled": true,
+    },
+    "memory": 
+    {
+      "type": "local",
+      "enabled": true,
+      "command": [
+        "npx",
+        "-y",
+        "@modelcontextprotocol/server-memory"
+      ],
+    },
+    "sequential-thinking":
+    {
+      "type": "local",
+      "enabled": true,
+      "command":
+      [
+        "npx",
+        "-y",
+        "@modelcontextprotocol/server-sequential-thinking",
+      ],
+    },
+    // https://github.com/sethships/RefactorCsharpMCP
+    /*
+    "refactor-csharp-mcp-docker": 
+    {
+      "command": "docker",
+      "args": ["run", "--rm", "-i", "refactor-csharp-mcp:latest"],
+      "type": "stdio"
+    },
+    */
+  },
+  "agent": 
+  {
+    "build": 
+    {
+      "mode": "primary",
+      "tools": 
+      {
+        "write": true,
+        "edit": true,
+        "bash": true,
+        "webfetch": true,
+        "git*": true,
+        "time*": true,
+      },
+    },
+    "plan": 
+    {
+      "mode": "primary",
+      "tools": 
+      {
+          "write": false,
+          "edit": false,
+          "bash": true,
+          "webfetch": true,
+      },
+    },
+  },
+  "lsp":
+  {
+    "bash": 
+    {
+      "command": ["npx", "--yes", "bash-language-server", "start"],
+      "extensions": [".sh", ".bash"]
+    },
+    "pyright": {
+      "command": ["npx", "--yes", "pyright", "--stdio"],
+      "extensions": [".py", ".pyi"]
+    },
+    "yaml-ls": {
+      "command": ["npx", "--yes", "yaml-language-server", "--stdio"],
+      "extensions": [".yaml", ".yml"]
+    },
+    "json": {
+      "command": ["npx", "--yes", "vscode-json-languageserver", "--stdio"],
+      "extensions": [".json", ".jsonc"]
+    }
+  },
+  // 7.--- IGNORE PATTERNS ---
+  // Critical for performance. Keep the agent out of these folders.
+  "watcher": 
+  {
+    "ignore": 
+    [
+      ".git/**", // Git metadata/history; very heavy to index
+      ".aider*", // Aider's internal chat history, tags, and cache
+      ".aider*", // Excludes chat history, tags cache, and input history
+      ".opencode_history", // Prevents the agent from reading its own past chat logs
+      ".opencode_storage", // OpenCode internal database and temporary state
+      "node_modules/**", // JavaScript dependencies; massive token waste
+      "package-lock.json", // Large auto-generated JS dependency tree
+      "uv.lock", // Auto-generated Python dependency resolution
+      "**/__pycache__/**", // Python compiled bytecode; noise for the LLM
+      "**/.pytest_cache/**", // Temporary test data
+      "**/.venv/**", // Virtual environment binaries and library source
+      "**/.ruff_cache/**", // Linting metadata
+      "**/.mypy_cache/**", // Type checking metadata
+      "**/.coverage", // Binary coverage data
+      "coverage.xml", // Formatted coverage data
+      "dist/**", // Build artifacts
+      ".env" // Keep your secrets out of the LLM context
+    ]
+  },  
+  "formatter":
+  {
+    "dotnet format":
+    {
+      "command": ["dotnet", "format", "--include", "$FILE"],
+      "extensions": [".cs"]
+    }
+  }
+}
