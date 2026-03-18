@@ -1,10 +1,17 @@
 #!/bin/bash
 
+# ollama launch claude --model qwen3-coder-next
+# ollama launch codex --model qwen3-coder-next
+# ollama launch opencode --model qwen3-coder-next
+# ollama launch openclaw --model qwen3-coder-next
 
 export MODELS=\
 "
-qwen3.5:122b
-deepseek-r1:32b
+mistral-nemo:12b
+translategemma:27b
+
+# qwen3.5:122b
+# deepseek-r1:32b
 #
 # qwen3-coder-next:latest
 # qwen3-coder-next:q8_0
