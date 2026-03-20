@@ -1,16 +1,15 @@
 # Amazon Q pre block. Keep at the top of this file.
-[[ -f "${HOME}/Library/Application Support/amazon-q/shell/zshrc.pre.zsh" ]] && builtin source "${HOME}/Library/Application Support/amazon-q/shell/zshrc.pre.zsh"
+[[ -f "${HOME}/Library/Application Support/amazon-q/shell/zshrc.pre.zsh" ]] \
+&& \
+builtin source "${HOME}/Library/Application Support/amazon-q/shell/zshrc.pre.zsh"
 setopt PROMPT_SUBST
 
 # PROMPT='%{$(pwd|grep --color=always /)%${#PWD}G%} %(!.%F{red}.%F{cyan})%n%f@%F{yellow}%m%f%(!.%F{red}.)%#%f '
 # PROMPT='$fg[cyan]%m:$fg[yellow] %T %B%30<..<%~%b %(!.#.>) '
 PROMPT='%F{yellow}%3~%f %# '
 
-echo "runing as   $(whoami)"
-echo "runing as   $(id -u)"
-echo "runing in   $(groups $(whoami) | cut -d' ' -f1)"
-echo "runing in   $(id -g)"
-
+echo user = $USER
+echo uid  = $UID
 
 # Terminal autocomplete fix
 autoload -Uz compinit && compinit
@@ -36,6 +35,10 @@ plugins=\
 #autoload -U +X compinit && compinit
 #autoload -U +X bashcompinit && bashcompinit
 
+function run() 
+{ 
+  echo "▶ $*"; "$@"; 
+}
 
 #######################################################################################################################
 # PATH
@@ -58,7 +61,7 @@ plugins=\
 # zulu-8.jdk
 
 export JAVA_HOME_AMAZON_CORRETO_8=/Library/Java/JavaVirtualMachines/amazon-corretto-8.jdk/Contents/Home
-export JAVA_HOME_OEPNJDK_8=/Library/Java/JavaVirtualMachines/openjdk-8.jdk/Contents/Home
+export JAVA_HOME_OPENJDK_8=/Library/Java/JavaVirtualMachines/openjdk-8.jdk/Contents/Home
 export JAVA_HOME_TEMURIN_8=/Library/Java/JavaVirtualMachines/temurin-8.jdk/Contents/Home
 export JAVA_HOME_TEMURIN_11=/Library/Java/JavaVirtualMachines/temurin-11.jdk/Contents/Home
 export JAVA_HOME_TEMURIN_17=/Library/Java/JavaVirtualMachines/temurin-17.jdk/Contents/Home
@@ -116,14 +119,13 @@ export HOMEBREW_EDITOR="/opt/homebrew/bin/code"
 #----------------------------------------------------------------------------------------------------------------------
 # https://developer.android.com/tools/variables#set
 
-export PATH=/opt/homebrew/bin/:/opt/homebrew/bin:/opt/homebrew/sbin:/opt/homebrew/bin/:/opt/homebrew/sbin/
-export PATH=/usr/local/bin/:/usr/local/sbin/:
+export PATH=$PATH:/opt/homebrew/bin:/opt/homebrew/sbin:
+export PATH=$PATH:/usr/local/bin/:/usr/local/sbin/
 export PATH=$PATH:/usr/bin/:/bin/:/usr/sbin/:/sbin/
 export PATH=$PATH:/usr/local/share/dotnet:$HOME/.dotnet/tools/
 export PATH=$PATH:/usr/local/bin/pwsh/
 # https://www.mono-project.com/docs/about-mono/supported-platforms/macos/
 export PATH=$PATH:/Library/Frameworks/Mono.framework/Versions/Current/bin
-export PATH=/opt/homebrew/bin/:/opt/homebrew/sbin/:$PATH
 export PATH=$PATH:$ANDROID_HOME/bin/
 export PATH=$PATH:$ANDROID_HOME/tools/
 export PATH=$PATH:$ANDROID_HOME/tools/bin/
@@ -140,10 +142,10 @@ export PATH=$PATH:"/Applications/Visual Studio Code.app/Contents/Resources/app/b
 
 
 # GNU
-export PATH="/opt/homebrew/opt/gnu-sed/libexec/gnubin":$PATH
+export PATH=$PATH:"/opt/homebrew/opt/gnu-sed/libexec/gnubin"
 
 #----------------------------------------------------------------------------------------------------------------------
-export PATH=$HOME/.dotnet/tools/:$PATH
+export PATH=$PATH:$HOME/.dotnet/tools/
 
 # Added by LM Studio CLI (lms)
 export PATH="$PATH:$HOME/.lmstudio/bin"
@@ -233,6 +235,16 @@ function sys_energy_high()
   do
     osascript -e 'tell application "System Events"' -e 'key code 144' -e ' end tell'
   done
+}
+
+function sys_user_uid_whoami()
+{
+  echo "user  = $USER"
+  echo "uid   = $UID"
+  echo "running as   $(whoami)"
+  echo "running as   $(id -u)"
+  echo "running in   $(groups $(whoami) | cut -d' ' -f1)"
+  echo "running in   $(id -g)"
 }
 
 function sys_name()
@@ -355,14 +367,17 @@ function sys_postinstall()
 
 function sys_clean()
 {
-  source $HOME/bat/01-system-integration/mac/clean.sh
-
   echo "--------------------------------------------------------------------------------------------------------------"
   echo \
   "
   source $HOME/bat/01-system-integration/mac/clean.sh
   "
   source $HOME/bat/01-system-integration/mac/clean.sh
+
+  echo \
+  "
+  source $HOME/bat/01-system-integration/mac/clean.sh
+  "
 }
 
 function sys_clean_diverse()
@@ -625,7 +640,7 @@ function sys_finder_open_windows_and_tabs()
 #   term
 # start
 
-function pkill()
+function sys_pkill()
 {
   echo "--------------------------------------------------------------------------------------------------------------"
   echo \
@@ -679,9 +694,9 @@ function sys_term_tab_completion_reset()
   echo "--------------------------------------------------------------------------------------------------------------"
   echo \
   "
-  rm -f ~/.zcompdump
+  rm -f $HOME/.zcompdump
   "
-  rm -f ~/.zcompdump
+  rm -f $HOME/.zcompdump
 }
 
 function sys_term_autocompletion_reset()
@@ -720,9 +735,12 @@ function sys_term_fingerprint()
   cat /etc/pam.d/sudo
   "
 
+  grep -q pam_tid.so /etc/pam.d/sudo \
+  || \
   echo "auth       sufficient     pam_tid.so" | cat - /etc/pam.d/sudo > /tmp/out \
   && \
   sudo mv /tmp/out /etc/pam.d/sudo
+
 
   cat /etc/pam.d/sudo
 };
@@ -787,12 +805,11 @@ function sys_brew_repair_installation()
 {
     sys_term_clean_screen_and_buffer
 
-    echo "export PATH=/opt/homebrew/bin/:$PATH" >> ~/.zshrc
-    echo "export PATH=/opt/homebrew/sbin/:$PATH" >> ~/.zshrc
+    echo "export PATH=$PATH:/opt/homebrew/bin/:/opt/homebrew/sbin/:$PATH" >> $HOME/.zshrc
     /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
     brew doctor
     eval $(/opt/homebrew/bin/brew shellenv)
-    echo "eval $(/opt/homebrew/bin/brew shellenv)" >> ~/.zshrc
+    echo "eval $(/opt/homebrew/bin/brew shellenv)" >> $HOME/.zshrc
 };
 
 # stop
@@ -1459,20 +1476,6 @@ function dev_android_apk_analysis()
   java -jar $HOME/bin/classy-shark/ClassyShark.jar
 }
 
-function dev_android_emulator_list()
-{
-  # start Android emulator to gain some time
-  echo "--------------------------------------------------------------------------------------------------------------"
-  echo \
-  "
-  $HOME/Library/Android/sdk/emulator/emulator \\
-    -list-avds
-  "
-  echo
-  $HOME/Library/Android/sdk/emulator/emulator \
-    -list-avds
-};
-
 function dev_android_emulator_reboot()
 {
   echo "--------------------------------------------------------------------------------------------------------------"
@@ -1592,6 +1595,19 @@ function dev_android_emulator_launch_wipe_data_no_cache_no_snapshot()
     &
 };
 
+function dev_android_emulator_list()
+{
+  # start Android emulator to gain some time
+  echo "--------------------------------------------------------------------------------------------------------------"
+  echo \
+  "
+  $HOME/Library/Android/sdk/emulator/emulator \\
+    -list-avds
+  "
+  echo
+  $HOME/Library/Android/sdk/emulator/emulator \
+    -list-avds
+};
 
 function dev_android_emulators_avdmanager_list_avd()
 {
@@ -1678,7 +1694,7 @@ function dev_android_adb_devices()
   adb devices -l
 }
 
-function dev_android_shell_pm_list_users()
+function dev_android_getprop_ro_build_version_release()
 {
   echo "--------------------------------------------------------------------------------------------------------------"
   echo \
@@ -1795,13 +1811,6 @@ function dev_android_adb_bugreport()
   adb shell ls /bugreports/
   adb pull /bugreports/
 }
-
-function dev_android_emulator_list()
-{
-  $HOME/Library/Android/sdk/emulator/emulator \
-    -list-avds
-};
-
 
 
 function dev_android_decompile_jar_jar()
@@ -2622,8 +2631,52 @@ function dev_dotnet_msbuildlog ()
   dotnet $HOME/bin/msbuildlog/bin/StructuredLogViewer.Avalonia.dll
 }
 
+# https://learn.microsoft.com/en-us/dotnet/core/tools/enable-tab-autocomplete
+# https://learn.microsoft.com/en-us/dotnet/standard/commandline/how-to-enable-tab-completion
+
+_dotnet_zsh_complete()
+{
+    # debug lines, uncomment to get state variables passed to this function
+    # echo "\n\n\nstate:\t'$state'"
+    # echo "line:\t'$line'"
+    # echo "words:\t$words"
+
+    # Get full path to script because dotnet-suggest needs it
+    # NOTE: this requires a command registered with dotnet-suggest be
+    # on the PATH
+    full_path=`which ${words[1]}` # zsh arrays are 1-indexed
+    # Get the full line
+    # $words array when quoted like this gets expanded out into the full line
+    full_line="$words"
+
+    # Get the completion results, will be newline-delimited
+    completions=$(dotnet-suggest get --executable "$full_path" -- "$full_line")
+    # explode the completions by linefeed instead of by spaces into the descriptions for the
+    # _values helper function.
+    
+    exploded=(${(f)completions})
+    # for later - once we have descriptions from dotnet suggest, we can stitch them
+    # together like so:
+    # described=()
+    # for i in {1..$#exploded}; do
+    #     argument="${exploded[$i]}"
+    #     description="hello description $i"
+    #     entry=($argument"["$description"]")
+    #     described+=("$entry")
+    # done
+    _values 'suggestions' $exploded
+}
+
+# apply this function to each command the dotnet-suggest knows about
+compdef _dotnet_zsh_complete $(dotnet-suggest list)
+
+export DOTNET_SUGGEST_SCRIPT_VERSION="1.0.0"
+
+eval "$(dotnet completions script zsh)"
+
 
 # https://learn.microsoft.com/en-us/dotnet/core/tools/enable-tab-autocomplete
+
 function dev_dotnet_tab_completion_zsh()
 {
 #  echo "--------------------------------------------------------------------------------------------------------------"
@@ -2654,7 +2707,7 @@ function dev_dotnet_tab_completion_zsh()
   _values = "${(ps:\n:)completions}"
 }
 
-compdef dev_dotnet_tab_completion_zsh dotnet
+# compdef dev_dotnet_tab_completion_zsh dotnet
 
 # function dev_dotnet_tab_completion_bash()
 # {
@@ -2687,7 +2740,7 @@ compdef dev_dotnet_tab_completion_zsh dotnet
 # }
 
 # compdef dev_dotnet_autocomplete dotnet
-compdef dev_dotnet_tab_completion_zsh dotnet
+# compdef dev_dotnet_tab_completion_zsh dotnet
 
 # https://docs.microsoft.com/en-us/dotnet/core/tools/enable-tab-autocomplete
 # dotnet_zsh_complete()
@@ -4976,8 +5029,16 @@ function work_on_judo_remove_me()
 # start
 
 # tree $HOME/bat.private/mac/development/api-keys
-$HOME/bat.private/mac/development/api-keys/
 
+function dev_api_keys_info ()
+{
+  echo "--------------------------------------------------------------------------------------------------------------"
+  echo \
+  "
+  tree $HOME/bat.private/mac/development/api-keys/
+  "
+  tree $HOME/bat.private/mac/development/api-keys/
+}
 function dev_api_keys_set ()
 {
   source  $HOME/bat.private/mac/development/api-keys/github/set.sh
@@ -5150,6 +5211,9 @@ alias pg_ctl="pg_ctl-18"
 alias createdb="createdb-18"
 alias createuser="createuser-18"
 
+
+# alias docker="/Applications/Docker.app/Contents/Resources/bin/docker"
+
 #----------------------------------------------------------------------------------------------------------------------
 ## aliases cannot have arguments, using functions instead
 setopt complete_aliases
@@ -5176,6 +5240,7 @@ sys_zsh_functions_list
 sys_zsh_functions_load
 
 export PATH="$PATH:$HOME/.docker/bin/"
+export PATH="$PATH:/opt/podman/bin"
 
 # Amazon Q post block. Keep at the bottom of this file.
 [[ -f "${HOME}/Library/Application Support/amazon-q/shell/zshrc.post.zsh" ]] && builtin source "${HOME}/Library/Application Support/amazon-q/shell/zshrc.post.zsh"
@@ -5194,6 +5259,17 @@ export PATH="$HOME/.codeium/windsurf/bin:$PATH"
 export PATH="$HOME/.antigravity/antigravity/bin:$PATH"
 
 # Added by LM Studio CLI (lms)
-export PATH="$PATH:/Users/moljac/.lmstudio/bin"
+export PATH="$PATH:$HOME/.lmstudio/bin"
 # End of LM Studio CLI section
 
+# The following lines have been added by Docker Desktop to enable Docker CLI completions.
+fpath=($HOME/.docker/completions $fpath)
+autoload -Uz compinit
+compinit
+# End of Docker CLI completions
+
+# The following lines have been added by Docker Desktop to enable Docker CLI completions.
+fpath=(/Users/moljac/.docker/completions $fpath)
+autoload -Uz compinit
+compinit
+# End of Docker CLI completions
