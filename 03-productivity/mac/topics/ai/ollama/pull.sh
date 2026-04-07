@@ -7,8 +7,12 @@
 
 export MODELS=\
 "
-mistral-nemo:12b
+gemma4:31b
+gemma4:e4b
 translategemma:27b
+embeddinggemma:300m
+
+mistral-nemo:12b
 
 # qwen3.5:122b
 # deepseek-r1:32b
