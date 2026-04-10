@@ -119,33 +119,34 @@ export HOMEBREW_EDITOR="/opt/homebrew/bin/code"
 #----------------------------------------------------------------------------------------------------------------------
 # https://developer.android.com/tools/variables#set
 
-export PATH=$PATH:/opt/homebrew/bin:/opt/homebrew/sbin:
-export PATH=$PATH:/usr/local/bin/:/usr/local/sbin/
-export PATH=$PATH:/usr/bin/:/bin/:/usr/sbin/:/sbin/
-export PATH=$PATH:/usr/local/share/dotnet:$HOME/.dotnet/tools/
-export PATH=$PATH:/usr/local/bin/pwsh/
+export PATH="$PATH:/opt/homebrew/bin:/opt/homebrew/sbin:"
+export PATH="$PATH:/usr/local/bin/:/usr/local/sbin/"
+export PATH="$PATH:/usr/bin/:/bin/:/usr/sbin/:/sbin/"
+export PATH="$PATH:/usr/local/share/dotnet:$HOME/.dotnet/tools/"
+export PATH="$PATH:/usr/local/bin/pwsh/"
 # https://www.mono-project.com/docs/about-mono/supported-platforms/macos/
-export PATH=$PATH:/Library/Frameworks/Mono.framework/Versions/Current/bin
-export PATH=$PATH:$ANDROID_HOME/bin/
-export PATH=$PATH:$ANDROID_HOME/tools/
-export PATH=$PATH:$ANDROID_HOME/tools/bin/
-export PATH=$PATH:$ANDROID_HOME/platform-tool/
-export PATH=$PATH:$ANDROID_HOME/platform-tools/
+export PATH="$PATH:/Library/Frameworks/Mono.framework/Versions/Current/bin"
+export PATH="$PATH:$ANDROID_HOME/bin/"
+export PATH="$PATH:$ANDROID_HOME/tools/"
+export PATH="$PATH:$ANDROID_HOME/tools/bin/"
+export PATH="$PATH:$ANDROID_HOME/platform-tool/"
+export PATH="$PATH:$ANDROID_HOME/platform-tools/"
 # ANDROID_PATH_CUMULATIVE
-export PATH=$PATH:$ANDROID_HOME/cmdline-tools/latest/bin/
-export PATH=$PATH:$ANDROID_HOME/bundle-tool/
-export PATH=$PATH:$ANDROID_SDK_ROOT/
-export PATH=$PATH:$JAVA_HOME/
-export PATH=$PATH:$JAVA_HOME/bin/
-export PATH=$PATH:"/Applications/Visual Studio Code.app/Contents/Resources/app/bin/"
+export PATH="$PATH:$ANDROID_HOME/cmdline-tools/latest/bin/"
+export PATH="$PATH:$ANDROID_HOME/bundle-tool/"
+export PATH="$PATH:$ANDROID_SDK_ROOT/"
+export PATH="$PATH:$JAVA_HOME/"
+export PATH="$PATH:$JAVA_HOME/bin/"
+export PATH="$PATH:/Applications/Visual Studio Code.app/Contents/Resources/app/bin/"
 
 
 
 # GNU
-export PATH=$PATH:"/opt/homebrew/opt/gnu-sed/libexec/gnubin"
+export PATH="$PATH:/opt/homebrew/opt/gnu-sed/libexec/gnubin"
 
 #----------------------------------------------------------------------------------------------------------------------
-export PATH=$PATH:$HOME/.dotnet/tools/
+# ~/.dotnet/tools
+export PATH="$PATH:$HOME/.dotnet/tools/"
 
 # Added by LM Studio CLI (lms)
 export PATH="$PATH:$HOME/.lmstudio/bin"
@@ -166,6 +167,10 @@ export PATH="$HOME/bat/dotnet-csharp/:$PATH"
 export ROOT_PROJECTS=/Users/Shared/Projects/d/hw
 export ROOT_PROJECTS_NOTES=$ROOT_PROJECTS/HolisticWare.WebSite.Notes/
 
+export PATH_DOTNET_HOMEBREW_BINARY=/opt/homebrew/bin/dotnet
+export PATH_DOTNET_PKG_BINARY=/usr/local/share/dotnet/dotnet
+export PATH_DOTNET_HOMEBREW_FOLDER=/opt/homebrew/bin/
+export PATH_DOTNET_PKG_FOLDER=/usr/local/share/dotnet/
 
 
 #   stop
@@ -456,7 +461,8 @@ function sys_update ()
   echo \
   "
   sys_brew_clean_update
-  source 03-productivity/mac/ai/ollama/update.sh
+  source $HOME/bat/03-productivity/mac/topics/ai/ollama/pull.sh
+  source $HOME/bat/03-productivity/mac/topics/ai/ollama/update.sh
   softwareupdate -l
   softwareupdate --all --install --force
   mas update
@@ -465,7 +471,8 @@ function sys_update ()
   dev_dotnet_tools_reinstall
   "
   sys_brew_clean_update
-  source 03-productivity/mac/ai/ollama/update.sh
+  source $HOME/bat/03-productivity/mac/topics/ai/ollama/pull.sh
+  source $HOME/bat/03-productivity/mac/topics/ai/ollama/update.sh
   softwareupdate -l
   softwareupdate --all --install --force
   mas update
@@ -728,19 +735,20 @@ function sys_term_fingerprint()
   echo "--------------------------------------------------------------------------------------------------------------"
   echo \
   "
-  echo "auth       sufficient     pam_tid.so" | cat - /etc/pam.d/sudo > /tmp/out \\
-  && \
-  sudo mv /tmp/out /etc/pam.d/sudo
+  if ! grep -q pam_tid.so /etc/pam.d/sudo;
+  then
+    echo "auth       sufficient     pam_tid.so" | cat - /etc/pam.d/sudo > /tmp/out
+    sudo mv /tmp/out /etc/pam.d/sudo
+  fi
 
   cat /etc/pam.d/sudo
   "
 
-  grep -q pam_tid.so /etc/pam.d/sudo \
-  || \
-  echo "auth       sufficient     pam_tid.so" | cat - /etc/pam.d/sudo > /tmp/out \
-  && \
-  sudo mv /tmp/out /etc/pam.d/sudo
-
+  if ! grep -q pam_tid.so /etc/pam.d/sudo;
+  then
+    echo "auth       sufficient     pam_tid.so" | cat - /etc/pam.d/sudo > /tmp/out
+    sudo mv /tmp/out /etc/pam.d/sudo
+  fi
 
   cat /etc/pam.d/sudo
 };
@@ -1099,7 +1107,7 @@ function dev_ai_ollama_update()
 }
 
 
-function dev_ai_build_llama.cpp()
+function dev_ai_build_llama_cpp()
 {
   echo "=============================================================================================================="
   echo \
@@ -4606,6 +4614,26 @@ function work_on_holisticware_business()
 
 };
 
+function work_on_sai()
+{
+  echo "--------------------------------------------------------------------------------------------------------------"
+  echo \
+  "
+  source \\
+    $HOME/bat.private/mac/mcsai/work_on_sai.sh
+  "
+  source \
+    $HOME/bat.private/mac/mcsai/work_on_sai.sh
+
+  echo \
+  "
+  source \\
+    $HOME/bat.private/mac/mcsai/work_on_sai.sh
+  "
+  echo "--------------------------------------------------------------------------------------------------------------"
+
+};
+
 function work_on_moljac_holisticware()
 {
   echo "--------------------------------------------------------------------------------------------------------------"
@@ -4950,15 +4978,16 @@ function work_on_moljac_private()
   echo BOXNAME=$BOXNAME
 
   source \
-    $HOME/bat/03-productivity/mac/finder-open-new-window.scpt.sh
+    $HOME/bat/03-productivity/mac/private/moljac/judo/open.sh
+  sleep 2
 
+  source \
+    $HOME/bat/03-productivity/mac/finder-open-new-window.scpt.sh
   source \
     $HOME/bat/03-productivity/mac/$BOXNAME/finder-window-add-tabs-09-private-e-external.scpt.sh
   source \
     $HOME/bat.private/03-productivity/mac/$BOXNAME/finder-window-add-tabs-09-private-e-external.scpt.sh
 
-  source \
-    $HOME/bat/03-productivity/mac/private/moljac/judo/open.sh
 };
 
 function work_on_moljac_private_egov()
