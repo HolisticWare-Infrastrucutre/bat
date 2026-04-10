@@ -10,6 +10,26 @@ source $HOME/bat/01-system-integration/mac/01-uninstall-clean-remove-nuke/nuget.
 export TOOLZ=\
 "
 dotnet-suggest
+# analysis debugging fixing
+dotnet-inspect
+# Executing/Running
+dotnet-mono
+dotnet-watch
+dotnet-execute
+# Package management
+dotnet-depends
+dotnet-outdated-tool
+nukeeper
+Snitch
+nupkg-validator
+DependenSee
+dotnet-validate
+dotnet-retire
+dotnet-search
+dotnet-dependency-analyzer
+Uno.PackageDiff
+dotnet-updatr
+# installation management
 boots
 git-credential-manager
 dotnet-gcm
@@ -83,23 +103,6 @@ Corvus.Json.JsonSchema.TypeGeneratorTool
 docfx
 # templating
 dotnet-t4
-# Executing/Running
-dotnet-mono
-dotnet-watch
-dotnet-execute
-# Package management
-dotnet-depends
-dotnet-outdated-tool
-nukeeper
-Snitch
-nupkg-validator
-DependenSee
-dotnet-validate
-dotnet-retire
-dotnet-search
-dotnet-dependency-analyzer
-Uno.PackageDiff
-dotnet-updatr
 # Project Management MSBuild
 try-convert
 dotnet-references
