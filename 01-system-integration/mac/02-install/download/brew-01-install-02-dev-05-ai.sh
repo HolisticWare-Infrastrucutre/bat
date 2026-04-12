@@ -20,6 +20,32 @@ brew \
             llm \
 
 
+# AI providers/runners/backends
+brew \
+    $ACTION_VERB \
+        --cask \
+            ollamac \
+            ollama \
+            lm-studio \
+            backyard-ai \
+            msty \
+            jan \
+            anythingllm \
+            sanctum \
+            gpt4all \
+            chatbox \
+            chatgpt \
+
+# AI
+# LLM server built on MLX
+# https://osaurus.ai/
+brew uninstall --cask --force osaurus
+brew cleanup
+brew install --cask osaurus
+
+brew install osaurus
+
+
 brew \
     $ACTION_VERB \
         --formula \
@@ -137,22 +163,7 @@ sudo sysctl iogpu.wired_limit_mb=180000
 # The M2 Max, M3 Max, M4 Max, M1 Ultra, M2 Ultra, M3 Ultra, etc. chips can run both models at full context:
 
 
-brew \
-    $ACTION_VERB \
-        --cask \
-            ollamac \
-            ollama \
-            lm-studio \
-            backyard-ai \
-            msty \
-            jan \
-            anythingllm \
-            sanctum \
-            gpt4all \
-            chatbox \
-            chatgpt \
-
-
+# harnesses
 # The intelligent terminal.
 brew \
     $ACTION_VERB \
@@ -179,7 +190,6 @@ brew \
 # claude code
 npm \
     $ACTION_VERB \
-        --formula \
         -g \
             @anthropic-ai/claude-code \
             @musistudio/claude-code-router \
@@ -191,12 +201,11 @@ brew \
     $ACTION_VERB \
         --formula \
             tesseract \
+            tesseract-lang \
             ocrmypdf \
             poppler \
             libmagic \
             pandoc
-
-brew install libreoffice
 
 # textract
 brew \
@@ -205,14 +214,6 @@ brew \
             xquartz
 
 
-brew \
-    $ACTION_VERB \
-        --formula \
-            poppler \
-            antiword \
-            unrtf \
-            tesseract \
-            swig
 
 # kreuzberg
 brew \
@@ -221,6 +222,23 @@ brew \
             onnxruntime \
             tesseract \
             libreoffice \
+
+
+
+
+brew \
+    $ACTION_VERB \
+        --formula \
+            poppler \
+            antiword \
+            unrtf \
+            swig
+
+brew \
+    $ACTION_VERB \
+        --formula \
+            libreoffice
+
 
 
 # in editors
