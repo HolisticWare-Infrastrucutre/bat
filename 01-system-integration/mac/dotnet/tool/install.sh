@@ -196,6 +196,8 @@ WildernessLabs.Meadow.CLI
 nanoclr
 # AI
 Microsoft.Extensions.AI.Evaluation.Console
+# AI.GenAI
+RalphPilot
 "
 
 export TOOLZ_PREVIEWS=\
