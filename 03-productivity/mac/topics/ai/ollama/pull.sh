@@ -1,5 +1,8 @@
 #!/bin/bash
 
+ollama serve &
+sleep 2
+
 # ollama launch claude --model qwen3-coder-next
 # ollama launch codex --model qwen3-coder-next
 # ollama launch opencode --model qwen3-coder-next
