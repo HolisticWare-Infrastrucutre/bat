@@ -3,8 +3,6 @@
   // https://opencode.ai/docs/config/
   // https://github.com/search?q=path%3A**%2Fopencode.jsonc&type=code
   "$schema": "https://opencode.ai/config.json",
-  // Theme configuration
-  "theme": "opencode",
   "autoupdate": true,
   "provider":
   {
@@ -300,6 +298,24 @@
         "ibm/granite3.3:8b":
         {
           "name": "thinking+tools ibm/granite3.3:8b",
+          "limit": 
+          { 
+            "context": 128000,
+            "output": 32000
+          },
+        },
+        "gemma4:31b":
+        {
+          "name": "completion+vision+tools+thinking gemma4:31b",
+          "limit": 
+          { 
+            "context": 128000,
+            "output": 32000
+          },
+        },
+        "gemma4:e4b":
+        {
+          "name": "completion+vision+audio+tools+thinking gemma4:31b",
           "limit": 
           { 
             "context": 128000,
