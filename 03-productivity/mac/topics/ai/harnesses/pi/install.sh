@@ -1,3 +1,6 @@
+#!/bin/bash
 
-
-npm install -g @mariozechner/pi-coding-agent
+npm \
+    install \
+        -g \
+            @mariozechner/pi-coding-agent
