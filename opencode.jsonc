@@ -322,6 +322,15 @@
             "output": 32000
           },
         },
+        "qwen3.6:35b-a3b":
+        {
+          "name": "completion+vision+tools+thinking qwen3.6:35b-a3b",
+          "limit": 
+          { 
+            "context": 128000,
+            "output": 32000
+          },
+        },
       }
     },
     "LM-Studio":
