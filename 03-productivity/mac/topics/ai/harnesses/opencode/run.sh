@@ -10,13 +10,8 @@ fi
 
 echo \
 "
-export ANTHROPIC_AUTH_TOKEN=ollama
-export ANTHROPIC_API_KEY=""
-export ANTHROPIC_BASE_URL=http://localhost:11434
-claude --model $MODEL
+opencode --model $MODEL
 "
 
-export ANTHROPIC_AUTH_TOKEN=ollama
-export ANTHROPIC_API_KEY=""
-export ANTHROPIC_BASE_URL=http://localhost:11434
-claude --model $MODEL
+export MODEL=gemma4:31b
+opencode --model $MODEL
