@@ -1,0 +1,51 @@
+#!/usr/bin/env zsh?
+
+  md prompt/
+  md prompt/cloud/
+  md prompt/cloud/chatgpt/
+  md prompt/cloud/claude/
+  md prompt/cloud/copilot/
+  md prompt/cloud/gemini/
+  md prompt/cloud/perplexity/
+  md prompt/cloud/meta-ai/
+  md prompt/cloud/mistral/
+  md prompt/cloud/deepseek/
+  md prompt/cloud/grok/
+  md prompt/cloud/groq/
+  md prompt/local/deepseek-coder-v2--236b/
+  md prompt/local/deepseek-coder-v2/
+  md prompt/local/deepseek-coder/
+  md prompt/local/deepseek-coder--36b/
+  md prompt/local/llama-3.3/
+  md prompt/local/llama-3.2-vision/
+  md prompt/local/qwq/
+  md prompt/local/phi4/
+  md prompt/local/marco-o1/
+  md prompt/local/qwen3--30b/
+  md prompt/local/qwen3--8b/
+  md prompt/local/qwen3--4b/
+
+
+  touch prompt/cloud/readme.md
+  touch prompt/cloud/chatgpt/readme.md
+  touch prompt/cloud/claude/readme.md
+  touch prompt/cloud/copilot/readme.md
+  touch prompt/cloud/gemini/readme.md
+  touch prompt/cloud/perplexity/readme.md
+  touch prompt/cloud/meta-ai/readme.md
+  touch prompt/cloud/mistral/readme.md
+  touch prompt/cloud/deepseek/readme.md
+  touch prompt/cloud/grok/readme.md
+  touch prompt/cloud/groq/readme.md
+  touch prompt/local/deepseek-coder-v2--236b/readme.md
+  touch prompt/local/deepseek-coder-v2/readme.md
+  touch prompt/local/deepseek-coder/readme.md
+  touch prompt/local/deepseek-coder--36b/readme.md
+  touch prompt/local/llama-3.3/readme.md
+  touch prompt/local/llama-3.2-vision/readme.md
+  touch prompt/local/qwq/readme.md
+  touch prompt/local/phi4/readme.md
+  touch prompt/local/marco-o1/readme.md
+  touch prompt/local/qwen3--30b/readme.md
+  touch prompt/local/qwen3--8b/readme.md
+  touch prompt/local/qwen3--4b/readme.md
