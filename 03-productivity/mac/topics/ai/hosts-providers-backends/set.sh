@@ -1,0 +1,6 @@
+#!/bin/bash
+
+export OLLAMA_PORT=11434
+export LMS_LM_STUDIO_PORT=11444
+export LLAMA_CPP_PORT=11454
+export IK_LLAMA_CPP_PORT=11464
