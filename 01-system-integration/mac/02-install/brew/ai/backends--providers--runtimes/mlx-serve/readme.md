@@ -12,6 +12,8 @@ https://github.com/ddalcu/mlx-serve
 
 ```shell
 brew tap ddalcu/mlx-serve https://github.com/ddalcu/mlx-serve
-brew install --cask mlx-core   # GUI menu bar app
-brew install mlx-serve          # CLI server only
+# GUI menu bar app
+brew install --cask mlx-core 
+# CLI server only
+brew install mlx-serve          
 ```
