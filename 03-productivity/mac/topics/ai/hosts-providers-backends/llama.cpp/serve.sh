@@ -7,6 +7,29 @@ export LLAMA_CPP_MODEL_PATH="$HOME/.lmstudio/models/unsloth/Qwen3.5-35B-A3B-Expe
 export LLAMA_CPP_SERVER_PORT=11454
 export LLAMA_CPP=$HOME/Downloads/llama.cpp/macosx/llama.cpp-master/llama.cpp-master/build-macosx/bin/llama-server
 
+echo \
+"
+========================================================================================================================
+$LLAMA_CPP \
+    -ngl 80 \
+    --min-p 0 \
+    --repeat-penalty 1.05 \
+    --timeout 300 \
+    --flash-attn on \
+    --jinja \
+    --temp 0.7 \
+    --top-p 0.8 \
+    --top-k 20 \
+    --ctx-size 32000 \
+    --port $LLAMA_CPP_SERVER_PORT \
+    --alias mixtral-8x7b-instruct \
+    --model $LLAMA_CPP_MODEL_PATH
+
+export LLAMA_CPP_SERVER_PORT=$LLAMA_CPP_SERVER_PORT
+export LLAMA_CPP=$LLAMA_CPP
+========================================================================================================================
+"
+
 $LLAMA_CPP \
     -ngl 80 \
     --min-p 0 \
