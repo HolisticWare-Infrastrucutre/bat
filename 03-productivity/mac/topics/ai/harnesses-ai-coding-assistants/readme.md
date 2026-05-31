@@ -8,7 +8,10 @@
 *   opencode
 
 
-```bash
+*   https://medium.com/@luongnv89/how-to-run-claude-code-codex-with-local-models-via-llamacpp-ollama-lmstudio-and-vllm-2026-7d00ba7e63a4
+
+
+```shell
 # pi -- top harness on this benchmark (76.9% on Q4 sweep)
 # Non-interactive: -p reads the prompt and exits; -nc/-ns/-ne/-np disable AGENTS.md /
 # skills / extensions / prompt-template discovery (fairness in the sweep)
