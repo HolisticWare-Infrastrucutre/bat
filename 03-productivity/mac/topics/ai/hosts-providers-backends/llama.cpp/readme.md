@@ -4,7 +4,9 @@
 
 *   https://dev.to/avatsaev/pro-developers-guide-to-local-llms-with-llamacpp-qwen-coder-qwencode-on-linux-15h
 
-```bash
+*   https://www.reddit.com/r/LocalLLaMA/comments/1jxbba9/you_can_now_use_github_copilot_with_native/
+
+```shell
 # Qwen3.6-27B (UD-Q4_K_XL) -- top combo with `pi`: 16/16 at ~207 s/task
 llama-server \
     -hf unsloth/Qwen3.6-27B-GGUF:UD-Q4_K_XL \
@@ -18,7 +20,7 @@ llama-server \
     --ctx-size 131072 \
 ```
 
-```bash
+```shell
 # gpt-oss-120b (MXFP4, 32k ctx) -- fastest 15/16 combo with `pi` (~34 s/task)
 llama-server \
     -hf ggml-org/gpt-oss-120b-GGUF \
@@ -36,7 +38,7 @@ llama-server \
 ## Original
 
 
-```bash
+```shell
 # Qwen3.6-27B (UD-Q4_K_XL) -- top combo with `pi`: 16/16 at ~207 s/task
 llama-server -hf unsloth/Qwen3.6-27B-GGUF:UD-Q4_K_XL --alias bench-model --port 8001 --host 127.0.0.1 --ctx-size 131072 --flash-attn on --cache-type-k q8_0 --cache-type-v q8_0 --jinja -np 1
 
