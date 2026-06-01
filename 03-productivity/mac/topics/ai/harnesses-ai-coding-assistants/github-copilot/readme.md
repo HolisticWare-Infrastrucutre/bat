@@ -10,3 +10,5 @@ copilot
 
 copilot --model Qwen3.5-35B
 ```
+
+copilot help providers
