@@ -28,11 +28,12 @@ brew services start omlx
 brew services stop omlx
 ```
 
+```
 brew services start omlx    # Start (auto-restarts on crash)
 brew services stop omlx     # Stop
 brew services restart omlx  # Restart
 brew services info omlx     # Check status
-
+```
 
 ```shell
 # Optional: MCP (Model Context Protocol) support
