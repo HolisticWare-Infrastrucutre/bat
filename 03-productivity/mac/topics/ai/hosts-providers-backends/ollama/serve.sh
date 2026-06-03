@@ -5,9 +5,12 @@ export PROMPT="Provide information about model run (type, arch, context length, 
 # deepseek-coder:33b
 
 OLLAMA_CONTEXT_LENGTH=256000
-ollama \
-    serve \
-        $MODEL
+
+ollama serve &
+sleep 5
+
+ollama run $MODEL
+
 ollama ps
 
 # ollama serve --help
