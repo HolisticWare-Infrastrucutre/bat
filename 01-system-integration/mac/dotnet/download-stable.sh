@@ -7,7 +7,7 @@
 #   https://aka.ms/dotnet/10.0/dotnet-sdk-osx-arm64.pkg
 
 # wget \
-#     --output-document $HOME/Downloads/dotnet/a.pkg \
+#     --output-document $FOLDER/a.pkg \
 #         https://dotnet.microsoft.com/en-us/download/dotnet/thank-you/sdk-10.0.100-preview.7-macos-arm64-installer
 
 export OS=osx
@@ -26,6 +26,8 @@ export VERSIONS=\
 9.0.3xx
 10.0
 10.0.1xx
+10.0.2xx
+10.0.3xx
 "
 export PRODUCTS=\
 "
@@ -43,7 +45,8 @@ else
   export ARCH=x86
 fi
 
-md $HOME/Downloads/dotnet/
+FOLDER=$HOME/Downloads/HolisticWare/dotnet/
+md $FOLDER
 
 IFS=$'\n'
 # ZSH does not split words by default (like other shells):
@@ -56,7 +59,7 @@ do
         continue
     fi
 
-    md $HOME/Downloads/dotnet/$VERSION/$OS/$ARCH/
+    md $FOLDER/$VERSION/$OS/$ARCH/
 
     for PRODUCT in $PRODUCTS
     do
@@ -70,17 +73,17 @@ do
 
         curl \
             -v -L -C - \
-            --output-dir $HOME/Downloads/dotnet/$VERSION/$OS/$ARCH/ \
+            --output-dir $FOLDER/$VERSION/$OS/$ARCH/ \
         -O https://aka.ms/dotnet/$VERSION/dotnet-$PRODUCT-$OS-$ARCH.$EXT
 
         curl \
             -v -L -C - \
-            --output-dir $HOME/Downloads/dotnet/$VERSION/$OS/$ARCH/daily/ \
+            --output-dir $FOLDER/$VERSION/$OS/$ARCH/daily/ \
         -O https://aka.ms/dotnet/$VERSION/daily/dotnet-$PRODUCT-$OS-$ARCH.$EXT
 
         curl \
             -v -L -C - \
-            --output-dir $HOME/Downloads/dotnet/$VERSION/$OS/$ARCH/preview/ \
+            --output-dir $FOLDER/$VERSION/$OS/$ARCH/preview/ \
         -O https://aka.ms/dotnet/$VERSION/preview/dotnet-$PRODUCT-$OS-$ARCH.$EXT
 
     done
