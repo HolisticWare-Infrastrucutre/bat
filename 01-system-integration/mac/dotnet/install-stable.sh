@@ -18,6 +18,8 @@ export VERSIONS=\
 9.0.3xx
 10.0
 10.0.1xx
+10.0.2xx
+10.0.3xx
 "
 export PRODUCTS=\
 "
@@ -35,6 +37,12 @@ else
   export ARCH=x86
 fi
 
+FOLDER=$HOME/Downloads/HolisticWare/dotnet/
+md $FOLDER
+
+IFS=$'\n'
+# ZSH does not split words by default (like other shells):
+setopt sh_word_split
 
 for VERSION in $VERSIONS
 do
@@ -45,7 +53,7 @@ do
         continue
     fi
 
-    md $HOME/Downloads/dotnet/$VERSION/$OS/$ARCH/
+    md $FOLDER/$VERSION/$OS/$ARCH/
 
     for PRODUCT in $PRODUCTS
     do
@@ -63,7 +71,7 @@ do
 
         sudo \
             installer \
-                -pkg $HOME/Downloads/dotnet/$VERSION/$OS/$ARCH/dotnet-$PRODUCT-$OS-$ARCH.$EXT \
+                -pkg $FOLDER/$VERSION/$OS/$ARCH/dotnet-$PRODUCT-$OS-$ARCH.$EXT \
                 -target /
 
 
