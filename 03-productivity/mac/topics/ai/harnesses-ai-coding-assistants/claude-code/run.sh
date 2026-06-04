@@ -13,7 +13,7 @@ export ANTHROPIC_BASE_URL=http://localhost:11434
 claude --model qwen3-coder-next:q8_0  
 "
 
-export ANTHROPIC_AUTH_TOKEN=ollama
+export ANTHROPIC_AUTH_TOKEN=llama.cpp
 export ANTHROPIC_API_KEY=""
-export ANTHROPIC_BASE_URL=http://localhost:11434
-claude --model qwen3-coder-next:q8_0  
+export ANTHROPIC_BASE_URL=http://localhost:11454
+claude --model Qwen3.5-35B-A3B  
