@@ -13,7 +13,6 @@ sudo \
         workload \
             install \
                 android \
-                android-36 \
                 ios \
                 maccatalyst \
                 tvos \
@@ -30,13 +29,23 @@ sudo \
                 wasm-tools \
                 wasm-experimental \
                 wasi-experimental \
-                aspire \
-
+ 
+ 
+ 
+#                aspire \
+#                android-36 \
 #                wasm-tools-net8 \
 #                wasm-experimental-net8 \
 #                android-net8 \
 #                wasm-tools-net9 \
 #                wasm-experimental-net9 \
+
+sudo \
+    dotnet \
+        workload \
+            list
+
+dotnet --info
 
 sudo \
     dotnet \
