@@ -13,5 +13,5 @@ echo \
 opencode --model $MODEL
 "
 
-export MODEL=gemma4:31b
+export MODEL=Qwen3.6-35B-A3B
 opencode --model $MODEL
