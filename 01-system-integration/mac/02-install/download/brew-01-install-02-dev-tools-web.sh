@@ -3,8 +3,8 @@
 #!/bin/bash
 
 # Action/Verb
-# install / uninstall / reinstall
-export ACTION_VERB=install
+# $ACTION_VERB / uninstall / reinstall
+export ACTION_VERB=$ACTION_VERB
 
 # https://gist.github.com/rcugut/c7abd2a425bb65da3c61d8341cd4b02d
 m -rf /usr/local/lib/node_modules
@@ -19,7 +19,7 @@ brew prune
 brew update
 
 brew \
-    install \
+    $ACTION_VERB \
         --formula \
             node \
             npm-check-updates \
@@ -30,16 +30,21 @@ brew \
     tap \
         oven-sh/bun
 brew \
-    install \
+    $ACTION_VERB \
         --formula \
             bun \
 
 # brew \
-#     install \
+#     $ACTION_VERB \
 #         --formula \
 #             oven-sh/bun/bun
 
 npm \
-    install \
+    $ACTION_VERB \
         -g \
             npx
+
+brew \
+    $ACTION_VERB \
+        --formula \
+            kiota
