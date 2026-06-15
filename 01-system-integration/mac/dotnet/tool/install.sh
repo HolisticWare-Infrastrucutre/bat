@@ -44,6 +44,7 @@ dotnet-user-secrets
 Redth.Net.Maui.Check
 Uno.Check
 XamlStyler.Console
+Sharpie.Bind.Tool
 # Debugging
 SourceLink
 # Binaries Analysis
@@ -157,6 +158,7 @@ microsoft.tye
 # Web
 Microsoft.dotnet-httprepl
 Microsoft.dotnet-openapi
+Microsoft.OpenApi.Kiota
 wyam.tool
 dotnet-vs
 dotnet-ignore
