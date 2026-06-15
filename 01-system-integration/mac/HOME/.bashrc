@@ -1229,6 +1229,17 @@ function dev_ai_build_llama_cpp()
   source $HOME/bat/01-system-integration/mac/02-install/ai/ik_llama.cpp/macosx/build.sh
 }
 
+function dev_ai_harnesses_ai_coding_assistants_update_upgrade() 
+{
+  echo "--------------------------------------------------------------------------------------------------------------"
+  echo \
+  "
+  source $HOME/bat/03-productivity/mac/topics/ai/harnesses-ai-coding-assistants/update-upgrade.sh
+  "
+  source $HOME/bat/03-productivity/mac/topics/ai/harnesses-ai-coding-assistants/update-upgrade.sh
+}
+
+
 
 #======================================================================================================================
 #   stop
@@ -2182,6 +2193,16 @@ function dev_dotnet_installation_reinstall_full()
 
   dev_dotnet_installation_test_standard
   dev_dotnet_installation_test_extras
+}
+
+function dev_dotnet_installation_download_install_prepare()
+{
+  code -n \
+    $HOME/bat/01-system-integration/mac/dotnet/download-stable.sh \
+    $HOME/bat/01-system-integration/mac/dotnet/install-stable.sh \
+    $HOME/bat/01-system-integration/mac/dotnet/download-preview.sh \
+    $HOME/bat/01-system-integration/mac/dotnet/install-preview.sh \
+
 }
 
 function dev_dotnet_installation_download_install_stable()
