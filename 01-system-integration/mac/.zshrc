@@ -40,6 +40,26 @@ function run()
   echo "▶ $*"; "$@"; 
 }
 
+function echo_line_dotted()
+{
+	for i in {1..120}; do echo -n "."; done
+}
+
+function echo_line_hyphen_minus()
+{
+	for i in {1..120}; do echo -n "-"; done
+}
+
+function echo_line_equals()
+{
+	for i in {1..120}; do echo -n "="; done
+}
+
+function echo_line_number_sign_hash()
+{
+	for i in {1..120}; do echo -n "#"; done
+}
+
 #######################################################################################################################
 # PATH
 #   start
@@ -119,10 +139,10 @@ export HOMEBREW_EDITOR="/opt/homebrew/bin/code"
 #----------------------------------------------------------------------------------------------------------------------
 # https://developer.android.com/tools/variables#set
 
-export PATH="$PATH:/opt/homebrew/bin:/opt/homebrew/sbin:"
 export PATH="$PATH:/usr/local/bin/:/usr/local/sbin/"
+export PATH="$PATH:/opt/homebrew/bin/:/opt/homebrew/sbin/"
 export PATH="$PATH:/usr/bin/:/bin/:/usr/sbin/:/sbin/"
-export PATH="$PATH:/usr/local/share/dotnet:$HOME/.dotnet/tools/"
+export PATH="$PATH:/usr/local/share/dotnet/:$HOME/.dotnet/tools/"
 export PATH="$PATH:/usr/local/bin/pwsh/"
 # https://www.mono-project.com/docs/about-mono/supported-platforms/macos/
 export PATH="$PATH:/Library/Frameworks/Mono.framework/Versions/Current/bin"
@@ -144,33 +164,67 @@ export PATH="$PATH:/Applications/Visual Studio Code.app/Contents/Resources/app/b
 # GNU
 export PATH="$PATH:/opt/homebrew/opt/gnu-sed/libexec/gnubin"
 
-#----------------------------------------------------------------------------------------------------------------------
-# ~/.dotnet/tools
-export PATH="$PATH:$HOME/.dotnet/tools/"
 
 # Added by LM Studio CLI (lms)
 export PATH="$PATH:$HOME/.lmstudio/bin"
 # End of LM Studio CLI section
 
 # Added by Windsurf
-export PATH="$HOME/.codeium/windsurf/bin:$PATH"
+export PATH="$PATH:$HOME/.codeium/windsurf/bin/"
 
 # Added by get-aspire-cli.sh
-export PATH="$HOME/.aspire/bin:$PATH"
+export PATH="$PATH:$HOME/.aspire/bin/"
 
-# Added by moljac manually
-export PATH="$HOME/bin/llamafile/bin:$PATH"
-
-
-export PATH="$HOME/bat/dotnet-csharp/:$PATH"
 
 export ROOT_PROJECTS=/Users/Shared/Projects/d/hw
 export ROOT_PROJECTS_NOTES=$ROOT_PROJECTS/HolisticWare.WebSite.Notes/
+
+
+export PATH="$PATH:$HOME/.docker/bin/"
+export PATH="$PATH:/opt/podman/bin"
+
+# Added by Windsurf - Next
+export PATH="$PATH:$HOME/.codeium/windsurf/bin/"
+
+# Added by Antigravity
+export PATH="$PATH:$HOME/.antigravity/antigravity/bin/"
+
+# Added by LM Studio CLI (lms)
+export PATH="$PATH:$HOME/.lmstudio/bin/"
+# End of LM Studio CLI section
+
+# The following lines have been added by Docker Desktop to enable Docker CLI completions.
+fpath=($HOME/.docker/completions $fpath)
+autoload -Uz compinit
+compinit
+# End of Docker CLI completions
+
+# The following lines have been added by Docker Desktop to enable Docker CLI completions.
+fpath=($HOME/.docker/completions $fpath)
+autoload -Uz compinit
+compinit
+# End of Docker CLI completions
+
+
+
+
+# Added by moljac manually
+export PATH="$PATH:$HOME/bin/llamafile/bin/"
+
+export PATH="$PATH:$HOME/bat/dotnet-csharp/"
+
+export PATH="$PATH:/Applications/Docker.app/Contents/Resources/bin/"
+
+#----------------------------------------------------------------------------------------------------------------------
+# ~/.dotnet/tools
+export PATH="$PATH:$HOME/.dotnet/tools/"
 
 export PATH_DOTNET_HOMEBREW_BINARY=/opt/homebrew/bin/dotnet
 export PATH_DOTNET_PKG_BINARY=/usr/local/share/dotnet/dotnet
 export PATH_DOTNET_HOMEBREW_FOLDER=/opt/homebrew/bin/
 export PATH_DOTNET_PKG_FOLDER=/usr/local/share/dotnet/
+
+
 
 
 #   stop
@@ -183,9 +237,9 @@ export PATH_DOTNET_PKG_FOLDER=/usr/local/share/dotnet/
 #   start
 function cdh()
 {
-  echo "--------------------------------------------------------------------------------------------------------------"
   echo \
   "
+  ----------------------------------------------------------------------------------------------------------------------
   cd here
   cd $(pwd)
   "
@@ -513,6 +567,40 @@ function sys_test_editors ()
   kiro
 }
 
+function sys_dotnet_brew ()
+{
+  # /opt/homebrew/bin/dotnet
+  # /opt/homebrew/bin/dotnet -> ../Cellar/dotnet/10.0.108/bin/dotnet
+
+  # dev_dotnet_installation_nuke
+  sudo \
+    rm \
+      /usr/local/bin/dotnet
+
+  which dotnet
+  dotnet --list-sdks
+  dotnet --list-runtimes
+}
+
+function sys_dotnet_packages_stable ()
+{
+  dev_dotnet_installation_download_install_stable
+
+  sudo \
+    ln -s \
+      /usr/local/share/dotnet/dotnet \
+      /usr/local/bin/dotnet
+
+  ls -al /usr/local/bin/dotnet
+
+  which dotnet
+  dotnet --list-sdks
+  dotnet --list-runtimes
+
+}
+
+
+
 #   stop
 # sys
 #######################################################################################################################
@@ -821,7 +909,7 @@ function sys_brew_repair_installation()
 {
     sys_term_clean_screen_and_buffer
 
-    echo "export PATH=$PATH:/opt/homebrew/bin/:/opt/homebrew/sbin/:$PATH" >> $HOME/.zshrc
+    echo "export PATH=$PATH:/opt/homebrew/bin/:/opt/homebrew/sbin/" >> $HOME/.zshrc
     /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
     brew doctor
     eval $(/opt/homebrew/bin/brew shellenv)
@@ -1073,45 +1161,59 @@ function sys_audio_restart_launchctl_stop()
 
 # stop
 #   audio
-# sys
+#   sys
 #======================================================================================================================
 
 
 #======================================================================================================================
 # dev
-#   ai
+#   ai privider/host/backend
 #   start
 
-function dev_ai()
+function dev_ai_provider_host_backend_ollama_launch()
 {
-  echo "=============================================================================================================="
-  echo \
-  "
-  dev_ai_launch
-  "
-  dev_ai_launch
+  osascript -e \
+  '
+    tell app "Terminal"
+      do script "source $HOME/bat/03-productivity/mac/topics/ai/hosts-providers-backends/ollama/serve.sh"
+    end tell
+  '
 }
 
-function dev_ai_launch()
+function dev_ai_provider_host_backend_llama_cpp_launch()
 {
-  echo "=============================================================================================================="
-  echo \
-  "
-  source $HOME/bat/03-productivity/mac/ai/launch.sh $*
-  "
-  source $HOME/bat/03-productivity/mac/ai/launch.sh $*
-  # 01-system-integration/mac/02-install/ai/ollama/update-1.ps1
-  # 01-system-integration/mac/02-install/ai/ollama/update-2.ps1
+  osascript -e \
+  '
+    tell app "Terminal"
+      do script "source $HOME/bat/03-productivity/mac/topics/ai/hosts-providers-backends/llama.cpp/serve.sh"
+    end tell
+  '  
 }
+
+function dev_ai_provider_host_backend_lms_lm_studio_launch()
+{
+  osascript -e \
+  '
+    tell app "Terminal"
+      do script "source $HOME/bat/03-productivity/mac/topics/ai/hosts-providers-backends/lms-lm-studio/serve.sh"
+    end tell
+  '  
+}
+
 
 function dev_ai_ollama_update()
 {
-  echo "=============================================================================================================="
+  echo \
+  "
+  ======================================================================================================================
+  source $HOME/bat/03-productivity/mac/ai/ollama/update.sh
+  "
+  source $HOME/bat/03-productivity/mac/ai/ollama/update.sh
   echo \
   "
   source $HOME/bat/03-productivity/mac/ai/ollama/update.sh
+  ======================================================================================================================
   "
-  source $HOME/bat/03-productivity/mac/ai/ollama/update.sh
 }
 
 
@@ -1129,22 +1231,99 @@ function dev_ai_build_llama_cpp()
   source $HOME/bat/01-system-integration/mac/02-install/ai/ik_llama.cpp/macosx/build.sh
 }
 
-function dev_ai_local_claude_code_ollama()
+function dev_ai_harnesses_ai_coding_assistants_update_upgrade() 
+{
+  echo "--------------------------------------------------------------------------------------------------------------"
+  echo \
+  "
+  source $HOME/bat/03-productivity/mac/topics/ai/harnesses-ai-coding-assistants/update-upgrade.sh
+  "
+  source $HOME/bat/03-productivity/mac/topics/ai/harnesses-ai-coding-assistants/update-upgrade.sh
+}
+
+
+
+#======================================================================================================================
+#   stop
+#   ai privider/host/backend
+# dev
+
+#======================================================================================================================
+# dev
+#   ai privider/host/backend
+#   start
+
+function dev_ai_launch()
 {
   echo "=============================================================================================================="
   echo \
   "
+  source $HOME/bat/03-productivity/mac/ai/launch.sh $*
+  "
+  source $HOME/bat/03-productivity/mac/ai/launch.sh $*
+  # 01-system-integration/mac/02-install/ai/ollama/update-1.ps1
+  # 01-system-integration/mac/02-install/ai/ollama/update-2.ps1
+}
+
+
+function dev_ai_local_llama_cpp()
+{
+  echo \
+  "
+  ======================================================================================================================
+  source $HOME/bat/03-productivity/mac/topics/ai/hosts-providers-backends/llama.cpp/serve.sh
+  "
+  
+  source $HOME/bat/03-productivity/mac/topics/ai/hosts-providers-backends/llama.cpp/serve.sh
+
+  echo \
+  "
+  source $HOME/bat/03-productivity/mac/topics/ai/hosts-providers-backends/llama.cpp/serve.sh
+  ======================================================================================================================
+  "
+}
+
+function dev_ai_local_claude_code_ollama()
+{
+  echo \
+  "
+  ==============================================================================================================
+  ollama serve
   dev_ai_ollama_list | grep tools
+  dev_ai_ollama_list | sort -k 3 -r -n
+  dev_ai_ollama_list | grep thinking | sort -k 3 -r -n
+  dev_ai_ollama_list | grep tools | sort -k 3 -r -n
+  dev_ai_ollama_list | grep tools,thinking | sort -k 3 -r -n
+
   export ANTHROPIC_AUTH_TOKEN="ollama"
   export ANTHROPIC_API_KEY=""
   export ANTHROPIC_BASE_URL="http://localhost:11434"
   claude --model $1
   "
-  dev_ai_ollama_list | grep tools
+#  ollama serve &
+#  dev_ai_ollama_list | grep tools
   export ANTHROPIC_AUTH_TOKEN="ollama"
   export ANTHROPIC_API_KEY=""
   export ANTHROPIC_BASE_URL="http://localhost:11434"
   claude --model $1
+  fg
+
+
+  echo \
+  "
+  ollama serve
+  dev_ai_ollama_list | grep tools
+  dev_ai_ollama_list | sort -k 3 -r -n
+  dev_ai_ollama_list | grep thinking | sort -k 3 -r -n
+  dev_ai_ollama_list | grep tools | sort -k 3 -r -n
+  dev_ai_ollama_list | grep tools,thinking | sort -k 3 -r -n
+
+  export ANTHROPIC_AUTH_TOKEN="ollama"
+  export ANTHROPIC_API_KEY=""
+  export ANTHROPIC_BASE_URL="http://localhost:11434"
+  claude --model $1
+  ==============================================================================================================
+  "
 }
 
 function dev_ai_local_claude_code_ollama_launch_claude()
@@ -1160,7 +1339,17 @@ function dev_ai_local_claude_code_ollama_launch_claude()
 
 function dev_ai_local_models_list()
 {
-  echo "=============================================================================================================="
+  echo \
+  "
+  ======================================================================================================================
+  dev_ai_ollama_list | sort -k 3 -r -n
+  dev_ai_ollama_list | grep thinking | sort -k 3 -r -n
+  dev_ai_ollama_list | grep tools | sort -k 3 -r -n
+  dev_ai_ollama_list | grep tools,thinking | sort -k 3 -r -n
+  foundry model list
+  lms ls --detailed 
+  lms ls --json
+  "
   echo "..........................................................................................."
   dev_ai_ollama_list | sort -k 3 -r -n
   echo "..........................................................................................."
@@ -1172,6 +1361,20 @@ function dev_ai_local_models_list()
   echo "=============================================================================================================="
   foundry model list
   echo "=============================================================================================================="
+  lms ls --detailed 
+  echo "..........................................................................................."
+  lms ls --json
+  echo \
+  "
+  dev_ai_ollama_list | sort -k 3 -r -n
+  dev_ai_ollama_list | grep thinking | sort -k 3 -r -n
+  dev_ai_ollama_list | grep tools | sort -k 3 -r -n
+  dev_ai_ollama_list | grep tools,thinking | sort -k 3 -r -n
+  foundry model list
+  lms ls --detailed 
+  lms ls --json
+  ======================================================================================================================
+  "
 }
 
 
@@ -1992,6 +2195,16 @@ function dev_dotnet_installation_reinstall_full()
 
   dev_dotnet_installation_test_standard
   dev_dotnet_installation_test_extras
+}
+
+function dev_dotnet_installation_download_install_prepare()
+{
+  code -n \
+    $HOME/bat/01-system-integration/mac/dotnet/download-stable.sh \
+    $HOME/bat/01-system-integration/mac/dotnet/install-stable.sh \
+    $HOME/bat/01-system-integration/mac/dotnet/download-preview.sh \
+    $HOME/bat/01-system-integration/mac/dotnet/install-preview.sh \
+
 }
 
 function dev_dotnet_installation_download_install_stable()
@@ -4661,6 +4874,32 @@ function work_on_sai_code()
   source \\
     $HOME/bat.private/mac/mcsai/work_on_sai_code.sh
   "
+  source \
+    $HOME/bat.private/mac/mcsai/work_on_sai_code.sh
+  echo \
+  "
+  source \\
+    $HOME/bat.private/mac/mcsai/work_on_sai_code.sh
+  ----------------------------------------------------------------------------------------------------------------------
+  "
+}
+
+function work_on_sai_code_claude()
+{
+  echo \
+  "
+  ----------------------------------------------------------------------------------------------------------------------
+  source \\
+    $HOME/bat.private/mac/mcsai/work_on_sai_code.sh
+  "
+  source \
+    $HOME/bat.private/mac/mcsai/work_on_sai_code.sh
+  echo \
+  "
+  source \\
+    $HOME/bat.private/mac/mcsai/work_on_sai_code.sh
+  ----------------------------------------------------------------------------------------------------------------------
+  "
 }
 
 function work_on_moljac_holisticware()
@@ -5255,41 +5494,24 @@ setopt complete_aliases
 # fi
 #######################################################################################################################
 
-eval "$(/opt/homebrew/bin/brew shellenv)"
+# Homebrew’s shellenv output runs Apple path_helper with PATH_HELPER_ROOT=/opt/homebrew, which puts Homebrew’s prefix 
+# entries first (including /opt/homebrew/bin). Since this runs late in your startup, it overrides the earlier “append to 
+# PATH” lines and keeps Homebrew at the front.
+
+# eval "$(/opt/homebrew/bin/brew shellenv)"
 
 sys_zsh_functions_list
 sys_zsh_functions_load
 
-export PATH="$PATH:$HOME/.docker/bin/"
-export PATH="$PATH:/opt/podman/bin"
-
 # Amazon Q post block. Keep at the bottom of this file.
-[[ -f "${HOME}/Library/Application Support/amazon-q/shell/zshrc.post.zsh" ]] && builtin source "${HOME}/Library/Application Support/amazon-q/shell/zshrc.post.zsh"
-
-# Added by LM Studio CLI (lms)
-export PATH="$PATH:$HOME/.lmstudio/bin"
-# End of LM Studio CLI section
+[[ -f "${HOME}/Library/Application Support/amazon-q/shell/zshrc.post.zsh" ]] \
+&& \
+builtin source "${HOME}/Library/Application Support/amazon-q/shell/zshrc.post.zsh"
 
 
 . "$HOME/.local/bin/env"
 
-# Added by Windsurf - Next
-export PATH="$HOME/.codeium/windsurf/bin:$PATH"
-
-# Added by Antigravity
-export PATH="$HOME/.antigravity/antigravity/bin:$PATH"
-
-# Added by LM Studio CLI (lms)
-export PATH="$PATH:$HOME/.lmstudio/bin"
-# End of LM Studio CLI section
-
-# The following lines have been added by Docker Desktop to enable Docker CLI completions.
-fpath=($HOME/.docker/completions $fpath)
-autoload -Uz compinit
-compinit
-# End of Docker CLI completions
-
-# The following lines have been added by Docker Desktop to enable Docker CLI completions.
+echo $PATH# The following lines have been added by Docker Desktop to enable Docker CLI completions.
 fpath=(/Users/moljac/.docker/completions $fpath)
 autoload -Uz compinit
 compinit
