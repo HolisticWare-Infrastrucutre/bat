@@ -213,6 +213,8 @@ export PATH="$PATH:$HOME/bin/llamafile/bin/"
 
 export PATH="$PATH:$HOME/bat/dotnet-csharp/"
 
+export PATH="$PATH:/Applications/Docker.app/Contents/Resources/bin/"
+
 #----------------------------------------------------------------------------------------------------------------------
 # ~/.dotnet/tools
 export PATH="$PATH:$HOME/.dotnet/tools/"
@@ -5509,4 +5511,8 @@ builtin source "${HOME}/Library/Application Support/amazon-q/shell/zshrc.post.zs
 
 . "$HOME/.local/bin/env"
 
-echo $PATH
+echo $PATH# The following lines have been added by Docker Desktop to enable Docker CLI completions.
+fpath=(/Users/moljac/.docker/completions $fpath)
+autoload -Uz compinit
+compinit
+# End of Docker CLI completions
