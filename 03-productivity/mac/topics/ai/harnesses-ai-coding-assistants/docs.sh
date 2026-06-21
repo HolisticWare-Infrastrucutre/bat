@@ -1,7 +1,41 @@
+#!/bin/bash
 
 
 echo \
 "
+export ANTHROPIC_AUTH_TOKEN=llama.cpp
+export ANTHROPIC_API_KEY=""
+export ANTHROPIC_BASE_URL=http://localhost:11454
+claude --model Qwen3.6-35B-A3
+
+
+
+
+
+export COPILOT_PROVIDER_BASE_URL=http://localhost:11454
+export COPILOT_MODEL=Qwen3.6-35B-A3
+
+
+# For a remote OpenAI endpoint, also set your API key.
+
+export COPILOT_OFFLINE=true
+export COPILOT_PROVIDER_API_KEY=
+export COPILOT_PROVIDER_BASE_URL=http://localhost:11454
+export COPILOT_MODEL=Qwen3.6-35B-A3
+copilot
+
+
+
+
+# Get your key from https://aistudio.google.com/apikey
+export GEMINI_API_KEY="local-dev-key"
+export GOOGLE_GEMINI_BASE_URL=http://localhost:11454
+gemini -m Qwen3.6-35B-A3
+
+
+
+
+
 # anthropic claude
 export ANTHROPIC_AUTH_TOKEN=ollama \\
 && \\
