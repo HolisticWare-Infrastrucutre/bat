@@ -57,7 +57,7 @@ codex --config model='"gpt-5.4"'
 # opencode
 
 # smallcode
-SMALLCODE_MODEL=your-model-name
-SMALLCODE_BASE_URL=http://localhost:1234/v1
+SMALLCODE_MODEL=Qwen3.6-35B-A3
+SMALLCODE_BASE_URL=http://localhost:11454/v1
 
 "
