@@ -64,10 +64,13 @@ dotnet-svcutil
 aspirate
 # Docker
 dotnet-build-image
+# Testing
 # https://playwright.dev/dotnet/docs/intro
 Microsoft.Playwright.CLI
 NSwag.ConsoleCore
 Swashbuckle.AspNetCore.Cli
+Microsoft.Crank.Controller
+Microsoft.Crank.Agent
 Rapicgen
 Microsoft.dotnet-openapi
 dotnet-dev-certs
