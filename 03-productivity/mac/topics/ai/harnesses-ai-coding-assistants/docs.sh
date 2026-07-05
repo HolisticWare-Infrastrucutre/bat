@@ -15,7 +15,6 @@ claude --model Qwen3.6-35B-A3
 export COPILOT_PROVIDER_BASE_URL=http://localhost:11454
 export COPILOT_MODEL=Qwen3.6-35B-A3
 
-
 # For a remote OpenAI endpoint, also set your API key.
 
 export COPILOT_OFFLINE=true
@@ -54,10 +53,17 @@ codex --config model_providers.local_ollama.base_url = "http://localhost:11434/v
 codex --config model='"gpt-5.4"'
 
 
-# opencode
 
 # smallcode
 SMALLCODE_MODEL=Qwen3.6-35B-A3
 SMALLCODE_BASE_URL=http://localhost:11454/v1
 
+
+# opencode
+
+# backends
+
+ollama                                  http://localhost:11434/v1/models     
+llama.cpp                               http://localhost:11454/v1/models
+lms                                     http://localhost:11464/v1/models              
 "
