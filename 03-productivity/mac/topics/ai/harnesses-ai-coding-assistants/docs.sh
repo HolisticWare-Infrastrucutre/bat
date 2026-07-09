@@ -6,8 +6,14 @@ echo \
 export ANTHROPIC_AUTH_TOKEN=llama.cpp
 export ANTHROPIC_API_KEY=""
 export ANTHROPIC_BASE_URL=http://localhost:11454
-claude --model Qwen3.6-35B-A3
+export ANTHROPIC_MODEL=Qwen3.6-35B-A3
+claude --model $ANTHROPIC_MODEL
 
+export ANTHROPIC_AUTH_TOKEN=lms-lm-studio
+export ANTHROPIC_API_KEY=""
+export ANTHROPIC_BASE_URL=http://localhost:11444
+export ANTHROPIC_MODEL=qwen3.6-40b-claude-4.6-opus-deckard-heretic-uncensored-thinking:2
+claude --model $ANTHROPIC_MODEL
 
 
 
