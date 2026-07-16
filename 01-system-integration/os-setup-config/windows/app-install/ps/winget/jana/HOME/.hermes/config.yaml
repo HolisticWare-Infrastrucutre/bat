@@ -1,0 +1,7 @@
+custom_providers:
+  - name: Local llama.cpp (localhost:11454)
+    base_url: http://localhost:11454/v1
+    model: Qwen3.6-35B-A3B
+  - name: Local lms--lm-studio (localhost:11444)
+    base_url: http://localhost:11444/v1
+    model: qwen3.6-40b-claude-4.6-opus-deckard-heretic-uncensored-thinking

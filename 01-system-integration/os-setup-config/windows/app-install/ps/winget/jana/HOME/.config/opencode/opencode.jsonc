@@ -1,0 +1,58 @@
+{
+    "$schema": "https://opencode.ai/config.json",
+    "provider": 
+    {
+        "llama.cpp-mac":
+        {
+            "npm": "@ai-sdk/openai-compatible",
+            "name": "LlamaCpp",
+            "options": 
+            {
+                "baseURL": "http://127.0.0.1:11464/v1"
+            },
+            "models": 
+            {
+                "Qwen3.5-122B-A10B-Q5_K_M":
+                {
+                    "name": ".hwaifs/models/Qwen3.5-122B-A10B-Q5_K_M",
+                    "limit": {
+                        "context": 256000,
+                        "output": 65536
+                    }
+                },
+                "Qwen3-Coder-Next-UD-Q8_K_XL":
+                {
+                    "name": ".hwaifs/models/Qwen3-Coder-Next-UD-Q8_K_XL",
+                    "limit": {
+                        "context": 256000,
+                        "output": 65536
+                    }
+                },
+                "Qwen3-Coder-30B-A3B-Instruct-BF16" :
+                {
+                    "name": ".hwaifs/models/Qwen3-Coder-30B-A3B-Instruct-BF16",
+                    "limit": {
+                        "context": 256000,
+                        "output": 65536
+                    }
+                },
+                "Qwen3.5-35B-A3B" :
+                {
+                    "name": ".hwaifs/models/Qwen3.5-35B-A3B",
+                    "limit": {
+                        "context": 256000,
+                        "output": 65536
+                    }
+                },
+                "Qwen3.5-35B-A3B-UD-Q8_K_XL" :
+                {
+                    "name": ".hwaifs/models/Qwen3.5-35B-A3B-UD-Q8_K_XL",
+                    "limit": {
+                        "context": 256000,
+                        "output": 65536
+                    }
+                },                
+            }
+        }
+    }
+}
