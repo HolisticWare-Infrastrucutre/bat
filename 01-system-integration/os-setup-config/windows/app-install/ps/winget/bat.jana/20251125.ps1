@@ -62,7 +62,7 @@ winget install -e --id nektos.act
 winget install -e --id cmake 
 winget install -e --id ninja-build.ninja
 
-inget install Microsoft.DotNet.SDK.9
+winget install Microsoft.DotNet.SDK.9
 winget install Microsoft.DotNet.SDK.10
 
 winget install -e --id GLab.GLab
