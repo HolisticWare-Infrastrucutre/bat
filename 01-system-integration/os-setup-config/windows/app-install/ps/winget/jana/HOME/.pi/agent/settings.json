@@ -1,0 +1,6 @@
+{
+  "lastChangelogVersion": "0.80.7",
+  "theme": "dark",
+  "defaultProvider": "lms--lm-studio",
+  "defaultModel": "qwen3-coder-next"
+}
