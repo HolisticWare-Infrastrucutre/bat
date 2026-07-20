@@ -8,19 +8,24 @@
       "apiKey": "ollama",
       "models": 
       [
-        { "id": "llama3.1:8b" },
-        { "id": "qwen2.5-coder:7b" }
+        { 
+            "id": "glm-4.7-flash:q8_0" 
+        },
+        { 
+            "id": "mixtral:8x7b" 
+        }
       ]
     },
     "llama.cpp":
     {
       "baseUrl": "http://localhost:11454/v1",
       "api": "openai-completions",
-      "apiKey": "ollama",
+      "apiKey": "llama.cpp",
       "models": 
       [
-        { "id": "llama3.1:8b" },
-        { "id": "qwen2.5-coder:7b" }
+        { 
+            "id": "Qwen3.6-27B" 
+        }
       ]
     },
     "lms--lm-studio":
@@ -30,8 +35,18 @@
       "apiKey": "ollama",
       "models": 
       [
-        { "id": "llama3.1:8b" },
-        { "id": "qwen2.5-coder:7b" }
+        { 
+            "id": "google/gemma-4-31b-qat" 
+        },
+        { 
+            "id": "mistralai/ministral-3-14b-reasoningt" 
+        },
+        { 
+            "id": "qwen/qwen3.5-35b-a3b" 
+        },
+        { 
+            "id": "qwen3-coder-next" 
+        },
       ]
     }
   }
