@@ -1,0 +1,5 @@
+$env:COPILOT_OFFLINE="true"
+$env:COPILOT_PROVIDER_API_KEY=
+$env:COPILOT_PROVIDER_BASE_URL = "http://localhost:11454"
+$env:COPILOT_MODEL="Qwen3.6-35B-A3"
+copilot
