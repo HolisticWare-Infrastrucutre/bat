@@ -29,3 +29,7 @@ ttab \
 ttab \
     -d $DIR_CURRENT \
     hermes
+
+ttab \
+    -d $DIR_CURRENT \
+    crush
