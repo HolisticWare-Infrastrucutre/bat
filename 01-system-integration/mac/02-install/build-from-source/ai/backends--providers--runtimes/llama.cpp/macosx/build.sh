@@ -29,6 +29,9 @@ cd $FOLDER/llama.cpp-master/llama.cpp-master/
 
 rm -fr build-macosx/
 
+# https://cmake.org/cmake/help/latest/manual/cmake.1.html
+
+# Generate a Project Buildsystem
 cmake \
   -DCMAKE_C_FLAGS="-O3 -Wall -Wextra" \
   -DCMAKE_CXX_FLAGS="-O3 -Wall -Wextra" \
@@ -38,6 +41,7 @@ cmake \
 #  -DGGML_LLAMAFILE=OFF \
 #  -DLLAMA_CURL=OFF \
 
+# Build a Project
 cmake \
   --build build-macosx \
   --config Release \
