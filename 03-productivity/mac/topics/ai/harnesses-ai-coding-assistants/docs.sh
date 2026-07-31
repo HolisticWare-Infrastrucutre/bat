@@ -3,6 +3,19 @@
 
 echo \
 "
+========================================================================================================================
+backends
+
+Ollama                      http://localhost:11434
+                            http://localhost:11434/v1/models
+LM Studio /lms              http://localhost:11444
+                            http://localhost:11444/v1/models
+llama.cpp                   http://localhost:11454/
+                            http://localhost:11454/v1/models
+
+
+========================================================================================================================
+
 export ANTHROPIC_AUTH_TOKEN=llama.cpp
 export ANTHROPIC_API_KEY=""
 export ANTHROPIC_BASE_URL=http://localhost:11454
@@ -30,6 +43,10 @@ export COPILOT_MODEL=Qwen3.6-35B-A3B
 copilot
 
 
+
+OPENAI_API_KEY=local
+OPENAI_BASE_URL=http://localhost:11454/v1
+OPENAI_MODEL=Qwen3.6-35B-A3B
 
 
 # Get your key from https://aistudio.google.com/apikey
@@ -61,15 +78,27 @@ codex --config model='"gpt-5.4"'
 
 
 # smallcode
-SMALLCODE_MODEL=Qwen3.6-35B-A3B
-SMALLCODE_BASE_URL=http://localhost:11454/v1
+export SMALLCODE_MODEL=Qwen3.6-35B-A3B
+export SMALLCODE_BASE_URL=http://localhost:11454/v1
+smallcode
 
+
+# Aider
+export OLLAMA_API_BASE=http://127.0.0.1:11454
+export OLLAMA_API_KEY=local
+# OLLAMA_CONTEXT_LENGTH=8192 ollama serve
+export MODEL_LOCAL_AIDER=Qwen3.6-35B-A3B
+# Using ollama_chat/ is recommended over ollama/.
+aider --model ollama_chat/$MODEL_LOCAL_AIDER
 
 # opencode
+opencode
 
-# backends
+backends
 
-ollama                                  http://localhost:11434/v1/models     
+ollama                                  http://localhost:11434/v1/models
 llama.cpp                               http://localhost:11454/v1/models
-lms                                     http://localhost:11464/v1/models              
+lms                                     http://localhost:11464/v1/models
+
+
 "
