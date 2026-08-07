@@ -11,6 +11,7 @@ export LLAMA_CPP=$HOME/Downloads/HolisticWare/ai/llama.cpp/macosx/llama.cpp-mast
 export LLAMA_CPP_CONTEXT_SIZE=262144
 export LLAMA_CPP_TEMP=0.8
 export LLAMA_CPP_MODEL_NAME="Qwen3.6-35B-A3B"
+export LLAMA_CPP_JINJA_TEMPLATE_FILE=$HOME/Downloads/chat_template.jinja
 # export LLAMA_CPP_MODEL_NAME="mixtral-8x7b-instruct"
 
 echo \
@@ -26,6 +27,8 @@ $LLAMA_CPP \\
     --temp $LLAMA_CPP_TEMP \\
     --top-p 0.8 \\
     --top-k 20 \\
+    --jinja \\
+    --chat-template-file $LLAMA_CPP_JINJA_TEMPLATE_FILE \\
     --ctx-size $LLAMA_CPP_CONTEXT_SIZE \\
     --port $LLAMA_CPP_SERVER_PORT \\
     --alias $LLAMA_CPP_MODEL_NAME \\
@@ -46,6 +49,8 @@ $LLAMA_CPP \
     --temp 0.7 \
     --top-p 0.8 \
     --top-k 20 \
+    --jinja \
+    --chat-template-file $LLAMA_CPP_JINJA_TEMPLATE_FILE \
     --ctx-size $LLAMA_CPP_CONTEXT_SIZE \
     --port $LLAMA_CPP_SERVER_PORT \
     --alias $LLAMA_CPP_MODEL_NAME \
@@ -62,19 +67,21 @@ $LLAMA_CPP \
 echo \
 "
 ========================================================================================================================
-$LLAMA_CPP \
-    -ngl 80 \
-    --min-p 0 \
-    --repeat-penalty 1.05 \
-    --timeout 300 \
-    --flash-attn on \
-    --jinja \
-    --temp 0.7 \
-    --top-p 0.8 \
-    --top-k 20 \
-    --ctx-size $LLAMA_CPP_CONTEXT_SIZE \
-    --port $LLAMA_CPP_SERVER_PORT \
-    --alias $LLAMA_CPP_MODEL_NAME \
+$LLAMA_CPP \\
+    -ngl 80 \\
+    --min-p 0 \\
+    --repeat-penalty 1.05 \\
+    --timeout 300 \\
+    --flash-attn on \\
+    --jinja \\
+    --temp $LLAMA_CPP_TEMP \\
+    --top-p 0.8 \\
+    --top-k 20 \\
+    --jinja \\
+    --chat-template-file $LLAMA_CPP_JINJA_TEMPLATE_FILE \\
+    --ctx-size $LLAMA_CPP_CONTEXT_SIZE \\
+    --port $LLAMA_CPP_SERVER_PORT \\
+    --alias $LLAMA_CPP_MODEL_NAME \\
     --model $LLAMA_CPP_MODEL_PATH
 
 export LLAMA_CPP_SERVER_PORT=$LLAMA_CPP_SERVER_PORT
