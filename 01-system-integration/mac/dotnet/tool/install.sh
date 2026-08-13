@@ -11,7 +11,10 @@ export TOOLZ=\
 "
 dotnet-suggest
 # analysis debugging fixing
+# Debugging
+dotnet-debug
 dotnet-inspect
+SourceLink
 # Executing/Running
 dotnet-mono
 dotnet-watch
@@ -41,12 +44,12 @@ apkdiff
 # Development
 dotnet-user-secrets
 # Development (MAUI, Uno)
+Microsoft.Maui.Cli
 Redth.Net.Maui.Check
+Immons.Tools.Maui.Inspector.Sync
 Uno.Check
 XamlStyler.Console
 Sharpie.Bind.Tool
-# Debugging
-SourceLink
 # Binaries Analysis
 api-tools
 dotnet-ildasm
@@ -65,10 +68,12 @@ aspirate
 # Docker
 dotnet-build-image
 # Testing
+# Testing Web
 # https://playwright.dev/dotnet/docs/intro
 Microsoft.Playwright.CLI
 NSwag.ConsoleCore
 Swashbuckle.AspNetCore.Cli
+Refitter
 Microsoft.Crank.Controller
 Microsoft.Crank.Agent
 Rapicgen
