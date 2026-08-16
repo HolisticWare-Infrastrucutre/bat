@@ -39,7 +39,9 @@ sudo `
                 wasi-experimental `
                 wasm-experimental `
                 wasm-experimental-net7 `
-                aspire `
+
+
+#                 aspire `
 
 
 sudo `
