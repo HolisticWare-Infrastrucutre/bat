@@ -4,13 +4,16 @@
 #export LLAMA_CPP_MODEL_PATH="$HOME/Downloads/holisticware/gen-ai/models/phi-2.Q5_K_S.gguf"
 
 # export LLAMA_CPP_MODEL_PATH="$HOME/.lmstudio/models/unsloth/Qwen3.5-35B-A3B-Experiments-GGUF/Qwen3.5-35B-A3B_tok-16_out-16_exp-16-16-16_shr-16-16-16_ssm-16-16-16-32_atn-16-16-16-16-16-16.gguf"
-export LLAMA_CPP_MODEL_PATH="$HOME/.lmstudio/models/unsloth/Qwen3.6-35B-A3B-GGUF/Qwen3.6-35B-A3B-UD-Q4_K_S.gguf"
+#export LLAMA_CPP_MODEL_PATH="$HOME/.lmstudio/models/unsloth/Qwen3.6-35B-A3B-GGUF/Qwen3.6-35B-A3B-UD-Q4_K_S.gguf"
+export LLAMA_CPP_MODEL_NAME="Qwen3.6-35B-A3B"
+export LLAMA_CPP_MODEL_PATH="$HOME/.lmstudio/models/lmstudio-community/Qwen3.8-27B-GGUF/Qwen3.8-27B-Q8_0.gguf"
+#export LLAMA_CPP_MODEL_PATH="$HOME/.lmstudio/models/ggml-org/Qwen3.8-27B-GGUF/"
+export LLAMA_CPP_MODEL_NAME="Qwen3.8-27B"
 
 export LLAMA_CPP_SERVER_PORT=11454
 export LLAMA_CPP=$HOME/Downloads/HolisticWare/ai/llama.cpp/macosx/llama.cpp-master/llama.cpp-master/build-macosx/bin/llama-server 
 export LLAMA_CPP_CONTEXT_SIZE=262144
 export LLAMA_CPP_TEMP=0.8
-export LLAMA_CPP_MODEL_NAME="Qwen3.6-35B-A3B"
 export LLAMA_CPP_JINJA_TEMPLATE_FILE=$HOME/Downloads/chat_template.jinja
 # export LLAMA_CPP_MODEL_NAME="mixtral-8x7b-instruct"
 
@@ -23,7 +26,6 @@ $LLAMA_CPP \\
     --repeat-penalty 1.05 \\
     --timeout 300 \\
     --flash-attn on \\
-    --jinja \\
     --temp $LLAMA_CPP_TEMP \\
     --top-p 0.8 \\
     --top-k 20 \\
