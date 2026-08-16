@@ -1,5 +1,7 @@
 #!/bin/zsh
 
+# CHECK ./download-stable.sh
+
 # https://dotnet.microsoft.com/en-us/download
 # https://dotnet.microsoft.com/en-us/download/dotnet
 export OS=osx
