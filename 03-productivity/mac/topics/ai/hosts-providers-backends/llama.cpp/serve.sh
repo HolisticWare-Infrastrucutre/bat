@@ -4,11 +4,11 @@
 #export LLAMA_CPP_MODEL_PATH="$HOME/Downloads/holisticware/gen-ai/models/phi-2.Q5_K_S.gguf"
 
 # export LLAMA_CPP_MODEL_PATH="$HOME/.lmstudio/models/unsloth/Qwen3.5-35B-A3B-Experiments-GGUF/Qwen3.5-35B-A3B_tok-16_out-16_exp-16-16-16_shr-16-16-16_ssm-16-16-16-32_atn-16-16-16-16-16-16.gguf"
-#export LLAMA_CPP_MODEL_PATH="$HOME/.lmstudio/models/unsloth/Qwen3.6-35B-A3B-GGUF/Qwen3.6-35B-A3B-UD-Q4_K_S.gguf"
-export LLAMA_CPP_MODEL_NAME="Qwen3.6-35B-A3B"
+# export LLAMA_CPP_MODEL_PATH="$HOME/.lmstudio/models/unsloth/Qwen3.6-35B-A3B-GGUF/Qwen3.6-35B-A3B-UD-Q4_K_S.gguf"
+# export LLAMA_CPP_MODEL_NAME="Qwen3.6-35B-A3B"
 export LLAMA_CPP_MODEL_PATH="$HOME/.lmstudio/models/lmstudio-community/Qwen3.8-27B-GGUF/Qwen3.8-27B-Q8_0.gguf"
-#export LLAMA_CPP_MODEL_PATH="$HOME/.lmstudio/models/ggml-org/Qwen3.8-27B-GGUF/"
 export LLAMA_CPP_MODEL_NAME="Qwen3.8-27B"
+#export LLAMA_CPP_MODEL_PATH="$HOME/.lmstudio/models/ggml-org/Qwen3.8-27B-GGUF/"
 
 export LLAMA_CPP_SERVER_PORT=11454
 export LLAMA_CPP=$HOME/Downloads/HolisticWare/ai/llama.cpp/macosx/llama.cpp-master/llama.cpp-master/build-macosx/bin/llama-server 
@@ -52,12 +52,13 @@ $LLAMA_CPP \
     --top-p 0.8 \
     --top-k 20 \
     --jinja \
-    --chat-template-file $LLAMA_CPP_JINJA_TEMPLATE_FILE \
     --ctx-size $LLAMA_CPP_CONTEXT_SIZE \
     --port $LLAMA_CPP_SERVER_PORT \
     --alias $LLAMA_CPP_MODEL_NAME \
     --model $LLAMA_CPP_MODEL_PATH
 
+# for 3.6
+#    --chat-template-file $LLAMA_CPP_JINJA_TEMPLATE_FILE \
 
 
 # llama-server \
