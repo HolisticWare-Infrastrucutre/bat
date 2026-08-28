@@ -110,25 +110,25 @@ export JAVA_HOME=$JAVA_HOME_21
 # ANDROID_HOME
 # ANDROID_SDK_ROOT
 # installed with Visual Studio (Xamarin)
-export ANDROID_HOME_XAMARIN=$HOME/Library/Developer/Xamarin/android-sdk-macosx/
-export ANDROID_NDK_HOME_XAMARIN=/usr/local/bin/
+export ANDROID_HOME_XAMARIN=$HOME/Library/Developer/Xamarin/android-sdk-macosx
+export ANDROID_NDK_HOME_XAMARIN=/usr/local/bin
 export ANDROID_NDK_HOME_BREW="/opt/homebrew/share/android-ndk"
-export ANDROID_NDK_HOME_ANDROID_STUDIO="$HOME/Library/Android/sdk/"
+export ANDROID_NDK_HOME_ANDROID_STUDIO="$HOME/Library/Android/sdk/ndk/30.0.14904198/"
 
 # installed with Android Studio
-export ANDROID_HOME_ANDROID_STUDIO=$HOME/Library/Android/sdk/
+export ANDROID_HOME_ANDROID_STUDIO=$HOME/Library/Android/sdk
 # installed with brew
-export ANDROID_HOME_BREW=/usr/local/share/android-sdk/
+export ANDROID_HOME_BREW=/usr/local/share/android-sdk
 
 export ANDROID_HOME=$ANDROID_HOME_ANDROID_STUDIO
 export ANDROID_SDK_ROOT=$ANDROID_HOME
 export ANDROID_NDK_HOME=$ANDROID_NDK_HOME_ANDROID_STUDIO
 export AndroidSdkDirectory=$ANDROID_HOME
-export ANDROID_USER_HOME=$HOME/.android/
-export ANDROID_AVD_HOME=$ANDROID_USER_HOME/avd/
+export ANDROID_USER_HOME=$HOME/.android
+export ANDROID_AVD_HOME=$ANDROID_USER_HOME/avd
 export ANDROID_EMULATOR_HOME=$ANDROID_USER_HOME
 
-export ANDROID_PATH_CUMULATIVE=$PATH:$ANDROID_HOME/tools/:$ANDROID_HOME/tools/bin/:$ANDROID_HOME/platform-tools/
+export ANDROID_PATH_CUMULATIVE=$PATH:$ANDROID_HOME/tools/:$ANDROID_HOME/tools/bin/:$ANDROID_HOME/platform-tools
 #----------------------------------------------------------------------------------------------------------------------
 export MONO_GAC_PREFIX="/opt/homebrew"
 #----------------------------------------------------------------------------------------------------------------------
@@ -139,25 +139,25 @@ export HOMEBREW_EDITOR="/opt/homebrew/bin/code"
 #----------------------------------------------------------------------------------------------------------------------
 # https://developer.android.com/tools/variables#set
 
-export PATH="$PATH:/usr/local/bin/:/usr/local/sbin/"
-export PATH="$PATH:/opt/homebrew/bin/:/opt/homebrew/sbin/"
-export PATH="$PATH:/usr/bin/:/bin/:/usr/sbin/:/sbin/"
-export PATH="$PATH:/usr/local/share/dotnet/:$HOME/.dotnet/tools/"
-export PATH="$PATH:/usr/local/bin/pwsh/"
+export PATH="$PATH:/usr/local/bin:/usr/local/sbin"
+export PATH="$PATH:/opt/homebrew/bin:/opt/homebrew/sbin"
+export PATH="$PATH:/usr/bin:/bin:/usr/sbin:/sbin"
+export PATH="$PATH:/usr/local/share/dotnet:$HOME/.dotnet/tools"
+export PATH="$PATH:/usr/local/bin/pwsh"
 # https://www.mono-project.com/docs/about-mono/supported-platforms/macos/
 export PATH="$PATH:/Library/Frameworks/Mono.framework/Versions/Current/bin"
-export PATH="$PATH:$ANDROID_HOME/bin/"
-export PATH="$PATH:$ANDROID_HOME/tools/"
-export PATH="$PATH:$ANDROID_HOME/tools/bin/"
-export PATH="$PATH:$ANDROID_HOME/platform-tool/"
-export PATH="$PATH:$ANDROID_HOME/platform-tools/"
+export PATH="$PATH:$ANDROID_HOME/bin"
+export PATH="$PATH:$ANDROID_HOME/tools"
+export PATH="$PATH:$ANDROID_HOME/tools/bin"
+export PATH="$PATH:$ANDROID_HOME/platform-tool"
+export PATH="$PATH:$ANDROID_HOME/platform-tools"
 # ANDROID_PATH_CUMULATIVE
-export PATH="$PATH:$ANDROID_HOME/cmdline-tools/latest/bin/"
-export PATH="$PATH:$ANDROID_HOME/bundle-tool/"
-export PATH="$PATH:$ANDROID_SDK_ROOT/"
-export PATH="$PATH:$JAVA_HOME/"
-export PATH="$PATH:$JAVA_HOME/bin/"
-export PATH="$PATH:/Applications/Visual Studio Code.app/Contents/Resources/app/bin/"
+export PATH="$PATH:$ANDROID_HOME/cmdline-tools/latest/bin"
+export PATH="$PATH:$ANDROID_HOME/bundle-tool"
+export PATH="$PATH:$ANDROID_SDK_ROOT"
+export PATH="$PATH:$JAVA_HOME"
+export PATH="$PATH:$JAVA_HOME/bin"
+export PATH="$PATH:/Applications/Visual Studio Code.app/Contents/Resources/app/bin"
 
 
 
@@ -170,59 +170,52 @@ export PATH="$PATH:$HOME/.lmstudio/bin"
 # End of LM Studio CLI section
 
 # Added by Windsurf
-export PATH="$PATH:$HOME/.codeium/windsurf/bin/"
+export PATH="$PATH:$HOME/.codeium/windsurf/bin"
 
 # Added by get-aspire-cli.sh
-export PATH="$PATH:$HOME/.aspire/bin/"
+export PATH="$PATH:$HOME/.aspire/bin"
 
 
 export ROOT_PROJECTS=/Users/Shared/Projects/d/hw
-export ROOT_PROJECTS_NOTES=$ROOT_PROJECTS/HolisticWare.WebSite.Notes/
+export ROOT_PROJECTS_NOTES=$ROOT_PROJECTS/HolisticWare.WebSite.Notes
 
 
-export PATH="$PATH:$HOME/.docker/bin/"
+export PATH="$PATH:$HOME/.docker/bin"
 export PATH="$PATH:/opt/podman/bin"
 
 # Added by Windsurf - Next
-export PATH="$PATH:$HOME/.codeium/windsurf/bin/"
+export PATH="$PATH:$HOME/.codeium/windsurf/bin"
 
 # Added by Antigravity
-export PATH="$PATH:$HOME/.antigravity/antigravity/bin/"
+export PATH="$PATH:$HOME/.antigravity/antigravity/bin"
 
 # Added by LM Studio CLI (lms)
-export PATH="$PATH:$HOME/.lmstudio/bin/"
+export PATH="$PATH:$HOME/.lmstudio/bin"
 # End of LM Studio CLI section
-
-# The following lines have been added by Docker Desktop to enable Docker CLI completions.
-fpath=($HOME/.docker/completions $fpath)
-autoload -Uz compinit
-compinit
-# End of Docker CLI completions
-
-# The following lines have been added by Docker Desktop to enable Docker CLI completions.
-fpath=($HOME/.docker/completions $fpath)
-autoload -Uz compinit
-compinit
-# End of Docker CLI completions
 
 
 
 
 # Added by moljac manually
-export PATH="$PATH:$HOME/bin/llamafile/bin/"
+export PATH="$PATH:$HOME/bin/llamafile/bin"
 
-export PATH="$PATH:$HOME/bat/dotnet-csharp/"
+export PATH="$PATH:$HOME/bat/dotnet-csharp"
 
-export PATH="$PATH:/Applications/Docker.app/Contents/Resources/bin/"
+export PATH="$PATH:/Applications/Docker.app/Contents/Resources/bin"
 
 #----------------------------------------------------------------------------------------------------------------------
 # ~/.dotnet/tools
-export PATH="$PATH:$HOME/.dotnet/tools/"
+export PATH="$PATH:$HOME/.dotnet/tools"
 
 export PATH_DOTNET_HOMEBREW_BINARY=/opt/homebrew/bin/dotnet
 export PATH_DOTNET_PKG_BINARY=/usr/local/share/dotnet/dotnet
-export PATH_DOTNET_HOMEBREW_FOLDER=/opt/homebrew/bin/
-export PATH_DOTNET_PKG_FOLDER=/usr/local/share/dotnet/
+export PATH_DOTNET_HOMEBREW_FOLDER=/opt/homebrew/bin
+export PATH_DOTNET_PKG_FOLDER=/usr/local/share/dotnet
+
+# Fixes MSB4221 "DOTNET_HOST_PATH is not set" task-host bootstrap failure
+# (e.g. MAUI Android ComputeManagedAssemblies out-of-proc task host).
+# See: https://github.com/KirillOsenkov/MSBuildStructuredLog/issues/952
+export DOTNET_HOST_PATH="$PATH_DOTNET_PKG_BINARY"
 
 
 
@@ -599,7 +592,10 @@ function sys_dotnet_packages_stable ()
 
 }
 
-
+function sys_term_new_tab ()
+{
+  ttab -d $(pwd)
+}
 
 #   stop
 # sys
@@ -1222,13 +1218,13 @@ function dev_ai_build_llama_cpp()
   echo "=============================================================================================================="
   echo \
   "
-  source $HOME/bat/01-system-integration/mac/02-install/ai/llama.cpp/macosx/build.sh
-  source $HOME/bat/01-system-integration/mac/02-install/ai/llama.cpp/android/build.sh
-  source $HOME/bat/01-system-integration/mac/02-install/ai/ik_llama.cpp/macosx/build.sh
+  source $HOME/bat/01-system-integration/mac/02-install/build-from-source/ai/backends--providers--runtimes/llama.cpp/macosx/build.sh
+  source $HOME/bat/01-system-integration/mac/02-install/build-from-source/ai/backends--providers--runtimes/llama.cpp/android/build.sh
+  source $HOME/bat/01-system-integration/mac/02-install/build-from-source/ai/backends--providers--runtimes/ik_llama.cpp/macosx/build.sh
   "
-  source $HOME/bat/01-system-integration/mac/02-install/ai/llama.cpp/macosx/build.sh
-  source $HOME/bat/01-system-integration/mac/02-install/ai/llama.cpp/android/build.sh
-  source $HOME/bat/01-system-integration/mac/02-install/ai/ik_llama.cpp/macosx/build.sh
+  source $HOME/bat/01-system-integration/mac/02-install/build-from-source/ai/backends--providers--runtimes/llama.cpp/macosx/build.sh
+  source $HOME/bat/01-system-integration/mac/02-install/build-from-source/ai/backends--providers--runtimes/llama.cpp/android/build.sh
+  source $HOME/bat/01-system-integration/mac/02-install/build-from-source/ai/backends--providers--runtimes/ik_llama.cpp/macosx/build.sh
 }
 
 function dev_ai_harnesses_ai_coding_assistants_update_upgrade() 
@@ -2860,126 +2856,10 @@ function dev_dotnet_msbuildlog ()
   dotnet $HOME/bin/msbuildlog/bin/StructuredLogViewer.Avalonia.dll
 }
 
-# https://learn.microsoft.com/en-us/dotnet/core/tools/enable-tab-autocomplete
-# https://learn.microsoft.com/en-us/dotnet/standard/commandline/how-to-enable-tab-completion
-
-_dotnet_zsh_complete()
-{
-    # debug lines, uncomment to get state variables passed to this function
-    # echo "\n\n\nstate:\t'$state'"
-    # echo "line:\t'$line'"
-    # echo "words:\t$words"
-
-    # Get full path to script because dotnet-suggest needs it
-    # NOTE: this requires a command registered with dotnet-suggest be
-    # on the PATH
-    full_path=`which ${words[1]}` # zsh arrays are 1-indexed
-    # Get the full line
-    # $words array when quoted like this gets expanded out into the full line
-    full_line="$words"
-
-    # Get the completion results, will be newline-delimited
-    completions=$(dotnet-suggest get --executable "$full_path" -- "$full_line")
-    # explode the completions by linefeed instead of by spaces into the descriptions for the
-    # _values helper function.
-    
-    exploded=(${(f)completions})
-    # for later - once we have descriptions from dotnet suggest, we can stitch them
-    # together like so:
-    # described=()
-    # for i in {1..$#exploded}; do
-    #     argument="${exploded[$i]}"
-    #     description="hello description $i"
-    #     entry=($argument"["$description"]")
-    #     described+=("$entry")
-    # done
-    _values 'suggestions' $exploded
-}
-
-# apply this function to each command the dotnet-suggest knows about
-compdef _dotnet_zsh_complete $(dotnet-suggest list)
-
-export DOTNET_SUGGEST_SCRIPT_VERSION="1.0.0"
-
-eval "$(dotnet completions script zsh)"
-
-
-# https://learn.microsoft.com/en-us/dotnet/core/tools/enable-tab-autocomplete
-
-function dev_dotnet_tab_completion_zsh()
-{
-#  echo "--------------------------------------------------------------------------------------------------------------"
-#  echo \
-#  "
-#  local completions=(\"$(dotnet complete \"$words\")\")
-#
-#  # If the completion list is empty, just continue with filename selection
-#  if [ -z \"$completions\" ]
-#  then
-#    _arguments '*::arguments: _normal'
-#    return
-#  fi
-#
-#  # This is not a variable assignment, don't remove spaces!
-#  _values = \"${(ps:\\n:)completions}\"
-#  "
-  local completions=("$(dotnet complete "$words")")
-
-  # If the completion list is empty, just continue with filename selection
-  if [ -z "$completions" ]
-  then
-    _arguments '*::arguments: _normal'
-    return
-  fi
-
-  # This is not a variable assignment, don't remove spaces!
-  _values = "${(ps:\n:)completions}"
-}
-
-# compdef dev_dotnet_tab_completion_zsh dotnet
-
-# function dev_dotnet_tab_completion_bash()
-# {
-#   local cur="${COMP_WORDS[COMP_CWORD]}" IFS=$'\n' # On Windows you may need to use use IFS=$'\r\n'
-#   local candidates
-#
-#   read -d '' -ra candidates < <(dotnet complete --position "${COMP_POINT}" "${COMP_LINE}" 2>/dev/null)
-#
-#   read -d '' -ra COMPREPLY < <(compgen -W "${candidates[*]:-}" -- "$cur")
-# }
-#
-# complete -f -F dev_dotnet_tab_completion_bash dotnet
-
-# dev_dotnet_autocomplete ()
-# {
-#   # https://learn.microsoft.com/en-us/dotnet/core/tools/enable-tab-autocomplete#bash
-#   # https://learn.microsoft.com/en-us/dotnet/core/tools/enable-tab-autocomplete#zsh
-#
-#   local completions=("$(dotnet complete "$words")")
-#
-#   # If the completion list is empty, just continue with filename selection
-#   if [ -z "$completions" ]
-#   then
-#     _arguments '*::arguments: _normal'
-#     return
-#   fi
-#
-#   # This is not a variable assignment, don't remove spaces!
-#   _values = "${(ps:\n:)completions}"
-# }
-
-# compdef dev_dotnet_autocomplete dotnet
-# compdef dev_dotnet_tab_completion_zsh dotnet
-
-# https://docs.microsoft.com/en-us/dotnet/core/tools/enable-tab-autocomplete
-# dotnet_zsh_complete()
-# {
-#   local completions=("$(dotnet complete "$words")")
-#
-#   reply=( "${(ps:\n:)completions}" )
-#
-#   compctl -K dotnet_zsh_complete dotnet
-# }
+# dotnet zsh tab-completion registration was here; moved to the end of this
+# file (after the final `compinit` call) because `compinit` resets zsh's
+# completion registry each time it runs, and this file calls it twice.
+# See the block near "End of Docker CLI completions".
 
 function dev_dotnet_assembly_references ()
 {
@@ -4568,16 +4448,33 @@ function work_init()
   finder-open-window-with-tabs-09-private.sh
 }
 
+function work_on_dev_ai ()
+{
+  echo \
+  "
+  ---------------------------------------------------------------------------------------------------------------------
+  source ~/bat/03-productivity/mac/topics/ai/harnesses-ai-coding-assistants/docs.sh
+  source ~/bat/03-productivity/mac/topics/ai/harnesses-ai-coding-assistants/develop_with_ai.sh
+  "
+  source ~/bat/03-productivity/mac/topics/ai/harnesses-ai-coding-assistants/docs.sh
+  source ~/bat/03-productivity/mac/topics/ai/harnesses-ai-coding-assistants/develop_with_ai.sh
+
+  echo \
+  "
+  source ~/bat/03-productivity/mac/topics/ai/harnesses-ai-coding-assistants/docs.sh
+  source ~/bat/03-productivity/mac/topics/ai/harnesses-ai-coding-assistants/develop_with_ai.sh
+  ---------------------------------------------------------------------------------------------------------------------
+  "
+}
+
 function work_on_dev_dotnet_api_keys_set ()
 {
   echo "--------------------------------------------------------------------------------------------------------------"
   echo \
   "
-  work_on_dev_dotnet_api_keys_nuget_set
-  work_on_dev_dotnet_api_keys_github_set
+  source $HOME/bat.private/mac/development/api-keys/search/tavily/api-keys/set.sh
   "
-  work_on_dev_dotnet_api_keys_nuget_set
-  work_on_dev_dotnet_api_keys_github_set
+  source $HOME/bat.private/mac/development/api-keys/search/tavily/api-keys/set.sh
 
   echo "--------------------------------------------------------------------------------------------------------------"
   echo \
@@ -4812,21 +4709,17 @@ function work_on_holisticware_moljac_core_template()
 
 function work_on_holisticware_core()
 {
-  echo "--------------------------------------------------------------------------------------------------------------"
   echo \
   "
-  open \\
-    https://github.com/AArnott/Library.Template
+  ----------------------------------------------------------------------------------------------------------------------
+  source $HOME/bat.private/mac/development/core/work.sh
   "
-  open \
-    https://github.com/AArnott/Library.Template
-
-  open -a Terminal \
-    HWC.Serialization/ \
-    265-HWCMD.GraphTheory \
-    $ROOT_PROJECTS/core/gh/HWC.GeoLocation/ \
-    261-HWC.Math.Matrix/ \
-
+  source $HOME/bat.private/mac/development/core/work.sh
+  echo \
+  "
+  source $HOME/bat.private/mac/development/core/work.sh
+  ----------------------------------------------------------------------------------------------------------------------
+  "
 };
 
 function work_on_holisticware_business()
@@ -5462,8 +5355,8 @@ alias rstudio="open -a RStudio"
 
 # alias edge="/Applications/Microsoft\ Edge.app/Contents/MacOS/Microsoft\ Edge"
 
-alias python="python3"
-alias pip="pip3"
+alias python="/opt/homebrew/opt/python@3.14/libexec/bin/python"
+alias pip="/opt/homebrew/opt/python@3.14/libexec/bin/pip"
 
 alias psql="psql-18"
 alias initdb="initdb-18"
@@ -5511,8 +5404,20 @@ builtin source "${HOME}/Library/Application Support/amazon-q/shell/zshrc.post.zs
 
 . "$HOME/.local/bin/env"
 
-echo $PATH# The following lines have been added by Docker Desktop to enable Docker CLI completions.
+echo $PATH
+
+# The following lines have been added by Docker Desktop to enable Docker CLI completions.
 fpath=(/Users/moljac/.docker/completions $fpath)
 autoload -Uz compinit
 compinit
 # End of Docker CLI completions
+
+#----------------------------------------------------------------------------------------------------------------------
+# dotnet zsh completion registration - moved here from earlier in this file.
+# Must run AFTER the last `compinit` call above: compinit resets the zsh
+# completion registry (_comps) every time it runs, so a `compdef`/`eval ...
+# completions ...` registration made before a later compinit call gets
+# silently wiped. This file calls compinit twice (line 15 and the Docker
+# Desktop block above), so this registration has to be last.
+export DOTNET_SUGGEST_SCRIPT_VERSION="1.0.0"
+eval "$(dotnet completions script zsh)"
