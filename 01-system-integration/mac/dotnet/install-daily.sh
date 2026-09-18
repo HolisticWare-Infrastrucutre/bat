@@ -1,5 +1,9 @@
 #!/bin/zsh
 
+# https://dotnet.microsoft.com/en-us/download/dotnet
+# https://github.com/dotnet/installer/issues/11040
+# https://github.com/dotnet/dotnet/blob/main/docs/builds-table.md
+
 export OS=osx
 export EXT=pkg
 
@@ -14,7 +18,12 @@ export VERSIONS=\
 9.0.1xx
 9.0.2xx
 9.0.3xx
+9.0.4xx
 10.0
+10.0.1xx
+10.0.2xx
+10.0.3xx
+10.0.4xx
 "
 export PRODUCTS=\
 "
