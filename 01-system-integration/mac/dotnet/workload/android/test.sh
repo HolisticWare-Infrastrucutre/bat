@@ -1,5 +1,7 @@
 #!/bin/zsh
 
+export FOLDER=$HOME/Downloads/HolisticWare
+
     echo \
     "
     ---------------------------------------------------------------------------
@@ -17,43 +19,43 @@
     "
     ---------------------------------------------------------------------------
     rm -fr \\
-        $HOME/Downloads/dotnet/samples/AppAndroid/
+        $FOLDER/dotnet/samples/AppAndroid/
 
     dotnet new \\
         android \\
-            --output $HOME/Downloads/dotnet/samples/AppAndroid/
+            --output $FOLDER/dotnet/samples/AppAndroid/
 
     "
     rm -fr \
-        $HOME/Downloads/dotnet/samples/AppAndroid/
+        $FOLDER/dotnet/samples/AppAndroid/
 
     dotnet new \
         android \
-            --output $HOME/Downloads/dotnet/samples/AppAndroid/
+            --output $FOLDER/dotnet/samples/AppAndroid/
 
     echo \
     "
     ---------------------------------------------------------------------------
     dotnet \\
         build \\
-        $HOME/Downloads/dotnet/samples/AppAndroid/ \\
+        $FOLDER/dotnet/samples/AppAndroid/ \\
             -v:diagnostic \\
             -t:InstallAndroidDependencies \\
             -p:AcceptAndroidSdkLicenses=true \\
             -p:AndroidManifestType=GoogleV2 \\
             -p:AndroidSdkDirectory=$ANDROID_SDK_ROOT \\
-            -bl:$HOME/Downloads/dotnet/samples/AppAndroid/install-android-dependencies-GoogleV2.binlog
+            -bl:$FOLDER/dotnet/samples/AppAndroid/install-android-dependencies-GoogleV2.binlog
 
     "
     dotnet \
         build \
-        $HOME/Downloads/dotnet/samples/AppAndroid/ \
+        $FOLDER/dotnet/samples/AppAndroid/ \
             -v:diagnostic \
             -t:InstallAndroidDependencies \
             -p:AcceptAndroidSdkLicenses=true \
             -p:AndroidManifestType=GoogleV2 \
             -p:AndroidSdkDirectory=$ANDROID_SDK_ROOT \
-            -bl:$HOME/Downloads/AppAndroid/install-android-dependencies-GoogleV2.binlog
+            -bl:$FOLDER/AppAndroid/install-android-dependencies-GoogleV2.binlog
 
     echo \
     "
@@ -61,9 +63,9 @@
     dotnet \\
         run \\
         --project \\
-            $HOME/Downloads/dotnet/samples/AppAndroid/ \
+            $FOLDER/dotnet/samples/AppAndroid/ \
     "
     dotnet \
         run \
         --project \
-            $HOME/Downloads/AppAndroid/ \
+            $FOLDER/AppAndroid/ \
