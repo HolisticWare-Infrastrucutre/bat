@@ -194,6 +194,11 @@ export PATH="$PATH:$HOME/.lmstudio/bin"
 # End of LM Studio CLI section
 
 
+# Added by idb-companion
+# needed for
+#   Redth/mobile-canvas-ghcp
+#   https://github.com/Redth/mobile-canvas-ghcp
+export IDB_COMPANION_PATH="/opt/homebrew/opt/idb-companion/bin/idb_companion"
 
 
 # Added by moljac manually
@@ -218,6 +223,8 @@ export PATH_DOTNET_PKG_FOLDER=/usr/local/share/dotnet
 export DOTNET_HOST_PATH="$PATH_DOTNET_PKG_BINARY"
 
 
+# Fuzzing AFL++
+export PATH="$PATH:/usr/local/opt/afl++/bin"
 
 
 #   stop
@@ -1089,6 +1096,26 @@ function sys_network_wifi_name()
 
 }
 
+
+function sys_network_port_in_use()
+{
+  local PORT=$1
+  if [ -z "$PORT" ];
+  then
+    echo "Usage: sys_network_port_in_use <port>"
+    return 1
+  fi
+
+  lsof -i :"$PORT"
+  netstat -p tcp | grep $PORT
+  sudo lsof -i -P | grep LISTEN | grep :$PORT
+  sudo lsof -nP -i4TCP:$PORT | grep LISTEN
+  sudo lsof -nP -iTCP:$PORT | grep LISTEN
+  sudo lsof -nP -i:$PORT | grep LISTEN
+  sudo lsof -iTCP -sTCP:LISTEN -n -P 
+  sudo lsof -i -n -P | grep TCP
+
+}
 
 # sys
 #   network
