@@ -1,10 +1,12 @@
 #!/bin/zsh
 
+export FOLDER=$HOME/Downloads/HolisticWare
+
     echo "---------------------------------------------------------------------------------------------------------------"
     echo \
     "
     rm -fr \\
-        $HOME/Downloads/dotnet/samples/AppMacCatalyst/
+        $FOLDER/dotnet/samples/AppMacCatalyst/
 
     dotnet new \\
         install \\
@@ -21,11 +23,11 @@
     dotnet \\
         run \\
         --project \\
-                $HOME/Downloads/dotnet/samples/AppMacCatalyst/
+                $FOLDER/dotnet/samples/AppMacCatalyst/
 
     "
     rm -fr \
-        $HOME/Downloads/dotnet/samples/AppMacCatalyst/
+        $FOLDER/dotnet/samples/AppMacCatalyst/
 
     dotnet new \
         uninstall \
@@ -37,9 +39,9 @@
     dotnet new \
         maccatalyst \
             --output \
-                $HOME/Downloads/dotnet/samples/AppMacCatalyst/
+                $FOLDER/dotnet/samples/AppMacCatalyst/
 
     dotnet \
         run \
         --project \
-                $HOME/Downloads/dotnet/samples/AppMacCatalyst/
+                $FOLDER/dotnet/samples/AppMacCatalyst/
