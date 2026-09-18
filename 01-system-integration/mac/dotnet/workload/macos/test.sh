@@ -1,10 +1,12 @@
 #!/bin/zsh
 
+export FOLDER=$HOME/Downloads/HolisticWare
+
     echo "---------------------------------------------------------------------------------------------------------------"
     echo \
     "
     rm -fr \\
-        $HOME/Downloads/AppMacOS/
+        $FOLDER/AppMacOS/
 
     dotnet new \\
         uninstall \\
@@ -16,16 +18,16 @@
     dotnet new \\
         macos \\
             --output \\
-                $HOME/Downloads/AppMacOS/
+                $FOLDER/AppMacOS/
 
     dotnet \\
         run \\
         --project \\
-                $HOME/Downloads/AppMacOS/
+                $FOLDER/AppMacOS/
 
     "
     rm -fr \
-        $HOME/Downloads/AppMacOS/
+        $FOLDER/AppMacOS/
 
     dotnet new \
         uninstall \
@@ -37,9 +39,9 @@
     dotnet new \
         macos \
             --output \
-                $HOME/Downloads/AppMacOS/
+                $FOLDER/AppMacOS/
 
     dotnet \
         run \
         --project \
-                $HOME/Downloads/AppMacOS/
+                $FOLDER/AppMacOS/
