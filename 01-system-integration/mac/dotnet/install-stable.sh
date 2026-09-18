@@ -2,8 +2,10 @@
 
 # CHECK ./download-stable.sh
 
-# https://dotnet.microsoft.com/en-us/download
 # https://dotnet.microsoft.com/en-us/download/dotnet
+# https://github.com/dotnet/installer/issues/11040
+# https://github.com/dotnet/dotnet/blob/main/docs/builds-table.md
+
 export OS=osx
 export EXT=pkg
 
@@ -18,6 +20,7 @@ export VERSIONS=\
 9.0.1xx
 9.0.2xx
 9.0.3xx
+9.0.4xx
 10.0
 10.0.1xx
 10.0.2xx
@@ -40,8 +43,8 @@ else
   export ARCH=x86
 fi
 
-FOLDER=$HOME/Downloads/HolisticWare/dotnet/
-md $FOLDER
+export FOLDER=$HOME/Downloads/HolisticWare/dotnet/
+mkdir -p $FOLDER
 
 IFS=$'\n'
 # ZSH does not split words by default (like other shells):
