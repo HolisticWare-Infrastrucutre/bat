@@ -1,24 +1,26 @@
 #!/bin/zsh
 
+export FOLDER=$HOME/Downloads/HolisticWare
+
     echo "---------------------------------------------------------------------------------------------------------------"
     echo \
     "
     rm -fr \\
-        $HOME/Downloads/AppiOS/
+        $FOLDER/AppiOS/
 
     dotnet new \\
         ios \\
-            --output $HOME/Downloads/dotnet/samples/AppiOS/
+            --output $FOLDER/dotnet/samples/AppiOS/
 
     "
     rm -fr \
-        $HOME/Downloads/dotnet/samples/AppiOS/
+        $FOLDER/dotnet/samples/AppiOS/
 
     dotnet new \
         ios \
             --output \
-                $HOME/Downloads/dotnet/samples/AppiOS/
+                $FOLDER/dotnet/samples/AppiOS/
 
     dotnet run \
         --project \
-            $HOME/Downloads/dotnet/samples/AppiOS/
+            $FOLDER/dotnet/samples/AppiOS/
