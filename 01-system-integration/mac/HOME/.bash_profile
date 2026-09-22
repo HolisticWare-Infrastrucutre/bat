@@ -113,7 +113,7 @@ export JAVA_HOME=$JAVA_HOME_21
 export ANDROID_HOME_XAMARIN=$HOME/Library/Developer/Xamarin/android-sdk-macosx
 export ANDROID_NDK_HOME_XAMARIN=/usr/local/bin
 export ANDROID_NDK_HOME_BREW="/opt/homebrew/share/android-ndk"
-export ANDROID_NDK_HOME_ANDROID_STUDIO="$HOME/Library/Android/sdk/ndk/30.0.14904198/"
+export ANDROID_NDK_HOME_ANDROID_STUDIO="$HOME/Library/Android/sdk/ndk/30.0.16248370/"
 
 # installed with Android Studio
 export ANDROID_HOME_ANDROID_STUDIO=$HOME/Library/Android/sdk
