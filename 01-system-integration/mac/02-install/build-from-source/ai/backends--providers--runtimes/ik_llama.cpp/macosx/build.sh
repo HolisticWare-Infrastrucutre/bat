@@ -3,7 +3,8 @@
 # https://github.com/ikawrakow/ik_llama.cpp
 export URL=https://github.com/ikawrakow/ik_llama.cpp/archive/refs/heads/main.zip
 
-export FOLDER=$HOME/Downloads/ik_llama.cpp/
+export FOLDER=$HOME/Downloads/HolisticWare/ai/ik_llama.cpp/macosx
+
 rm -fr  $FOLDER
 md      $FOLDER
 
@@ -41,8 +42,8 @@ cmake \
   -j 8
 
 
-rm -fr  $HOME/bin/llama.cpp-cli
-md      $HOME/bin/llama.cpp-cli/
+rm -fr  $HOME/bin/ik_llama.cpp-cli
+md      $HOME/bin/ik_llama.cpp-cli/
 cp -r \
     $FOLDER/ik_llama.cpp-main/ik_llama.cpp-master/build-macosx/bin/* \
-    $HOME/bin/llama.cpp-cli/
+    $HOME/bin/ik_llama.cpp-cli/
