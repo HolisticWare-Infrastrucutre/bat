@@ -13,6 +13,7 @@
 export URL=https://github.com/ggml-org/llama.cpp/archive/refs/heads/master.zip
 
 export FOLDER=$HOME/Downloads/HolisticWare/ai/llama.cpp/macosx
+
 rm -fr  $FOLDER
 md      $FOLDER
 
