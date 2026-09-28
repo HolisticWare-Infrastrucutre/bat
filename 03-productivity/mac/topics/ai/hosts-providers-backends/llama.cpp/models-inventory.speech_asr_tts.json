@@ -1,0 +1,460 @@
+{
+  "category": "speech_asr_tts",
+  "generated_from": "models-inventory.json (source of truth -- do not hand-edit this split file, edit the master and re-run split-inventory.py)",
+  "generated_by": "build-router-models-dir.sh",
+  "router_models_dir": "~/.cache/llama-router-models",
+  "router_port": 11454,
+  "notes": "id = value to pass in the OpenAI-compatible \"model\" request field (llama.cpp router) or as --model to query_lm.py/agent_lm.py (LM Studio, using the LM Studio model id noted in backends.lm_studio.notes when different from this id). source_dir is the real (two-level) path under the scanned cache; router-mode --models-dir scans only one level, so a flat symlink farm named <org>__<repo> is generated at router_models_dir and used as the actual --models-dir target. model_file is what gets passed to --model (first shard only for multipart). mmproj_file is auto-paired by llama-server via --mmproj when present, not a separate model. backends.<name>.status is one of: working (empirically confirmed via a real load+inference test), rejected (empirically confirmed to fail, e.g. a memory guardrail), untested (no real test run yet -- absence of a rejection is NOT evidence it works), not_configured (backend has no launcher/setup on this machine yet). backends.<name> perf fields (populated only when status=working, from a single small chat-completion test, not a statistical average -- treat as one data point, not a benchmark): load_time_s = time to load weights + get the child server listening, isolated from inference time (from the server's own 'model loaded' log timestamp where available, else total_elapsed_s minus inference time); total_elapsed_s = full curl round-trip (load + prompt processing + generation); prompt_tokens_per_second / gen_tokens_per_second = from the response's own \"timings\" object. Regenerate via test-inventory-models.sh + merge-test-results.py (llama_cpp_router only currently -- LM Studio's query_lm.py does not report timings, so lm_studio perf fields stay null even where status=working).",
+  "models": [
+    {
+      "id": "FL33TW00D-HF__whisper-tiny",
+      "source_dir": "~/.lmstudio/models/FL33TW00D-HF/whisper-tiny",
+      "model_file": "tiny_f32.gguf",
+      "multipart": null,
+      "mmproj_file": null,
+      "size_on_disk": "144M",
+      "notes": null,
+      "backends": {
+        "llama_cpp_router": {
+          "status": "rejected",
+          "load_time_s": null,
+          "total_elapsed_s": 0.1,
+          "prompt_tokens_per_second": null,
+          "gen_tokens_per_second": null,
+          "transcribed_text": null,
+          "input_tokens": null,
+          "output_tokens": null,
+          "ocr_text": null,
+          "notes": "model name=FL33TW00D-HF__whisper-tiny failed to load",
+          "tested_at": "2026-09-28"
+        },
+        "lm_studio": {
+          "status": "untested",
+          "load_time_s": null,
+          "total_elapsed_s": null,
+          "prompt_tokens_per_second": null,
+          "gen_tokens_per_second": null,
+          "transcribed_text": null,
+          "input_tokens": null,
+          "output_tokens": null,
+          "ocr_text": null,
+          "notes": "LM Studio's server has no audio transcription endpoint at all -- confirmed empirically: /v1/audio/transcriptions and /api/v0/audio/transcriptions both return 'Unexpected endpoint or method' (HTTP 200 body, not even a 404), and the raw route also rejects multipart/form-data uploads outright ('POST requests must use application/json'). This is a backend-level limitation (no route exists), not a per-model rejection -- status stays untested rather than rejected since no model was actually tested.",
+          "tested_at": "2026-09-28"
+        },
+        "ik_llama_cpp": {
+          "status": "untested",
+          "load_time_s": null,
+          "total_elapsed_s": null,
+          "prompt_tokens_per_second": null,
+          "gen_tokens_per_second": null,
+          "transcribed_text": null,
+          "input_tokens": null,
+          "output_tokens": null,
+          "ocr_text": null,
+          "notes": "ik_llama.cpp's server has no /v1/audio/transcriptions route -- confirmed empirically: clean HTTP 404 'File Not Found' with a model already loaded and serving (so this is a route that doesn't exist, not a model problem). Its --help lists an --audio FILE flag, which appears to be a CLI-only batch-processing option, not an HTTP API surface. Status stays untested rather than rejected since no model was actually put through a real test.",
+          "tested_at": "2026-09-28"
+        }
+      }
+    },
+    {
+      "id": "oxide-lab__whisper-large-v3-turbo-GGUF",
+      "source_dir": "~/.lmstudio/models/oxide-lab/whisper-large-v3-turbo-GGUF",
+      "model_file": "whisper-large-v3-turbo-q8_0.gguf",
+      "multipart": null,
+      "mmproj_file": null,
+      "size_on_disk": "825M",
+      "notes": null,
+      "backends": {
+        "llama_cpp_router": {
+          "status": "rejected",
+          "load_time_s": null,
+          "total_elapsed_s": 0.1,
+          "prompt_tokens_per_second": null,
+          "gen_tokens_per_second": null,
+          "transcribed_text": null,
+          "input_tokens": null,
+          "output_tokens": null,
+          "ocr_text": null,
+          "notes": "model name=oxide-lab__whisper-large-v3-turbo-GGUF failed to load",
+          "tested_at": "2026-09-28"
+        },
+        "lm_studio": {
+          "status": "untested",
+          "load_time_s": null,
+          "total_elapsed_s": null,
+          "prompt_tokens_per_second": null,
+          "gen_tokens_per_second": null,
+          "transcribed_text": null,
+          "input_tokens": null,
+          "output_tokens": null,
+          "ocr_text": null,
+          "notes": "LM Studio's server has no audio transcription endpoint at all -- confirmed empirically: /v1/audio/transcriptions and /api/v0/audio/transcriptions both return 'Unexpected endpoint or method' (HTTP 200 body, not even a 404), and the raw route also rejects multipart/form-data uploads outright ('POST requests must use application/json'). This is a backend-level limitation (no route exists), not a per-model rejection -- status stays untested rather than rejected since no model was actually tested.",
+          "tested_at": "2026-09-28"
+        },
+        "ik_llama_cpp": {
+          "status": "untested",
+          "load_time_s": null,
+          "total_elapsed_s": null,
+          "prompt_tokens_per_second": null,
+          "gen_tokens_per_second": null,
+          "transcribed_text": null,
+          "input_tokens": null,
+          "output_tokens": null,
+          "ocr_text": null,
+          "notes": "ik_llama.cpp's server has no /v1/audio/transcriptions route -- confirmed empirically: clean HTTP 404 'File Not Found' with a model already loaded and serving (so this is a route that doesn't exist, not a model problem). Its --help lists an --audio FILE flag, which appears to be a CLI-only batch-processing option, not an HTTP API surface. Status stays untested rather than rejected since no model was actually put through a real test.",
+          "tested_at": "2026-09-28"
+        }
+      }
+    },
+    {
+      "id": "vonjack__whisper-large-v3-gguf",
+      "source_dir": "~/.lmstudio/models/vonjack/whisper-large-v3-gguf",
+      "model_file": "whisper-large-v3-f16.gguf",
+      "multipart": null,
+      "mmproj_file": null,
+      "size_on_disk": "2.9G",
+      "notes": null,
+      "backends": {
+        "llama_cpp_router": {
+          "status": "rejected",
+          "load_time_s": null,
+          "total_elapsed_s": 0.1,
+          "prompt_tokens_per_second": null,
+          "gen_tokens_per_second": null,
+          "transcribed_text": null,
+          "input_tokens": null,
+          "output_tokens": null,
+          "ocr_text": null,
+          "notes": "model name=vonjack__whisper-large-v3-gguf failed to load",
+          "tested_at": "2026-09-28"
+        },
+        "lm_studio": {
+          "status": "untested",
+          "load_time_s": null,
+          "total_elapsed_s": null,
+          "prompt_tokens_per_second": null,
+          "gen_tokens_per_second": null,
+          "transcribed_text": null,
+          "input_tokens": null,
+          "output_tokens": null,
+          "ocr_text": null,
+          "notes": "LM Studio's server has no audio transcription endpoint at all -- confirmed empirically: /v1/audio/transcriptions and /api/v0/audio/transcriptions both return 'Unexpected endpoint or method' (HTTP 200 body, not even a 404), and the raw route also rejects multipart/form-data uploads outright ('POST requests must use application/json'). This is a backend-level limitation (no route exists), not a per-model rejection -- status stays untested rather than rejected since no model was actually tested.",
+          "tested_at": "2026-09-28"
+        },
+        "ik_llama_cpp": {
+          "status": "untested",
+          "load_time_s": null,
+          "total_elapsed_s": null,
+          "prompt_tokens_per_second": null,
+          "gen_tokens_per_second": null,
+          "transcribed_text": null,
+          "input_tokens": null,
+          "output_tokens": null,
+          "ocr_text": null,
+          "notes": "ik_llama.cpp's server has no /v1/audio/transcriptions route -- confirmed empirically: clean HTTP 404 'File Not Found' with a model already loaded and serving (so this is a route that doesn't exist, not a model problem). Its --help lists an --audio FILE flag, which appears to be a CLI-only batch-processing option, not an HTTP API surface. Status stays untested rather than rejected since no model was actually put through a real test.",
+          "tested_at": "2026-09-28"
+        }
+      }
+    },
+    {
+      "id": "xkeyC__whisper-large-v3-turbo-gguf__model_q4_1",
+      "source_dir": "~/.lmstudio/models/xkeyC/whisper-large-v3-turbo-gguf",
+      "model_file": "model_q4_1.gguf",
+      "multipart": null,
+      "mmproj_file": null,
+      "size_on_disk": "501M",
+      "notes": "one of two independent quantizations in this folder (not multipart shards of one model)",
+      "backends": {
+        "llama_cpp_router": {
+          "status": "rejected",
+          "load_time_s": null,
+          "total_elapsed_s": 0.1,
+          "prompt_tokens_per_second": null,
+          "gen_tokens_per_second": null,
+          "transcribed_text": null,
+          "input_tokens": null,
+          "output_tokens": null,
+          "ocr_text": null,
+          "notes": "model name=xkeyC__whisper-large-v3-turbo-gguf__model_q4_1 failed to load",
+          "tested_at": "2026-09-28"
+        },
+        "lm_studio": {
+          "status": "untested",
+          "load_time_s": null,
+          "total_elapsed_s": null,
+          "prompt_tokens_per_second": null,
+          "gen_tokens_per_second": null,
+          "transcribed_text": null,
+          "input_tokens": null,
+          "output_tokens": null,
+          "ocr_text": null,
+          "notes": "LM Studio's server has no audio transcription endpoint at all -- confirmed empirically: /v1/audio/transcriptions and /api/v0/audio/transcriptions both return 'Unexpected endpoint or method' (HTTP 200 body, not even a 404), and the raw route also rejects multipart/form-data uploads outright ('POST requests must use application/json'). This is a backend-level limitation (no route exists), not a per-model rejection -- status stays untested rather than rejected since no model was actually tested.",
+          "tested_at": "2026-09-28"
+        },
+        "ik_llama_cpp": {
+          "status": "untested",
+          "load_time_s": null,
+          "total_elapsed_s": null,
+          "prompt_tokens_per_second": null,
+          "gen_tokens_per_second": null,
+          "transcribed_text": null,
+          "input_tokens": null,
+          "output_tokens": null,
+          "ocr_text": null,
+          "notes": "ik_llama.cpp's server has no /v1/audio/transcriptions route -- confirmed empirically: clean HTTP 404 'File Not Found' with a model already loaded and serving (so this is a route that doesn't exist, not a model problem). Its --help lists an --audio FILE flag, which appears to be a CLI-only batch-processing option, not an HTTP API surface. Status stays untested rather than rejected since no model was actually put through a real test.",
+          "tested_at": "2026-09-28"
+        }
+      }
+    },
+    {
+      "id": "xkeyC__whisper-large-v3-turbo-gguf__model_q4_k",
+      "source_dir": "~/.lmstudio/models/xkeyC/whisper-large-v3-turbo-gguf",
+      "model_file": "model_q4_k.gguf",
+      "multipart": null,
+      "mmproj_file": null,
+      "size_on_disk": "454M",
+      "notes": "one of two independent quantizations in this folder (not multipart shards of one model)",
+      "backends": {
+        "llama_cpp_router": {
+          "status": "rejected",
+          "load_time_s": null,
+          "total_elapsed_s": 0.1,
+          "prompt_tokens_per_second": null,
+          "gen_tokens_per_second": null,
+          "transcribed_text": null,
+          "input_tokens": null,
+          "output_tokens": null,
+          "ocr_text": null,
+          "notes": "model name=xkeyC__whisper-large-v3-turbo-gguf__model_q4_k failed to load",
+          "tested_at": "2026-09-28"
+        },
+        "lm_studio": {
+          "status": "untested",
+          "load_time_s": null,
+          "total_elapsed_s": null,
+          "prompt_tokens_per_second": null,
+          "gen_tokens_per_second": null,
+          "transcribed_text": null,
+          "input_tokens": null,
+          "output_tokens": null,
+          "ocr_text": null,
+          "notes": "LM Studio's server has no audio transcription endpoint at all -- confirmed empirically: /v1/audio/transcriptions and /api/v0/audio/transcriptions both return 'Unexpected endpoint or method' (HTTP 200 body, not even a 404), and the raw route also rejects multipart/form-data uploads outright ('POST requests must use application/json'). This is a backend-level limitation (no route exists), not a per-model rejection -- status stays untested rather than rejected since no model was actually tested.",
+          "tested_at": "2026-09-28"
+        },
+        "ik_llama_cpp": {
+          "status": "untested",
+          "load_time_s": null,
+          "total_elapsed_s": null,
+          "prompt_tokens_per_second": null,
+          "gen_tokens_per_second": null,
+          "transcribed_text": null,
+          "input_tokens": null,
+          "output_tokens": null,
+          "ocr_text": null,
+          "notes": "ik_llama.cpp's server has no /v1/audio/transcriptions route -- confirmed empirically: clean HTTP 404 'File Not Found' with a model already loaded and serving (so this is a route that doesn't exist, not a model problem). Its --help lists an --audio FILE flag, which appears to be a CLI-only batch-processing option, not an HTTP API surface. Status stays untested rather than rejected since no model was actually put through a real test.",
+          "tested_at": "2026-09-28"
+        }
+      }
+    },
+    {
+      "id": "ibm-granite__granite-speech-4.1-2b-GGUF",
+      "source_dir": "~/.lmstudio/models/ibm-granite/granite-speech-4.1-2b-GGUF",
+      "model_file": "granite-speech-4.1-2b-bf16.gguf",
+      "multipart": null,
+      "mmproj_file": "mmproj-model-f16.gguf",
+      "size_on_disk": "4.5G",
+      "notes": null,
+      "backends": {
+        "llama_cpp_router": {
+          "status": "working",
+          "load_time_s": null,
+          "total_elapsed_s": 2.0,
+          "prompt_tokens_per_second": null,
+          "gen_tokens_per_second": null,
+          "transcribed_text": "hello this is a test",
+          "input_tokens": 30,
+          "output_tokens": 6,
+          "ocr_text": null,
+          "notes": null,
+          "tested_at": "2026-09-28"
+        },
+        "lm_studio": {
+          "status": "untested",
+          "load_time_s": null,
+          "total_elapsed_s": null,
+          "prompt_tokens_per_second": null,
+          "gen_tokens_per_second": null,
+          "transcribed_text": null,
+          "input_tokens": null,
+          "output_tokens": null,
+          "ocr_text": null,
+          "notes": "LM Studio's server has no audio transcription endpoint at all -- confirmed empirically: /v1/audio/transcriptions and /api/v0/audio/transcriptions both return 'Unexpected endpoint or method' (HTTP 200 body, not even a 404), and the raw route also rejects multipart/form-data uploads outright ('POST requests must use application/json'). This is a backend-level limitation (no route exists), not a per-model rejection -- status stays untested rather than rejected since no model was actually tested.",
+          "tested_at": "2026-09-28"
+        },
+        "ik_llama_cpp": {
+          "status": "untested",
+          "load_time_s": null,
+          "total_elapsed_s": null,
+          "prompt_tokens_per_second": null,
+          "gen_tokens_per_second": null,
+          "transcribed_text": null,
+          "input_tokens": null,
+          "output_tokens": null,
+          "ocr_text": null,
+          "notes": "ik_llama.cpp's server has no /v1/audio/transcriptions route -- confirmed empirically: clean HTTP 404 'File Not Found' with a model already loaded and serving (so this is a route that doesn't exist, not a model problem). Its --help lists an --audio FILE flag, which appears to be a CLI-only batch-processing option, not an HTTP API surface. Status stays untested rather than rejected since no model was actually put through a real test.",
+          "tested_at": "2026-09-28"
+        }
+      }
+    },
+    {
+      "id": "ibm-granite__granite-speech-4.1-2b-plus-GGUF",
+      "source_dir": "~/.lmstudio/models/ibm-granite/granite-speech-4.1-2b-plus-GGUF",
+      "model_file": "granite-speech-4.1-2b-plus-bf16.gguf",
+      "multipart": null,
+      "mmproj_file": "mmproj-model-f16.gguf",
+      "size_on_disk": "4.1G",
+      "notes": null,
+      "backends": {
+        "llama_cpp_router": {
+          "status": "working",
+          "load_time_s": null,
+          "total_elapsed_s": 1.8,
+          "prompt_tokens_per_second": null,
+          "gen_tokens_per_second": null,
+          "transcribed_text": "Hello This is a test",
+          "input_tokens": 53,
+          "output_tokens": 6,
+          "ocr_text": null,
+          "notes": null,
+          "tested_at": "2026-09-28"
+        },
+        "lm_studio": {
+          "status": "untested",
+          "load_time_s": null,
+          "total_elapsed_s": null,
+          "prompt_tokens_per_second": null,
+          "gen_tokens_per_second": null,
+          "transcribed_text": null,
+          "input_tokens": null,
+          "output_tokens": null,
+          "ocr_text": null,
+          "notes": "LM Studio's server has no audio transcription endpoint at all -- confirmed empirically: /v1/audio/transcriptions and /api/v0/audio/transcriptions both return 'Unexpected endpoint or method' (HTTP 200 body, not even a 404), and the raw route also rejects multipart/form-data uploads outright ('POST requests must use application/json'). This is a backend-level limitation (no route exists), not a per-model rejection -- status stays untested rather than rejected since no model was actually tested.",
+          "tested_at": "2026-09-28"
+        },
+        "ik_llama_cpp": {
+          "status": "untested",
+          "load_time_s": null,
+          "total_elapsed_s": null,
+          "prompt_tokens_per_second": null,
+          "gen_tokens_per_second": null,
+          "transcribed_text": null,
+          "input_tokens": null,
+          "output_tokens": null,
+          "ocr_text": null,
+          "notes": "ik_llama.cpp's server has no /v1/audio/transcriptions route -- confirmed empirically: clean HTTP 404 'File Not Found' with a model already loaded and serving (so this is a route that doesn't exist, not a model problem). Its --help lists an --audio FILE flag, which appears to be a CLI-only batch-processing option, not an HTTP API surface. Status stays untested rather than rejected since no model was actually put through a real test.",
+          "tested_at": "2026-09-28"
+        }
+      }
+    },
+    {
+      "id": "unslothai__Qwen3-ASR-1.7B-GGUF",
+      "source_dir": "~/.lmstudio/models/unslothai/Qwen3-ASR-1.7B-GGUF",
+      "model_file": "Qwen3-ASR-1.7B-Q8_0.gguf",
+      "multipart": null,
+      "mmproj_file": "mmproj-Qwen3-ASR-1.7B-bf16.gguf",
+      "size_on_disk": "2.6G",
+      "notes": null,
+      "backends": {
+        "llama_cpp_router": {
+          "status": "working",
+          "load_time_s": null,
+          "total_elapsed_s": 0.7,
+          "prompt_tokens_per_second": null,
+          "gen_tokens_per_second": null,
+          "transcribed_text": "language English<asr_text>Hello. This is a test.",
+          "input_tokens": 41,
+          "output_tokens": 11,
+          "ocr_text": null,
+          "notes": null,
+          "tested_at": "2026-09-28"
+        },
+        "lm_studio": {
+          "status": "untested",
+          "load_time_s": null,
+          "total_elapsed_s": null,
+          "prompt_tokens_per_second": null,
+          "gen_tokens_per_second": null,
+          "transcribed_text": null,
+          "input_tokens": null,
+          "output_tokens": null,
+          "ocr_text": null,
+          "notes": "LM Studio's server has no audio transcription endpoint at all -- confirmed empirically: /v1/audio/transcriptions and /api/v0/audio/transcriptions both return 'Unexpected endpoint or method' (HTTP 200 body, not even a 404), and the raw route also rejects multipart/form-data uploads outright ('POST requests must use application/json'). This is a backend-level limitation (no route exists), not a per-model rejection -- status stays untested rather than rejected since no model was actually tested.",
+          "tested_at": "2026-09-28"
+        },
+        "ik_llama_cpp": {
+          "status": "untested",
+          "load_time_s": null,
+          "total_elapsed_s": null,
+          "prompt_tokens_per_second": null,
+          "gen_tokens_per_second": null,
+          "transcribed_text": null,
+          "input_tokens": null,
+          "output_tokens": null,
+          "ocr_text": null,
+          "notes": "ik_llama.cpp's server has no /v1/audio/transcriptions route -- confirmed empirically: clean HTTP 404 'File Not Found' with a model already loaded and serving (so this is a route that doesn't exist, not a model problem). Its --help lists an --audio FILE flag, which appears to be a CLI-only batch-processing option, not an HTTP API surface. Status stays untested rather than rejected since no model was actually put through a real test.",
+          "tested_at": "2026-09-28"
+        }
+      }
+    },
+    {
+      "id": "vokra__qwen3-asr-1.7b",
+      "source_dir": "~/.lmstudio/models/vokra/qwen3-asr-1.7b",
+      "model_file": "qwen3-asr-1.7b.gguf",
+      "multipart": null,
+      "mmproj_file": null,
+      "size_on_disk": "4.4G",
+      "notes": null,
+      "backends": {
+        "llama_cpp_router": {
+          "status": "rejected",
+          "load_time_s": null,
+          "total_elapsed_s": 0.2,
+          "prompt_tokens_per_second": null,
+          "gen_tokens_per_second": null,
+          "transcribed_text": null,
+          "input_tokens": null,
+          "output_tokens": null,
+          "ocr_text": null,
+          "notes": "model name=vokra__qwen3-asr-1.7b failed to load",
+          "tested_at": "2026-09-28"
+        },
+        "lm_studio": {
+          "status": "untested",
+          "load_time_s": null,
+          "total_elapsed_s": null,
+          "prompt_tokens_per_second": null,
+          "gen_tokens_per_second": null,
+          "transcribed_text": null,
+          "input_tokens": null,
+          "output_tokens": null,
+          "ocr_text": null,
+          "notes": "LM Studio's server has no audio transcription endpoint at all -- confirmed empirically: /v1/audio/transcriptions and /api/v0/audio/transcriptions both return 'Unexpected endpoint or method' (HTTP 200 body, not even a 404), and the raw route also rejects multipart/form-data uploads outright ('POST requests must use application/json'). This is a backend-level limitation (no route exists), not a per-model rejection -- status stays untested rather than rejected since no model was actually tested.",
+          "tested_at": "2026-09-28"
+        },
+        "ik_llama_cpp": {
+          "status": "untested",
+          "load_time_s": null,
+          "total_elapsed_s": null,
+          "prompt_tokens_per_second": null,
+          "gen_tokens_per_second": null,
+          "transcribed_text": null,
+          "input_tokens": null,
+          "output_tokens": null,
+          "ocr_text": null,
+          "notes": "ik_llama.cpp's server has no /v1/audio/transcriptions route -- confirmed empirically: clean HTTP 404 'File Not Found' with a model already loaded and serving (so this is a route that doesn't exist, not a model problem). Its --help lists an --audio FILE flag, which appears to be a CLI-only batch-processing option, not an HTTP API surface. Status stays untested rather than rejected since no model was actually put through a real test.",
+          "tested_at": "2026-09-28"
+        }
+      }
+    }
+  ]
+}
