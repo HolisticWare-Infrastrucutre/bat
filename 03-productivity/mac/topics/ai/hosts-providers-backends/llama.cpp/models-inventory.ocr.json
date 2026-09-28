@@ -1,0 +1,110 @@
+{
+  "category": "ocr",
+  "generated_from": "models-inventory.json (source of truth -- do not hand-edit this split file, edit the master and re-run split-inventory.py)",
+  "generated_by": "build-router-models-dir.sh",
+  "router_models_dir": "~/.cache/llama-router-models",
+  "router_port": 11454,
+  "notes": "id = value to pass in the OpenAI-compatible \"model\" request field (llama.cpp router) or as --model to query_lm.py/agent_lm.py (LM Studio, using the LM Studio model id noted in backends.lm_studio.notes when different from this id). source_dir is the real (two-level) path under the scanned cache; router-mode --models-dir scans only one level, so a flat symlink farm named <org>__<repo> is generated at router_models_dir and used as the actual --models-dir target. model_file is what gets passed to --model (first shard only for multipart). mmproj_file is auto-paired by llama-server via --mmproj when present, not a separate model. backends.<name>.status is one of: working (empirically confirmed via a real load+inference test), rejected (empirically confirmed to fail, e.g. a memory guardrail), untested (no real test run yet -- absence of a rejection is NOT evidence it works), not_configured (backend has no launcher/setup on this machine yet). backends.<name> perf fields (populated only when status=working, from a single small chat-completion test, not a statistical average -- treat as one data point, not a benchmark): load_time_s = time to load weights + get the child server listening, isolated from inference time (from the server's own 'model loaded' log timestamp where available, else total_elapsed_s minus inference time); total_elapsed_s = full curl round-trip (load + prompt processing + generation); prompt_tokens_per_second / gen_tokens_per_second = from the response's own \"timings\" object. Regenerate via test-inventory-models.sh + merge-test-results.py (llama_cpp_router only currently -- LM Studio's query_lm.py does not report timings, so lm_studio perf fields stay null even where status=working).",
+  "models": [
+    {
+      "id": "ggml-org__GLM-OCR-GGUF",
+      "source_dir": "~/.lmstudio/models/ggml-org/GLM-OCR-GGUF",
+      "model_file": "GLM-OCR-f16.gguf",
+      "multipart": null,
+      "mmproj_file": "mmproj-GLM-OCR-Q8_0.gguf",
+      "size_on_disk": "2.1G",
+      "notes": null,
+      "backends": {
+        "llama_cpp_router": {
+          "status": "working",
+          "load_time_s": 0.3,
+          "total_elapsed_s": 0.5,
+          "prompt_tokens_per_second": 1853.7,
+          "gen_tokens_per_second": 263.0,
+          "transcribed_text": null,
+          "input_tokens": null,
+          "output_tokens": null,
+          "ocr_text": "\nHELLD OOR TEST 11245",
+          "notes": null,
+          "tested_at": "2026-09-28"
+        },
+        "lm_studio": {
+          "status": "working",
+          "load_time_s": 1.4,
+          "total_elapsed_s": 1.4,
+          "prompt_tokens_per_second": null,
+          "gen_tokens_per_second": null,
+          "transcribed_text": null,
+          "input_tokens": null,
+          "output_tokens": null,
+          "ocr_text": "\nHELLO OOR TEST 12345",
+          "notes": " [tested backend id: ggml-org/glm-ocr]",
+          "tested_at": "2026-09-28"
+        },
+        "ik_llama_cpp": {
+          "status": "rejected",
+          "load_time_s": null,
+          "total_elapsed_s": null,
+          "prompt_tokens_per_second": null,
+          "gen_tokens_per_second": null,
+          "transcribed_text": null,
+          "input_tokens": null,
+          "output_tokens": null,
+          "ocr_text": null,
+          "notes": "failed to load model: check_tensor_dims: tensor 'blk.0.attn_output.weight' has wrong shape; expected 1536,1536, got 2048,1536,1,1 (this fork's GLM architecture support does not match this model's tensor layout)",
+          "tested_at": "2026-09-28"
+        }
+      }
+    },
+    {
+      "id": "lmstudio-community__olmOCR-2-7B-1025-GGUF",
+      "source_dir": "~/.lmstudio/models/lmstudio-community/olmOCR-2-7B-1025-GGUF",
+      "model_file": "olmOCR-2-7B-1025-Q8_0.gguf",
+      "multipart": null,
+      "mmproj_file": "mmproj-olmOCR-2-7B-1025-F16.gguf",
+      "size_on_disk": "8.8G",
+      "notes": null,
+      "backends": {
+        "llama_cpp_router": {
+          "status": "working",
+          "load_time_s": 3.2,
+          "total_elapsed_s": 3.9,
+          "prompt_tokens_per_second": 413.6,
+          "gen_tokens_per_second": 57.1,
+          "transcribed_text": null,
+          "input_tokens": null,
+          "output_tokens": null,
+          "ocr_text": "HELLO OUR TEST 12345",
+          "notes": null,
+          "tested_at": "2026-09-28"
+        },
+        "lm_studio": {
+          "status": "working",
+          "load_time_s": 2.3,
+          "total_elapsed_s": 2.3,
+          "prompt_tokens_per_second": null,
+          "gen_tokens_per_second": null,
+          "transcribed_text": null,
+          "input_tokens": null,
+          "output_tokens": null,
+          "ocr_text": "HELLO OUR TEST 12345",
+          "notes": " [tested backend id: olmocr-2-7b-1025-gguf/olmocr-2-7b-1025]",
+          "tested_at": "2026-09-28"
+        },
+        "ik_llama_cpp": {
+          "status": "rejected",
+          "load_time_s": null,
+          "total_elapsed_s": null,
+          "prompt_tokens_per_second": null,
+          "gen_tokens_per_second": null,
+          "transcribed_text": null,
+          "input_tokens": null,
+          "output_tokens": null,
+          "ocr_text": null,
+          "notes": "model loads and server starts, but crashes on first image request: ggml-metal.m:3317 GGML_ASSERT(!is_vision) failed -- confirmed reproducible with -ngl 0 (CPU-only) too, so this is not a GPU-offload config issue: this build's mmproj/vision encoding path is hard-incompatible with the Metal backend on this machine",
+          "tested_at": "2026-09-28"
+        }
+      }
+    }
+  ]
+}
