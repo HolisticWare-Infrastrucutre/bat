@@ -1,0 +1,266 @@
+{
+  "category": "code",
+  "generated_from": "models-inventory.json (source of truth -- do not hand-edit this split file, edit the master and re-run split-inventory.py)",
+  "generated_by": "build-router-models-dir.sh",
+  "router_models_dir": "~/.cache/llama-router-models",
+  "router_port": 11454,
+  "notes": "id = value to pass in the OpenAI-compatible \"model\" request field (llama.cpp router) or as --model to query_lm.py/agent_lm.py (LM Studio, using the LM Studio model id noted in backends.lm_studio.notes when different from this id). source_dir is the real (two-level) path under the scanned cache; router-mode --models-dir scans only one level, so a flat symlink farm named <org>__<repo> is generated at router_models_dir and used as the actual --models-dir target. model_file is what gets passed to --model (first shard only for multipart). mmproj_file is auto-paired by llama-server via --mmproj when present, not a separate model. backends.<name>.status is one of: working (empirically confirmed via a real load+inference test), rejected (empirically confirmed to fail, e.g. a memory guardrail), untested (no real test run yet -- absence of a rejection is NOT evidence it works), not_configured (backend has no launcher/setup on this machine yet). backends.<name> perf fields (populated only when status=working, from a single small chat-completion test, not a statistical average -- treat as one data point, not a benchmark): load_time_s = time to load weights + get the child server listening, isolated from inference time (from the server's own 'model loaded' log timestamp where available, else total_elapsed_s minus inference time); total_elapsed_s = full curl round-trip (load + prompt processing + generation); prompt_tokens_per_second / gen_tokens_per_second = from the response's own \"timings\" object. Regenerate via test-inventory-models.sh + merge-test-results.py (llama_cpp_router only currently -- LM Studio's query_lm.py does not report timings, so lm_studio perf fields stay null even where status=working).",
+  "models": [
+    {
+      "id": "unsloth__Qwen3-Coder-30B-A3B-Instruct-GGUF",
+      "source_dir": "~/.lmstudio/models/unsloth/Qwen3-Coder-30B-A3B-Instruct-GGUF",
+      "model_file": "Qwen3-Coder-30B-A3B-Instruct-BF16-00001-of-00002.gguf",
+      "multipart": {
+        "parts": 2
+      },
+      "mmproj_file": null,
+      "size_on_disk": "57G",
+      "notes": "GGUF counterpart of qwen/qwen3-coder-30b, already benchmarked successfully via LM Studio (MLX backend, not this file)",
+      "backends": {
+        "llama_cpp_router": {
+          "status": "working",
+          "load_time_s": 25.9,
+          "total_elapsed_s": 26.1,
+          "prompt_tokens_per_second": 152.8,
+          "gen_tokens_per_second": 59.8,
+          "notes": null,
+          "tested_at": "2026-09-28",
+          "transcribed_text": null,
+          "input_tokens": null,
+          "output_tokens": null,
+          "ocr_text": null
+        },
+        "lm_studio": {
+          "status": "working",
+          "load_time_s": 29.0,
+          "total_elapsed_s": 29.0,
+          "prompt_tokens_per_second": null,
+          "gen_tokens_per_second": null,
+          "transcribed_text": null,
+          "input_tokens": null,
+          "output_tokens": null,
+          "ocr_text": null,
+          "notes": " [tested backend id: unsloth/qwen3-coder-30b-a3b-instruct]",
+          "tested_at": "2026-09-28"
+        },
+        "ik_llama_cpp": {
+          "status": "rejected",
+          "load_time_s": null,
+          "total_elapsed_s": 18.093734,
+          "prompt_tokens_per_second": null,
+          "gen_tokens_per_second": null,
+          "transcribed_text": null,
+          "input_tokens": null,
+          "output_tokens": null,
+          "ocr_text": null,
+          "notes": "server did not become ready: llama_init_from_model: graph splits = 1 llama_init_from_model: enabling only_active_experts scheduling /Users/moljac/Downloads/HolisticWare/ai/ik_llama.cpp/macosx/ik_llama.cpp-main/ik_llama.cpp-main/ggml/src/ggml.c:18950: fatal error /Users/moljac/Downloads/HolisticWare/ai/ik_llama.cpp/macosx/ik_llama.cpp-main/ik_llama.cpp-main/ggml/src/ggml.c:18950: fatal error /Users/moljac/Downloads/HolisticWare/ai/ik_llama.cpp/macosx/ik_llama.cpp-main/ik_llama.cpp-main/ggml/src/ggml.c:18950: ",
+          "tested_at": "2026-09-28"
+        }
+      }
+    },
+    {
+      "id": "lmstudio-community__Qwen3-Coder-Next-GGUF",
+      "source_dir": "~/.lmstudio/models/lmstudio-community/Qwen3-Coder-Next-GGUF",
+      "model_file": "Qwen3-Coder-Next-Q8_0-00001-of-00003.gguf",
+      "multipart": {
+        "parts": 3
+      },
+      "mmproj_file": null,
+      "size_on_disk": "79G",
+      "notes": "same model family as unsloth/qwen3-coder-next, which LM Studio's guardrail rejected at ~97.55GB required memory -- TESTED and CONFIRMED WORKING via llama.cpp router mode 2026-09-28: loaded in ~44s (3-part shard), memory pressure briefly touched 'warn' but never 'critical', generated a coherent response at ~51 tok/s. Like the DeepSeek-Coder-V2-Lite test, LM Studio's guardrail rejection did not predict llama.cpp router behavior on this 128GB machine",
+      "backends": {
+        "llama_cpp_router": {
+          "status": "working",
+          "notes": null,
+          "tested_at": "2026-09-28",
+          "load_time_s": 43.7,
+          "total_elapsed_s": 44.0,
+          "prompt_tokens_per_second": 54.2,
+          "gen_tokens_per_second": 51.1,
+          "transcribed_text": null,
+          "input_tokens": null,
+          "output_tokens": null,
+          "ocr_text": null
+        },
+        "lm_studio": {
+          "status": "working",
+          "load_time_s": 41.5,
+          "total_elapsed_s": 41.5,
+          "prompt_tokens_per_second": null,
+          "gen_tokens_per_second": null,
+          "transcribed_text": null,
+          "input_tokens": null,
+          "output_tokens": null,
+          "ocr_text": null,
+          "notes": " [tested backend id: qwen3-coder-next-gguf/qwen3-coder-next]",
+          "tested_at": "2026-09-28"
+        },
+        "ik_llama_cpp": {
+          "status": "working",
+          "load_time_s": 26.2,
+          "total_elapsed_s": 0.3,
+          "prompt_tokens_per_second": 118.9,
+          "gen_tokens_per_second": 58.6,
+          "transcribed_text": null,
+          "input_tokens": null,
+          "output_tokens": null,
+          "ocr_text": null,
+          "notes": null,
+          "tested_at": "2026-09-28"
+        }
+      }
+    },
+    {
+      "id": "Kay6888__DeepSeek-Coder-V2-Lite-Instruct-GGUF",
+      "source_dir": "~/.lmstudio/models/Kay6888/DeepSeek-Coder-V2-Lite-Instruct-GGUF",
+      "model_file": "DeepSeek-Coder-V2-Lite-Instruct-f32-00001-of-00002.gguf",
+      "multipart": {
+        "parts": 2
+      },
+      "mmproj_file": null,
+      "size_on_disk": "59G",
+      "notes": "LM Studio's guardrail rejected this exact model at ~78.27GB required memory, but TESTED and CONFIRMED WORKING via llama.cpp router mode 2026-09-28: loaded in ~25s, memory pressure stayed normal throughout, generated a coherent response at 45 tok/s. llama.cpp's mmap-based loading does not require the memory LM Studio's estimator assumed (tested with --ctx-size 4096 on a 128GB machine)",
+      "backends": {
+        "llama_cpp_router": {
+          "status": "working",
+          "notes": null,
+          "tested_at": "2026-09-28",
+          "load_time_s": 25.4,
+          "total_elapsed_s": 25.7,
+          "prompt_tokens_per_second": 108.9,
+          "gen_tokens_per_second": 45.0,
+          "transcribed_text": null,
+          "input_tokens": null,
+          "output_tokens": null,
+          "ocr_text": null
+        },
+        "lm_studio": {
+          "status": "working",
+          "load_time_s": 40.8,
+          "total_elapsed_s": 40.8,
+          "prompt_tokens_per_second": null,
+          "gen_tokens_per_second": null,
+          "transcribed_text": null,
+          "input_tokens": null,
+          "output_tokens": null,
+          "ocr_text": null,
+          "notes": " [tested backend id: kay6888/deepseek-coder-v2-lite-instruct]",
+          "tested_at": "2026-09-28"
+        },
+        "ik_llama_cpp": {
+          "status": "rejected",
+          "load_time_s": null,
+          "total_elapsed_s": 20.717115,
+          "prompt_tokens_per_second": null,
+          "gen_tokens_per_second": null,
+          "transcribed_text": null,
+          "input_tokens": null,
+          "output_tokens": null,
+          "ocr_text": null,
+          "notes": "server did not become ready: llama_init_from_model: graph splits = 1 llama_init_from_model: enabling only_active_experts scheduling /Users/moljac/Downloads/HolisticWare/ai/ik_llama.cpp/macosx/ik_llama.cpp-main/ik_llama.cpp-main/ggml/src/ggml.c:18950: /Users/moljac/Downloads/HolisticWare/ai/ik_llama.cpp/macosx/ik_llama.cpp-main/ik_llama.cpp-main/ggml/src/ggml.c:18950: fatal error /Users/moljac/Downloads/HolisticWare/ai/ik_llama.cpp/macosx/ik_llama.cpp-main/ik_llama.cpp-main/ggml/src/ggml.c:18950: fatal error/Users/moljac/Downloads/HolisticWare/ai/ik_llama.cpp/macosx/ik_llama.cpp-main/ik_llama.cpp-main/ggml/src/ggml.c:18950: fatal error /Users/moljac/Downloads/HolisticWare/ai/ik_llama.cpp/macosx/ik_llama.cpp-main/ik_llama.cpp-main/ggml/src/ggml.c:18950: fatal error",
+          "tested_at": "2026-09-28"
+        }
+      }
+    },
+    {
+      "id": "TheBloke__WizardCoder-Python-34B-V1.0-GGUF",
+      "source_dir": "~/.lmstudio/models/TheBloke/WizardCoder-Python-34B-V1.0-GGUF",
+      "model_file": "wizardcoder-python-34b-v1.0.Q8_0.gguf",
+      "multipart": null,
+      "mmproj_file": null,
+      "size_on_disk": "33G",
+      "notes": null,
+      "backends": {
+        "llama_cpp_router": {
+          "status": "working",
+          "load_time_s": 14.0,
+          "total_elapsed_s": 14.9,
+          "prompt_tokens_per_second": 136.3,
+          "gen_tokens_per_second": 13.5,
+          "notes": null,
+          "tested_at": "2026-09-28",
+          "transcribed_text": null,
+          "input_tokens": null,
+          "output_tokens": null,
+          "ocr_text": null
+        },
+        "lm_studio": {
+          "status": "working",
+          "load_time_s": 19.0,
+          "total_elapsed_s": 19.0,
+          "prompt_tokens_per_second": null,
+          "gen_tokens_per_second": null,
+          "transcribed_text": null,
+          "input_tokens": null,
+          "output_tokens": null,
+          "ocr_text": null,
+          "notes": " [tested backend id: thebloke/wizardcoder-python-34b-v1.0]",
+          "tested_at": "2026-09-28"
+        },
+        "ik_llama_cpp": {
+          "status": "working",
+          "load_time_s": 14.1,
+          "total_elapsed_s": 1.9,
+          "prompt_tokens_per_second": 36.6,
+          "gen_tokens_per_second": 8.7,
+          "transcribed_text": null,
+          "input_tokens": null,
+          "output_tokens": null,
+          "ocr_text": null,
+          "notes": null,
+          "tested_at": "2026-09-28"
+        }
+      }
+    },
+    {
+      "id": "mradermacher__OpenMath-CodeLlama-70b-Python-hf-GGUF",
+      "source_dir": "~/.lmstudio/models/mradermacher/OpenMath-CodeLlama-70b-Python-hf-GGUF",
+      "model_file": "OpenMath-CodeLlama-70b-Python-hf.Q5_K_M.gguf",
+      "multipart": null,
+      "mmproj_file": null,
+      "size_on_disk": "45G",
+      "notes": null,
+      "backends": {
+        "llama_cpp_router": {
+          "status": "working",
+          "load_time_s": 21.5,
+          "total_elapsed_s": 22.9,
+          "prompt_tokens_per_second": 61.4,
+          "gen_tokens_per_second": 9.3,
+          "notes": null,
+          "tested_at": "2026-09-28",
+          "transcribed_text": null,
+          "input_tokens": null,
+          "output_tokens": null,
+          "ocr_text": null
+        },
+        "lm_studio": {
+          "status": "working",
+          "load_time_s": 27.0,
+          "total_elapsed_s": 27.0,
+          "prompt_tokens_per_second": null,
+          "gen_tokens_per_second": null,
+          "transcribed_text": null,
+          "input_tokens": null,
+          "output_tokens": null,
+          "ocr_text": null,
+          "notes": " [tested backend id: mradermacher/openmath-codellama-70b-python-hf]",
+          "tested_at": "2026-09-28"
+        },
+        "ik_llama_cpp": {
+          "status": "working",
+          "load_time_s": 18.7,
+          "total_elapsed_s": 4.1,
+          "prompt_tokens_per_second": 11.9,
+          "gen_tokens_per_second": 6.1,
+          "transcribed_text": null,
+          "input_tokens": null,
+          "output_tokens": null,
+          "ocr_text": null,
+          "notes": null,
+          "tested_at": "2026-09-28"
+        }
+      }
+    }
+  ]
+}
