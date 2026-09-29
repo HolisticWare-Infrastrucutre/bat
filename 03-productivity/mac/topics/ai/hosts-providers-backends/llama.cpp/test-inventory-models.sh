@@ -12,11 +12,14 @@
 #      (e.g. LM Studio on 11444). No process is started, watched, or killed
 #      -- just loops the tests against that port.
 #
-# Usage: test-inventory-models.sh [--mode text|audio|vision] [--external-port PORT] RESULTS_JSONL_FILE MODEL_ID [MODEL_ID ...]
+# Usage: test-inventory-models.sh [--mode text|audio|vision] [--external-port PORT] [--endpoint-path PATH] RESULTS_JSONL_FILE MODEL_ID [MODEL_ID ...]
 #
 # --mode text (default): test-model-load.sh, /v1/chat/completions, plain text
 # --mode audio: test-audio-model-load.sh, /v1/audio/transcriptions (ASR models)
 # --mode vision: test-vision-model-load.sh, /v1/chat/completions + image_url (OCR/vision models)
+# --endpoint-path PATH: override the chat-completions path (text/vision modes
+#   only). Default /v1/chat/completions. Use /api/v0/chat/completions for LM
+#   Studio to get its populated "stats" object (tok/s, time_to_first_token).
 #
 # Writes one JSON result line per model to RESULTS_JSONL_FILE. Merge those
 # into models-inventory.json afterward with merge-test-results.py.
@@ -26,9 +29,11 @@ HERE="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 
 MODE="text"
 EXTERNAL_PORT=""
-while [ "${1:-}" = "--mode" ] || [ "${1:-}" = "--external-port" ]; do
+ENDPOINT_PATH="/v1/chat/completions"
+while [ "${1:-}" = "--mode" ] || [ "${1:-}" = "--external-port" ] || [ "${1:-}" = "--endpoint-path" ]; do
     if [ "$1" = "--mode" ]; then MODE="$2"; shift 2; fi
     if [ "$1" = "--external-port" ]; then EXTERNAL_PORT="$2"; shift 2; fi
+    if [ "$1" = "--endpoint-path" ]; then ENDPOINT_PATH="$2"; shift 2; fi
 done
 case "$MODE" in
     text)   TESTER="$HERE/test-model-load.sh" ;;
@@ -41,7 +46,7 @@ RESULTS_FILE="$1"; shift
 MODEL_IDS=("$@")
 
 if [ "${#MODEL_IDS[@]}" -eq 0 ]; then
-    echo "usage: test-inventory-models.sh [--mode text|audio|vision] [--external-port PORT] RESULTS_JSONL_FILE MODEL_ID [MODEL_ID ...]" >&2
+    echo "usage: test-inventory-models.sh [--mode text|audio|vision] [--external-port PORT] [--endpoint-path PATH] RESULTS_JSONL_FILE MODEL_ID [MODEL_ID ...]" >&2
     exit 2
 fi
 
@@ -51,7 +56,11 @@ if [ -n "$EXTERNAL_PORT" ]; then
     echo "using external server on port $EXTERNAL_PORT (not started/stopped by this script)"
     for model in "${MODEL_IDS[@]}"; do
         echo "testing: $model"
-        RESULT=$(bash "$TESTER" "$model" "$EXTERNAL_PORT" 150)
+        if [ "$MODE" = "audio" ]; then
+            RESULT=$(bash "$TESTER" "$model" "$EXTERNAL_PORT" 150)
+        else
+            RESULT=$(bash "$TESTER" "$model" "$EXTERNAL_PORT" 150 "$ENDPOINT_PATH")
+        fi
         echo "$RESULT" >> "$RESULTS_FILE"
         echo "  -> $RESULT"
     done
