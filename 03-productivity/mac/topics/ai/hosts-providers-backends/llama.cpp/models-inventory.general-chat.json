@@ -30,16 +30,16 @@
         },
         "lm_studio": {
           "status": "working",
-          "load_time_s": 15.8,
-          "total_elapsed_s": 15.8,
-          "prompt_tokens_per_second": null,
-          "gen_tokens_per_second": null,
+          "load_time_s": 17.2,
+          "total_elapsed_s": 17.5,
+          "prompt_tokens_per_second": 145.6,
+          "gen_tokens_per_second": 65.2,
           "transcribed_text": null,
           "input_tokens": null,
           "output_tokens": null,
           "ocr_text": null,
           "notes": " [tested backend id: unsloth/qwen3.5-35b-a3b]",
-          "tested_at": "2026-09-28"
+          "tested_at": "2026-09-29"
         },
         "ik_llama_cpp": {
           "status": "working",
@@ -80,16 +80,16 @@
         },
         "lm_studio": {
           "status": "working",
-          "load_time_s": 8.5,
-          "total_elapsed_s": 8.5,
-          "prompt_tokens_per_second": null,
-          "gen_tokens_per_second": null,
+          "load_time_s": 11.4,
+          "total_elapsed_s": 11.6,
+          "prompt_tokens_per_second": 172.8,
+          "gen_tokens_per_second": 88.7,
           "transcribed_text": null,
           "input_tokens": null,
           "output_tokens": null,
           "ocr_text": null,
           "notes": " [tested backend id: unsloth/qwen3.6-35b-a3b]",
-          "tested_at": "2026-09-28"
+          "tested_at": "2026-09-29"
         },
         "ik_llama_cpp": {
           "status": "working",
@@ -130,16 +130,16 @@
         },
         "lm_studio": {
           "status": "working",
-          "load_time_s": 28.7,
-          "total_elapsed_s": 28.7,
-          "prompt_tokens_per_second": null,
-          "gen_tokens_per_second": null,
+          "load_time_s": 31.9,
+          "total_elapsed_s": 32.2,
+          "prompt_tokens_per_second": 131.8,
+          "gen_tokens_per_second": 57.4,
           "transcribed_text": null,
           "input_tokens": null,
           "output_tokens": null,
           "ocr_text": null,
           "notes": " [tested backend id: unsloth/qwen3.5-35b-a3b-experiments]",
-          "tested_at": "2026-09-28"
+          "tested_at": "2026-09-29"
         },
         "ik_llama_cpp": {
           "status": "rejected",
@@ -180,16 +180,16 @@
         },
         "lm_studio": {
           "status": "working",
-          "load_time_s": 19.1,
-          "total_elapsed_s": 19.1,
-          "prompt_tokens_per_second": null,
-          "gen_tokens_per_second": null,
+          "load_time_s": 21.6,
+          "total_elapsed_s": 21.8,
+          "prompt_tokens_per_second": 172.2,
+          "gen_tokens_per_second": 79.0,
           "transcribed_text": null,
           "input_tokens": null,
           "output_tokens": null,
           "ocr_text": null,
           "notes": " [tested backend id: qwen3.6-35b-a3b-gguf/qwen3.6-35b-a3b@q8_0]",
-          "tested_at": "2026-09-28"
+          "tested_at": "2026-09-29"
         },
         "ik_llama_cpp": {
           "status": "working",
@@ -230,16 +230,16 @@
         },
         "lm_studio": {
           "status": "working",
-          "load_time_s": 16.0,
-          "total_elapsed_s": 16.0,
-          "prompt_tokens_per_second": null,
-          "gen_tokens_per_second": null,
+          "load_time_s": 15.8,
+          "total_elapsed_s": 17.5,
+          "prompt_tokens_per_second": 80.3,
+          "gen_tokens_per_second": 23.7,
           "transcribed_text": null,
           "input_tokens": null,
           "output_tokens": null,
           "ocr_text": null,
           "notes": " [tested backend id: qwen3.8-27b-gguf/qwen3.8-27b@q8_0]",
-          "tested_at": "2026-09-28"
+          "tested_at": "2026-09-29"
         },
         "ik_llama_cpp": {
           "status": "working",
@@ -281,7 +281,7 @@
         "lm_studio": {
           "status": "rejected",
           "load_time_s": null,
-          "total_elapsed_s": 1.9,
+          "total_elapsed_s": 2.0,
           "prompt_tokens_per_second": null,
           "gen_tokens_per_second": null,
           "transcribed_text": null,
@@ -289,7 +289,7 @@
           "output_tokens": null,
           "ocr_text": null,
           "notes": "Failed to load model \"ggml-org/qwen3.8-27b\". Error: Model loading was stopped due to insufficient system resources. Under the current settings, this model requires approximately 139.98 GB of memory, and continuing to load it would likely overload your system and cause it to freeze. If you think this is incorrect, you can adjust the model loading guardrails in settings. [tested backend id: ggml-org/qwen3.8-27b]",
-          "tested_at": "2026-09-28"
+          "tested_at": "2026-09-29"
         },
         "ik_llama_cpp": {
           "status": "working",
@@ -341,7 +341,7 @@
           "output_tokens": null,
           "ocr_text": null,
           "notes": "Failed to load model \"unsloth/qwen3.8-27b\". Error: Model loading was stopped due to insufficient system resources. Under the current settings, this model requires approximately 142.14 GB of memory, and continuing to load it would likely overload your system and cause it to freeze. If you think this is incorrect, you can adjust the model loading guardrails in settings. [tested backend id: unsloth/qwen3.8-27b]",
-          "tested_at": "2026-09-28"
+          "tested_at": "2026-09-29"
         },
         "ik_llama_cpp": {
           "status": "working",
@@ -382,16 +382,16 @@
         },
         "lm_studio": {
           "status": "working",
-          "load_time_s": 13.1,
-          "total_elapsed_s": 13.1,
-          "prompt_tokens_per_second": null,
-          "gen_tokens_per_second": null,
+          "load_time_s": 12.7,
+          "total_elapsed_s": 13.6,
+          "prompt_tokens_per_second": 28.4,
+          "gen_tokens_per_second": 23.8,
           "transcribed_text": null,
           "input_tokens": null,
           "output_tokens": null,
           "ocr_text": null,
           "notes": " [tested backend id: obliteratus/qwen3.8-27b-obliterated@q8_0]",
-          "tested_at": "2026-09-28"
+          "tested_at": "2026-09-29"
         },
         "ik_llama_cpp": {
           "status": "working",
@@ -432,16 +432,16 @@
         },
         "lm_studio": {
           "status": "working",
-          "load_time_s": 17.6,
-          "total_elapsed_s": 17.6,
-          "prompt_tokens_per_second": null,
-          "gen_tokens_per_second": null,
+          "load_time_s": 15.1,
+          "total_elapsed_s": 17.0,
+          "prompt_tokens_per_second": 27.7,
+          "gen_tokens_per_second": 12.8,
           "transcribed_text": null,
           "input_tokens": null,
           "output_tokens": null,
           "ocr_text": null,
           "notes": " [tested backend id: gemma-4-31b-it-gguf/gemma-4-31b-it]",
-          "tested_at": "2026-09-28"
+          "tested_at": "2026-09-29"
         },
         "ik_llama_cpp": {
           "status": "working",
