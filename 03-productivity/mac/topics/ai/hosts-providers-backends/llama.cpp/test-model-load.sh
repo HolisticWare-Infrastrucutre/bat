@@ -13,6 +13,7 @@
 # its native /api/v0 endpoint (same request body) populates
 # stats.tokens_per_second / time_to_first_token / generation_time.
 
+HERE="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 MODEL_ID="$1"
 PORT="${2:-11454}"
 TIMEOUT_S="${3:-150}"
@@ -38,8 +39,13 @@ TEST_HTTP_CODE="$HTTP_CODE" \
 TEST_CURL_EXIT="$CURL_EXIT" \
 TEST_ELAPSED="$(echo "$END - $START" | bc)" \
 TEST_BODY_FILE="$TMPFILE" \
+TEST_HERE="$HERE" \
+TEST_PORT="$PORT" \
 python3 << 'PYEOF'
-import json, os
+import json, os, sys
+
+sys.path.insert(0, os.environ["TEST_HERE"])
+from context_probe import probe_context
 
 model = os.environ["TEST_MODEL_ID"]
 http_code = os.environ["TEST_HTTP_CODE"]
@@ -52,6 +58,8 @@ error = None
 prompt_tokens_per_second = None
 gen_tokens_per_second = None
 load_time_s = None
+context_size = None
+context_size_max = None
 
 if curl_exit != 0:
     error = f"curl exit {curl_exit} (timeout or connection error)"
@@ -85,6 +93,12 @@ elif http_code == "200":
         # the server's own per-request timing) isolates load time.
     except Exception:
         pass
+    try:
+        ctx = probe_context(os.environ["TEST_PORT"], model)
+        context_size = ctx["context_size"]
+        context_size_max = ctx["context_size_max"]
+    except Exception:
+        pass
 else:
     try:
         with open(body_file) as f:
@@ -101,6 +115,8 @@ print(json.dumps({
     "load_time_s": load_time_s,
     "prompt_tokens_per_second": prompt_tokens_per_second,
     "gen_tokens_per_second": gen_tokens_per_second,
+    "context_size": context_size,
+    "context_size_max": context_size_max,
     "error": error,
 }))
 PYEOF
