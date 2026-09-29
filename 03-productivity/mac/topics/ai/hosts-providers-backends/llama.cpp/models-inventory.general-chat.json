@@ -17,23 +17,27 @@
       "backends": {
         "llama_cpp_router": {
           "status": "working",
-          "notes": "load_time_s derived (total_elapsed_s - inference time); no server log captured for this specific run",
-          "tested_at": "2026-09-28",
-          "load_time_s": 18.1,
-          "total_elapsed_s": 19.2,
-          "prompt_tokens_per_second": 108.2,
-          "gen_tokens_per_second": 66.8,
+          "load_time_s": 12.2,
+          "total_elapsed_s": 12.4,
+          "prompt_tokens_per_second": 183.3,
+          "gen_tokens_per_second": 67.6,
+          "context_size": 4096,
+          "context_size_max": 262144,
           "transcribed_text": null,
           "input_tokens": null,
           "output_tokens": null,
-          "ocr_text": null
+          "ocr_text": null,
+          "notes": null,
+          "tested_at": "2026-09-29"
         },
         "lm_studio": {
           "status": "working",
-          "load_time_s": 17.2,
-          "total_elapsed_s": 17.5,
-          "prompt_tokens_per_second": 145.6,
-          "gen_tokens_per_second": 65.2,
+          "load_time_s": 18.0,
+          "total_elapsed_s": 18.3,
+          "prompt_tokens_per_second": 137.3,
+          "gen_tokens_per_second": 64.0,
+          "context_size": 262144,
+          "context_size_max": 262144,
           "transcribed_text": null,
           "input_tokens": null,
           "output_tokens": null,
@@ -45,14 +49,16 @@
           "status": "working",
           "load_time_s": 14.1,
           "total_elapsed_s": 0.3,
-          "prompt_tokens_per_second": 99.2,
-          "gen_tokens_per_second": 45.4,
+          "prompt_tokens_per_second": 112.7,
+          "gen_tokens_per_second": 44.6,
+          "context_size": 4096,
+          "context_size_max": 262144,
           "transcribed_text": null,
           "input_tokens": null,
           "output_tokens": null,
           "ocr_text": null,
           "notes": null,
-          "tested_at": "2026-09-28"
+          "tested_at": "2026-09-29"
         }
       }
     },
@@ -67,23 +73,27 @@
       "backends": {
         "llama_cpp_router": {
           "status": "working",
-          "load_time_s": 7.7,
-          "total_elapsed_s": 7.8,
-          "prompt_tokens_per_second": 223.8,
-          "gen_tokens_per_second": 89.7,
-          "notes": null,
-          "tested_at": "2026-09-28",
+          "load_time_s": 7.9,
+          "total_elapsed_s": 8.0,
+          "prompt_tokens_per_second": 226.6,
+          "gen_tokens_per_second": 95.7,
+          "context_size": 4096,
+          "context_size_max": 262144,
           "transcribed_text": null,
           "input_tokens": null,
           "output_tokens": null,
-          "ocr_text": null
+          "ocr_text": null,
+          "notes": null,
+          "tested_at": "2026-09-29"
         },
         "lm_studio": {
           "status": "working",
-          "load_time_s": 11.4,
-          "total_elapsed_s": 11.6,
-          "prompt_tokens_per_second": 172.8,
-          "gen_tokens_per_second": 88.7,
+          "load_time_s": 11.6,
+          "total_elapsed_s": 11.8,
+          "prompt_tokens_per_second": 205.9,
+          "gen_tokens_per_second": 83.5,
+          "context_size": 262144,
+          "context_size_max": 262144,
           "transcribed_text": null,
           "input_tokens": null,
           "output_tokens": null,
@@ -93,16 +103,18 @@
         },
         "ik_llama_cpp": {
           "status": "working",
-          "load_time_s": 2.0,
+          "load_time_s": 6.4,
           "total_elapsed_s": 0.2,
-          "prompt_tokens_per_second": 187.4,
-          "gen_tokens_per_second": 73.0,
+          "prompt_tokens_per_second": 236.6,
+          "gen_tokens_per_second": 66.6,
+          "context_size": 4096,
+          "context_size_max": 262144,
           "transcribed_text": null,
           "input_tokens": null,
           "output_tokens": null,
           "ocr_text": null,
           "notes": null,
-          "tested_at": "2026-09-28"
+          "tested_at": "2026-09-29"
         }
       }
     },
@@ -117,23 +129,27 @@
       "backends": {
         "llama_cpp_router": {
           "status": "working",
-          "notes": null,
-          "tested_at": "2026-09-28",
-          "load_time_s": 27.0,
-          "total_elapsed_s": 27.2,
-          "prompt_tokens_per_second": 151.1,
-          "gen_tokens_per_second": 58.6,
+          "load_time_s": 27.7,
+          "total_elapsed_s": 27.9,
+          "prompt_tokens_per_second": 156.4,
+          "gen_tokens_per_second": 59.6,
+          "context_size": 4096,
+          "context_size_max": 262144,
           "transcribed_text": null,
           "input_tokens": null,
           "output_tokens": null,
-          "ocr_text": null
+          "ocr_text": null,
+          "notes": null,
+          "tested_at": "2026-09-29"
         },
         "lm_studio": {
           "status": "working",
-          "load_time_s": 31.9,
-          "total_elapsed_s": 32.2,
-          "prompt_tokens_per_second": 131.8,
-          "gen_tokens_per_second": 57.4,
+          "load_time_s": 29.3,
+          "total_elapsed_s": 29.6,
+          "prompt_tokens_per_second": 141.4,
+          "gen_tokens_per_second": 57.6,
+          "context_size": 262144,
+          "context_size_max": 262144,
           "transcribed_text": null,
           "input_tokens": null,
           "output_tokens": null,
@@ -147,6 +163,8 @@
           "total_elapsed_s": 21.418512,
           "prompt_tokens_per_second": null,
           "gen_tokens_per_second": null,
+          "context_size": null,
+          "context_size_max": null,
           "transcribed_text": null,
           "input_tokens": null,
           "output_tokens": null,
@@ -167,23 +185,27 @@
       "backends": {
         "llama_cpp_router": {
           "status": "working",
-          "load_time_s": 16.2,
-          "total_elapsed_s": 16.4,
-          "prompt_tokens_per_second": 180.0,
-          "gen_tokens_per_second": 80.8,
-          "notes": null,
-          "tested_at": "2026-09-28",
+          "load_time_s": 14.8,
+          "total_elapsed_s": 15.0,
+          "prompt_tokens_per_second": 183.9,
+          "gen_tokens_per_second": 81.6,
+          "context_size": 4096,
+          "context_size_max": 262144,
           "transcribed_text": null,
           "input_tokens": null,
           "output_tokens": null,
-          "ocr_text": null
+          "ocr_text": null,
+          "notes": null,
+          "tested_at": "2026-09-29"
         },
         "lm_studio": {
           "status": "working",
-          "load_time_s": 21.6,
-          "total_elapsed_s": 21.8,
-          "prompt_tokens_per_second": 172.2,
-          "gen_tokens_per_second": 79.0,
+          "load_time_s": 21.9,
+          "total_elapsed_s": 22.2,
+          "prompt_tokens_per_second": 141.8,
+          "gen_tokens_per_second": 78.2,
+          "context_size": 262144,
+          "context_size_max": 262144,
           "transcribed_text": null,
           "input_tokens": null,
           "output_tokens": null,
@@ -193,16 +215,18 @@
         },
         "ik_llama_cpp": {
           "status": "working",
-          "load_time_s": 11.6,
+          "load_time_s": 14.1,
           "total_elapsed_s": 0.2,
-          "prompt_tokens_per_second": 154.2,
-          "gen_tokens_per_second": 70.2,
+          "prompt_tokens_per_second": 153.4,
+          "gen_tokens_per_second": 68.8,
+          "context_size": 4096,
+          "context_size_max": 262144,
           "transcribed_text": null,
           "input_tokens": null,
           "output_tokens": null,
           "ocr_text": null,
           "notes": null,
-          "tested_at": "2026-09-28"
+          "tested_at": "2026-09-29"
         }
       }
     },
@@ -217,23 +241,27 @@
       "backends": {
         "llama_cpp_router": {
           "status": "working",
-          "load_time_s": 11.5,
-          "total_elapsed_s": 12.6,
-          "prompt_tokens_per_second": 89.8,
-          "gen_tokens_per_second": 16.2,
-          "notes": null,
-          "tested_at": "2026-09-28",
+          "load_time_s": 12.1,
+          "total_elapsed_s": 13.3,
+          "prompt_tokens_per_second": 89.5,
+          "gen_tokens_per_second": 16.1,
+          "context_size": 4096,
+          "context_size_max": 262144,
           "transcribed_text": null,
           "input_tokens": null,
           "output_tokens": null,
-          "ocr_text": null
+          "ocr_text": null,
+          "notes": null,
+          "tested_at": "2026-09-29"
         },
         "lm_studio": {
           "status": "working",
-          "load_time_s": 15.8,
-          "total_elapsed_s": 17.5,
-          "prompt_tokens_per_second": 80.3,
+          "load_time_s": 15.3,
+          "total_elapsed_s": 17.0,
+          "prompt_tokens_per_second": 77.9,
           "gen_tokens_per_second": 23.7,
+          "context_size": 262144,
+          "context_size_max": 262144,
           "transcribed_text": null,
           "input_tokens": null,
           "output_tokens": null,
@@ -244,15 +272,17 @@
         "ik_llama_cpp": {
           "status": "working",
           "load_time_s": 10.1,
-          "total_elapsed_s": 1.2,
-          "prompt_tokens_per_second": 38.1,
-          "gen_tokens_per_second": 11.0,
+          "total_elapsed_s": 1.9,
+          "prompt_tokens_per_second": 54.0,
+          "gen_tokens_per_second": 10.9,
+          "context_size": 4096,
+          "context_size_max": 262144,
           "transcribed_text": null,
           "input_tokens": null,
           "output_tokens": null,
           "ocr_text": null,
           "notes": null,
-          "tested_at": "2026-09-28"
+          "tested_at": "2026-09-29"
         }
       }
     },
@@ -267,16 +297,18 @@
       "backends": {
         "llama_cpp_router": {
           "status": "working",
-          "load_time_s": 23.5,
-          "total_elapsed_s": 25.1,
-          "prompt_tokens_per_second": 85.1,
-          "gen_tokens_per_second": 9.2,
-          "notes": null,
-          "tested_at": "2026-09-28",
+          "load_time_s": 22.1,
+          "total_elapsed_s": 23.7,
+          "prompt_tokens_per_second": 85.9,
+          "gen_tokens_per_second": 9.3,
+          "context_size": 4096,
+          "context_size_max": 262144,
           "transcribed_text": null,
           "input_tokens": null,
           "output_tokens": null,
-          "ocr_text": null
+          "ocr_text": null,
+          "notes": null,
+          "tested_at": "2026-09-29"
         },
         "lm_studio": {
           "status": "rejected",
@@ -284,6 +316,8 @@
           "total_elapsed_s": 2.0,
           "prompt_tokens_per_second": null,
           "gen_tokens_per_second": null,
+          "context_size": null,
+          "context_size_max": null,
           "transcribed_text": null,
           "input_tokens": null,
           "output_tokens": null,
@@ -293,16 +327,18 @@
         },
         "ik_llama_cpp": {
           "status": "working",
-          "load_time_s": 18.1,
-          "total_elapsed_s": 2.4,
-          "prompt_tokens_per_second": 17.0,
+          "load_time_s": 19.5,
+          "total_elapsed_s": 4.3,
+          "prompt_tokens_per_second": 21.8,
           "gen_tokens_per_second": 5.3,
+          "context_size": 4096,
+          "context_size_max": 262144,
           "transcribed_text": null,
           "input_tokens": null,
           "output_tokens": null,
           "ocr_text": null,
           "notes": null,
-          "tested_at": "2026-09-28"
+          "tested_at": "2026-09-29"
         }
       }
     },
@@ -319,16 +355,18 @@
       "backends": {
         "llama_cpp_router": {
           "status": "working",
-          "load_time_s": 22.4,
-          "total_elapsed_s": 24.0,
-          "prompt_tokens_per_second": 86.5,
+          "load_time_s": 21.6,
+          "total_elapsed_s": 23.2,
+          "prompt_tokens_per_second": 86.3,
           "gen_tokens_per_second": 9.3,
-          "notes": null,
-          "tested_at": "2026-09-28",
+          "context_size": 4096,
+          "context_size_max": 262144,
           "transcribed_text": null,
           "input_tokens": null,
           "output_tokens": null,
-          "ocr_text": null
+          "ocr_text": null,
+          "notes": null,
+          "tested_at": "2026-09-29"
         },
         "lm_studio": {
           "status": "rejected",
@@ -336,6 +374,8 @@
           "total_elapsed_s": 0.0,
           "prompt_tokens_per_second": null,
           "gen_tokens_per_second": null,
+          "context_size": null,
+          "context_size_max": null,
           "transcribed_text": null,
           "input_tokens": null,
           "output_tokens": null,
@@ -346,15 +386,17 @@
         "ik_llama_cpp": {
           "status": "working",
           "load_time_s": 18.1,
-          "total_elapsed_s": 2.4,
-          "prompt_tokens_per_second": 16.8,
+          "total_elapsed_s": 4.5,
+          "prompt_tokens_per_second": 20.0,
           "gen_tokens_per_second": 5.3,
+          "context_size": 4096,
+          "context_size_max": 262144,
           "transcribed_text": null,
           "input_tokens": null,
           "output_tokens": null,
           "ocr_text": null,
           "notes": null,
-          "tested_at": "2026-09-28"
+          "tested_at": "2026-09-29"
         }
       }
     },
@@ -369,23 +411,27 @@
       "backends": {
         "llama_cpp_router": {
           "status": "working",
-          "load_time_s": 11.3,
-          "total_elapsed_s": 12.1,
-          "prompt_tokens_per_second": 35.7,
+          "load_time_s": 11.4,
+          "total_elapsed_s": 12.2,
+          "prompt_tokens_per_second": 35.6,
           "gen_tokens_per_second": 16.1,
-          "notes": null,
-          "tested_at": "2026-09-28",
+          "context_size": 4096,
+          "context_size_max": 262144,
           "transcribed_text": null,
           "input_tokens": null,
           "output_tokens": null,
-          "ocr_text": null
+          "ocr_text": null,
+          "notes": null,
+          "tested_at": "2026-09-29"
         },
         "lm_studio": {
           "status": "working",
-          "load_time_s": 12.7,
-          "total_elapsed_s": 13.6,
-          "prompt_tokens_per_second": 28.4,
-          "gen_tokens_per_second": 23.8,
+          "load_time_s": 14.3,
+          "total_elapsed_s": 15.2,
+          "prompt_tokens_per_second": 29.9,
+          "gen_tokens_per_second": 23.7,
+          "context_size": 262144,
+          "context_size_max": 262144,
           "transcribed_text": null,
           "input_tokens": null,
           "output_tokens": null,
@@ -396,15 +442,17 @@
         "ik_llama_cpp": {
           "status": "working",
           "load_time_s": 10.1,
-          "total_elapsed_s": 1.2,
-          "prompt_tokens_per_second": 38.9,
+          "total_elapsed_s": 1.1,
+          "prompt_tokens_per_second": 36.7,
           "gen_tokens_per_second": 10.9,
+          "context_size": 4096,
+          "context_size_max": 262144,
           "transcribed_text": null,
           "input_tokens": null,
           "output_tokens": null,
           "ocr_text": null,
           "notes": null,
-          "tested_at": "2026-09-28"
+          "tested_at": "2026-09-29"
         }
       }
     },
@@ -419,23 +467,27 @@
       "backends": {
         "llama_cpp_router": {
           "status": "working",
-          "load_time_s": 13.0,
-          "total_elapsed_s": 14.3,
-          "prompt_tokens_per_second": 28.0,
-          "gen_tokens_per_second": 13.6,
-          "notes": null,
-          "tested_at": "2026-09-28",
+          "load_time_s": 13.6,
+          "total_elapsed_s": 14.9,
+          "prompt_tokens_per_second": 28.1,
+          "gen_tokens_per_second": 13.7,
+          "context_size": 4096,
+          "context_size_max": 262144,
           "transcribed_text": null,
           "input_tokens": null,
           "output_tokens": null,
-          "ocr_text": null
+          "ocr_text": null,
+          "notes": null,
+          "tested_at": "2026-09-29"
         },
         "lm_studio": {
           "status": "working",
-          "load_time_s": 15.1,
-          "total_elapsed_s": 17.0,
-          "prompt_tokens_per_second": 27.7,
-          "gen_tokens_per_second": 12.8,
+          "load_time_s": 16.5,
+          "total_elapsed_s": 18.4,
+          "prompt_tokens_per_second": 27.8,
+          "gen_tokens_per_second": 14.1,
+          "context_size": 262144,
+          "context_size_max": 262144,
           "transcribed_text": null,
           "input_tokens": null,
           "output_tokens": null,
@@ -445,16 +497,18 @@
         },
         "ik_llama_cpp": {
           "status": "working",
-          "load_time_s": 7.6,
+          "load_time_s": 10.8,
           "total_elapsed_s": 1.5,
-          "prompt_tokens_per_second": 38.7,
+          "prompt_tokens_per_second": 38.2,
           "gen_tokens_per_second": 9.1,
+          "context_size": 4096,
+          "context_size_max": 262144,
           "transcribed_text": null,
           "input_tokens": null,
           "output_tokens": null,
           "ocr_text": null,
           "notes": null,
-          "tested_at": "2026-09-28"
+          "tested_at": "2026-09-29"
         }
       }
     }
