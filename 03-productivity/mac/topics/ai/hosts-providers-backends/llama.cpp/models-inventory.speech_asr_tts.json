@@ -267,16 +267,16 @@
       "backends": {
         "llama_cpp_router": {
           "status": "working",
-          "load_time_s": null,
-          "total_elapsed_s": 2.0,
+          "load_time_s": 2.2,
+          "total_elapsed_s": 2.25,
           "prompt_tokens_per_second": null,
-          "gen_tokens_per_second": null,
+          "gen_tokens_per_second": 85.7,
           "transcribed_text": "hello this is a test",
           "input_tokens": 30,
           "output_tokens": 6,
           "ocr_text": null,
           "notes": null,
-          "tested_at": "2026-09-28"
+          "tested_at": "2026-09-29"
         },
         "lm_studio": {
           "status": "untested",
@@ -317,16 +317,16 @@
       "backends": {
         "llama_cpp_router": {
           "status": "working",
-          "load_time_s": null,
-          "total_elapsed_s": 1.8,
+          "load_time_s": 1.9,
+          "total_elapsed_s": 1.94,
           "prompt_tokens_per_second": null,
-          "gen_tokens_per_second": null,
-          "transcribed_text": "Hello This is a test",
+          "gen_tokens_per_second": 85.7,
+          "transcribed_text": "Hello this is a test",
           "input_tokens": 53,
           "output_tokens": 6,
           "ocr_text": null,
           "notes": null,
-          "tested_at": "2026-09-28"
+          "tested_at": "2026-09-29"
         },
         "lm_studio": {
           "status": "untested",
@@ -367,16 +367,16 @@
       "backends": {
         "llama_cpp_router": {
           "status": "working",
-          "load_time_s": null,
-          "total_elapsed_s": 0.7,
+          "load_time_s": 1.5,
+          "total_elapsed_s": 1.59,
           "prompt_tokens_per_second": null,
-          "gen_tokens_per_second": null,
+          "gen_tokens_per_second": 137.5,
           "transcribed_text": "language English<asr_text>Hello. This is a test.",
           "input_tokens": 41,
           "output_tokens": 11,
           "ocr_text": null,
           "notes": null,
-          "tested_at": "2026-09-28"
+          "tested_at": "2026-09-29"
         },
         "lm_studio": {
           "status": "untested",
