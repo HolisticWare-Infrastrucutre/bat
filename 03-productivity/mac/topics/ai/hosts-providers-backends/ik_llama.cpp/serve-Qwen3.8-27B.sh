@@ -11,7 +11,8 @@ export LLAMA_CPP_MODEL_NAME="Qwen3.6-35B-A3B"
 #export LLAMA_CPP_MODEL_PATH="$HOME/.lmstudio/models/ggml-org/Qwen3.8-27B-GGUF/"
 
 export LLAMA_CPP_SERVER_PORT=11464
-export LLAMA_CPP=$HOME/Downloads/HolisticWare/ai/llama.cpp/macosx/llama.cpp-master/llama.cpp-master/build-macosx/bin/llama-server 
+export LLAMA_CPP_SERVER_PORT=11464
+export LLAMA_CPP=~/Downloads/HolisticWare/ai/ik_llama.cpp/macosx/ik_llama.cpp-main/ik_llama.cpp-main/build-macosx/bin/llama-server
 export LLAMA_CPP_CONTEXT_SIZE=262144
 export LLAMA_CPP_TEMP=0.8
 export LLAMA_CPP_JINJA_TEMPLATE_FILE=$HOME/Downloads/chat_template.jinja
