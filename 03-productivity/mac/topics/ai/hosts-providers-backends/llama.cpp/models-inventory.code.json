@@ -32,16 +32,16 @@
         },
         "lm_studio": {
           "status": "working",
-          "load_time_s": 29.0,
-          "total_elapsed_s": 29.0,
-          "prompt_tokens_per_second": null,
-          "gen_tokens_per_second": null,
+          "load_time_s": 30.5,
+          "total_elapsed_s": 30.8,
+          "prompt_tokens_per_second": 124.5,
+          "gen_tokens_per_second": 58.9,
           "transcribed_text": null,
           "input_tokens": null,
           "output_tokens": null,
           "ocr_text": null,
           "notes": " [tested backend id: unsloth/qwen3-coder-30b-a3b-instruct]",
-          "tested_at": "2026-09-28"
+          "tested_at": "2026-09-29"
         },
         "ik_llama_cpp": {
           "status": "rejected",
@@ -84,16 +84,16 @@
         },
         "lm_studio": {
           "status": "working",
-          "load_time_s": 41.5,
-          "total_elapsed_s": 41.5,
-          "prompt_tokens_per_second": null,
-          "gen_tokens_per_second": null,
+          "load_time_s": 74.9,
+          "total_elapsed_s": 77.6,
+          "prompt_tokens_per_second": 12.3,
+          "gen_tokens_per_second": 7.5,
           "transcribed_text": null,
           "input_tokens": null,
           "output_tokens": null,
           "ocr_text": null,
           "notes": " [tested backend id: qwen3-coder-next-gguf/qwen3-coder-next]",
-          "tested_at": "2026-09-28"
+          "tested_at": "2026-09-29"
         },
         "ik_llama_cpp": {
           "status": "working",
@@ -136,16 +136,16 @@
         },
         "lm_studio": {
           "status": "working",
-          "load_time_s": 40.8,
-          "total_elapsed_s": 40.8,
-          "prompt_tokens_per_second": null,
-          "gen_tokens_per_second": null,
+          "load_time_s": 35.7,
+          "total_elapsed_s": 36.0,
+          "prompt_tokens_per_second": 108.5,
+          "gen_tokens_per_second": 45.5,
           "transcribed_text": null,
           "input_tokens": null,
           "output_tokens": null,
           "ocr_text": null,
           "notes": " [tested backend id: kay6888/deepseek-coder-v2-lite-instruct]",
-          "tested_at": "2026-09-28"
+          "tested_at": "2026-09-29"
         },
         "ik_llama_cpp": {
           "status": "rejected",
@@ -186,16 +186,16 @@
         },
         "lm_studio": {
           "status": "working",
-          "load_time_s": 19.0,
-          "total_elapsed_s": 19.0,
-          "prompt_tokens_per_second": null,
-          "gen_tokens_per_second": null,
+          "load_time_s": 16.1,
+          "total_elapsed_s": 17.3,
+          "prompt_tokens_per_second": 27.8,
+          "gen_tokens_per_second": 13.4,
           "transcribed_text": null,
           "input_tokens": null,
           "output_tokens": null,
           "ocr_text": null,
           "notes": " [tested backend id: thebloke/wizardcoder-python-34b-v1.0]",
-          "tested_at": "2026-09-28"
+          "tested_at": "2026-09-29"
         },
         "ik_llama_cpp": {
           "status": "working",
@@ -236,16 +236,16 @@
         },
         "lm_studio": {
           "status": "working",
-          "load_time_s": 27.0,
-          "total_elapsed_s": 27.0,
-          "prompt_tokens_per_second": null,
-          "gen_tokens_per_second": null,
+          "load_time_s": 23.1,
+          "total_elapsed_s": 25.7,
+          "prompt_tokens_per_second": 10.4,
+          "gen_tokens_per_second": 8.7,
           "transcribed_text": null,
           "input_tokens": null,
           "output_tokens": null,
           "ocr_text": null,
           "notes": " [tested backend id: mradermacher/openmath-codellama-70b-python-hf]",
-          "tested_at": "2026-09-28"
+          "tested_at": "2026-09-29"
         },
         "ik_llama_cpp": {
           "status": "working",
