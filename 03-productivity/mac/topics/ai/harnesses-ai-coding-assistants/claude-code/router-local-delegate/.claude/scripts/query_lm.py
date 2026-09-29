@@ -26,7 +26,9 @@ import urllib.request
 import urllib.error
 import argparse
 
-LMSTUDIO_URL = "http://localhost:11444"
+URL_OLLAMA      = "http://localhost:11444"
+URL_LMSTUDIO    = "http://localhost:11444"
+URL_LLAMA_CPP   = "http://localhost:11454"
 DEFAULT_MODEL = "mlx-community/qwen3.5-35b-a3b"
 
 
@@ -127,8 +129,8 @@ def main():
         help="System prompt"
     )
     parser.add_argument(
-        "--url", default=LMSTUDIO_URL,
-        help=f"LM Studio base URL (default: {LMSTUDIO_URL})"
+        "--url", default=URL_LMSTUDIO,
+        help=f"LM Studio base URL (default: {URL_LMSTUDIO})"
     )
     parser.add_argument(
         "--list-models", action="store_true", dest="list_models",
