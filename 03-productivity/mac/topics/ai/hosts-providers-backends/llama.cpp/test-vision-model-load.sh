@@ -6,12 +6,16 @@
 # vision/OCR model id actually loads and reads the image. Prints a single
 # JSON result line to stdout.
 #
-# Usage: test-vision-model-load.sh MODEL_ID [PORT] [TIMEOUT_S]
+# Usage: test-vision-model-load.sh MODEL_ID [PORT] [TIMEOUT_S] [ENDPOINT_PATH]
+#
+# ENDPOINT_PATH defaults to /v1/chat/completions. Pass /api/v0/chat/completions
+# for LM Studio to get its populated "stats" object (see test-model-load.sh).
 
 HERE="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 MODEL_ID="$1"
 PORT="${2:-11454}"
 TIMEOUT_S="${3:-150}"
+ENDPOINT_PATH="${4:-/v1/chat/completions}"
 IMAGE_FILE="$HERE/test-fixtures/test-image.png"
 
 if [ -z "$MODEL_ID" ]; then
@@ -42,7 +46,7 @@ print(json.dumps({
 " > "$REQFILE"
 
 START=$(date +%s.%N)
-HTTP_CODE=$(curl -s --max-time "$TIMEOUT_S" "http://127.0.0.1:$PORT/v1/chat/completions" \
+HTTP_CODE=$(curl -s --max-time "$TIMEOUT_S" "http://127.0.0.1:$PORT$ENDPOINT_PATH" \
     -H "Content-Type: application/json" \
     -d @"$REQFILE" \
     -o "$TMPFILE" \
@@ -79,11 +83,22 @@ elif http_code == "200":
         with open(body_file) as f:
             body = json.load(f)
         ocr_text = body["choices"][0]["message"]["content"]
-        timings = body.get("timings", {})
-        prompt_tokens_per_second = timings.get("prompt_per_second")
-        gen_tokens_per_second = timings.get("predicted_per_second")
-        inference_s = (timings.get("prompt_ms", 0) + timings.get("predicted_ms", 0)) / 1000
-        load_time_s = round(elapsed - inference_s, 1)
+        timings = body.get("timings") or {}
+        stats = body.get("stats") or {}
+        if timings:
+            prompt_tokens_per_second = timings.get("prompt_per_second")
+            gen_tokens_per_second = timings.get("predicted_per_second")
+            inference_s = (timings.get("prompt_ms", 0) + timings.get("predicted_ms", 0)) / 1000
+            load_time_s = round(elapsed - inference_s, 1)
+        elif stats.get("tokens_per_second") is not None:
+            gen_tokens_per_second = stats.get("tokens_per_second")
+            ttft = stats.get("time_to_first_token")
+            gen_s = stats.get("generation_time")
+            prompt_tokens = (body.get("usage") or {}).get("prompt_tokens")
+            if ttft and prompt_tokens:
+                prompt_tokens_per_second = round(prompt_tokens / ttft, 1)
+            if ttft is not None and gen_s is not None:
+                load_time_s = round(elapsed - ttft - gen_s, 1)
     except Exception as e:
         error = f"200 but unparseable response: {e}"
 else:
