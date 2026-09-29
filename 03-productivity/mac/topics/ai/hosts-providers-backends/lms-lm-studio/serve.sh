@@ -12,6 +12,6 @@ lms \
         start \
             --port $LMS_SERVER_PORT
 
-lms \
-    load \
-        $LMS_LM_STUDIO_MODEL
+# lms \
+#     load \
+#         $LMS_LM_STUDIO_MODEL
