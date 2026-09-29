@@ -30,16 +30,16 @@
         },
         "lm_studio": {
           "status": "working",
-          "load_time_s": 1.4,
-          "total_elapsed_s": 1.4,
-          "prompt_tokens_per_second": null,
-          "gen_tokens_per_second": null,
+          "load_time_s": 6.4,
+          "total_elapsed_s": 6.7,
+          "prompt_tokens_per_second": 1750.8,
+          "gen_tokens_per_second": 257.4,
           "transcribed_text": null,
           "input_tokens": null,
           "output_tokens": null,
           "ocr_text": "\nHELLO OOR TEST 12345",
           "notes": " [tested backend id: ggml-org/glm-ocr]",
-          "tested_at": "2026-09-28"
+          "tested_at": "2026-09-29"
         },
         "ik_llama_cpp": {
           "status": "rejected",
@@ -80,16 +80,16 @@
         },
         "lm_studio": {
           "status": "working",
-          "load_time_s": 2.3,
-          "total_elapsed_s": 2.3,
-          "prompt_tokens_per_second": null,
-          "gen_tokens_per_second": null,
+          "load_time_s": 3.5,
+          "total_elapsed_s": 4.7,
+          "prompt_tokens_per_second": 506.7,
+          "gen_tokens_per_second": 55.9,
           "transcribed_text": null,
           "input_tokens": null,
           "output_tokens": null,
-          "ocr_text": "HELLO OUR TEST 12345",
+          "ocr_text": "The text in the image is:\n\nHELLO OUR TEST 12345",
           "notes": " [tested backend id: olmocr-2-7b-1025-gguf/olmocr-2-7b-1025]",
-          "tested_at": "2026-09-28"
+          "tested_at": "2026-09-29"
         },
         "ik_llama_cpp": {
           "status": "rejected",
