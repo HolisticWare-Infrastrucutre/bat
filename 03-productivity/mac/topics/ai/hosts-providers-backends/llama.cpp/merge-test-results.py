@@ -73,6 +73,13 @@ def main():
                 "total_elapsed_s": r.get("total_elapsed_s", r.get("elapsed_s")),
                 "prompt_tokens_per_second": _round_or_none(r.get("prompt_tokens_per_second")),
                 "gen_tokens_per_second": _round_or_none(r.get("gen_tokens_per_second") or r.get("tokens_per_second")),
+                # context_size: ctx the model was actually loaded with for this
+                # test run. context_size_max: the model's native/trained max
+                # context, when the backend's API exposes it. Both come from
+                # context_probe.py's best-effort GET against the live server --
+                # None means the backend's API just doesn't expose it.
+                "context_size": r.get("context_size"),
+                "context_size_max": r.get("context_size_max"),
                 # audio-specific (test-audio-model-load.sh, /v1/audio/transcriptions)
                 "transcribed_text": r.get("transcribed_text"),
                 "input_tokens": r.get("input_tokens"),
