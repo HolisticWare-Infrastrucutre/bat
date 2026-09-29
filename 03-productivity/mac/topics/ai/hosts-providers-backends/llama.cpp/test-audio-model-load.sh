@@ -55,8 +55,13 @@ read -r HTTP_CODE2 CURL_EXIT2 ELAPSED2 <<< "$(do_request "$TMPFILE2")"
 TEST_MODEL_ID="$MODEL_ID" \
 TEST_HTTP_CODE1="$HTTP_CODE1" TEST_CURL_EXIT1="$CURL_EXIT1" TEST_ELAPSED1="$ELAPSED1" TEST_BODY_FILE1="$TMPFILE1" \
 TEST_HTTP_CODE2="$HTTP_CODE2" TEST_CURL_EXIT2="$CURL_EXIT2" TEST_ELAPSED2="$ELAPSED2" TEST_BODY_FILE2="$TMPFILE2" \
+TEST_HERE="$HERE" \
+TEST_PORT="$PORT" \
 python3 << 'PYEOF'
-import json, os
+import json, os, sys
+
+sys.path.insert(0, os.environ["TEST_HERE"])
+from context_probe import probe_context
 
 model = os.environ["TEST_MODEL_ID"]
 http_code = os.environ["TEST_HTTP_CODE1"]
@@ -75,6 +80,8 @@ input_tokens = None
 output_tokens = None
 load_time_s = None
 gen_tokens_per_second = None
+context_size = None
+context_size_max = None
 
 if curl_exit1 != 0:
     error = f"curl exit {curl_exit1} (timeout or connection error) on first request"
@@ -113,6 +120,13 @@ else:
         except Exception:
             pass
 
+    try:
+        ctx = probe_context(os.environ["TEST_PORT"], model)
+        context_size = ctx["context_size"]
+        context_size_max = ctx["context_size_max"]
+    except Exception:
+        pass
+
 print(json.dumps({
     "model": model,
     "status": status,
@@ -120,6 +134,8 @@ print(json.dumps({
     "total_elapsed_s": elapsed1,
     "load_time_s": load_time_s,
     "gen_tokens_per_second": gen_tokens_per_second,
+    "context_size": context_size,
+    "context_size_max": context_size_max,
     "transcribed_text": transcribed_text,
     "input_tokens": input_tokens,
     "output_tokens": output_tokens,
