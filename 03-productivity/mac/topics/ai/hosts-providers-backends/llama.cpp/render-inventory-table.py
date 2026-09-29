@@ -109,6 +109,8 @@ def build_rows(models, backends):
             row[f"{prefix}_load_time_s"] = info.get("load_time_s")
             row[f"{prefix}_prompt_tokens_per_second"] = info.get("prompt_tokens_per_second")
             row[f"{prefix}_gen_tokens_per_second"] = info.get("gen_tokens_per_second")
+            row[f"{prefix}_context_size"] = info.get("context_size")
+            row[f"{prefix}_context_size_max"] = info.get("context_size_max")
         rows.append(row)
     return rows
 
