@@ -59,6 +59,21 @@
           "ocr_text": null,
           "notes": "ik_llama.cpp's server has no /v1/audio/transcriptions route -- confirmed empirically: clean HTTP 404 'File Not Found' with a model already loaded and serving (so this is a route that doesn't exist, not a model problem). Its --help lists an --audio FILE flag, which appears to be a CLI-only batch-processing option, not an HTTP API surface. Status stays untested rather than rejected since no model was actually put through a real test.",
           "tested_at": "2026-09-28"
+        },
+        "mlx_serve": {
+          "status": "untested",
+          "load_time_s": null,
+          "total_elapsed_s": null,
+          "prompt_tokens_per_second": null,
+          "gen_tokens_per_second": null,
+          "context_size": null,
+          "context_size_max": null,
+          "transcribed_text": null,
+          "input_tokens": null,
+          "output_tokens": null,
+          "ocr_text": null,
+          "notes": "mlx-serve has no audio transcription endpoint at all -- confirmed empirically: GET /v1/audio/transcriptions returns HTTP 404, and it is not in the server's own printed route table (GET/POST routes logged at startup). Backend-level limitation, no model was actually tested for its real (ASR) purpose -- text-chat-completion responses on these ids exist but are not evidence of transcription capability, so status stays untested rather than working/rejected.",
+          "tested_at": "2026-09-29"
         }
       }
     },
@@ -115,6 +130,21 @@
           "ocr_text": null,
           "notes": "ik_llama.cpp's server has no /v1/audio/transcriptions route -- confirmed empirically: clean HTTP 404 'File Not Found' with a model already loaded and serving (so this is a route that doesn't exist, not a model problem). Its --help lists an --audio FILE flag, which appears to be a CLI-only batch-processing option, not an HTTP API surface. Status stays untested rather than rejected since no model was actually put through a real test.",
           "tested_at": "2026-09-28"
+        },
+        "mlx_serve": {
+          "status": "untested",
+          "load_time_s": null,
+          "total_elapsed_s": null,
+          "prompt_tokens_per_second": null,
+          "gen_tokens_per_second": null,
+          "context_size": null,
+          "context_size_max": null,
+          "transcribed_text": null,
+          "input_tokens": null,
+          "output_tokens": null,
+          "ocr_text": null,
+          "notes": "mlx-serve has no audio transcription endpoint at all -- confirmed empirically: GET /v1/audio/transcriptions returns HTTP 404, and it is not in the server's own printed route table (GET/POST routes logged at startup). Backend-level limitation, no model was actually tested for its real (ASR) purpose -- text-chat-completion responses on these ids exist but are not evidence of transcription capability, so status stays untested rather than working/rejected.",
+          "tested_at": "2026-09-29"
         }
       }
     },
@@ -171,6 +201,21 @@
           "ocr_text": null,
           "notes": "ik_llama.cpp's server has no /v1/audio/transcriptions route -- confirmed empirically: clean HTTP 404 'File Not Found' with a model already loaded and serving (so this is a route that doesn't exist, not a model problem). Its --help lists an --audio FILE flag, which appears to be a CLI-only batch-processing option, not an HTTP API surface. Status stays untested rather than rejected since no model was actually put through a real test.",
           "tested_at": "2026-09-28"
+        },
+        "mlx_serve": {
+          "status": "untested",
+          "load_time_s": null,
+          "total_elapsed_s": null,
+          "prompt_tokens_per_second": null,
+          "gen_tokens_per_second": null,
+          "context_size": null,
+          "context_size_max": null,
+          "transcribed_text": null,
+          "input_tokens": null,
+          "output_tokens": null,
+          "ocr_text": null,
+          "notes": "mlx-serve has no audio transcription endpoint at all -- confirmed empirically: GET /v1/audio/transcriptions returns HTTP 404, and it is not in the server's own printed route table (GET/POST routes logged at startup). Backend-level limitation, no model was actually tested for its real (ASR) purpose -- text-chat-completion responses on these ids exist but are not evidence of transcription capability, so status stays untested rather than working/rejected.",
+          "tested_at": "2026-09-29"
         }
       }
     },
@@ -227,6 +272,21 @@
           "ocr_text": null,
           "notes": "ik_llama.cpp's server has no /v1/audio/transcriptions route -- confirmed empirically: clean HTTP 404 'File Not Found' with a model already loaded and serving (so this is a route that doesn't exist, not a model problem). Its --help lists an --audio FILE flag, which appears to be a CLI-only batch-processing option, not an HTTP API surface. Status stays untested rather than rejected since no model was actually put through a real test.",
           "tested_at": "2026-09-28"
+        },
+        "mlx_serve": {
+          "status": "untested",
+          "load_time_s": null,
+          "total_elapsed_s": null,
+          "prompt_tokens_per_second": null,
+          "gen_tokens_per_second": null,
+          "context_size": null,
+          "context_size_max": null,
+          "transcribed_text": null,
+          "input_tokens": null,
+          "output_tokens": null,
+          "ocr_text": null,
+          "notes": "mlx-serve has no audio transcription endpoint at all -- confirmed empirically: GET /v1/audio/transcriptions returns HTTP 404, and it is not in the server's own printed route table (GET/POST routes logged at startup). Backend-level limitation, no model was actually tested for its real (ASR) purpose -- text-chat-completion responses on these ids exist but are not evidence of transcription capability, so status stays untested rather than working/rejected.",
+          "tested_at": "2026-09-29"
         }
       }
     },
@@ -283,6 +343,21 @@
           "ocr_text": null,
           "notes": "ik_llama.cpp's server has no /v1/audio/transcriptions route -- confirmed empirically: clean HTTP 404 'File Not Found' with a model already loaded and serving (so this is a route that doesn't exist, not a model problem). Its --help lists an --audio FILE flag, which appears to be a CLI-only batch-processing option, not an HTTP API surface. Status stays untested rather than rejected since no model was actually put through a real test.",
           "tested_at": "2026-09-28"
+        },
+        "mlx_serve": {
+          "status": "untested",
+          "load_time_s": null,
+          "total_elapsed_s": null,
+          "prompt_tokens_per_second": null,
+          "gen_tokens_per_second": null,
+          "context_size": null,
+          "context_size_max": null,
+          "transcribed_text": null,
+          "input_tokens": null,
+          "output_tokens": null,
+          "ocr_text": null,
+          "notes": "mlx-serve has no audio transcription endpoint at all -- confirmed empirically: GET /v1/audio/transcriptions returns HTTP 404, and it is not in the server's own printed route table (GET/POST routes logged at startup). Backend-level limitation, no model was actually tested for its real (ASR) purpose -- text-chat-completion responses on these ids exist but are not evidence of transcription capability, so status stays untested rather than working/rejected.",
+          "tested_at": "2026-09-29"
         }
       }
     },
@@ -339,6 +414,21 @@
           "ocr_text": null,
           "notes": "ik_llama.cpp's server has no /v1/audio/transcriptions route -- confirmed empirically: clean HTTP 404 'File Not Found' with a model already loaded and serving (so this is a route that doesn't exist, not a model problem). Its --help lists an --audio FILE flag, which appears to be a CLI-only batch-processing option, not an HTTP API surface. Status stays untested rather than rejected since no model was actually put through a real test.",
           "tested_at": "2026-09-28"
+        },
+        "mlx_serve": {
+          "status": "untested",
+          "load_time_s": null,
+          "total_elapsed_s": null,
+          "prompt_tokens_per_second": null,
+          "gen_tokens_per_second": null,
+          "context_size": null,
+          "context_size_max": null,
+          "transcribed_text": null,
+          "input_tokens": null,
+          "output_tokens": null,
+          "ocr_text": null,
+          "notes": "mlx-serve has no audio transcription endpoint at all -- confirmed empirically: GET /v1/audio/transcriptions returns HTTP 404, and it is not in the server's own printed route table (GET/POST routes logged at startup). Backend-level limitation, no model was actually tested for its real (ASR) purpose -- text-chat-completion responses on these ids exist but are not evidence of transcription capability, so status stays untested rather than working/rejected.",
+          "tested_at": "2026-09-29"
         }
       }
     },
@@ -395,6 +485,21 @@
           "ocr_text": null,
           "notes": "ik_llama.cpp's server has no /v1/audio/transcriptions route -- confirmed empirically: clean HTTP 404 'File Not Found' with a model already loaded and serving (so this is a route that doesn't exist, not a model problem). Its --help lists an --audio FILE flag, which appears to be a CLI-only batch-processing option, not an HTTP API surface. Status stays untested rather than rejected since no model was actually put through a real test.",
           "tested_at": "2026-09-28"
+        },
+        "mlx_serve": {
+          "status": "untested",
+          "load_time_s": null,
+          "total_elapsed_s": null,
+          "prompt_tokens_per_second": null,
+          "gen_tokens_per_second": null,
+          "context_size": null,
+          "context_size_max": null,
+          "transcribed_text": null,
+          "input_tokens": null,
+          "output_tokens": null,
+          "ocr_text": null,
+          "notes": "mlx-serve has no audio transcription endpoint at all -- confirmed empirically: GET /v1/audio/transcriptions returns HTTP 404, and it is not in the server's own printed route table (GET/POST routes logged at startup). Backend-level limitation, no model was actually tested for its real (ASR) purpose -- text-chat-completion responses on these ids exist but are not evidence of transcription capability, so status stays untested rather than working/rejected.",
+          "tested_at": "2026-09-29"
         }
       }
     },
@@ -451,6 +556,21 @@
           "ocr_text": null,
           "notes": "ik_llama.cpp's server has no /v1/audio/transcriptions route -- confirmed empirically: clean HTTP 404 'File Not Found' with a model already loaded and serving (so this is a route that doesn't exist, not a model problem). Its --help lists an --audio FILE flag, which appears to be a CLI-only batch-processing option, not an HTTP API surface. Status stays untested rather than rejected since no model was actually put through a real test.",
           "tested_at": "2026-09-28"
+        },
+        "mlx_serve": {
+          "status": "untested",
+          "load_time_s": null,
+          "total_elapsed_s": null,
+          "prompt_tokens_per_second": null,
+          "gen_tokens_per_second": null,
+          "context_size": null,
+          "context_size_max": null,
+          "transcribed_text": null,
+          "input_tokens": null,
+          "output_tokens": null,
+          "ocr_text": null,
+          "notes": "mlx-serve has no audio transcription endpoint at all -- confirmed empirically: GET /v1/audio/transcriptions returns HTTP 404, and it is not in the server's own printed route table (GET/POST routes logged at startup). Backend-level limitation, no model was actually tested for its real (ASR) purpose -- text-chat-completion responses on these ids exist but are not evidence of transcription capability, so status stays untested rather than working/rejected.",
+          "tested_at": "2026-09-29"
         }
       }
     },
@@ -507,6 +627,21 @@
           "ocr_text": null,
           "notes": "ik_llama.cpp's server has no /v1/audio/transcriptions route -- confirmed empirically: clean HTTP 404 'File Not Found' with a model already loaded and serving (so this is a route that doesn't exist, not a model problem). Its --help lists an --audio FILE flag, which appears to be a CLI-only batch-processing option, not an HTTP API surface. Status stays untested rather than rejected since no model was actually put through a real test.",
           "tested_at": "2026-09-28"
+        },
+        "mlx_serve": {
+          "status": "untested",
+          "load_time_s": null,
+          "total_elapsed_s": null,
+          "prompt_tokens_per_second": null,
+          "gen_tokens_per_second": null,
+          "context_size": null,
+          "context_size_max": null,
+          "transcribed_text": null,
+          "input_tokens": null,
+          "output_tokens": null,
+          "ocr_text": null,
+          "notes": "mlx-serve has no audio transcription endpoint at all -- confirmed empirically: GET /v1/audio/transcriptions returns HTTP 404, and it is not in the server's own printed route table (GET/POST routes logged at startup). Backend-level limitation, no model was actually tested for its real (ASR) purpose -- text-chat-completion responses on these ids exist but are not evidence of transcription capability, so status stays untested rather than working/rejected.",
+          "tested_at": "2026-09-29"
         }
       }
     }
