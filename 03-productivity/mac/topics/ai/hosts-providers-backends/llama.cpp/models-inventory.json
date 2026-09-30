@@ -58,6 +58,21 @@
             "ocr_text": null,
             "notes": null,
             "tested_at": "2026-09-29"
+          },
+          "mlx_serve": {
+            "status": "working",
+            "load_time_s": 10.8,
+            "total_elapsed_s": 11.1,
+            "prompt_tokens_per_second": 162.4,
+            "gen_tokens_per_second": 38.8,
+            "context_size": 8192,
+            "context_size_max": null,
+            "transcribed_text": null,
+            "input_tokens": null,
+            "output_tokens": null,
+            "ocr_text": null,
+            "notes": null,
+            "tested_at": "2026-09-29"
           }
         }
       },
@@ -108,6 +123,21 @@
             "gen_tokens_per_second": 66.6,
             "context_size": 4096,
             "context_size_max": 262144,
+            "transcribed_text": null,
+            "input_tokens": null,
+            "output_tokens": null,
+            "ocr_text": null,
+            "notes": null,
+            "tested_at": "2026-09-29"
+          },
+          "mlx_serve": {
+            "status": "working",
+            "load_time_s": 0.9,
+            "total_elapsed_s": 1.1,
+            "prompt_tokens_per_second": 489.7,
+            "gen_tokens_per_second": 54.4,
+            "context_size": 8192,
+            "context_size_max": null,
             "transcribed_text": null,
             "input_tokens": null,
             "output_tokens": null,
@@ -170,6 +200,21 @@
             "ocr_text": null,
             "notes": "server did not become ready: llama_init_from_model: graph splits = 1 llama_init_from_model: enabling only_active_experts scheduling /Users/moljac/Downloads/HolisticWare/ai/ik_llama.cpp/macosx/ik_llama.cpp-main/ik_llama.cpp-main/ggml/src/ggml.c:18950: fatal error /Users/moljac/Downloads/HolisticWare/ai/ik_llama.cpp/macosx/ik_llama.cpp-main/ik_llama.cpp-main/ggml/src/ggml.c:18950: fatal error /Users/moljac/Downloads/HolisticWare/ai/ik_llama.cpp/macosx/ik_llama.cpp-main/ik_llama.cpp-main/ggml/src/ggml.c:18950: ",
             "tested_at": "2026-09-28"
+          },
+          "mlx_serve": {
+            "status": "working",
+            "load_time_s": 25.6,
+            "total_elapsed_s": 25.9,
+            "prompt_tokens_per_second": 279.9,
+            "gen_tokens_per_second": 36.7,
+            "context_size": 8192,
+            "context_size_max": null,
+            "transcribed_text": null,
+            "input_tokens": null,
+            "output_tokens": null,
+            "ocr_text": null,
+            "notes": null,
+            "tested_at": "2026-09-29"
           }
         }
       },
@@ -220,6 +265,21 @@
             "gen_tokens_per_second": 68.8,
             "context_size": 4096,
             "context_size_max": 262144,
+            "transcribed_text": null,
+            "input_tokens": null,
+            "output_tokens": null,
+            "ocr_text": null,
+            "notes": null,
+            "tested_at": "2026-09-29"
+          },
+          "mlx_serve": {
+            "status": "working",
+            "load_time_s": 13.6,
+            "total_elapsed_s": 13.8,
+            "prompt_tokens_per_second": 436.4,
+            "gen_tokens_per_second": 45.0,
+            "context_size": 8192,
+            "context_size_max": null,
             "transcribed_text": null,
             "input_tokens": null,
             "output_tokens": null,
@@ -282,6 +342,21 @@
             "ocr_text": null,
             "notes": null,
             "tested_at": "2026-09-29"
+          },
+          "mlx_serve": {
+            "status": "working",
+            "load_time_s": 10.8,
+            "total_elapsed_s": 11.7,
+            "prompt_tokens_per_second": 146.1,
+            "gen_tokens_per_second": 12.9,
+            "context_size": 8192,
+            "context_size_max": null,
+            "transcribed_text": null,
+            "input_tokens": null,
+            "output_tokens": null,
+            "ocr_text": null,
+            "notes": null,
+            "tested_at": "2026-09-29"
           }
         }
       },
@@ -332,6 +407,21 @@
             "gen_tokens_per_second": 5.3,
             "context_size": 4096,
             "context_size_max": 262144,
+            "transcribed_text": null,
+            "input_tokens": null,
+            "output_tokens": null,
+            "ocr_text": null,
+            "notes": null,
+            "tested_at": "2026-09-29"
+          },
+          "mlx_serve": {
+            "status": "working",
+            "load_time_s": 20.6,
+            "total_elapsed_s": 21.9,
+            "prompt_tokens_per_second": 240.3,
+            "gen_tokens_per_second": 7.5,
+            "context_size": 8192,
+            "context_size_max": null,
             "transcribed_text": null,
             "input_tokens": null,
             "output_tokens": null,
@@ -396,6 +486,21 @@
             "ocr_text": null,
             "notes": null,
             "tested_at": "2026-09-29"
+          },
+          "mlx_serve": {
+            "status": "working",
+            "load_time_s": 20.3,
+            "total_elapsed_s": 21.6,
+            "prompt_tokens_per_second": 242.6,
+            "gen_tokens_per_second": 7.3,
+            "context_size": 8192,
+            "context_size_max": null,
+            "transcribed_text": null,
+            "input_tokens": null,
+            "output_tokens": null,
+            "ocr_text": null,
+            "notes": null,
+            "tested_at": "2026-09-29"
           }
         }
       },
@@ -452,6 +557,21 @@
             "ocr_text": null,
             "notes": null,
             "tested_at": "2026-09-29"
+          },
+          "mlx_serve": {
+            "status": "working",
+            "load_time_s": 10.3,
+            "total_elapsed_s": 11.1,
+            "prompt_tokens_per_second": 177.6,
+            "gen_tokens_per_second": 12.9,
+            "context_size": 8192,
+            "context_size_max": null,
+            "transcribed_text": null,
+            "input_tokens": null,
+            "output_tokens": null,
+            "ocr_text": null,
+            "notes": null,
+            "tested_at": "2026-09-29"
           }
         }
       },
@@ -502,6 +622,21 @@
             "gen_tokens_per_second": 9.1,
             "context_size": 4096,
             "context_size_max": 262144,
+            "transcribed_text": null,
+            "input_tokens": null,
+            "output_tokens": null,
+            "ocr_text": null,
+            "notes": null,
+            "tested_at": "2026-09-29"
+          },
+          "mlx_serve": {
+            "status": "working",
+            "load_time_s": 11.9,
+            "total_elapsed_s": 13.2,
+            "prompt_tokens_per_second": 26.4,
+            "gen_tokens_per_second": 11.8,
+            "context_size": 8192,
+            "context_size_max": null,
             "transcribed_text": null,
             "input_tokens": null,
             "output_tokens": null,
@@ -568,6 +703,21 @@
             "ocr_text": null,
             "notes": "server did not become ready: llama_init_from_model: graph splits = 1 llama_init_from_model: enabling only_active_experts scheduling /Users/moljac/Downloads/HolisticWare/ai/ik_llama.cpp/macosx/ik_llama.cpp-main/ik_llama.cpp-main/ggml/src/ggml.c:18950: fatal error /Users/moljac/Downloads/HolisticWare/ai/ik_llama.cpp/macosx/ik_llama.cpp-main/ik_llama.cpp-main/ggml/src/ggml.c:18950: fatal error /Users/moljac/Downloads/HolisticWare/ai/ik_llama.cpp/macosx/ik_llama.cpp-main/ik_llama.cpp-main/ggml/src/ggml.c:18950: ",
             "tested_at": "2026-09-28"
+          },
+          "mlx_serve": {
+            "status": "working",
+            "load_time_s": 22.4,
+            "total_elapsed_s": 22.7,
+            "prompt_tokens_per_second": 109.3,
+            "gen_tokens_per_second": 41.1,
+            "context_size": 8192,
+            "context_size_max": null,
+            "transcribed_text": null,
+            "input_tokens": null,
+            "output_tokens": null,
+            "ocr_text": null,
+            "notes": null,
+            "tested_at": "2026-09-29"
           }
         }
       },
@@ -620,6 +770,21 @@
             "gen_tokens_per_second": 59.0,
             "context_size": 4096,
             "context_size_max": 262144,
+            "transcribed_text": null,
+            "input_tokens": null,
+            "output_tokens": null,
+            "ocr_text": null,
+            "notes": null,
+            "tested_at": "2026-09-29"
+          },
+          "mlx_serve": {
+            "status": "working",
+            "load_time_s": 32.3,
+            "total_elapsed_s": 32.6,
+            "prompt_tokens_per_second": 105.1,
+            "gen_tokens_per_second": 41.5,
+            "context_size": 870,
+            "context_size_max": null,
             "transcribed_text": null,
             "input_tokens": null,
             "output_tokens": null,
@@ -684,6 +849,21 @@
             "ocr_text": null,
             "notes": "server did not become ready: llama_init_from_model: graph splits = 1 llama_init_from_model: enabling only_active_experts scheduling /Users/moljac/Downloads/HolisticWare/ai/ik_llama.cpp/macosx/ik_llama.cpp-main/ik_llama.cpp-main/ggml/src/ggml.c:18950: /Users/moljac/Downloads/HolisticWare/ai/ik_llama.cpp/macosx/ik_llama.cpp-main/ik_llama.cpp-main/ggml/src/ggml.c:18950: fatal error /Users/moljac/Downloads/HolisticWare/ai/ik_llama.cpp/macosx/ik_llama.cpp-main/ik_llama.cpp-main/ggml/src/ggml.c:18950: fatal error/Users/moljac/Downloads/HolisticWare/ai/ik_llama.cpp/macosx/ik_llama.cpp-main/ik_llama.cpp-main/ggml/src/ggml.c:18950: fatal error /Users/moljac/Downloads/HolisticWare/ai/ik_llama.cpp/macosx/ik_llama.cpp-main/ik_llama.cpp-main/ggml/src/ggml.c:18950: fatal error",
             "tested_at": "2026-09-28"
+          },
+          "mlx_serve": {
+            "status": "working",
+            "load_time_s": 23.9,
+            "total_elapsed_s": 24.4,
+            "prompt_tokens_per_second": 35.3,
+            "gen_tokens_per_second": 37.9,
+            "context_size": 8192,
+            "context_size_max": null,
+            "transcribed_text": null,
+            "input_tokens": null,
+            "output_tokens": null,
+            "ocr_text": null,
+            "notes": null,
+            "tested_at": "2026-09-29"
           }
         }
       },
@@ -740,6 +920,21 @@
             "ocr_text": null,
             "notes": null,
             "tested_at": "2026-09-29"
+          },
+          "mlx_serve": {
+            "status": "working",
+            "load_time_s": 12.1,
+            "total_elapsed_s": 13.1,
+            "prompt_tokens_per_second": 184.0,
+            "gen_tokens_per_second": 11.1,
+            "context_size": 8192,
+            "context_size_max": null,
+            "transcribed_text": null,
+            "input_tokens": null,
+            "output_tokens": null,
+            "ocr_text": null,
+            "notes": null,
+            "tested_at": "2026-09-29"
           }
         }
       },
@@ -790,6 +985,21 @@
             "gen_tokens_per_second": 6.0,
             "context_size": 4096,
             "context_size_max": 2048,
+            "transcribed_text": null,
+            "input_tokens": null,
+            "output_tokens": null,
+            "ocr_text": null,
+            "notes": null,
+            "tested_at": "2026-09-29"
+          },
+          "mlx_serve": {
+            "status": "working",
+            "load_time_s": 19.0,
+            "total_elapsed_s": 20.7,
+            "prompt_tokens_per_second": 121.6,
+            "gen_tokens_per_second": 6.7,
+            "context_size": 8192,
+            "context_size_max": null,
             "transcribed_text": null,
             "input_tokens": null,
             "output_tokens": null,
@@ -854,6 +1064,21 @@
             "ocr_text": null,
             "notes": "ik_llama.cpp's server has no /v1/audio/transcriptions route -- confirmed empirically: clean HTTP 404 'File Not Found' with a model already loaded and serving (so this is a route that doesn't exist, not a model problem). Its --help lists an --audio FILE flag, which appears to be a CLI-only batch-processing option, not an HTTP API surface. Status stays untested rather than rejected since no model was actually put through a real test.",
             "tested_at": "2026-09-28"
+          },
+          "mlx_serve": {
+            "status": "untested",
+            "load_time_s": null,
+            "total_elapsed_s": null,
+            "prompt_tokens_per_second": null,
+            "gen_tokens_per_second": null,
+            "context_size": null,
+            "context_size_max": null,
+            "transcribed_text": null,
+            "input_tokens": null,
+            "output_tokens": null,
+            "ocr_text": null,
+            "notes": "mlx-serve has no audio transcription endpoint at all -- confirmed empirically: GET /v1/audio/transcriptions returns HTTP 404, and it is not in the server's own printed route table (GET/POST routes logged at startup). Backend-level limitation, no model was actually tested for its real (ASR) purpose -- text-chat-completion responses on these ids exist but are not evidence of transcription capability, so status stays untested rather than working/rejected.",
+            "tested_at": "2026-09-29"
           }
         }
       },
@@ -910,6 +1135,21 @@
             "ocr_text": null,
             "notes": "ik_llama.cpp's server has no /v1/audio/transcriptions route -- confirmed empirically: clean HTTP 404 'File Not Found' with a model already loaded and serving (so this is a route that doesn't exist, not a model problem). Its --help lists an --audio FILE flag, which appears to be a CLI-only batch-processing option, not an HTTP API surface. Status stays untested rather than rejected since no model was actually put through a real test.",
             "tested_at": "2026-09-28"
+          },
+          "mlx_serve": {
+            "status": "untested",
+            "load_time_s": null,
+            "total_elapsed_s": null,
+            "prompt_tokens_per_second": null,
+            "gen_tokens_per_second": null,
+            "context_size": null,
+            "context_size_max": null,
+            "transcribed_text": null,
+            "input_tokens": null,
+            "output_tokens": null,
+            "ocr_text": null,
+            "notes": "mlx-serve has no audio transcription endpoint at all -- confirmed empirically: GET /v1/audio/transcriptions returns HTTP 404, and it is not in the server's own printed route table (GET/POST routes logged at startup). Backend-level limitation, no model was actually tested for its real (ASR) purpose -- text-chat-completion responses on these ids exist but are not evidence of transcription capability, so status stays untested rather than working/rejected.",
+            "tested_at": "2026-09-29"
           }
         }
       },
@@ -966,6 +1206,21 @@
             "ocr_text": null,
             "notes": "ik_llama.cpp's server has no /v1/audio/transcriptions route -- confirmed empirically: clean HTTP 404 'File Not Found' with a model already loaded and serving (so this is a route that doesn't exist, not a model problem). Its --help lists an --audio FILE flag, which appears to be a CLI-only batch-processing option, not an HTTP API surface. Status stays untested rather than rejected since no model was actually put through a real test.",
             "tested_at": "2026-09-28"
+          },
+          "mlx_serve": {
+            "status": "untested",
+            "load_time_s": null,
+            "total_elapsed_s": null,
+            "prompt_tokens_per_second": null,
+            "gen_tokens_per_second": null,
+            "context_size": null,
+            "context_size_max": null,
+            "transcribed_text": null,
+            "input_tokens": null,
+            "output_tokens": null,
+            "ocr_text": null,
+            "notes": "mlx-serve has no audio transcription endpoint at all -- confirmed empirically: GET /v1/audio/transcriptions returns HTTP 404, and it is not in the server's own printed route table (GET/POST routes logged at startup). Backend-level limitation, no model was actually tested for its real (ASR) purpose -- text-chat-completion responses on these ids exist but are not evidence of transcription capability, so status stays untested rather than working/rejected.",
+            "tested_at": "2026-09-29"
           }
         }
       },
@@ -1022,6 +1277,21 @@
             "ocr_text": null,
             "notes": "ik_llama.cpp's server has no /v1/audio/transcriptions route -- confirmed empirically: clean HTTP 404 'File Not Found' with a model already loaded and serving (so this is a route that doesn't exist, not a model problem). Its --help lists an --audio FILE flag, which appears to be a CLI-only batch-processing option, not an HTTP API surface. Status stays untested rather than rejected since no model was actually put through a real test.",
             "tested_at": "2026-09-28"
+          },
+          "mlx_serve": {
+            "status": "untested",
+            "load_time_s": null,
+            "total_elapsed_s": null,
+            "prompt_tokens_per_second": null,
+            "gen_tokens_per_second": null,
+            "context_size": null,
+            "context_size_max": null,
+            "transcribed_text": null,
+            "input_tokens": null,
+            "output_tokens": null,
+            "ocr_text": null,
+            "notes": "mlx-serve has no audio transcription endpoint at all -- confirmed empirically: GET /v1/audio/transcriptions returns HTTP 404, and it is not in the server's own printed route table (GET/POST routes logged at startup). Backend-level limitation, no model was actually tested for its real (ASR) purpose -- text-chat-completion responses on these ids exist but are not evidence of transcription capability, so status stays untested rather than working/rejected.",
+            "tested_at": "2026-09-29"
           }
         }
       },
@@ -1078,6 +1348,21 @@
             "ocr_text": null,
             "notes": "ik_llama.cpp's server has no /v1/audio/transcriptions route -- confirmed empirically: clean HTTP 404 'File Not Found' with a model already loaded and serving (so this is a route that doesn't exist, not a model problem). Its --help lists an --audio FILE flag, which appears to be a CLI-only batch-processing option, not an HTTP API surface. Status stays untested rather than rejected since no model was actually put through a real test.",
             "tested_at": "2026-09-28"
+          },
+          "mlx_serve": {
+            "status": "untested",
+            "load_time_s": null,
+            "total_elapsed_s": null,
+            "prompt_tokens_per_second": null,
+            "gen_tokens_per_second": null,
+            "context_size": null,
+            "context_size_max": null,
+            "transcribed_text": null,
+            "input_tokens": null,
+            "output_tokens": null,
+            "ocr_text": null,
+            "notes": "mlx-serve has no audio transcription endpoint at all -- confirmed empirically: GET /v1/audio/transcriptions returns HTTP 404, and it is not in the server's own printed route table (GET/POST routes logged at startup). Backend-level limitation, no model was actually tested for its real (ASR) purpose -- text-chat-completion responses on these ids exist but are not evidence of transcription capability, so status stays untested rather than working/rejected.",
+            "tested_at": "2026-09-29"
           }
         }
       },
@@ -1134,6 +1419,21 @@
             "ocr_text": null,
             "notes": "ik_llama.cpp's server has no /v1/audio/transcriptions route -- confirmed empirically: clean HTTP 404 'File Not Found' with a model already loaded and serving (so this is a route that doesn't exist, not a model problem). Its --help lists an --audio FILE flag, which appears to be a CLI-only batch-processing option, not an HTTP API surface. Status stays untested rather than rejected since no model was actually put through a real test.",
             "tested_at": "2026-09-28"
+          },
+          "mlx_serve": {
+            "status": "untested",
+            "load_time_s": null,
+            "total_elapsed_s": null,
+            "prompt_tokens_per_second": null,
+            "gen_tokens_per_second": null,
+            "context_size": null,
+            "context_size_max": null,
+            "transcribed_text": null,
+            "input_tokens": null,
+            "output_tokens": null,
+            "ocr_text": null,
+            "notes": "mlx-serve has no audio transcription endpoint at all -- confirmed empirically: GET /v1/audio/transcriptions returns HTTP 404, and it is not in the server's own printed route table (GET/POST routes logged at startup). Backend-level limitation, no model was actually tested for its real (ASR) purpose -- text-chat-completion responses on these ids exist but are not evidence of transcription capability, so status stays untested rather than working/rejected.",
+            "tested_at": "2026-09-29"
           }
         }
       },
@@ -1190,6 +1490,21 @@
             "ocr_text": null,
             "notes": "ik_llama.cpp's server has no /v1/audio/transcriptions route -- confirmed empirically: clean HTTP 404 'File Not Found' with a model already loaded and serving (so this is a route that doesn't exist, not a model problem). Its --help lists an --audio FILE flag, which appears to be a CLI-only batch-processing option, not an HTTP API surface. Status stays untested rather than rejected since no model was actually put through a real test.",
             "tested_at": "2026-09-28"
+          },
+          "mlx_serve": {
+            "status": "untested",
+            "load_time_s": null,
+            "total_elapsed_s": null,
+            "prompt_tokens_per_second": null,
+            "gen_tokens_per_second": null,
+            "context_size": null,
+            "context_size_max": null,
+            "transcribed_text": null,
+            "input_tokens": null,
+            "output_tokens": null,
+            "ocr_text": null,
+            "notes": "mlx-serve has no audio transcription endpoint at all -- confirmed empirically: GET /v1/audio/transcriptions returns HTTP 404, and it is not in the server's own printed route table (GET/POST routes logged at startup). Backend-level limitation, no model was actually tested for its real (ASR) purpose -- text-chat-completion responses on these ids exist but are not evidence of transcription capability, so status stays untested rather than working/rejected.",
+            "tested_at": "2026-09-29"
           }
         }
       },
@@ -1246,6 +1561,21 @@
             "ocr_text": null,
             "notes": "ik_llama.cpp's server has no /v1/audio/transcriptions route -- confirmed empirically: clean HTTP 404 'File Not Found' with a model already loaded and serving (so this is a route that doesn't exist, not a model problem). Its --help lists an --audio FILE flag, which appears to be a CLI-only batch-processing option, not an HTTP API surface. Status stays untested rather than rejected since no model was actually put through a real test.",
             "tested_at": "2026-09-28"
+          },
+          "mlx_serve": {
+            "status": "untested",
+            "load_time_s": null,
+            "total_elapsed_s": null,
+            "prompt_tokens_per_second": null,
+            "gen_tokens_per_second": null,
+            "context_size": null,
+            "context_size_max": null,
+            "transcribed_text": null,
+            "input_tokens": null,
+            "output_tokens": null,
+            "ocr_text": null,
+            "notes": "mlx-serve has no audio transcription endpoint at all -- confirmed empirically: GET /v1/audio/transcriptions returns HTTP 404, and it is not in the server's own printed route table (GET/POST routes logged at startup). Backend-level limitation, no model was actually tested for its real (ASR) purpose -- text-chat-completion responses on these ids exist but are not evidence of transcription capability, so status stays untested rather than working/rejected.",
+            "tested_at": "2026-09-29"
           }
         }
       },
@@ -1302,6 +1632,21 @@
             "ocr_text": null,
             "notes": "ik_llama.cpp's server has no /v1/audio/transcriptions route -- confirmed empirically: clean HTTP 404 'File Not Found' with a model already loaded and serving (so this is a route that doesn't exist, not a model problem). Its --help lists an --audio FILE flag, which appears to be a CLI-only batch-processing option, not an HTTP API surface. Status stays untested rather than rejected since no model was actually put through a real test.",
             "tested_at": "2026-09-28"
+          },
+          "mlx_serve": {
+            "status": "untested",
+            "load_time_s": null,
+            "total_elapsed_s": null,
+            "prompt_tokens_per_second": null,
+            "gen_tokens_per_second": null,
+            "context_size": null,
+            "context_size_max": null,
+            "transcribed_text": null,
+            "input_tokens": null,
+            "output_tokens": null,
+            "ocr_text": null,
+            "notes": "mlx-serve has no audio transcription endpoint at all -- confirmed empirically: GET /v1/audio/transcriptions returns HTTP 404, and it is not in the server's own printed route table (GET/POST routes logged at startup). Backend-level limitation, no model was actually tested for its real (ASR) purpose -- text-chat-completion responses on these ids exist but are not evidence of transcription capability, so status stays untested rather than working/rejected.",
+            "tested_at": "2026-09-29"
           }
         }
       }
@@ -1360,6 +1705,21 @@
             "ocr_text": null,
             "notes": "failed to load model: check_tensor_dims: tensor 'blk.0.attn_output.weight' has wrong shape; expected 1536,1536, got 2048,1536,1,1 (this fork's GLM architecture support does not match this model's tensor layout)",
             "tested_at": "2026-09-28"
+          },
+          "mlx_serve": {
+            "status": "rejected",
+            "load_time_s": null,
+            "total_elapsed_s": 0.1,
+            "prompt_tokens_per_second": null,
+            "gen_tokens_per_second": null,
+            "context_size": null,
+            "context_size_max": null,
+            "transcribed_text": null,
+            "input_tokens": null,
+            "output_tokens": null,
+            "ocr_text": null,
+            "notes": "This model is serving without its vision tower (--no-vision or no vision weights); image/video content is not supported",
+            "tested_at": "2026-09-29"
           }
         }
       },
@@ -1416,6 +1776,21 @@
             "ocr_text": null,
             "notes": "model loads and server starts, but crashes on first image request: ggml-metal.m:3317 GGML_ASSERT(!is_vision) failed -- confirmed reproducible with -ngl 0 (CPU-only) too, so this is not a GPU-offload config issue: this build's mmproj/vision encoding path is hard-incompatible with the Metal backend on this machine",
             "tested_at": "2026-09-28"
+          },
+          "mlx_serve": {
+            "status": "rejected",
+            "load_time_s": null,
+            "total_elapsed_s": 0.4,
+            "prompt_tokens_per_second": null,
+            "gen_tokens_per_second": null,
+            "context_size": null,
+            "context_size_max": null,
+            "transcribed_text": null,
+            "input_tokens": null,
+            "output_tokens": null,
+            "ocr_text": null,
+            "notes": "This model is serving without its vision tower (--no-vision or no vision weights); image/video content is not supported",
+            "tested_at": "2026-09-29"
           }
         }
       }
