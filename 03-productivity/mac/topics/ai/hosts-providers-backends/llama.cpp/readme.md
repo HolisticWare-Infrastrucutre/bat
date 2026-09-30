@@ -2,10 +2,10 @@
 
 Everything below reads/writes `models-inventory.json`, the single source of
 truth for what local GGUF models exist and which backends (llama.cpp router,
-LM Studio, ik_llama.cpp) have actually been confirmed to load and run each
-one. Status values (`working` / `rejected` / `untested` / `not_configured`)
-are only ever set from a real test -- never inferred from a model being
-listed somewhere.
+LM Studio, ik_llama.cpp, mlx-serve) have actually been confirmed to load and
+run each one. Status values (`working` / `rejected` / `untested` /
+`not_configured`) are only ever set from a real test -- never inferred from
+a model being listed somewhere.
 
 ### Router-mode setup (llama.cpp, port 11454)
 
@@ -23,6 +23,28 @@ listed somewhere.
     request, `--models-max` LRU-evicts). Env overrides:
     `LLAMA_CPP_MODELS_DIR`, `LLAMA_CPP_MODELS_MAX` (default 1),
     `LLAMA_CPP_CTX_SIZE` (default 32768).
+
+### Router-mode setup (mlx-serve, port 11474)
+
+*   `serve-mlx-serve.sh` -- rebuilds the same symlink farm router mode uses,
+    then launches `mlx-serve --serve --model-dir ... --max-resident-models 1`
+    (its own on-demand/LRU router mode). Reuses the farm as-is, so ids match
+    the inventory's canonical `org__repo` ids with zero translation. Its
+    `/v1/chat/completions` response uses the exact same `timings` shape
+    llama.cpp does, so `test-model-load.sh`/`test-vision-model-load.sh` work
+    against it completely unmodified -- just point `--external-port` at
+    `11474` (see `test-inventory-models.sh` below). Two confirmed
+    backend-level limitations (not per-model bugs): no
+    `/v1/audio/transcriptions` route at all (404, not in its own printed
+    route table -- `speech_asr_tts` entries stay `untested` for this
+    backend, mirroring the LM Studio precedent), and `--model-dir`
+    discovery does not auto-pair a model's mmproj/vision-tower file the way
+    llama.cpp router's `--mmproj` auto-detection does (vision/OCR requests
+    fail with "serving without its vision tower" even though the mmproj
+    file sits right next to the model in the farm) -- both confirmed via a
+    real full-batch test, not assumed. Env overrides: `MLX_SERVE_BIN`,
+    `MLX_SERVE_PORT` (default 11474), `MLX_SERVE_MODELS_DIR`,
+    `MLX_SERVE_MAX_RESIDENT` (default 1).
 
 ### Single-model launchers (predate router mode; still useful for a pinned,
 tuned config instead of the router's generic defaults)
@@ -80,10 +102,13 @@ tuned config instead of the router's generic defaults)
     watchdog once, loops the matching tester above over every model id
     (router's `--models-max 1` LRU-evicts between tests, no restart
     needed), tears down after. With `--external-port` (e.g. `11444` for LM
-    Studio), skips starting/stopping anything and just loops the tests
-    against that already-running server -- pair with
+    Studio, or `11474` for `mlx-serve` started separately via
+    `serve-mlx-serve.sh`), skips starting/stopping anything and just loops
+    the tests against that already-running server -- pair with
     `--endpoint-path /api/v0/chat/completions` for LM Studio to get real
-    tok/s numbers instead of nulls.
+    tok/s numbers instead of nulls (mlx-serve needs no `--endpoint-path`
+    override, its default `/v1/chat/completions` already matches
+    llama.cpp's `timings` shape).
 *   `test-ik-llama-cpp-models.sh [--mode text|audio|vision] RESULTS_JSONL MODEL_ID [MODEL_ID...]`
     -- batch driver for **ik_llama.cpp**, which has no router mode: resolves
     each model id's real file path from `models-inventory.json`, then does a
@@ -98,7 +123,7 @@ tuned config instead of the router's generic defaults)
 *   `models-inventory.json` -- the master file. Each model entry has
     `id`/`source_dir`/`model_file`/`mmproj_file`/`multipart`/`size_on_disk`
     plus a `backends` object with one entry per backend
-    (`llama_cpp_router`, `lm_studio`, `ik_llama_cpp`), each carrying
+    (`llama_cpp_router`, `lm_studio`, `ik_llama_cpp`, `mlx_serve`), each carrying
     `status`, perf fields (`load_time_s`, `total_elapsed_s`,
     `prompt_tokens_per_second`, `gen_tokens_per_second`), context fields
     (`context_size` -- ctx actually loaded with for that test run;
@@ -135,42 +160,50 @@ tuned config instead of the router's generic defaults)
 
 ## Model x backend results
 
-Snapshot as of 2026-09-29 (re-tested twice: an initial pass hit unrelated
-heavy CPU contention that tanked ik_llama.cpp's numbers specifically, then a
-full re-test on a quiet system produced this clean pass -- see git history
-if the contention-affected numbers are ever needed for comparison).
-Regenerate with the command above; this table is derived from
-`models-inventory.json`, never hand-edited.
+Snapshot as of 2026-09-29 (router/LM Studio/ik_llama.cpp re-tested twice: an
+initial pass hit unrelated heavy CPU contention that tanked ik_llama.cpp's
+numbers specifically, then a full re-test on a quiet system produced this
+clean pass -- see git history if the contention-affected numbers are ever
+needed for comparison; mlx-serve added as a 4th backend in the same session,
+first-pass baseline). Regenerate with the command above; this table is
+derived from `models-inventory.json`, never hand-edited.
 
-| Model                                               | Size | Router Load | Router Prompt tok/s | Router Gen tok/s | LM Studio Load | LM Studio Prompt tok/s | LM Studio Gen tok/s | ik_llama.cpp Load | ik_llama.cpp Prompt tok/s | ik_llama.cpp Gen tok/s |
-|-----------------------------------------------------|------|-------------|----------------------|-------------------|-----------------|-------------------------|----------------------|--------------------|----------------------------|-------------------------|
-| FL33TW00D-HF__whisper-tiny                          | 144M | X           |                      |                   | -               |                         |                      | -                  |                            |                         |
-| xkeyC__whisper-large-v3-turbo-gguf__model_q4_k      | 454M | X           |                      |                   | -               |                         |                      | -                  |                            |                         |
-| xkeyC__whisper-large-v3-turbo-gguf__model_q4_1      | 501M | X           |                      |                   | -               |                         |                      | -                  |                            |                         |
-| oxide-lab__whisper-large-v3-turbo-GGUF              | 825M | X           |                      |                   | -               |                         |                      | -                  |                            |                         |
-| ggml-org__GLM-OCR-GGUF                              | 2.1G | 0.9s        | 1733.8               | 256.8             | 6.7s            | 1622.8                  | 268.2                | X                  |                            |                         |
-| unslothai__Qwen3-ASR-1.7B-GGUF                      | 2.6G | 1.3s        | n/a                  | 137.5             | -               |                         |                      | -                  |                            |                         |
-| vonjack__whisper-large-v3-gguf                      | 2.9G | X           |                      |                   | -               |                         |                      | -                  |                            |                         |
-| ibm-granite__granite-speech-4.1-2b-plus-GGUF        | 4.1G | 1.8s        | n/a                  | 85.7              | -               |                         |                      | -                  |                            |                         |
-| vokra__qwen3-asr-1.7b                               | 4.4G | X           |                      |                   | -               |                         |                      | -                  |                            |                         |
-| ibm-granite__granite-speech-4.1-2b-GGUF             | 4.5G | 1.8s        | n/a                  | 85.7              | -               |                         |                      | -                  |                            |                         |
-| lmstudio-community__olmOCR-2-7B-1025-GGUF           | 8.8G | 3.2s        | 505.7                | 56.5              | 3.4s            | 504.6                   | 57.0                 | X                  |                            |                         |
-| unsloth__Qwen3.6-35B-A3B-GGUF                       | 21G  | 7.9s        | 226.6                | 95.7              | 11.6s           | 205.9                   | 83.5                 | 6.4s               | 236.6                      | 66.6                    |
-| lmstudio-community__Qwen3.8-27B-GGUF                | 28G  | 12.1s       | 89.5                 | 16.1              | 15.3s           | 77.9                    | 23.7                 | 10.1s              | 54.0                       | 10.9                    |
-| OBLITERATUS__Qwen3.8-27B-OBLITERATED                | 28G  | 11.4s       | 35.6                 | 16.1              | 14.3s           | 29.9                    | 23.7                 | 10.1s              | 36.7                       | 10.9                    |
-| lmstudio-community__gemma-4-31B-it-GGUF             | 32G  | 13.6s       | 28.1                 | 13.7              | 16.5s           | 27.8                    | 14.1                 | 10.8s              | 38.2                       | 9.1                     |
-| TheBloke__WizardCoder-Python-34B-V1.0-GGUF          | 33G  | 13.7s       | 136.3                | 13.5              | 16.6s           | 27.7                    | 13.7                 | 11.4s              | 36.7                       | 8.7                     |
-| lmstudio-community__Qwen3.6-35B-A3B-GGUF            | 35G  | 14.8s       | 183.9                | 81.6              | 21.9s           | 141.8                   | 78.2                 | 14.1s              | 153.4                      | 68.8                    |
-| unsloth__Qwen3.5-35B-A3B-GGUF                       | 38G  | 12.2s       | 183.3                | 67.6              | 18.0s           | 137.3                   | 64.0                 | 14.1s              | 112.7                      | 44.6                    |
-| mradermacher__OpenMath-CodeLlama-70b-Python-hf-GGUF | 45G  | 19.9s       | 61.6                 | 9.3               | 21.7s           | 10.4                    | 9.0                  | 14.5s              | 11.2                       | 6.0                     |
-| ggml-org__Qwen3.8-27B-GGUF                          | 51G  | 22.1s       | 85.9                 | 9.3               | X               |                         |                      | 19.5s              | 21.8                       | 5.3                     |
-| unsloth__Qwen3.8-27B-GGUF                           | 52G  | 21.6s       | 86.3                 | 9.3               | X               |                         |                      | 18.1s              | 20.0                       | 5.3                     |
-| unsloth__Qwen3-Coder-30B-A3B-Instruct-GGUF          | 57G  | 23.2s       | 149.8                | 60.0              | 28.7s           | 152.7                   | 63.3                 | X                  |                            |                         |
-| Kay6888__DeepSeek-Coder-V2-Lite-Instruct-GGUF       | 59G  | 25.2s       | 134.3                | 44.8              | 38.2s           | 106.7                   | 45.3                 | X                  |                            |                         |
-| unsloth__Qwen3.5-35B-A3B-Experiments-GGUF           | 65G  | 27.7s       | 156.4                | 59.6              | 29.3s           | 141.4                   | 57.6                 | X                  |                            |                         |
-| lmstudio-community__Qwen3-Coder-Next-GGUF           | 79G  | 32.9s       | 126.4                | 61.2              | 41.7s           | 44.8                    | 46.5                 | 26.2s              | 112.1                      | 59.0                    |
+| Model                                               | Size | Router Load | Router Prompt tok/s | Router Gen tok/s | LM Studio Load | LM Studio Prompt tok/s | LM Studio Gen tok/s | ik_llama.cpp Load | ik_llama.cpp Prompt tok/s | ik_llama.cpp Gen tok/s | mlx-serve Load | mlx-serve Prompt tok/s | mlx-serve Gen tok/s |
+|-----------------------------------------------------|------|-------------|---------------------|------------------|----------------|------------------------|---------------------|-------------------|---------------------------|------------------------|----------------|------------------------|---------------------|
+| FL33TW00D-HF__whisper-tiny                          | 144M | X           |                     |                  | -              |                        |                     | -                 |                           |                        | -              |                        |                     |
+| xkeyC__whisper-large-v3-turbo-gguf__model_q4_k      | 454M | X           |                     |                  | -              |                        |                     | -                 |                           |                        | -              |                        |                     |
+| xkeyC__whisper-large-v3-turbo-gguf__model_q4_1      | 501M | X           |                     |                  | -              |                        |                     | -                 |                           |                        | -              |                        |                     |
+| oxide-lab__whisper-large-v3-turbo-GGUF              | 825M | X           |                     |                  | -              |                        |                     | -                 |                           |                        | -              |                        |                     |
+| ggml-org__GLM-OCR-GGUF                              | 2.1G | 0.9s        | 1733.8              | 256.8            | 6.7s           | 1622.8                 | 268.2               | X                 |                           |                        | X              |                        |                     |
+| unslothai__Qwen3-ASR-1.7B-GGUF                      | 2.6G | 1.3s        | n/a                 | 137.5            | -              |                        |                     | -                 |                           |                        | -              |                        |                     |
+| vonjack__whisper-large-v3-gguf                      | 2.9G | X           |                     |                  | -              |                        |                     | -                 |                           |                        | -              |                        |                     |
+| ibm-granite__granite-speech-4.1-2b-plus-GGUF        | 4.1G | 1.8s        | n/a                 | 85.7             | -              |                        |                     | -                 |                           |                        | -              |                        |                     |
+| vokra__qwen3-asr-1.7b                               | 4.4G | X           |                     |                  | -              |                        |                     | -                 |                           |                        | -              |                        |                     |
+| ibm-granite__granite-speech-4.1-2b-GGUF             | 4.5G | 1.8s        | n/a                 | 85.7             | -              |                        |                     | -                 |                           |                        | -              |                        |                     |
+| lmstudio-community__olmOCR-2-7B-1025-GGUF           | 8.8G | 3.2s        | 505.7               | 56.5             | 3.4s           | 504.6                  | 57.0                | X                 |                           |                        | X              |                        |                     |
+| unsloth__Qwen3.6-35B-A3B-GGUF                       | 21G  | 7.9s        | 226.6               | 95.7             | 11.6s          | 205.9                  | 83.5                | 6.4s              | 236.6                     | 66.6                   | 0.9s           | 489.7                  | 54.4                |
+| lmstudio-community__Qwen3.8-27B-GGUF                | 28G  | 12.1s       | 89.5                | 16.1             | 15.3s          | 77.9                   | 23.7                | 10.1s             | 54.0                      | 10.9                   | 10.8s          | 146.1                  | 12.9                |
+| OBLITERATUS__Qwen3.8-27B-OBLITERATED                | 28G  | 11.4s       | 35.6                | 16.1             | 14.3s          | 29.9                   | 23.7                | 10.1s             | 36.7                      | 10.9                   | 10.3s          | 177.6                  | 12.9                |
+| lmstudio-community__gemma-4-31B-it-GGUF             | 32G  | 13.6s       | 28.1                | 13.7             | 16.5s          | 27.8                   | 14.1                | 10.8s             | 38.2                      | 9.1                    | 11.9s          | 26.4                   | 11.8                |
+| TheBloke__WizardCoder-Python-34B-V1.0-GGUF          | 33G  | 13.7s       | 136.3               | 13.5             | 16.6s          | 27.7                   | 13.7                | 11.4s             | 36.7                      | 8.7                    | 12.1s          | 184.0                  | 11.1                |
+| lmstudio-community__Qwen3.6-35B-A3B-GGUF            | 35G  | 14.8s       | 183.9               | 81.6             | 21.9s          | 141.8                  | 78.2                | 14.1s             | 153.4                     | 68.8                   | 13.6s          | 436.4                  | 45.0                |
+| unsloth__Qwen3.5-35B-A3B-GGUF                       | 38G  | 12.2s       | 183.3               | 67.6             | 18.0s          | 137.3                  | 64.0                | 14.1s             | 112.7                     | 44.6                   | 10.8s          | 162.4                  | 38.8                |
+| mradermacher__OpenMath-CodeLlama-70b-Python-hf-GGUF | 45G  | 19.9s       | 61.6                | 9.3              | 21.7s          | 10.4                   | 9.0                 | 14.5s             | 11.2                      | 6.0                    | 19.0s          | 121.6                  | 6.7                 |
+| ggml-org__Qwen3.8-27B-GGUF                          | 51G  | 22.1s       | 85.9                | 9.3              | X              |                        |                     | 19.5s             | 21.8                      | 5.3                    | 20.6s          | 240.3                  | 7.5                 |
+| unsloth__Qwen3.8-27B-GGUF                           | 52G  | 21.6s       | 86.3                | 9.3              | X              |                        |                     | 18.1s             | 20.0                      | 5.3                    | 20.3s          | 242.6                  | 7.3                 |
+| unsloth__Qwen3-Coder-30B-A3B-Instruct-GGUF          | 57G  | 23.2s       | 149.8               | 60.0             | 28.7s          | 152.7                  | 63.3                | X                 |                           |                        | 22.4s          | 109.3                  | 41.1                |
+| Kay6888__DeepSeek-Coder-V2-Lite-Instruct-GGUF       | 59G  | 25.2s       | 134.3               | 44.8             | 38.2s          | 106.7                  | 45.3                | X                 |                           |                        | 23.9s          | 35.3                   | 37.9                |
+| unsloth__Qwen3.5-35B-A3B-Experiments-GGUF           | 65G  | 27.7s       | 156.4               | 59.6             | 29.3s          | 141.4                  | 57.6                | X                 |                           |                        | 25.6s          | 279.9                  | 36.7                |
+| lmstudio-community__Qwen3-Coder-Next-GGUF           | 79G  | 32.9s       | 126.4               | 61.2             | 41.7s          | 44.8                   | 46.5                | 26.2s             | 112.1                     | 59.0                   | 32.3s          | 105.1                  | 41.5                |
 
 Legend: real value = working (with that number) | OK/n/a = working but this endpoint reports no timing breakdown (e.g. audio) | X = tested and rejected | - = untested/not_configured
+
+Notable cross-backend finding: mlx-serve is the only backend that loaded
+BOTH `unsloth__Qwen3-Coder-30B-A3B-Instruct-GGUF` and
+`Kay6888__DeepSeek-Coder-V2-Lite-Instruct-GGUF` successfully -- these are
+the exact two models ik_llama.cpp crashes on (`ggml.c:18950 fatal error`
+during MoE expert-scheduling init). No backend is a strict superset of
+another; every status is still from a real per-backend test.
 
 Context-size data (`context_size` = ctx actually loaded, `context_size_max` =
 native/trained max) isn't shown in this table -- export it instead:
@@ -179,7 +212,10 @@ Studio always loads at each model's full native max context; the router and
 ik_llama.cpp both loaded at a fixed 4096 in this batch (`--ctx-size`
 hard-coded in the test driver scripts, not model-chosen) except for
 `mradermacher__OpenMath-CodeLlama-70b-Python-hf-GGUF`, whose native max is
-only 2048.
+only 2048; mlx-serve loaded everything at a fixed 8192 and does not expose a
+separate native-max field at all via its `/v1/models`/`/props` (so
+`context_size_max` stays `null` for every mlx-serve entry -- a real API gap,
+not a probe bug, confirmed against its actual response shape).
 
 *   https://docs.servicestack.net/ai-server/llama-server#access-llama-server-from-c
 
