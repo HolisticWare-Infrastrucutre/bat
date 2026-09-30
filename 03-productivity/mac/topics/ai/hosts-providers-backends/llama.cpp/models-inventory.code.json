@@ -61,6 +61,21 @@
           "ocr_text": null,
           "notes": "server did not become ready: llama_init_from_model: graph splits = 1 llama_init_from_model: enabling only_active_experts scheduling /Users/moljac/Downloads/HolisticWare/ai/ik_llama.cpp/macosx/ik_llama.cpp-main/ik_llama.cpp-main/ggml/src/ggml.c:18950: fatal error /Users/moljac/Downloads/HolisticWare/ai/ik_llama.cpp/macosx/ik_llama.cpp-main/ik_llama.cpp-main/ggml/src/ggml.c:18950: fatal error /Users/moljac/Downloads/HolisticWare/ai/ik_llama.cpp/macosx/ik_llama.cpp-main/ik_llama.cpp-main/ggml/src/ggml.c:18950: ",
           "tested_at": "2026-09-28"
+        },
+        "mlx_serve": {
+          "status": "working",
+          "load_time_s": 22.4,
+          "total_elapsed_s": 22.7,
+          "prompt_tokens_per_second": 109.3,
+          "gen_tokens_per_second": 41.1,
+          "context_size": 8192,
+          "context_size_max": null,
+          "transcribed_text": null,
+          "input_tokens": null,
+          "output_tokens": null,
+          "ocr_text": null,
+          "notes": null,
+          "tested_at": "2026-09-29"
         }
       }
     },
@@ -113,6 +128,21 @@
           "gen_tokens_per_second": 59.0,
           "context_size": 4096,
           "context_size_max": 262144,
+          "transcribed_text": null,
+          "input_tokens": null,
+          "output_tokens": null,
+          "ocr_text": null,
+          "notes": null,
+          "tested_at": "2026-09-29"
+        },
+        "mlx_serve": {
+          "status": "working",
+          "load_time_s": 32.3,
+          "total_elapsed_s": 32.6,
+          "prompt_tokens_per_second": 105.1,
+          "gen_tokens_per_second": 41.5,
+          "context_size": 870,
+          "context_size_max": null,
           "transcribed_text": null,
           "input_tokens": null,
           "output_tokens": null,
@@ -177,6 +207,21 @@
           "ocr_text": null,
           "notes": "server did not become ready: llama_init_from_model: graph splits = 1 llama_init_from_model: enabling only_active_experts scheduling /Users/moljac/Downloads/HolisticWare/ai/ik_llama.cpp/macosx/ik_llama.cpp-main/ik_llama.cpp-main/ggml/src/ggml.c:18950: /Users/moljac/Downloads/HolisticWare/ai/ik_llama.cpp/macosx/ik_llama.cpp-main/ik_llama.cpp-main/ggml/src/ggml.c:18950: fatal error /Users/moljac/Downloads/HolisticWare/ai/ik_llama.cpp/macosx/ik_llama.cpp-main/ik_llama.cpp-main/ggml/src/ggml.c:18950: fatal error/Users/moljac/Downloads/HolisticWare/ai/ik_llama.cpp/macosx/ik_llama.cpp-main/ik_llama.cpp-main/ggml/src/ggml.c:18950: fatal error /Users/moljac/Downloads/HolisticWare/ai/ik_llama.cpp/macosx/ik_llama.cpp-main/ik_llama.cpp-main/ggml/src/ggml.c:18950: fatal error",
           "tested_at": "2026-09-28"
+        },
+        "mlx_serve": {
+          "status": "working",
+          "load_time_s": 23.9,
+          "total_elapsed_s": 24.4,
+          "prompt_tokens_per_second": 35.3,
+          "gen_tokens_per_second": 37.9,
+          "context_size": 8192,
+          "context_size_max": null,
+          "transcribed_text": null,
+          "input_tokens": null,
+          "output_tokens": null,
+          "ocr_text": null,
+          "notes": null,
+          "tested_at": "2026-09-29"
         }
       }
     },
@@ -233,6 +278,21 @@
           "ocr_text": null,
           "notes": null,
           "tested_at": "2026-09-29"
+        },
+        "mlx_serve": {
+          "status": "working",
+          "load_time_s": 12.1,
+          "total_elapsed_s": 13.1,
+          "prompt_tokens_per_second": 184.0,
+          "gen_tokens_per_second": 11.1,
+          "context_size": 8192,
+          "context_size_max": null,
+          "transcribed_text": null,
+          "input_tokens": null,
+          "output_tokens": null,
+          "ocr_text": null,
+          "notes": null,
+          "tested_at": "2026-09-29"
         }
       }
     },
@@ -283,6 +343,21 @@
           "gen_tokens_per_second": 6.0,
           "context_size": 4096,
           "context_size_max": 2048,
+          "transcribed_text": null,
+          "input_tokens": null,
+          "output_tokens": null,
+          "ocr_text": null,
+          "notes": null,
+          "tested_at": "2026-09-29"
+        },
+        "mlx_serve": {
+          "status": "working",
+          "load_time_s": 19.0,
+          "total_elapsed_s": 20.7,
+          "prompt_tokens_per_second": 121.6,
+          "gen_tokens_per_second": 6.7,
+          "context_size": 8192,
+          "context_size_max": null,
           "transcribed_text": null,
           "input_tokens": null,
           "output_tokens": null,
