@@ -14,7 +14,7 @@ Options:
     --category NAME      filter to one category (general_chat, code, ocr,
                           speech_asr_tts, embeddings). Default: all.
     --backends LIST       comma-separated backend keys to include, in order.
-                          Default: llama_cpp_router,lm_studio,ik_llama_cpp
+                          Default: llama_cpp_router,lm_studio,ik_llama_cpp,mlx_serve
     --format FORMAT       table (default), markdown, json, yaml, or csv
     --output FILE          write to FILE instead of stdout
     --sort {none,id,size}  row order. Default: none (inventory order)
@@ -32,11 +32,12 @@ import sys
 
 HERE = os.path.dirname(os.path.abspath(__file__))
 DEFAULT_INPUT = os.path.join(HERE, "models-inventory.json")
-DEFAULT_BACKENDS = ["llama_cpp_router", "lm_studio", "ik_llama_cpp"]
+DEFAULT_BACKENDS = ["llama_cpp_router", "lm_studio", "ik_llama_cpp", "mlx_serve"]
 BACKEND_LABELS = {
     "llama_cpp_router": "Router",
     "lm_studio": "LM Studio",
     "ik_llama_cpp": "ik_llama.cpp",
+    "mlx_serve": "mlx-serve",
 }
 
 STATUS_ICON = {"working": None, "rejected": "X", "untested": "-", "not_configured": "-"}
