@@ -998,8 +998,28 @@ function sys_network_restart()
 
   sudo ifconfig en0 down
   sudo ifconfig en0 up
+  sys_network_vpn_claudeflare_warp_restart
+
 }
 
+function sys_network_vpn_claudeflare_warp_restart()
+{
+  echo "--------------------------------------------------------------------------------------------------------------"
+  echo \
+  "
+  Restarting VPN services:
+
+  sudo ifconfig utun0 down
+  sudo ifconfig utun0 up
+  sudo ifconfig lo0 -alias 192.0.2.2
+  sudo dscacheutil -flushcache; sudo killall -HUP mDNSResponder
+  "
+
+  sudo ifconfig utun0 down
+  sudo ifconfig utun0 up
+  sudo ifconfig lo0 -alias 192.0.2.2
+  sudo dscacheutil -flushcache; sudo killall -HUP mDNSResponder
+}
 
 function sys_network_restart_brute()
 {
@@ -1262,6 +1282,8 @@ function dev_ai_harnesses_ai_coding_assistants_update_upgrade()
   source $HOME/bat/03-productivity/mac/topics/ai/harnesses-ai-coding-assistants/update-upgrade.sh
   "
   source $HOME/bat/03-productivity/mac/topics/ai/harnesses-ai-coding-assistants/update-upgrade.sh
+  pi update --extensions
+  
 }
 
 
@@ -1288,20 +1310,53 @@ function dev_ai_launch()
   # 01-system-integration/mac/02-install/ai/ollama/update-2.ps1
 }
 
+function dev_ai_local_provider_runtime_backend_lms_lm_studio()
+{
+  echo \
+  "
+  ======================================================================================================================
+  source $HOME/bat/03-productivity/mac/topics/ai/hosts-providers-backends/lms-lm-studio/serve.sh
+  "
 
-function dev_ai_local_llama_cpp()
+  source $HOME/bat/03-productivity/mac/topics/ai/hosts-providers-backends/lms-lm-studio/serve.sh
+
+  echo \
+  "
+  source $HOME/bat/03-productivity/mac/topics/ai/hosts-providers-backends/lms-lm-studio/serve.sh
+  ======================================================================================================================
+  "
+}
+
+function dev_ai_local_provider_runtime_backend_llama_cpp()
 {
   echo \
   "
   ======================================================================================================================
   source $HOME/bat/03-productivity/mac/topics/ai/hosts-providers-backends/llama.cpp/serve.sh
   "
-  
+
   source $HOME/bat/03-productivity/mac/topics/ai/hosts-providers-backends/llama.cpp/serve.sh
 
   echo \
   "
   source $HOME/bat/03-productivity/mac/topics/ai/hosts-providers-backends/llama.cpp/serve.sh
+  ======================================================================================================================
+  "
+}
+
+function dev_ai_local_provider_runtime_backend_llama_cpp_router()
+{
+  echo \
+  "
+  ======================================================================================================================
+  source $HOME/bat/03-productivity/mac/topics/ai/hosts-providers-backends/llama.cpp/serve-router.sh
+  "
+
+  source $HOME/bat/03-productivity/mac/topics/ai/hosts-providers-backends/llama.cpp/serve-router.sh
+
+  echo \
+  "
+  source $HOME/bat/03-productivity/mac/topics/ai/hosts-providers-backends/llama.cpp/serve-router.sh
   ======================================================================================================================
   "
 }
@@ -2524,7 +2579,7 @@ function dev_dotnet_folders_nuke()
   rm -fr\ $\(find . -type d -iname "bin" -o -iname "obj" -o -iname ".meteor" -o -iname ".idea" -o -iname ".vs" -iname ".qodo" \)
   "
 
-  rm -fr $(find . -type d -iname "bin" -o -iname "obj" -o -iname ".meteor" -o -iname ".idea" -o -iname ".vs")
+  rm -fr $(find . -type d -iname "bin" -o -iname "obj" -o -iname ".meteor" -o -iname ".idea" -o -iname ".vs" -o -iname ".qodo"  -o -iname "*-packages")
 }
 
 function dev_dotnet_nuget_nuke()
@@ -4494,6 +4549,22 @@ function work_on_dev_ai ()
   "
 }
 
+function work_on_dev_ai_cloud_frontier ()
+{
+  source ~/bat/03-productivity/mac/topics/ai/harnesses-ai-coding-assistants/develop_with_ai_cloud_frontier.sh
+}
+
+function work_on_dev_ai_local_provider_llamacpp_11454_Qwen3.8-27B ()
+{
+  source ~/bat/03-productivity/mac/topics/ai/harnesses-ai-coding-assistants/develop_with_ai__local_provider_llamacpp_11454_Qwen3.8-27B.sh
+}
+
+function work_on_dev_ai_local_provider_llamacpp_11454_Qwen3.6-35B-A3B ()
+{
+  source ~/bat/03-productivity/mac/topics/ai/harnesses-ai-coding-assistants/develop_with_ai__local_provider_llamacpp_Qwen3.6-35B-A3B.sh 
+}
+
+
 function work_on_dev_dotnet_api_keys_set ()
 {
   echo "--------------------------------------------------------------------------------------------------------------"
@@ -4766,60 +4837,12 @@ function work_on_holisticware_business()
 
 };
 
-function work_on_sai()
+function work_on_holisticware_business_jobs_projects()
 {
-  echo "--------------------------------------------------------------------------------------------------------------"
-  echo \
-  "
-  source \\
-    $HOME/bat.private/mac/mcsai/work_on_sai.sh
-  "
   source \
-    $HOME/bat.private/mac/mcsai/work_on_sai.sh
-
-  echo \
-  "
-  source \\
-    $HOME/bat.private/mac/mcsai/work_on_sai.sh
-  "
-  echo "--------------------------------------------------------------------------------------------------------------"
-
-};
-
-function work_on_sai_code()
-{
-  echo \
-  "
-  ----------------------------------------------------------------------------------------------------------------------
-  source \\
-    $HOME/bat.private/mac/mcsai/work_on_sai_code.sh
-  "
+    $HOME/bat.private/mac/mchwc/apps-holisticware-business.sh
   source \
-    $HOME/bat.private/mac/mcsai/work_on_sai_code.sh
-  echo \
-  "
-  source \\
-    $HOME/bat.private/mac/mcsai/work_on_sai_code.sh
-  ----------------------------------------------------------------------------------------------------------------------
-  "
-}
-
-function work_on_sai_code_claude()
-{
-  echo \
-  "
-  ----------------------------------------------------------------------------------------------------------------------
-  source \\
-    $HOME/bat.private/mac/mcsai/work_on_sai_code.sh
-  "
-  source \
-    $HOME/bat.private/mac/mcsai/work_on_sai_code.sh
-  echo \
-  "
-  source \\
-    $HOME/bat.private/mac/mcsai/work_on_sai_code.sh
-  ----------------------------------------------------------------------------------------------------------------------
-  "
+    $HOME/bat.private/mac/mchwc/firefox-holisticware-business.sh
 }
 
 function work_on_moljac_holisticware()
