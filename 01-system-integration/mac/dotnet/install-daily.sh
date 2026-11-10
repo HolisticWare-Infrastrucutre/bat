@@ -24,6 +24,8 @@ export VERSIONS=\
 10.0.2xx
 10.0.3xx
 10.0.4xx
+11.0
+11.0.1xx
 "
 export PRODUCTS=\
 "
@@ -31,6 +33,8 @@ sdk
 runtime
 "
 
+FOLDER=$HOME/Downloads/HolisticWare/dotnet/
+md $FOLDER
 
 if [[ $(uname -m) == 'arm64' ]]; 
 then
@@ -51,7 +55,7 @@ do
         continue
     fi
 
-    md $HOME/Downloads/dotnet/$VERSION/$OS/$ARCH/
+    md $FOLDER/$VERSION/$OS/$ARCH/
 
     for PRODUCT in $PRODUCTS
     do
@@ -69,7 +73,7 @@ do
 
         sudo \
             installer \
-                -pkg $HOME/Downloads/dotnet/$VERSION/$OS/$ARCH/daily/dotnet-$PRODUCT-$OS-$ARCH.$EXT \
+                -pkg $FOLDER/$VERSION/$OS/$ARCH/daily/dotnet-$PRODUCT-$OS-$ARCH.$EXT \
                 -target /
 
 
