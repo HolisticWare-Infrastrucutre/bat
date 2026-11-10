@@ -29,6 +29,7 @@ export VERSIONS=\
 10.0.2xx
 10.0.3xx
 10.0.4xx
+11.0.1xx
 "
 export PRODUCTS=\
 "
@@ -61,6 +62,8 @@ do
     fi
 
     md $FOLDER/$VERSION/$OS/$ARCH/
+    md $FOLDER/$VERSION/$OS/$ARCH/daily/
+    md $FOLDER/$VERSION/$OS/$ARCH/preview/
 
     for PRODUCT in $PRODUCTS
     do
