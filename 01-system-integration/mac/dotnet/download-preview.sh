@@ -1,5 +1,7 @@
 #!/bin/bash
 
+# https://github.com/dotnet/dotnet/blob/main/docs/builds-table.md
+
 # https://github.com/dotnet/aspnetcore/blob/main/README.md
 # https://github.com/dotnet/runtime/blob/main/docs/project/dogfooding.md
 # https://github.com/dotnet/dotnet/blob/main/src/runtime/docs/project/dogfooding.md
@@ -11,6 +13,8 @@
 # https://aka.ms/dotnet/{version}/dotnet-{product}-{os}-{arch}.{ext}
 #   https://aka.ms/dotnet/10.0/dotnet-sdk-osx-arm64.pkg
 
+#   https://aka.ms/dotnet/10.0.4xx/daily/dotnet-sdk-win-x64.exe
+#   https://aka.ms/dotnet/10.0.4xx/daily/dotnet-sdk-osx-arm64.pkg
 # wget \
 #     --output-document $FOLDER/a.pkg \
 #         https://dotnet.microsoft.com/en-us/download/dotnet/thank-you/sdk-10.0.100-preview.7-macos-arm64-installer
@@ -20,8 +24,6 @@ export EXT=pkg
 
 export VERSIONS=\
 "
-11.0
-11.0.1xx
 "
 export PRODUCTS=\
 "
@@ -55,6 +57,8 @@ do
     fi
 
     md $FOLDER/$VERSION/$OS/$ARCH/
+    md $FOLDER/$VERSION/$OS/$ARCH/daily/
+    md $FOLDER/$VERSION/$OS/$ARCH/preview/
 
     for PRODUCT in $PRODUCTS
     do
@@ -80,6 +84,7 @@ do
             -v -L -C - \
             --output-dir $FOLDER/$VERSION/$OS/$ARCH/preview/ \
         -O https://aka.ms/dotnet/$VERSION/preview/dotnet-$PRODUCT-$OS-$ARCH.$EXT
+
 
     done
 
