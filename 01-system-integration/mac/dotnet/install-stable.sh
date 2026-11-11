@@ -26,7 +26,10 @@ export VERSIONS=\
 10.0.2xx
 10.0.3xx
 10.0.4xx
+11.0
+11.0.1xx
 "
+
 export PRODUCTS=\
 "
 sdk
@@ -85,7 +88,25 @@ do
     done
 done
 
+  export PWD=$(pwd)
 
-dotnet --list-runtimes
-dotnet --list-sdks
+  ttab \
+    -w \
+    -d $PWD \
+    "
+    dotnet --list-runtimes
+    dotnet --list-sdks
+    "
+
+  ttab \
+    -d $PWD \
+      dev_dotnet_workload_reinstall
+
+  ttab \
+    -d $PWD \
+      dev_dotnet_tools_reinstall
+ 
+  ttab \
+    -d $PWD \
+      dev_dotnet_new_templates_reinstall
 
