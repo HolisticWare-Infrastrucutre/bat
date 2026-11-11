@@ -55,7 +55,11 @@ do
         continue
     fi
 
-    md $FOLDER/$VERSION/$OS/$ARCH/
+    rm -fr \
+        $FOLDER/$VERSION/$OS/$ARCH/daily/
+
+    mkdir -p \
+        $FOLDER/$VERSION/$OS/$ARCH/daily/
 
     for PRODUCT in $PRODUCTS
     do
