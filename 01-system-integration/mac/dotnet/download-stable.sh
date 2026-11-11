@@ -1,5 +1,24 @@
 #!/bin/bash
 
+# https://github.com/dotnet/dotnet/blob/main/docs/builds-table.md
+
+# https://github.com/dotnet/aspnetcore/blob/main/README.md
+# https://github.com/dotnet/runtime/blob/main/docs/project/dogfooding.md
+# https://github.com/dotnet/dotnet/blob/main/src/runtime/docs/project/dogfooding.md
+# https://github.com/dotnet/dotnet/blob/main/docs/builds-table.md
+
+# https://dotnet.microsoft.com/en-us/download/dotnet
+# https://github.com/dotnet/installer/issues/11040
+
+# https://aka.ms/dotnet/{version}/dotnet-{product}-{os}-{arch}.{ext}
+#   https://aka.ms/dotnet/10.0/dotnet-sdk-osx-arm64.pkg
+
+#   https://aka.ms/dotnet/10.0.4xx/daily/dotnet-sdk-win-x64.exe
+#   https://aka.ms/dotnet/10.0.4xx/daily/dotnet-sdk-osx-arm64.pkg
+# wget \
+#     --output-document $FOLDER/a.pkg \
+#         https://dotnet.microsoft.com/en-us/download/dotnet/thank-you/sdk-10.0.100-preview.7-macos-arm64-installer
+
 # https://dotnet.microsoft.com/en-us/download/dotnet
 # https://github.com/dotnet/installer/issues/11040
 
@@ -29,8 +48,10 @@ export VERSIONS=\
 10.0.2xx
 10.0.3xx
 10.0.4xx
+11.0
 11.0.1xx
 "
+
 export PRODUCTS=\
 "
 sdk
@@ -61,9 +82,11 @@ do
         continue
     fi
 
-    md $FOLDER/$VERSION/$OS/$ARCH/
-    md $FOLDER/$VERSION/$OS/$ARCH/daily/
-    md $FOLDER/$VERSION/$OS/$ARCH/preview/
+    rm -fr \
+        $FOLDER/$VERSION/$OS/$ARCH/
+
+    mkdir -p \
+        $FOLDER/$VERSION/$OS/$ARCH/
 
     for PRODUCT in $PRODUCTS
     do
@@ -78,17 +101,7 @@ do
         curl \
             -v -L -C - \
             --output-dir $FOLDER/$VERSION/$OS/$ARCH/ \
-        -O https://aka.ms/dotnet/$VERSION/dotnet-$PRODUCT-$OS-$ARCH.$EXT
-
-        curl \
-            -v -L -C - \
-            --output-dir $FOLDER/$VERSION/$OS/$ARCH/daily/ \
-        -O https://aka.ms/dotnet/$VERSION/daily/dotnet-$PRODUCT-$OS-$ARCH.$EXT
-
-        curl \
-            -v -L -C - \
-            --output-dir $FOLDER/$VERSION/$OS/$ARCH/preview/ \
-        -O https://aka.ms/dotnet/$VERSION/preview/dotnet-$PRODUCT-$OS-$ARCH.$EXT
+                -O https://aka.ms/dotnet/$VERSION/dotnet-$PRODUCT-$OS-$ARCH.$EXT
 
     done
 
