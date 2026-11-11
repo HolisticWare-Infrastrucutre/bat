@@ -25,6 +25,7 @@ export EXT=pkg
 export VERSIONS=\
 "
 "
+
 export PRODUCTS=\
 "
 sdk
@@ -56,9 +57,11 @@ do
         continue
     fi
 
-    md $FOLDER/$VERSION/$OS/$ARCH/
-    md $FOLDER/$VERSION/$OS/$ARCH/daily/
-    md $FOLDER/$VERSION/$OS/$ARCH/preview/
+    rm -fr \
+        $FOLDER/$VERSION/$OS/$ARCH/preview/
+
+    mkdir -p \
+        $FOLDER/$VERSION/$OS/$ARCH/preview/
 
     for PRODUCT in $PRODUCTS
     do
@@ -72,18 +75,8 @@ do
 
         curl \
             -v -L -C - \
-            --output-dir $FOLDER/$VERSION/$OS/$ARCH/ \
-        -O https://aka.ms/dotnet/$VERSION/dotnet-$PRODUCT-$OS-$ARCH.$EXT
-
-        curl \
-            -v -L -C - \
-            --output-dir $FOLDER/$VERSION/$OS/$ARCH/daily/ \
-        -O https://aka.ms/dotnet/$VERSION/daily/dotnet-$PRODUCT-$OS-$ARCH.$EXT
-
-        curl \
-            -v -L -C - \
             --output-dir $FOLDER/$VERSION/$OS/$ARCH/preview/ \
-        -O https://aka.ms/dotnet/$VERSION/preview/dotnet-$PRODUCT-$OS-$ARCH.$EXT
+                -O https://aka.ms/dotnet/$VERSION/preview/dotnet-$PRODUCT-$OS-$ARCH.$EXT
 
 
     done
